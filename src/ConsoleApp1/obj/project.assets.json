@@ -11193,11 +11193,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp1\\ConsoleApp1.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp1\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11217,35 +11217,35 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Redis\\Bucket.Redis.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Redis\\Bucket.Redis.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Redis\\Bucket.Redis.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Redis\\Bucket.Redis.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
             }
           }
         }

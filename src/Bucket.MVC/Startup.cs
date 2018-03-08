@@ -97,7 +97,7 @@ namespace Bucket.MVC
             services.AddErroCodeService(opt =>
             {
                 opt.RefreshInteval = 300;
-                opt.ServerUrl = "http://122.192.33.40:18080";
+                opt.ServerUrl = "http://127.0.0.1:18080";
             });
             // 使用服务发现的子服务接口请求
             services.AddServiceClient();

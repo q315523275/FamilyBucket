@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.ServiceDiscovery.Consul")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Consul服务发现")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.5.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.5")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.53.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.53")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.ServiceDiscovery.Consul")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.ServiceDiscovery.Consul")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.5.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.53.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

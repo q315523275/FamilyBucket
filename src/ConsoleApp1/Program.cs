@@ -74,7 +74,7 @@ namespace ConsoleApp1
             services.AddErroCodeService(opt =>
             {
                 opt.RefreshInteval = 300;
-                opt.ServerUrl = "http://122.192.33.40:18080";
+                opt.ServerUrl = "http://192.168.1.199:18080";
             });
             var codeHelper = services.BuildServiceProvider().GetRequiredService<IErrorCodeStore>();
             Console.WriteLine("错误码中心测试");

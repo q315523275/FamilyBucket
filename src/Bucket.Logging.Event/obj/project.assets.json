@@ -186,11 +186,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.Event\\Bucket.Logging.Event.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.Event\\Bucket.Logging.Event.csproj",
       "projectName": "Bucket.Logging.Event",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.Event\\Bucket.Logging.Event.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.Event\\Bucket.Logging.Event.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.Event\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.Event\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

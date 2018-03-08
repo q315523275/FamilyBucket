@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("接口核心")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.52.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.52")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.53.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.53")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.Core")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.52.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.53.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

@@ -55,41 +55,6 @@ namespace ConsoleApp2
             //    logger.LogError(new Exception($"我是错误日志{i.ToString()}"), "1");
             //}
 
-            HttpClient _httpClient = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip })
-            {
-                Timeout = TimeSpan.FromSeconds(30)
-            };
-            _httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
-
-            _httpClient.SendAsync(new HttpRequestMessage
-            {
-                Method = HttpMethod.Head,
-                RequestUri = new Uri("http://api.51pinzhi.cn/")
-            });
-
-            var i = 0;
-            System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
-           
-            while (i < 10)
-            {
-                watch.Start();
-                var request = new HttpRequestMessage
-                {
-                    RequestUri = new Uri($"http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8"),
-                    Method = HttpMethod.Post
-                };
-                request.Headers.Clear();
-                request.Headers.Accept.Clear();
-                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                request.Content = new StringContent("{}", Encoding.UTF8, "application/json");
-                var httpResponseMessage = _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead);
-                httpResponseMessage.Result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                watch.Stop();
-                Console.WriteLine($"耗时：{watch.Elapsed.TotalMilliseconds}ms");
-                watch.Reset();
-                i++;
-            }
-
             Console.ReadLine();
         }
         private static void Initialize()
