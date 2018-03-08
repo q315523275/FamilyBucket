@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bucket.MVC</name>
+    </assembly>
+    <members>
+        <member name="P:Bucket.MVC.PermissionRequirement.DeniedAction">
+            <summary>
+            无权限action
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.ClaimType">
+            <summary>
+            认证授权类型
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.LoginPath">
+            <summary>
+            请求路径
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Issuer">
+            <summary>
+            发行人
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Audience">
+            <summary>
+            订阅人
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Expiration">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.SigningCredentials">
+            <summary>
+            签名验证
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.PermissionRequirement.#ctor(System.String,System.String,System.String,System.String,Microsoft.IdentityModel.Tokens.SigningCredentials,System.TimeSpan)">
+            <summary>
+            构造
+            </summary>
+            <param name="deniedAction">无权限action</param>
+            <param name="userPermissions">用户权限集合</param>
+            <summary>
+            构造
+            </summary>
+            <param name="deniedAction">拒约请求的url</param>      
+            <param name="claimType">声明类型</param>
+            <param name="issuer">发行人</param>
+            <param name="audience">订阅人</param>
+            <param name="signingCredentials">签名验证实体</param>
+        </member>
+        <member name="F:Bucket.MVC.Controllers.AuthController._dbContext">
+            <summary>
+            自定义策略参数
+            </summary>
+        </member>
+        <member name="T:Bucket.MVC.Models.UserInfo">
+            <summary>
+            用户分部信息表
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Id">
+            <summary>
+            udcid 
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.UserName">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Password">
+            <summary>
+            账号密码
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.RealName">
+            <summary>
+            真实姓名
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.State">
+            <summary>
+            账户状态
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Salt">
+            <summary>
+            盐值
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.ProvinceId">
+            <summary>
+             省ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.CityId">
+            <summary>
+             市ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.DistrictId">
+            <summary>
+             区ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Province">
+            <summary>
+             省
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.City">
+            <summary>
+             市
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.District">
+            <summary>
+             区
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.StoreName">
+            <summary>
+            营业厅名称
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.Dto.InputLogin.UserName">
+            <summary>
+            账户
+            </summary>
+        </member>
+        <member name="T:Bucket.MVC.Models.Dto.NotEmptyAttribute">
+            <summary>
+            对象不能为空
+            </summary>
+        </member>
+    </members>
+</doc>

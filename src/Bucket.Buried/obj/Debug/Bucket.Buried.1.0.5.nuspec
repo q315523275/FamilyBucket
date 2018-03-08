@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Bucket.Buried</id>
+    <version>1.0.5</version>
+    <authors>Bucket.Buried</authors>
+    <owners>Bucket.Buried</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>接口埋点</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Bucket.EventBus.Common" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Bucket.Core" version="1.0.5" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http" version="2.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\bin\Debug\netstandard2.0\Bucket.Buried.dll" target="lib\netstandard2.0\Bucket.Buried.dll" />
+  </files>
+</package>

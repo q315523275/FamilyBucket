@@ -1,0 +1,11 @@
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\bin\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.deps.json
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\bin\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\bin\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.pdb
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\bin\Debug\netstandard2.0\Bucket.Core.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\bin\Debug\netstandard2.0\Bucket.Core.pdb
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Debug\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.pdb

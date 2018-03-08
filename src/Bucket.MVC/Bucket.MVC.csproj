@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+    <DocumentationFile>bin\Release\netcoreapp2.0\Bucket.MVC.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>7.1</LangVersion>
+    <DocumentationFile>bin\Debug\netcoreapp2.0\Bucket.MVC.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
+    <ProjectReference Include="..\Bucket.Buried.Event\Bucket.Buried.EventHandler.csproj" />
+    <ProjectReference Include="..\Bucket.Buried\Bucket.Buried.csproj" />
+    <ProjectReference Include="..\Bucket.DbContext\Bucket.DbContext.csproj" />
+    <ProjectReference Include="..\Bucket.Logging\Bucket.Logging.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,59 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/order/api/Query/QueryPrePayIP8",
+      "UpstreamPathTemplate": "/order/QueryPrePayIP8",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AddHeadersToRequest": {},
+      "AddClaimsToRequest": {},
+      "RouteClaimsRequirement": {},
+      "AddQueriesToRequest": {},
+      "RequestIdKey": "",
+      "FileCacheOptions": {
+        "TtlSeconds": 0,
+        "Region": ""
+      },
+      "ReRouteIsCaseSensitive": false,
+      "ServiceName": "",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "api.51pinzhi.cn",
+          "Port": 80
+        }
+      ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 0,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 0
+      },
+      "LoadBalancer": "",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": false,
+        "Period": "",
+        "PeriodTimespan": 0,
+        "Limit": 0
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "TestKey",
+        "AllowedScopes": [ "PZOrder" ]
+      },
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": true,
+        "UseCookieContainer": true,
+        "UseTracing": false
+      },
+      "UseServiceDiscovery": false
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "ot-traceid",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500
+    }
+  }
+}
