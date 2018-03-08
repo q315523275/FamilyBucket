@@ -4,6 +4,7 @@ using Bucket.Exceptions;
 using Bucket.Values;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -59,7 +60,7 @@ namespace Bucket.AspNetCore.Filters
             {
                 using (var ms = new MemoryStream())
                 {
-                    context.HttpContext.Request.Body.Position = 0;
+                    try { context.HttpContext.Request.Body.Position = 0; } catch (Exception ex) { }
                     context.HttpContext.Request.Body.CopyTo(ms);
                     ms.Position = 0;
                     var myByteArray = ms.ToArray();

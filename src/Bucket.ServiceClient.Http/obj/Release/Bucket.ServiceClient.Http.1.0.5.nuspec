@@ -9,7 +9,7 @@
     <description>子服务请求组件</description>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Bucket.Core" version="1.0.53" exclude="Build,Analyzers" />
+        <dependency id="Bucket.Core" version="1.0.54" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>

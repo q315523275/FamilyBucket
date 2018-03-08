@@ -3688,7 +3688,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.EventBus.Common": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.0.1"
         },
@@ -3703,7 +3703,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.Redis": "1.0.0"
         },
         "compile": {
@@ -3713,7 +3713,7 @@
           "bin/placeholder/Bucket.ConfigCenter.dll": {}
         }
       },
-      "Bucket.Core/1.0.53": {
+      "Bucket.Core/1.0.54": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3731,7 +3731,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53"
+          "Bucket.Core": "1.0.54"
         },
         "compile": {
           "bin/placeholder/Bucket.ErrorCodeStore.dll": {}
@@ -3797,7 +3797,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53"
+          "Bucket.Core": "1.0.54"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
@@ -3810,7 +3810,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Consul": "0.7.2.4",
           "SemanticVersioning": "1.0.0"
         },
@@ -10397,7 +10397,7 @@
       "path": "../Bucket.ConfigService/Bucket.ConfigCenter.csproj",
       "msbuildProject": "../Bucket.ConfigService/Bucket.ConfigCenter.csproj"
     },
-    "Bucket.Core/1.0.53": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -10442,7 +10442,7 @@
     ".NETStandard,Version=v2.0": [
       "Bucket.Buried >= 1.0.51",
       "Bucket.ConfigCenter >= 1.0.5",
-      "Bucket.Core >= 1.0.53",
+      "Bucket.Core >= 1.0.54",
       "Bucket.ErrorCodeStore >= 1.0.51",
       "Bucket.EventBus.AspNetCore >= 1.0.0",
       "Bucket.EventBus.Common >= 1.0.0",
@@ -10462,16 +10462,16 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.53",
+    "version": "1.0.56",
     "restoreSettings": {
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "projectName": "Bucket.AspNetCore",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10491,32 +10491,32 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
             }
           }
         }

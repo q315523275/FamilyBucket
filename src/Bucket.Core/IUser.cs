@@ -9,6 +9,7 @@ namespace Bucket.Core
     {
         string Id { get; }
         string Name { get; }
+        string MobilePhone { get; }
         IEnumerable<Claim> Claims { get; }
     }
 }

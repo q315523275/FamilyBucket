@@ -7,11 +7,11 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.AspNetCore/1.0.53": {
+      "Bucket.AspNetCore/1.0.56": {
         "dependencies": {
           "Bucket.Buried": "1.0.51",
           "Bucket.ConfigCenter": "1.0.5",
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.ErrorCodeStore": "1.0.51",
           "Bucket.EventBus.AspNetCore": "1.0.0",
           "Bucket.EventBus.Common": "1.0.0",
@@ -2447,7 +2447,7 @@
       },
       "Bucket.Buried/1.0.51": {
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.EventBus.Common": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.0.1"
         },
@@ -2457,14 +2457,14 @@
       },
       "Bucket.ConfigCenter/1.0.5": {
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.Redis": "1.0.0"
         },
         "runtime": {
           "Bucket.ConfigCenter.dll": {}
         }
       },
-      "Bucket.Core/1.0.53": {
+      "Bucket.Core/1.0.54": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
@@ -2475,7 +2475,7 @@
       },
       "Bucket.ErrorCodeStore/1.0.51": {
         "dependencies": {
-          "Bucket.Core": "1.0.53"
+          "Bucket.Core": "1.0.54"
         },
         "runtime": {
           "Bucket.ErrorCodeStore.dll": {}
@@ -2516,7 +2516,7 @@
       },
       "Bucket.ServiceClient.Http/1.0.5": {
         "dependencies": {
-          "Bucket.Core": "1.0.53"
+          "Bucket.Core": "1.0.54"
         },
         "runtime": {
           "Bucket.ServiceClient.Http.dll": {}
@@ -2524,7 +2524,7 @@
       },
       "Bucket.ServiceDiscovery.Consul/1.0.53": {
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Consul": "0.7.2.4",
           "SemanticVersioning": "1.0.0"
         },
@@ -2535,7 +2535,7 @@
     }
   },
   "libraries": {
-    "Bucket.AspNetCore/1.0.53": {
+    "Bucket.AspNetCore/1.0.56": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4153,7 +4153,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Core/1.0.53": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.Core/1.0.51": {
+      "Bucket.Core/1.0.54": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
@@ -120,7 +120,7 @@
     }
   },
   "libraries": {
-    "Bucket.Core/1.0.51": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Bucket.ServiceClient.Http/1.0.5": {
         "dependencies": {
-          "Bucket.Core": "1.0.51",
+          "Bucket.Core": "1.0.54",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -116,7 +116,7 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "Bucket.Core/1.0.51": {
+      "Bucket.Core/1.0.54": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
@@ -238,7 +238,7 @@
       "path": "system.text.encodings.web/4.4.0",
       "hashPath": "system.text.encodings.web.4.4.0.nupkg.sha512"
     },
-    "Bucket.Core/1.0.51": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

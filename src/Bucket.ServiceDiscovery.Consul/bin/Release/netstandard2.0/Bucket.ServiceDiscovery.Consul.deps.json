@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Bucket.ServiceDiscovery.Consul/1.0.53": {
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Consul": "0.7.2.4",
           "NETStandard.Library": "2.0.0",
           "SemanticVersioning": "1.0.0"
@@ -919,7 +919,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "Bucket.Core/1.0.53": {
+      "Bucket.Core/1.0.54": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
@@ -1580,7 +1580,7 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "Bucket.Core/1.0.53": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

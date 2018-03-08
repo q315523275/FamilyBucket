@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.Logging/1.0.3": {
+      "Bucket.Logging/1.0.4": {
         "dependencies": {
           "Bucket.EventBus.Common": "1.0.0",
           "Microsoft.AspNetCore": "2.0.1",
@@ -1045,7 +1045,7 @@
     }
   },
   "libraries": {
-    "Bucket.Logging/1.0.3": {
+    "Bucket.Logging/1.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

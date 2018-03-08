@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 namespace Bucket.AspNetCore.Middleware.Error
@@ -57,13 +58,20 @@ namespace Bucket.AspNetCore.Middleware.Error
                                       .Append(context.Request.Path)
                                       .Append(context.Request.QueryString)
                                       .ToString();
-                    using (var ms = new MemoryStream())
+                    if (context.Request.Method.ToLower() == HttpMethod.Post.ToString().ToLower())
                     {
-                        context.Request.Body.Position = 0;
-                        context.Request.Body.CopyTo(ms);
-                        ms.Position = 0;
-                        var myByteArray = ms.ToArray();
-                        inputParam = Encoding.UTF8.GetString(myByteArray);
+                        using (var ms = new MemoryStream())
+                        {
+                            try { context.Request.Body.Position = 0; } catch (Exception ex) { }
+                            context.Request.Body.CopyTo(ms);
+                            ms.Position = 0;
+                            var myByteArray = ms.ToArray();
+                            inputParam = Encoding.UTF8.GetString(myByteArray);
+                        }
+                    }
+                    else if (context.Request.Method.ToLower() == HttpMethod.Get.ToString().ToLower())
+                    {
+                        inputParam = context.Request.QueryString.Value;
                     }
                     await _buriedContext.PublishAsync(new BuriedInformationInput
                     {
