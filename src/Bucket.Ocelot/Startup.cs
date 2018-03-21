@@ -10,6 +10,11 @@ using Ocelot.Middleware;
 using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
+using Bucket.AspNetCore;
+using Bucket.AspNetCore.EventBus;
+using Bucket.Logging;
+using App.Metrics;
 
 namespace Bucket.Ocelot
 {
@@ -39,7 +44,7 @@ namespace Bucket.Ocelot
                 })
                 .WithDictionaryHandle();
             };
-
+            // 认证参数
             var audienceConfig = Configuration.GetSection("Audience");
             var defaultScheme = audienceConfig["defaultScheme"];
             var keyByteArray = Encoding.ASCII.GetBytes(audienceConfig["Secret"]);
@@ -56,6 +61,17 @@ namespace Bucket.Ocelot
                 ClockSkew = TimeSpan.Zero,
                 RequireExpirationTime = true,
             };
+            // 跨域
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                );
+            });
+            // 认证授权
             services.AddAuthentication()
                 .AddJwtBearer(defaultScheme, opt =>
                 {
@@ -63,15 +79,55 @@ namespace Bucket.Ocelot
                     opt.RequireHttpsMetadata = false;
                     opt.TokenValidationParameters = tokenValidationParameters;
                 });
-
-            services.AddOcelot(Configuration);
-                    //.AddStoreOcelotConfigurationInConsul();
-
+            // 网关
+            services.AddOcelot(Configuration)
+                    //.AddStoreOcelotConfigurationInConsul()
+                    .AddAdministration("/administration", "axon@2018");
+            // 首字母大写
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
+            // 事件驱动
+            services.AddEventBus(option =>
+            {
+                option.UseRabbitMQ(opt =>
+                {
+                    opt.HostName = "192.168.1.199";
+                    opt.Port = 5672;
+                    opt.ExchangeName = "BucketEventBus";
+                    opt.QueueName = "BucketEvents";
+                });
+            });
+            // 统计
+            var metrics = AppMetrics.CreateDefaultBuilder()
+                .Configuration.Configure(options =>{
+                    options.AddAppTag("RepairApp");
+                    options.AddEnvTag("stage");
+                })
+                .Report.ToInfluxDb(options => {
+                    options.InfluxDb.BaseUri = new Uri("http://192.168.1.199:8086");
+                    options.InfluxDb.Database = "MetricsDB";
+                    options.InfluxDb.UserName = "bucket";
+                    options.InfluxDb.Password = "123456";
+                    options.HttpPolicy.BackoffPeriod = TimeSpan.FromSeconds(30);
+                    options.HttpPolicy.FailuresBeforeBackoff = 5;
+                    options.HttpPolicy.Timeout = TimeSpan.FromSeconds(10);
+                    options.FlushInterval = TimeSpan.FromSeconds(5);
+                })
+                .Build();
+            services.AddMetrics(metrics);
+            services.AddMetricsReportScheduler();
+            services.AddMetricsTrackingMiddleware();
+            services.AddMetricsEndpoints();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddBucketLog(app, "Bucket.Ocelot");
+            app.UseCors("CorsPolicy");
+            app.UseMetricsAllMiddleware();
+            app.UseMetricsAllEndpoints();
             app.UseOcelot().Wait();
         }
     }

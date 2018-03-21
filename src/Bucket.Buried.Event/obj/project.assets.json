@@ -185,7 +185,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.53",
+          "Bucket.Core": "1.0.54",
           "Bucket.EventBus.Common": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.0.1"
         },
@@ -196,7 +196,7 @@
           "bin/placeholder/Bucket.Buried.dll": {}
         }
       },
-      "Bucket.Core/1.0.53": {
+      "Bucket.Core/1.0.54": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -568,7 +568,7 @@
       "path": "../Bucket.Buried/Bucket.Buried.csproj",
       "msbuildProject": "../Bucket.Buried/Bucket.Buried.csproj"
     },
-    "Bucket.Core/1.0.53": {
+    "Bucket.Core/1.0.54": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -597,11 +597,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj",
       "projectName": "Bucket.Buried.EventHandler",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried.Event\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried.Event\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -621,11 +621,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj"
             }
           }
         }

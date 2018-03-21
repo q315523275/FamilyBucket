@@ -2,6 +2,222 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
+      "App.Metrics/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Core": "2.0.0-preview1",
+          "App.Metrics.Formatters.Json": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.dll": {}
+        }
+      },
+      "App.Metrics.Abstractions/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.4.0",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/App.Metrics.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/App.Metrics.Abstractions.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Abstractions/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.0.0",
+          "Microsoft.AspNetCore.Routing.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Core/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Core": "2.0.0-preview1",
+          "App.Metrics.Extensions.Configuration": "2.0.0-preview1",
+          "App.Metrics.Extensions.DependencyInjection": "2.0.0-preview1",
+          "Microsoft.AspNetCore.Http.Extensions": "2.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Endpoints/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Hosting": "2.0.0-preview1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Hosting/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Core": "2.0.0-preview1",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Reporting/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Core": "2.0.0-preview1",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll": {}
+        }
+      },
+      "App.Metrics.AspNetCore.Tracking/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.AspNetCore.Hosting": "2.0.0-preview1"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll": {}
+        }
+      },
+      "App.Metrics.Concurrency/2.0.0": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
+        }
+      },
+      "App.Metrics.Core/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Concurrency": "2.0.0",
+          "App.Metrics.Formatters.Ascii": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Core.dll": {}
+        }
+      },
+      "App.Metrics.Extensions.Configuration/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics": "2.0.0-preview1",
+          "Microsoft.Extensions.Configuration.Binder": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll": {}
+        }
+      },
+      "App.Metrics.Extensions.DependencyInjection/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics": "2.0.0-preview1",
+          "Microsoft.Extensions.DependencyInjection": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll": {}
+        }
+      },
+      "App.Metrics.Formatters.Ascii/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll": {}
+        }
+      },
+      "App.Metrics.Formatters.InfluxDB/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Core": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll": {}
+        }
+      },
+      "App.Metrics.Formatters.Json/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.2"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Formatters.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Formatters.Json.dll": {}
+        }
+      },
+      "App.Metrics.Reporting.InfluxDB/2.0.0-preview1": {
+        "type": "package",
+        "dependencies": {
+          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Formatters.InfluxDB": "2.0.0-preview1",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll": {}
+        }
+      },
       "AspectCore.Abstractions/0.2.4": {
         "type": "package",
         "dependencies": {
@@ -58,6 +274,185 @@
         },
         "runtime": {
           "lib/netstandard1.6/AspectCore.Extensions.Reflection.dll": {}
+        }
+      },
+      "Bucket.AspNetCore/1.0.57": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Buried": "1.0.51",
+          "Bucket.ConfigCenter": "1.0.5",
+          "Bucket.Core": "1.0.54",
+          "Bucket.ErrorCodeStore": "1.0.51",
+          "Bucket.EventBus.AspNetCore": "1.0.0",
+          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus.RabbitMQ": "1.0.0",
+          "Bucket.ServiceClient.Http": "1.0.5",
+          "Bucket.ServiceDiscovery.Consul": "1.0.53",
+          "Microsoft.AspNetCore.Authentication": "2.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
+          "Microsoft.AspNetCore.Mvc": "2.0.2",
+          "Microsoft.IdentityModel.Tokens": "5.2.1",
+          "sqlSugarCore": "4.6.4.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
+        }
+      },
+      "Bucket.Buried/1.0.51": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.0.5",
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.Buried.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.Buried.dll": {}
+        }
+      },
+      "Bucket.ConfigCenter/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.0.3",
+          "Bucket.Redis": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
+        }
+      },
+      "Bucket.Core/1.0.54": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.Core.dll": {}
+        }
+      },
+      "Bucket.ErrorCodeStore/1.0.51": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.0.51"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
+        }
+      },
+      "Bucket.EventBus.AspNetCore/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.AspNetCore": "2.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.EventBus.AspNetCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.EventBus.AspNetCore.dll": {}
+        }
+      },
+      "Bucket.EventBus.Common/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Bucket.EventBus.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.EventBus.Common.dll": {}
+        }
+      },
+      "Bucket.EventBus.RabbitMQ/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.Extensions.Logging": "2.0.0",
+          "Newtonsoft.Json": "11.0.1",
+          "RabbitMQ.Client": "5.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {}
+        }
+      },
+      "Bucket.Logging/1.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.Logging.Events": "1.0.5",
+          "Microsoft.AspNetCore": "2.0.1",
+          "Microsoft.Extensions.Logging": "2.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.Logging.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.Logging.dll": {}
+        }
+      },
+      "Bucket.Logging.Events/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.Logging.Events.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.Logging.Events.dll": {}
+        }
+      },
+      "Bucket.Redis/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "StackExchange.Redis": "1.2.6"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.Redis.dll": {}
+        }
+      },
+      "Bucket.ServiceClient.Http/1.0.5": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.0.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.ServiceClient.Http.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.ServiceClient.Http.dll": {}
+        }
+      },
+      "Bucket.ServiceDiscovery.Consul/1.0.53": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.0.53",
+          "Consul": "0.7.2.4",
+          "SemanticVersioning": "1.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
       "Butterfly.Client/0.0.8": {
@@ -165,7 +560,7 @@
           "lib/netstandard1.2/CacheManager.Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Consul/0.7.2.3": {
+      "Consul/0.7.2.4": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2621,9 +3016,10 @@
           "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/1.1.4": {
+      "Microsoft.IdentityModel.Logging/5.2.1": {
         "type": "package",
         "dependencies": {
+          "NETStandard.Library": "1.6.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
@@ -2664,23 +3060,24 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.1.4": {
+      "Microsoft.IdentityModel.Tokens/5.2.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "1.1.4",
-          "Newtonsoft.Json": "9.0.1",
+          "Microsoft.IdentityModel.Logging": "5.2.1",
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "System.Runtime.Serialization.Xml": "4.3.0",
           "System.Security.Claims": "4.3.0",
           "System.Security.Cryptography.Algorithms": "4.3.0",
           "System.Security.Cryptography.X509Certificates": "4.3.0",
           "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0"
+          "System.Threading": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
@@ -2968,6 +3365,53 @@
           }
         }
       },
+      "MySql.Data/6.10.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Json": "1.1.2",
+          "NETStandard.Library": "1.6.1",
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.ComponentModel": "4.3.0",
+          "System.ComponentModel.Annotations": "4.3.0",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0",
+          "System.Data.Common": "4.3.0",
+          "System.Data.SqlClient": "4.3.1",
+          "System.Diagnostics.Process": "4.3.0",
+          "System.Diagnostics.TextWriterTraceListener": "4.3.0",
+          "System.IO.Compression": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.IO.MemoryMappedFiles": "4.3.0",
+          "System.IO.Pipes": "4.3.0",
+          "System.Linq.Expressions": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.1",
+          "System.Net.Sockets": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "System.Runtime.Serialization.Formatters": "4.3.0",
+          "System.Security.Principal.Windows": "4.3.0",
+          "System.Text.Encoding.CodePages": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Threading.ThreadPool": "4.3.0",
+          "System.Threading.Timer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/MySql.Data.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/MySql.Data.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -2983,21 +3427,13 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/10.0.3": {
+      "Newtonsoft.Json/11.0.1": {
         "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.3.0",
-          "NETStandard.Library": "1.6.1",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Newtonsoft.Json.Bson/1.0.1": {
@@ -3013,7 +3449,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Ocelot/3.1.9": {
+      "Ocelot/5.0.1": {
         "type": "package",
         "dependencies": {
           "Butterfly.Client.AspNetCore": "0.0.8",
@@ -3054,6 +3490,35 @@
         },
         "runtime": {
           "lib/netstandard1.1/Polly.dll": {}
+        }
+      },
+      "RabbitMQ.Client/5.0.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Console": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Diagnostics.Tracing": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.0",
+          "System.Net.Sockets": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Thread": "4.3.0",
+          "System.Threading.Timer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.5/RabbitMQ.Client.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/RabbitMQ.Client.dll": {}
         }
       },
       "Rafty/0.4.2": {
@@ -3318,6 +3783,15 @@
           }
         }
       },
+      "SemanticVersioning/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SemVer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SemVer.dll": {}
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "type": "package",
         "dependencies": {
@@ -3412,6 +3886,57 @@
         },
         "runtime": {
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        }
+      },
+      "sqlSugarCore/4.6.4.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Data.Sqlite": "2.0.0",
+          "MySql.Data": "6.10.4",
+          "Newtonsoft.Json": "10.0.3",
+          "System.Data.Common": "4.3.0",
+          "System.Data.SqlClient": "4.4.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/SqlSugar.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SqlSugar.dll": {}
+        }
+      },
+      "StackExchange.Redis/1.2.6": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Collections": "4.3.0",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Diagnostics.Tools": "4.3.0",
+          "System.IO.Compression": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Net.NameResolution": "4.3.0",
+          "System.Net.Security": "4.3.0",
+          "System.Net.Sockets": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
+          "System.Security.Cryptography.Algorithms": "4.3.0",
+          "System.Security.Cryptography.X509Certificates": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Thread": "4.3.0",
+          "System.Threading.ThreadPool": "4.3.0",
+          "System.Threading.Timer": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.5/StackExchange.Redis.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/StackExchange.Redis.dll": {}
         }
       },
       "StackExchange.Redis.StrongName/1.2.4": {
@@ -3619,6 +4144,25 @@
           "ref/netstandard1.3/System.Console.dll": {}
         }
       },
+      "System.Data.Common/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.2/System.Data.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.2/System.Data.Common.dll": {}
+        }
+      },
       "System.Data.SqlClient/4.4.0": {
         "type": "package",
         "dependencies": {
@@ -3703,6 +4247,49 @@
           }
         }
       },
+      "System.Diagnostics.Process/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.Win32.Primitives": "4.3.0",
+          "Microsoft.Win32.Registry": "4.3.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Text.Encoding.Extensions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Threading.Thread": "4.3.0",
+          "System.Threading.ThreadPool": "4.3.0",
+          "runtime.native.System": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.4/System.Diagnostics.Process.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux/lib/netstandard1.4/System.Diagnostics.Process.dll": {
+            "assetType": "runtime",
+            "rid": "linux"
+          },
+          "runtimes/osx/lib/netstandard1.4/System.Diagnostics.Process.dll": {
+            "assetType": "runtime",
+            "rid": "osx"
+          },
+          "runtimes/win/lib/netstandard1.4/System.Diagnostics.Process.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Diagnostics.StackTrace/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3718,6 +4305,23 @@
           "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         }
       },
+      "System.Diagnostics.TextWriterTraceListener/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.TraceSource": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Threading": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Diagnostics.TextWriterTraceListener.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Diagnostics.TextWriterTraceListener.dll": {}
+        }
+      },
       "System.Diagnostics.Tools/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -3727,6 +4331,33 @@
         },
         "compile": {
           "ref/netstandard1.0/System.Diagnostics.Tools.dll": {}
+        }
+      },
+      "System.Diagnostics.TraceSource/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "runtime.native.System": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Diagnostics.TraceSource.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Diagnostics.TraceSource.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Diagnostics.TraceSource.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -3908,6 +4539,94 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.IO.FileSystem.Primitives.dll": {}
+        }
+      },
+      "System.IO.MemoryMappedFiles/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.IO.UnmanagedMemoryStream": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "runtime.native.System": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.IO.MemoryMappedFiles.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.IO.MemoryMappedFiles.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.IO.MemoryMappedFiles.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.IO.Pipes/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Buffers": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.Net.Primitives": "4.3.0",
+          "System.Net.Sockets": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Principal": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Overlapped": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "runtime.native.System": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.IO.Pipes.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.IO.Pipes.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.IO.Pipes.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.IO.UnmanagedMemoryStream/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.IO.UnmanagedMemoryStream.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.IO.UnmanagedMemoryStream.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -4098,7 +4817,7 @@
           "ref/netstandard1.3/System.Net.Primitives.dll": {}
         }
       },
-      "System.Net.Security/4.3.0": {
+      "System.Net.Security/4.3.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -4183,33 +4902,34 @@
           "lib/netstandard1.3/System.ObjectModel.dll": {}
         }
       },
-      "System.Private.DataContractSerialization/4.1.1": {
+      "System.Private.DataContractSerialization/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Collections.Concurrent": "4.0.12",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Linq": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit.ILGeneration": "4.0.1",
-          "System.Reflection.Emit.Lightweight": "4.0.1",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Serialization.Primitives": "4.1.1",
-          "System.Text.Encoding": "4.0.11",
-          "System.Text.Encoding.Extensions": "4.0.11",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11",
-          "System.Xml.XmlDocument": "4.0.1",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "System.Collections": "4.3.0",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Text.Encoding.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0",
+          "System.Xml.XDocument": "4.3.0",
+          "System.Xml.XmlDocument": "4.3.0",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -4473,6 +5193,23 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Runtime.Serialization.Primitives.dll": {}
+        }
+      },
+      "System.Runtime.Serialization.Xml/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.3.0",
+          "System.Private.DataContractSerialization": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Runtime.Serialization.Xml.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Runtime.Serialization.Xml.dll": {}
         }
       },
       "System.Security.AccessControl/4.4.0": {
@@ -4820,7 +5557,7 @@
           "Microsoft.NETCore.Platforms": "2.0.0"
         },
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
@@ -4876,6 +5613,28 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.dll": {}
+        }
+      },
+      "System.Threading.Overlapped/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Handles": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Threading.Overlapped.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Threading.Overlapped.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Threading.Tasks/4.3.0": {
@@ -5026,32 +5785,32 @@
           "System.Xml.ReaderWriter": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "System.Xml.XmlSerializer/4.0.11": {
+      "System.Xml.XmlSerializer/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.Collections": "4.0.11",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.Linq": "4.1.0",
-          "System.Reflection": "4.1.0",
-          "System.Reflection.Emit": "4.0.1",
-          "System.Reflection.Emit.ILGeneration": "4.0.1",
-          "System.Reflection.Extensions": "4.0.1",
-          "System.Reflection.Primitives": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.1.0",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Text.RegularExpressions": "4.1.0",
-          "System.Threading": "4.0.11",
-          "System.Xml.ReaderWriter": "4.0.11",
-          "System.Xml.XmlDocument": "4.0.1"
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0",
+          "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/_._": {}
@@ -5118,6 +5877,194 @@
     }
   },
   "libraries": {
+    "App.Metrics/2.0.0-preview1": {
+      "sha512": "zpoiBxv2/ZUy1/2G2XdAWfZRlNHXvMwg1LaANqaad3JFLr9NB+hfthZZXAIqv5kXSIYvaMj//haTXnQnC5bHDA==",
+      "type": "package",
+      "path": "app.metrics/2.0.0-preview1",
+      "files": [
+        "app.metrics.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.nuspec",
+        "lib/net452/App.Metrics.dll",
+        "lib/net452/App.Metrics.xml",
+        "lib/netstandard1.6/App.Metrics.dll",
+        "lib/netstandard1.6/App.Metrics.xml"
+      ]
+    },
+    "App.Metrics.Abstractions/2.0.0-preview1": {
+      "sha512": "8UxC/XEdfMyrJjJFfQrrOEeeAW6pk0AzGCnr8343eZK1oc65CNYQsrBs4Z3otOo9UlLQ/gI77U5KJ3sIRAvxhQ==",
+      "type": "package",
+      "path": "app.metrics.abstractions/2.0.0-preview1",
+      "files": [
+        "app.metrics.abstractions.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.abstractions.nuspec",
+        "lib/netstandard1.1/App.Metrics.Abstractions.dll",
+        "lib/netstandard1.1/App.Metrics.Abstractions.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Abstractions/2.0.0-preview1": {
+      "sha512": "niw8KhK4+mnoINoMbt9qBTZcHGT0I0mUgicgMLGVnJzSfJeSRXPZRzYet5zlHBJ4ijyDgELXO2HdUUP6CSSJfg==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.abstractions/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.abstractions.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.abstractions.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Core/2.0.0-preview1": {
+      "sha512": "63c5zB5Kc2LwhEhQIdlLTxhNkre/z83/4764oxXXdT9ywtMcoFoYAE0IZsYUawvnQFNA8X/n5+Qv4axV7Rn1Pg==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.core/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.core.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.core.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Core.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Endpoints/2.0.0-preview1": {
+      "sha512": "9QDKMgRNWQy5onZWbwuIXt9WdIHWe7TvqG2QJOXgylisD3/R09e8jHbHywPWT3b1P7sEnwEiH+6yHFhd4m+0Wg==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.endpoints/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.endpoints.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.endpoints.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Hosting/2.0.0-preview1": {
+      "sha512": "vnA9REtjhKrmNVC57by1bjCiaPeeg7kZn/J3jNKPio949tgTBG1AhkeigfKfsevlNxx+u8yjEE6dZenexv6sHw==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.hosting/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.hosting.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.hosting.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Reporting/2.0.0-preview1": {
+      "sha512": "ujFfn+uq4cYBNr7SIBqnMwmUYIvbPRbQk0eU8M0DP2DRmXNcdnOuNgwKYZtCBKDWces8VmsYhQbZiFhhmwwxcQ==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.reporting/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.reporting.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.reporting.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.xml"
+      ]
+    },
+    "App.Metrics.AspNetCore.Tracking/2.0.0-preview1": {
+      "sha512": "V5/QG04NREllV/XPZ000luCG8OzjBRRqUYVJ44GxsDDmpEMsGKVeDo5zo+w8R0SEVW8FtZPB/NJlUJCAa2XkjQ==",
+      "type": "package",
+      "path": "app.metrics.aspnetcore.tracking/2.0.0-preview1",
+      "files": [
+        "app.metrics.aspnetcore.tracking.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.aspnetcore.tracking.nuspec",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll",
+        "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.xml"
+      ]
+    },
+    "App.Metrics.Concurrency/2.0.0": {
+      "sha512": "tRd9uD8m1eJq4puOLLtzhNqydx5f9U5dZLxqbj9FvGWYu6lcMVc5wD3aZgUkMFRLpsL9FxJOf5jcB5myUp3qOA==",
+      "type": "package",
+      "path": "app.metrics.concurrency/2.0.0",
+      "files": [
+        "app.metrics.concurrency.2.0.0.nupkg.sha512",
+        "app.metrics.concurrency.nuspec",
+        "lib/netstandard1.1/App.Metrics.Concurrency.dll",
+        "lib/netstandard1.1/App.Metrics.Concurrency.xml"
+      ]
+    },
+    "App.Metrics.Core/2.0.0-preview1": {
+      "sha512": "OyZp+JLq8TgZxk3XT1GR42hTI6OLG/W1e6SP9bmKi1DUFhF5MMMewe1lNWiSEgKhxN71oB1qXjb3sRZM3Dmv4g==",
+      "type": "package",
+      "path": "app.metrics.core/2.0.0-preview1",
+      "files": [
+        "app.metrics.core.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.core.nuspec",
+        "lib/net452/App.Metrics.Core.dll",
+        "lib/net452/App.Metrics.Core.xml",
+        "lib/netstandard1.6/App.Metrics.Core.dll",
+        "lib/netstandard1.6/App.Metrics.Core.xml"
+      ]
+    },
+    "App.Metrics.Extensions.Configuration/2.0.0-preview1": {
+      "sha512": "o1oW5rnzW19ev1tcQBmU+aLiQJimDiWhsKRbZfYjmUPXiai0kCWJjvB7wlRgMAr8Y+R8fIqTA7FonlU/WCiFFA==",
+      "type": "package",
+      "path": "app.metrics.extensions.configuration/2.0.0-preview1",
+      "files": [
+        "app.metrics.extensions.configuration.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.extensions.configuration.nuspec",
+        "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll",
+        "lib/netstandard2.0/App.Metrics.Extensions.Configuration.xml"
+      ]
+    },
+    "App.Metrics.Extensions.DependencyInjection/2.0.0-preview1": {
+      "sha512": "3AhvLvZFqquUwhr0HuMdOVSE1ANz9AvGhKtdRLOtKWmQM5Hq/b+COEbyFnntYDzQk/8Yy8RRJpaEsiIzadRjag==",
+      "type": "package",
+      "path": "app.metrics.extensions.dependencyinjection/2.0.0-preview1",
+      "files": [
+        "app.metrics.extensions.dependencyinjection.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.extensions.dependencyinjection.nuspec",
+        "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll",
+        "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.xml"
+      ]
+    },
+    "App.Metrics.Formatters.Ascii/2.0.0-preview1": {
+      "sha512": "jYI3hKsCXQPav9sMwKoT/9iFB13+gZ1TxwzAn2mfVKgGwL/n6f57Sy0Wo+9VaT9ZRteHIeMcISiT1LmezaoDrg==",
+      "type": "package",
+      "path": "app.metrics.formatters.ascii/2.0.0-preview1",
+      "files": [
+        "app.metrics.formatters.ascii.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.formatters.ascii.nuspec",
+        "lib/net452/App.Metrics.Formatters.Ascii.dll",
+        "lib/net452/App.Metrics.Formatters.Ascii.xml",
+        "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll",
+        "lib/netstandard1.6/App.Metrics.Formatters.Ascii.xml"
+      ]
+    },
+    "App.Metrics.Formatters.InfluxDB/2.0.0-preview1": {
+      "sha512": "a2eYfOZtky4DDCUxlNySQ2IUvOwjEdYuAcr+xep1eEPfnGAZvr1VT6CXhH0QJeJwcemfM51bR4ynQcNQ6GYpOw==",
+      "type": "package",
+      "path": "app.metrics.formatters.influxdb/2.0.0-preview1",
+      "files": [
+        "app.metrics.formatters.influxdb.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.formatters.influxdb.nuspec",
+        "lib/net452/App.Metrics.Formatters.InfluxDB.dll",
+        "lib/net452/App.Metrics.Formatters.InfluxDB.xml",
+        "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll",
+        "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.xml"
+      ]
+    },
+    "App.Metrics.Formatters.Json/2.0.0-preview1": {
+      "sha512": "L4n+0tNBQvc8/0H5/8EAkBXZrLVy1deerfhI+9+FaPwrb6Ntg4YKWedN0llBRxhmoCbNWu4yOKUIzlPN01SXaA==",
+      "type": "package",
+      "path": "app.metrics.formatters.json/2.0.0-preview1",
+      "files": [
+        "app.metrics.formatters.json.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.formatters.json.nuspec",
+        "lib/net452/App.Metrics.Formatters.Json.dll",
+        "lib/net452/App.Metrics.Formatters.Json.xml",
+        "lib/netstandard1.6/App.Metrics.Formatters.Json.dll",
+        "lib/netstandard1.6/App.Metrics.Formatters.Json.xml"
+      ]
+    },
+    "App.Metrics.Reporting.InfluxDB/2.0.0-preview1": {
+      "sha512": "VCOH6U/lRbeF6oSZMjRwYDIkPe4qdyGsPodiOPD5ogaVfg9cGTzUYKtuNINKudcgVaAsEi4yGGzvBQJ0L1IajA==",
+      "type": "package",
+      "path": "app.metrics.reporting.influxdb/2.0.0-preview1",
+      "files": [
+        "app.metrics.reporting.influxdb.2.0.0-preview1.nupkg.sha512",
+        "app.metrics.reporting.influxdb.nuspec",
+        "lib/net452/App.Metrics.Reporting.InfluxDB.dll",
+        "lib/net452/App.Metrics.Reporting.InfluxDB.xml",
+        "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll",
+        "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.xml"
+      ]
+    },
     "AspectCore.Abstractions/0.2.4": {
       "sha512": "r7IaJ6waQ16Xz6OdIB+Soe0QkhkQRBPtRCjKGapyFF4LCBODft/fzTH/vbidEoUurygTkfeFU1efE4woGwqhLA==",
       "type": "package",
@@ -5159,6 +6106,136 @@
         "aspectcore.extensions.reflection.nuspec",
         "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard1.6/AspectCore.Extensions.Reflection.dll"
+      ]
+    },
+    "Bucket.AspNetCore/1.0.57": {
+      "sha512": "/0DgiDeaYyn6iCMm9zdzNHDHuH53FutlcFKwC9UaNAC1k3g8RYzFeNszT/3kyr5uYHoIgwP8106fq59Gmtj1RQ==",
+      "type": "package",
+      "path": "bucket.aspnetcore/1.0.57",
+      "files": [
+        "bucket.aspnetcore.1.0.57.nupkg.sha512",
+        "bucket.aspnetcore.nuspec",
+        "lib/netstandard2.0/Bucket.AspNetCore.dll"
+      ]
+    },
+    "Bucket.Buried/1.0.51": {
+      "sha512": "Lir7zNtxVwxGeFpiGeqAsBUsGAszHjRQBw3Ri4pYRL+5Lg0Kggv1b7jU/80GD7dbeEeTdISs3t3xwShUpCPybw==",
+      "type": "package",
+      "path": "bucket.buried/1.0.51",
+      "files": [
+        "bucket.buried.1.0.51.nupkg.sha512",
+        "bucket.buried.nuspec",
+        "lib/netstandard2.0/Bucket.Buried.dll"
+      ]
+    },
+    "Bucket.ConfigCenter/1.0.5": {
+      "sha512": "l6GPh6CwA4YEh0pUAvT/E0bWK/qUQvY/8v38evNPSjeI37gp2Yn4jvNqS2FuJ/5KHRuoiJDWWVjuUD8FsdUTrA==",
+      "type": "package",
+      "path": "bucket.configcenter/1.0.5",
+      "files": [
+        "bucket.configcenter.1.0.5.nupkg.sha512",
+        "bucket.configcenter.nuspec",
+        "lib/netstandard2.0/Bucket.ConfigCenter.dll"
+      ]
+    },
+    "Bucket.Core/1.0.54": {
+      "sha512": "q7itfOdo+kw94TrNqK8ipokOshnsT/ud8sL0wKjYKlMR5nEbPf6eiVCoLjQ7MpyIt2psPrTYHN2xnEtm/lXEPw==",
+      "type": "package",
+      "path": "bucket.core/1.0.54",
+      "files": [
+        "bucket.core.1.0.54.nupkg.sha512",
+        "bucket.core.nuspec",
+        "lib/netstandard2.0/Bucket.Core.dll"
+      ]
+    },
+    "Bucket.ErrorCodeStore/1.0.51": {
+      "sha512": "GwFVYsDb8zLj7X00f6bu3aoYnZI0vW9NzHDkUTcWBwY0scaXFJAU+aXwxdEEwaub8xahkp1imP0AEfTJTEuFTg==",
+      "type": "package",
+      "path": "bucket.errorcodestore/1.0.51",
+      "files": [
+        "bucket.errorcodestore.1.0.51.nupkg.sha512",
+        "bucket.errorcodestore.nuspec",
+        "lib/netstandard2.0/Bucket.ErrorCodeStore.dll"
+      ]
+    },
+    "Bucket.EventBus.AspNetCore/1.0.0": {
+      "sha512": "zJVuYwgmr4uOQ501rdJsXZFTe7Kx0kfk3sHmvu4hjHFTbIu+QGZQsbFfUVTtin36rVLje1eHLIpq+PMj3cyeJw==",
+      "type": "package",
+      "path": "bucket.eventbus.aspnetcore/1.0.0",
+      "files": [
+        "bucket.eventbus.aspnetcore.1.0.0.nupkg.sha512",
+        "bucket.eventbus.aspnetcore.nuspec",
+        "lib/netstandard2.0/Bucket.EventBus.AspNetCore.dll"
+      ]
+    },
+    "Bucket.EventBus.Common/1.0.0": {
+      "sha512": "xjSnS6WAkovNSlLGKH7cNAornDTqBgDvCxMRpscyv1X1Xxwf/jGYpV27I44RcEflfLgUFIBPBVmKo5fEkRRUBw==",
+      "type": "package",
+      "path": "bucket.eventbus.common/1.0.0",
+      "files": [
+        "bucket.eventbus.common.1.0.0.nupkg.sha512",
+        "bucket.eventbus.common.nuspec",
+        "lib/netstandard2.0/Bucket.EventBus.Common.dll"
+      ]
+    },
+    "Bucket.EventBus.RabbitMQ/1.0.0": {
+      "sha512": "3rDqy0UNdyqQReeP1lRus4dCE2J41POeJ4fxb/LZYCmnf0GS02dj5I9HSoe83NXF5YPuFHELuLHsucycTN44vA==",
+      "type": "package",
+      "path": "bucket.eventbus.rabbitmq/1.0.0",
+      "files": [
+        "bucket.eventbus.rabbitmq.1.0.0.nupkg.sha512",
+        "bucket.eventbus.rabbitmq.nuspec",
+        "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll"
+      ]
+    },
+    "Bucket.Logging/1.0.6": {
+      "sha512": "niIYVYf4Ps1HoUiKWDr46gjcwJNd7XZbRljq0fUp7uyN7NEPqcUwn8S1uLfzdbfE6YXVm4vfRN87l2vRkgq3+g==",
+      "type": "package",
+      "path": "bucket.logging/1.0.6",
+      "files": [
+        "bucket.logging.1.0.6.nupkg.sha512",
+        "bucket.logging.nuspec",
+        "lib/netstandard2.0/Bucket.Logging.dll"
+      ]
+    },
+    "Bucket.Logging.Events/1.0.5": {
+      "sha512": "WYCWWx7Cga9NcZxFKAV5Pj9QsEHm2M9w6aGErKGIPEEnhBe8yoifqanXPsbIUAF7h9qtYHyR6E1xwTDcuW7CGw==",
+      "type": "package",
+      "path": "bucket.logging.events/1.0.5",
+      "files": [
+        "bucket.logging.events.1.0.5.nupkg.sha512",
+        "bucket.logging.events.nuspec",
+        "lib/netstandard2.0/Bucket.Logging.Events.dll"
+      ]
+    },
+    "Bucket.Redis/1.0.0": {
+      "sha512": "Qz3+4+Zw8xCabASJe8/2OD2ehicv//HrisB2K30oPWsJFxCH9y04PQLHUCHPrWJNlk92kNBcAHLEeWJm4ifg8w==",
+      "type": "package",
+      "path": "bucket.redis/1.0.0",
+      "files": [
+        "bucket.redis.1.0.0.nupkg.sha512",
+        "bucket.redis.nuspec",
+        "lib/netstandard2.0/Bucket.Redis.dll"
+      ]
+    },
+    "Bucket.ServiceClient.Http/1.0.5": {
+      "sha512": "NSwUhEWtP1AGkGkHhVN89vp6bshg0bPjljyL2/1U0fiA82KXgqYn4JjfhS+q3kkTQWxl+uHrWSLKnO2G8JDDgg==",
+      "type": "package",
+      "path": "bucket.serviceclient.http/1.0.5",
+      "files": [
+        "bucket.serviceclient.http.1.0.5.nupkg.sha512",
+        "bucket.serviceclient.http.nuspec",
+        "lib/netstandard2.0/Bucket.ServiceClient.Http.dll"
+      ]
+    },
+    "Bucket.ServiceDiscovery.Consul/1.0.53": {
+      "sha512": "g+AwBtB8vW7+na0wNXK3XQTN/Cl4fwsiB3CGLktDmi8HLExCsrRGN8EB1BUv9RPkSgsCqtveq/Boii6O50ppKA==",
+      "type": "package",
+      "path": "bucket.servicediscovery.consul/1.0.53",
+      "files": [
+        "bucket.servicediscovery.consul.1.0.53.nupkg.sha512",
+        "bucket.servicediscovery.consul.nuspec",
+        "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll"
       ]
     },
     "Butterfly.Client/0.0.8": {
@@ -5246,12 +6323,12 @@
         "lib/netstandard1.2/CacheManager.Microsoft.Extensions.Logging.xml"
       ]
     },
-    "Consul/0.7.2.3": {
-      "sha512": "fvZGwo4pn5dJV+NddWmI8pvS8apHvNsNS22Z208FI3MyveAkhOPLozBsCdkUwkTY4+UtP2aMNOZyvOtm/A2B2Q==",
+    "Consul/0.7.2.4": {
+      "sha512": "MjiFTzAFTwrlb8HmCLlSS673y4FgOF0csB1C50SOZ7zxGMZaQ45wEWZBOiKtzDMRdvntoxGmlZVpW3NtPohPvg==",
       "type": "package",
-      "path": "consul/0.7.2.3",
+      "path": "consul/0.7.2.4",
       "files": [
-        "consul.0.7.2.3.nupkg.sha512",
+        "consul.0.7.2.4.nupkg.sha512",
         "consul.nuspec",
         "lib/net45/Consul.dll",
         "lib/netstandard1.3/Consul.dll"
@@ -7474,10 +8551,10 @@
         "src/src/ADAL.PCL/Utilities/OAuthConstants.cs"
       ]
     },
-    "Microsoft.IdentityModel.Logging/1.1.4": {
-      "sha512": "j7t22EsDOuo0IXqAbp6ijdB1GuaY8cu3YoPNZpymOhUMTVC+wRTV0IHqxL31HacCnJHU/igsqe70fDKZgZu3oA==",
+    "Microsoft.IdentityModel.Logging/5.2.1": {
+      "sha512": "kbmvhMYu5OZXWN3toFXhrj3bSN7B+ZzNWzAZQ4Ofp5x2srk9ZCYFljETGS5faxzPwGd5+7W4WZlAfOI7QvzhlA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/1.1.4",
+      "path": "microsoft.identitymodel.logging/5.2.1",
       "files": [
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -7485,7 +8562,7 @@
         "lib/net451/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.1.1.4.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.1.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -7519,10 +8596,10 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.1.4": {
-      "sha512": "SsJbZVPvjSlKFDAQmR2wpL6ZD/vCFlIsf0jxRlBJwyzKXZy3Wi/Xo+fE2MzAerLsJgG1UCdtplRwqDyq1euayw==",
+    "Microsoft.IdentityModel.Tokens/5.2.1": {
+      "sha512": "wVWYpXfE6gpkSrIRNo5TDVC7ss6KPTTrmT6x8ysHiZRIMSRAZ8TyHEAmpdATBBPNRmnlevyAs4CK6nPfDpCTqw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.1.4",
+      "path": "microsoft.identitymodel.tokens/5.2.1",
       "files": [
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -7530,7 +8607,7 @@
         "lib/net451/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.1.4.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.1.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -8002,6 +9079,58 @@
         "version.txt"
       ]
     },
+    "MySql.Data/6.10.4": {
+      "sha512": "Nsoqwptry5ermXvg7HezzPsXphycb+WsZ2ngmX61XRSvuYVHXqTvrHsGq+Jz+fpFpGtvtjS9nz/ju08kOuZuTg==",
+      "type": "package",
+      "path": "mysql.data/6.10.4",
+      "files": [
+        "content/app.config.transform",
+        "content/docs/MySqlCommand.xml",
+        "content/docs/MySqlCommandBuilder.xml",
+        "content/docs/MySqlConnection.xml",
+        "content/docs/MySqlConnectionStringBuilder.xml",
+        "content/docs/MySqlDataAdapter.xml",
+        "content/docs/MySqlDataReader.xml",
+        "content/docs/MySqlException.xml",
+        "content/docs/MySqlHelper.xml",
+        "content/docs/MySqlParameter.xml",
+        "content/docs/MySqlParameterCollection.xml",
+        "content/docs/MySqlTransaction.xml",
+        "content/web.config.transform",
+        "contentFiles/any/net452/app.config.transform",
+        "contentFiles/any/net452/docs/MySqlCommand.xml",
+        "contentFiles/any/net452/docs/MySqlCommandBuilder.xml",
+        "contentFiles/any/net452/docs/MySqlConnection.xml",
+        "contentFiles/any/net452/docs/MySqlConnectionStringBuilder.xml",
+        "contentFiles/any/net452/docs/MySqlDataAdapter.xml",
+        "contentFiles/any/net452/docs/MySqlDataReader.xml",
+        "contentFiles/any/net452/docs/MySqlException.xml",
+        "contentFiles/any/net452/docs/MySqlHelper.xml",
+        "contentFiles/any/net452/docs/MySqlParameter.xml",
+        "contentFiles/any/net452/docs/MySqlParameterCollection.xml",
+        "contentFiles/any/net452/docs/MySqlTransaction.xml",
+        "contentFiles/any/net452/web.config.transform",
+        "contentFiles/any/netstandard1.3/app.config.transform",
+        "contentFiles/any/netstandard1.3/docs/MySqlCommand.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlCommandBuilder.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlConnection.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlConnectionStringBuilder.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlDataAdapter.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlDataReader.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlException.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlHelper.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlParameter.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlParameterCollection.xml",
+        "contentFiles/any/netstandard1.3/docs/MySqlTransaction.xml",
+        "contentFiles/any/netstandard1.3/web.config.transform",
+        "lib/net452/MySql.Data.dll",
+        "lib/net452/MySql.Data.xml",
+        "lib/netstandard1.3/MySql.Data.dll",
+        "lib/netstandard1.3/MySql.Data.xml",
+        "mysql.data.6.10.4.nupkg.sha512",
+        "mysql.data.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.0": {
       "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
@@ -8130,10 +9259,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+    "Newtonsoft.Json/11.0.1": {
+      "sha512": "pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.3",
+      "path": "newtonsoft.json/11.0.1",
       "files": [
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -8148,13 +9277,14 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.3.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "tools/install.ps1"
+        "newtonsoft.json.11.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "Newtonsoft.Json.Bson/1.0.1": {
@@ -8170,13 +9300,13 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Ocelot/3.1.9": {
-      "sha512": "Rzcps9sz30bZX8Jq5IJZ7oFkTDqTZ9W6VVz0IsaXVMtwB/KYHk9Qg2+M9g3UXFnucjffrnPsCohReD0XwPG0vA==",
+    "Ocelot/5.0.1": {
+      "sha512": "1Sss5PvXBghPfyJELyCgPAftFqFp3sh+Vvzns9UYopX2SqlCy8yq3Kp/D80R0VXcK6kaqTWLGEpMZ5vzjBfG9w==",
       "type": "package",
-      "path": "ocelot/3.1.9",
+      "path": "ocelot/5.0.1",
       "files": [
         "lib/netcoreapp2.0/Ocelot.dll",
-        "ocelot.3.1.9.nupkg.sha512",
+        "ocelot.5.0.1.nupkg.sha512",
         "ocelot.nuspec"
       ]
     },
@@ -8194,6 +9324,19 @@
         "lib/netstandard1.1/Polly.xml",
         "polly.5.3.1.nupkg.sha512",
         "polly.nuspec"
+      ]
+    },
+    "RabbitMQ.Client/5.0.1": {
+      "sha512": "89eFEAr5mV5GG2H3d4WFZEuhKmCR+EUjcphZ4+QLEkHPdo7B9kRH6X5WS0c6bHAY/B48uR0GuubnMTp5jGGmrA==",
+      "type": "package",
+      "path": "rabbitmq.client/5.0.1",
+      "files": [
+        "lib/net451/RabbitMQ.Client.dll",
+        "lib/net451/RabbitMQ.Client.xml",
+        "lib/netstandard1.5/RabbitMQ.Client.dll",
+        "lib/netstandard1.5/RabbitMQ.Client.xml",
+        "rabbitmq.client.5.0.1.nupkg.sha512",
+        "rabbitmq.client.nuspec"
       ]
     },
     "Rafty/0.4.2": {
@@ -8484,6 +9627,18 @@
         "version.txt"
       ]
     },
+    "SemanticVersioning/1.0.0": {
+      "sha512": "ITqQfMQTlO1AqN1OhZRXhAx7VhmFk2myW+/Pvdudg8sE1bniQMm7sHs27IsvNZJ6CarWz6YiRSOqTPqjyhkJIg==",
+      "type": "package",
+      "path": "semanticversioning/1.0.0",
+      "files": [
+        "lib/net45/SemVer.dll",
+        "lib/netstandard1.1/SemVer.dll",
+        "lib/netstandard2.0/SemVer.dll",
+        "semanticversioning.1.0.0.nupkg.sha512",
+        "semanticversioning.nuspec"
+      ]
+    },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
@@ -8605,6 +9760,31 @@
         "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.7.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
+      ]
+    },
+    "sqlSugarCore/4.6.4.6": {
+      "sha512": "XusVvTLuvTSt01t4CPjPwPYAOKGphG3T7noAQ2oYmdBA4Qg2AHdF9/1pvLJIaOQIL3f6HGwIZFhc1xOuuZzEXg==",
+      "type": "package",
+      "path": "sqlsugarcore/4.6.4.6",
+      "files": [
+        "lib/netstandard2.0/SqlSugar.dll",
+        "sqlsugarcore.4.6.4.6.nupkg.sha512",
+        "sqlsugarcore.nuspec"
+      ]
+    },
+    "StackExchange.Redis/1.2.6": {
+      "sha512": "uBzdFmPmsCJWZ/Iau85+2Ogal6nPiY5gT8pl2gA7R4dQ14GwRpwyTGkTuD1+hgHVuBW+zkCSnysmWc7h277r/g==",
+      "type": "package",
+      "path": "stackexchange.redis/1.2.6",
+      "files": [
+        "lib/net45/StackExchange.Redis.dll",
+        "lib/net45/StackExchange.Redis.xml",
+        "lib/net46/StackExchange.Redis.dll",
+        "lib/net46/StackExchange.Redis.xml",
+        "lib/netstandard1.5/StackExchange.Redis.dll",
+        "lib/netstandard1.5/StackExchange.Redis.xml",
+        "stackexchange.redis.1.2.6.nupkg.sha512",
+        "stackexchange.redis.nuspec"
       ]
     },
     "StackExchange.Redis.StrongName/1.2.4": {
@@ -9191,6 +10371,55 @@
         "system.console.nuspec"
       ]
     },
+    "System.Data.Common/4.3.0": {
+      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
+      "type": "package",
+      "path": "system.data.common/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net451/System.Data.Common.dll",
+        "lib/netstandard1.2/System.Data.Common.dll",
+        "lib/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net451/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.dll",
+        "ref/netstandard1.2/System.Data.Common.xml",
+        "ref/netstandard1.2/de/System.Data.Common.xml",
+        "ref/netstandard1.2/es/System.Data.Common.xml",
+        "ref/netstandard1.2/fr/System.Data.Common.xml",
+        "ref/netstandard1.2/it/System.Data.Common.xml",
+        "ref/netstandard1.2/ja/System.Data.Common.xml",
+        "ref/netstandard1.2/ko/System.Data.Common.xml",
+        "ref/netstandard1.2/ru/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hans/System.Data.Common.xml",
+        "ref/netstandard1.2/zh-hant/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.dll",
+        "ref/portable-net451+win8+wp8+wpa81/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/de/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/es/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/fr/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/it/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ja/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ko/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/ru/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hans/System.Data.Common.xml",
+        "ref/portable-net451+win8+wp8+wpa81/zh-hant/System.Data.Common.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.data.common.4.3.0.nupkg.sha512",
+        "system.data.common.nuspec"
+      ]
+    },
     "System.Data.SqlClient/4.4.0": {
       "sha512": "fxb9ghn1k1Ua7FFdlvtiBOD4/PsQvD/fk2KnhS+FK7VC6OggEx6P+lP1P0+KMb5V2dqS1+FbR7HCenoqzJMNIA==",
       "type": "package",
@@ -9446,6 +10675,61 @@
         "system.diagnostics.fileversioninfo.nuspec"
       ]
     },
+    "System.Diagnostics.Process/4.3.0": {
+      "sha512": "J0wOX07+QASQblsfxmIMFc9Iq7KTXYL3zs2G/Xc704Ylv3NpuVdo6gij6V3PGiptTxqsK0K7CdXenRvKUnkA2g==",
+      "type": "package",
+      "path": "system.diagnostics.process/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Diagnostics.Process.dll",
+        "lib/net461/System.Diagnostics.Process.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Diagnostics.Process.dll",
+        "ref/net461/System.Diagnostics.Process.dll",
+        "ref/netstandard1.3/System.Diagnostics.Process.dll",
+        "ref/netstandard1.3/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/de/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/es/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/fr/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/it/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/ja/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/ko/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/ru/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/zh-hans/System.Diagnostics.Process.xml",
+        "ref/netstandard1.3/zh-hant/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/System.Diagnostics.Process.dll",
+        "ref/netstandard1.4/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/de/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/es/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/fr/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/it/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/ja/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/ko/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/ru/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/zh-hans/System.Diagnostics.Process.xml",
+        "ref/netstandard1.4/zh-hant/System.Diagnostics.Process.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/linux/lib/netstandard1.4/System.Diagnostics.Process.dll",
+        "runtimes/osx/lib/netstandard1.4/System.Diagnostics.Process.dll",
+        "runtimes/win/lib/net46/System.Diagnostics.Process.dll",
+        "runtimes/win/lib/net461/System.Diagnostics.Process.dll",
+        "runtimes/win/lib/netstandard1.4/System.Diagnostics.Process.dll",
+        "runtimes/win7/lib/netcore50/_._",
+        "system.diagnostics.process.4.3.0.nupkg.sha512",
+        "system.diagnostics.process.nuspec"
+      ]
+    },
     "System.Diagnostics.StackTrace/4.3.0": {
       "sha512": "BiHg0vgtd35/DM9jvtaC1eKRpWZxr0gcQd643ABG7GnvSlf5pOkY2uyd42mMOJoOmKvnpNj0F4tuoS1pacTwYw==",
       "type": "package",
@@ -9482,6 +10766,43 @@
         "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll",
         "system.diagnostics.stacktrace.4.3.0.nupkg.sha512",
         "system.diagnostics.stacktrace.nuspec"
+      ]
+    },
+    "System.Diagnostics.TextWriterTraceListener/4.3.0": {
+      "sha512": "F11kHWeiwYjFWto+kr8tt9ULMH0k8MsT1XmdCGPTLYHhWgN+2g7JsIZiXDrxlFGccSNkbjfwQy4xIS38gzUiZA==",
+      "type": "package",
+      "path": "system.diagnostics.textwritertracelistener/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Diagnostics.TextWriterTraceListener.dll",
+        "lib/netstandard1.3/System.Diagnostics.TextWriterTraceListener.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Diagnostics.TextWriterTraceListener.dll",
+        "ref/netstandard1.3/System.Diagnostics.TextWriterTraceListener.dll",
+        "ref/netstandard1.3/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/de/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/es/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/fr/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/it/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/ja/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/ko/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/ru/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/zh-hans/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/netstandard1.3/zh-hant/System.Diagnostics.TextWriterTraceListener.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.diagnostics.textwritertracelistener.4.3.0.nupkg.sha512",
+        "system.diagnostics.textwritertracelistener.nuspec"
       ]
     },
     "System.Diagnostics.Tools/4.3.0": {
@@ -9537,6 +10858,45 @@
         "ref/xamarinwatchos10/_._",
         "system.diagnostics.tools.4.3.0.nupkg.sha512",
         "system.diagnostics.tools.nuspec"
+      ]
+    },
+    "System.Diagnostics.TraceSource/4.3.0": {
+      "sha512": "VnYp1NxGx8Ww731y2LJ1vpfb/DKVNKEZ8Jsh5SgQTZREL/YpWRArgh9pI8CDLmgHspZmLL697CaLvH85qQpRiw==",
+      "type": "package",
+      "path": "system.diagnostics.tracesource/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Diagnostics.TraceSource.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Diagnostics.TraceSource.dll",
+        "ref/netstandard1.3/System.Diagnostics.TraceSource.dll",
+        "ref/netstandard1.3/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/de/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/es/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/fr/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/it/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/ja/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/ko/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/ru/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/zh-hans/System.Diagnostics.TraceSource.xml",
+        "ref/netstandard1.3/zh-hant/System.Diagnostics.TraceSource.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.Diagnostics.TraceSource.dll",
+        "runtimes/win/lib/net46/System.Diagnostics.TraceSource.dll",
+        "runtimes/win/lib/netstandard1.3/System.Diagnostics.TraceSource.dll",
+        "system.diagnostics.tracesource.4.3.0.nupkg.sha512",
+        "system.diagnostics.tracesource.nuspec"
       ]
     },
     "System.Diagnostics.Tracing/4.3.0": {
@@ -10090,6 +11450,111 @@
         "system.io.filesystem.primitives.nuspec"
       ]
     },
+    "System.IO.MemoryMappedFiles/4.3.0": {
+      "sha512": "mz2JJFxCQLdMzXVOPyVibDKDKFZey66YHgQy8M1/vUCQzMSrbiXhpsyV04vSlBeqQUdM7wTL2WG+X3GZALKsIQ==",
+      "type": "package",
+      "path": "system.io.memorymappedfiles/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.IO.MemoryMappedFiles.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.IO.MemoryMappedFiles.dll",
+        "ref/netstandard1.3/System.IO.MemoryMappedFiles.dll",
+        "ref/netstandard1.3/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/de/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/es/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/fr/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/it/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/ja/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/ko/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/ru/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.MemoryMappedFiles.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.MemoryMappedFiles.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.IO.MemoryMappedFiles.dll",
+        "runtimes/win/lib/net46/System.IO.MemoryMappedFiles.dll",
+        "runtimes/win/lib/netcore50/System.IO.MemoryMappedFiles.dll",
+        "runtimes/win/lib/netstandard1.3/System.IO.MemoryMappedFiles.dll",
+        "system.io.memorymappedfiles.4.3.0.nupkg.sha512",
+        "system.io.memorymappedfiles.nuspec"
+      ]
+    },
+    "System.IO.Pipes/4.3.0": {
+      "sha512": "wpGJuACA6r8+KRckXoI6ghGTwgPRiICI6T7kgHI/m7S5eMqV/8jH37fzAUhTwIe9RwlH/j1sWwm2Q2zyXwZGHw==",
+      "type": "package",
+      "path": "system.io.pipes/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net46/System.IO.Pipes.dll",
+        "ref/net46/System.IO.Pipes.dll",
+        "ref/netstandard1.3/System.IO.Pipes.dll",
+        "ref/netstandard1.3/System.IO.Pipes.xml",
+        "ref/netstandard1.3/de/System.IO.Pipes.xml",
+        "ref/netstandard1.3/es/System.IO.Pipes.xml",
+        "ref/netstandard1.3/fr/System.IO.Pipes.xml",
+        "ref/netstandard1.3/it/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ja/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ko/System.IO.Pipes.xml",
+        "ref/netstandard1.3/ru/System.IO.Pipes.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.Pipes.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.Pipes.xml",
+        "runtimes/unix/lib/netstandard1.3/System.IO.Pipes.dll",
+        "runtimes/win/lib/net46/System.IO.Pipes.dll",
+        "runtimes/win/lib/netstandard1.3/System.IO.Pipes.dll",
+        "runtimes/win7/lib/netcore50/_._",
+        "system.io.pipes.4.3.0.nupkg.sha512",
+        "system.io.pipes.nuspec"
+      ]
+    },
+    "System.IO.UnmanagedMemoryStream/4.3.0": {
+      "sha512": "tS89nK7pw8ebkkEfWujA05+ZReHKzz39W+bcX1okVR0GJCJuzPyfYfQZyiLSrjp121BB5J4uewZQiUTKri2pSQ==",
+      "type": "package",
+      "path": "system.io.unmanagedmemorystream/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.IO.UnmanagedMemoryStream.dll",
+        "lib/netstandard1.3/System.IO.UnmanagedMemoryStream.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.IO.UnmanagedMemoryStream.dll",
+        "ref/netstandard1.3/System.IO.UnmanagedMemoryStream.dll",
+        "ref/netstandard1.3/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/de/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/es/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/fr/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/it/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/ja/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/ko/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/ru/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/zh-hans/System.IO.UnmanagedMemoryStream.xml",
+        "ref/netstandard1.3/zh-hant/System.IO.UnmanagedMemoryStream.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.io.unmanagedmemorystream.4.3.0.nupkg.sha512",
+        "system.io.unmanagedmemorystream.nuspec"
+      ]
+    },
     "System.Linq/4.3.0": {
       "sha512": "5DbqIUpsDp0dFftytzuMmc0oeMdQwjcP/EWxsksIz/w1TcFRkZ3yKKz0PqiYFMmEwPSWw+qNVqD7PJ889JzHbw==",
       "type": "package",
@@ -10523,10 +11988,10 @@
         "system.net.primitives.nuspec"
       ]
     },
-    "System.Net.Security/4.3.0": {
-      "sha512": "IgJKNfALqw7JRWp5LMQ5SWHNKvXVz094U6wNE3c1i8bOkMQvgBL+MMQuNt3xl9Qg9iWpj3lFxPZEY6XHmROjMQ==",
+    "System.Net.Security/4.3.1": {
+      "sha512": "qYnDntmrrHXUAhA+v2Kve8onMjJ2ZryQvx7kjGhW88c0IgA9B+q2M8b3l76HFBeotufDbAJfOvLEP32PS4XIKA==",
       "type": "package",
-      "path": "system.net.security/4.3.0",
+      "path": "system.net.security/4.3.1",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -10559,7 +12024,7 @@
         "runtimes/win/lib/net46/System.Net.Security.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.Security.dll",
         "runtimes/win7/lib/netcore50/_._",
-        "system.net.security.4.3.0.nupkg.sha512",
+        "system.net.security.4.3.1.nupkg.sha512",
         "system.net.security.nuspec"
       ]
     },
@@ -10708,17 +12173,17 @@
         "system.objectmodel.nuspec"
       ]
     },
-    "System.Private.DataContractSerialization/4.1.1": {
-      "sha512": "lcqFBUaCZxPiUkA4dlSOoPZGtZsAuuElH2XHgLwGLxd7ZozWetV5yiz0qGAV2AUYOqw97MtZBjbLMN16Xz4vXA==",
+    "System.Private.DataContractSerialization/4.3.0": {
+      "sha512": "yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
       "type": "package",
-      "path": "system.private.datacontractserialization/4.1.1",
+      "path": "system.private.datacontractserialization/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.3/System.Private.DataContractSerialization.dll",
         "ref/netstandard/_._",
         "runtimes/aot/lib/netcore50/System.Private.DataContractSerialization.dll",
-        "system.private.datacontractserialization.4.1.1.nupkg.sha512",
+        "system.private.datacontractserialization.4.3.0.nupkg.sha512",
         "system.private.datacontractserialization.nuspec"
       ]
     },
@@ -11719,6 +13184,76 @@
         "system.runtime.serialization.primitives.nuspec"
       ]
     },
+    "System.Runtime.Serialization.Xml/4.3.0": {
+      "sha512": "nUQx/5OVgrqEba3+j7OdiofvVq9koWZAC7Z3xGI8IIViZqApWnZ5+lLcwYgTlbkobrl/Rat+Jb8GeD4WQESD2A==",
+      "type": "package",
+      "path": "system.runtime.serialization.xml/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/net46/System.Runtime.Serialization.Xml.dll",
+        "lib/netcore50/System.Runtime.Serialization.Xml.dll",
+        "lib/netstandard1.3/System.Runtime.Serialization.Xml.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/net46/System.Runtime.Serialization.Xml.dll",
+        "ref/netcore50/System.Runtime.Serialization.Xml.dll",
+        "ref/netcore50/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netcore50/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/System.Runtime.Serialization.Xml.dll",
+        "ref/netstandard1.0/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.0/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/System.Runtime.Serialization.Xml.dll",
+        "ref/netstandard1.3/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/de/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/es/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/fr/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/it/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ja/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ko/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/ru/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/zh-hans/System.Runtime.Serialization.Xml.xml",
+        "ref/netstandard1.3/zh-hant/System.Runtime.Serialization.Xml.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.runtime.serialization.xml.4.3.0.nupkg.sha512",
+        "system.runtime.serialization.xml.nuspec"
+      ]
+    },
     "System.Security.AccessControl/4.4.0": {
       "sha512": "2NRFPX/V81ucKQmqNgGBZrKGH/5ejsvivSGMRum0SMgPnJxwhuNkzVS1+7gC3R2X0f57CtwrPrXPPSe6nOp82g==",
       "type": "package",
@@ -12563,6 +14098,34 @@
         "system.threading.nuspec"
       ]
     },
+    "System.Threading.Overlapped/4.3.0": {
+      "sha512": "m3HQ2dPiX/DSTpf+yJt8B0c+SRvzfqAJKx+QDWi+VLhz8svLT23MVjEOHPF/KiSLeArKU/iHescrbLd3yVgyNg==",
+      "type": "package",
+      "path": "system.threading.overlapped/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/net46/System.Threading.Overlapped.dll",
+        "ref/net46/System.Threading.Overlapped.dll",
+        "ref/netstandard1.3/System.Threading.Overlapped.dll",
+        "ref/netstandard1.3/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/de/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/es/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/fr/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/it/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/ja/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/ko/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/ru/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/zh-hans/System.Threading.Overlapped.xml",
+        "ref/netstandard1.3/zh-hant/System.Threading.Overlapped.xml",
+        "runtimes/unix/lib/netstandard1.3/System.Threading.Overlapped.dll",
+        "runtimes/win/lib/net46/System.Threading.Overlapped.dll",
+        "runtimes/win/lib/netcore50/System.Threading.Overlapped.dll",
+        "runtimes/win/lib/netstandard1.3/System.Threading.Overlapped.dll",
+        "system.threading.overlapped.4.3.0.nupkg.sha512",
+        "system.threading.overlapped.nuspec"
+      ]
+    },
     "System.Threading.Tasks/4.3.0": {
       "sha512": "LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "type": "package",
@@ -13052,10 +14615,10 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "System.Xml.XmlSerializer/4.0.11": {
-      "sha512": "FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
+    "System.Xml.XmlSerializer/4.3.0": {
+      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "type": "package",
-      "path": "system.xml.xmlserializer/4.0.11",
+      "path": "system.xml.xmlserializer/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -13117,7 +14680,7 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll",
-        "system.xml.xmlserializer.4.0.11.nupkg.sha512",
+        "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
     },
@@ -13220,9 +14783,17 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
+      "App.Metrics >= 2.0.0-preview1",
+      "App.Metrics.AspNetCore.Endpoints >= 2.0.0-preview1",
+      "App.Metrics.AspNetCore.Reporting >= 2.0.0-preview1",
+      "App.Metrics.AspNetCore.Tracking >= 2.0.0-preview1",
+      "App.Metrics.Formatters.Json >= 2.0.0-preview1",
+      "App.Metrics.Reporting.InfluxDB >= 2.0.0-preview1",
+      "Bucket.AspNetCore >= 1.0.57",
+      "Bucket.Logging >= 1.0.6",
       "Microsoft.AspNetCore.All >= 2.0.5",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Ocelot >= 3.1.9"
+      "Ocelot >= 5.0.1"
     ]
   },
   "packageFolders": {
@@ -13235,11 +14806,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
       "projectName": "Bucket.Ocelot",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13270,9 +14841,29 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Bucket.AspNetCore": {
+            "target": "Package",
+            "version": "1.0.57"
+          },
+          "Bucket.Logging": {
+            "target": "Package",
+            "version": "1.0.6"
+          },
           "Ocelot": {
             "target": "Package",
-            "version": "3.1.9"
+            "version": "5.0.1"
+          },
+          "App.Metrics.AspNetCore.Tracking": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
+          },
+          "App.Metrics": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
+          },
+          "App.Metrics.AspNetCore.Reporting": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
@@ -13282,6 +14873,18 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.5"
+          },
+          "App.Metrics.AspNetCore.Endpoints": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
+          },
+          "App.Metrics.Reporting.InfluxDB": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
+          },
+          "App.Metrics.Formatters.Json": {
+            "target": "Package",
+            "version": "2.0.0-preview1"
           }
         },
         "imports": [

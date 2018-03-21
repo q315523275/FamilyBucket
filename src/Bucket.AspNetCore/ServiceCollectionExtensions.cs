@@ -35,6 +35,7 @@ namespace Bucket.AspNetCore
         public static IServiceCollection AddBucket(this IServiceCollection services)
         {
             services.AddOptions();
+            services.AddLogging();
             services.AddSingleton<RedisClient>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IUser, HttpContextUser>();

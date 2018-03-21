@@ -1502,6 +1502,19 @@
         "runtime": {
           "bin/placeholder/Bucket.EventBus.Common.dll": {}
         }
+      },
+      "Bucket.Logging.Events/1.0.51": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Bucket.Logging.Events.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bucket.Logging.Events.dll": {}
+        }
       }
     }
   },
@@ -4927,11 +4940,17 @@
       "type": "project",
       "path": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj",
       "msbuildProject": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj"
+    },
+    "Bucket.Logging.Events/1.0.51": {
+      "type": "project",
+      "path": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj",
+      "msbuildProject": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Bucket.EventBus.Common >= 1.0.0",
+      "Bucket.Logging.Events >= 1.0.51",
       "Microsoft.AspNetCore >= 2.0.1",
       "Microsoft.Extensions.Logging >= 2.0.0",
       "NETStandard.Library >= 2.0.0"
@@ -4942,7 +4961,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.4",
+    "version": "1.0.62",
     "restoreSettings": {
       "hideWarningsAndErrors": true
     },
@@ -4971,6 +4990,9 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
+            },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             }
