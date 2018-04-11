@@ -74,7 +74,7 @@
 }
 
 
-*  集中控制项目配置信息:
+*  子服务配置:
 
 ```csharp
 using Bucket.AspNetCore;
