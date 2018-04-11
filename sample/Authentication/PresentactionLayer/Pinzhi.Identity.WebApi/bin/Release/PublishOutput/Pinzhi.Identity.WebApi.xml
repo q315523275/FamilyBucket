@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pinzhi.Identity.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Pinzhi.Identity.WebApi.Controllers.AuthController">
+            <summary>
+            认证授权控制器
+            </summary>
+        </member>
+        <member name="F:Pinzhi.Identity.WebApi.Controllers.AuthController._authBusiness">
+            <summary>
+            业务实现
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Controllers.AuthController.#ctor(Pinzhi.Identity.Interface.IAuthBusiness,Bucket.ErrorCode.IErrorCodeStore,Bucket.ConfigCenter.IConfigCenter)">
+            <summary>
+            构造
+            </summary>
+            <param name="authBusiness"></param>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Controllers.AuthController.Login(Pinzhi.Identity.DTO.Auth.LoginInput)">
+            <summary>
+            账户登陆 - 密码登陆
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pinzhi.Identity.WebApi.Program">
+            <summary>
+            应用程序
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Program.Main(System.String[])">
+            <summary>
+            应用程序入口点
+            </summary>
+            <param name="args">入口点参数</param>
+        </member>
+        <member name="T:Pinzhi.Identity.WebApi.Startup">
+            <summary>
+            启动配置
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            初始化启动配置
+            </summary>
+            <param name="configuration">配置</param>
+        </member>
+        <member name="P:Pinzhi.Identity.WebApi.Startup.Configuration">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            配置请求管道
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.ConfigSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            配置Swagger
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.CommonConfig(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            公共配置
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Startup.ConfigRoute(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            路由配置,支持区域
+            </summary>
+        </member>
+    </members>
+</doc>
