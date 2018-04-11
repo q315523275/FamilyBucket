@@ -1,282 +1,188 @@
-## .net core Î¢·şÎñÏµÍ³
-* 1¡¢ÅäÖÃÖĞĞÄ
-* 2¡¢ÈÕÖ¾ÖĞĞÄ
-* 3¡¢ÒµÎñÂñµã
-* 4¡¢´íÎóÂëÖĞ¼ä¼ş
-* 5¡¢·şÎñ×¢²á·¢ÏÖ
-* 6¡¢¸ºÔØËã·¨
-* 7¡¢×Ó·şÎñÏà»¥µ÷ÓÃ×é¼ş£¨Ê¹ÓÃ5 6£©
-* 8¡¢Î¢·şÎñÍø¹Ø
-* 9¡¢Í³Ò»ÈÏÖ¤ÖĞĞÄ£¨jwt£©
-* 10¡¢¶ÈÁ¿¼à¿Ø
-* 11¡¢Á´Â·×·×Ù
-* 12¡¢ÊÂ¼şÇı¶¯
+ï»¿## .net core å¾®æœåŠ¡ç³»ç»Ÿ
+* 1ã€é…ç½®ä¸­å¿ƒ
+* 2ã€æ—¥å¿—ä¸­å¿ƒ
+* 3ã€ä¸šåŠ¡åŸ‹ç‚¹
+* 4ã€é”™è¯¯ç ä¸­é—´ä»¶
+* 5ã€æœåŠ¡æ³¨å†Œå‘ç°
+* 6ã€è´Ÿè½½ç®—æ³•
+* 7ã€å­æœåŠ¡ç›¸äº’è°ƒç”¨ç»„ä»¶ï¼ˆä½¿ç”¨5 6ï¼‰
+* 8ã€å¾®æœåŠ¡ç½‘å…³
+* 9ã€ç»Ÿä¸€è®¤è¯ä¸­å¿ƒï¼ˆjwtï¼‰
+* 10ã€åº¦é‡ç›‘æ§
+* 11ã€é“¾è·¯è¿½è¸ª
+* 12ã€äº‹ä»¶é©±åŠ¨
 
 
-## 1¡¢ÅäÖÃÖĞĞÄ
-*  ¼¯ÖĞ¿ØÖÆÏîÄ¿ÅäÖÃĞÅÏ¢:
-
-```csharp
-using Bucket.AspNetCore;
-public class Startup
+## 1ã€å­æœåŠ¡ä½¿ç”¨
+*  é…ç½®ä¿¡æ¯:
 {
-    //...
-    public void ConfigureServices(IServiceCollection services)
-    {
-        //...
-
-        services.AddConfigService(opt => {
-		    opt.AppId = "12313",
-            opt.AppSercet = "213123123213",
-            opt.RedisConnectionString = "",
-            opt.RedisListener = false,
-            opt.RefreshInteval = 30,
-            opt.ServerUrl = "http://localhost:63430",
-            opt.UseServiceDiscovery = false,
-            opt.ServiceName = "BucketConfigService"
-		}); // << Add this line
-
-        //...
+  "Logging": {
+    "IncludeScopes": true,
+    "LogLevel": {
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
     }
+  },
+  "ServiceDiscovery": {
+    "ServiceName": "Pinzhi.Platform.Service",
+    "Version": "1.0.0-pre",
+    "HealthCheckTemplate": "",
+    "Endpoints": [ "http://192.168.1.199:8093" ],
+    "Consul": {
+      "HttpEndpoint": "http://192.168.1.199:8500",
+      "DnsEndpoint": {
+        "Address": "192.168.1.199",
+        "Port": 8500
+      }
+    }
+  },
+  "ConfigService": {
+    "AppId": "PinzhiGO",
+    "AppSercet": "R9QaIZTcu6zKo4F34Vz5R",
+    "RedisConnectionString": "",
+    "RedisListener": false,
+    "RefreshInteval": 300,
+    "ServerUrl": "http://192.168.1.199:8091/",
+    "UseServiceDiscovery": false,
+    "ServiceName": "BucketConfigService",
+    "NamespaceName": "Platform"
+  },
+  "ErrorCodeService": {
+    "RefreshInteval": 1800,
+    "ServerUrl": "http://122.192.33.40:18080"
+  },
+  "EventBus": {
+    "RabbitMQ": {
+      "HostName": "192.168.1.199",
+      "Port": 5672,
+      "ExchangeName": "BucketEventBus",
+      "QueueName": "BucketEvents"
+    }
+  },
+  "Audience": {
+    "Secret": "Itzg4e4asdS4SNpUvx6IoXQD",
+    "Issuer": "poc",
+    "Audience": "aon"
+  },
+  "SqlSugarClient": {
+    "ConnectionString": "characterset=utf8;server=192.168.1.199;port=3306;user id=root;password=123;persistsecurityinfo=True;database=Bucket",
+    "DbType": "MySql",
+    "InitKeyType": "Attribute",
+    "IsAutoCloseConnection": false
+  }
 }
-```
 
-## 2¡¢·şÎñ×¢²áÓë·¢ÏÖ
-*  Ê¹ÓÃConsulÊµÏÖ·şÎñ×¢²áÓë·¢ÏÖ:
+
+*  é›†ä¸­æ§åˆ¶é¡¹ç›®é…ç½®ä¿¡æ¯:
 
 ```csharp
 using Bucket.AspNetCore;
-using Bucket.AspNetCore.ServiceDiscovery;
 public class Startup
 {
     //...
     public void ConfigureServices(IServiceCollection services)
     {
         //...
-
-        services.AddServiceDiscovery(option => {
-                option.UseConsul(opt =>
-                {
-                    opt.HostName = "localhost";
-                    opt.Port = 8500;
-                });
+            // æ·»åŠ æˆæƒè®¤è¯
+            services.AddBucketAuthentication(Configuration);
+            // æ·»åŠ åŸºç¡€è®¾æ–½æœåŠ¡
+            services.AddBucket();
+            // æ·»åŠ æ•°æ®ORM
+            services.AddSQLSugarClient<SqlSugarClient>(config => {
+                config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
+                config.DbType = DbType.MySql;
+                config.IsAutoCloseConnection = false;
+                config.InitKeyType = InitKeyType.Attribute;
             });
-
-        //...
-    }
-}
-```
-
-* ×Ó·şÎñ×¢²á·şÎñ·¢ÏÖ:
-
-```csharp
-using Bucket.AspNetCore;
-public class Startup
-{
-    //...
-    private readonly CancellationTokenSource _consulConfigCancellationTokenSource = new CancellationTokenSource();
-	public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime applicationLifetime)
-    {
-
-            // add tenant & health check
-            var localAddress = DnsHelper.GetIpAddressAsync().Result;
-            var uri = new Uri($"http://{localAddress}:{Program.PORT}/");
-            var registryInformation = app.AddTenant("values", "1.0.0-pre", uri, tags: new[] { "urlprefix-/values" });
-            // register service & health check cleanup
-            applicationLifetime.ApplicationStopping.Register(() =>
+            // æ·»åŠ é”™è¯¯ç æœåŠ¡
+            services.AddErrorCodeService(Configuration);
+            // æ·»åŠ é…ç½®æœåŠ¡
+            services.AddConfigService(Configuration);
+            // æ·»åŠ äº‹ä»¶é©±åŠ¨
+            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
+            services.AddEventBus(option =>
             {
-                app.RemoveTenant(registryInformation.Id);
-                _consulConfigCancellationTokenSource.Cancel();
-            });
-    }
-}
-```
-* ×Ó·şÎñ¼äÏà»¥ÇëÇó:
-
-```csharp
-using Bucket.AspNetCore;
-public class Startup
-{
-    //...
-	public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime applicationLifetime)
-    {
-
-         // Ê¹ÓÃ·şÎñ·¢ÏÖµÄ×Ó·şÎñ½Ó¿ÚÇëÇó
-         services.AddServiceClient();
-    }
-}
-// ceshi 
-private readonly IServiceClient _serviceClient;
-public UserService(IServiceClient serviceClient)
-{
-    _serviceClient = serviceClient;
-}
-```
-
-## 3¡¢ÊÂ¼şÇı¶¯
-* Ê¹ÓÃRabbitMQÊµÏÖÊÂ¼ş×ÜÏß:
-
-```csharp
-using Bucket.AspNetCore;
-using Bucket.AspNetCore.EventBus;
-public class Startup
-{
-    //...
-    public void ConfigureServices(IServiceCollection services)
-    {
-        //...
-
-         services.AddEventBus(option=> {
                 option.UseRabbitMQ(opt =>
                 {
-                    opt.HostName = "localhost";
-                    opt.Port = 8500;
-                    opt.ExchangeName = "BucketEventBus";
-                    opt.QueueName = "BucketEvents";
+                    opt.HostName = eventConfig["HostName"];
+                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
+                    opt.ExchangeName = eventConfig["ExchangeName"];
+                    opt.QueueName = eventConfig["QueueName"];
                 });
-        });
+            });
+            // æ·»åŠ æœåŠ¡å‘ç°
+            services.AddServiceDiscoveryConsul(Configuration);
+            // æ·»åŠ æ¨¡å‹æ˜ å°„,éœ€è¦æ˜ å°„é…ç½®æ–‡ä»¶(è€ƒè™‘åˆ°æ€§èƒ½æœªä½¿ç”¨è‡ªåŠ¨æ˜ å°„)
+            services.AddAutoMapper();
+            // æ·»åŠ ä¸šåŠ¡æ³¨å†Œ
+
+            // æ·»åŠ è¿‡æ»¤å™¨
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<WebApiActionFilterAttribute>();
+            }).AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+            });
+            // æ·»åŠ Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "æ¥å£æ–‡æ¡£", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Platform.WebApi.xml"));
+            });
 
         //...
     }
-}
-```
-
-## 4¡¢¶ÓÁĞÈÕÖ¾
-* Ê¹ÓÃÊÂ¼şÇı¶¯½øĞĞÏûÏ¢´«Êä:
-
-```csharp
-public class Startup
-{
-    //...
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-    {
-          var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
-		  loggerFactory.AddBucketLog(eventBus); // or loggerFactory.AddBucketLog(app);
-		  // ÈÕÖ¾Ïû·Ñ
-          eventBus.Subscribe<PublishLogEvent, PublishLogEventHandler>();
-    }
-}
-```
-* ¿ØÖÆÌ¨ÑİÊ¾:
-
-```csharp
-class Program
-    {
-        private static IServiceCollection services;
-        static void Main(string[] args)
+	/// <summary>
+        /// é…ç½®è¯·æ±‚ç®¡é“
+        /// </summary>
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            Console.WriteLine("Hello World!");
-            Initialize();
-
-            services.AddEventBus(option => {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = "192.168.1.199";
-                    opt.Port = 5672;
-                    opt.ExchangeName = "BucketEventBus";
-                    opt.QueueName = "BucketEvents";
-                });
+            // æ—¥å¿—
+            loggerFactory.AddBucketLog(app, "Pinzhi.Platform");
+            // æ–‡æ¡£
+            ConfigSwagger(app);
+            // å…¬å…±é…ç½®
+            CommonConfig(app);
+        }
+        /// <summary>
+        /// é…ç½®Swagger
+        /// </summary>
+        private void ConfigSwagger(IApplicationBuilder app)
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1");
             });
-            var eventBus = services.BuildServiceProvider().GetRequiredService<IEventBus>();
-            // ÈÕÖ¾³õÊ¼»¯
-            Func<string, LogLevel, bool> filter = (category, level) => true;
-            ILoggerFactory loggerFactory = new LoggerFactory();
-            loggerFactory.AddBucketLog(eventBus);
-            services.AddSingleton(loggerFactory);
-            ILogger logger = loggerFactory.CreateLogger<Program>();
-
-            // ÊÂ¼ş¶©ÔÄ
-            eventBus.Subscribe<PublishLogEvent, PublishLogEventHandler>();
-            var i = 0;
-            while (i < 9)
-            {
-                i++;
-                logger.LogError(new Exception($"ÎÒÊÇ´íÎóÈÕÖ¾{i.ToString()}"), "1");
-            }
-            Console.ReadLine();
         }
-        private static void Initialize()
+        /// <summary>
+        /// å…¬å…±é…ç½®
+        /// </summary>
+        private void CommonConfig(IApplicationBuilder app)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-
-            services = new ServiceCollection()
-                .AddLogging();
+            // å…¨å±€é”™è¯¯æ—¥å¿—
+            app.UseErrorLog();
+            // è®¤è¯æˆæƒ
+            app.UseAuthentication();
+            // é™æ€æ–‡ä»¶
+            app.UseStaticFiles();
+            // è·¯ç”±
+            ConfigRoute(app);
+            // æœåŠ¡æ³¨å†Œ
+            app.UseConsulRegisterService(Configuration);
         }
-    }
-```
-![½ØÍ¼](http://10.10.141.47/tianliang/Microservice/blob/master/ConsoleApp2/logimg.png)
-
-
-## 5¡¢Î¢·şÎñÍø¹Ø
-* »ùÓÚConsul + .NET Core + Polly + Ocelot + Exceptionless + IdentityServer
-
-## 6¡¢¶ÈÁ¿¼à¿Ø
-* »ùÓÚApp Metrics
-
-## 7¡¢Í³Ò»ÈÏÖ¤
-* »ùÓÚÏÖÓĞÏµÍ³POCÍ³Ò»½øĞĞÈ¨ÏŞÈÏÖ¤£¬Ê¹ÓÃJwt
-* Íø¹Ø²ã½øĞĞÓÃ»§ÊÚÈ¨ÑéÖ¤£¬½ÇÉ«ÑéÖ¤£¬È¨ÏŞÑéÖ¤
-* ×Ó·şÎñÊ¹ÓÃÄÚÍø£¬ĞèÒªÑéÖ¤È¨ÏŞ½Ó¿Ú½öÑéÖ¤ÓÃ»§ÊÚÈ¨£¬²»½øĞĞ¾ßÌå½ÇÉ«È¨ÏŞÑéÖ¤£¬Í¨¹ıHttpContext.User»ñÈ¡µ±Ç°ÇëÇóÓÃ»§ĞÅÏ¢
-
-```csharp
-public class Startup
-{
-    //...
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // ÊÚÈ¨ÈÏÖ¤
-        var audienceConfig = Configuration.GetSection("Audience");
-        services.AddBucketAuthentication(opt =>
+        /// <summary>
+        /// è·¯ç”±é…ç½®,æ”¯æŒåŒºåŸŸ
+        /// </summary>
+        private void ConfigRoute(IApplicationBuilder app)
         {
-            opt.Audience = audienceConfig["Audience"]; ;
-            opt.DefaultScheme = audienceConfig["DefaultScheme"];
-            opt.Issuer = audienceConfig["Issuer"];
-            opt.Secret = audienceConfig["Secret"];
-        });  
-    }
-}
-[Authorize]
-public OutputLogin Login([FromBody] InputLogin input){}
-```
-
-## 8¡¢´íÎóÂëÖĞĞÄ
-* ½Ó¿Ú·µ»Ø¶ÔÓ¦±àÂë£¬ĞèÒª½øĞĞÔËÓª×¨ÒµÃèÊöÓïµ÷Õû
-
-```csharp
-public class Startup
-{
-    //...
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // ´íÎóÂëÖĞĞÄ
-        services.AddErroCodeService(opt =>
-        {
-            opt.RefreshInteval = 300;
-            opt.ServerUrl = "http://192.168.1.199:18080";
-        });
-    }
-}
-// Ä£ĞÍ
-[NotEmpty("001",ErrorMessage = "ÕËºÅ²»ÄÜÎª¿Õ")]
-public string UserName { set; get; }
-// ´íÎóÂë¼°¶ÔÓ¦ÒµÎñÃèÊö
-throw new BucketException(errorInfo.ErrorCode, errorInfo.Message);
-```
-
-## 9¡¢Âñµã·şÎñ
-* 
-
-```csharp
-public class Startup
-{
-    //...
-    public void ConfigureServices(IServiceCollection services)
-    {
-        // Âñµã·şÎñ
-        services.AddBuriedService();
-    }
+            app.UseMvc(routes => {
+                routes.MapRoute("areaRoute", "view/{area:exists}/{controller}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
+            });
+        }
 }
 ```
