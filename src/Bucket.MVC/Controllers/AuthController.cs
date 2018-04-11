@@ -29,6 +29,7 @@ namespace Bucket.MVC.Controllers
         [HttpPost("/authapi/login")]
         public OutputLogin Login([FromBody] InputLogin input)
         {
+            throw new BucketException("GO_0004007", "1");
             return new OutputLogin { Data = input };
         }
 

@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bucket.AspNetCore" Version="1.0.56" />
-    <PackageReference Include="Bucket.Core" Version="1.0.54" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.1" />
@@ -17,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
+    <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
     <ProjectReference Include="..\Bucket.Logging.EventHandlers\Bucket.Logging.EventHandlers.csproj" />
   </ItemGroup>
 

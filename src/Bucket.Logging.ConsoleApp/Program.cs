@@ -1,5 +1,5 @@
-﻿using Bucket.AspNetCore;
-using Bucket.AspNetCore.EventBus;
+﻿using Bucket.AspNetCore.EventBus;
+using Bucket.AspNetCore.Extensions;
 using Bucket.EventBus.Common.Events;
 using Bucket.Logging.EventHandlers;
 using Bucket.Logging.Events;
@@ -28,7 +28,7 @@ namespace Bucket.Logging.ConsoleApp
                     opt.QueueName = "BucketEvents";
                 });
             });
-            services.AddSingleton<DbLogOptions>(p => new DbLogOptions
+            services.AddSingleton(p => new DbLogOptions
             {
                 ConnectionString = "characterset=utf8;server=192.168.1.199;port=3306;user id=root;password=123;persistsecurityinfo=True;database=Bucket",
                 DbShardingRule = 0,

@@ -11,6 +11,9 @@ using Bucket.Core;
 
 namespace Bucket.Buried
 {
+    /// <summary>
+    /// 埋点处理程序
+    /// </summary>
     public class BuriedContext : IBuriedContext
     {
         private readonly IEventBus _eventBus;
@@ -20,28 +23,52 @@ namespace Bucket.Buried
         private HttpContext _httpContext { get; set; }
         private readonly string BuriedIndex = "BuriedIndex";
         private readonly string ProjectSeq = "PZGOSeq";
-        public BuriedContext(IEventBus eventBus, ILogger<BuriedContext> logger, IHttpContextAccessor httpContextAccessor, IJsonHelper jsonHelper)
+        public BuriedContext(IEventBus eventBus, 
+            ILogger<BuriedContext> logger, 
+            IHttpContextAccessor httpContextAccessor, 
+            IJsonHelper jsonHelper)
         {
             _eventBus = eventBus;
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
             _jsonHelper = jsonHelper;
         }
+        /// <summary>
+        /// 埋点推送
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="buriedInformation"></param>
+        /// <returns></returns>
         public async Task PublishAsync<T>(T buriedInformation)
         {
             _httpContext = _httpContextAccessor.HttpContext;
             await EventPublishAsync<T>(buriedInformation);
         }
-        private string GetHeaderKeyValue(Dictionary<string, string> headers, string key)
+        /// <summary>
+        /// 获取请求头值
+        /// </summary>
+        /// <param name="headers"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        private string GetValue(Dictionary<string, string> headers, string key)
         {
             return headers.ContainsKey(key) ? headers[key] : string.Empty;
         }
+        /// <summary>
+        /// 时间戳转换
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
         private long DateTimeToUnixTimestamp(DateTime dateTime)
         {
             var start = new DateTime(1970, 1, 1, 0, 0, 0, dateTime.Kind);
             return Convert.ToInt64((dateTime.AddHours(-8) - start).TotalSeconds * 1000);
         }
-        private Dictionary<string, string> ParentHeaders()
+        /// <summary>
+        /// 上游请求头信息
+        /// </summary>
+        /// <returns></returns>
+        private Dictionary<string, string> UpStreamHeaders()
         {
             var headers = new Dictionary<string, string>();
             // 项目名称
@@ -64,9 +91,13 @@ namespace Bucket.Buried
                 headers.Add("Seq", _httpContext.Request.Headers["Seq"].FirstOrDefault());
             return headers;
         }
+        /// <summary>
+        /// 下游请求头转发
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, string> DownStreamHeaders()
         {
-            var headers = ParentHeaders();
+            var headers = UpStreamHeaders();
             headers.Remove("Seq");
             // 当前队列顺序号
             if (_httpContext.Items.ContainsKey(ProjectSeq)
@@ -79,15 +110,27 @@ namespace Bucket.Buried
                 headers.Add("Authorization", _httpContext.Request.Headers["Authorization"].FirstOrDefault());
             return headers;
         }
-
+        /// <summary>
+        /// 埋点推送
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="buriedInformation"></param>
+        /// <param name="httpContext"></param>
+        /// <returns></returns>
         public async Task PublishAsync<T>(T buriedInformation, HttpContext httpContext)
         {
             _httpContext = httpContext;
             await EventPublishAsync<T>(buriedInformation);
         }
+        /// <summary>
+        /// 埋点事件推送
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="buriedInformation"></param>
+        /// <returns></returns>
         private async Task EventPublishAsync<T>(T buriedInformation)
         {
-            var pheader = ParentHeaders();
+            var pheader = DownStreamHeaders();
             if (buriedInformation != null
                 && _httpContext != null
                 && pheader.Count > 0)
@@ -96,12 +139,12 @@ namespace Bucket.Buried
                 // 父级信息
                 var buriedInfo = new BuriedInformation()
                 {
-                    ModName = GetHeaderKeyValue(pheader, "ModName"),
-                    ProcName = GetHeaderKeyValue(pheader, "ProcName"),
-                    LaunchId = GetHeaderKeyValue(pheader, "LaunchId"),
-                    Token = GetHeaderKeyValue(pheader, "Token"),
-                    BatchId = GetHeaderKeyValue(pheader, "BatchId"),
-                    Seq = GetHeaderKeyValue(pheader, "Seq")
+                    ModName = GetValue(pheader, "ModName"),
+                    ProcName = GetValue(pheader, "ProcName"),
+                    LaunchId = GetValue(pheader, "LaunchId"),
+                    Token = GetValue(pheader, "Token"),
+                    BatchId = GetValue(pheader, "BatchId"),
+                    Seq = GetValue(pheader, "Seq")
                 };
 
                 // 父级

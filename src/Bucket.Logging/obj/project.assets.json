@@ -1503,7 +1503,7 @@
           "bin/placeholder/Bucket.EventBus.Common.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.0.51": {
+      "Bucket.Logging.Events/1.0.53": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -4941,7 +4941,7 @@
       "path": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj",
       "msbuildProject": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj"
     },
-    "Bucket.Logging.Events/1.0.51": {
+    "Bucket.Logging.Events/1.0.53": {
       "type": "project",
       "path": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj"
@@ -4950,7 +4950,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Bucket.EventBus.Common >= 1.0.0",
-      "Bucket.Logging.Events >= 1.0.51",
+      "Bucket.Logging.Events >= 1.0.53",
       "Microsoft.AspNetCore >= 2.0.1",
       "Microsoft.Extensions.Logging >= 2.0.0",
       "NETStandard.Library >= 2.0.0"
@@ -4961,7 +4961,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.62",
+    "version": "1.0.65",
     "restoreSettings": {
       "hideWarningsAndErrors": true
     },

@@ -16,8 +16,8 @@ namespace Bucket.WebSocketManager
 
         public WebSocket GetSocketById(string id)
         {
-            if (_sockets.ContainsKey(id))
-                return _sockets.FirstOrDefault(p => p.Key == id).Value;
+            if (_sockets.TryGetValue(id, out WebSocket socket))
+                return socket;
             else
                 return null;
         }
@@ -74,12 +74,10 @@ namespace Bucket.WebSocketManager
 
         public async Task RemoveSocket(string id)
         {
-            WebSocket socket;
-            _sockets.TryRemove(id, out socket);
-
-            await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
-                                    statusDescription: "Closed by the WebSocketManager",
-                                    cancellationToken: CancellationToken.None).ConfigureAwait(false);
+            if (_sockets.TryRemove(id, out WebSocket socket))
+                await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
+                                        statusDescription: "Closed by the WebSocketManager",
+                                        cancellationToken: CancellationToken.None).ConfigureAwait(false);
         }
 
         private string CreateConnectionId()

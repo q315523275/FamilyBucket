@@ -55,7 +55,15 @@ namespace Bucket.WebSocketManager
 
                     catch (WebSocketException)
                     {
-                        throw; //let's not swallow any exception for now
+                        // throw; //let's not swallow any exception for now
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        // throw; //let's not swallow any exception for now
+                    }
+                    catch (Exception)
+                    {
+                        // throw; //let's not swallow any exception for now
                     }
                     return;
                 }

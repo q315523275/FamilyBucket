@@ -60,5 +60,29 @@ namespace Bucket.ConfigCenter
                 return Task.FromResult(string.Empty);
             }
         }
+
+        public string Get(string key, string defaultValue)
+        {
+            if (_configRepository.GetConfig().TryGetValue(key, out string value))
+            {
+                return value;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
+        public Task<string> GetAsync(string key, string defaultValue)
+        {
+            if (_configRepository.GetConfig().TryGetValue(key, out string value))
+            {
+                return Task.FromResult(value);
+            }
+            else
+            {
+                return Task.FromResult(defaultValue);
+            }
+        }
     }
 }

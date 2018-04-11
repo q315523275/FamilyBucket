@@ -5,21 +5,31 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
-using Bucket.AspNetCore;
+
+using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.EventBus;
 using Bucket.Logging;
 using App.Metrics;
 
+using System.Text;
+
 namespace Bucket.Ocelot
 {
+    /// <summary>
+    /// 启动配置
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 初始化启动配置
+        /// </summary>
+        /// <param name="env"></param>
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -31,20 +41,16 @@ namespace Bucket.Ocelot
 
             Configuration = builder.Build();
         }
-
+        /// <summary>
+        /// 配置
+        /// </summary>
         public IConfigurationRoot Configuration { get; }
-
+        /// <summary>
+        /// 配置服务
+        /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            Action<ConfigurationBuilderCachePart> settings = (x) =>
-            {
-                x.WithMicrosoftLogging(log =>
-                {
-                    log.AddConsole(LogLevel.Debug);
-                })
-                .WithDictionaryHandle();
-            };
-            // 认证参数
+            // 添加授权认证
             var audienceConfig = Configuration.GetSection("Audience");
             var defaultScheme = audienceConfig["defaultScheme"];
             var keyByteArray = Encoding.ASCII.GetBytes(audienceConfig["Secret"]);
@@ -61,7 +67,14 @@ namespace Bucket.Ocelot
                 ClockSkew = TimeSpan.Zero,
                 RequireExpirationTime = true,
             };
-            // 跨域
+            services.AddAuthentication()
+                .AddJwtBearer(defaultScheme, opt =>
+                {
+                    //不使用https
+                    opt.RequireHttpsMetadata = false;
+                    opt.TokenValidationParameters = tokenValidationParameters;
+                });
+            // 添加跨域
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => builder
@@ -71,35 +84,37 @@ namespace Bucket.Ocelot
                     .AllowCredentials()
                 );
             });
-            // 认证授权
-            services.AddAuthentication()
-                .AddJwtBearer(defaultScheme, opt =>
+            // 添加网关
+            Action<ConfigurationBuilderCachePart> settings = (x) =>
+            {
+                x.WithMicrosoftLogging(log =>
                 {
-                    //不使用https
-                    opt.RequireHttpsMetadata = false;
-                    opt.TokenValidationParameters = tokenValidationParameters;
-                });
-            // 网关
+                    log.AddConsole(LogLevel.Debug);
+                })
+                .WithDictionaryHandle();
+            };
             services.AddOcelot(Configuration)
+                    .AddCacheManager(settings)
                     //.AddStoreOcelotConfigurationInConsul()
                     .AddAdministration("/administration", "axon@2018");
-            // 首字母大写
+            // 添加首字母大写
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
-            // 事件驱动
+            // 添加事件驱动
+            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
             services.AddEventBus(option =>
             {
                 option.UseRabbitMQ(opt =>
                 {
-                    opt.HostName = "192.168.1.199";
-                    opt.Port = 5672;
-                    opt.ExchangeName = "BucketEventBus";
-                    opt.QueueName = "BucketEvents";
+                    opt.HostName = eventConfig["HostName"];
+                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
+                    opt.ExchangeName = eventConfig["ExchangeName"];
+                    opt.QueueName = eventConfig["QueueName"];
                 });
             });
-            // 统计
+            // 添加统计
             var metrics = AppMetrics.CreateDefaultBuilder()
                 .Configuration.Configure(options =>{
                     options.AddAppTag("RepairApp");
@@ -121,8 +136,10 @@ namespace Bucket.Ocelot
             services.AddMetricsTrackingMiddleware();
             services.AddMetricsEndpoints();
         }
-
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        /// <summary>
+        /// 配置请求管道
+        /// </summary>
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddBucketLog(app, "Bucket.Ocelot");
             app.UseCors("CorsPolicy");

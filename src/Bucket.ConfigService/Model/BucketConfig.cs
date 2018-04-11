@@ -7,6 +7,7 @@ namespace Bucket.ConfigCenter
 {
     public class BucketConfig
     {
+        public string AppName { get; set; }
         public ConcurrentDictionary<string, string> KV { get; set; }
         public long Version { get; set; }
     }

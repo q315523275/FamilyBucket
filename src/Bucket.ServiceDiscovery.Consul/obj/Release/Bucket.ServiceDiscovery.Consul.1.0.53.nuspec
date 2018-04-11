@@ -9,7 +9,7 @@
     <description>Consul服务发现</description>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Bucket.Core" version="1.0.54" exclude="Build,Analyzers" />
+        <dependency id="Bucket.Core" version="1.0.56" exclude="Build,Analyzers" />
         <dependency id="Consul" version="0.7.2.4" exclude="Build,Analyzers" />
         <dependency id="SemanticVersioning" version="1.0.0" exclude="Build,Analyzers" />
       </group>

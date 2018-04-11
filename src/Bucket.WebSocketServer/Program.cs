@@ -21,12 +21,12 @@ namespace Bucket.WebSocketServer
         {
             var config = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
-               .AddCommandLine(args)
                .Build();
 
             return WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .UseConfiguration(config)
+                .UseUrls("http://*:5000")
                 .Build();
         }
     }

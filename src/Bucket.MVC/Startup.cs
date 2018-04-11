@@ -5,26 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Text;
 using SqlSugar;
-using Bucket.AspNetCore;
 using Bucket.AspNetCore.EventBus;
-using Bucket.AspNetCore.ServiceDiscovery;
-using Bucket.AspNetCore.Middleware;
 using Bucket.AspNetCore.Filters;
 using Bucket.DbContext;
 using Newtonsoft.Json.Serialization;
-using Bucket.EventBus.Common.Events;
 using Bucket.Logging;
-using Bucket.Logging.Events;
-using Bucket.Logging.EventHandlers;
-using Bucket.Buried;
-using Bucket.Buried.EventHandler;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using Swashbuckle.AspNetCore.Swagger;
-using Microsoft.Extensions.PlatformAbstractions;
-using System.IO;
-using Bucket.ServiceDiscovery.Consul;
+using Bucket.AspNetCore.Extensions;
 
 namespace Bucket.MVC
 {
@@ -62,12 +48,13 @@ namespace Bucket.MVC
             // 配置中心
             services.AddConfigService(opt =>
             {
-                opt.AppId = "12313";
-                opt.AppSercet = "213123123213";
+                opt.AppId = "PinzhiGO";
+                opt.AppSercet = "R9QaIZTc4WYcPaKFneKu6zKo4F34Vz5R";
                 opt.RedisConnectionString = "";
                 opt.RedisListener = false;
-                opt.RefreshInteval = 30;
-                opt.ServerUrl = "http://localhost:63430";
+                opt.RefreshInteval = 300;
+                opt.ServerUrl = "http://localhost:55523/";
+                opt.NamespaceName = "Application";
                 opt.UseServiceDiscovery = false;
                 opt.ServiceName = "BucketConfigService";
             });
@@ -94,10 +81,10 @@ namespace Bucket.MVC
             //});
             services.AddServiceDiscoveryConsul(Configuration);
             // 错误码中心
-            services.AddErroCodeService(opt =>
+            services.AddErrorCodeService(opt =>
             {
                 opt.RefreshInteval = 300;
-                opt.ServerUrl = "http://127.0.0.1:18080";
+                opt.ServerUrl = "http://122.192.33.40:18080";
             });
             // 使用服务发现的子服务接口请求
             services.AddServiceClient();
@@ -118,13 +105,8 @@ namespace Bucket.MVC
         {
             #region 测试
             // loggerFactory.AddConsole().AddDebug();
-            // 事件总线
-            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
             // 队列日志
-            loggerFactory.AddBucketLog(eventBus);
-            eventBus.Subscribe<PublishLogEvent, PublishLogEventHandler>();
-            // 日志事件订阅
-            eventBus.Subscribe<BuriedEvent, BuriedEventHandler>();
+            loggerFactory.AddBucketLog(app, "Bucket.MVC");
             // 编码格式
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             if (env.IsDevelopment())
@@ -132,13 +114,13 @@ namespace Bucket.MVC
                 app.UseDeveloperExceptionPage();
             }
             // 中间件
-            app.UseErrorHandling();
+            app.UseErrorLog();
             app.UseAuthentication();
 
             app.UseMvc();
             #endregion
 
-            app.UseConsulRegisterService(Configuration);
+            // app.UseConsulRegisterService(Configuration);
         }
     }
 }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "8076e42a7afdd7753166499ad7666036daf27fa6"
+    "signature": "9aece086b1135dbe05e25610b8baf2978040738d"
   },
   "compilationOptions": {
     "defines": [
@@ -23,17 +23,17 @@
     ".NETCoreApp,Version=v2.0": {
       "Bucket.Ocelot/1.0.0": {
         "dependencies": {
-          "App.Metrics": "2.0.0-preview1",
-          "App.Metrics.AspNetCore.Endpoints": "2.0.0-preview1",
-          "App.Metrics.AspNetCore.Reporting": "2.0.0-preview1",
-          "App.Metrics.AspNetCore.Tracking": "2.0.0-preview1",
-          "App.Metrics.Formatters.Json": "2.0.0-preview1",
-          "App.Metrics.Reporting.InfluxDB": "2.0.0-preview1",
-          "Bucket.AspNetCore": "1.0.57",
-          "Bucket.Logging": "1.0.6",
+          "App.Metrics": "2.0.0",
+          "App.Metrics.AspNetCore.Endpoints": "2.0.0",
+          "App.Metrics.AspNetCore.Reporting": "2.0.0",
+          "App.Metrics.AspNetCore.Tracking": "2.0.0",
+          "App.Metrics.Formatters.Json": "2.0.0",
+          "App.Metrics.Reporting.InfluxDB": "2.0.0",
+          "Bucket.AspNetCore": "1.0.62",
+          "Bucket.Logging": "1.0.65",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.NETCore.App": "2.0.0",
-          "Ocelot": "5.0.1"
+          "Ocelot": "5.5.0"
         },
         "runtime": {
           "Bucket.Ocelot.dll": {}
@@ -42,10 +42,10 @@
           "Bucket.Ocelot.dll": {}
         }
       },
-      "App.Metrics/2.0.0-preview1": {
+      "App.Metrics/2.0.0": {
         "dependencies": {
-          "App.Metrics.Core": "2.0.0-preview1",
-          "App.Metrics.Formatters.Json": "2.0.0-preview1",
+          "App.Metrics.Core": "2.0.0",
+          "App.Metrics.Formatters.Json": "2.0.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -55,9 +55,9 @@
           "lib/netstandard1.6/App.Metrics.dll": {}
         }
       },
-      "App.Metrics.Abstractions/2.0.0-preview1": {
+      "App.Metrics.Abstractions/2.0.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.4.1",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -67,9 +67,9 @@
           "lib/netstandard1.1/App.Metrics.Abstractions.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Abstractions/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Abstractions/2.0.0": {
         "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Abstractions": "2.0.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.0.1",
           "Microsoft.AspNetCore.Routing.Abstractions": "2.0.1"
         },
@@ -80,12 +80,12 @@
           "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Core/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Core/2.0.0": {
         "dependencies": {
-          "App.Metrics.AspNetCore.Abstractions": "2.0.0-preview1",
-          "App.Metrics.Core": "2.0.0-preview1",
-          "App.Metrics.Extensions.Configuration": "2.0.0-preview1",
-          "App.Metrics.Extensions.DependencyInjection": "2.0.0-preview1",
+          "App.Metrics.AspNetCore.Abstractions": "2.0.0",
+          "App.Metrics.Core": "2.0.0",
+          "App.Metrics.Extensions.Configuration": "2.0.0",
+          "App.Metrics.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0"
@@ -97,9 +97,9 @@
           "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Endpoints/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Endpoints/2.0.0": {
         "dependencies": {
-          "App.Metrics.AspNetCore.Hosting": "2.0.0-preview1"
+          "App.Metrics.AspNetCore.Hosting": "2.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
@@ -108,9 +108,9 @@
           "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Hosting/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Hosting/2.0.0": {
         "dependencies": {
-          "App.Metrics.AspNetCore.Core": "2.0.0-preview1",
+          "App.Metrics.AspNetCore.Core": "2.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1"
         },
         "runtime": {
@@ -120,9 +120,9 @@
           "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Reporting/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Reporting/2.0.0": {
         "dependencies": {
-          "App.Metrics.AspNetCore.Core": "2.0.0-preview1",
+          "App.Metrics.AspNetCore.Core": "2.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1"
         },
         "runtime": {
@@ -132,9 +132,9 @@
           "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll": {}
         }
       },
-      "App.Metrics.AspNetCore.Tracking/2.0.0-preview1": {
+      "App.Metrics.AspNetCore.Tracking/2.0.0": {
         "dependencies": {
-          "App.Metrics.AspNetCore.Hosting": "2.0.0-preview1"
+          "App.Metrics.AspNetCore.Hosting": "2.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll": {}
@@ -154,11 +154,11 @@
           "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
         }
       },
-      "App.Metrics.Core/2.0.0-preview1": {
+      "App.Metrics.Core/2.0.0": {
         "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Abstractions": "2.0.0",
           "App.Metrics.Concurrency": "2.0.0",
-          "App.Metrics.Formatters.Ascii": "2.0.0-preview1",
+          "App.Metrics.Formatters.Ascii": "2.0.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -168,9 +168,9 @@
           "lib/netstandard1.6/App.Metrics.Core.dll": {}
         }
       },
-      "App.Metrics.Extensions.Configuration/2.0.0-preview1": {
+      "App.Metrics.Extensions.Configuration/2.0.0": {
         "dependencies": {
-          "App.Metrics": "2.0.0-preview1",
+          "App.Metrics": "2.0.0",
           "Microsoft.Extensions.Configuration.Binder": "2.0.0"
         },
         "runtime": {
@@ -180,9 +180,9 @@
           "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll": {}
         }
       },
-      "App.Metrics.Extensions.DependencyInjection/2.0.0-preview1": {
+      "App.Metrics.Extensions.DependencyInjection/2.0.0": {
         "dependencies": {
-          "App.Metrics": "2.0.0-preview1",
+          "App.Metrics": "2.0.0",
           "Microsoft.Extensions.DependencyInjection": "2.0.0"
         },
         "runtime": {
@@ -192,9 +192,9 @@
           "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll": {}
         }
       },
-      "App.Metrics.Formatters.Ascii/2.0.0-preview1": {
+      "App.Metrics.Formatters.Ascii/2.0.0": {
         "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Abstractions": "2.0.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -204,9 +204,9 @@
           "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll": {}
         }
       },
-      "App.Metrics.Formatters.InfluxDB/2.0.0-preview1": {
+      "App.Metrics.Formatters.InfluxDB/2.0.0": {
         "dependencies": {
-          "App.Metrics.Core": "2.0.0-preview1",
+          "App.Metrics.Core": "2.0.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -216,9 +216,9 @@
           "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll": {}
         }
       },
-      "App.Metrics.Formatters.Json/2.0.0-preview1": {
+      "App.Metrics.Formatters.Json/2.0.0": {
         "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0-preview1",
+          "App.Metrics.Abstractions": "2.0.0",
           "NETStandard.Library": "2.0.0",
           "Newtonsoft.Json": "11.0.1"
         },
@@ -229,10 +229,10 @@
           "lib/netstandard1.6/App.Metrics.Formatters.Json.dll": {}
         }
       },
-      "App.Metrics.Reporting.InfluxDB/2.0.0-preview1": {
+      "App.Metrics.Reporting.InfluxDB/2.0.0": {
         "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0-preview1",
-          "App.Metrics.Formatters.InfluxDB": "2.0.0-preview1",
+          "App.Metrics.Abstractions": "2.0.0",
+          "App.Metrics.Formatters.InfluxDB": "2.0.0",
           "NETStandard.Library": "2.0.0"
         },
         "runtime": {
@@ -294,172 +294,6 @@
         },
         "compile": {
           "lib/netstandard1.6/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
-      "Bucket.AspNetCore/1.0.57": {
-        "dependencies": {
-          "Bucket.Buried": "1.0.51",
-          "Bucket.ConfigCenter": "1.0.5",
-          "Bucket.Core": "1.0.54",
-          "Bucket.ErrorCodeStore": "1.0.51",
-          "Bucket.EventBus.AspNetCore": "1.0.0",
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.EventBus.RabbitMQ": "1.0.0",
-          "Bucket.ServiceClient.Http": "1.0.5",
-          "Bucket.ServiceDiscovery.Consul": "1.0.53",
-          "Microsoft.AspNetCore.Authentication": "2.0.1",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
-          "Microsoft.AspNetCore.Mvc": "2.0.2",
-          "Microsoft.IdentityModel.Tokens": "5.2.1",
-          "sqlSugarCore": "4.6.4.6"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
-        }
-      },
-      "Bucket.Buried/1.0.51": {
-        "dependencies": {
-          "Bucket.Core": "1.0.54",
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.Buried.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.Buried.dll": {}
-        }
-      },
-      "Bucket.ConfigCenter/1.0.5": {
-        "dependencies": {
-          "Bucket.Core": "1.0.54",
-          "Bucket.Redis": "1.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
-        }
-      },
-      "Bucket.Core/1.0.54": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Http": "2.0.1",
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.Core.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.Core.dll": {}
-        }
-      },
-      "Bucket.ErrorCodeStore/1.0.51": {
-        "dependencies": {
-          "Bucket.Core": "1.0.54"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
-        }
-      },
-      "Bucket.EventBus.AspNetCore/1.0.0": {
-        "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.AspNetCore": "2.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.EventBus.AspNetCore.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.EventBus.AspNetCore.dll": {}
-        }
-      },
-      "Bucket.EventBus.Common/1.0.0": {
-        "runtime": {
-          "lib/netstandard2.0/Bucket.EventBus.Common.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.EventBus.Common.dll": {}
-        }
-      },
-      "Bucket.EventBus.RabbitMQ/1.0.0": {
-        "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.Extensions.Logging": "2.0.0",
-          "Newtonsoft.Json": "11.0.1",
-          "RabbitMQ.Client": "5.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {}
-        }
-      },
-      "Bucket.Logging/1.0.6": {
-        "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Logging.Events": "1.0.5",
-          "Microsoft.AspNetCore": "2.0.1",
-          "Microsoft.Extensions.Logging": "2.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.Logging.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.Logging.dll": {}
-        }
-      },
-      "Bucket.Logging.Events/1.0.5": {
-        "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.Logging.Events.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.Logging.Events.dll": {}
-        }
-      },
-      "Bucket.Redis/1.0.0": {
-        "dependencies": {
-          "StackExchange.Redis": "1.2.6"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.Redis.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.Redis.dll": {}
-        }
-      },
-      "Bucket.ServiceClient.Http/1.0.5": {
-        "dependencies": {
-          "Bucket.Core": "1.0.54"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.ServiceClient.Http.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.ServiceClient.Http.dll": {}
-        }
-      },
-      "Bucket.ServiceDiscovery.Consul/1.0.53": {
-        "dependencies": {
-          "Bucket.Core": "1.0.54",
-          "Consul": "0.7.2.4",
-          "SemanticVersioning": "1.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
       "Butterfly.Client/0.0.8": {
@@ -1425,7 +1259,7 @@
       },
       "Microsoft.AspNetCore.JsonPatch/2.0.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.4.1",
           "Newtonsoft.Json": "11.0.1"
         },
         "runtime": {
@@ -2091,7 +1925,7 @@
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {}
         }
       },
-      "Microsoft.CSharp/4.4.0": {},
+      "Microsoft.CSharp/4.4.1": {},
       "Microsoft.Data.Edm/5.8.2": {
         "runtime": {
           "lib/netstandard1.1/Microsoft.Data.Edm.dll": {}
@@ -2265,7 +2099,7 @@
       },
       "Microsoft.EntityFrameworkCore.Relational/2.0.1": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.4.1",
           "Microsoft.EntityFrameworkCore": "2.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "2.0.0"
         },
@@ -2971,45 +2805,6 @@
           "ref/netstandard2.0/Microsoft.Win32.Registry.dll": {}
         }
       },
-      "MySql.Data/6.10.4": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Json": "2.0.0",
-          "NETStandard.Library": "2.0.0",
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.ComponentModel": "4.3.0",
-          "System.ComponentModel.Annotations": "4.4.0",
-          "System.ComponentModel.Primitives": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Data.Common": "4.3.0",
-          "System.Data.SqlClient": "4.4.0",
-          "System.Diagnostics.Process": "4.3.0",
-          "System.Diagnostics.TextWriterTraceListener": "4.3.0",
-          "System.IO.Compression": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.IO.MemoryMappedFiles": "4.3.0",
-          "System.IO.Pipes": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.Net.NameResolution": "4.3.0",
-          "System.Net.Security": "4.3.1",
-          "System.Net.Sockets": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Security.Principal.Windows": "4.4.0",
-          "System.Text.Encoding.CodePages": "4.4.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Threading.ThreadPool": "4.3.0",
-          "System.Threading.Timer": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/MySql.Data.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/MySql.Data.dll": {}
-        }
-      },
       "Newtonsoft.Json/11.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -3030,7 +2825,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Ocelot/5.0.1": {
+      "Ocelot/5.5.0": {
         "dependencies": {
           "Butterfly.Client.AspNetCore": "0.0.8",
           "CacheManager.Core": "1.1.1",
@@ -3081,7 +2876,7 @@
           "System.IO": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
-          "System.Net.Security": "4.3.1",
+          "System.Net.Security": "4.3.0",
           "System.Net.Sockets": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
@@ -3382,22 +3177,6 @@
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "sqlSugarCore/4.6.4.6": {
-        "dependencies": {
-          "Microsoft.Data.Sqlite": "2.0.0",
-          "MySql.Data": "6.10.4",
-          "Newtonsoft.Json": "11.0.1",
-          "System.Data.Common": "4.3.0",
-          "System.Data.SqlClient": "4.4.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/SqlSugar.dll": {}
-        },
-        "compile": {
-          "lib/netstandard2.0/SqlSugar.dll": {}
-        }
-      },
       "StackExchange.Redis/1.2.6": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
@@ -3409,7 +3188,7 @@
           "System.IO.FileSystem": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
-          "System.Net.Security": "4.3.1",
+          "System.Net.Security": "4.3.0",
           "System.Net.Sockets": "4.3.0",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -3442,7 +3221,7 @@
           "System.IO.FileSystem": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
-          "System.Net.Security": "4.3.1",
+          "System.Net.Security": "4.3.0",
           "System.Net.Sockets": "4.3.0",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -3519,32 +3298,6 @@
         }
       },
       "System.ComponentModel.Annotations/4.4.0": {},
-      "System.ComponentModel.Primitives/4.3.0": {
-        "dependencies": {
-          "System.ComponentModel": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
-      "System.ComponentModel.TypeConverter/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel": "4.3.0",
-          "System.ComponentModel.Primitives": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Threading": "4.3.0"
-        }
-      },
       "System.Console/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
@@ -3552,18 +3305,6 @@
           "System.IO": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Text.Encoding": "4.3.0"
-        }
-      },
-      "System.Data.Common/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.Data.SqlClient/4.4.0": {
@@ -3626,45 +3367,6 @@
           }
         }
       },
-      "System.Diagnostics.Process/4.3.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "Microsoft.Win32.Primitives": "4.3.0",
-          "Microsoft.Win32.Registry": "4.4.0",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Threading.Thread": "4.3.0",
-          "System.Threading.ThreadPool": "4.3.0",
-          "runtime.native.System": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/linux/lib/_._": {
-            "rid": "linux",
-            "assetType": "runtime"
-          },
-          "runtime/osx/lib/_._": {
-            "rid": "osx",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
       "System.Diagnostics.StackTrace/4.3.0": {
         "dependencies": {
           "System.IO.FileSystem": "4.3.0",
@@ -3673,44 +3375,11 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Diagnostics.TextWriterTraceListener/4.3.0": {
-        "dependencies": {
-          "System.Diagnostics.TraceSource": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
-        }
-      },
       "System.Diagnostics.Tools/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
-        }
-      },
-      "System.Diagnostics.TraceSource/4.3.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "runtime.native.System": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
         }
       },
       "System.Diagnostics.Tracing/4.3.0": {
@@ -3848,79 +3517,6 @@
       "System.IO.FileSystem.Primitives/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
-        }
-      },
-      "System.IO.MemoryMappedFiles/4.3.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.IO.UnmanagedMemoryStream": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "runtime.native.System": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
-      "System.IO.Pipes/4.3.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Buffers": "4.4.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Net.Primitives": "4.3.0",
-          "System.Net.Sockets": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Security.Principal": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Overlapped": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "runtime.native.System": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
-      "System.IO.UnmanagedMemoryStream/4.3.0": {
-        "dependencies": {
-          "System.Buffers": "4.4.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.Linq/4.3.0": {
@@ -4077,7 +3673,7 @@
           "System.Runtime.Handles": "4.3.0"
         }
       },
-      "System.Net.Security/4.3.1": {
+      "System.Net.Security/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0",
           "Microsoft.Win32.Primitives": "4.3.0",
@@ -4297,15 +3893,6 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0"
-        }
-      },
-      "System.Runtime.Serialization.Formatters/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0"
         }
       },
       "System.Runtime.Serialization.Json/4.0.2": {
@@ -4620,9 +4207,6 @@
             "rid": "win",
             "assetType": "runtime"
           }
-        },
-        "compile": {
-          "ref/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
@@ -4650,24 +4234,6 @@
         "dependencies": {
           "System.Runtime": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
-        }
-      },
-      "System.Threading.Overlapped/4.3.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Handles": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
         }
       },
       "System.Threading.Tasks/4.3.0": {
@@ -4817,6 +4383,171 @@
         },
         "compile": {
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
+        }
+      },
+      "Bucket.AspNetCore/1.0.62": {
+        "dependencies": {
+          "Bucket.Buried": "1.0.51",
+          "Bucket.ConfigCenter": "1.0.56",
+          "Bucket.Core": "1.0.56",
+          "Bucket.ErrorCodeStore": "1.0.59",
+          "Bucket.EventBus.AspNetCore": "1.0.0",
+          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus.RabbitMQ": "1.0.0",
+          "Bucket.ServiceClient.Http": "1.0.5",
+          "Bucket.ServiceDiscovery.Consul": "1.0.53",
+          "Microsoft.AspNetCore.Authentication": "2.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
+          "Microsoft.AspNetCore.Mvc": "2.0.2",
+          "Microsoft.IdentityModel.Tokens": "5.2.1"
+        },
+        "runtime": {
+          "Bucket.AspNetCore.dll": {}
+        },
+        "compile": {
+          "Bucket.AspNetCore.dll": {}
+        }
+      },
+      "Bucket.Buried/1.0.51": {
+        "dependencies": {
+          "Bucket.Core": "1.0.56",
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.AspNetCore.Http": "2.0.1"
+        },
+        "runtime": {
+          "Bucket.Buried.dll": {}
+        },
+        "compile": {
+          "Bucket.Buried.dll": {}
+        }
+      },
+      "Bucket.ConfigCenter/1.0.56": {
+        "dependencies": {
+          "Bucket.Core": "1.0.56",
+          "Bucket.Redis": "1.0.0"
+        },
+        "runtime": {
+          "Bucket.ConfigCenter.dll": {}
+        },
+        "compile": {
+          "Bucket.ConfigCenter.dll": {}
+        }
+      },
+      "Bucket.Core/1.0.56": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.0.1",
+          "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
+        },
+        "runtime": {
+          "Bucket.Core.dll": {}
+        },
+        "compile": {
+          "Bucket.Core.dll": {}
+        }
+      },
+      "Bucket.ErrorCodeStore/1.0.59": {
+        "dependencies": {
+          "Bucket.Core": "1.0.56"
+        },
+        "runtime": {
+          "Bucket.ErrorCodeStore.dll": {}
+        },
+        "compile": {
+          "Bucket.ErrorCodeStore.dll": {}
+        }
+      },
+      "Bucket.EventBus.AspNetCore/1.0.0": {
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.AspNetCore": "2.0.1"
+        },
+        "runtime": {
+          "Bucket.EventBus.AspNetCore.dll": {}
+        },
+        "compile": {
+          "Bucket.EventBus.AspNetCore.dll": {}
+        }
+      },
+      "Bucket.EventBus.Common/1.0.0": {
+        "runtime": {
+          "Bucket.EventBus.Common.dll": {}
+        },
+        "compile": {
+          "Bucket.EventBus.Common.dll": {}
+        }
+      },
+      "Bucket.EventBus.RabbitMQ/1.0.0": {
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Microsoft.Extensions.Logging": "2.0.0",
+          "Newtonsoft.Json": "11.0.1",
+          "RabbitMQ.Client": "5.0.1"
+        },
+        "runtime": {
+          "Bucket.EventBus.RabbitMQ.dll": {}
+        },
+        "compile": {
+          "Bucket.EventBus.RabbitMQ.dll": {}
+        }
+      },
+      "Bucket.Logging/1.0.65": {
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.Logging.Events": "1.0.53",
+          "Microsoft.AspNetCore": "2.0.1",
+          "Microsoft.Extensions.Logging": "2.0.0"
+        },
+        "runtime": {
+          "Bucket.Logging.dll": {}
+        },
+        "compile": {
+          "Bucket.Logging.dll": {}
+        }
+      },
+      "Bucket.Logging.Events/1.0.53": {
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0"
+        },
+        "runtime": {
+          "Bucket.Logging.Events.dll": {}
+        },
+        "compile": {
+          "Bucket.Logging.Events.dll": {}
+        }
+      },
+      "Bucket.Redis/1.0.0": {
+        "dependencies": {
+          "StackExchange.Redis": "1.2.6"
+        },
+        "runtime": {
+          "Bucket.Redis.dll": {}
+        },
+        "compile": {
+          "Bucket.Redis.dll": {}
+        }
+      },
+      "Bucket.ServiceClient.Http/1.0.5": {
+        "dependencies": {
+          "Bucket.Core": "1.0.56"
+        },
+        "runtime": {
+          "Bucket.ServiceClient.Http.dll": {}
+        },
+        "compile": {
+          "Bucket.ServiceClient.Http.dll": {}
+        }
+      },
+      "Bucket.ServiceDiscovery.Consul/1.0.53": {
+        "dependencies": {
+          "Bucket.Core": "1.0.56",
+          "Consul": "0.7.2.4",
+          "SemanticVersioning": "1.0.0"
+        },
+        "runtime": {
+          "Bucket.ServiceDiscovery.Consul.dll": {}
+        },
+        "compile": {
+          "Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
       "Microsoft.NETCore.App/2.0.0": {
@@ -5003,61 +4734,61 @@
       "serviceable": false,
       "sha512": ""
     },
-    "App.Metrics/2.0.0-preview1": {
+    "App.Metrics/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zpoiBxv2/ZUy1/2G2XdAWfZRlNHXvMwg1LaANqaad3JFLr9NB+hfthZZXAIqv5kXSIYvaMj//haTXnQnC5bHDA==",
-      "path": "app.metrics/2.0.0-preview1",
-      "hashPath": "app.metrics.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-wndmgk11sQZ2/bHgsF4MiUbS7SJUZ0A3DlhxL282kDVtP5rEduvXO3szBZN/vQ+ULAm9yiDGoiXyDcigjV8ozw==",
+      "path": "app.metrics/2.0.0",
+      "hashPath": "app.metrics.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Abstractions/2.0.0-preview1": {
+    "App.Metrics.Abstractions/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-8UxC/XEdfMyrJjJFfQrrOEeeAW6pk0AzGCnr8343eZK1oc65CNYQsrBs4Z3otOo9UlLQ/gI77U5KJ3sIRAvxhQ==",
-      "path": "app.metrics.abstractions/2.0.0-preview1",
-      "hashPath": "app.metrics.abstractions.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-VU2grNPGZFQY1TSGoGzAOP7i9rRCx3gujxuuo4P6nQ7/36CINyzDd7Uj8J62noRpS6+gAfkIJZNVURYFBgh+bQ==",
+      "path": "app.metrics.abstractions/2.0.0",
+      "hashPath": "app.metrics.abstractions.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Abstractions/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Abstractions/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-niw8KhK4+mnoINoMbt9qBTZcHGT0I0mUgicgMLGVnJzSfJeSRXPZRzYet5zlHBJ4ijyDgELXO2HdUUP6CSSJfg==",
-      "path": "app.metrics.aspnetcore.abstractions/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.abstractions.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-Q+Agya5gOsaHX+XTi58qJKhft4JTAv2L31Z/PSsHEq8GHFzABPacZFmuvYfzK8N/JVrzTjw+/SliihSn/60ALA==",
+      "path": "app.metrics.aspnetcore.abstractions/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.abstractions.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Core/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Core/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-63c5zB5Kc2LwhEhQIdlLTxhNkre/z83/4764oxXXdT9ywtMcoFoYAE0IZsYUawvnQFNA8X/n5+Qv4axV7Rn1Pg==",
-      "path": "app.metrics.aspnetcore.core/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.core.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-ZyMcvU4c9VReBzaQHOjMpSn/5prjUNo5z7RGJGYt71uBHW+cG3tsMkQTRsLUWON1xx8E8Ol3XT06t/4Xy7w48A==",
+      "path": "app.metrics.aspnetcore.core/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.core.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Endpoints/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Endpoints/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9QDKMgRNWQy5onZWbwuIXt9WdIHWe7TvqG2QJOXgylisD3/R09e8jHbHywPWT3b1P7sEnwEiH+6yHFhd4m+0Wg==",
-      "path": "app.metrics.aspnetcore.endpoints/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.endpoints.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-6EElE0NrjEoe8a16H1G0Z7zylPgIUdxBaG8chSc1vDoaV2iunBlGITKMOy14rFb1nOAxgSWdsAUtDbDyCDSVnQ==",
+      "path": "app.metrics.aspnetcore.endpoints/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.endpoints.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Hosting/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Hosting/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vnA9REtjhKrmNVC57by1bjCiaPeeg7kZn/J3jNKPio949tgTBG1AhkeigfKfsevlNxx+u8yjEE6dZenexv6sHw==",
-      "path": "app.metrics.aspnetcore.hosting/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.hosting.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-iGNGQaxtB8RIny4pjEEnLMeDvWt+MU7MSZ9baejKyfaXRGWLYcn9KrFKYrTcetakuphYiIVAzIxn/6JZz2NXtA==",
+      "path": "app.metrics.aspnetcore.hosting/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.hosting.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Reporting/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Reporting/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ujFfn+uq4cYBNr7SIBqnMwmUYIvbPRbQk0eU8M0DP2DRmXNcdnOuNgwKYZtCBKDWces8VmsYhQbZiFhhmwwxcQ==",
-      "path": "app.metrics.aspnetcore.reporting/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.reporting.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-wScACj1EgTD3eiXdZOXlZdiInH3CMdzJgpRnyH34MJLw7wH8ru4hPftNLKn4f2ac6HR9B2/mzD0aoqE0ZWLOfQ==",
+      "path": "app.metrics.aspnetcore.reporting/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.reporting.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.AspNetCore.Tracking/2.0.0-preview1": {
+    "App.Metrics.AspNetCore.Tracking/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-V5/QG04NREllV/XPZ000luCG8OzjBRRqUYVJ44GxsDDmpEMsGKVeDo5zo+w8R0SEVW8FtZPB/NJlUJCAa2XkjQ==",
-      "path": "app.metrics.aspnetcore.tracking/2.0.0-preview1",
-      "hashPath": "app.metrics.aspnetcore.tracking.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-B789nyUG6qPwkcLrClWLG3+ZEoeewwHlFV7GgCFm+2sEmnwwGepbHp2xs/872h4dyMtG/W0tql6be9sOQ0bMGA==",
+      "path": "app.metrics.aspnetcore.tracking/2.0.0",
+      "hashPath": "app.metrics.aspnetcore.tracking.2.0.0.nupkg.sha512"
     },
     "App.Metrics.Concurrency/2.0.0": {
       "type": "package",
@@ -5066,54 +4797,54 @@
       "path": "app.metrics.concurrency/2.0.0",
       "hashPath": "app.metrics.concurrency.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Core/2.0.0-preview1": {
+    "App.Metrics.Core/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OyZp+JLq8TgZxk3XT1GR42hTI6OLG/W1e6SP9bmKi1DUFhF5MMMewe1lNWiSEgKhxN71oB1qXjb3sRZM3Dmv4g==",
-      "path": "app.metrics.core/2.0.0-preview1",
-      "hashPath": "app.metrics.core.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-stw6CpQDNxDSXaK4mS1uVA426Elle15yrbJfrMt81eBgZyoP1RSjUYobPGorp4INmVq1bVdi7qrgL8rwek9x5Q==",
+      "path": "app.metrics.core/2.0.0",
+      "hashPath": "app.metrics.core.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Extensions.Configuration/2.0.0-preview1": {
+    "App.Metrics.Extensions.Configuration/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-o1oW5rnzW19ev1tcQBmU+aLiQJimDiWhsKRbZfYjmUPXiai0kCWJjvB7wlRgMAr8Y+R8fIqTA7FonlU/WCiFFA==",
-      "path": "app.metrics.extensions.configuration/2.0.0-preview1",
-      "hashPath": "app.metrics.extensions.configuration.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-8eZ3+zqoSxolNPjwbbP2iY3BlZMYx0A+2Be+py2j4lOT9sj7gjjpcZnwChjWx0NuE4R3MEZ5L1TiQcsYWtkkQQ==",
+      "path": "app.metrics.extensions.configuration/2.0.0",
+      "hashPath": "app.metrics.extensions.configuration.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Extensions.DependencyInjection/2.0.0-preview1": {
+    "App.Metrics.Extensions.DependencyInjection/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3AhvLvZFqquUwhr0HuMdOVSE1ANz9AvGhKtdRLOtKWmQM5Hq/b+COEbyFnntYDzQk/8Yy8RRJpaEsiIzadRjag==",
-      "path": "app.metrics.extensions.dependencyinjection/2.0.0-preview1",
-      "hashPath": "app.metrics.extensions.dependencyinjection.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-L2LcvgoxLHiRBB51IIsJ9OV7Xep5EuiQLmQNnKX74w69YbhG66hJ/IvdbpBxZS2/4yY8n3un4HYa2m7eCU1Ajg==",
+      "path": "app.metrics.extensions.dependencyinjection/2.0.0",
+      "hashPath": "app.metrics.extensions.dependencyinjection.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Formatters.Ascii/2.0.0-preview1": {
+    "App.Metrics.Formatters.Ascii/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-jYI3hKsCXQPav9sMwKoT/9iFB13+gZ1TxwzAn2mfVKgGwL/n6f57Sy0Wo+9VaT9ZRteHIeMcISiT1LmezaoDrg==",
-      "path": "app.metrics.formatters.ascii/2.0.0-preview1",
-      "hashPath": "app.metrics.formatters.ascii.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-gIibk4+vMFsnP4ZnTEi0lkjt0nC0qSNZjYtoMc2lY4uZjyHZF5wp3KK/7CyJOYc1E8qo5RJcdmT8ODZM5lkvJw==",
+      "path": "app.metrics.formatters.ascii/2.0.0",
+      "hashPath": "app.metrics.formatters.ascii.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Formatters.InfluxDB/2.0.0-preview1": {
+    "App.Metrics.Formatters.InfluxDB/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-a2eYfOZtky4DDCUxlNySQ2IUvOwjEdYuAcr+xep1eEPfnGAZvr1VT6CXhH0QJeJwcemfM51bR4ynQcNQ6GYpOw==",
-      "path": "app.metrics.formatters.influxdb/2.0.0-preview1",
-      "hashPath": "app.metrics.formatters.influxdb.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-nTZCa/PvaBMoieFqeCFvk/dbe/poMrM17yVpr8UNmkYGiVb6/dwZHOSjGtGiJS+/GTcQra0fXqGOpuvb3vpERA==",
+      "path": "app.metrics.formatters.influxdb/2.0.0",
+      "hashPath": "app.metrics.formatters.influxdb.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Formatters.Json/2.0.0-preview1": {
+    "App.Metrics.Formatters.Json/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-L4n+0tNBQvc8/0H5/8EAkBXZrLVy1deerfhI+9+FaPwrb6Ntg4YKWedN0llBRxhmoCbNWu4yOKUIzlPN01SXaA==",
-      "path": "app.metrics.formatters.json/2.0.0-preview1",
-      "hashPath": "app.metrics.formatters.json.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-okISJCWZB4VFrVxRC4hpdCJC2Pf39Kmuc4RkLZP7zVCEfxizHhmvNuQFBoAzF/Z4fxycw2iMdTZt8HlpvTmmLA==",
+      "path": "app.metrics.formatters.json/2.0.0",
+      "hashPath": "app.metrics.formatters.json.2.0.0.nupkg.sha512"
     },
-    "App.Metrics.Reporting.InfluxDB/2.0.0-preview1": {
+    "App.Metrics.Reporting.InfluxDB/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VCOH6U/lRbeF6oSZMjRwYDIkPe4qdyGsPodiOPD5ogaVfg9cGTzUYKtuNINKudcgVaAsEi4yGGzvBQJ0L1IajA==",
-      "path": "app.metrics.reporting.influxdb/2.0.0-preview1",
-      "hashPath": "app.metrics.reporting.influxdb.2.0.0-preview1.nupkg.sha512"
+      "sha512": "sha512-E+1xWjeh3D81IV7b0mfS+8VPHcK1KSs4FJRr3wdfq87LpfiNTTP62DaF7f1t0iZ0pilYiW8ZDbuGkIubeNZn2Q==",
+      "path": "app.metrics.reporting.influxdb/2.0.0",
+      "hashPath": "app.metrics.reporting.influxdb.2.0.0.nupkg.sha512"
     },
     "AspectCore.Abstractions/0.2.4": {
       "type": "package",
@@ -5142,97 +4873,6 @@
       "sha512": "sha512-/GSKXTRuoqtmCER0UycK0uFOOaAyDC/EcU6fdujZDuWoLxlRNs4g5/bGiYh/KkHkX1qymwQhgJXP47eC4rklUA==",
       "path": "aspectcore.extensions.reflection/0.2.4",
       "hashPath": "aspectcore.extensions.reflection.0.2.4.nupkg.sha512"
-    },
-    "Bucket.AspNetCore/1.0.57": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/0DgiDeaYyn6iCMm9zdzNHDHuH53FutlcFKwC9UaNAC1k3g8RYzFeNszT/3kyr5uYHoIgwP8106fq59Gmtj1RQ==",
-      "path": "bucket.aspnetcore/1.0.57",
-      "hashPath": "bucket.aspnetcore.1.0.57.nupkg.sha512"
-    },
-    "Bucket.Buried/1.0.51": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Lir7zNtxVwxGeFpiGeqAsBUsGAszHjRQBw3Ri4pYRL+5Lg0Kggv1b7jU/80GD7dbeEeTdISs3t3xwShUpCPybw==",
-      "path": "bucket.buried/1.0.51",
-      "hashPath": "bucket.buried.1.0.51.nupkg.sha512"
-    },
-    "Bucket.ConfigCenter/1.0.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-l6GPh6CwA4YEh0pUAvT/E0bWK/qUQvY/8v38evNPSjeI37gp2Yn4jvNqS2FuJ/5KHRuoiJDWWVjuUD8FsdUTrA==",
-      "path": "bucket.configcenter/1.0.5",
-      "hashPath": "bucket.configcenter.1.0.5.nupkg.sha512"
-    },
-    "Bucket.Core/1.0.54": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-q7itfOdo+kw94TrNqK8ipokOshnsT/ud8sL0wKjYKlMR5nEbPf6eiVCoLjQ7MpyIt2psPrTYHN2xnEtm/lXEPw==",
-      "path": "bucket.core/1.0.54",
-      "hashPath": "bucket.core.1.0.54.nupkg.sha512"
-    },
-    "Bucket.ErrorCodeStore/1.0.51": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-GwFVYsDb8zLj7X00f6bu3aoYnZI0vW9NzHDkUTcWBwY0scaXFJAU+aXwxdEEwaub8xahkp1imP0AEfTJTEuFTg==",
-      "path": "bucket.errorcodestore/1.0.51",
-      "hashPath": "bucket.errorcodestore.1.0.51.nupkg.sha512"
-    },
-    "Bucket.EventBus.AspNetCore/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zJVuYwgmr4uOQ501rdJsXZFTe7Kx0kfk3sHmvu4hjHFTbIu+QGZQsbFfUVTtin36rVLje1eHLIpq+PMj3cyeJw==",
-      "path": "bucket.eventbus.aspnetcore/1.0.0",
-      "hashPath": "bucket.eventbus.aspnetcore.1.0.0.nupkg.sha512"
-    },
-    "Bucket.EventBus.Common/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xjSnS6WAkovNSlLGKH7cNAornDTqBgDvCxMRpscyv1X1Xxwf/jGYpV27I44RcEflfLgUFIBPBVmKo5fEkRRUBw==",
-      "path": "bucket.eventbus.common/1.0.0",
-      "hashPath": "bucket.eventbus.common.1.0.0.nupkg.sha512"
-    },
-    "Bucket.EventBus.RabbitMQ/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3rDqy0UNdyqQReeP1lRus4dCE2J41POeJ4fxb/LZYCmnf0GS02dj5I9HSoe83NXF5YPuFHELuLHsucycTN44vA==",
-      "path": "bucket.eventbus.rabbitmq/1.0.0",
-      "hashPath": "bucket.eventbus.rabbitmq.1.0.0.nupkg.sha512"
-    },
-    "Bucket.Logging/1.0.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-niIYVYf4Ps1HoUiKWDr46gjcwJNd7XZbRljq0fUp7uyN7NEPqcUwn8S1uLfzdbfE6YXVm4vfRN87l2vRkgq3+g==",
-      "path": "bucket.logging/1.0.6",
-      "hashPath": "bucket.logging.1.0.6.nupkg.sha512"
-    },
-    "Bucket.Logging.Events/1.0.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-WYCWWx7Cga9NcZxFKAV5Pj9QsEHm2M9w6aGErKGIPEEnhBe8yoifqanXPsbIUAF7h9qtYHyR6E1xwTDcuW7CGw==",
-      "path": "bucket.logging.events/1.0.5",
-      "hashPath": "bucket.logging.events.1.0.5.nupkg.sha512"
-    },
-    "Bucket.Redis/1.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Qz3+4+Zw8xCabASJe8/2OD2ehicv//HrisB2K30oPWsJFxCH9y04PQLHUCHPrWJNlk92kNBcAHLEeWJm4ifg8w==",
-      "path": "bucket.redis/1.0.0",
-      "hashPath": "bucket.redis.1.0.0.nupkg.sha512"
-    },
-    "Bucket.ServiceClient.Http/1.0.5": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-NSwUhEWtP1AGkGkHhVN89vp6bshg0bPjljyL2/1U0fiA82KXgqYn4JjfhS+q3kkTQWxl+uHrWSLKnO2G8JDDgg==",
-      "path": "bucket.serviceclient.http/1.0.5",
-      "hashPath": "bucket.serviceclient.http.1.0.5.nupkg.sha512"
-    },
-    "Bucket.ServiceDiscovery.Consul/1.0.53": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-g+AwBtB8vW7+na0wNXK3XQTN/Cl4fwsiB3CGLktDmi8HLExCsrRGN8EB1BUv9RPkSgsCqtveq/Boii6O50ppKA==",
-      "path": "bucket.servicediscovery.consul/1.0.53",
-      "hashPath": "bucket.servicediscovery.consul.1.0.53.nupkg.sha512"
     },
     "Butterfly.Client/0.0.8": {
       "type": "package",
@@ -6080,12 +5720,12 @@
       "hashPath": "microsoft.codeanalysis.razor.2.0.1.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.3.xml"
     },
-    "Microsoft.CSharp/4.4.0": {
+    "Microsoft.CSharp/4.4.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vvVR/B08YVghQ4jHEloxqw2ZWzEGE1AOA5E0DioUM3ujbXz6FD3AfB/0Jl2ohJPd0nXYGwmPe1En6HTsSriq1A==",
-      "path": "microsoft.csharp/4.4.0",
-      "hashPath": "microsoft.csharp.4.4.0.nupkg.sha512"
+      "sha512": "sha512-A5hI3gk6WpcBI0QGZY6/d5CCaYUxJgi7iENn1uYEng+Olo8RfI5ReGVkjXjeu3VR3srLvVYREATXa2M0X7FYJA==",
+      "path": "microsoft.csharp/4.4.1",
+      "hashPath": "microsoft.csharp.4.4.1.nupkg.sha512"
     },
     "Microsoft.Data.Edm/5.8.2": {
       "type": "package",
@@ -6630,13 +6270,6 @@
       "path": "microsoft.win32.registry/4.4.0",
       "hashPath": "microsoft.win32.registry.4.4.0.nupkg.sha512"
     },
-    "MySql.Data/6.10.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Nsoqwptry5ermXvg7HezzPsXphycb+WsZ2ngmX61XRSvuYVHXqTvrHsGq+Jz+fpFpGtvtjS9nz/ju08kOuZuTg==",
-      "path": "mysql.data/6.10.4",
-      "hashPath": "mysql.data.6.10.4.nupkg.sha512"
-    },
     "Newtonsoft.Json/11.0.1": {
       "type": "package",
       "serviceable": true,
@@ -6652,12 +6285,12 @@
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.0-linux-x64.xml;aspnetcore-store-2.0.0-osx-x64.xml;aspnetcore-store-2.0.0-win7-x64.xml;aspnetcore-store-2.0.0-win7-x86.xml"
     },
-    "Ocelot/5.0.1": {
+    "Ocelot/5.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-1Sss5PvXBghPfyJELyCgPAftFqFp3sh+Vvzns9UYopX2SqlCy8yq3Kp/D80R0VXcK6kaqTWLGEpMZ5vzjBfG9w==",
-      "path": "ocelot/5.0.1",
-      "hashPath": "ocelot.5.0.1.nupkg.sha512"
+      "sha512": "sha512-IJy6VmUmXCJ/xVdDavbnPcjKe9KAeZ+fPsAvsbXggEqcrNtpD4p9jIMDHfozwgh5t1k7LkQTY9H7lu6x97nIzQ==",
+      "path": "ocelot/5.5.0",
+      "hashPath": "ocelot.5.5.0.nupkg.sha512"
     },
     "Polly/5.3.1": {
       "type": "package",
@@ -6893,13 +6526,6 @@
       "hashPath": "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.7.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.0-linux-x64.xml;aspnetcore-store-2.0.0-osx-x64.xml;aspnetcore-store-2.0.0-win7-x64.xml;aspnetcore-store-2.0.0-win7-x86.xml"
     },
-    "sqlSugarCore/4.6.4.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-XusVvTLuvTSt01t4CPjPwPYAOKGphG3T7noAQ2oYmdBA4Qg2AHdF9/1pvLJIaOQIL3f6HGwIZFhc1xOuuZzEXg==",
-      "path": "sqlsugarcore/4.6.4.6",
-      "hashPath": "sqlsugarcore.4.6.4.6.nupkg.sha512"
-    },
     "StackExchange.Redis/1.2.6": {
       "type": "package",
       "serviceable": true,
@@ -6978,33 +6604,12 @@
       "path": "system.componentmodel.annotations/4.4.0",
       "hashPath": "system.componentmodel.annotations.4.4.0.nupkg.sha512"
     },
-    "System.ComponentModel.Primitives/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
-      "path": "system.componentmodel.primitives/4.3.0",
-      "hashPath": "system.componentmodel.primitives.4.3.0.nupkg.sha512"
-    },
-    "System.ComponentModel.TypeConverter/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
-      "path": "system.componentmodel.typeconverter/4.3.0",
-      "hashPath": "system.componentmodel.typeconverter.4.3.0.nupkg.sha512"
-    },
     "System.Console/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-DHDrIxiqk1h03m6khKWV2X8p/uvN79rgSqpilL6uzpmSfxfU5ng8VcPtW4qsDsQDHiTv6IPV9TmD5M/vElPNLg==",
       "path": "system.console/4.3.0",
       "hashPath": "system.console.4.3.0.nupkg.sha512"
-    },
-    "System.Data.Common/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
-      "path": "system.data.common/4.3.0",
-      "hashPath": "system.data.common.4.3.0.nupkg.sha512"
     },
     "System.Data.SqlClient/4.4.0": {
       "type": "package",
@@ -7042,13 +6647,6 @@
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "hashPath": "system.diagnostics.fileversioninfo.4.3.0.nupkg.sha512"
     },
-    "System.Diagnostics.Process/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-J0wOX07+QASQblsfxmIMFc9Iq7KTXYL3zs2G/Xc704Ylv3NpuVdo6gij6V3PGiptTxqsK0K7CdXenRvKUnkA2g==",
-      "path": "system.diagnostics.process/4.3.0",
-      "hashPath": "system.diagnostics.process.4.3.0.nupkg.sha512"
-    },
     "System.Diagnostics.StackTrace/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -7056,26 +6654,12 @@
       "path": "system.diagnostics.stacktrace/4.3.0",
       "hashPath": "system.diagnostics.stacktrace.4.3.0.nupkg.sha512"
     },
-    "System.Diagnostics.TextWriterTraceListener/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-F11kHWeiwYjFWto+kr8tt9ULMH0k8MsT1XmdCGPTLYHhWgN+2g7JsIZiXDrxlFGccSNkbjfwQy4xIS38gzUiZA==",
-      "path": "system.diagnostics.textwritertracelistener/4.3.0",
-      "hashPath": "system.diagnostics.textwritertracelistener.4.3.0.nupkg.sha512"
-    },
     "System.Diagnostics.Tools/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-UUvkJfSYJMM6x527dJg2VyWPSRqIVB0Z7dbjHst1zmwTXz5CcXSYJFWRpuigfbO1Lf7yfZiIaEUesfnl/g5EyA==",
       "path": "system.diagnostics.tools/4.3.0",
       "hashPath": "system.diagnostics.tools.4.3.0.nupkg.sha512"
-    },
-    "System.Diagnostics.TraceSource/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-VnYp1NxGx8Ww731y2LJ1vpfb/DKVNKEZ8Jsh5SgQTZREL/YpWRArgh9pI8CDLmgHspZmLL697CaLvH85qQpRiw==",
-      "path": "system.diagnostics.tracesource/4.3.0",
-      "hashPath": "system.diagnostics.tracesource.4.3.0.nupkg.sha512"
     },
     "System.Diagnostics.Tracing/4.3.0": {
       "type": "package",
@@ -7156,27 +6740,6 @@
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
     },
-    "System.IO.MemoryMappedFiles/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mz2JJFxCQLdMzXVOPyVibDKDKFZey66YHgQy8M1/vUCQzMSrbiXhpsyV04vSlBeqQUdM7wTL2WG+X3GZALKsIQ==",
-      "path": "system.io.memorymappedfiles/4.3.0",
-      "hashPath": "system.io.memorymappedfiles.4.3.0.nupkg.sha512"
-    },
-    "System.IO.Pipes/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-wpGJuACA6r8+KRckXoI6ghGTwgPRiICI6T7kgHI/m7S5eMqV/8jH37fzAUhTwIe9RwlH/j1sWwm2Q2zyXwZGHw==",
-      "path": "system.io.pipes/4.3.0",
-      "hashPath": "system.io.pipes.4.3.0.nupkg.sha512"
-    },
-    "System.IO.UnmanagedMemoryStream/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-tS89nK7pw8ebkkEfWujA05+ZReHKzz39W+bcX1okVR0GJCJuzPyfYfQZyiLSrjp121BB5J4uewZQiUTKri2pSQ==",
-      "path": "system.io.unmanagedmemorystream/4.3.0",
-      "hashPath": "system.io.unmanagedmemorystream.4.3.0.nupkg.sha512"
-    },
     "System.Linq/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -7226,12 +6789,12 @@
       "path": "system.net.primitives/4.3.0",
       "hashPath": "system.net.primitives.4.3.0.nupkg.sha512"
     },
-    "System.Net.Security/4.3.1": {
+    "System.Net.Security/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qYnDntmrrHXUAhA+v2Kve8onMjJ2ZryQvx7kjGhW88c0IgA9B+q2M8b3l76HFBeotufDbAJfOvLEP32PS4XIKA==",
-      "path": "system.net.security/4.3.1",
-      "hashPath": "system.net.security.4.3.1.nupkg.sha512"
+      "sha512": "sha512-IgJKNfALqw7JRWp5LMQ5SWHNKvXVz094U6wNE3c1i8bOkMQvgBL+MMQuNt3xl9Qg9iWpj3lFxPZEY6XHmROjMQ==",
+      "path": "system.net.security/4.3.0",
+      "hashPath": "system.net.security.4.3.0.nupkg.sha512"
     },
     "System.Net.Sockets/4.3.0": {
       "type": "package",
@@ -7373,13 +6936,6 @@
       "sha512": "sha512-yMH+MfdzHjy17l2KESnPiF2dwq7T+xLnSJar7slyimAkUh/gTrS9/UQOtv7xarskJ2/XDSNvfLGOBQPjL7PaHQ==",
       "path": "system.runtime.numerics/4.3.0",
       "hashPath": "system.runtime.numerics.4.3.0.nupkg.sha512"
-    },
-    "System.Runtime.Serialization.Formatters/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-KT591AkTNFOTbhZlaeMVvfax3RqhH1EJlcwF50Wm7sfnBLuHiOeZRRKrr1ns3NESkM20KPZ5Ol/ueMq5vg4QoQ==",
-      "path": "system.runtime.serialization.formatters/4.3.0",
-      "hashPath": "system.runtime.serialization.formatters.4.3.0.nupkg.sha512"
     },
     "System.Runtime.Serialization.Json/4.0.2": {
       "type": "package",
@@ -7539,13 +7095,6 @@
       "path": "system.threading/4.3.0",
       "hashPath": "system.threading.4.3.0.nupkg.sha512"
     },
-    "System.Threading.Overlapped/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-m3HQ2dPiX/DSTpf+yJt8B0c+SRvzfqAJKx+QDWi+VLhz8svLT23MVjEOHPF/KiSLeArKU/iHescrbLd3yVgyNg==",
-      "path": "system.threading.overlapped/4.3.0",
-      "hashPath": "system.threading.overlapped.4.3.0.nupkg.sha512"
-    },
     "System.Threading.Tasks/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -7644,6 +7193,71 @@
       "path": "windowsazure.storage/8.1.4",
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512",
       "runtimeStoreManifestName": "aspnetcore-store-2.0.0-linux-x64.xml;aspnetcore-store-2.0.0-osx-x64.xml;aspnetcore-store-2.0.0-win7-x64.xml;aspnetcore-store-2.0.0-win7-x86.xml"
+    },
+    "Bucket.AspNetCore/1.0.62": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.Buried/1.0.51": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.ConfigCenter/1.0.56": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.Core/1.0.56": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.ErrorCodeStore/1.0.59": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.EventBus.AspNetCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.EventBus.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.EventBus.RabbitMQ/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.Logging/1.0.65": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.Logging.Events/1.0.53": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.Redis/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.ServiceClient.Http/1.0.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Bucket.ServiceDiscovery.Consul/1.0.53": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.NETCore.App/2.0.0": {
       "type": "package",

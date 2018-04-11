@@ -172,7 +172,7 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "Bucket.Core/1.0.54": {
+      "Bucket.Core/1.0.56": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -501,7 +501,7 @@
         "version.txt"
       ]
     },
-    "Bucket.Core/1.0.54": {
+    "Bucket.Core/1.0.56": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -509,7 +509,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.0.54",
+      "Bucket.Core >= 1.0.56",
       "NETStandard.Library >= 2.0.0"
     ]
   },
@@ -518,7 +518,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.51",
+    "version": "1.0.60",
     "restoreSettings": {
       "hideWarningsAndErrors": true
     },

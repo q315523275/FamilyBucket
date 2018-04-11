@@ -28,6 +28,8 @@ D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.EventBus.RabbitMQ.dll
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.EventStores.Dapper.dll
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.dll
+D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.EventHandlers.dll
+D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.Events.dll
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Redis.dll
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.ServiceClient.Http.dll
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.ServiceDiscovery.Consul.dll
@@ -38,11 +40,13 @@ D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.EventBus.Common.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.EventBus.RabbitMQ.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.EventStores.Dapper.pdb
+D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.EventHandlers.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Redis.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.ServiceDiscovery.Consul.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Buried.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.ErrorCodeStore.pdb
+D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.Logging.Events.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\bin\Release\netcoreapp2.0\Bucket.ServiceClient.Http.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\obj\Release\netcoreapp2.0\ConsoleApp1.csprojResolveAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Microservice\ConsoleApp1\obj\Release\netcoreapp2.0\ConsoleApp1.csproj.CoreCompileInputs.cache

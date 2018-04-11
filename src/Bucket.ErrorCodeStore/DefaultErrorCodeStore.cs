@@ -14,6 +14,7 @@ namespace Bucket.ErrorCodeStore
         {
             _storeRepository = storeRepository;
             _logger = loggerFactory.CreateLogger<DefaultErrorCodeStore>();
+            Initialize();
         }
         private void Initialize()
         {

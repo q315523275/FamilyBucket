@@ -26,9 +26,9 @@ namespace Bucket.WebSocketManager
                 Data = WebSocketConnectionManager.GetId(socket)
             }).ConfigureAwait(false);
         }
-        public virtual async Task OnConnected(string socketID, WebSocket socket)
+        public virtual async Task OnConnected(string socketId, WebSocket socket)
         {
-            WebSocketConnectionManager.AddSocket(socketID, socket);
+            WebSocketConnectionManager.AddSocket(socketId, socket);
 
             await SendMessageAsync(socket, new Message()
             {
@@ -38,7 +38,9 @@ namespace Bucket.WebSocketManager
         }
         public virtual async Task OnDisconnected(WebSocket socket)
         {
-            await WebSocketConnectionManager.RemoveSocket(WebSocketConnectionManager.GetId(socket)).ConfigureAwait(false);
+            var socketId = WebSocketConnectionManager.GetId(socket);
+            if(!string.IsNullOrWhiteSpace(socketId))
+                await WebSocketConnectionManager.RemoveSocket(socketId).ConfigureAwait(false);
         }
         public async Task SendMessageAsync(WebSocket socket, Message message)
         {
@@ -63,10 +65,9 @@ namespace Bucket.WebSocketManager
         }
         public async Task SendMessageAsync(string socketId, Message message)
         {
-            var result = WebSocketConnectionManager.GetSocketById(socketId);
-            if (result == null)
-                return;
-            await SendMessageAsync(result, message).ConfigureAwait(false);
+            var socket = WebSocketConnectionManager.GetSocketById(socketId);
+            if (socket != null)
+                await SendMessageAsync(socket, message).ConfigureAwait(false);
         }
         public async Task SendMessageToAllAsync(Message message)
         {

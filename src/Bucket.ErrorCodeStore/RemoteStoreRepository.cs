@@ -18,12 +18,12 @@ namespace Bucket.ErrorCodeStore
     public class RemoteStoreRepository
     {
         private ErrorCodeConfig _config;
-        private ErrorCodeConfiguration _errorCodeConfiguration;
+        private ErrorCodeSetting _errorCodeConfiguration;
         private CancellationTokenSource _cancellationTokenSource;
         private ILogger _logger;
         private ManualResetEventSlim _eventSlim;
         private IJsonHelper _jsonHelper;
-        public RemoteStoreRepository(ErrorCodeConfiguration errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
+        public RemoteStoreRepository(ErrorCodeSetting errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
         {
             _logger = loggerFactory.CreateLogger<RemoteStoreRepository>();
             _config = new ErrorCodeConfig();
@@ -84,7 +84,7 @@ namespace Bucket.ErrorCodeStore
         private async Task LoadErrorCodeStore()
         {
             var islocalcache = false;
-            var localcachepath = AppContext.BaseDirectory + "\\temp\\localerrorcode.json";
+            var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localerrorcode.json");
             try
             {
                 var url = AssembleQueryConfigUrl();
@@ -105,6 +105,7 @@ namespace Bucket.ErrorCodeStore
                 }
                 if (islocalcache)
                 {
+                    _logger.LogInformation($"错误码中心配置信息写入本地文件:{localcachepath}");
                     string dir = System.IO.Path.GetDirectoryName(localcachepath);
                     if (!System.IO.Directory.Exists(dir))
                         System.IO.Directory.CreateDirectory(dir);
@@ -125,7 +126,7 @@ namespace Bucket.ErrorCodeStore
         }
         private string AssembleQueryConfigUrl()
         {
-            string url = _errorCodeConfiguration.ServerUrl;
+            string url = _errorCodeConfiguration.ServerUrl.TrimEnd('/');
 
             var uri = $"{url}/ErrorCode/GetList";
             var query = $"source=PZGO";

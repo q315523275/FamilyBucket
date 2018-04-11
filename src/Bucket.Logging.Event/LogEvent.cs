@@ -8,7 +8,7 @@ namespace Bucket.Logging.Events
         public LogEvent()
         {
             this.Id = Guid.NewGuid();
-            this.Timestamp = DateTime.Now;
+            this.Timestamp = DateTime.Now.ToUniversalTime();
         }
 
         public Guid Id { get; }

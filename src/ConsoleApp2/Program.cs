@@ -17,6 +17,8 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.AspNetCore.Http;
+using Bucket.Utility.Helpers;
 
 namespace ConsoleApp2
 {
@@ -27,34 +29,10 @@ namespace ConsoleApp2
         {
             Console.WriteLine("Hello World!");
 
-            //Initialize();
+            Initialize();
 
-            //services.AddEventBus(option => {
-            //    option.UseRabbitMQ(opt =>
-            //    {
-            //        opt.HostName = "192.168.1.199";
-            //        opt.Port = 5672;
-            //        opt.ExchangeName = "BucketEventBus";
-            //        opt.QueueName = "BucketEvents";
-            //    });
-            //});
-            //var eventBus = services.BuildServiceProvider().GetRequiredService<IEventBus>();
-            //// 日志初始化
-            //Func<string, LogLevel, bool> filter = (category, level) => true;
-            //ILoggerFactory loggerFactory = new LoggerFactory();
-            //loggerFactory.AddBucketLog(eventBus);
-            //services.AddSingleton(loggerFactory);
-            //ILogger logger = loggerFactory.CreateLogger<Program>();
-
-            //// 事件订阅
-            //eventBus.Subscribe<PublishLogEvent, PublishLogEventHandler>();
-            //var i = 0;
-            //while (i < 9)
-            //{
-            //    i++;
-            //    logger.LogError(new Exception($"我是错误日志{i.ToString()}"), "1");
-            //}
-
+            Console.WriteLine(Id.ObjectId());
+            Console.WriteLine(Time.GetUnixTimestamp());
             Console.ReadLine();
         }
         private static void Initialize()

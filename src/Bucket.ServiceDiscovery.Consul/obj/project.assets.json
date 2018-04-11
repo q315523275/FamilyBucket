@@ -1444,7 +1444,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "Bucket.Core/1.0.54": {
+      "Bucket.Core/1.0.56": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5083,7 +5083,7 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "Bucket.Core/1.0.54": {
+    "Bucket.Core/1.0.56": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -5091,7 +5091,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.0.54",
+      "Bucket.Core >= 1.0.56",
       "Consul >= 0.7.2.4",
       "NETStandard.Library >= 2.0.0",
       "SemanticVersioning >= 1.0.0"

@@ -31,6 +31,7 @@
     <ProjectReference Include="..\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
     <ProjectReference Include="..\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\Bucket.EventStores.Dapper\Bucket.EventStores.Dapper.csproj" />
+    <ProjectReference Include="..\Bucket.Logging.EventHandlers\Bucket.Logging.EventHandlers.csproj" />
     <ProjectReference Include="..\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\Bucket.Redis\Bucket.Redis.csproj" />
     <ProjectReference Include="..\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />

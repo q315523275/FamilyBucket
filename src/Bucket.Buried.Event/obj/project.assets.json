@@ -185,7 +185,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.54",
+          "Bucket.Core": "1.0.56",
           "Bucket.EventBus.Common": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.0.1"
         },
@@ -196,7 +196,7 @@
           "bin/placeholder/Bucket.Buried.dll": {}
         }
       },
-      "Bucket.Core/1.0.54": {
+      "Bucket.Core/1.0.56": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -568,7 +568,7 @@
       "path": "../Bucket.Buried/Bucket.Buried.csproj",
       "msbuildProject": "../Bucket.Buried/Bucket.Buried.csproj"
     },
-    "Bucket.Core/1.0.54": {
+    "Bucket.Core/1.0.56": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.57</Version>
+    <Version>1.0.65</Version>
     <Description>Bucket.AspNetCore</Description>
   </PropertyGroup>
 
@@ -19,7 +19,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.1" />
-    <PackageReference Include="sqlSugarCore" Version="4.6.4.6" />
   </ItemGroup>
 
   <ItemGroup>
