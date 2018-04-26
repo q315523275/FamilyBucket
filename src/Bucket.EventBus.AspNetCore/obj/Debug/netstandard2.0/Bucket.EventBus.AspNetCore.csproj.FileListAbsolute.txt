@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\n
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.AspNetCore\obj\Debug\netstandard2.0\Bucket.EventBus.AspNetCore.pdb

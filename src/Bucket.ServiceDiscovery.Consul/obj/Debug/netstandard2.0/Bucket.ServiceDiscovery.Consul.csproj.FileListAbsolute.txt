@@ -18,5 +18,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Deb
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.pdb

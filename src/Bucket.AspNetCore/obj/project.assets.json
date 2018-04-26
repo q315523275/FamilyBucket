@@ -356,10 +356,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Abstractions/2.0.1": {
+      "Microsoft.AspNetCore.Http.Abstractions/2.0.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Features": "2.0.1",
+          "Microsoft.AspNetCore.Http.Features": "2.0.2",
           "System.Text.Encodings.Web": "4.4.0"
         },
         "compile": {
@@ -369,12 +369,12 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Extensions/2.0.1": {
+      "Microsoft.AspNetCore.Http.Extensions/2.0.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "2.0.1",
-          "Microsoft.Extensions.FileProviders.Abstractions": "2.0.0",
-          "Microsoft.Net.Http.Headers": "2.0.1",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.0.2",
+          "Microsoft.Extensions.FileProviders.Abstractions": "2.0.1",
+          "Microsoft.Net.Http.Headers": "2.0.2",
           "System.Buffers": "4.4.0"
         },
         "compile": {
@@ -384,7 +384,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Features/2.0.1": {
+      "Microsoft.AspNetCore.Http.Features/2.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0"
@@ -1090,7 +1090,7 @@
           "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/2.0.0": {
+      "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0"
@@ -1363,7 +1363,7 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
-      "Microsoft.Net.Http.Headers/2.0.1": {
+      "Microsoft.Net.Http.Headers/2.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0",
@@ -1424,7 +1424,7 @@
           }
         }
       },
-      "NETStandard.Library/2.0.0": {
+      "NETStandard.Library/2.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -3324,7 +3324,7 @@
           "bin/placeholder/Bucket.EventBus.Common.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.0.0": {
+      "Bucket.EventBus.RabbitMQ/1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3357,7 +3357,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.0.56"
+          "Bucket.Core": "1.0.56",
+          "Bucket.Tracer": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
@@ -3379,6 +3380,20 @@
         },
         "runtime": {
           "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
+        }
+      },
+      "Bucket.Tracer/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Bucket.Core": "1.0.56",
+          "Microsoft.AspNetCore.Http.Extensions": "2.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Bucket.Tracer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bucket.Tracer.dll": {}
         }
       }
     }
@@ -3622,36 +3637,36 @@
         "microsoft.aspnetcore.http.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Abstractions/2.0.1": {
-      "sha512": "i3mGpHEGnMq/x9eDxdWVP4e+VdPD8DuhdVYR4sH0wxWiM6oa0tNAhwDGoOrDop548PSwLM8Qs7DGPvrZqIqjmQ==",
+    "Microsoft.AspNetCore.Http.Abstractions/2.0.2": {
+      "sha512": "yQM9JzPAExsxTqvJBBr3yC+6XyOETi2T/eOOBjrOOnYgQOO+7M7J8VvAW0wQID9zh7QqWO6kh3BGCT/aqvydtg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.abstractions/2.0.1",
+      "path": "microsoft.aspnetcore.http.abstractions/2.0.2",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
-        "microsoft.aspnetcore.http.abstractions.2.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.2.0.2.nupkg.sha512",
         "microsoft.aspnetcore.http.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Extensions/2.0.1": {
-      "sha512": "iG6FtbPQI3AOb3LskrY23AUiaZUGSfXWxMf1cJh9lB/h309qiMTPM6Du4stGwwSvw3yR2EKNaV+O4aZWmuvfog==",
+    "Microsoft.AspNetCore.Http.Extensions/2.0.2": {
+      "sha512": "z9uJ6w3BnhjWZZW+i5rVCqKIVLmngLP1AutfOJXJKtXKjAOBqWSTBgySGROqzWkPuDXot1dHVP7NAMnhtloIiQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.extensions/2.0.1",
+      "path": "microsoft.aspnetcore.http.extensions/2.0.2",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.xml",
-        "microsoft.aspnetcore.http.extensions.2.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.extensions.2.0.2.nupkg.sha512",
         "microsoft.aspnetcore.http.extensions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Features/2.0.1": {
-      "sha512": "J9JvFF7gC2SDJTV/4XWXQaKX4zdjR2ixlGy/KUD7Og+dkeHleD7f8+wtRUthuQV1yCU3t/gz/IrmbpmQj+Tlzg==",
+    "Microsoft.AspNetCore.Http.Features/2.0.2": {
+      "sha512": "1U5fPSOtIq+cPuqJTjN+EFN3dWn4ptSjybd8minSbyhy0oXr8ujYla86kb9kM3rddUBgrGCyTp/hf0/tMZab+g==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.features/2.0.1",
+      "path": "microsoft.aspnetcore.http.features/2.0.2",
       "files": [
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
-        "microsoft.aspnetcore.http.features.2.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.2.0.2.nupkg.sha512",
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
@@ -4253,14 +4268,14 @@
         "microsoft.extensions.dependencymodel.nuspec"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/2.0.0": {
-      "sha512": "Z0AK+hmLO33WAXQ5P1uPzhH7z5yjDHX/XnUefXxE//SyvCb9x4cVjND24dT5566t/yzGp8/WLD7EG9KQKZZklQ==",
+    "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
+      "sha512": "Gzc5yXvwIrKpdti0Ev4jC0inVrGZpI86eLZorMVRqAPXowR8JDRbcHjhmID2EqA4rdhL/IsfD42+4upKpHULDw==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/2.0.0",
+      "path": "microsoft.extensions.fileproviders.abstractions/2.0.1",
       "files": [
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.2.0.1.nupkg.sha512",
         "microsoft.extensions.fileproviders.abstractions.nuspec"
       ]
     },
@@ -4500,14 +4515,14 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.Net.Http.Headers/2.0.1": {
-      "sha512": "A61ddihPbPy9764AtCysy73oj/PA/9hsv21mXLX5QJYp9lkeyygTufTSGUmh9hz/SiZKy5GBreSlgD2Tm2ab9w==",
+    "Microsoft.Net.Http.Headers/2.0.2": {
+      "sha512": "hNhJU+Sd7Ws/yrBnakUWKWMyGiDUJE5lTkJfWe5xPL8YGTiL6Es07H9CcTyaYYwVlgW06uDVN0YhhH+t4EjdCw==",
       "type": "package",
-      "path": "microsoft.net.http.headers/2.0.1",
+      "path": "microsoft.net.http.headers/2.0.2",
       "files": [
         "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
         "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
-        "microsoft.net.http.headers.2.0.1.nupkg.sha512",
+        "microsoft.net.http.headers.2.0.2.nupkg.sha512",
         "microsoft.net.http.headers.nuspec"
       ]
     },
@@ -4611,10 +4626,10 @@
         "version.txt"
       ]
     },
-    "NETStandard.Library/2.0.0": {
-      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+    "NETStandard.Library/2.0.1": {
+      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
       "type": "package",
-      "path": "netstandard.library/2.0.0",
+      "path": "netstandard.library/2.0.1",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -4735,7 +4750,7 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.0.nupkg.sha512",
+        "netstandard.library.2.0.1.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     },
@@ -9211,7 +9226,7 @@
       "path": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj",
       "msbuildProject": "../Bucket.EventBus.Common/Bucket.EventBus.Common.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.0.0": {
+    "Bucket.EventBus.RabbitMQ/1.0.2": {
       "type": "project",
       "path": "../Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
@@ -9230,6 +9245,11 @@
       "type": "project",
       "path": "../Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
       "msbuildProject": "../Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
+    },
+    "Bucket.Tracer/1.0.0": {
+      "type": "project",
+      "path": "../Bucket.Tracer/Bucket.Tracer.csproj",
+      "msbuildProject": "../Bucket.Tracer/Bucket.Tracer.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9240,14 +9260,15 @@
       "Bucket.ErrorCodeStore >= 1.0.60",
       "Bucket.EventBus.AspNetCore >= 1.0.0",
       "Bucket.EventBus.Common >= 1.0.0",
-      "Bucket.EventBus.RabbitMQ >= 1.0.0",
+      "Bucket.EventBus.RabbitMQ >= 1.0.2",
       "Bucket.ServiceClient.Http >= 1.0.5",
       "Bucket.ServiceDiscovery.Consul >= 1.0.53",
+      "Bucket.Tracer >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 2.0.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.0.1",
       "Microsoft.AspNetCore.Mvc >= 2.0.2",
       "Microsoft.IdentityModel.Tokens >= 5.2.1",
-      "NETStandard.Library >= 2.0.0"
+      "NETStandard.Library >= 2.0.1"
     ]
   },
   "packageFolders": {
@@ -9256,9 +9277,6 @@
   },
   "project": {
     "version": "1.0.65",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "projectName": "Bucket.AspNetCore",
@@ -9284,32 +9302,35 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
-            },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Buried\\Bucket.Buried.csproj"
             },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
-            },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
-            },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
-            },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
             },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj"
             },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.AspNetCore\\Bucket.EventBus.AspNetCore.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
+            },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer\\Bucket.Tracer.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer\\Bucket.Tracer.csproj"
             }
           }
         }
@@ -9323,27 +9344,27 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer": {
+            "target": "Package",
+            "version": "[2.0.1, )"
+          },
+          "Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "5.2.1"
+            "version": "[5.2.1, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.1, )",
             "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.Authentication.JwtBearer": {
-            "target": "Package",
-            "version": "2.0.1"
-          },
-          "Microsoft.AspNetCore.Mvc": {
-            "target": "Package",
-            "version": "2.0.2"
-          },
-          "Microsoft.AspNetCore.Authentication": {
-            "target": "Package",
-            "version": "2.0.1"
           }
         },
         "imports": [

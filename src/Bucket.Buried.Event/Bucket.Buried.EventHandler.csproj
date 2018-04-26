@@ -5,11 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="NEST" Version="5.6.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bucket.Buried\Bucket.Buried.csproj" />
+    <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
     <ProjectReference Include="..\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
   </ItemGroup>
 

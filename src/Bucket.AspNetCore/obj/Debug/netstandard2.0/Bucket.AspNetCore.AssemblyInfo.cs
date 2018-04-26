@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.AspNetCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Bucket.AspNetCore")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.62.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.62")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.65.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.65")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.AspNetCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.AspNetCore")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.62.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.65.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

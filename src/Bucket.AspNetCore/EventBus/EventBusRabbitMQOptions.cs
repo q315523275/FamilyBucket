@@ -30,5 +30,6 @@ namespace Bucket.AspNetCore.EventBus
         public string VirtualHost { get; set; } = DefaultVHost;
         public string ExchangeName { set; get; }
         public string QueueName { set; get; }
+        public bool OnlyPublish { set; get; } = true;
     }
 }

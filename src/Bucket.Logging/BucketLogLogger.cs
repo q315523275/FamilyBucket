@@ -1,6 +1,7 @@
 ﻿using Bucket.EventBus.Common.Events;
 using Bucket.Logging.Events;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -79,13 +80,7 @@ namespace Bucket.Logging
                     var ip = string.Empty;
                     if (_httpContextAccessor != null && _httpContextAccessor.HttpContext != null) {
                         ip = GetServerIp(_httpContextAccessor.HttpContext);
-                        url = new StringBuilder().Append(_httpContextAccessor.HttpContext.Request.Scheme)
-                                                 .Append("://")
-                                                 .Append(_httpContextAccessor.HttpContext.Request.Host)
-                                                 .Append(_httpContextAccessor.HttpContext.Request.PathBase)
-                                                 .Append(_httpContextAccessor.HttpContext.Request.Path)
-                                                 .Append(_httpContextAccessor.HttpContext.Request.QueryString)
-                                                 .ToString();
+                        url = _httpContextAccessor.HttpContext?.Request?.GetDisplayUrl();
                     }
                     if(message.Length > 5120)
                     {

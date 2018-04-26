@@ -9,5 +9,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Buried\obj\Debug\netstandard2.0\Bucket.Buried.pdb

@@ -22,5 +22,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstan
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigCenter.pdb

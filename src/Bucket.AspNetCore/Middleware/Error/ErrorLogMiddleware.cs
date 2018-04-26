@@ -1,8 +1,11 @@
 ﻿using Bucket.Buried;
+using Bucket.Core;
 using Bucket.ErrorCode;
 using Bucket.Exceptions;
+using Bucket.Tracer;
 using Bucket.Values;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -17,18 +20,25 @@ namespace Bucket.AspNetCore.Middleware.Error
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
         private readonly IErrorCodeStore _errorCodeStore;
-        private readonly IBuriedContext _buriedContext;
-        public ErrorLogMiddleware(RequestDelegate next, ILoggerFactory loggerFactory, IErrorCodeStore errorCodeStore, IBuriedContext buriedContext)
+        private readonly IRequestScopedDataRepository _requestScopedDataRepository;
+        private readonly IJsonHelper _jsonHelper;
+        public ErrorLogMiddleware(RequestDelegate next, 
+            ILoggerFactory loggerFactory, 
+            IErrorCodeStore errorCodeStore, 
+            IRequestScopedDataRepository requestScopedDataRepository, 
+            IJsonHelper jsonHelper)
         {
             _next = next;
             _logger = loggerFactory.CreateLogger<ErrorLogMiddleware>();
             _errorCodeStore = errorCodeStore;
-            _buriedContext = buriedContext;
+            _requestScopedDataRepository = requestScopedDataRepository;
+            _jsonHelper = jsonHelper;
         }
 
         public async Task Invoke(HttpContext context)
         {
             ErrorResult errorInfo = null;
+            var isException = false;
             try
             {
                 await _next(context);
@@ -43,47 +53,22 @@ namespace Bucket.AspNetCore.Middleware.Error
             catch (Exception ex)
             {
                 errorInfo = new ErrorResult("-1", "系统开小差了,请稍后再试");
-                _logger.LogError(ex, $"全局异常捕获,状态码：{ context.Response.StatusCode}");
+                isException = true;
+                _logger.LogError(ex, $"全局异常捕获,状态码：{ context?.Response?.StatusCode}，Url{context?.Request?.GetDisplayUrl()}");
             }
             finally
             {
                 if (errorInfo != null)
                 {
                     var Message = JsonConvert.SerializeObject(errorInfo);
-                    var inputParam = string.Empty;
-                    var HttpUrl = new StringBuilder().Append(context.Request.Scheme)
-                                      .Append("://")
-                                      .Append(context.Request.Host)
-                                      .Append(context.Request.PathBase)
-                                      .Append(context.Request.Path)
-                                      .Append(context.Request.QueryString)
-                                      .ToString();
-                    if (context.Request.Method.ToLower() == HttpMethod.Post.ToString().ToLower())
+                    var trace = _requestScopedDataRepository.Get<TraceLogs>(TracerKeys.TraceStoreCacheKey);
+                    if (trace != null)
                     {
-                        using (var ms = new MemoryStream())
-                        {
-                            try { context.Request.Body.Position = 0; } catch (Exception ex) { }
-                            context.Request.Body.CopyTo(ms);
-                            ms.Position = 0;
-                            var myByteArray = ms.ToArray();
-                            inputParam = Encoding.UTF8.GetString(myByteArray);
-                        }
+                        trace.Response = Message;
+                        trace.IsException = isException;
+                        trace.Code = errorInfo.ErrorCode;
+                        _requestScopedDataRepository.Add(TracerKeys.TraceStoreCacheKey, trace);
                     }
-                    else if (context.Request.Method.ToLower() == HttpMethod.Get.ToString().ToLower())
-                    {
-                        inputParam = context.Request.QueryString.Value;
-                    }
-                    await _buriedContext.PublishAsync(new BuriedInformationInput
-                    {
-                        FuncName = context.Request.Path,
-                        ApiType = 1,
-                        ApiUri = HttpUrl,
-                        BussinessSuccess = 0,
-                        CalledResult = errorInfo.ErrorCode == "-1" ? -1 : 0,
-                        InputParams = inputParam,
-                        OutputParams = Message,
-                        ErrorCode = errorInfo.ErrorCode
-                    });
                     await HandleExceptionAsync(context, Message);
                 }
             }

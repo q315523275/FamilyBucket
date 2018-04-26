@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\ne
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.Dapper\obj\Debug\netstandard2.0\Bucket.EventStores.Dapper.pdb

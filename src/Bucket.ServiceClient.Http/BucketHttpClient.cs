@@ -1,7 +1,4 @@
-﻿using Bucket.Buried;
-using Bucket.Core;
-using Bucket.LoadBalancer;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,21 +8,35 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 
+
+using Bucket.Core;
+using Bucket.Tracer;
+using Bucket.LoadBalancer;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+
 namespace Bucket.ServiceClient.Http
 {
     public class BucketHttpClient: IServiceClient
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ILoadBalancerHouse _loadBalancerHouse;
-        private readonly ILogger _logger;
-        private readonly IBuriedContext _buriedContext;
         private readonly IJsonHelper _jsonHelper;
+        private readonly ILogger _logger;
+        private readonly ITracerHandler _tracer;
         private readonly HttpClient _httpClient;
-        public BucketHttpClient(ILoadBalancerHouse loadBalancerHouse, ILoggerFactory loggerFactory, IBuriedContext buriedContext, IJsonHelper jsonHelper)
+        public BucketHttpClient(ILoadBalancerHouse loadBalancerHouse, 
+            ILoggerFactory loggerFactory, 
+            ITracerHandler tracer, 
+            IJsonHelper jsonHelper, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _logger = loggerFactory.CreateLogger<BucketHttpClient>();
-            _loadBalancerHouse = loadBalancerHouse;
-            _buriedContext = buriedContext;
+            _tracer = tracer;
             _jsonHelper = jsonHelper;
+            _loadBalancerHouse = loadBalancerHouse;
+            _httpContextAccessor = httpContextAccessor;
+
             _httpClient = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.GZip })
             {
                 Timeout = TimeSpan.FromSeconds(30)
@@ -48,7 +59,7 @@ namespace Bucket.ServiceClient.Http
             string scheme = "http",
             Dictionary<string, string> customHeaders = null, 
             string MediaType = "application/json",
-            bool isBuried = false)
+            bool isTrace = false)
         {
             #region 负载寻址
             var _load = _loadBalancerHouse.Get(serviceName).GetAwaiter().GetResult();
@@ -57,29 +68,35 @@ namespace Bucket.ServiceClient.Http
             var HostAndPort = _load.Lease().GetAwaiter().GetResult();
             if (HostAndPort == null)
                 throw new ArgumentNullException(nameof(HostAndPort));
-            string baseAddress = $"{scheme}://{HostAndPort.ToString()}";
-            webApiPath = webApiPath.StartsWith("/") ? webApiPath : "/" + webApiPath;
+            string baseAddress = $"{scheme}://{HostAndPort.ToString()}/";
+            webApiPath = webApiPath.TrimStart('/');
             #endregion
 
             #region 下游请求头处理
-            // 请求头下发，埋点请求头
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-            var downStreamHeaders = _buriedContext.DownStreamHeaders();
-            // 合并键值
-            customHeaders = customHeaders.Concat(downStreamHeaders).ToDictionary(k => k.Key, v => v.Value);
+            if (isTrace)
+            {
+                // 请求头下发，埋点请求头
+                if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+                var downStreamHeaders = _tracer.DownTraceHeaders(_httpContextAccessor.HttpContext);
+                // 合并键值
+                customHeaders = customHeaders.Concat(downStreamHeaders).ToDictionary(k => k.Key, v => v.Value);
+            }
             #endregion
 
             #region 请求埋点
-            if (isBuried) // 埋点
+            var traceLog = new TraceLogs()
             {
-                _buriedContext.PublishAsync(new
+                ApiUri = $"{baseAddress}{webApiPath}",
+                ContextType = MediaType,
+                StartTime = DateTime.Now,
+            };
+            if (isTrace)
+            {
+                _tracer.AddHeadersToTracer<TraceLogs>(_httpContextAccessor.HttpContext, traceLog);
+                if (customHeaders.TryGetValue(TracerKeys.TraceSeq, out string value))
                 {
-                    ApiType = 1,
-                    ApiUri = string.Concat(baseAddress, "/", webApiPath),
-                    BussinessSuccess = 0,
-                    CalledResult = 0,
-                    InputParams = webApiPath
-                }).GetAwaiter();
+                    traceLog.ParentSeq = value;
+                }
             }
             #endregion
 
@@ -99,31 +116,53 @@ namespace Bucket.ServiceClient.Http
                 }
             }
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaType));
-            var httpResponseMessage = _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead).GetAwaiter().GetResult();
-            if (httpResponseMessage.StatusCode == HttpStatusCode.OK || httpResponseMessage.StatusCode == HttpStatusCode.NotModified)
+            traceLog.Request = request.RequestUri.Query;
+            try
             {
-                var content = httpResponseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-                #region 请求埋点
-                if (isBuried) // 埋点
+                var httpResponseMessage = _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead).GetAwaiter().GetResult();
+                if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    _buriedContext.PublishAsync(new
+                    traceLog.IsSuccess = true;
+                    traceLog.IsException = false;
+                    if (typeof(T) == typeof(byte[]))
                     {
-                        ApiType = 1,
-                        ApiUri = string.Concat(baseAddress, "/", webApiPath),
-                        BussinessSuccess = 0,
-                        CalledResult = 0,
-                        InputParams = webApiPath,
-                        OutputParams = content,
-                    }).GetAwaiter();
+                        return (T)Convert.ChangeType(httpResponseMessage.Content.ReadAsByteArrayAsync().Result, typeof(T));
+                    }
+                    if (typeof(T) == typeof(Stream))
+                    {
+                        return (T)Convert.ChangeType(httpResponseMessage.Content.ReadAsStreamAsync().Result, typeof(T)); ;
+                    }
+                    if (typeof(T) == typeof(String))
+                    {
+                        var result = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                        traceLog.Response = result;
+                        return (T)Convert.ChangeType(result, typeof(T));
+                    }
+                    else
+                    {
+                        var result = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                        traceLog.Response = result;
+                        return _jsonHelper.DeserializeObject<T>(result);
+                    }
                 }
-                #endregion
-
-                return _jsonHelper.DeserializeObject<T>(content);
+            }
+            catch(Exception ex)
+            {
+                traceLog.IsException = true;
+                _logger.LogError(ex, $"服务{serviceName},路径{webApiPath}接口请求异常");
+            }
+            finally
+            {
+                if (isTrace)
+                {
+                    traceLog.EndTime = DateTime.Now;
+                    traceLog.TimeLength = Math.Round((traceLog.EndTime - traceLog.StartTime).TotalMilliseconds, 4);
+                    _tracer.PublishAsync<TraceLogs>(traceLog).GetAwaiter();
+                }
             }
             #endregion
 
-            throw new Exception($"服务{serviceName},路径{webApiPath}请求出错");
+            throw new Exception($"服务{serviceName},路径{webApiPath}接口请求异常");
         }
         /// <summary>
         /// post请求
@@ -143,25 +182,28 @@ namespace Bucket.ServiceClient.Http
             Dictionary<string, string> customHeaders = null, 
             string MediaType = "application/json", 
             Encoding encoder = null,
-            bool isBuried = false) where T : class
+            bool isTrace = false) where T : class
         {
             #region 负载寻址
             var _load = _loadBalancerHouse.Get(serviceName).GetAwaiter().GetResult();
-            if(_load == null)
+            if (_load == null)
                 throw new ArgumentNullException(nameof(_load));
             var HostAndPort = _load.Lease().GetAwaiter().GetResult();
             if (HostAndPort == null)
                 throw new ArgumentNullException(nameof(HostAndPort));
-            string baseAddress = $"{scheme}://{HostAndPort.ToString()}";
-            webApiPath = webApiPath.StartsWith("/") ? webApiPath : "/" + webApiPath;
+            string baseAddress = $"{scheme}://{HostAndPort.ToString()}/";
+            webApiPath = webApiPath.TrimStart('/');
             #endregion
 
             #region 下游请求头处理
-            // 请求头下发
-            if (customHeaders == null) customHeaders = new Dictionary<string, string>();
-            var downStreamHeaders = _buriedContext.DownStreamHeaders();
-            // 合并键值
-            customHeaders = customHeaders.Concat(downStreamHeaders).ToDictionary(k => k.Key, v => v.Value);
+            if (isTrace)
+            {
+                // 请求头下发，埋点请求头
+                if (customHeaders == null) customHeaders = new Dictionary<string, string>();
+                var downStreamHeaders = _tracer.DownTraceHeaders(_httpContextAccessor.HttpContext);
+                // 合并键值
+                customHeaders = customHeaders.Concat(downStreamHeaders).ToDictionary(k => k.Key, v => v.Value);
+            }
             #endregion
 
             #region http请求参数
@@ -180,15 +222,20 @@ namespace Bucket.ServiceClient.Http
             #endregion
 
             #region 请求埋点
-            if(isBuried) // 埋点
+            var traceLog = new TraceLogs()
             {
-                _buriedContext.PublishAsync(new {
-                    ApiType = 1,
-                    ApiUri = string.Concat(baseAddress, "/", webApiPath),
-                    BussinessSuccess = 0,
-                    CalledResult = 0,
-                    InputParams = body
-                }).GetAwaiter();
+                ApiUri = $"{baseAddress}{webApiPath}",
+                ContextType = MediaType,
+                StartTime = DateTime.Now,
+            };
+            if (isTrace)
+            {
+                _tracer.AddHeadersToTracer<TraceLogs>(_httpContextAccessor.HttpContext, traceLog);
+                if (customHeaders.TryGetValue(TracerKeys.TraceSeq, out string value))
+                {
+                    traceLog.ParentSeq = value;
+                    traceLog.Request = body;
+                }
             }
             #endregion
 
@@ -209,31 +256,52 @@ namespace Bucket.ServiceClient.Http
                 }
             }
             request.Content = new StringContent(body, encoder ?? Encoding.UTF8, MediaType);
-            var httpResponseMessage = _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead).GetAwaiter().GetResult();
-            if (httpResponseMessage.StatusCode == HttpStatusCode.OK || httpResponseMessage.StatusCode == HttpStatusCode.NotModified)
+            try
             {
-                var content = httpResponseMessage.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-                #region 请求埋点
-                if (isBuried) // 埋点
+                var httpResponseMessage = _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead).GetAwaiter().GetResult();
+                if (httpResponseMessage.StatusCode == HttpStatusCode.OK || httpResponseMessage.StatusCode == HttpStatusCode.NotModified)
                 {
-                    _buriedContext.PublishAsync(new
+                    traceLog.IsSuccess = true;
+                    traceLog.IsException = false;
+                    if (typeof(T) == typeof(byte[]))
                     {
-                        ApiType = 1,
-                        ApiUri = string.Concat(baseAddress, "/", webApiPath),
-                        BussinessSuccess = 0,
-                        CalledResult = 0,
-                        InputParams = webApiPath,
-                        OutputParams = content,
-                    }).GetAwaiter();
+                        return (T)Convert.ChangeType(httpResponseMessage.Content.ReadAsByteArrayAsync().Result, typeof(T));
+                    }
+                    if (typeof(T) == typeof(Stream))
+                    {
+                        return (T)Convert.ChangeType(httpResponseMessage.Content.ReadAsStreamAsync().Result, typeof(T)); ;
+                    }
+                    if (typeof(T) == typeof(String))
+                    {
+                        var result = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                        traceLog.Response = result;
+                        return (T)Convert.ChangeType(result, typeof(T));
+                    }
+                    else
+                    {
+                        var result = httpResponseMessage.Content.ReadAsStringAsync().Result;
+                        traceLog.Response = result;
+                        return _jsonHelper.DeserializeObject<T>(result);
+                    }
                 }
-                #endregion
-
-                return _jsonHelper.DeserializeObject<T>(content);
+            }
+            catch (Exception ex)
+            {
+                traceLog.IsException = true;
+                _logger.LogError(ex, $"服务{serviceName},路径{webApiPath}接口请求异常");
+            }
+            finally
+            {
+                if (isTrace)
+                {
+                    traceLog.EndTime = DateTime.Now;
+                    traceLog.TimeLength = Math.Round((traceLog.EndTime - traceLog.StartTime).TotalMilliseconds, 4);
+                    _tracer.PublishAsync<TraceLogs>(traceLog).GetAwaiter();
+                }
             }
             #endregion
 
-            throw new Exception($"服务{serviceName},路径{webApiPath}请求出错");
+            throw new Exception($"服务{serviceName},路径{webApiPath}接口请求异常");
         }
     }
 }

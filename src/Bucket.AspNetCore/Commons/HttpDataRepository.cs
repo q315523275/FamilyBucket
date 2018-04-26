@@ -33,5 +33,18 @@ namespace Bucket.AspNetCore.Commons
             }
             return default;
         }
+
+        public bool Update<T>(string key, T value)
+        {
+            try
+            {
+                _httpContextAccessor.HttpContext.Items[key] = value;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace Bucket.Buried
 
         public Guid Id { get; }
         public DateTime Timestamp { get; }
-        public BuriedInformation buriedInformation { get; }
+        public BuriedInformation buriedInformation { get; set; }
     }
 }

@@ -36,7 +36,8 @@ namespace Bucket.AspNetCore.EventBus
                 sp.GetRequiredService<ILogger<RabbitMQEventBus>>(),
                 sp.GetRequiredService<IEventHandlerExecutionContext>(),
                 config.ExchangeName,
-                queueName: config.QueueName));
+                queueName: config.QueueName,
+                onlyPublish: config.OnlyPublish));
         }
     }
 }

@@ -21,14 +21,14 @@ namespace Bucket.ServiceClient
         /// <param name="MediaType"></param>
         /// <param name="encoder"></param>
         /// <param name="scheme"></param>
-        /// <param name="isBuried"></param>
+        /// <param name="isTrace"></param>
         /// <returns></returns>
         T PostWebApi<T>(string serviceName, string webApiPath, Object obj,
                                             string scheme = "http",
                                             Dictionary<string, string> customHeaders = null, 
                                             string MediaType = "application/json", 
                                             Encoding encoder = null,
-                                            bool isBuried = false) where T : class;
+                                            bool isTrace = false) where T : class;
         /// <summary>
         /// Api Get请求
         /// </summary>
@@ -38,12 +38,12 @@ namespace Bucket.ServiceClient
         /// <param name="customHeaders"></param>
         /// <param name="MediaType"></param>
         /// <param name="scheme"></param>
-        /// <param name="isBuried"></param>
+        /// <param name="isTrace"></param>
         /// <returns></returns>
         T GetWebApi<T>(string serviceName, string webApiPath,
                                            string scheme = "http",
                                            Dictionary<string, string> customHeaders = null, 
                                            string MediaType = "application/json",
-                                           bool isBuried = false);
+                                           bool isTrace = false);
     }
 }

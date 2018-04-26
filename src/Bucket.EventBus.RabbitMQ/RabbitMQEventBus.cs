@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,6 +21,7 @@ namespace Bucket.EventBus.RabbitMQ
         private readonly string exchangeType;
         private readonly string queueName;
         private readonly bool autoAck;
+        private readonly bool onlyPublish;
         private readonly ILogger logger;
         private bool disposed;
 
@@ -28,7 +31,8 @@ namespace Bucket.EventBus.RabbitMQ
             string exchangeName,
             string exchangeType = ExchangeType.Fanout,
             string queueName = null,
-            bool autoAck = false)
+            bool autoAck = false,
+            bool onlyPublish = false)
             : base(context)
         {
             this.connectionFactory = connectionFactory;
@@ -38,14 +42,18 @@ namespace Bucket.EventBus.RabbitMQ
             this.exchangeType = exchangeType;
             this.exchangeName = exchangeName;
             this.autoAck = autoAck;
+            this.onlyPublish = onlyPublish;
 
-            this.channel.ExchangeDeclare(this.exchangeName, this.exchangeType);
+            this.channel.ExchangeDeclare(this.exchangeName, this.exchangeType, true, false, null);
 
             props = channel.CreateBasicProperties();
             props.ContentType = "application/json";
             props.DeliveryMode = 2;
 
-            this.queueName = this.InitializeEventConsumer(queueName);
+            this.queueName = queueName;
+
+            if(!onlyPublish)
+                this.queueName = this.InitializeEventConsumer(queueName);
 
             logger.LogInformation($"RabbitMQEventBus构造函数调用完成。Hash Code：{this.GetHashCode()}.");
         }
@@ -69,13 +77,15 @@ namespace Bucket.EventBus.RabbitMQ
             if (!this.eventHandlerExecutionContext.HandlerRegistered<TEvent, TEventHandler>())
             {
                 this.eventHandlerExecutionContext.RegisterHandler<TEvent, TEventHandler>();
-                this.channel.QueueBind(this.queueName, this.exchangeName, typeof(TEvent).FullName);
+                this.channel.QueueBind(this.queueName, this.exchangeName, typeof(TEvent).FullName, new Dictionary<string, object>{
+                    { "x-queue-mode","lazy"}
+                });
             }
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (!disposed)
+            if (!disposed && this.connection.IsOpen)
             {
                 if (disposing)
                 {
@@ -99,7 +109,9 @@ namespace Bucket.EventBus.RabbitMQ
             }
             else
             {
-                this.channel.QueueDeclare(localQueueName, true, false, false, null);
+                this.channel.QueueDeclare(localQueueName, true, false, false, new Dictionary<string, object> {
+                    { "x-queue-mode","lazy"}
+                });
             }
 
             var consumer = new EventingBasicConsumer(this.channel);
@@ -107,8 +119,16 @@ namespace Bucket.EventBus.RabbitMQ
             {
                 var eventBody = eventArgument.Body;
                 var json = Encoding.UTF8.GetString(eventBody);
-                var @event = (IEvent)JsonConvert.DeserializeObject(json, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
-                await this.eventHandlerExecutionContext.HandleEventAsync(@event);
+                try
+                {
+                    var @event = (IEvent)JsonConvert.DeserializeObject(json, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                    await this.eventHandlerExecutionContext.HandleEventAsync(@event);
+                }
+                catch(Exception ex)
+                {
+                    // 当前使用模式问题，不记录日志，需升级map方式
+                    // logger.LogError(ex, $"事件驱动消费事件获取失败");
+                }
                 if (!autoAck)
                 {
                     channel.BasicAck(eventArgument.DeliveryTag, false);
@@ -116,6 +136,7 @@ namespace Bucket.EventBus.RabbitMQ
             };
 
             this.channel.BasicConsume(localQueueName, autoAck: this.autoAck, consumer: consumer);
+            //this.channel.BasicQos(0, 1, false);
 
             return localQueueName;
         }

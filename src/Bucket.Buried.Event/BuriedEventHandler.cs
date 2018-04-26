@@ -1,26 +1,25 @@
-﻿using Bucket.EventBus.Common.Events;
+﻿using Bucket.Buried.EventHandler.ElasticSearch;
+using Bucket.EventBus.Common.Events;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Nest;
 
 namespace Bucket.Buried.EventHandler
 {
     public class BuriedEventHandler: IEventHandler<BuriedEvent>
     {
         private readonly ILogger logger;
-        /// <summary>
-        /// 不使用日志防止死循环
-        /// </summary>
-        /// <param name="logger"></param>
+        private readonly ESClientProvider _esClient;
         public BuriedEventHandler(
-            ILogger<BuriedEventHandler> logger)
+            ILogger<BuriedEventHandler> logger,
+            ESClientProvider esClient)
         {
-            // this.eventStore = eventStore;
             this.logger = logger;
-            // this.logger.LogInformation($"PublishLogEventHandler构造函数调用完成。Hash Code: {this.GetHashCode()}.");
+            _esClient = esClient;
         }
 
         public bool CanHandle(IEvent @event)
@@ -28,14 +27,8 @@ namespace Bucket.Buried.EventHandler
 
         public async Task<bool> HandleAsync(BuriedEvent @event, CancellationToken cancellationToken = default(CancellationToken))
         {
-            // this.logger.LogInformation($"开始处理PublishLogEvent事件，处理器Hash Code：{this.GetHashCode()}.");
-
-            // await this.eventStore.SaveEventAsync(@event);
-            // 日志逻辑处理
-
-            Console.WriteLine($"埋点消息：{Newtonsoft.Json.JsonConvert.SerializeObject(@event)}");
-
-            // this.logger.LogInformation($"结束处理PublishLogEvent事件，处理器Hash Code：{this.GetHashCode()}.");
+            var index = @event.buriedInformation;
+            var res = await _esClient.Client.IndexAsync(index);
             return true;
         }
 

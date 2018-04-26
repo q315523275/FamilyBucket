@@ -3,6 +3,8 @@ using Bucket.AspNetCore.Extensions;
 using Bucket.EventBus.Common.Events;
 using Bucket.Logging.EventHandlers;
 using Bucket.Logging.Events;
+using Bucket.Tracer;
+using Bucket.Tracer.Events;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -26,6 +28,7 @@ namespace Bucket.Logging.ConsoleApp
                     opt.Port = 5672;
                     opt.ExchangeName = "BucketEventBus";
                     opt.QueueName = "BucketEvents";
+                    opt.OnlyPublish = false;
                 });
             });
             services.AddSingleton(p => new DbLogOptions
@@ -36,9 +39,13 @@ namespace Bucket.Logging.ConsoleApp
                 IsDbSharding = false,
                 IsWriteConsole = false
             });
+            services.AddSingleton<ITracerHandler, TracerHandler>();
+            services.AddSingleton<ITracerStore, TracerEventStore>();
+            services.AddSingleton<ElasticClientManager>();
             var eventBus = services.BuildServiceProvider().GetRequiredService<IEventBus>();
             // 事件订阅
             eventBus.Subscribe<LogEvent, DbLogEventHandler>();
+            eventBus.Subscribe<TracerEvent, TracerEventHandler>();
         }
         private static void Initialize()
         {

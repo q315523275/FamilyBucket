@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstan
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Debug\netstandard2.0\Bucket.Logging.Events.pdb

@@ -9,5 +9,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.EventHandlers\obj\Debug\netstandard2.0\Bucket.Logging.EventHandlers.pdb

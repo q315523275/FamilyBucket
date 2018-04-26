@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\net
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventBus.RabbitMQ\obj\Debug\netstandard2.0\Bucket.EventBus.RabbitMQ.pdb

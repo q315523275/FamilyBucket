@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
     <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
     <ProjectReference Include="..\Bucket.Logging.EventHandlers\Bucket.Logging.EventHandlers.csproj" />
+    <ProjectReference Include="..\Bucket.Tracer.Events\Bucket.Tracer.Events.csproj" />
   </ItemGroup>
 
 </Project>
