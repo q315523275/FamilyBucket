@@ -113,6 +113,9 @@ public class Startup
             });
             // 添加服务发现
             services.AddServiceDiscoveryConsul(Configuration);
+            // 添加追踪
+            services.AddSingleton<ITracerHandler, TracerHandler>();
+            services.AddSingleton<ITracerStore, TracerEventStore>();
             // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
             services.AddAutoMapper();
             // 添加业务注册
@@ -120,6 +123,7 @@ public class Startup
             // 添加过滤器
             services.AddMvc(options =>
             {
+                options.Filters.Add(typeof(WebApiTraceFilterAttribute));
                 options.Filters.Add<WebApiActionFilterAttribute>();
             }).AddJsonOptions(options =>
             {
@@ -162,10 +166,12 @@ public class Startup
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 全局错误日志
-            app.UseErrorLog();
             // 认证授权
             app.UseAuthentication();
+            // 链路追踪
+            app.UseTracer(new AspNetCore.Middleware.TracerOptions { Environment = "test", SystemName = "Bucket" });
+            // 全局错误日志
+            app.UseErrorLog();
             // 静态文件
             app.UseStaticFiles();
             // 路由
