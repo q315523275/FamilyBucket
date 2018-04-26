@@ -36,7 +36,7 @@ namespace ConfigService.Business
                 throw new BucketException("config_001", "AppId不能为空");
             if (input.Sign.IsEmpty())
                 throw new BucketException("config_002", "签名不能为空");
-            if (input.Sign.IsEmpty())
+            if (input.NamespaceName.IsEmpty())
                 throw new BucketException("config_005", "NamespaceName不能为空");
             // 返回结果
             var result = new QueryConfigOutput() { KV = new Dictionary<string, string>(), Version = input.Version };
