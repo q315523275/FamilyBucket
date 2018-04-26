@@ -1,8 +1,0 @@
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Event.deps.json
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Event.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Event.pdb
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Event.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Event.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Event.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Event.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Event.pdb

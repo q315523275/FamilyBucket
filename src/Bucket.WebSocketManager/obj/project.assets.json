@@ -3439,15 +3439,12 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
       "projectName": "Bucket.WebSocketManager",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.WebSocketManager\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.WebSocketManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3478,19 +3475,19 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.WebSockets": {
+            "target": "Package",
+            "version": "[2.0.2, )"
+          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1",
+            "version": "[2.0.1, )",
             "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.WebSockets": {
-            "target": "Package",
-            "version": "2.0.2"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "10.0.3"
+            "version": "[10.0.3, )"
           }
         },
         "imports": [

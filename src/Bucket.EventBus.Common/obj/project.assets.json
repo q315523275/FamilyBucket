@@ -182,15 +182,12 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj",
       "projectName": "Bucket.EventBus.Common",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -224,7 +221,7 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1",
+            "version": "[2.0.1, )",
             "autoReferenced": true
           }
         },

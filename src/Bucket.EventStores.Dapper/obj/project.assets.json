@@ -1998,15 +1998,12 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj",
       "projectName": "Bucket.EventStores.Dapper",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventStores.Dapper\\Bucket.EventStores.Dapper.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventStores.Dapper\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventStores.Dapper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2026,8 +2023,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             }
           }
         }
@@ -2043,21 +2040,21 @@
         "dependencies": {
           "Dapper": {
             "target": "Package",
-            "version": "1.50.4"
+            "version": "[1.50.4, )"
+          },
+          "Microsoft.Extensions.Logging": {
+            "target": "Package",
+            "version": "[2.0.0, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1",
+            "version": "[2.0.1, )",
             "autoReferenced": true
-          },
-          "Microsoft.Extensions.Logging": {
-            "target": "Package",
-            "version": "2.0.0"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "11.0.1"
+            "version": "[11.0.1, )"
           }
         },
         "imports": [

@@ -4243,15 +4243,12 @@
   },
   "project": {
     "version": "1.0.52",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Utility\\Bucket.Utility.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Utility\\Bucket.Utility.csproj",
       "projectName": "Bucket.Utility",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Utility\\Bucket.Utility.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Utility\\Bucket.Utility.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Utility\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4282,35 +4279,35 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "System.ComponentModel.Annotations": {
+          "Microsoft.AspNetCore.Hosting": {
             "target": "Package",
-            "version": "4.4.1"
-          },
-          "Microsoft.Extensions.PlatformAbstractions": {
-            "target": "Package",
-            "version": "1.1.0"
+            "version": "[2.0.2, )"
           },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
-            "version": "2.0.0"
+            "version": "[2.0.0, )"
           },
-          "Nito.AsyncEx.Context": {
+          "Microsoft.Extensions.PlatformAbstractions": {
             "target": "Package",
-            "version": "1.1.0"
+            "version": "[1.1.0, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.1",
+            "version": "[2.0.1, )",
             "autoReferenced": true
-          },
-          "Microsoft.AspNetCore.Hosting": {
-            "target": "Package",
-            "version": "2.0.2"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "10.0.3"
+            "version": "[10.0.3, )"
+          },
+          "Nito.AsyncEx.Context": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "System.ComponentModel.Annotations": {
+            "target": "Package",
+            "version": "[4.4.1, )"
           }
         },
         "imports": [

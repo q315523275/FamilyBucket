@@ -4496,11 +4496,11 @@
   "project": {
     "version": "1.0.58",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj",
       "projectName": "Bucket.ConfigCenter",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\Bucket.ConfigCenter.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ConfigService\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ConfigService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4520,11 +4520,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Redis\\Bucket.Redis.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Redis\\Bucket.Redis.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Redis\\Bucket.Redis.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Redis\\Bucket.Redis.csproj"
             }
           }
         }

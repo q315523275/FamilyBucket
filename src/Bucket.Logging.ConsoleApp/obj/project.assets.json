@@ -10625,11 +10625,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.ConsoleApp\\Bucket.Logging.ConsoleApp.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.ConsoleApp\\Bucket.Logging.ConsoleApp.csproj",
       "projectName": "Bucket.Logging.ConsoleApp",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.ConsoleApp\\Bucket.Logging.ConsoleApp.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.ConsoleApp\\Bucket.Logging.ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.ConsoleApp\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -10649,17 +10649,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
             }
           }
         }
