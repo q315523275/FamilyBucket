@@ -520,11 +520,11 @@
   "project": {
     "version": "1.0.60",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj",
       "projectName": "Bucket.ErrorCodeStore",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\Bucket.ErrorCodeStore.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ErrorCodeStore\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ErrorCodeStore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -538,14 +538,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://192.168.1.199:8080": {},
+        "D:\\work2017\\LocalhostNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
             }
           }
         }

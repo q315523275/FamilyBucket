@@ -403,6 +403,24 @@
           "lib/netstandard1.3/Consul.dll": {}
         }
       },
+      "Elasticsearch.Net/5.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.3.0",
+          "NETStandard.Library": "1.6.0",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel.TypeConverter": "4.3.0",
+          "System.Dynamic.Runtime": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
+        }
+      },
       "FluentValidation/7.2.1": {
         "type": "package",
         "dependencies": {
@@ -3186,6 +3204,23 @@
           }
         }
       },
+      "NEST/5.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "[5.6.1, 6.0.0)",
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "[11.0.1, 12.0.0)",
+          "System.Collections.Specialized": "4.3.0",
+          "System.Linq.Queryable": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/Nest.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Nest.dll": {}
+        }
+      },
       "NETStandard.Library/2.0.0": {
         "type": "package",
         "dependencies": {
@@ -3846,6 +3881,46 @@
         },
         "runtime": {
           "lib/netcoreapp2.0/_._": {}
+        }
+      },
+      "System.ComponentModel.Primitives/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.ComponentModel.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {}
+        }
+      },
+      "System.ComponentModel.TypeConverter/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Collections.NonGeneric": "4.3.0",
+          "System.Collections.Specialized": "4.3.0",
+          "System.ComponentModel": "4.3.0",
+          "System.ComponentModel.Primitives": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Threading": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -5363,7 +5438,6 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Buried": "1.0.51",
           "Bucket.ConfigCenter": "1.0.58",
           "Bucket.Core": "1.0.56",
           "Bucket.ErrorCodeStore": "1.0.60",
@@ -5373,6 +5447,7 @@
           "Bucket.ServiceClient.Http": "1.0.5",
           "Bucket.ServiceDiscovery.Consul": "1.0.53",
           "Bucket.Tracer": "1.0.0",
+          "Bucket.Tracer.Events": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
           "Microsoft.AspNetCore.Mvc": "2.0.2",
@@ -5383,21 +5458,6 @@
         },
         "runtime": {
           "bin/placeholder/Bucket.AspNetCore.dll": {}
-        }
-      },
-      "Bucket.Buried/1.0.51": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.0.56",
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.0.1"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.Buried.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.Buried.dll": {}
         }
       },
       "Bucket.ConfigCenter/1.0.58": {
@@ -5564,6 +5624,21 @@
         },
         "runtime": {
           "bin/placeholder/Bucket.Tracer.dll": {}
+        }
+      },
+      "Bucket.Tracer.Events/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.Tracer": "1.0.0",
+          "NEST": "5.6.1"
+        },
+        "compile": {
+          "bin/placeholder/Bucket.Tracer.Events.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bucket.Tracer.Events.dll": {}
         }
       }
     }
@@ -5894,6 +5969,21 @@
         "consul.nuspec",
         "lib/net45/Consul.dll",
         "lib/netstandard1.3/Consul.dll"
+      ]
+    },
+    "Elasticsearch.Net/5.6.1": {
+      "sha512": "4bFyEVjjjJ1wKXm7aGy6kVMR5OWDllTadCCgLplPU5pco4cPGO/nbInG9zh0j9fkxVT78CMI3o1pUVYiBjGfFw==",
+      "type": "package",
+      "path": "elasticsearch.net/5.6.1",
+      "files": [
+        "elasticsearch.net.5.6.1.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net45/Elasticsearch.Net.dll",
+        "lib/net45/Elasticsearch.Net.xml",
+        "lib/net46/Elasticsearch.Net.dll",
+        "lib/net46/Elasticsearch.Net.xml",
+        "lib/netstandard1.3/Elasticsearch.Net.dll",
+        "lib/netstandard1.3/Elasticsearch.Net.xml"
       ]
     },
     "FluentValidation/7.2.1": {
@@ -8641,6 +8731,21 @@
         "version.txt"
       ]
     },
+    "NEST/5.6.1": {
+      "sha512": "v2XoSC3R/t0M3FXSiMGypRszRC4mYMi1RQ/hMa1xhhg7/S728knLxpEWjjJJYS6S2Hwxf95qwHvOmcNZ1zdStQ==",
+      "type": "package",
+      "path": "nest/5.6.1",
+      "files": [
+        "lib/net45/Nest.dll",
+        "lib/net45/Nest.xml",
+        "lib/net46/Nest.dll",
+        "lib/net46/Nest.xml",
+        "lib/netstandard1.3/Nest.dll",
+        "lib/netstandard1.3/Nest.xml",
+        "nest.5.6.1.nupkg.sha512",
+        "nest.nuspec"
+      ]
+    },
     "NETStandard.Library/2.0.0": {
       "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
       "type": "package",
@@ -9745,6 +9850,94 @@
         "system.componentmodel.annotations.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.ComponentModel.Primitives/4.3.0": {
+      "sha512": "j8GUkCpM8V4d4vhLIIoBLGey2Z5bCkMVNjEZseyAlm4n5arcsJOeI3zkUP+zvZgzsbLTYh4lYeP/ZD/gdIAPrw==",
+      "type": "package",
+      "path": "system.componentmodel.primitives/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.ComponentModel.Primitives.dll",
+        "lib/netstandard1.0/System.ComponentModel.Primitives.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.ComponentModel.Primitives.dll",
+        "ref/netstandard1.0/System.ComponentModel.Primitives.dll",
+        "ref/netstandard1.0/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.Primitives.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.Primitives.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.primitives.4.3.0.nupkg.sha512",
+        "system.componentmodel.primitives.nuspec"
+      ]
+    },
+    "System.ComponentModel.TypeConverter/4.3.0": {
+      "sha512": "16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
+      "type": "package",
+      "path": "system.componentmodel.typeconverter/4.3.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/System.ComponentModel.TypeConverter.dll",
+        "lib/net462/System.ComponentModel.TypeConverter.dll",
+        "lib/netstandard1.0/System.ComponentModel.TypeConverter.dll",
+        "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/System.ComponentModel.TypeConverter.dll",
+        "ref/net462/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.0/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.0/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/System.ComponentModel.TypeConverter.dll",
+        "ref/netstandard1.5/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/de/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/es/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/fr/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/it/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ja/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ko/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/ru/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/zh-hans/System.ComponentModel.TypeConverter.xml",
+        "ref/netstandard1.5/zh-hant/System.ComponentModel.TypeConverter.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
+        "system.componentmodel.typeconverter.nuspec"
       ]
     },
     "System.Console/4.3.0": {
@@ -13857,11 +14050,6 @@
       "path": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.Buried/1.0.51": {
-      "type": "project",
-      "path": "../Bucket.Buried/Bucket.Buried.csproj",
-      "msbuildProject": "../Bucket.Buried/Bucket.Buried.csproj"
-    },
     "Bucket.ConfigCenter/1.0.58": {
       "type": "project",
       "path": "../Bucket.ConfigService/Bucket.ConfigCenter.csproj",
@@ -13921,6 +14109,11 @@
       "type": "project",
       "path": "../Bucket.Tracer/Bucket.Tracer.csproj",
       "msbuildProject": "../Bucket.Tracer/Bucket.Tracer.csproj"
+    },
+    "Bucket.Tracer.Events/1.0.0": {
+      "type": "project",
+      "path": "../Bucket.Tracer.Events/Bucket.Tracer.Events.csproj",
+      "msbuildProject": "../Bucket.Tracer.Events/Bucket.Tracer.Events.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13945,11 +14138,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
       "projectName": "Bucket.Ocelot",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\Bucket.Ocelot.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Ocelot\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Ocelot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13963,17 +14156,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://192.168.1.199:8080": {},
+        "D:\\work2017\\LocalhostNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj"
             }
           }
         }

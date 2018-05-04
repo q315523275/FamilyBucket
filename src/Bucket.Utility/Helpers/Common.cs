@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bucket.Utility.Files;
+using System;
 using System.IO;
 
 namespace Bucket.Utility.Helpers
@@ -27,14 +28,14 @@ namespace Bucket.Utility.Helpers
         /// 获取物理路径
         /// </summary>
         /// <param name="relativePath">相对路径</param>
-        public static string GetPhysicalPath(string relativePath)
+        public static string GetMapPath(string relativePath)
         {
             if (string.IsNullOrWhiteSpace(relativePath))
                 return string.Empty;
             var rootPath = Web.WebRootPath;
             if (string.IsNullOrWhiteSpace(rootPath))
                 return Path.GetFullPath(relativePath);
-            return $"{Web.RootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
+            return $"{Web.RootPath}\\{relativePath.Replace("~/", "").Replace("/", "\\").TrimStart('\\')}";
         }
     }
 }

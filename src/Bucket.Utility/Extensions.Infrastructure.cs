@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
-using Bucket.Utility.Files.Paths;
 using Bucket.Utility.Files;
 using Bucket.Utility.Randoms;
 using Microsoft.AspNetCore.Http;
@@ -20,14 +19,12 @@ namespace Bucket.Utility
         public static IServiceCollection AddUtil(this IServiceCollection services)
         {
             // 添加文件操作
-            services.AddSingleton<IBasePath, DefaultBasePath>();
-            services.AddSingleton<IPathGenerator, DefaultPathGenerator>();
-            services.AddSingleton<IFileStore, DefaultFileStore>();
+            services.AddSingleton<IBucketFileProvider, BucketFileProvider>();
             // 添加随机ID
             services.AddSingleton<IRandomGenerator, GuidRandomGenerator>();
             // 值设置
-            Bucket.Utility.Helpers.Web.HttpContextAccessor = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
-            Bucket.Utility.Helpers.Web.Environment = services.BuildServiceProvider().GetRequiredService<IHostingEnvironment>();
+            Helpers.Web.HttpContextAccessor = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
+            Helpers.Web.Environment = services.BuildServiceProvider().GetRequiredService<IHostingEnvironment>();
             return services;
         }
     }

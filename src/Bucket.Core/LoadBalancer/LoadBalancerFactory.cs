@@ -17,7 +17,7 @@ namespace Bucket.LoadBalancer
             switch (loadBalancer)
             {
                 case "RoundRobin":
-                    return new RoundRobin(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName));
+                    return new RoundRobin(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
                 case "LeastConnection":
                     return new LeastConnection(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
                 default:

@@ -19,8 +19,6 @@ using Bucket.ErrorCodeStore;
 using Bucket.ServiceClient;
 using Bucket.ServiceClient.Http;
 
-using Bucket.Buried;
-
 using Bucket.ServiceDiscovery;
 using Bucket.ServiceDiscovery.Consul;
 
@@ -31,6 +29,8 @@ using Bucket.AspNetCore.ServiceDiscovery;
 
 using System;
 using System.Text;
+using Bucket.Tracer;
+using Bucket.Tracer.Events;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -50,7 +50,6 @@ namespace Bucket.AspNetCore.Extensions
             services.AddSingleton<IUser, HttpContextUser>();
             services.AddSingleton<IRequestScopedDataRepository, HttpDataRepository>();
             services.AddSingleton<IJsonHelper, JsonHelper>();
-            services.AddSingleton<IBuriedContext, EmptyBuriedContext>();
             services.AddSingleton<IErrorCodeStore, EmptyErrorCodeStore>();
             return services;
         }
@@ -217,8 +216,6 @@ namespace Bucket.AspNetCore.Extensions
 
             var config = new ErrorCodeSetting();
             configAction?.Invoke(config);
-            // 移除空注入
-            services.Remove(new ServiceDescriptor(typeof(IErrorCodeStore), typeof(EmptyErrorCodeStore), ServiceLifetime.Singleton));
             // 错误码中心服务地址
             services.AddSingleton(f => new RemoteStoreRepository(config, f.GetRequiredService<ILoggerFactory>(), f.GetRequiredService<IJsonHelper>()));
             services.AddSingleton<IErrorCodeStore, DefaultErrorCodeStore>();
@@ -237,23 +234,10 @@ namespace Bucket.AspNetCore.Extensions
 
             var config = new ErrorCodeSetting();
             configuration.GetSection("ErrorCodeService").Bind(config);
-            // 移除空注入
-            services.Remove(new ServiceDescriptor(typeof(IErrorCodeStore), typeof(EmptyErrorCodeStore), ServiceLifetime.Singleton));
             // 错误码中心服务地址
             services.AddSingleton(f => new RemoteStoreRepository(config, f.GetRequiredService<ILoggerFactory>(), f.GetRequiredService<IJsonHelper>()));
             services.AddSingleton<IErrorCodeStore, DefaultErrorCodeStore>();
 
-            return services;
-        }
-        /// <summary>
-        /// 埋点服务
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddBuriedService(this IServiceCollection services)
-        {
-            services.Remove(new ServiceDescriptor(typeof(IBuriedContext), typeof(EmptyBuriedContext), ServiceLifetime.Singleton));
-            services.AddSingleton<IBuriedContext, BuriedContext>();
             return services;
         }
         /// <summary>
@@ -342,6 +326,17 @@ namespace Bucket.AspNetCore.Extensions
                     .AllowCredentials()
                 );
             });
+            return services;
+        }
+        /// <summary>
+        /// 链路追踪(基于EventBus)
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddTracer(this IServiceCollection services)
+        {
+            services.AddSingleton<ITracerHandler, TracerHandler>();
+            services.AddSingleton<ITracerStore, TracerEventStore>();
             return services;
         }
     }

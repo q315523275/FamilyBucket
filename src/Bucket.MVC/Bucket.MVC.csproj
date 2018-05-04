@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>febe3492-ecef-44f1-9842-acd45b2c3095</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -30,8 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
-    <ProjectReference Include="..\Bucket.Buried.Event\Bucket.Buried.EventHandler.csproj" />
-    <ProjectReference Include="..\Bucket.Buried\Bucket.Buried.csproj" />
     <ProjectReference Include="..\Bucket.DbContext\Bucket.DbContext.csproj" />
     <ProjectReference Include="..\Bucket.Logging.EventHandlers\Bucket.Logging.EventHandlers.csproj" />
     <ProjectReference Include="..\Bucket.Logging\Bucket.Logging.csproj" />

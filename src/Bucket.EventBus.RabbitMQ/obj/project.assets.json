@@ -3907,11 +3907,11 @@
   "project": {
     "version": "1.0.2",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "projectName": "Bucket.EventBus.RabbitMQ",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.RabbitMQ\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.RabbitMQ\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3925,14 +3925,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://192.168.1.199:8080": {},
+        "D:\\work2017\\LocalhostNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             }
           }
         }

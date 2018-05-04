@@ -5061,7 +5061,6 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Buried": "1.0.51",
           "Bucket.ConfigCenter": "1.0.58",
           "Bucket.Core": "1.0.56",
           "Bucket.ErrorCodeStore": "1.0.60",
@@ -5071,6 +5070,7 @@
           "Bucket.ServiceClient.Http": "1.0.5",
           "Bucket.ServiceDiscovery.Consul": "1.0.53",
           "Bucket.Tracer": "1.0.0",
+          "Bucket.Tracer.Events": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
           "Microsoft.AspNetCore.Mvc": "2.0.2",
@@ -5081,37 +5081,6 @@
         },
         "runtime": {
           "bin/placeholder/Bucket.AspNetCore.dll": {}
-        }
-      },
-      "Bucket.Buried/1.0.51": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.0.56",
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.AspNetCore.Http": "2.0.1"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.Buried.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.Buried.dll": {}
-        }
-      },
-      "Bucket.Buried.EventHandler/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Buried": "1.0.51",
-          "Bucket.Core": "1.0.56",
-          "Bucket.EventBus.Common": "1.0.0",
-          "NEST": "5.6.1"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.Buried.EventHandler.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.Buried.EventHandler.dll": {}
         }
       },
       "Bucket.ConfigCenter/1.0.58": {
@@ -5233,7 +5202,7 @@
           "Bucket.Logging.Events": "1.0.53",
           "Dapper": "1.50.4",
           "MySql.Data": "6.10.6",
-          "Newtonsoft.Json": "10.0.2"
+          "Newtonsoft.Json": "11.0.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.EventHandlers.dll": {}
@@ -13558,16 +13527,6 @@
       "path": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.Buried/1.0.51": {
-      "type": "project",
-      "path": "../Bucket.Buried/Bucket.Buried.csproj",
-      "msbuildProject": "../Bucket.Buried/Bucket.Buried.csproj"
-    },
-    "Bucket.Buried.EventHandler/1.0.0": {
-      "type": "project",
-      "path": "../Bucket.Buried.Event/Bucket.Buried.EventHandler.csproj",
-      "msbuildProject": "../Bucket.Buried.Event/Bucket.Buried.EventHandler.csproj"
-    },
     "Bucket.ConfigCenter/1.0.58": {
       "type": "project",
       "path": "../Bucket.ConfigService/Bucket.ConfigCenter.csproj",
@@ -13647,8 +13606,6 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Bucket.AspNetCore >= 1.0.65",
-      "Bucket.Buried >= 1.0.51",
-      "Bucket.Buried.EventHandler >= 1.0.0",
       "Bucket.DbContext >= 1.0.3",
       "Bucket.Logging >= 1.0.65",
       "Bucket.Logging.EventHandlers >= 1.0.53",
@@ -13665,11 +13622,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.MVC\\Bucket.MVC.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.MVC\\Bucket.MVC.csproj",
       "projectName": "Bucket.MVC",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.MVC\\Bucket.MVC.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.MVC\\Bucket.MVC.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.MVC\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13683,32 +13640,26 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://192.168.1.199:8080": {},
+        "D:\\work2017\\LocalhostNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried.Event\\Bucket.Buried.EventHandler.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.DbContext\\Bucket.DbContext.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.DbContext\\Bucket.DbContext.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Buried\\Bucket.Buried.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.DbContext\\Bucket.DbContext.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.DbContext\\Bucket.DbContext.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Logging\\Bucket.Logging.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging.EventHandlers\\Bucket.Logging.EventHandlers.csproj"
-            },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Logging\\Bucket.Logging.csproj"
-            },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
             }
           }
         }

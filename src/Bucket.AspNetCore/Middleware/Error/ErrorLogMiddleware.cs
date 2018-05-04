@@ -1,17 +1,12 @@
-﻿using Bucket.Buried;
-using Bucket.Core;
+﻿using Bucket.Core;
 using Bucket.ErrorCode;
 using Bucket.Exceptions;
 using Bucket.Tracer;
-using Bucket.Values;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
-using System.IO;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 namespace Bucket.AspNetCore.Middleware.Error
 {
@@ -54,7 +49,7 @@ namespace Bucket.AspNetCore.Middleware.Error
             {
                 errorInfo = new ErrorResult("-1", "系统开小差了,请稍后再试");
                 isException = true;
-                _logger.LogError(ex, $"全局异常捕获,状态码：{ context?.Response?.StatusCode}，Url{context?.Request?.GetDisplayUrl()}");
+                _logger.LogError(ex, $"全局异常捕获，状态码：{ context?.Response?.StatusCode}，Url：{context?.Request?.GetDisplayUrl()}");
             }
             finally
             {
@@ -65,6 +60,7 @@ namespace Bucket.AspNetCore.Middleware.Error
                     if (trace != null)
                     {
                         trace.Response = Message;
+                        trace.IsSuccess = true;
                         trace.IsException = isException;
                         trace.Code = errorInfo.ErrorCode;
                         _requestScopedDataRepository.Add(TracerKeys.TraceStoreCacheKey, trace);

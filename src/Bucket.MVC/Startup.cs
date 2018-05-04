@@ -69,18 +69,15 @@ namespace Bucket.MVC
             });
             // 添加服务发现
             services.AddServiceDiscoveryConsul(Configuration);
-
+            // 添加服务之间调用
             services.AddServiceClient();
-
-            services.AddSingleton<ITracerHandler, TracerHandler>();
-            services.AddSingleton<ITracerStore, TracerEventStore>();
-
-            // 添加过滤器
+            // 添加链路追踪
+            services.AddTracer();
+            // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options =>
             {
                 options.Filters.Add(typeof(WebApiTraceFilterAttribute));
                 options.Filters.Add(typeof(WebApiActionFilterAttribute));
-                //options.Filters.Add<WebApiActionFilterAttribute>();
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();

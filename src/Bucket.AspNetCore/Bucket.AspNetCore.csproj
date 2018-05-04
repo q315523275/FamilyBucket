@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bucket.Buried\Bucket.Buried.csproj" />
     <ProjectReference Include="..\Bucket.ConfigService\Bucket.ConfigCenter.csproj" />
     <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
     <ProjectReference Include="..\Bucket.ErrorCodeStore\Bucket.ErrorCodeStore.csproj" />
@@ -33,6 +32,7 @@
     <ProjectReference Include="..\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\Bucket.ServiceClient.Http\Bucket.ServiceClient.Http.csproj" />
     <ProjectReference Include="..\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
+    <ProjectReference Include="..\Bucket.Tracer.Events\Bucket.Tracer.Events.csproj" />
     <ProjectReference Include="..\Bucket.Tracer\Bucket.Tracer.csproj" />
   </ItemGroup>
 

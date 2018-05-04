@@ -16,7 +16,7 @@ namespace Bucket.Tracer.Events
         public ElasticClient _elasticClient { get; }
         public ElasticClientManager()
         {
-            var pool = new StaticConnectionPool(new List<Uri> { new Uri("http://192.168.1.199:9200") });
+            var pool = new StaticConnectionPool(new List<Uri> { new Uri("http://127.0.0.1:9200") });
             var connectionSettings = new ConnectionSettings(
                 pool,
                 new HttpConnection(),

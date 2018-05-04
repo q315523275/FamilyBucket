@@ -32,7 +32,7 @@
         /// </summary>
         public static string ObjectId()
         {
-            return string.IsNullOrWhiteSpace(_id) ? Bucket.Utility.Helpers.Internal.ObjectId.GenerateNewStringId() : _id;
+            return string.IsNullOrWhiteSpace(_id) ? Internal.ObjectId.GenerateNewStringId() : _id;
         }
 
         /// <summary>

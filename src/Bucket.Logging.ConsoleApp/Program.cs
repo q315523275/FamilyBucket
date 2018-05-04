@@ -24,7 +24,7 @@ namespace Bucket.Logging.ConsoleApp
             {
                 option.UseRabbitMQ(opt =>
                 {
-                    opt.HostName = "192.168.1.199";
+                    opt.HostName = "127.0.0.1";
                     opt.Port = 5672;
                     opt.ExchangeName = "BucketEventBus";
                     opt.QueueName = "BucketEvents";
@@ -33,7 +33,7 @@ namespace Bucket.Logging.ConsoleApp
             });
             services.AddSingleton(p => new DbLogOptions
             {
-                ConnectionString = "characterset=utf8;server=192.168.1.199;port=3306;user id=root;password=123;persistsecurityinfo=True;database=Bucket",
+                ConnectionString = "characterset=utf8;server=127.0.0.1;port=3306;user id=root;password=123;persistsecurityinfo=True;database=bucket",
                 DbShardingRule = 0,
                 DbType = "MySql",
                 IsDbSharding = false,
