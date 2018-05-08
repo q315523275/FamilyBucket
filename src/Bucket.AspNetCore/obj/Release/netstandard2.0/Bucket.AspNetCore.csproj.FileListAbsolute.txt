@@ -1,0 +1,8 @@
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\bin\Release\netstandard2.0\Bucket.AspNetCore.deps.json
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\bin\Release\netstandard2.0\Bucket.AspNetCore.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\bin\Release\netstandard2.0\Bucket.AspNetCore.pdb
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\obj\Release\netstandard2.0\Bucket.AspNetCore.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\obj\Release\netstandard2.0\Bucket.AspNetCore.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\obj\Release\netstandard2.0\Bucket.AspNetCore.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\obj\Release\netstandard2.0\Bucket.AspNetCore.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.AspNetCore\obj\Release\netstandard2.0\Bucket.AspNetCore.pdb

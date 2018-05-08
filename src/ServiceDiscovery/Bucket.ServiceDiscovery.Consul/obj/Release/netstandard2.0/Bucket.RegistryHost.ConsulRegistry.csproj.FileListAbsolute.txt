@@ -1,0 +1,4 @@
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Release\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Release\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Release\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.RegistryHost.ConsulRegistry\obj\Release\netstandard2.0\Bucket.RegistryHost.ConsulRegistry.AssemblyInfo.cs

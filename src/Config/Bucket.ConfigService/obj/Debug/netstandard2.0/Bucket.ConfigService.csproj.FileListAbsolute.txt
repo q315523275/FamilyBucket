@@ -1,0 +1,9 @@
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\bin\Debug\netstandard2.0\Bucket.ConfigService.deps.json
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\bin\Debug\netstandard2.0\Bucket.ConfigService.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\bin\Debug\netstandard2.0\Bucket.ConfigService.pdb
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.dll
+D:\work2017\Git\FamilyBucket\src\Bucket.ConfigService\obj\Debug\netstandard2.0\Bucket.ConfigService.pdb

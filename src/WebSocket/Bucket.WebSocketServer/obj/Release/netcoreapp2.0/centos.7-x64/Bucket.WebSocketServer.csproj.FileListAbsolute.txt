@@ -1,0 +1,15 @@
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\libhostpolicy.so
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\libhostfxr.so
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.WebSocketServer
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.deps.json
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.runtimeconfig.json
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.runtimeconfig.dev.json
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.dll
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketManager.dll
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\bin\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketManager.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\obj\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\obj\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\obj\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\obj\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.dll
+D:\work2017\Git\FamilyBucket\Microservice\Bucket.WebSocketServer\obj\release\netcoreapp2.0\centos.7-x64\Bucket.WebSocketServer.pdb
