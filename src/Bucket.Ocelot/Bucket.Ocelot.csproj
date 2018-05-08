@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
-    <ProjectReference Include="..\Bucket.Logging\Bucket.Logging.csproj" />
+    <ProjectReference Include="..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
   </ItemGroup>
 
 </Project>

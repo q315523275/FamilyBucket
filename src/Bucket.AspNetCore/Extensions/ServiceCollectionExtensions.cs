@@ -31,6 +31,8 @@ using System;
 using System.Text;
 using Bucket.Tracer;
 using Bucket.Tracer.Events;
+using Bucket.Logging;
+using Bucket.Logging.Events;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -337,6 +339,16 @@ namespace Bucket.AspNetCore.Extensions
         {
             services.AddSingleton<ITracerHandler, TracerHandler>();
             services.AddSingleton<ITracerStore, TracerEventStore>();
+            return services;
+        }
+        /// <summary>
+        /// 添加事件式日志
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddEventLog(this IServiceCollection services)
+        {
+            services.AddSingleton<ILogStore, LogStore>();
             return services;
         }
     }

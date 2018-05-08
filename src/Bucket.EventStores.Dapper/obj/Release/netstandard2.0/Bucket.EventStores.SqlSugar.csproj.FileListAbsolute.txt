@@ -1,8 +1,0 @@
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\bin\Release\netstandard2.0\Bucket.EventStores.SqlSugar.deps.json
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\bin\Release\netstandard2.0\Bucket.EventStores.SqlSugar.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\bin\Release\netstandard2.0\Bucket.EventBus.Common.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\bin\Release\netstandard2.0\Bucket.EventBus.Common.pdb
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\obj\Release\netstandard2.0\Bucket.EventStores.SqlSugar.csprojResolveAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\obj\Release\netstandard2.0\Bucket.EventStores.SqlSugar.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\obj\Release\netstandard2.0\Bucket.EventStores.SqlSugar.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.EventStores.SqlSugar\obj\Release\netstandard2.0\Bucket.EventStores.SqlSugar.AssemblyInfo.cs

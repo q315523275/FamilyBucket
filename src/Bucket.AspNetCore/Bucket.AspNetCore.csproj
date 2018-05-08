@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.65</Version>
+    <Version>1.0.7</Version>
     <Description>Bucket.AspNetCore</Description>
     <Authors>Bucket.AspNetCore</Authors>
     <Company>Bucket.AspNetCore</Company>
@@ -24,16 +24,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bucket.ConfigService\Bucket.ConfigCenter.csproj" />
     <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
-    <ProjectReference Include="..\Bucket.ErrorCodeStore\Bucket.ErrorCodeStore.csproj" />
-    <ProjectReference Include="..\Bucket.EventBus.AspNetCore\Bucket.EventBus.AspNetCore.csproj" />
-    <ProjectReference Include="..\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
-    <ProjectReference Include="..\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
-    <ProjectReference Include="..\Bucket.ServiceClient.Http\Bucket.ServiceClient.Http.csproj" />
-    <ProjectReference Include="..\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
-    <ProjectReference Include="..\Bucket.Tracer.Events\Bucket.Tracer.Events.csproj" />
-    <ProjectReference Include="..\Bucket.Tracer\Bucket.Tracer.csproj" />
+    <ProjectReference Include="..\Config\Bucket.ConfigService\Bucket.ConfigCenter.csproj" />
+    <ProjectReference Include="..\ErrorCode\Bucket.ErrorCodeStore\Bucket.ErrorCodeStore.csproj" />
+    <ProjectReference Include="..\EventBus\Bucket.EventBus.AspNetCore\Bucket.EventBus.AspNetCore.csproj" />
+    <ProjectReference Include="..\EventBus\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
+    <ProjectReference Include="..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
+    <ProjectReference Include="..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
+    <ProjectReference Include="..\ServiceClient\Bucket.ServiceClient.Http\Bucket.ServiceClient.Http.csproj" />
+    <ProjectReference Include="..\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
+    <ProjectReference Include="..\Tracer\Bucket.Tracer.Events\Bucket.Tracer.Events.csproj" />
+    <ProjectReference Include="..\Utility\Bucket.Redis\Bucket.Redis.csproj" />
   </ItemGroup>
 
 </Project>

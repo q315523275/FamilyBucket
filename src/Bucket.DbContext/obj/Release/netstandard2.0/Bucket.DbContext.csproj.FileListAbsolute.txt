@@ -1,9 +1,0 @@
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\bin\Release\netstandard2.0\Bucket.DbContext.deps.json
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\bin\Release\netstandard2.0\Bucket.DbContext.dll
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\bin\Release\netstandard2.0\Bucket.DbContext.pdb
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.csprojResolveAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.dll
-D:\work2017\Git\FamilyBucket\src\Bucket.DbContext\obj\Release\netstandard2.0\Bucket.DbContext.pdb
