@@ -142,30 +142,9 @@ namespace Bucket.AspNetCore.Extensions
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
-            var config = new ConfigCenterSetting();
-            configAction?.Invoke(config);
-            if (config.UseServiceDiscovery)
-            {
-                // 使用服务发现控制配置中心服务地址
-                services.AddSingleton(f => new RemoteConfigRepository(
-                    config,
-                    f.GetRequiredService<RedisClient>(),
-                    f.GetRequiredService<ILoadBalancerHouse>(),
-                    f.GetRequiredService<ILoggerFactory>(),
-                    f.GetRequiredService<IJsonHelper>())
-                    );
-            }
-            else
-            {
-                // 指定配置中心服务地址
-                services.AddSingleton(f => new RemoteConfigRepository(
-                    config, 
-                    null, 
-                    null, 
-                    f.GetRequiredService<ILoggerFactory>(),
-                    f.GetRequiredService<IJsonHelper>())
-                    );
-            }
+            services.Configure(configAction);
+
+            services.AddSingleton<RemoteConfigRepository>();
             services.AddSingleton<IConfigCenter, DefaultConfig>();
             return services;
         }
@@ -179,30 +158,9 @@ namespace Bucket.AspNetCore.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            var config = new ConfigCenterSetting();
-            configuration.GetSection("ConfigService").Bind(config);
-            if (config.UseServiceDiscovery)
-            {
-                // 使用服务发现控制配置中心服务地址
-                services.AddSingleton(f => new RemoteConfigRepository(
-                    config,
-                    f.GetRequiredService<RedisClient>(),
-                    f.GetRequiredService<ILoadBalancerHouse>(),
-                    f.GetRequiredService<ILoggerFactory>(),
-                    f.GetRequiredService<IJsonHelper>())
-                    );
-            }
-            else
-            {
-                // 指定配置中心服务地址
-                services.AddSingleton(f => new RemoteConfigRepository(
-                    config,
-                    null,
-                    null,
-                    f.GetRequiredService<ILoggerFactory>(),
-                    f.GetRequiredService<IJsonHelper>())
-                    );
-            }
+            services.Configure<ConfigCenterSetting>(configuration.GetSection("ConfigService"));
+
+            services.AddSingleton<RemoteConfigRepository>();
             services.AddSingleton<IConfigCenter, DefaultConfig>();
             return services;
         }
@@ -213,13 +171,11 @@ namespace Bucket.AspNetCore.Extensions
         /// <returns></returns>
         public static IServiceCollection AddErrorCodeService(this IServiceCollection services, Action<ErrorCodeSetting> configAction)
         {
-
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
-            var config = new ErrorCodeSetting();
-            configAction?.Invoke(config);
-            // 错误码中心服务地址
-            services.AddSingleton(f => new RemoteStoreRepository(config, f.GetRequiredService<ILoggerFactory>(), f.GetRequiredService<IJsonHelper>()));
+            services.Configure(configAction);
+
+            services.AddSingleton<RemoteStoreRepository>();
             services.AddSingleton<IErrorCodeStore, DefaultErrorCodeStore>();
 
             return services;
@@ -231,13 +187,11 @@ namespace Bucket.AspNetCore.Extensions
         /// <returns></returns>
         public static IServiceCollection AddErrorCodeService(this IServiceCollection services, IConfiguration configuration)
         {
-
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            var config = new ErrorCodeSetting();
-            configuration.GetSection("ErrorCodeService").Bind(config);
-            // 错误码中心服务地址
-            services.AddSingleton(f => new RemoteStoreRepository(config, f.GetRequiredService<ILoggerFactory>(), f.GetRequiredService<IJsonHelper>()));
+            services.Configure<ErrorCodeSetting>(configuration.GetSection("ErrorCodeService"));
+
+            services.AddSingleton<RemoteStoreRepository>();
             services.AddSingleton<IErrorCodeStore, DefaultErrorCodeStore>();
 
             return services;
@@ -277,6 +231,7 @@ namespace Bucket.AspNetCore.Extensions
 
             var options = new ServiceDiscoveryOptions();
             configAction?.Invoke(options);
+
             foreach (var serviceExtension in options.Extensions)
                 serviceExtension.AddServices(services);
 
@@ -335,8 +290,27 @@ namespace Bucket.AspNetCore.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddTracer(this IServiceCollection services)
+        public static IServiceCollection AddTracer(this IServiceCollection services, Action<TracerOptions> configAction)
         {
+            if (configAction == null) throw new ArgumentNullException(nameof(configAction));
+
+            services.Configure(configAction);
+
+            services.AddSingleton<ITracerHandler, TracerHandler>();
+            services.AddSingleton<ITracerStore, TracerEventStore>();
+            return services;
+        }
+        /// <summary>
+        /// 链路追踪(基于EventBus)
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddTracer(this IServiceCollection services, IConfiguration configuration)
+        {
+            if (configuration == null) throw new ArgumentNullException(nameof(configuration));
+
+            services.Configure<TracerOptions>(configuration.GetSection("Tracer"));
+
             services.AddSingleton<ITracerHandler, TracerHandler>();
             services.AddSingleton<ITracerStore, TracerEventStore>();
             return services;

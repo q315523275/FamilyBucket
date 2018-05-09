@@ -21,10 +21,12 @@ namespace Bucket.Tracer.EventSubscribe
 
         public async Task<bool> HandleAsync(TracerEvent @event, CancellationToken cancellationToken = default(CancellationToken))
         {
-            Console.WriteLine(JsonConvert.SerializeObject(@event));
+
             var info = @event.TraceLog;
             if (info != null)
             {
+                var StartTime = DateTime.Now;
+
                 var index = new IndexName() { Name = $"tracer" };
 
                 var indexRequest = new IndexRequest<TraceLogs>(info, index);
@@ -34,6 +36,9 @@ namespace Bucket.Tracer.EventSubscribe
                 {
                     // throw new ElasticsearchClientException("Add auditlog disaster!");
                 }
+
+                var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
+                Console.WriteLine("es数据创建耗时"+ TimeLength + "毫秒");
             }
             return true;
         }

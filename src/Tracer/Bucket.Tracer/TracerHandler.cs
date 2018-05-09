@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Bucket.Core;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
 namespace Bucket.Tracer
 {
@@ -12,11 +13,16 @@ namespace Bucket.Tracer
         private readonly IRequestScopedDataRepository _requestScopedDataRepository;
         private readonly ITracerStore _tracerStore;
         private readonly IJsonHelper _jsonHelper;
-        public TracerHandler(IRequestScopedDataRepository requestScopedDataRepository, IJsonHelper jsonHelper, ITracerStore tracerStore)
+        private readonly TracerOptions _tracerOptions;
+        public TracerHandler(IRequestScopedDataRepository requestScopedDataRepository, 
+            IJsonHelper jsonHelper, 
+            ITracerStore tracerStore,
+            IOptions<TracerOptions> tracerOptions)
         {
             _requestScopedDataRepository = requestScopedDataRepository;
             _tracerStore = tracerStore;
             _jsonHelper = jsonHelper;
+            _tracerOptions = tracerOptions.Value;
         }
 
         public void AddHeadersToTracer<T>(HttpContext httpContext, T traceLogs)
@@ -26,8 +32,8 @@ namespace Bucket.Tracer
                 var trace = traceLogs as TraceLogs;
 
                 #region 系统参数
-                trace.Environment = TracerKeys.Environment;
-                trace.SystemName = TracerKeys.SystemName;
+                trace.Environment = _tracerOptions.Environment;
+                trace.SystemName = _tracerOptions.SystemName;
                 #endregion
 
                 #region 跟踪Id
@@ -64,25 +70,30 @@ namespace Bucket.Tracer
                 #endregion
 
                 #region 父级序列号
-                if (string.IsNullOrWhiteSpace(trace.ParentSeq))
+                if (string.IsNullOrWhiteSpace(trace.ParentId))
                 {
                     if (httpContext.Request.Headers.ContainsKey(TracerKeys.TraceSeq))
                     {
-                        trace.ParentSeq = httpContext.Request.Headers[TracerKeys.TraceSeq].FirstOrDefault();
+                        trace.ParentId = httpContext.Request.Headers[TracerKeys.TraceSeq].FirstOrDefault();
                     }
                     else
                     {
-                        trace.ParentSeq = "-1";
+                        trace.ParentId = trace.TraceId;
                     }
                 }
                 #endregion
 
                 #region 当前序列号
-                int traceSerial = _requestScopedDataRepository.Get<int>(TracerKeys.TraceSerial);
-                traceSerial = traceSerial + 1;
-                trace.Seq = $"{trace.SystemName}_{traceSerial}";
-                _requestScopedDataRepository.Update<int>(TracerKeys.TraceSerial, traceSerial);
-                _requestScopedDataRepository.Update(TracerKeys.TraceSeq, trace.Seq);
+                int traceSort = _requestScopedDataRepository.Get<int>(TracerKeys.TraceSort);
+                traceSort = traceSort + 1;
+                trace.Id = Guid.NewGuid().ToString("N");
+                trace.SortId = traceSort;
+
+                if(traceSort == 1)
+                    httpContext.Request.Headers.Add(TracerKeys.TraceSeq, trace.Id);
+
+                _requestScopedDataRepository.Update<int>(TracerKeys.TraceSort, traceSort);
+                _requestScopedDataRepository.Update<string>(TracerKeys.TraceSeq, trace.Id);
                 #endregion
             }
         }

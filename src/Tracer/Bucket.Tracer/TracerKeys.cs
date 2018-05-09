@@ -16,18 +16,8 @@ namespace Bucket.Tracer
 
         public const string TraceSeq = "Seq";
 
-        public const string TraceSerial = "TraceSerial";
+        public const string TraceSort = "TraceSortId";
 
         public const string TraceId = "TraceId";
-
-        /// <summary>
-        /// 环境
-        /// </summary>
-        public static string Environment { set; get; }
-
-        /// <summary>
-        /// 系统名称
-        /// </summary>
-        public static string SystemName { set; get; }
     }
 }

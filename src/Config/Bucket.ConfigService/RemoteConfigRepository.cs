@@ -10,6 +10,7 @@ using StackExchange.Redis;
 using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using Bucket.Core;
+using Microsoft.Extensions.Options;
 
 namespace Bucket.ConfigCenter
 {
@@ -26,7 +27,7 @@ namespace Bucket.ConfigCenter
         private ILogger _logger;
         private ManualResetEventSlim _eventSlim;
         private IJsonHelper _jsonHelper;
-        public RemoteConfigRepository(ConfigCenterSetting setting, 
+        public RemoteConfigRepository(IOptions<ConfigCenterSetting> setting, 
             RedisClient redisClient, 
             ILoadBalancerHouse loadBalancerHouse,
             ILoggerFactory loggerFactory,
@@ -34,7 +35,7 @@ namespace Bucket.ConfigCenter
         {
             _logger = loggerFactory.CreateLogger<RemoteConfigRepository>();
             _config = new BucketConfig();
-            _setting = setting;
+            _setting = setting.Value;
             _redisClient = redisClient;
             _loadBalancerHouse = loadBalancerHouse;
             _jsonHelper = jsonHelper;

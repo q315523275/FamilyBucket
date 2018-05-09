@@ -2,19 +2,26 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SqlSugar;
-using Bucket.AspNetCore.EventBus;
-using Bucket.AspNetCore.Filters;
-using Bucket.DbContext;
-using Newtonsoft.Json.Serialization;
-using Bucket.Logging;
-using Bucket.AspNetCore.Extensions;
 using System;
 using System.IO;
+
+using SqlSugar;
+using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
+
+using Bucket.Logging;
+using Bucket.DbContext;
+
+using Bucket.AspNetCore.Filters;
+using Bucket.AspNetCore.EventBus;
+using Bucket.AspNetCore.Extensions;
+using Bucket.AspNetCore.ServiceDiscovery;
 
 namespace Bucket.MVC
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Startup
     {
         /// <summary>
@@ -62,11 +69,18 @@ namespace Bucket.MVC
                 });
             });
             // 添加服务发现
+            // services.AddServiceDiscovery(option =>
+            // {
+            //     option.UseConsul(opt =>
+            //     {
+
+            //     });
+            // });
             services.AddServiceDiscoveryConsul(Configuration);
             // 添加服务之间调用
             services.AddServiceClient();
             // 添加链路追踪
-            services.AddTracer();
+            services.AddTracer(Configuration);
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options =>
             {
@@ -116,7 +130,7 @@ namespace Bucket.MVC
             // 认证授权
             app.UseAuthentication();
             // 链路追踪
-            app.UseTracer(new AspNetCore.Middleware.TracerOptions { Environment = "test", SystemName = "Bucket" });
+            app.UseTracer();
             // 全局错误日志
             app.UseErrorLog();
             // 静态文件

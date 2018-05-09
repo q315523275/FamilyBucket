@@ -28,10 +28,9 @@ namespace Bucket.MVC.Controllers
         [HttpPost("/authapi/login")]
         public OutputLogin Login([FromBody] InputLogin input)
         {
-            var result = _serviceClient.GetWebApi<string>("Pinzhi.Config.Service",
-                "/configs/PinzhiGO/Platform?version=0&sign=d029ccffbe3bf77020fd5da3db3d737cdfd42ae5146ed2df9df29c88f3365b0c",
-                 isTrace: true);
-            return new OutputLogin { Data = result };
+            var result = _serviceClient.PostWebApi<string>("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8",new { StartTime = "2017-05-09 14:35:14", EndTime = "2018-05-09 14:35:14" }, isTrace: true);
+            var result2 = _serviceClient.PostWebApi<string>("http://api.51pinzhi.cn/order/api/Query/QueryPayedOrderCount", new { OrderType = 0, OrderChannel = 0 }, isTrace: true);
+            return new OutputLogin { Data = result + result2 };
         }
 
         [HttpGet]

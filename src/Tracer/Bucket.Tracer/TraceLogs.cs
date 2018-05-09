@@ -12,19 +12,23 @@ namespace Bucket.Tracer
         public string TraceId { set; get; }
 
         /// <summary>
-        /// 发起人
+        /// 当前队列顺序号
         /// </summary>
-        public string LaunchId { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// 父级队列序号
         /// </summary>
-        public string ParentSeq { get; set; }
+        public string ParentId { get; set; }
+        /// <summary>
+        /// 顺序Id
+        /// </summary>
+        public int SortId { get; set; }
 
         /// <summary>
-        /// 当前队列顺序号
+        /// 发起人
         /// </summary>
-        public string Seq { get; set; }
+        public string LaunchId { get; set; }
 
         /// <summary>
         /// 请求开始时间

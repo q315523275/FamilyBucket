@@ -53,10 +53,12 @@ namespace Bucket.Logging.EventSubscribe
                                         , tableName);
                 using (var connection = new MySqlConnection(_dbLogOptions.ConnectionString))
                 {
-                    await connection.ExecuteAsync(sql, @event);
+                    await connection.ExecuteAsync(sql, model);
                 }
             }
-            catch(Exception ex) { }
+            catch(Exception ex) {
+                Console.WriteLine(ex.Message + ex.InnerException.Message + ex.StackTrace);
+            }
             return true;
         }
 

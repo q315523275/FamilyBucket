@@ -4,6 +4,7 @@ using Bucket.ErrorCodeStore.Model;
 using Bucket.ErrorCodeStore.Util;
 using Bucket.ErrorCodeStore.Util.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Concurrent;
 using System.Net;
@@ -23,11 +24,11 @@ namespace Bucket.ErrorCodeStore
         private ILogger _logger;
         private ManualResetEventSlim _eventSlim;
         private IJsonHelper _jsonHelper;
-        public RemoteStoreRepository(ErrorCodeSetting errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
+        public RemoteStoreRepository(IOptions<ErrorCodeSetting> errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
         {
             _logger = loggerFactory.CreateLogger<RemoteStoreRepository>();
             _config = new ErrorCodeConfig();
-            _errorCodeConfiguration = errorCodeConfiguration;
+            _errorCodeConfiguration = errorCodeConfiguration.Value;
             _jsonHelper = jsonHelper;
         }
         protected void Sync()

@@ -11,9 +11,9 @@ namespace Bucket.AspNetCore.Extensions
         {
             return builder.UseMiddleware<ErrorLogMiddleware>();
         }
-        public static IApplicationBuilder UseTracer(this IApplicationBuilder builder, TracerOptions tracerOptions)
+        public static IApplicationBuilder UseTracer(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<TracerMiddleware>(tracerOptions);
+            return builder.UseMiddleware<TracerMiddleware>();
         }
     }
 }

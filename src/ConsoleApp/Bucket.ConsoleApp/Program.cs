@@ -32,10 +32,10 @@ namespace Bucket.ConsoleApp
         private static void Initialize()
         {
             // 添加配置文件
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory());
+            builder.AddJsonFile("config.json");
+            var configuration = builder.Build();
             // 添加DI容器
             var services = new ServiceCollection().AddOptions().AddLogging();
             // 添加基础设施服务
@@ -50,6 +50,7 @@ namespace Bucket.ConsoleApp
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
                     opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
+                    opt.OnlyPublish = false;
                 });
             });
             // 添加日志消费数据库配置

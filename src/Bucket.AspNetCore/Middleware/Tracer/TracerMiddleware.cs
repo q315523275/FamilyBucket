@@ -12,13 +12,11 @@ namespace Bucket.AspNetCore.Middleware.Tracer
         private readonly RequestDelegate _next;
         private readonly IRequestScopedDataRepository _requestScopedDataRepository;
         private readonly ITracerHandler _tracer;
-        public TracerMiddleware(RequestDelegate next, IRequestScopedDataRepository requestScopedDataRepository, ITracerHandler tracer, TracerOptions tracerOptions)
+        public TracerMiddleware(RequestDelegate next, IRequestScopedDataRepository requestScopedDataRepository, ITracerHandler tracer)
         {
             _next = next;
             _requestScopedDataRepository = requestScopedDataRepository;
             _tracer = tracer;
-            TracerKeys.Environment = tracerOptions.Environment;
-            TracerKeys.SystemName = tracerOptions.SystemName;
         }
         public async Task Invoke(HttpContext context)
         {
@@ -36,6 +34,7 @@ namespace Bucket.AspNetCore.Middleware.Tracer
             trace = _requestScopedDataRepository.Get<TraceLogs>(TracerKeys.TraceStoreCacheKey);
             if (trace != null)
             {
+                trace.ContextType = context?.Request?.ContentType;
                 trace.EndTime = DateTime.Now;
                 trace.TimeLength = Math.Round((trace.EndTime - trace.StartTime).TotalMilliseconds, 4);
                 _requestScopedDataRepository.Update(TracerKeys.TraceStoreCacheKey, trace);

@@ -1,0 +1,11 @@
+
+*.dll
+*.pdb
+*.nupkg
+*.sqlite
+*.cache
+*.suo
+*.log
+packages/
+/.vs
+Thumbs.db
