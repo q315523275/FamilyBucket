@@ -30,7 +30,6 @@ namespace Pinzhi.Identity.WebApi
                 .Build();
 
             WebHost.CreateDefaultBuilder(args)
-                   .UseKestrel()
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .UseStartup<Startup>()
                    .UseConfiguration(config)

@@ -13,5 +13,6 @@ D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Busine
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.dll
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.pdb

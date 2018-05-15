@@ -50,7 +50,9 @@ namespace Bucket.Utility.Helpers
             get
             {
                 var list = new[] { "127.0.0.1", "::1" };
-                var result = HttpContext?.Connection?.RemoteIpAddress.SafeString();
+                var result = HttpContext?.Request?.Headers["X-Forwarded-For"].FirstOrDefault().SafeString();
+                if (string.IsNullOrEmpty(result))
+                    result = HttpContext?.Connection?.RemoteIpAddress.SafeString();
                 if (string.IsNullOrWhiteSpace(result) || list.Contains(result))
                     result = GetLanIp();
                 return result;

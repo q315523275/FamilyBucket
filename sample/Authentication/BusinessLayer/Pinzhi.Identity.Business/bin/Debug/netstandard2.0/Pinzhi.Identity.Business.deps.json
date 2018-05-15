@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "2b95653d1f04f5e1cc078011397f729b82fa002e"
+    "signature": "8def833e981d5e16fc773569fb68f4ca924ab34d"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,9 +9,9 @@
     ".NETStandard,Version=v2.0/": {
       "Pinzhi.Identity.Business/1.0.0": {
         "dependencies": {
-          "Bucket.Core": "1.0.56",
-          "Bucket.Utility": "1.0.52",
-          "NETStandard.Library": "2.0.0",
+          "Bucket.Core": "1.1.0",
+          "Bucket.Utility": "1.1.0",
+          "NETStandard.Library": "2.0.1",
           "Pinzhi.Identity.Interface": "1.0.0",
           "Pinzhi.Identity.Model": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "5.1.4.0"
@@ -20,7 +20,7 @@
           "Pinzhi.Identity.Business.dll": {}
         }
       },
-      "Bucket.Core/1.0.56": {
+      "Bucket.Core/1.1.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.2",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.1"
@@ -29,12 +29,12 @@
           "lib/netstandard2.0/Bucket.Core.dll": {}
         }
       },
-      "Bucket.Utility/1.0.52": {
+      "Bucket.Utility/1.1.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
-          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json": "11.0.1",
           "Nito.AsyncEx.Context": "1.1.0",
           "System.ComponentModel.Annotations": "4.4.1"
         },
@@ -134,29 +134,6 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
-      "Microsoft.CSharp/4.3.0": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.ObjectModel": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.CSharp.dll": {}
-        }
-      },
       "Microsoft.Data.Sqlite/2.0.0": {
         "dependencies": {
           "Microsoft.Data.Sqlite.Core": "2.0.0",
@@ -208,8 +185,8 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "2.0.1",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.0.1",
-          "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.3",
+          "NETStandard.Library": "2.0.1",
+          "Newtonsoft.Json": "11.0.1",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0"
         },
@@ -288,7 +265,7 @@
       },
       "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
         "dependencies": {
-          "NETStandard.Library": "2.0.0",
+          "NETStandard.Library": "2.0.1",
           "System.Reflection.TypeExtensions": "4.3.0"
         },
         "runtime": {
@@ -305,7 +282,7 @@
       },
       "Microsoft.IdentityModel.Logging/5.2.1": {
         "dependencies": {
-          "NETStandard.Library": "2.0.0",
+          "NETStandard.Library": "2.0.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
@@ -318,8 +295,8 @@
       "Microsoft.IdentityModel.Tokens/5.2.1": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "5.2.1",
-          "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "10.0.3",
+          "NETStandard.Library": "2.0.1",
+          "Newtonsoft.Json": "11.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
           "System.Runtime": "4.3.0",
@@ -367,7 +344,7 @@
       "MySql.Data/6.10.4": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Json": "1.1.2",
-          "NETStandard.Library": "2.0.0",
+          "NETStandard.Library": "2.0.1",
           "System.Collections.NonGeneric": "4.3.0",
           "System.ComponentModel": "4.3.0",
           "System.ComponentModel.Annotations": "4.4.1",
@@ -400,22 +377,14 @@
           "lib/netstandard1.3/MySql.Data.dll": {}
         }
       },
-      "NETStandard.Library/2.0.0": {
+      "NETStandard.Library/2.0.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "Newtonsoft.Json/10.0.3": {
-        "dependencies": {
-          "Microsoft.CSharp": "4.3.0",
-          "NETStandard.Library": "2.0.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        },
+      "Newtonsoft.Json/11.0.1": {
         "runtime": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Nito.AsyncEx.Context/1.1.0": {
@@ -512,7 +481,7 @@
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "dependencies": {
-          "NETStandard.Library": "2.0.0",
+          "NETStandard.Library": "2.0.1",
           "SQLitePCLRaw.core": "1.1.7"
         },
         "runtime": {
@@ -522,7 +491,7 @@
       },
       "SQLitePCLRaw.core/1.1.7": {
         "dependencies": {
-          "NETStandard.Library": "2.0.0"
+          "NETStandard.Library": "2.0.1"
         },
         "runtime": {
           "lib/netstandard1.1/SQLitePCLRaw.core.dll": {}
@@ -532,7 +501,7 @@
         "dependencies": {
           "Microsoft.Data.Sqlite": "2.0.0",
           "MySql.Data": "6.10.4",
-          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json": "11.0.1",
           "System.Data.Common": "4.3.0",
           "System.Data.SqlClient": "4.4.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
@@ -1615,19 +1584,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Core/1.0.56": {
+    "Bucket.Core/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3T61O2hj4fzYv7fibbDXB2zr0FUv1vbQKY55p1TyboJrdL2CH/iND9G1NaNRAnstwtJ9xrgvwXB3IgFb/JRBoQ==",
-      "path": "bucket.core/1.0.56",
-      "hashPath": "bucket.core.1.0.56.nupkg.sha512"
+      "sha512": "sha512-74xSLwdsZthsGwSu+IxUTRu0nV3IVN3ebC2SX2GiA7hHvJOH1mg/Akh2O3b9VtlNpGBJO7H/mKomsvwijGyQGg==",
+      "path": "bucket.core/1.1.0",
+      "hashPath": "bucket.core.1.1.0.nupkg.sha512"
     },
-    "Bucket.Utility/1.0.52": {
+    "Bucket.Utility/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MF8QkU976vF+KbElwEwswDkbWbEMLZCpMxRJgmsySl/zOn5jsSJjtlwWY8onMnnNPpsNIl2zAACTKWG0OBigBA==",
-      "path": "bucket.utility/1.0.52",
-      "hashPath": "bucket.utility.1.0.52.nupkg.sha512"
+      "sha512": "sha512-oB8I+GzjFV9RNawwpEzqC8hVzeA+Y4h/LrJKuJtP3VYy/M+Z8Nl4yL0GxeHFEEhqsyV/ccmJFgKb+NZKeCuMFw==",
+      "path": "bucket.utility/1.1.0",
+      "hashPath": "bucket.utility.1.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting/2.0.2": {
       "type": "package",
@@ -1684,13 +1653,6 @@
       "sha512": "sha512-dvn80+p1AIQKOfJ+VrOhVMUktWRvJs7Zb+UapZGBNSyrCzTsYiXbb9C7Mzw+nGj5UevnLNFcWWc7BUlLMD2qpw==",
       "path": "microsoft.aspnetcore.webutilities/2.0.2",
       "hashPath": "microsoft.aspnetcore.webutilities.2.0.2.nupkg.sha512"
-    },
-    "Microsoft.CSharp/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
-      "path": "microsoft.csharp/4.3.0",
-      "hashPath": "microsoft.csharp.4.3.0.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite/2.0.0": {
       "type": "package",
@@ -1881,19 +1843,19 @@
       "path": "mysql.data/6.10.4",
       "hashPath": "mysql.data.6.10.4.nupkg.sha512"
     },
-    "NETStandard.Library/2.0.0": {
+    "NETStandard.Library/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
-      "path": "netstandard.library/2.0.0",
-      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
+      "sha512": "sha512-oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+      "path": "netstandard.library/2.0.1",
+      "hashPath": "netstandard.library.2.0.1.nupkg.sha512"
     },
-    "Newtonsoft.Json/10.0.3": {
+    "Newtonsoft.Json/11.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
-      "path": "newtonsoft.json/10.0.3",
-      "hashPath": "newtonsoft.json.10.0.3.nupkg.sha512"
+      "sha512": "sha512-pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
+      "path": "newtonsoft.json/11.0.1",
+      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
     },
     "Nito.AsyncEx.Context/1.1.0": {
       "type": "package",

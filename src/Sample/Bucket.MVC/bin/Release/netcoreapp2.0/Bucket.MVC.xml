@@ -150,6 +150,11 @@
             对象不能为空
             </summary>
         </member>
+        <member name="T:Bucket.MVC.Startup">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Bucket.MVC.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             初始化启动配置

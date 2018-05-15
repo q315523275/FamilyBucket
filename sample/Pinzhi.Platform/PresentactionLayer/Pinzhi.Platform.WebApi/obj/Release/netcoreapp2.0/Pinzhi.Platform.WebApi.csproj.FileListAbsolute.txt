@@ -18,3 +18,4 @@ D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Release\netcoreapp2.0\Pinzhi.Platform.WebApi.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Release\netcoreapp2.0\Pinzhi.Platform.WebApi.dll
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Release\netcoreapp2.0\Pinzhi.Platform.WebApi.pdb
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Release\netcoreapp2.0\Pinzhi.Platform.WebApi.csproj.CopyComplete

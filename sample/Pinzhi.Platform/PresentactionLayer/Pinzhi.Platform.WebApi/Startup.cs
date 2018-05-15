@@ -15,6 +15,7 @@ using System.IO;
 using Bucket.AspNetCore.EventBus;
 using Bucket.Logging;
 using System;
+using Bucket.Utility;
 
 namespace Pinzhi.Platform.WebApi
 {
@@ -69,6 +70,10 @@ namespace Pinzhi.Platform.WebApi
             });
             // 添加服务发现
             services.AddServiceDiscoveryConsul(Configuration);
+            // 添加事件队列日志
+            services.AddEventLog();
+            // 添加链路追踪
+            services.AddTracer(Configuration);
             // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
             services.AddAutoMapper();
             // 添加业务注册
@@ -83,7 +88,8 @@ namespace Pinzhi.Platform.WebApi
             // 添加过滤器
             services.AddMvc(options =>
             {
-                options.Filters.Add<WebApiActionFilterAttribute>();
+               options.Filters.Add(typeof(WebApiTraceFilterAttribute));
+               options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -95,6 +101,8 @@ namespace Pinzhi.Platform.WebApi
                 c.SwaggerDoc("v1", new Info { Title = "品值POC接口文档", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Platform.WebApi.xml"));
             });
+            // 添加工具
+            services.AddUtil();
         }
         /// <summary>
         /// 配置请求管道
@@ -123,10 +131,12 @@ namespace Pinzhi.Platform.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 全局错误日志
-            app.UseErrorLog();
             // 认证授权
             app.UseAuthentication();
+            // 链路追踪
+            app.UseTracer();
+            // 全局错误日志
+            app.UseErrorLog();
             // 静态文件
             app.UseStaticFiles();
             // 路由

@@ -11,5 +11,6 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\ne
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Business\obj\Release\netstandard2.0\ConfigService.Business.pdb

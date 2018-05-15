@@ -80,16 +80,21 @@ namespace Pinzhi.Identity.WebApi
             });
             // 添加服务发现
             services.AddServiceDiscoveryConsul(Configuration);
+            // 添加事件队列日志
+            services.AddEventLog();
+            // 添加链路追踪
+            services.AddTracer(Configuration);
             // 添加业务注册
             services.AddScoped<IAuthBusiness, AuthBusiness>();
             // 添加过滤器
             services.AddMvc(options =>
             {
-                options.Filters.Add<WebApiActionFilterAttribute>();
+               options.Filters.Add(typeof(WebApiTraceFilterAttribute));
+               options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
             });
             // 添加接口文档
             services.AddSwaggerGen(c =>
@@ -130,10 +135,12 @@ namespace Pinzhi.Identity.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 全局错误日志
-            app.UseErrorLog();
             // 认证授权
             app.UseAuthentication();
+            // 链路追踪
+            app.UseTracer();
+            // 全局错误日志
+            app.UseErrorLog();
             // 静态文件
             app.UseStaticFiles();
             // 路由

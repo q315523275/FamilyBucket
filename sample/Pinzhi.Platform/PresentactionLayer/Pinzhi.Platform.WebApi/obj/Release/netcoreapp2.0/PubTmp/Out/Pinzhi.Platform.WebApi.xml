@@ -30,6 +30,17 @@
             <param name="input"></param>
             <returns></returns>
         </member>
+        <member name="T:Pinzhi.Platform.WebApi.Controllers.HomeController">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.HomeController.Index">
+            <summary>
+            首页
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Pinzhi.Platform.WebApi.Controllers.MenuController">
             <summary>
             菜单控制器

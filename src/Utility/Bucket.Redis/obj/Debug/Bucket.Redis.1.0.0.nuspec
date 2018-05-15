@@ -14,6 +14,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="D:\work2017\Git\FamilyBucket\Microservice\Bucket.Redis\bin\Debug\netstandard2.0\Bucket.Redis.dll" target="lib\netstandard2.0\Bucket.Redis.dll" />
+    <file src="D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\bin\Debug\netstandard2.0\Bucket.Redis.dll" target="lib\netstandard2.0\Bucket.Redis.dll" />
   </files>
 </package>

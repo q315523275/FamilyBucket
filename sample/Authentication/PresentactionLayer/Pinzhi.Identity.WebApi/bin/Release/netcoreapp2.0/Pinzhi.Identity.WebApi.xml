@@ -14,7 +14,7 @@
             业务实现
             </summary>
         </member>
-        <member name="M:Pinzhi.Identity.WebApi.Controllers.AuthController.#ctor(Pinzhi.Identity.Interface.IAuthBusiness,Bucket.ErrorCode.IErrorCodeStore,Bucket.ConfigCenter.IConfigCenter)">
+        <member name="M:Pinzhi.Identity.WebApi.Controllers.AuthController.#ctor(Pinzhi.Identity.Interface.IAuthBusiness)">
             <summary>
             构造
             </summary>
@@ -25,6 +25,17 @@
             账户登陆 - 密码登陆
             </summary>
             <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pinzhi.Identity.WebApi.Controllers.HomeController">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="M:Pinzhi.Identity.WebApi.Controllers.HomeController.Index">
+            <summary>
+            首页
+            </summary>
             <returns></returns>
         </member>
         <member name="T:Pinzhi.Identity.WebApi.Program">

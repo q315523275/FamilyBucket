@@ -44,7 +44,7 @@
       "HttpHandlerOptions": {
         "AllowAutoRedirect": true,
         "UseCookieContainer": true,
-        "UseTracing": true
+        "UseTracing": false
       },
       "UseServiceDiscovery": false,
       "UpstreamHost": null,
@@ -97,7 +97,7 @@
       "HttpHandlerOptions": {
         "AllowAutoRedirect": true,
         "UseCookieContainer": true,
-        "UseTracing": true
+        "UseTracing": false
       },
       "UseServiceDiscovery": false,
       "UpstreamHost": null,

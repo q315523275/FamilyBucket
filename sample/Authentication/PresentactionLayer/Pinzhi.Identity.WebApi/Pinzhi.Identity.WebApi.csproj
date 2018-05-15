@@ -18,12 +18,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bucket.AspNetCore" Version="1.0.65" />
+    <PackageReference Include="Bucket.AspNetCore" Version="1.0.7" />
     <PackageReference Include="Bucket.DbContext" Version="1.0.3" />
-    <PackageReference Include="Bucket.Logging" Version="1.0.65" />
-    <PackageReference Include="Bucket.Utility" Version="1.0.52" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.3.0" />
+    <PackageReference Include="Bucket.Logging" Version="1.1.0" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="SkiaSharp" Version="1.60.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>

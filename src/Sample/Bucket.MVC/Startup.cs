@@ -69,13 +69,6 @@ namespace Bucket.MVC
                 });
             });
             // 添加服务发现
-            // services.AddServiceDiscovery(option =>
-            // {
-            //     option.UseConsul(opt =>
-            //     {
-
-            //     });
-            // });
             services.AddServiceDiscoveryConsul(Configuration);
             // 添加服务之间调用
             services.AddServiceClient();

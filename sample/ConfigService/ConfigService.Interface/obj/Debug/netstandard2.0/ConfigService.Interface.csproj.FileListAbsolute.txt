@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\net
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Debug\netstandard2.0\ConfigService.Interface.pdb

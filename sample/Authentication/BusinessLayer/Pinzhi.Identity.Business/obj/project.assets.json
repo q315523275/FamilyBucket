@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "Bucket.Core/1.0.56": {
+      "Bucket.Core/1.1.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.0.1",
@@ -15,13 +15,13 @@
           "lib/netstandard2.0/Bucket.Core.dll": {}
         }
       },
-      "Bucket.Utility/1.0.52": {
+      "Bucket.Utility/1.1.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
-          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json": "11.0.1",
           "Nito.AsyncEx.Context": "1.1.0",
           "System.ComponentModel.Annotations": "4.4.1"
         },
@@ -154,33 +154,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
-        }
-      },
-      "Microsoft.CSharp/4.3.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Linq.Expressions": "4.3.0",
-          "System.ObjectModel": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Threading": "4.3.0"
-        },
-        "compile": {
-          "ref/netstandard1.0/Microsoft.CSharp.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.CSharp.dll": {}
         }
       },
       "Microsoft.Data.Sqlite/2.0.0": {
@@ -552,7 +525,7 @@
           }
         }
       },
-      "NETStandard.Library/2.0.0": {
+      "NETStandard.Library/2.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -567,21 +540,13 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
-      "Newtonsoft.Json/10.0.3": {
+      "Newtonsoft.Json/11.0.1": {
         "type": "package",
-        "dependencies": {
-          "Microsoft.CSharp": "4.3.0",
-          "NETStandard.Library": "1.6.1",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        },
         "compile": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Nito.AsyncEx.Context/1.1.0": {
@@ -2417,7 +2382,7 @@
           "System.Xml.ReaderWriter": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Xml.XmlDocument.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
@@ -2494,22 +2459,22 @@
     }
   },
   "libraries": {
-    "Bucket.Core/1.0.56": {
-      "sha512": "3T61O2hj4fzYv7fibbDXB2zr0FUv1vbQKY55p1TyboJrdL2CH/iND9G1NaNRAnstwtJ9xrgvwXB3IgFb/JRBoQ==",
+    "Bucket.Core/1.1.0": {
+      "sha512": "74xSLwdsZthsGwSu+IxUTRu0nV3IVN3ebC2SX2GiA7hHvJOH1mg/Akh2O3b9VtlNpGBJO7H/mKomsvwijGyQGg==",
       "type": "package",
-      "path": "bucket.core/1.0.56",
+      "path": "bucket.core/1.1.0",
       "files": [
-        "bucket.core.1.0.56.nupkg.sha512",
+        "bucket.core.1.1.0.nupkg.sha512",
         "bucket.core.nuspec",
         "lib/netstandard2.0/Bucket.Core.dll"
       ]
     },
-    "Bucket.Utility/1.0.52": {
-      "sha512": "MF8QkU976vF+KbElwEwswDkbWbEMLZCpMxRJgmsySl/zOn5jsSJjtlwWY8onMnnNPpsNIl2zAACTKWG0OBigBA==",
+    "Bucket.Utility/1.1.0": {
+      "sha512": "oB8I+GzjFV9RNawwpEzqC8hVzeA+Y4h/LrJKuJtP3VYy/M+Z8Nl4yL0GxeHFEEhqsyV/ccmJFgKb+NZKeCuMFw==",
       "type": "package",
-      "path": "bucket.utility/1.0.52",
+      "path": "bucket.utility/1.1.0",
       "files": [
-        "bucket.utility.1.0.52.nupkg.sha512",
+        "bucket.utility.1.1.0.nupkg.sha512",
         "bucket.utility.nuspec",
         "lib/netstandard2.0/Bucket.Utility.dll"
       ]
@@ -2600,63 +2565,6 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
         "microsoft.aspnetcore.webutilities.2.0.2.nupkg.sha512",
         "microsoft.aspnetcore.webutilities.nuspec"
-      ]
-    },
-    "Microsoft.CSharp/4.3.0": {
-      "sha512": "P+MBhIM0YX+JqROuf7i306ZLJEjQYA9uUyRDE+OqwUI5sh41e2ZbPQV3LfAPh+29cmceE1pUffXsGfR4eMY3KA==",
-      "type": "package",
-      "path": "microsoft.csharp/4.3.0",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/Microsoft.CSharp.dll",
-        "lib/netstandard1.3/Microsoft.CSharp.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "microsoft.csharp.4.3.0.nupkg.sha512",
-        "microsoft.csharp.nuspec",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/Microsoft.CSharp.dll",
-        "ref/netcore50/Microsoft.CSharp.xml",
-        "ref/netcore50/de/Microsoft.CSharp.xml",
-        "ref/netcore50/es/Microsoft.CSharp.xml",
-        "ref/netcore50/fr/Microsoft.CSharp.xml",
-        "ref/netcore50/it/Microsoft.CSharp.xml",
-        "ref/netcore50/ja/Microsoft.CSharp.xml",
-        "ref/netcore50/ko/Microsoft.CSharp.xml",
-        "ref/netcore50/ru/Microsoft.CSharp.xml",
-        "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
-        "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/Microsoft.CSharp.dll",
-        "ref/netstandard1.0/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/de/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/es/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/fr/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/it/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ja/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ko/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
-        "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._"
       ]
     },
     "Microsoft.Data.Sqlite/2.0.0": {
@@ -3063,10 +2971,10 @@
         "mysql.data.nuspec"
       ]
     },
-    "NETStandard.Library/2.0.0": {
-      "sha512": "7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
+    "NETStandard.Library/2.0.1": {
+      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
       "type": "package",
-      "path": "netstandard.library/2.0.0",
+      "path": "netstandard.library/2.0.1",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -3187,14 +3095,14 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.0.nupkg.sha512",
+        "netstandard.library.2.0.1.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+    "Newtonsoft.Json/11.0.1": {
+      "sha512": "pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
       "type": "package",
-      "path": "newtonsoft.json/10.0.3",
+      "path": "newtonsoft.json/11.0.1",
       "files": [
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -3209,13 +3117,14 @@
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.10.0.3.nupkg.sha512",
-        "newtonsoft.json.nuspec",
-        "tools/install.ps1"
+        "newtonsoft.json.11.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec"
       ]
     },
     "Nito.AsyncEx.Context/1.1.0": {
@@ -7773,9 +7682,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.0.56",
-      "Bucket.Utility >= 1.0.52",
-      "NETStandard.Library >= 2.0.0",
+      "Bucket.Core >= 1.1.0",
+      "Bucket.Utility >= 1.1.0",
+      "NETStandard.Library >= 2.0.1",
       "Pinzhi.Identity.Interface >= 1.0.0",
       "Pinzhi.Identity.Model >= 1.0.0"
     ]
@@ -7786,9 +7695,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Authentication\\BusinessLayer\\Pinzhi.Identity.Business\\Pinzhi.Identity.Business.csproj",
       "projectName": "Pinzhi.Identity.Business",
@@ -7808,17 +7714,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://192.168.1.199:8080": {},
+        "D:\\work2017\\LocalhostNuGet": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Authentication\\EntityLayer\\Pinzhi.Identity.Model\\Pinzhi.Identity.Model.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Authentication\\EntityLayer\\Pinzhi.Identity.Model\\Pinzhi.Identity.Model.csproj"
-            },
             "D:\\work2017\\Git\\FamilyBucket\\Authentication\\BusinessLayer\\Pinzhi.Identity.Interface\\Pinzhi.Identity.Interface.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Authentication\\BusinessLayer\\Pinzhi.Identity.Interface\\Pinzhi.Identity.Interface.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Authentication\\EntityLayer\\Pinzhi.Identity.Model\\Pinzhi.Identity.Model.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Authentication\\EntityLayer\\Pinzhi.Identity.Model\\Pinzhi.Identity.Model.csproj"
             }
           }
         }
@@ -7832,19 +7738,19 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Bucket.Core": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
           "Bucket.Utility": {
             "target": "Package",
-            "version": "1.0.52"
+            "version": "[1.1.0, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.1, )",
             "autoReferenced": true
-          },
-          "Bucket.Core": {
-            "target": "Package",
-            "version": "1.0.56"
           }
         },
         "imports": [

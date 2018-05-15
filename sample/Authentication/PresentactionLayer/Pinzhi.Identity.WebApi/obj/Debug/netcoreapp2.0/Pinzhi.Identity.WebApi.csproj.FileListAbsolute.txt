@@ -16,5 +16,6 @@ D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.W
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.dll
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Debug\netcoreapp2.0\Pinzhi.Identity.WebApi.pdb

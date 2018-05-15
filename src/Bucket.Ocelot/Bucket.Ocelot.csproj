@@ -28,7 +28,7 @@
     <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="2.0.0" />
     <PackageReference Include="App.Metrics.Formatters.Json" Version="2.0.0" />
     <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
     <PackageReference Include="Ocelot" Version="5.5.0" />
   </ItemGroup>
 

@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\bin\Release\PublishOutput</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\webapp\Pinzhi.Platform</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

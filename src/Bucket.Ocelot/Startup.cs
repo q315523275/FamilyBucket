@@ -114,6 +114,8 @@ namespace Bucket.Ocelot
                     opt.QueueName = eventConfig["QueueName"];
                 });
             });
+            // 添加队列日志
+            services.AddEventLog();
             // 添加统计
             var metrics = AppMetrics.CreateDefaultBuilder()
                 .Configuration.Configure(options =>{

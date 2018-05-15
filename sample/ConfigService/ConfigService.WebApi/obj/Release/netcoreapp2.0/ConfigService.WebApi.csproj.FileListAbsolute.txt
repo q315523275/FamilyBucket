@@ -16,5 +16,6 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netc
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.0\ConfigService.WebApi.pdb

@@ -25,7 +25,6 @@ namespace Pinzhi.Platform.WebApi
                 .Build();
 
             WebHost.CreateDefaultBuilder(args)
-                   .UseKestrel()
                    .UseContentRoot(Directory.GetCurrentDirectory())
                    .UseStartup<Startup>()
                    .UseConfiguration(config)

@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bucket.Core" Version="1.0.56" />
-    <PackageReference Include="Bucket.Utility" Version="1.0.52" />
+    <PackageReference Include="Bucket.Core" Version="1.1.0" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

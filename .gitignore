@@ -9,3 +9,12 @@
 packages/
 /.vs
 Thumbs.db
+*.nuspec
+*.dll
+*.pdb
+*.dll
+*.pdb
+*.CopyComplete
+*.nuspec
+*.pdb
+*.dll

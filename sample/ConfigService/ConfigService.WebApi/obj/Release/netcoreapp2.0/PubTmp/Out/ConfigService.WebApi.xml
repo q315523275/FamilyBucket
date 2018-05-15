@@ -19,6 +19,17 @@
             <param name="sign"></param>
             <returns></returns>
         </member>
+        <member name="T:ConfigService.WebApi.Controllers.HomeController">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="M:ConfigService.WebApi.Controllers.HomeController.Index">
+            <summary>
+            首页
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ConfigService.WebApi.Program">
             <summary>
             应用程序

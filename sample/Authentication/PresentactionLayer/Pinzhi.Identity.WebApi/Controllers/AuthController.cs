@@ -18,17 +18,13 @@ namespace Pinzhi.Identity.WebApi.Controllers
         /// 业务实现
         /// </summary>
         private readonly IAuthBusiness _authBusiness;
-        private readonly IErrorCodeStore _errorCodeStore;
-        private readonly IConfigCenter _configCenter;
         /// <summary>
         /// 构造
         /// </summary>
         /// <param name="authBusiness"></param>
-        public AuthController(IAuthBusiness authBusiness, IErrorCodeStore errorCodeStore, IConfigCenter configCenter)
+        public AuthController(IAuthBusiness authBusiness)
         {
             _authBusiness = authBusiness;
-            _errorCodeStore = errorCodeStore;
-            _configCenter = configCenter;
         }
         /// <summary>
         /// 账户登陆 - 密码登陆

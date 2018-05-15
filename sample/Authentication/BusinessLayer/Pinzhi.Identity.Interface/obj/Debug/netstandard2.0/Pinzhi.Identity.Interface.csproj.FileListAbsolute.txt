@@ -7,5 +7,6 @@ D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interf
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.dll
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Interface\obj\Debug\netstandard2.0\Pinzhi.Identity.Interface.pdb
