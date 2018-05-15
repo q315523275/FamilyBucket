@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50720
-Source Host           : 192.168.1.199:3306
-Source Database       : Bucket
+Source Server Version : 50722
+Source Host           : 127.0.0.1:3306
+Source Database       : bucket
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-04-11 10:27:14
+Date: 2018-05-15 10:45:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,11 @@ CREATE TABLE `tb_api_resources` (
   `CreateTime` datetime DEFAULT NULL,
   `UpdateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=464 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_api_resources
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_app
@@ -48,6 +52,11 @@ CREATE TABLE `tb_app` (
   `Remark` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Id`,`AppId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_app
+-- ----------------------------
+INSERT INTO `tb_app` VALUES ('1', '品值综合', 'PinzhiGO', 'R9QaIZTc4WYcPaKFneKu6zKo4F34Vz5R', '品值综合');
 
 -- ----------------------------
 -- Table structure for tb_appconfig
@@ -65,7 +74,12 @@ CREATE TABLE `tb_appconfig` (
   `Version` bigint(20) NOT NULL,
   `IsDeleted` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_appconfig
+-- ----------------------------
+INSERT INTO `tb_appconfig` VALUES ('1', 'PinzhiGO', 'Public', 'test', '配置值', '备注', '2018-05-10 11:05:34', '2018-05-10 11:05:36', '1', '0');
 
 -- ----------------------------
 -- Table structure for tb_appnamespace
@@ -86,19 +100,29 @@ CREATE TABLE `tb_appnamespace` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of tb_appnamespace
+-- ----------------------------
+INSERT INTO `tb_appnamespace` VALUES ('1', 'Public', 'PinzhiGO', '1', '公开', '0', '2018-05-10 11:03:17', '0', '2018-05-10 11:03:20', '0');
+
+-- ----------------------------
 -- Table structure for tb_logs
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_logs`;
 CREATE TABLE `tb_logs` (
   `Id` varchar(50) NOT NULL,
-  `Timestamp` datetime DEFAULT NULL,
+  `ClassName` varchar(100) DEFAULT NULL,
   `ProjectName` varchar(20) DEFAULT NULL,
   `LogTag` varchar(150) DEFAULT NULL,
   `LogType` varchar(20) DEFAULT NULL,
   `LogMessage` varchar(5120) DEFAULT NULL,
   `IP` varchar(20) DEFAULT NULL,
+  `AddTime` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_logs
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_platform_menus
@@ -114,7 +138,11 @@ CREATE TABLE `tb_platform_menus` (
   `State` int(11) DEFAULT NULL,
   `PlatformId` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_platform_menus
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_platforms
@@ -132,7 +160,11 @@ CREATE TABLE `tb_platforms` (
   `AddTime` datetime DEFAULT NULL,
   `IsDel` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_platforms
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_projects
@@ -147,7 +179,11 @@ CREATE TABLE `tb_projects` (
   `Remark` varchar(500) DEFAULT NULL,
   `RouteKey` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`Id`,`Key`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_projects
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_role_apis
@@ -158,7 +194,11 @@ CREATE TABLE `tb_role_apis` (
   `ApiId` int(11) DEFAULT NULL,
   `RoleId` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2249 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_role_apis
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_role_menus
@@ -169,7 +209,11 @@ CREATE TABLE `tb_role_menus` (
   `MenuId` int(11) DEFAULT NULL,
   `RoleId` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2192 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_role_menus
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_roles
@@ -188,7 +232,11 @@ CREATE TABLE `tb_roles` (
   `UpdateTime` datetime DEFAULT NULL,
   `IsDel` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`Id`,`Key`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_roles
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_routes
@@ -202,6 +250,10 @@ CREATE TABLE `tb_routes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Records of tb_routes
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for tb_user_roles
 -- ----------------------------
 DROP TABLE IF EXISTS `tb_user_roles`;
@@ -210,7 +262,11 @@ CREATE TABLE `tb_user_roles` (
   `Uid` bigint(50) DEFAULT NULL,
   `RoleId` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1442 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_user_roles
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for tb_users
@@ -238,3 +294,8 @@ CREATE TABLE `tb_users` (
   `Email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tb_users
+-- ----------------------------
+INSERT INTO `tb_users` VALUES ('651421238645114', '15155010775', null, '田亮', '15155010775', '1', 'lahvikbelxzkh', null, null, null, null, null, null, null, null, null, '2018-05-10 17:08:33', '2018-05-10 17:08:38', '403305950@qq.com');
