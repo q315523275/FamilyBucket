@@ -2438,11 +2438,11 @@
   "project": {
     "version": "1.1.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Utility\\Bucket.Utility.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\Bucket.Utility.csproj",
       "projectName": "Bucket.Utility",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Utility\\Bucket.Utility.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\Bucket.Utility.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Utility\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

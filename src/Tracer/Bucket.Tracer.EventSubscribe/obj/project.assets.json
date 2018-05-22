@@ -3160,11 +3160,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracer.EventSubscribe\\Bucket.Tracer.EventSubscribe.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracer.EventSubscribe\\Bucket.Tracer.EventSubscribe.csproj",
       "projectName": "Bucket.Tracer.EventSubscribe",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracer.EventSubscribe\\Bucket.Tracer.EventSubscribe.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracer.EventSubscribe\\Bucket.Tracer.EventSubscribe.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracer.EventSubscribe\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracer.EventSubscribe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3184,11 +3184,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracer.Events\\Bucket.Tracer.Events.csproj"
             }
           }
         }

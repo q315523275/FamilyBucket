@@ -572,11 +572,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\WebSocket\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\WebSocket\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
       "projectName": "Bucket.WebSocketManager",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\WebSocket\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\WebSocket\\Bucket.WebSocketManager\\Bucket.WebSocketManager.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\WebSocket\\Bucket.WebSocketManager\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\WebSocket\\Bucket.WebSocketManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

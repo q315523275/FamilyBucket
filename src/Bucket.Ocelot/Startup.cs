@@ -50,30 +50,8 @@ namespace Bucket.Ocelot
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证
-            var audienceConfig = Configuration.GetSection("Audience");
-            var defaultScheme = audienceConfig["defaultScheme"];
-            var keyByteArray = Encoding.ASCII.GetBytes(audienceConfig["Secret"]);
-            var signingKey = new SymmetricSecurityKey(keyByteArray);
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = signingKey,
-                ValidateIssuer = true,
-                ValidIssuer = audienceConfig["Issuer"],//发行人
-                ValidateAudience = true,
-                ValidAudience = audienceConfig["Audience"],//订阅人
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero,
-                RequireExpirationTime = true,
-            };
-            services.AddAuthentication()
-                .AddJwtBearer(defaultScheme, opt =>
-                {
-                    //不使用https
-                    opt.RequireHttpsMetadata = false;
-                    opt.TokenValidationParameters = tokenValidationParameters;
-                });
+            // 授权认证
+            AddOcelotJwtBearer(services);
             // 添加跨域
             services.AddCors(options =>
             {
@@ -148,6 +126,37 @@ namespace Bucket.Ocelot
             app.UseMetricsAllMiddleware();
             app.UseMetricsAllEndpoints();
             app.UseOcelot().Wait();
+        }
+        /// <summary>
+        /// 授权认证
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="isHttps"></param>
+        private void AddOcelotJwtBearer(IServiceCollection services, bool isHttps = false)
+        {
+            var audienceConfig = Configuration.GetSection("Audience");
+            var defaultScheme = audienceConfig["defaultScheme"];
+            var keyByteArray = Encoding.ASCII.GetBytes(audienceConfig["Secret"]);
+            var signingKey = new SymmetricSecurityKey(keyByteArray);
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = audienceConfig["Issuer"],//发行人
+                ValidateAudience = true,
+                ValidAudience = audienceConfig["Audience"],//订阅人
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = true,
+            };
+            services.AddAuthentication()
+                .AddJwtBearer(defaultScheme, opt =>
+                {
+                    //不使用https
+                    opt.RequireHttpsMetadata = false;
+                    opt.TokenValidationParameters = tokenValidationParameters;
+                });
         }
     }
 }

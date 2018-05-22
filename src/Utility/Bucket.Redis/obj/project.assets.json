@@ -4170,11 +4170,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Redis\\Bucket.Redis.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Redis\\Bucket.Redis.csproj",
       "projectName": "Bucket.Redis",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Redis\\Bucket.Redis.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Redis\\Bucket.Redis.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Redis\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Redis\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
