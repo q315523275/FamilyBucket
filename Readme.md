@@ -83,8 +83,7 @@ FamilyBucket-UI正在开发中，其中包括很多页面操作，用户权限�
 ## 应用示例
 
 ```csharp
-using Bucket.AspNetCore;
-public class Startup
+namespace Platform.WebApi
 {
     /// <summary>
     /// 启动配置
