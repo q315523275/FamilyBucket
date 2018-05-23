@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "a03ab2d284e4fae2985c4c767f23ed0b8b365ec6"
+    "signature": "7cd7a82001b086be0a7ac5c03d89ec13fc3178d4"
   },
   "compilationOptions": {},
   "targets": {
@@ -248,7 +248,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
         },
         "runtime": {
@@ -813,6 +813,11 @@
           "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
+      "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
+        "runtime": {
+          "lib/net461/Microsoft.Extensions.DiagnosticAdapter.dll": {}
+        }
+      },
       "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "2.0.0"
@@ -843,7 +848,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
-      "Microsoft.Extensions.Hosting.Abstractions/2.0.1": {
+      "Microsoft.Extensions.Hosting.Abstractions/2.0.3": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll": {}
         }
@@ -2354,7 +2359,10 @@
       "Bucket.Tracer/1.0.0": {
         "dependencies": {
           "Bucket.Core": "1.1.0",
-          "Microsoft.AspNetCore.Http.Extensions": "2.0.2"
+          "Microsoft.AspNetCore.Http.Extensions": "2.0.2",
+          "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
+          "System.Diagnostics.DiagnosticSource": "4.4.1"
         },
         "runtime": {
           "Bucket.Tracer.dll": {}
@@ -2889,6 +2897,13 @@
       "path": "microsoft.extensions.dependencymodel/2.0.3",
       "hashPath": "microsoft.extensions.dependencymodel.2.0.3.nupkg.sha512"
     },
+    "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w8nux+yppIAD3ouzLz3CEtUMj03WIQ9FAmuR6IhrCpQDcoMtajlZIkZLbryJE1jdF1wkewLLM2LpXasfu7HzQw==",
+      "path": "microsoft.extensions.diagnosticadapter/2.0.1",
+      "hashPath": "microsoft.extensions.diagnosticadapter.2.0.1.nupkg.sha512"
+    },
     "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
       "type": "package",
       "serviceable": true,
@@ -2917,12 +2932,12 @@
       "path": "microsoft.extensions.filesystemglobbing/2.0.0",
       "hashPath": "microsoft.extensions.filesystemglobbing.2.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Hosting.Abstractions/2.0.1": {
+    "Microsoft.Extensions.Hosting.Abstractions/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A43O0JzdTE+u5t2pFeraN+3fjlV6jcX3Ra5wIscCX1cM2RHDoOLDQmoDpvDti0ct5TsBEDHVTycbyFqtu0fm+Q==",
-      "path": "microsoft.extensions.hosting.abstractions/2.0.1",
-      "hashPath": "microsoft.extensions.hosting.abstractions.2.0.1.nupkg.sha512"
+      "sha512": "sha512-r5QYhMYRjY/JbkE1x6kgRDZUJixJ8YngaN4BHy8/EtLxBDL98Je8IrElPHExh6QQPLKu0KYzt+9oLBR0L98i7A==",
+      "path": "microsoft.extensions.hosting.abstractions/2.0.3",
+      "hashPath": "microsoft.extensions.hosting.abstractions.2.0.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Localization/2.0.1": {
       "type": "package",

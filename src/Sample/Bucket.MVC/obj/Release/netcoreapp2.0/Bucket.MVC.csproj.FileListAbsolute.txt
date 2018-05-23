@@ -57,11 +57,6 @@ D:\work2017\Git\FamilyBucket\Microservice\Bucket.MVC\obj\Release\netcoreapp2.0\B
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.dll
 D:\work2017\Git\FamilyBucket\Microservice\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.pdb
-D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csprojResolveAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.MVC.xml
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.MVC.deps.json
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.MVC.runtimeconfig.json
@@ -98,6 +93,11 @@ D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcorea
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.ServiceDiscovery.Consul.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.Tracer.Events.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\bin\Release\netcoreapp2.0\Bucket.Tracer.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.dll
 D:\work2017\Git\FamilyBucket\Microservice\Sample\Bucket.MVC\obj\Release\netcoreapp2.0\Bucket.MVC.pdb

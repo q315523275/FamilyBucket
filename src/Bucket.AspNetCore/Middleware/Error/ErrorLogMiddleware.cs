@@ -15,25 +15,21 @@ namespace Bucket.AspNetCore.Middleware.Error
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
         private readonly IErrorCodeStore _errorCodeStore;
-        private readonly IRequestScopedDataRepository _requestScopedDataRepository;
         private readonly IJsonHelper _jsonHelper;
         public ErrorLogMiddleware(RequestDelegate next, 
             ILoggerFactory loggerFactory, 
-            IErrorCodeStore errorCodeStore, 
-            IRequestScopedDataRepository requestScopedDataRepository, 
+            IErrorCodeStore errorCodeStore,
             IJsonHelper jsonHelper)
         {
             _next = next;
             _logger = loggerFactory.CreateLogger<ErrorLogMiddleware>();
             _errorCodeStore = errorCodeStore;
-            _requestScopedDataRepository = requestScopedDataRepository;
             _jsonHelper = jsonHelper;
         }
 
         public async Task Invoke(HttpContext context)
         {
             ErrorResult errorInfo = null;
-            var isException = false;
             try
             {
                 await _next(context);
@@ -48,7 +44,12 @@ namespace Bucket.AspNetCore.Middleware.Error
             catch (Exception ex)
             {
                 errorInfo = new ErrorResult("-1", "系统开小差了,请稍后再试");
-                isException = true;
+                var span = context.GetSpan();
+                if (span != null)
+                {
+                    span.Exception(ex);
+                    context.SetSpan(span);
+                }
                 _logger.LogError(ex, $"全局异常捕获，状态码：{ context?.Response?.StatusCode}，Url：{context?.Request?.GetDisplayUrl()}");
             }
             finally
@@ -56,15 +57,6 @@ namespace Bucket.AspNetCore.Middleware.Error
                 if (errorInfo != null)
                 {
                     var Message = JsonConvert.SerializeObject(errorInfo);
-                    var trace = _requestScopedDataRepository.Get<TraceLogs>(TracerKeys.TraceStoreCacheKey);
-                    if (trace != null)
-                    {
-                        trace.Response = Message;
-                        trace.IsSuccess = true;
-                        trace.IsException = isException;
-                        trace.Code = errorInfo.ErrorCode;
-                        _requestScopedDataRepository.Add(TracerKeys.TraceStoreCacheKey, trace);
-                    }
                     await HandleExceptionAsync(context, Message);
                 }
             }

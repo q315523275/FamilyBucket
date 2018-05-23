@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bucket.MVC</name>
+    </assembly>
+    <members>
+        <member name="P:Bucket.MVC.PermissionRequirement.DeniedAction">
+            <summary>
+            无权限action
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.ClaimType">
+            <summary>
+            认证授权类型
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.LoginPath">
+            <summary>
+            请求路径
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Issuer">
+            <summary>
+            发行人
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Audience">
+            <summary>
+            订阅人
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.Expiration">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.PermissionRequirement.SigningCredentials">
+            <summary>
+            签名验证
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.PermissionRequirement.#ctor(System.String,System.String,System.String,System.String,Microsoft.IdentityModel.Tokens.SigningCredentials,System.TimeSpan)">
+            <summary>
+            构造
+            </summary>
+            <param name="deniedAction"></param>
+            <param name="claimType"></param>
+            <param name="issuer"></param>
+            <param name="audience"></param>
+            <param name="signingCredentials"></param>
+            <param name="expiration"></param>
+        </member>
+        <member name="T:Bucket.MVC.Controllers.AuthController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Bucket.MVC.Controllers.AuthController._dbContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Controllers.AuthController.Login(Bucket.MVC.Models.Dto.InputLogin,System.Net.Http.HttpClient)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Bucket.MVC.Models.UserInfo">
+            <summary>
+            用户分部信息表
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Id">
+            <summary>
+            udcid 
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.UserName">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Password">
+            <summary>
+            账号密码
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.RealName">
+            <summary>
+            真实姓名
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.State">
+            <summary>
+            账户状态
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Salt">
+            <summary>
+            盐值
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.ProvinceId">
+            <summary>
+             省ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.CityId">
+            <summary>
+             市ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.DistrictId">
+            <summary>
+             区ID
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.Province">
+            <summary>
+             省
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.City">
+            <summary>
+             市
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.District">
+            <summary>
+             区
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.StoreName">
+            <summary>
+            营业厅名称
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.UserInfo.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="P:Bucket.MVC.Models.Dto.InputLogin.UserName">
+            <summary>
+            账户
+            </summary>
+        </member>
+        <member name="T:Bucket.MVC.Models.Dto.NotEmptyAttribute">
+            <summary>
+            对象不能为空
+            </summary>
+        </member>
+        <member name="T:Bucket.MVC.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            初始化启动配置
+            </summary>
+            <param name="configuration">配置</param>
+        </member>
+        <member name="P:Bucket.MVC.Startup.Configuration">
+            <summary>
+            配置
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置服务
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            配置请求管道
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.ConfigSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            配置Swagger
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.CommonConfig(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            公共配置
+            </summary>
+        </member>
+        <member name="M:Bucket.MVC.Startup.ConfigRoute(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            路由配置,支持区域
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -5,15 +5,15 @@ namespace Bucket.Tracer.Events
 {
     public class TracerEvent : IEvent
     {
-        public TracerEvent(TraceLogs traceLogs)
+        public TracerEvent(TraceSpan traceSpan)
         {
             this.Id = Guid.NewGuid();
             this.Timestamp = DateTime.UtcNow;
-            this.TraceLog = traceLogs;
+            this.TraceSpan = traceSpan;
         }
 
         public Guid Id { get; }
         public DateTime Timestamp { get; }
-        public TraceLogs TraceLog { get; set; }
+        public TraceSpan TraceSpan { get; set; }
     }
 }

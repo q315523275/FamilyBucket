@@ -50,10 +50,22 @@
             <param name="signingCredentials"></param>
             <param name="expiration"></param>
         </member>
+        <member name="T:Bucket.MVC.Controllers.AuthController">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:Bucket.MVC.Controllers.AuthController._dbContext">
             <summary>
-            自定义策略参数
+            
             </summary>
+        </member>
+        <member name="M:Bucket.MVC.Controllers.AuthController.Login(Bucket.MVC.Models.Dto.InputLogin)">
+            <summary>
+            
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
         </member>
         <member name="T:Bucket.MVC.Models.UserInfo">
             <summary>

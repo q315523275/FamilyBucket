@@ -33,6 +33,8 @@ using Bucket.Tracer;
 using Bucket.Tracer.Events;
 using Bucket.Logging;
 using Bucket.Logging.Events;
+using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -264,7 +266,7 @@ namespace Bucket.AspNetCore.Extensions
         /// <returns></returns>
         public static IServiceCollection AddServiceClient(this IServiceCollection services)
         {
-            services.AddScoped<IServiceClient, BucketHttpClient>();
+            services.AddSingleton<IServiceClient, BucketHttpClient>();
             return services;
         }
         /// <summary>
@@ -290,14 +292,22 @@ namespace Bucket.AspNetCore.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddTracer(this IServiceCollection services, Action<TracerOptions> configAction)
+        public static IServiceCollection AddTracer(this IServiceCollection services, Action<TraceOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
             services.Configure(configAction);
 
-            services.AddSingleton<ITracerHandler, TracerHandler>();
-            services.AddSingleton<ITracerStore, TracerEventStore>();
+            services.AddTransient<HttpTracingHandler>();
+
+            services.AddSingleton<HttpClient>(p => new HttpClient(p.GetService<HttpTracingHandler>()));
+
+            services.AddSingleton<IHostedService, TraceHostedService>();
+            services.AddSingleton<ITracingDiagnosticListener, HttpRequestDiagnosticListener>();
+            services.AddSingleton<IRequestTracer, RequestTracer>();
+
+            services.AddSingleton<IServiceTracer, ServiceTracer>();
+            services.AddSingleton<ITraceSender, TracerEventStore>();
             return services;
         }
         /// <summary>
@@ -309,10 +319,18 @@ namespace Bucket.AspNetCore.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<TracerOptions>(configuration.GetSection("Tracer"));
+            services.Configure<TraceOptions>(configuration.GetSection("Tracer"));
 
-            services.AddSingleton<ITracerHandler, TracerHandler>();
-            services.AddSingleton<ITracerStore, TracerEventStore>();
+            services.AddTransient<HttpTracingHandler>();
+
+            services.AddSingleton<HttpClient>(p => new HttpClient(p.GetService<HttpTracingHandler>()));
+
+            services.AddSingleton<IHostedService, TraceHostedService>();
+            services.AddSingleton<ITracingDiagnosticListener, HttpRequestDiagnosticListener>();
+            services.AddSingleton<IRequestTracer, RequestTracer>();
+
+            services.AddSingleton<IServiceTracer, ServiceTracer>();
+            services.AddSingleton<ITraceSender, TracerEventStore>();
             return services;
         }
         /// <summary>

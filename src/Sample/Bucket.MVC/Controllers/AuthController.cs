@@ -5,14 +5,18 @@ using Bucket.MVC.Models.Dto;
 using SqlSugar;
 using Bucket.WebApi;
 using Bucket.ServiceClient;
+using System.Net.Http;
 
 namespace Bucket.MVC.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Produces("application/json")]
     public class AuthController : ApiControllerBase
     {
         /// <summary>
-        /// 自定义策略参数
+        /// 
         /// </summary>
         private readonly SqlSugarClient _dbContext;
         private readonly ILogger<AuthController> _logger;
@@ -23,20 +27,16 @@ namespace Bucket.MVC.Controllers
             _logger = logger;
             _serviceClient = serviceClient;
         }
-       
-       
-        [HttpPost("/authapi/login")]
-        public OutputLogin Login([FromBody] InputLogin input)
-        {
-            var result = _serviceClient.PostWebApi<string>("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8",new { StartTime = "2017-05-09 14:35:14", EndTime = "2018-05-09 14:35:14" }, isTrace: true);
-            var result2 = _serviceClient.PostWebApi<string>("http://api.51pinzhi.cn/order/api/Query/QueryPayedOrderCount", new { OrderType = 0, OrderChannel = 0 }, isTrace: true);
-            return new OutputLogin { Data = result + result2 };
-        }
 
-        [HttpGet]
-        public string Home()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/authapi/login")]
+        public OutputLogin Login([FromBody] InputLogin input,[FromServices] HttpClient httpClient)
         {
-            return "ok";
+            return new OutputLogin { Data = httpClient.PostAsync("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8",new StringContent("{}",System.Text.Encoding.UTF8, "application/json")).Result.Content.ReadAsStringAsync().Result };
         }
     }
 }

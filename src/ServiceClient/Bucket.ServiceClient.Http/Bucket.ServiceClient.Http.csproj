@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Bucket.Core\Bucket.Core.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracer\Bucket.Tracer.csproj" />
   </ItemGroup>
 
 </Project>

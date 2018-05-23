@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Bucket.Tracer.Events
 {
-    public class TracerEventStore : ITracerStore
+    public class TracerEventStore : ITraceSender
     {
         private readonly IEventBus _eventBus;
         public TracerEventStore(IEventBus eventBus)
@@ -11,9 +11,9 @@ namespace Bucket.Tracer.Events
             _eventBus = eventBus;
         }
 
-        public async Task Post(TraceLogs traceLogs)
+        public async Task SendAsync(TraceSpan traceSpan)
         {
-            await _eventBus.PublishAsync(new TracerEvent(traceLogs));
+            await _eventBus.PublishAsync(new TracerEvent(traceSpan));
         }
     }
 }

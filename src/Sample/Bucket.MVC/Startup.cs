@@ -16,6 +16,8 @@ using Bucket.AspNetCore.Filters;
 using Bucket.AspNetCore.EventBus;
 using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.ServiceDiscovery;
+using System.Net.Http;
+using Bucket.Tracer;
 
 namespace Bucket.MVC
 {
@@ -120,12 +122,10 @@ namespace Bucket.MVC
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 认证授权
-            app.UseAuthentication();
-            // 链路追踪
-            app.UseTracer();
             // 全局错误日志
             app.UseErrorLog();
+            // 认证授权
+            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由

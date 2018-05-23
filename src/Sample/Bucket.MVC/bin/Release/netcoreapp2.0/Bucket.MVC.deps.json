@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "4adb5ca18a93b07beddb0b95515c273bf621b42c"
+    "signature": "cc02a74e5cba575f9be26c65c48777d186811fa8"
   },
   "compilationOptions": {
     "defines": [
@@ -134,7 +134,7 @@
           "Microsoft.AspNetCore.Hosting": "2.0.1",
           "Microsoft.Extensions.Configuration": "2.0.0",
           "Microsoft.Extensions.Configuration.Json": "2.0.0",
-          "Microsoft.Extensions.DiagnosticAdapter": "2.0.0",
+          "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
           "NETStandard.Library": "2.0.0",
           "System.Net.NameResolution": "4.3.0",
@@ -299,13 +299,13 @@
           "Microsoft.Extensions.Configuration.Xml": "2.0.0",
           "Microsoft.Extensions.DependencyInjection": "2.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
-          "Microsoft.Extensions.DiagnosticAdapter": "2.0.0",
+          "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.0.1",
           "Microsoft.Extensions.FileProviders.Composite": "2.0.0",
           "Microsoft.Extensions.FileProviders.Embedded": "2.0.0",
           "Microsoft.Extensions.FileProviders.Physical": "2.0.0",
           "Microsoft.Extensions.FileSystemGlobbing": "2.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
           "Microsoft.Extensions.Identity.Core": "2.0.1",
           "Microsoft.Extensions.Identity.Stores": "2.0.1",
           "Microsoft.Extensions.Localization": "2.0.1",
@@ -348,7 +348,7 @@
           "Microsoft.AspNetCore.Hosting": "2.0.1",
           "Microsoft.AspNetCore.Razor.Runtime": "2.0.1",
           "Microsoft.Extensions.Configuration.Json": "2.0.0",
-          "Microsoft.Extensions.DiagnosticAdapter": "2.0.0",
+          "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
           "Microsoft.Extensions.Logging": "2.0.0",
           "Microsoft.Extensions.Logging.Configuration": "2.0.0"
         },
@@ -706,7 +706,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
         },
         "runtime": {
@@ -1915,7 +1915,7 @@
           "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
-      "Microsoft.Extensions.DiagnosticAdapter/2.0.0": {
+      "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
         "dependencies": {
           "System.Diagnostics.DiagnosticSource": "4.4.1"
         },
@@ -1979,7 +1979,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
-      "Microsoft.Extensions.Hosting.Abstractions/2.0.1": {
+      "Microsoft.Extensions.Hosting.Abstractions/2.0.3": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll": {}
         },
@@ -4403,7 +4403,10 @@
       "Bucket.Tracer/1.0.0": {
         "dependencies": {
           "Bucket.Core": "1.1.0",
-          "Microsoft.AspNetCore.Http.Extensions": "2.0.2"
+          "Microsoft.AspNetCore.Http.Extensions": "2.0.2",
+          "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
+          "System.Diagnostics.DiagnosticSource": "4.4.1"
         },
         "runtime": {
           "Bucket.Tracer.dll": {}
@@ -5498,12 +5501,12 @@
       "path": "microsoft.extensions.dependencymodel/2.0.3",
       "hashPath": "microsoft.extensions.dependencymodel.2.0.3.nupkg.sha512"
     },
-    "Microsoft.Extensions.DiagnosticAdapter/2.0.0": {
+    "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-b+LG3hhpIrNOAG+5Fxdt25wynlzawteFEuSUblM4a7flLpQpiZ0mAJMBuA+bIluGAfcJnFDTghF8MfE57fR6Hg==",
-      "path": "microsoft.extensions.diagnosticadapter/2.0.0",
-      "hashPath": "microsoft.extensions.diagnosticadapter.2.0.0.nupkg.sha512"
+      "sha512": "sha512-w8nux+yppIAD3ouzLz3CEtUMj03WIQ9FAmuR6IhrCpQDcoMtajlZIkZLbryJE1jdF1wkewLLM2LpXasfu7HzQw==",
+      "path": "microsoft.extensions.diagnosticadapter/2.0.1",
+      "hashPath": "microsoft.extensions.diagnosticadapter.2.0.1.nupkg.sha512"
     },
     "Microsoft.Extensions.FileProviders.Abstractions/2.0.1": {
       "type": "package",
@@ -5540,12 +5543,12 @@
       "path": "microsoft.extensions.filesystemglobbing/2.0.0",
       "hashPath": "microsoft.extensions.filesystemglobbing.2.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Hosting.Abstractions/2.0.1": {
+    "Microsoft.Extensions.Hosting.Abstractions/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A43O0JzdTE+u5t2pFeraN+3fjlV6jcX3Ra5wIscCX1cM2RHDoOLDQmoDpvDti0ct5TsBEDHVTycbyFqtu0fm+Q==",
-      "path": "microsoft.extensions.hosting.abstractions/2.0.1",
-      "hashPath": "microsoft.extensions.hosting.abstractions.2.0.1.nupkg.sha512"
+      "sha512": "sha512-r5QYhMYRjY/JbkE1x6kgRDZUJixJ8YngaN4BHy8/EtLxBDL98Je8IrElPHExh6QQPLKu0KYzt+9oLBR0L98i7A==",
+      "path": "microsoft.extensions.hosting.abstractions/2.0.3",
+      "hashPath": "microsoft.extensions.hosting.abstractions.2.0.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Identity.Core/2.0.1": {
       "type": "package",
