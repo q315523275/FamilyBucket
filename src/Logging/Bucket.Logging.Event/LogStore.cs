@@ -14,9 +14,9 @@ namespace Bucket.Logging.Events
             _eventBus = eventBus;
         }
 
-        public async Task Post(LogInfo logs)
+        public void Post(LogInfo logs)
         {
-            await _eventBus.PublishAsync(new LogEvent(logs));
+            _eventBus.PublishAsync(new LogEvent(logs));
         }
     }
 }

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EventBus\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
+    <ProjectReference Include="..\Bucket.Tracing\Bucket.Tracing.csproj" />
+  </ItemGroup>
+
+</Project>

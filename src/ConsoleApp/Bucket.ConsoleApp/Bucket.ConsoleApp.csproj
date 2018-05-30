@@ -28,7 +28,8 @@
     <ProjectReference Include="..\..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Bucket.Core\Bucket.Core.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging.EventSubscribe\Bucket.Logging.EventSubscribe.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracer.EventSubscribe\Bucket.Tracer.EventSubscribe.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.Tracing.EventSubscribe\Bucket.Tracing.EventSubscribe.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
   </ItemGroup>
 
 </Project>

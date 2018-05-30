@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Filters\WebApiTraceFilterAttribute.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
@@ -34,7 +38,8 @@
     <ProjectReference Include="..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\ServiceClient\Bucket.ServiceClient.Http\Bucket.ServiceClient.Http.csproj" />
     <ProjectReference Include="..\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
-    <ProjectReference Include="..\Tracer\Bucket.Tracer.Events\Bucket.Tracer.Events.csproj" />
+    <ProjectReference Include="..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
+    <ProjectReference Include="..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
     <ProjectReference Include="..\Utility\Bucket.Redis\Bucket.Redis.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,3 @@
-D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csprojResolveAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.deps.json
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.pdb
@@ -9,6 +5,10 @@ D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Relea
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.EventBus.Common.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.pdb

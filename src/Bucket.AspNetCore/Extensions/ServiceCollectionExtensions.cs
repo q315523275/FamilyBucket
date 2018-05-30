@@ -8,7 +8,6 @@ using Bucket.EventBus.Common.Events;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -29,12 +28,19 @@ using Bucket.AspNetCore.ServiceDiscovery;
 
 using System;
 using System.Text;
-using Bucket.Tracer;
-using Bucket.Tracer.Events;
+
 using Bucket.Logging;
 using Bucket.Logging.Events;
+
 using Microsoft.Extensions.Hosting;
-using System.Net.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+using Bucket.Tracing;
+using Bucket.OpenTracing;
+using Bucket.Tracing.AspNetCore;
+using Bucket.Tracing.Events;
+using Bucket.Tracing.Diagnostics;
+using Bucket.Tracing.Components;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -292,22 +298,26 @@ namespace Bucket.AspNetCore.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection AddTracer(this IServiceCollection services, Action<TraceOptions> configAction)
+        public static IServiceCollection AddTracer(this IServiceCollection services, Action<TracingOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
             services.Configure(configAction);
 
-            services.AddTransient<HttpTracingHandler>();
+            services.TryAddSingleton<ISpanContextFactory, SpanContextFactory>();
+            services.TryAddSingleton<ISampler, FullSampler>();
+            services.TryAddSingleton<ITracer, Tracer>();
+            services.TryAddSingleton<IServiceTracerProvider, ServiceTracerProvider>();
+            services.TryAddSingleton<IServiceTracer, ServiceTracer>();
+            services.TryAddSingleton<ISpanRecorder, EventSpanRecorder>();
+            services.TryAddSingleton<ITraceIdGenerator, TraceIdGenerator>();
 
-            services.AddSingleton<HttpClient>(p => new HttpClient(p.GetService<HttpTracingHandler>()));
+            services.AddSingleton<IServiceTracer>(provider => provider.GetRequiredService<IServiceTracerProvider>().GetServiceTracer());
+            services.AddSingleton<TracingDiagnosticListenerObserver>();
+            services.AddSingleton<IHostedService, TracingHostedService>();
+            services.AddSingleton<ITracingDiagnosticListener, HostingDiagnosticListener>();
+            services.AddSingleton<ITracingDiagnosticListener, HttpClientDiagnosticListener>();
 
-            services.AddSingleton<IHostedService, TraceHostedService>();
-            services.AddSingleton<ITracingDiagnosticListener, HttpRequestDiagnosticListener>();
-            services.AddSingleton<IRequestTracer, RequestTracer>();
-
-            services.AddSingleton<IServiceTracer, ServiceTracer>();
-            services.AddSingleton<ITraceSender, TracerEventStore>();
             return services;
         }
         /// <summary>
@@ -319,18 +329,22 @@ namespace Bucket.AspNetCore.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<TraceOptions>(configuration.GetSection("Tracer"));
+            services.Configure<TracingOptions>(configuration.GetSection("Tracing"));
 
-            services.AddTransient<HttpTracingHandler>();
+            services.TryAddSingleton<ISpanContextFactory, SpanContextFactory>();
+            services.TryAddSingleton<ISampler, FullSampler>();
+            services.TryAddSingleton<ITracer, Tracer>();
+            services.TryAddSingleton<IServiceTracerProvider, ServiceTracerProvider>();
+            services.TryAddSingleton<IServiceTracer, ServiceTracer>();
+            services.TryAddSingleton<ISpanRecorder, EventSpanRecorder>();
+            services.TryAddSingleton<ITraceIdGenerator, TraceIdGenerator>();
 
-            services.AddSingleton<HttpClient>(p => new HttpClient(p.GetService<HttpTracingHandler>()));
+            services.AddSingleton<IServiceTracer>(provider => provider.GetRequiredService<IServiceTracerProvider>().GetServiceTracer());
+            services.AddSingleton<TracingDiagnosticListenerObserver>();
+            services.AddSingleton<IHostedService, TracingHostedService>();
+            services.AddSingleton<ITracingDiagnosticListener, HostingDiagnosticListener>();
+            services.AddSingleton<ITracingDiagnosticListener, HttpClientDiagnosticListener>();
 
-            services.AddSingleton<IHostedService, TraceHostedService>();
-            services.AddSingleton<ITracingDiagnosticListener, HttpRequestDiagnosticListener>();
-            services.AddSingleton<IRequestTracer, RequestTracer>();
-
-            services.AddSingleton<IServiceTracer, ServiceTracer>();
-            services.AddSingleton<ITraceSender, TracerEventStore>();
             return services;
         }
         /// <summary>

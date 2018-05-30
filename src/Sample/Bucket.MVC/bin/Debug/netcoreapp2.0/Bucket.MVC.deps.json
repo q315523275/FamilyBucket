@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "b8578a4a746f122b0aed2ab82338cda1c53e1164"
+    "signature": "758c7b826d72505e7aaa5d014000000c601798b8"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,8 @@
           "Bucket.AspNetCore": "1.0.7",
           "Bucket.DbContext": "1.0.3",
           "Bucket.Logging": "1.1.0",
+          "Bucket.Tracing": "1.0.0",
+          "Bucket.Tracing.Events": "1.0.0",
           "Microsoft.AspNetCore.All": "2.0.5",
           "Microsoft.NETCore.App": "2.0.0",
           "Swashbuckle.AspNetCore": "2.2.0"
@@ -35,6 +37,45 @@
         },
         "compile": {
           "Bucket.MVC.dll": {}
+        }
+      },
+      "AspectCore.Abstractions/0.5.0": {
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
+        }
+      },
+      "AspectCore.Core/0.5.0": {
+        "dependencies": {
+          "AspectCore.Abstractions": "0.5.0",
+          "AspectCore.Extensions.Reflection": "0.5.0",
+          "Microsoft.CSharp": "4.5.0-rc1",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Core.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Core.dll": {}
+        }
+      },
+      "AspectCore.Extensions.Reflection/0.5.0": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
         }
       },
       "Consul/0.7.2.4": {
@@ -56,23 +97,6 @@
         },
         "compile": {
           "lib/netstandard1.3/Consul.dll": {}
-        }
-      },
-      "Elasticsearch.Net/5.6.1": {
-        "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
-          "NETStandard.Library": "2.0.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Dynamic.Runtime": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -114,6 +138,22 @@
           }
         }
       },
+      "MessagePack/1.7.3.4": {
+        "dependencies": {
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Threading.Tasks.Extensions": "4.4.0",
+          "System.ValueTuple": "4.4.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MessagePack.dll": {}
+        },
+        "compile": {
+          "lib/netstandard2.0/MessagePack.dll": {}
+        }
+      },
+      "MessagePackAnalyzer/1.6.0": {},
       "Microsoft.ApplicationInsights/2.4.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.0",
@@ -833,7 +873,7 @@
       },
       "Microsoft.AspNetCore.JsonPatch/2.0.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.5.0-rc1",
           "Newtonsoft.Json": "11.0.1"
         },
         "runtime": {
@@ -1499,7 +1539,7 @@
           "lib/netstandard2.0/Microsoft.CodeAnalysis.Razor.dll": {}
         }
       },
-      "Microsoft.CSharp/4.4.0": {},
+      "Microsoft.CSharp/4.5.0-rc1": {},
       "Microsoft.Data.Edm/5.8.2": {
         "runtime": {
           "lib/netstandard1.1/Microsoft.Data.Edm.dll": {}
@@ -1655,7 +1695,7 @@
       },
       "Microsoft.EntityFrameworkCore.Relational/2.0.1": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.5.0-rc1",
           "Microsoft.EntityFrameworkCore": "2.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "2.0.2"
         },
@@ -2398,22 +2438,6 @@
         },
         "compile": {
           "lib/netstandard1.3/MySql.Data.dll": {}
-        }
-      },
-      "NEST/5.6.1": {
-        "dependencies": {
-          "Elasticsearch.Net": "5.6.1",
-          "NETStandard.Library": "2.0.0",
-          "Newtonsoft.Json": "11.0.1",
-          "System.Collections.Specialized": "4.3.0",
-          "System.Linq.Queryable": "4.0.1",
-          "System.Reflection.TypeExtensions": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Nest.dll": {}
-        },
-        "compile": {
-          "lib/netstandard1.3/Nest.dll": {}
         }
       },
       "Newtonsoft.Json/11.0.1": {
@@ -4246,7 +4270,8 @@
           "Bucket.Redis": "1.0.0",
           "Bucket.ServiceClient.Http": "1.1.0",
           "Bucket.ServiceDiscovery.Consul": "1.1.0",
-          "Bucket.Tracer.Events": "1.0.0",
+          "Bucket.Tracing": "1.0.0",
+          "Bucket.Tracing.Events": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.0.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.0.1",
           "Microsoft.AspNetCore.Mvc": "2.0.2",
@@ -4399,32 +4424,37 @@
           "Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
-      "Bucket.Tracer/1.0.0": {
+      "Bucket.Tracing/1.0.0": {
         "dependencies": {
+          "AspectCore.Core": "0.5.0",
           "Bucket.Core": "1.1.0",
+          "MessagePack": "1.7.3.4",
+          "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.0.3",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.0.3",
           "Microsoft.Extensions.DiagnosticAdapter": "2.0.1",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3"
+          "Microsoft.Extensions.Hosting.Abstractions": "2.0.3",
+          "Microsoft.Extensions.Primitives": "2.0.0",
+          "Newtonsoft.Json": "11.0.1"
         },
         "runtime": {
-          "Bucket.Tracer.dll": {}
+          "Bucket.Tracing.dll": {}
         },
         "compile": {
-          "Bucket.Tracer.dll": {}
+          "Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracer.Events/1.0.0": {
+      "Bucket.Tracing.Events/1.0.0": {
         "dependencies": {
           "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Tracer": "1.0.0",
-          "NEST": "5.6.1"
+          "Bucket.Logging": "1.1.0",
+          "Bucket.Tracing": "1.0.0"
         },
         "runtime": {
-          "Bucket.Tracer.Events.dll": {}
+          "Bucket.Tracing.Events.dll": {}
         },
         "compile": {
-          "Bucket.Tracer.Events.dll": {}
+          "Bucket.Tracing.Events.dll": {}
         }
       },
       "Microsoft.NETCore.App/2.0.0": {
@@ -4611,6 +4641,27 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AspectCore.Abstractions/0.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
+      "path": "aspectcore.abstractions/0.5.0",
+      "hashPath": "aspectcore.abstractions.0.5.0.nupkg.sha512"
+    },
+    "AspectCore.Core/0.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
+      "path": "aspectcore.core/0.5.0",
+      "hashPath": "aspectcore.core.0.5.0.nupkg.sha512"
+    },
+    "AspectCore.Extensions.Reflection/0.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
+      "path": "aspectcore.extensions.reflection/0.5.0",
+      "hashPath": "aspectcore.extensions.reflection.0.5.0.nupkg.sha512"
+    },
     "Consul/0.7.2.4": {
       "type": "package",
       "serviceable": true,
@@ -4618,19 +4669,26 @@
       "path": "consul/0.7.2.4",
       "hashPath": "consul.0.7.2.4.nupkg.sha512"
     },
-    "Elasticsearch.Net/5.6.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4bFyEVjjjJ1wKXm7aGy6kVMR5OWDllTadCCgLplPU5pco4cPGO/nbInG9zh0j9fkxVT78CMI3o1pUVYiBjGfFw==",
-      "path": "elasticsearch.net/5.6.1",
-      "hashPath": "elasticsearch.net.5.6.1.nupkg.sha512"
-    },
     "Libuv/1.10.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-zsmYVQ/BbHzguU/DJ8mbpEoX0tg+9QSLi59/+AIROUTLTc1Ja9eNMWSfw4dY/r+5U5EEKcqBJQ2isG2/kugQfQ==",
       "path": "libuv/1.10.0",
       "hashPath": "libuv.1.10.0.nupkg.sha512"
+    },
+    "MessagePack/1.7.3.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QSKZVq6BmNaz/B4n0bAM/moQnc4E6XZ7uXRbJcEXxUzZufJiDYDE6awYqDtNz6acupYoPt2QupGV4rpyPCRRtg==",
+      "path": "messagepack/1.7.3.4",
+      "hashPath": "messagepack.1.7.3.4.nupkg.sha512"
+    },
+    "MessagePackAnalyzer/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gWH/And7eJFxDT/q/hWFyWjrCni6HJ01fgDB2NUhYaqrEZN2LtsaTwAkSPhd26AdAbeYkZg7kS/umlt2Wci2HQ==",
+      "path": "messagepackanalyzer/1.6.0",
+      "hashPath": "messagepackanalyzer.1.6.0.nupkg.sha512"
     },
     "Microsoft.ApplicationInsights/2.4.0": {
       "type": "package",
@@ -5276,12 +5334,12 @@
       "path": "microsoft.codeanalysis.razor/2.0.1",
       "hashPath": "microsoft.codeanalysis.razor.2.0.1.nupkg.sha512"
     },
-    "Microsoft.CSharp/4.4.0": {
+    "Microsoft.CSharp/4.5.0-rc1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vvVR/B08YVghQ4jHEloxqw2ZWzEGE1AOA5E0DioUM3ujbXz6FD3AfB/0Jl2ohJPd0nXYGwmPe1En6HTsSriq1A==",
-      "path": "microsoft.csharp/4.4.0",
-      "hashPath": "microsoft.csharp.4.4.0.nupkg.sha512"
+      "sha512": "sha512-ZHQLb01QJvLRyqjt5ega6QIpz1BvCoTSa/dL9Ne/JfJzgyj5+zDMQHUTb9BfJege3yavV2FFdKIH2PQRqGCoHQ==",
+      "path": "microsoft.csharp/4.5.0-rc1",
+      "hashPath": "microsoft.csharp.4.5.0-rc1.nupkg.sha512"
     },
     "Microsoft.Data.Edm/5.8.2": {
       "type": "package",
@@ -5765,13 +5823,6 @@
       "sha512": "sha512-Nsoqwptry5ermXvg7HezzPsXphycb+WsZ2ngmX61XRSvuYVHXqTvrHsGq+Jz+fpFpGtvtjS9nz/ju08kOuZuTg==",
       "path": "mysql.data/6.10.4",
       "hashPath": "mysql.data.6.10.4.nupkg.sha512"
-    },
-    "NEST/5.6.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-v2XoSC3R/t0M3FXSiMGypRszRC4mYMi1RQ/hMa1xhhg7/S728knLxpEWjjJJYS6S2Hwxf95qwHvOmcNZ1zdStQ==",
-      "path": "nest/5.6.1",
-      "hashPath": "nest.5.6.1.nupkg.sha512"
     },
     "Newtonsoft.Json/11.0.1": {
       "type": "package",
@@ -6832,12 +6883,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracer/1.0.0": {
+    "Bucket.Tracing/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracer.Events/1.0.0": {
+    "Bucket.Tracing.Events/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

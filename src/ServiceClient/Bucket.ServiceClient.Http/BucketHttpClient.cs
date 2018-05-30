@@ -24,16 +24,17 @@ namespace Bucket.ServiceClient.Http
         public BucketHttpClient(ILoadBalancerHouse loadBalancerHouse, 
             ILoggerFactory loggerFactory, 
             IJsonHelper jsonHelper, 
-            IHttpContextAccessor httpContextAccessor,
-            HttpClient httpClient)
+            IHttpContextAccessor httpContextAccessor)
         {
             _logger = loggerFactory.CreateLogger<BucketHttpClient>();
             _jsonHelper = jsonHelper;
             _loadBalancerHouse = loadBalancerHouse;
 
-            _httpClient = httpClient ?? new HttpClient();
-            //_httpClient.Timeout = TimeSpan.FromSeconds(30);
-            //_httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
+            _httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromSeconds(30)
+            };
+            _httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
         }
         /// <summary>
         /// 获取负载Api接口地址

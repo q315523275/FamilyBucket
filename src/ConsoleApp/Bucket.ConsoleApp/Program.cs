@@ -10,8 +10,9 @@ using Bucket.Logging.EventSubscribe;
 using Bucket.AspNetCore.EventBus;
 using Bucket.EventBus.Common.Events;
 using Bucket.Logging.Events;
-using Bucket.Tracer.Events;
-using Bucket.Tracer.EventSubscribe;
+using Bucket.Tracing.EventSubscribe.Elasticsearch;
+using Bucket.Tracing.Events;
+using Bucket.Tracing.EventSubscribe;
 
 namespace Bucket.ConsoleApp
 {
@@ -27,7 +28,7 @@ namespace Bucket.ConsoleApp
             var eventBus = serviceProvider.GetRequiredService<IEventBus>();
             // 事件订阅
             eventBus.Subscribe<LogEvent, DbLogEventHandler>();
-            eventBus.Subscribe<TracerEvent, TracerEventHandler>();
+            eventBus.Subscribe<TracingEvent, TracingEventHandler>();
         }
         private static void Initialize()
         {
@@ -40,6 +41,7 @@ namespace Bucket.ConsoleApp
             var services = new ServiceCollection().AddOptions().AddLogging();
             // 添加基础设施服务
             services.AddBucket();
+            services.AddMemoryCache();
             // 添加事件驱动
             var eventConfig = configuration.GetSection("EventBus").GetSection("RabbitMQ");
             services.AddEventBus(option =>
@@ -63,12 +65,10 @@ namespace Bucket.ConsoleApp
                 IsWriteConsole = false
             });
             // 添加链路追踪ES消费配置
-            var esetting = new ElasticClientOptions
-            {
-                Server = configuration.GetSection("ElasticClient")["Server"],
-                DefaultIndex = configuration.GetSection("ElasticClient")["DefaultIndex"]
-            };
-            services.AddSingleton(new ElasticClientManager(esetting));
+            services.Configure<ElasticsearchOptions>(configuration.GetSection("Elasticsearch"));
+            services.AddSingleton<IIndexManager, IndexManager>();
+            services.AddSingleton<IElasticClientFactory, ElasticClientFactory>();
+            services.AddScoped<ISpanStorage, ElasticsearchSpanStorage>();
             // 容器
             serviceProvider = services.BuildServiceProvider();
         }

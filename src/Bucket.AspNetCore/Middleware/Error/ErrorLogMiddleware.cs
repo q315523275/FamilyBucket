@@ -1,7 +1,6 @@
 ﻿using Bucket.Core;
 using Bucket.ErrorCode;
 using Bucket.Exceptions;
-using Bucket.Tracer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
@@ -44,12 +43,6 @@ namespace Bucket.AspNetCore.Middleware.Error
             catch (Exception ex)
             {
                 errorInfo = new ErrorResult("-1", "系统开小差了,请稍后再试");
-                var span = context.GetSpan();
-                if (span != null)
-                {
-                    span.Exception(ex);
-                    context.SetSpan(span);
-                }
                 _logger.LogError(ex, $"全局异常捕获，状态码：{ context?.Response?.StatusCode}，Url：{context?.Request?.GetDisplayUrl()}");
             }
             finally

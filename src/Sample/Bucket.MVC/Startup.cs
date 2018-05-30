@@ -17,7 +17,9 @@ using Bucket.AspNetCore.EventBus;
 using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.ServiceDiscovery;
 using System.Net.Http;
-using Bucket.Tracer;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 
 namespace Bucket.MVC
 {
@@ -76,10 +78,11 @@ namespace Bucket.MVC
             services.AddServiceClient();
             // 添加链路追踪
             services.AddTracer(Configuration);
+
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options =>
             {
-                options.Filters.Add(typeof(WebApiTraceFilterAttribute));
+                // options.Filters.Add(typeof(WebApiTraceFilterAttribute));
                 options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {

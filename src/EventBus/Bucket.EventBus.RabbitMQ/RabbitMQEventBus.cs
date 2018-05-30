@@ -128,6 +128,8 @@ namespace Bucket.EventBus.RabbitMQ
                 {
                     // 当前使用模式问题，不记录日志，需升级map方式
                     // logger.LogError(ex, $"事件驱动消费事件获取失败");
+                    Console.WriteLine(ex.Message);
+
                 }
                 if (!autoAck)
                 {

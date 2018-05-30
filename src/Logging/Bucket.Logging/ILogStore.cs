@@ -4,6 +4,6 @@ namespace Bucket.Logging
 {
     public interface ILogStore
     {
-        Task Post(LogInfo logs);
+        void Post(LogInfo logs);
     }
 }

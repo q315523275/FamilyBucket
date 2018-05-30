@@ -6,6 +6,7 @@ using SqlSugar;
 using Bucket.WebApi;
 using Bucket.ServiceClient;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Bucket.MVC.Controllers
 {
@@ -21,6 +22,7 @@ namespace Bucket.MVC.Controllers
         private readonly SqlSugarClient _dbContext;
         private readonly ILogger<AuthController> _logger;
         private readonly IServiceClient _serviceClient;
+        
         public AuthController(SqlSugarClient dbContext, ILogger<AuthController> logger, IServiceClient serviceClient)
         {
             _dbContext = dbContext;
@@ -34,9 +36,10 @@ namespace Bucket.MVC.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/authapi/login")]
-        public OutputLogin Login([FromBody] InputLogin input,[FromServices] HttpClient httpClient)
+        public async Task<OutputLogin> Login([FromBody] InputLogin input)
         {
-            return new OutputLogin { Data = httpClient.PostAsync("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8",new StringContent("{}",System.Text.Encoding.UTF8, "application/json")).Result.Content.ReadAsStringAsync().Result };
+            var cc = await new HttpClient().PostAsync("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8", new StringContent("{}", System.Text.Encoding.UTF8, "application/json"));
+            return new OutputLogin { Data = await cc.Content.ReadAsStringAsync() };
         }
     }
 }
