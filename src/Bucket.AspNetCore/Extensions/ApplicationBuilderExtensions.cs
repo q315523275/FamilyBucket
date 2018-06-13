@@ -36,21 +36,16 @@ namespace Bucket.AspNetCore.Extensions
             if (serviceDiscoveryOption.Consul == null)
                 throw new ArgumentException("Missing Dependency", nameof(serviceDiscoveryOption.Consul));
 
-            //create logger to record the important information
-            var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>();
-            var logger = loggerFactory.CreateLogger("BucketServiceBuilder");
-
             if (string.IsNullOrEmpty(serviceDiscoveryOption.ServiceName))
                 throw new ArgumentException("service name must be configure", nameof(serviceDiscoveryOption.ServiceName));
+
             IEnumerable<Uri> addresses = null;
             if (serviceDiscoveryOption.Endpoints != null && serviceDiscoveryOption.Endpoints.Length > 0)
             {
-                logger.LogInformation($"Using {serviceDiscoveryOption.Endpoints.Length} configured endpoints for service registration");
                 addresses = serviceDiscoveryOption.Endpoints.Select(p => new Uri(p));
             }
             else
             {
-                logger.LogInformation($"Trying to use server.Features to figure out the service endpoint for registration.");
                 var features = app.Properties["server.Features"] as FeatureCollection;
                 addresses = features.Get<IServerAddressesFeature>().Addresses.Select(p => new Uri(p)).ToArray();
             }
@@ -60,16 +55,14 @@ namespace Bucket.AspNetCore.Extensions
             foreach (var address in addresses)
             {
                 var serviceID = GetServiceId(serviceDiscoveryOption.ServiceName, address);
-                logger.LogInformation($"Registering service {serviceID} for address {address}.");
+
                 Uri healthCheck = null;
                 if (!string.IsNullOrEmpty(serviceDiscoveryOption.HealthCheckTemplate))
                 {
                     healthCheck = new Uri(address, serviceDiscoveryOption.HealthCheckTemplate);
-                    logger.LogInformation($"Adding healthcheck for {serviceID},checking {healthCheck}");
                 }
-                var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName, serviceDiscoveryOption.Version, address, healthCheckUri: healthCheck, tags: new[] { "urlprefix-/values" });
-                logger.LogInformation("Registering additional health check");
-                // register service & health check cleanup
+                var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName, serviceDiscoveryOption.Version, address, healthCheckUri: healthCheck, tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}" });
+
                 applicationLifetime.ApplicationStopping.Register(() =>
                 {
                     app.RemoveTenant(registryInformation.Id);

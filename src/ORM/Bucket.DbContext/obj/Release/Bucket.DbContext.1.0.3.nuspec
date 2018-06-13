@@ -9,8 +9,8 @@
     <description>Package Description</description>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Microsoft.Extensions.DependencyInjection" version="2.0.0" exclude="Build,Analyzers" />
-        <dependency id="sqlSugarCore" version="4.6.4.6" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection" version="2.1.0" exclude="Build,Analyzers" />
+        <dependency id="sqlSugarCore" version="4.6.4.9" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>

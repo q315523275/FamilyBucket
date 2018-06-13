@@ -18,6 +18,7 @@ using Bucket.Logging;
 using App.Metrics;
 
 using System.Text;
+using Bucket.AspNetCore.Filters;
 
 namespace Bucket.Ocelot
 {
@@ -94,27 +95,29 @@ namespace Bucket.Ocelot
             });
             // 添加队列日志
             services.AddEventLog();
+            // 添加链路
+            services.AddTracer(Configuration);
             // 添加统计
-            var metrics = AppMetrics.CreateDefaultBuilder()
-                .Configuration.Configure(options =>{
-                    options.AddAppTag("RepairApp");
-                    options.AddEnvTag("stage");
-                })
-                .Report.ToInfluxDb(options => {
-                    options.InfluxDb.BaseUri = new Uri("http://192.168.1.199:8086");
-                    options.InfluxDb.Database = "MetricsDB";
-                    options.InfluxDb.UserName = "bucket";
-                    options.InfluxDb.Password = "123456";
-                    options.HttpPolicy.BackoffPeriod = TimeSpan.FromSeconds(30);
-                    options.HttpPolicy.FailuresBeforeBackoff = 5;
-                    options.HttpPolicy.Timeout = TimeSpan.FromSeconds(10);
-                    options.FlushInterval = TimeSpan.FromSeconds(5);
-                })
-                .Build();
-            services.AddMetrics(metrics);
-            services.AddMetricsReportScheduler();
-            services.AddMetricsTrackingMiddleware();
-            services.AddMetricsEndpoints();
+            //var metrics = AppMetrics.CreateDefaultBuilder()
+            //    .Configuration.Configure(options =>{
+            //        options.AddAppTag("RepairApp");
+            //        options.AddEnvTag("stage");
+            //    })
+            //    .Report.ToInfluxDb(options => {
+            //        options.InfluxDb.BaseUri = new Uri("http://192.168.1.199:8086");
+            //        options.InfluxDb.Database = "MetricsDB";
+            //        options.InfluxDb.UserName = "bucket";
+            //        options.InfluxDb.Password = "123456";
+            //        options.HttpPolicy.BackoffPeriod = TimeSpan.FromSeconds(30);
+            //        options.HttpPolicy.FailuresBeforeBackoff = 5;
+            //        options.HttpPolicy.Timeout = TimeSpan.FromSeconds(10);
+            //        options.FlushInterval = TimeSpan.FromSeconds(5);
+            //    })
+            //    .Build();
+            //services.AddMetrics(metrics);
+            //services.AddMetricsReportScheduler();
+            //services.AddMetricsTrackingMiddleware();
+            //services.AddMetricsEndpoints();
         }
         /// <summary>
         /// 配置请求管道
@@ -123,8 +126,8 @@ namespace Bucket.Ocelot
         {
             loggerFactory.AddBucketLog(app, "Bucket.Ocelot");
             app.UseCors("CorsPolicy");
-            app.UseMetricsAllMiddleware();
-            app.UseMetricsAllEndpoints();
+            //app.UseMetricsAllMiddleware();
+            //app.UseMetricsAllEndpoints();
             app.UseOcelot().Wait();
         }
         /// <summary>

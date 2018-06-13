@@ -36,8 +36,7 @@
     "InitKeyType": "Attribute",
     "IsAutoCloseConnection": false
   },
-  "ElasticClient": {
-    "Server": "http://127.0.0.1:9200",
-    "DefaultIndex": "tracer"
+  "Elasticsearch": {
+    "ElasticsearchHosts": "http://127.0.0.1:9200"
   }
 }

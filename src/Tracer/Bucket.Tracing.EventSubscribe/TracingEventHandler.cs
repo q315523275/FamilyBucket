@@ -24,6 +24,7 @@ namespace Bucket.Tracing.EventSubscribe
 
         public async Task<bool> HandleAsync(TracingEvent @event, CancellationToken cancellationToken = default(CancellationToken))
         {
+            /// 需要增加缓存区
             var span = @event.TraceSpan;
             if (span != null)
             {

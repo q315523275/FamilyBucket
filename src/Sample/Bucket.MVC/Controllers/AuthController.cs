@@ -38,8 +38,8 @@ namespace Bucket.MVC.Controllers
         [HttpPost("/authapi/login")]
         public async Task<OutputLogin> Login([FromBody] InputLogin input)
         {
-            
-            return new OutputLogin { };
+            var cc = await new HttpClient().PostAsync("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8", new StringContent("{}", System.Text.Encoding.UTF8, "application/json"));
+            return new OutputLogin { Data = await cc.Content.ReadAsStringAsync() };
         }
     }
 }

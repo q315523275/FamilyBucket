@@ -120,7 +120,15 @@ namespace Bucket.ServiceDiscovery.Consul
         public async Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, Uri uri, Uri healthCheckUri = null, IEnumerable<string> tags = null)
         {
             var serviceId = GetServiceId(serviceName, uri);
-            string check = healthCheckUri?.ToString() ?? $"{uri}".TrimEnd('/') + "/status";
+            string checkUrl = healthCheckUri?.ToString() ?? $"{uri}".TrimEnd('/') + "/status";
+
+            var httpCheck = new AgentServiceCheck()
+            {
+                DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),//服务启动多久后注册
+                Interval = TimeSpan.FromSeconds(5),//健康检查时间间隔，或者称为心跳间隔
+                HTTP = checkUrl,//健康检查地址
+                Timeout = TimeSpan.FromSeconds(5)
+            };
 
             string versionLabel = $"{VERSION_PREFIX}{version}";
             var tagList = (tags ?? Enumerable.Empty<string>()).ToList();
@@ -133,7 +141,7 @@ namespace Bucket.ServiceDiscovery.Consul
                 Tags = tagList.ToArray(),
                 Address = uri.Host,
                 Port = uri.Port,
-                Check = new AgentServiceCheck { HTTP = check, Interval = TimeSpan.FromSeconds(5) }
+                Check = httpCheck
             };
 
             await _consul.Agent.ServiceRegister(registration);

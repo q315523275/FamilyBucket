@@ -40,7 +40,6 @@ namespace Bucket.Tracing.Components
                 spanBuilder.AsChildOf(spanContext);
             }
             var span = _tracer.Start(spanBuilder);
-            httpContext.SetSpan(span);
             span.Log(LogField.CreateNew().ServerReceive());
             span.Log(LogField.CreateNew().Event("AspNetCore BeginRequest"));
             span.Tags
@@ -58,7 +57,7 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("Microsoft.AspNetCore.Hosting.EndRequest")]
         public void EndRequest([Property] HttpContext httpContext)
         {
-            var span = httpContext.GetSpan();
+            var span = _tracer.Tracer.GetEntrySpan();
             if (span == null)
             {
                 return;
@@ -74,7 +73,7 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("Microsoft.AspNetCore.Diagnostics.HandledException")]
         public void DiagnosticHandledException(HttpContext httpContext, Exception exception)
         {
-            var span = httpContext.GetSpan();
+            var span = _tracer.Tracer.GetEntrySpan();
             if (span == null)
             {
                 return;
@@ -86,7 +85,7 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("Microsoft.AspNetCore.Diagnostics.UnhandledException")]
         public void DiagnosticUnhandledException([Property]HttpContext httpContext, [Property]Exception exception)
         {
-            var span = httpContext.GetSpan();
+            var span = _tracer.Tracer.GetEntrySpan();
             if (span == null)
             {
                 return;
@@ -98,7 +97,7 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("Microsoft.AspNetCore.Hosting.UnhandledException")]
         public void HostingUnhandledException([Property]HttpContext httpContext, [Property]Exception exception)
         {
-            var span = httpContext.GetSpan();
+            var span = _tracer.Tracer.GetEntrySpan();
             if (span == null)
             {
                 return;

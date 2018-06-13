@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
-
+using Newtonsoft.Json;
 namespace Bucket.Tracing.Components
 {
     public class HttpClientDiagnosticListener : ITracingDiagnosticListener
@@ -45,6 +45,9 @@ namespace Bucket.Tracing.Components
 
             _tracer.Tracer.Inject(span.SpanContext, request.Headers, (c, k, v) => c.Add(k, v));
             span.Log(LogField.CreateNew().ClientSend());
+            if(request.Method == HttpMethod.Post)
+                span.Tags.Add("request", request.Content.ReadAsStringAsync().Result);
+
             _tracer.Tracer.SetExitSpan(span);
         }
 
@@ -56,9 +59,14 @@ namespace Bucket.Tracing.Components
             {
                 return;
             }
-            span.Log(LogField.CreateNew().ClientReceive());
 
-            span.Tags.Add("response",response.Content.ReadAsStringAsync().Result);
+            span.Log(LogField.CreateNew().ClientReceive());
+            span.Tags.HttpStatusCode((int)response.StatusCode);
+
+            var result = response.Content.ReadAsStringAsync().Result;
+            if (result.Length > 2048)
+                result = result.Substring(0, 2048) + "...";
+            span.Tags.Add("response", result);
 
             span.Finish();
             _tracer.Tracer.SetExitSpan(null);

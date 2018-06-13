@@ -9,7 +9,7 @@ D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\bin\Relea
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\bin\Release\netstandard2.0\Bucket.Logging.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\bin\Release\netstandard2.0\Bucket.Tracing.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\bin\Release\netstandard2.0\Bucket.Core.pdb
-D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\obj\Release\netstandard2.0\Bucket.Tracing.Events.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\obj\Release\netstandard2.0\Bucket.Tracing.Events.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\obj\Release\netstandard2.0\Bucket.Tracing.Events.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\obj\Release\netstandard2.0\Bucket.Tracing.Events.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing.Events\obj\Release\netstandard2.0\Bucket.Tracing.Events.AssemblyInfo.cs

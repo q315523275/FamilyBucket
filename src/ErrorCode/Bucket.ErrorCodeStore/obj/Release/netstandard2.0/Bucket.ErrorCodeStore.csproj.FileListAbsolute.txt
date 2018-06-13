@@ -15,7 +15,7 @@ D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\bin\Re
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\bin\Release\netstandard2.0\Bucket.ErrorCodeStore.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\bin\Release\netstandard2.0\Bucket.Core.dll
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\bin\Release\netstandard2.0\Bucket.Core.pdb
-D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Release\netstandard2.0\Bucket.ErrorCodeStore.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Release\netstandard2.0\Bucket.ErrorCodeStore.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Release\netstandard2.0\Bucket.ErrorCodeStore.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Release\netstandard2.0\Bucket.ErrorCodeStore.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Release\netstandard2.0\Bucket.ErrorCodeStore.AssemblyInfo.cs
