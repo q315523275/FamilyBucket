@@ -44,6 +44,17 @@ namespace Pinzhi.Platform.WebApi.Controllers
             return await _roleBusiness.QueryRoles(input);
         }
         /// <summary>
+        /// 查询角色权限信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpGet("/Role/QueryRoleInfo")]
+        public async Task<QueryRoleInfoOutput> QueryRoleInfo(QueryRoleInfoInput input)
+        {
+            return await _roleBusiness.QueryRoleInfo(input);
+        }
+        /// <summary>
         /// 设置角色信息
         /// </summary>
         /// <param name="input"></param>
@@ -53,28 +64,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         public async Task<SetRoleOutput> SetRole([FromBody]SetRoleInput input)
         {
             return await _roleBusiness.SetRole(input);
-        }
-        /// <summary>
-        /// 设置角色菜单
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost("/Role/SetRoleMenu")]
-        public async Task<SetRoleMenuOutput> SetRoleMenu(SetRoleMenuInput input)
-        {
-            return await _roleBusiness.SetRoleMenu(input);
-        }
-        /// <summary>
-        /// 设置角色接口权限
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        [Authorize]
-        [HttpPost("/Role/SetRoleApi")]
-        public async Task<SetRoleApiOutput> SetRoleApi(SetRoleApiInput input)
-        {
-            return await _roleBusiness.SetRoleApi(input);
         }
     }
 }

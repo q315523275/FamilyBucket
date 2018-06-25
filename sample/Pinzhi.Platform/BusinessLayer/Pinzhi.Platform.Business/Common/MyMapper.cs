@@ -12,6 +12,9 @@ namespace AutoMapper
             CreateMap<SetRoleInput, RoleInfo>();
             CreateMap<SetUserInput, UserInfo>();
             CreateMap<SetApiInput, ApiInfo>();
+            CreateMap<SetAppInfoInput, AppInfo>();
+            CreateMap<SetAppProjectInfoInput, AppNamespaceInfo>();
+            CreateMap<SetAppConfigInfoInput, AppConfigInfo>();
         }
     }
 }

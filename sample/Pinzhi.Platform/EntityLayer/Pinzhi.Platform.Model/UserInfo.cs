@@ -45,10 +45,6 @@ namespace Pinzhi.Platform.Model
         /// </summary>
         public int State { set; get; }
         /// <summary>
-        /// 渠道
-        /// </summary>
-        public int Channel { get; set; }
-        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime CreateTime { set; get; }
@@ -56,10 +52,5 @@ namespace Pinzhi.Platform.Model
         /// 更新时间
         /// </summary>
         public DateTime UpdateTime { set; get; }
-
-        public static implicit operator UserInfo(long v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

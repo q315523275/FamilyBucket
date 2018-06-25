@@ -57,7 +57,7 @@ namespace Pinzhi.Platform.Business
                 .WhereIF(!input.RealName.IsEmpty(), (u, urole) => u.RealName == input.RealName)
                 .WhereIF(!input.UserName.IsEmpty(), (u, urole) => u.UserName == input.UserName)
                 .WhereIF(!input.Mobile.IsEmpty(), (u, urole) => u.Mobile == input.Mobile)
-                .Select((u, urole) => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName })
+                .Select((u, urole) => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName, Email = u.Email })
                 .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
                 list = query.Key;
                 totalNumber = query.Value;
@@ -65,7 +65,7 @@ namespace Pinzhi.Platform.Business
             else if (!input.ProjectName.IsEmpty())
             {
                 // 项目角色Id数组
-                var prlist = _dbContext.Queryable<RoleInfo>().Where(it => it.ProjectName == input.ProjectName && it.IsDel == false).Select(it => new { Id = it.Id }).ToList();
+                var prlist = _dbContext.Queryable<RoleInfo>().Where(it => it.ProjectName == input.ProjectName && it.IsDel == false).Select(it => new { it.Id }).ToList();
                 var roleIdArr = prlist.Select(it => it.Id).ToArray();
                 // 查询
                 var query = await _dbContext.Queryable<UserInfo, UserRoleInfo>((u, urole) => new object[] { JoinType.Inner, u.Id == urole.Uid })
@@ -75,7 +75,7 @@ namespace Pinzhi.Platform.Business
                 .WhereIF(!input.UserName.IsEmpty(), (u, urole) => u.UserName == input.UserName)
                 .WhereIF(!input.Mobile.IsEmpty(), (u, urole) => u.Mobile == input.Mobile)
                 .GroupBy((u, urole) => u.Id)
-                .Select((u, urole) => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName })
+                .Select((u, urole) => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName, Email = u.Email })
                 .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
                 list = query.Key;
                 totalNumber = query.Value;
@@ -87,7 +87,7 @@ namespace Pinzhi.Platform.Business
                 .WhereIF(!input.RealName.IsEmpty(), f => f.RealName == input.RealName)
                 .WhereIF(!input.UserName.IsEmpty(), f => f.UserName == input.UserName)
                 .WhereIF(!input.Mobile.IsEmpty(), f => f.Mobile == input.Mobile)
-                .Select(u => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName })
+                .Select(u => new QueryUserDTO { Id = u.Id, Mobile = u.Mobile, RealName = u.RealName, State = u.State, UpdateTime = u.UpdateTime, UserName = u.UserName, Email = u.Email })
                 .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
                 list = query.Key;
                 totalNumber = query.Value;
@@ -120,15 +120,29 @@ namespace Pinzhi.Platform.Business
             if (model.Id > 0)
             {
                 model.UpdateTime = DateTime.Now;
-                // 基础字段不容许更新
-                await _dbContext.Updateable(model).IgnoreColumns(it => new { it.UserName, it.Password, it.Mobile, it.Salt, it.CreateTime }).ExecuteCommandAsync();
+                if (!model.Password.IsEmpty())
+                {
+                    model.Salt = Randoms.CreateRandomValue(8, false);
+                    model.Password = Encrypt.SHA256(model.Password + model.Salt);
+                    // 基础字段不容许更新
+                    await _dbContext.Updateable(model)
+                                    .IgnoreColumns(it => new { it.UserName, it.Mobile, it.CreateTime })
+                                    .ExecuteCommandAsync();
+                }
+                else
+                {
+                    // 基础字段不容许更新
+                    await _dbContext.Updateable(model)
+                                    .IgnoreColumns(it => new { it.UserName, it.Password, it.Salt, it.Mobile, it.CreateTime })
+                                    .ExecuteCommandAsync();
+                }
             }
             else
             {
                 model.CreateTime = DateTime.Now;
                 model.UpdateTime = DateTime.Now;
                 model.Salt = Randoms.CreateRandomValue(8, false);
-                model.Password = Randoms.CreateRandomValue(8, false);
+                model.Password = Encrypt.SHA256(model.Password + model.Salt);
                 model.Id = Convert.ToInt64($"{Time.GetUnixTimestamp()}{ Randoms.CreateRandomValue(3, true) }");
                 await _dbContext.Insertable(model).ExecuteCommandAsync();
             }

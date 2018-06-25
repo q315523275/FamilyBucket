@@ -79,7 +79,7 @@ namespace Pinzhi.Platform.Business
 
             var list = await _dbContext.Queryable<MenuInfo, RoleMenuInfo, UserRoleInfo>((t1, t2, t3) => new object[] {
                        JoinType.Inner, t1.Id == t2.MenuId,
-                       JoinType.Inner , t2.MenuId == t3.RoleId
+                       JoinType.Inner , t2.RoleId == t3.RoleId
                        })
                        .Where((t1, t2, t3) => t1.State == 1 && t3.Uid == currentUid)
                        .OrderBy((t1, t2, t3) => t1.SortId, OrderByType.Asc)

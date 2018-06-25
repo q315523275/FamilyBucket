@@ -90,6 +90,20 @@ namespace Pinzhi.Platform.Business
             }
             return new QueryRolesOutput { Data = list };
         }
+
+        /// <summary>
+        /// 查询角色权限信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<QueryRoleInfoOutput> QueryRoleInfo(QueryRoleInfoInput input)
+        {
+            var model = await _dbContext.Queryable<RoleInfo>().Where(it => it.Id == input.RoleId).FirstAsync();
+            var apiList = await _dbContext.Queryable<RoleApiInfo>().Where(it => it.RoleId == input.RoleId).ToListAsync();
+            var menuList = await _dbContext.Queryable<RoleMenuInfo>().Where(it => it.RoleId == input.RoleId).ToListAsync();
+            return new QueryRoleInfoOutput { Data = new { RoleInfo = model, MenuList = menuList, ApiList = apiList } };
+        }
+
         /// <summary>
         /// 设置角色信息
         /// </summary>
@@ -97,29 +111,26 @@ namespace Pinzhi.Platform.Business
         /// <returns></returns>
         public async Task<SetRoleOutput> SetRole(SetRoleInput input)
         {
+            #region 基础信息更新
             var redis = _redisClient.GetDatabase(_configCenter.Get(SysConfig.RedisConnectionKey, "192.168.1.199:6379,allowadmin=true"), 2);
             var model = _mapper.Map<RoleInfo>(input);
             if (model.Id > 0)
             {
                 model.UpdateTime = DateTime.Now;
-                await _dbContext.Updateable(model).IgnoreColumns(it=> new { it.CreateTime, it.IsSys }).ExecuteCommandAsync();
+                await _dbContext.Updateable(model)
+                                .IgnoreColumns(it=> new { it.ProjectName, it.CreateTime, it.IsSys })
+                                .ExecuteCommandAsync();
             }
             else
             {
                 model.CreateTime = DateTime.Now;
                 model.IsDel = false;
-                await _dbContext.Insertable(model).ExecuteCommandAsync();
+                model.Id = await _dbContext.Insertable(model)
+                                           .ExecuteReturnIdentityAsync();
             }
-            await redis.KeyDeleteAsync(CacheKeys.RoleAllUseKey);
-            return new SetRoleOutput { };
-        }
-        /// <summary>
-        /// 设置角色菜单
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public async Task<SetRoleMenuOutput> SetRoleMenu(SetRoleMenuInput input)
-        {
+            #endregion
+
+            #region 菜单权限
             // 用户角色操作
             List<RoleMenuInfo> roleMenuList = new List<RoleMenuInfo>();
             foreach (var id in input.MenuIdList)
@@ -130,25 +141,18 @@ namespace Pinzhi.Platform.Business
                     roleMenuList.Add(new RoleMenuInfo
                     {
                         MenuId = id,
-                        RoleId = input.RoleId
+                        RoleId = model.Id
                     });
                 }
             }
             // 删除用户当前角色
-            await _dbContext.Deleteable<RoleMenuInfo>().Where(f => f.RoleId == input.RoleId).ExecuteCommandAsync();
+            await _dbContext.Deleteable<RoleMenuInfo>().Where(f => f.RoleId == model.Id).ExecuteCommandAsync();
             // 添加用户角色
             if (roleMenuList.Count > 0)
                 await _dbContext.Insertable(roleMenuList).ExecuteCommandAsync();
+            #endregion
 
-            return new SetRoleMenuOutput { };
-        }
-        /// <summary>
-        /// 设置角色接口权限
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public async Task<SetRoleApiOutput> SetRoleApi(SetRoleApiInput input)
-        {
+            #region 菜单权限
             // 用户角色操作
             List<RoleApiInfo> roleApiList = new List<RoleApiInfo>();
             foreach (var id in input.ApiIdList)
@@ -159,17 +163,23 @@ namespace Pinzhi.Platform.Business
                     roleApiList.Add(new RoleApiInfo
                     {
                         ApiId = id,
-                        RoleId = input.RoleId
+                        RoleId = model.Id
                     });
                 }
             }
             // 删除用户当前角色
-            await _dbContext.Deleteable<RoleApiInfo>().Where(f => f.RoleId == input.RoleId).ExecuteCommandAsync();
+            await _dbContext.Deleteable<RoleApiInfo>().Where(f => f.RoleId == model.Id).ExecuteCommandAsync();
             // 添加用户角色
             if (roleApiList.Count > 0)
                 await _dbContext.Insertable(roleApiList).ExecuteCommandAsync();
+            #endregion
 
-            return new SetRoleApiOutput { };
+            #region 缓存更新
+            await redis.KeyDeleteAsync(CacheKeys.RoleAllUseKey);
+            // 应该立即更新缓存
+            #endregion
+
+            return new SetRoleOutput { };
         }
     }
 }

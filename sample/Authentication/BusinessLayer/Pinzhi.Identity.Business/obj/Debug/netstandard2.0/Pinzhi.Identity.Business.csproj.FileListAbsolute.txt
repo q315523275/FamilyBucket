@@ -9,7 +9,7 @@ D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Busine
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\bin\Debug\netstandard2.0\Pinzhi.Identity.Interface.pdb
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\bin\Debug\netstandard2.0\Pinzhi.Identity.DTO.pdb
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\bin\Debug\netstandard2.0\System.IdentityModel.Tokens.Jwt.xml
-D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.csprojResolveAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\BusinessLayer\Pinzhi.Identity.Business\obj\Debug\netstandard2.0\Pinzhi.Identity.Business.AssemblyInfo.cs

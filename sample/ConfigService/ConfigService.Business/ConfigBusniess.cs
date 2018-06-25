@@ -1,5 +1,4 @@
-﻿using Bucket.Redis;
-using ConfigService.DTO;
+﻿using ConfigService.DTO;
 using ConfigService.Model;
 using SqlSugar;
 using System.Collections.Generic;
@@ -17,12 +16,9 @@ namespace ConfigService.Business
         /// 数据库操作
         /// </summary>
         private readonly SqlSugarClient _dbContext;
-        private readonly RedisClient _redisClient;
-        public ConfigBusniess(SqlSugarClient dbContext,
-            RedisClient redisClient)
+        public ConfigBusniess(SqlSugarClient dbContext)
         {
             _dbContext = dbContext;
-            _redisClient = redisClient;
         }
         /// <summary>
         /// 查询项目配置信息

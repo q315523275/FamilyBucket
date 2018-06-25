@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.1" />
-    <PackageReference Include="sqlSugarCore" Version="4.6.4.7" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.2" />
+    <PackageReference Include="sqlSugarCore" Version="4.6.4.9" />
   </ItemGroup>
 
 </Project>

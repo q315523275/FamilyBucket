@@ -27,14 +27,6 @@ namespace Pinzhi.Platform.DTO
         /// </summary>
         public string Message { get; set; }
         /// <summary>
-        /// 执行方法
-        /// </summary>
-        public string Action { get; set; }
-        /// <summary>
-        /// 资源描述
-        /// </summary>
-        public string ActionName { get; set; }
-        /// <summary>
         /// 控制器
         /// </summary>
         public string Controller { get; set; }
@@ -49,6 +41,14 @@ namespace Pinzhi.Platform.DTO
         /// <summary>
         /// 是否允许匿名访问
         /// </summary>
-        public bool IsAnonymous { get; set; }
+        public bool AllowScope { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime? UpdateTime { get; set; }
     }
 }

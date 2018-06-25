@@ -16,6 +16,9 @@ using Bucket.AspNetCore.EventBus;
 using Bucket.Logging;
 using System;
 using Bucket.Utility;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 
 namespace Pinzhi.Platform.WebApi
 {
@@ -78,18 +81,26 @@ namespace Pinzhi.Platform.WebApi
             services.AddAutoMapper();
             // 添加业务注册
             #region
-            services.AddScoped<IMenuBusiness, MenuBusiness>();
-            services.AddScoped<IPlatformBusiness, PlatformBusiness>();
-            services.AddScoped<IProjectBusiness, ProjectBusiness>();
-            services.AddScoped<IRoleBusiness, RoleBusiness>();
-            services.AddScoped<IUserBusiness, UserBusiness>();
-            services.AddScoped<IApiBusiness, ApiBusiness>();
+            //services.AddScoped<IMenuBusiness, MenuBusiness>();
+            //services.AddScoped<IPlatformBusiness, PlatformBusiness>();
+            //services.AddScoped<IProjectBusiness, ProjectBusiness>();
+            //services.AddScoped<IRoleBusiness, RoleBusiness>();
+            //services.AddScoped<IUserBusiness, UserBusiness>();
+            //services.AddScoped<IApiBusiness, ApiBusiness>();
+            //services.AddScoped<IConfigBusiness, ConfigBusiness>();
+            foreach (var item in GetClassName("Pinzhi.Platform.Business"))
+            {
+                foreach (var typeArray in item.Value)
+                {
+                    services.AddScoped(typeArray, item.Key);
+                }
+            }
             #endregion
             // 添加过滤器
             services.AddMvc(options =>
             {
-               options.Filters.Add(typeof(WebApiTraceFilterAttribute));
-               options.Filters.Add(typeof(WebApiActionFilterAttribute));
+                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
+                options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
@@ -100,6 +111,14 @@ namespace Pinzhi.Platform.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "品值POC接口文档", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Platform.WebApi.xml"));
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
+                {
+                    Description = "Authorization: Bearer {token}",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                
             });
             // 添加工具
             services.AddUtil();
@@ -131,12 +150,10 @@ namespace Pinzhi.Platform.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 认证授权
-            app.UseAuthentication();
-            // 链路追踪
-            app.UseTracer();
             // 全局错误日志
             app.UseErrorLog();
+            // 认证授权
+            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由
@@ -154,6 +171,27 @@ namespace Pinzhi.Platform.WebApi
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
+        }
+        /// <summary>  
+        /// 获取程序集中的实现类对应的多个接口
+        /// </summary>  
+        /// <param name="assemblyName">程序集</param>
+        private Dictionary<Type, Type[]> GetClassName(string assemblyName)
+        {
+            if (!String.IsNullOrEmpty(assemblyName))
+            {
+                Assembly assembly = Assembly.Load(assemblyName);
+                List<Type> ts = assembly.GetTypes().ToList();
+
+                var result = new Dictionary<Type, Type[]>();
+                foreach (var item in ts.Where(s => !s.IsInterface))
+                {
+                    var interfaceType = item.GetInterfaces();
+                    result.Add(item, interfaceType);
+                }
+                return result;
+            }
+            return new Dictionary<Type, Type[]>();
         }
     }
 }

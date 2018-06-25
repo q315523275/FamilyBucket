@@ -11,6 +11,7 @@ using Pinzhi.Identity.DTO.Auth;
 using SqlSugar;
 using Bucket.Exceptions;
 using Bucket.Utility;
+using Bucket.Utility.Helpers;
 namespace Pinzhi.Identity.Business.Auth
 {
     public class AuthBusiness: IAuthBusiness
@@ -46,6 +47,9 @@ namespace Pinzhi.Identity.Business.Auth
                 throw new BucketException("GO_0004007", "账号不存在");
             if (userInfo.State != 1)
                 throw new BucketException("GO_0004008", "账号状态异常");
+            if (userInfo.Password != Encrypt.SHA256(input.Password + userInfo.Salt))
+                throw new BucketException("GO_4009", "账号或密码错误");
+
             // 用户角色
             var roleList = await _dbContext.Queryable<RoleInfo, UserRoleInfo>((role, urole) => new object[] { JoinType.Inner, role.Id == urole.RoleId })
                  .Where((role, urole) => urole.Uid == userInfo.Id)

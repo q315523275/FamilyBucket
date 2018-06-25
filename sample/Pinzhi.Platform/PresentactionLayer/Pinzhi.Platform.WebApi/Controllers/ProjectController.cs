@@ -24,7 +24,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <summary>
         /// 查看项目列表信息
         /// </summary>
-        /// <param name="input"></param>
         /// <returns></returns>
         [Authorize]
         [HttpGet("/Project/QueryProject")]

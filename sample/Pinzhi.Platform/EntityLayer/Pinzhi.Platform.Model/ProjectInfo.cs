@@ -33,10 +33,6 @@ namespace Pinzhi.Platform.Model
         /// </summary>
         public string Secret { set; get; }
         /// <summary>
-        /// 关联配置中心分类编号
-        /// </summary>
-        public string ConfigCateId { set; get; }
-        /// <summary>
         /// 路由前缀
         /// </summary>
         public string RouteKey { set; get; }

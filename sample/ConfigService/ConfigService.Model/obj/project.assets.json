@@ -5,8 +5,8 @@
       "Bucket.DbContext/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "2.0.0",
-          "sqlSugarCore": "4.6.4.6"
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "sqlSugarCore": "4.6.4.9"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.DbContext.dll": {}
@@ -119,10 +119,10 @@
           "lib/netstandard1.3/Microsoft.Extensions.Configuration.Json.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/2.0.0": {
+      "Microsoft.Extensions.DependencyInjection/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -131,7 +131,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -288,7 +288,7 @@
           }
         }
       },
-      "NETStandard.Library/2.0.1": {
+      "NETStandard.Library/2.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
@@ -566,7 +566,7 @@
           "lib/netstandard1.1/SQLitePCLRaw.core.dll": {}
         }
       },
-      "sqlSugarCore/4.6.4.6": {
+      "sqlSugarCore/4.6.4.9": {
         "type": "package",
         "dependencies": {
           "Microsoft.Data.Sqlite": "2.0.0",
@@ -2067,7 +2067,7 @@
   },
   "libraries": {
     "Bucket.DbContext/1.0.3": {
-      "sha512": "M46Rg6R1Pd5zKj3dWjAqQzBCb2gke4ZIEuwSmcGc/QwPkfgV7rFYxWaPqVzSDS32D3NgZhFEEomMo0498na64A==",
+      "sha512": "D7j/XklRh9ZNfvh2mI9kcSWOO95f4dBTN4P+kUlSXuYN/gAenjEvWMvp+lOKvqPYG9Sk0HHEK0x+ZnPKb/VZOQ==",
       "type": "package",
       "path": "bucket.dbcontext/1.0.3",
       "files": [
@@ -2201,25 +2201,31 @@
         "microsoft.extensions.configuration.json.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection/2.0.0": {
-      "sha512": "wakg18gHYiUL1pcjjyZuYk6OvDpbSw1E7IWxm78TMepsr+gQ8W0tWzuRm0q/9RFblngwPwo15rrgZSUV51W5Iw==",
+    "Microsoft.Extensions.DependencyInjection/2.1.0": {
+      "sha512": "9lHaNBx9sW5I4Lxfb/jyKYgnyjggqST0bnkpyVNIudJtqoXayiVDO8GCIC+S3YRK+JM2oviDJh4X5tJzdXJoSg==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/2.0.0",
+      "path": "microsoft.extensions.dependencyinjection/2.1.0",
       "files": [
+        ".signature.p7s",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
+        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll",
+        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.2.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.2.1.0.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
-      "sha512": "eUdJ0Q/GfVyUJc0Jal5L1QZLceL78pvEM9wEKcHeI24KorqMDoVX+gWsMGLulQMfOwsUaPtkpQM2pFERTzSfSg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
+      "sha512": "Y139tetrEc1Y347FoOK8Oqm1S0aq8jPg5m6L4ti9N7ki0o4amSa7XOq048EhpeQnO/9jrVJKlqBdq/aQduW31A==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/2.0.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.0",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
@@ -2423,14 +2429,13 @@
         "mysql.data.nuspec"
       ]
     },
-    "NETStandard.Library/2.0.1": {
-      "sha512": "oA6nwv9MhEKYvLpjZ0ggSpb1g4CQViDVQjLUcDWg598jtvJbpfeP2reqwI1GLW2TbxC/Ml7xL6BBR1HmKPXlTg==",
+    "NETStandard.Library/2.0.3": {
+      "sha512": "st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "type": "package",
-      "path": "netstandard.library/2.0.1",
+      "path": "netstandard.library/2.0.3",
       "files": [
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "build/NETStandard.Library.targets",
         "build/netstandard2.0/NETStandard.Library.targets",
         "build/netstandard2.0/ref/Microsoft.Win32.Primitives.dll",
         "build/netstandard2.0/ref/System.AppContext.dll",
@@ -2547,12 +2552,12 @@
         "build/netstandard2.0/ref/netstandard.dll",
         "build/netstandard2.0/ref/netstandard.xml",
         "lib/netstandard1.0/_._",
-        "netstandard.library.2.0.1.nupkg.sha512",
+        "netstandard.library.2.0.3.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
     },
     "Newtonsoft.Json/10.0.3": {
-      "sha512": "wBM7i7i3U2WX0ecor4zdVGvgrwFUjuigBoHKiL+nH39fCOpCPjBY3RDqJM32edvdyTAVdjzlccHsg41+/+zpSA==",
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
       "path": "newtonsoft.json/10.0.3",
       "files": [
@@ -2906,13 +2911,13 @@
         "sqlitepclraw.core.nuspec"
       ]
     },
-    "sqlSugarCore/4.6.4.6": {
-      "sha512": "XusVvTLuvTSt01t4CPjPwPYAOKGphG3T7noAQ2oYmdBA4Qg2AHdF9/1pvLJIaOQIL3f6HGwIZFhc1xOuuZzEXg==",
+    "sqlSugarCore/4.6.4.9": {
+      "sha512": "BIY0s68mJE/sjdoRSTr8otMTqRq+EHH1KxlifaKevj/DSv93iB4dhVQKfO/3u9eedtrA4GYJdnh/vhTiIbXddQ==",
       "type": "package",
-      "path": "sqlsugarcore/4.6.4.6",
+      "path": "sqlsugarcore/4.6.4.9",
       "files": [
         "lib/netstandard2.0/SqlSugar.dll",
-        "sqlsugarcore.4.6.4.6.nupkg.sha512",
+        "sqlsugarcore.4.6.4.9.nupkg.sha512",
         "sqlsugarcore.nuspec"
       ]
     },
@@ -6760,7 +6765,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Bucket.DbContext >= 1.0.3",
-      "NETStandard.Library >= 2.0.1"
+      "NETStandard.Library >= 2.0.3"
     ]
   },
   "packageFolders": {
@@ -6812,7 +6817,7 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.1, )",
+            "version": "[2.0.3, )",
             "autoReferenced": true
           }
         },

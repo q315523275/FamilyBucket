@@ -38,9 +38,17 @@ namespace Pinzhi.Platform.DTO
         /// </summary>
         public int State { set; get; }
         /// <summary>
-        /// 渠道
+        /// 盐值
         /// </summary>
-        public int Channel { get; set; }
+        public string Salt { set; get; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { set; get; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime UpdateTime { set; get; }
         /// <summary>
         /// 角色数组
         /// </summary>

@@ -28,30 +28,31 @@ namespace Pinzhi.Identity.WebApi.Controllers
             #endregion
 
             //int maxcolorindex = colors.Count-1;
-            string text = "1A3V";
+            string text = Bucket.Utility.Helpers.Randoms.CreateRandomValue(5, false);
             var zu = text.ToList();
-            SKBitmap bmp = new SKBitmap(80, 30);
+            SKBitmap bmp = new SKBitmap(100, 50);
             using (SKCanvas canvas = new SKCanvas(bmp))
             {
                 //背景色
                 canvas.DrawColor(SKColors.White);
-
                 using (SKPaint sKPaint = new SKPaint())
                 {
-                    sKPaint.TextSize = 16;//字体大小
+                    sKPaint.TextSize = 24;//字体大小
                     sKPaint.IsAntialias = true;//开启抗锯齿                   
-                    sKPaint.Typeface = SKTypeface.FromFamilyName("微软雅黑", SKTypefaceStyle.Bold);//字体
+                    sKPaint.Typeface = SKTypeface.FromFamilyName("Arial", SKTypefaceStyle.Bold);//字体
+
                     SKRect size = new SKRect();
-                    sKPaint.MeasureText(zu[0].ToString(), ref size);//计算文字宽度以及高度
+                    sKPaint.MeasureText(zu[0].ToString(), ref size); //计算文字宽度以及高度
 
                     float temp = (bmp.Width / 4 - size.Size.Width) / 2;
                     float temp1 = bmp.Height - (bmp.Height - size.Size.Height) / 2;
                     Random random = new Random();
 
-                    for (int i = 0; i < 4; i++)
+                    for (int i = 0; i < zu.Count; i++)
                     {
                         sKPaint.Color = new SKColor((byte)random.Next(0, 255), (byte)random.Next(0, 255), (byte)random.Next(0, 255));
-                        canvas.DrawText(zu[i].ToString(), temp + 20 * i, temp1, sKPaint);//画文字
+                        sKPaint.TextSkewX = (float)random.Next(0,2);
+                        canvas.DrawText(zu[i].ToString(), temp + 20 * i, temp1 + random.Next(-5, 5), sKPaint);//画文字
                     }
                     //干扰线
                     for (int i = 0; i < 5; i++)

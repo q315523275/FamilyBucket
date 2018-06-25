@@ -16,7 +16,7 @@
     <PackageReference Include="App.Metrics.Formatters.Json" Version="2.1.0" />
     <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
-    <PackageReference Include="Ocelot" Version="7.0.4" />
+    <PackageReference Include="Ocelot" Version="7.0.6" />
   </ItemGroup>
 
   <ItemGroup>

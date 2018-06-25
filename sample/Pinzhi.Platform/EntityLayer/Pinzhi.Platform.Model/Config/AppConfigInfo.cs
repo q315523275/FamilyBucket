@@ -1,0 +1,23 @@
+﻿using SqlSugar;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Pinzhi.Platform.Model
+{
+    [SugarTable("tb_appconfig")]
+    public class AppConfigInfo
+    {
+        [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
+        public int Id { set; get; }
+        public string ConfigAppId { set; get; }
+        public string ConfigNamespaceName { set; get; }
+        public string ConfigKey { set; get; }
+        public string ConfigValue { set; get; }
+        public string Remark { set; get; }
+        public DateTime LastTime { set; get; }
+        public DateTime CreateTime { set; get; }
+        public long Version { set; get; }
+        public bool IsDeleted { set; get; }
+    }
+}

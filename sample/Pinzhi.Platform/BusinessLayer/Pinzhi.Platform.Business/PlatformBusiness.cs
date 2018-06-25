@@ -39,7 +39,7 @@ namespace Pinzhi.Platform.Business
         /// <returns></returns>
         public async Task<QueryPlatformsOutput> QueryPlatforms()
         {
-            var redis = _redisClient.GetDatabase(_configCenter.Get(SysConfig.RedisConnectionKey, "192.168.1.199:6379,allowadmin=true"), 2);
+            var redis = _redisClient.GetDatabase(_configCenter.Get(SysConfig.RedisConnectionKey, "localhost:6379,allowadmin=true"), 2);
             var redisList = await redis.StringGetAsync(CacheKeys.PlatformKey);
             if (!string.IsNullOrWhiteSpace(redisList))
             {

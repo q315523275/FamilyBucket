@@ -3,10 +3,10 @@ D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Inter
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\bin\Release\netstandard2.0\Pinzhi.Platform.Interface.pdb
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\bin\Release\netstandard2.0\Pinzhi.Platform.DTO.dll
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\bin\Release\netstandard2.0\Pinzhi.Platform.DTO.pdb
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.csprojResolveAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.dll
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.pdb
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Interface\obj\Release\netstandard2.0\Pinzhi.Platform.Interface.csprojAssemblyReference.cache

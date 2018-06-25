@@ -36,8 +36,8 @@ namespace Bucket.Ocelot
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("configuration.json")
+                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("Ocelot.json")
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();

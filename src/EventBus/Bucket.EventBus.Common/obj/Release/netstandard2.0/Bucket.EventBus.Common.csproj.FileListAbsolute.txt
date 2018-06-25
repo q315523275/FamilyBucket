@@ -6,3 +6,4 @@ D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus.Common\obj\Re
 D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus.Common\obj\Release\netstandard2.0\Bucket.EventBus.Common.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus.Common\obj\Release\netstandard2.0\Bucket.EventBus.Common.dll
 D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus.Common\obj\Release\netstandard2.0\Bucket.EventBus.Common.pdb
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus.Common\obj\Release\netstandard2.0\Bucket.EventBus.Common.csprojAssemblyReference.cache

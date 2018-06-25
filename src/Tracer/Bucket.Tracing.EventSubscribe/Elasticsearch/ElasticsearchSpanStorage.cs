@@ -1,6 +1,7 @@
 ﻿using Bucket.Tracing.DataContract;
 using Nest;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
@@ -38,6 +39,30 @@ namespace Bucket.Tracing.EventSubscribe.Elasticsearch
                 var operation = new BulkIndexOperation<Span>(span) { Index = _indexManager.CreateTracingIndex(DateTimeOffset.UtcNow) };
                 bulkRequest.Operations.Add(operation);
             }
+
+            //GeoDistanceQuery query = new GeoDistanceQuery
+            //{
+            //    Distance = new Distance(100, DistanceUnit.Meters),
+            //    Location = new GeoLocation(30, 120),
+            //    DistanceType = GeoDistanceType.SloppyArc,
+            //    Field = new Field("")
+            //};
+            //GeoDistanceSort sort = new GeoDistanceSort()
+            //{
+            //    DistanceType = GeoDistanceType.SloppyArc,
+            //    Field = new Field(""),
+            //    GeoUnit = DistanceUnit.Meters,
+            //    Order = SortOrder.Ascending,
+            //    Points = new List<GeoLocation> { new GeoLocation(30, 120) }
+            //};
+            //SearchRequest search = new SearchRequest()
+            //{
+            //    Query = new QueryContainer(query),
+            //    Sort = new List<ISort> { sort },
+            //    Size = 200
+            //};
+
+            //_elasticClient.Search<object>(search).Documents.ToList();
 
             return _elasticClient.BulkAsync(bulkRequest, cancellationToken);
         }

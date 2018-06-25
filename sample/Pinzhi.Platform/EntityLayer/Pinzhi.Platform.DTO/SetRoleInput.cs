@@ -34,5 +34,21 @@ namespace Pinzhi.Platform.DTO
         /// 是否删除
         /// </summary>
         public bool IsDel { get; set; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public DateTime? UpdateTime { get; set; }
+        /// <summary>
+        /// 是否系统角色
+        /// </summary>
+        public bool IsSys { get; set; }
+        /// <summary>
+        /// 菜单数组
+        /// </summary>
+        public List<int> MenuIdList { set; get; }
+        /// <summary>
+        /// 接口数组
+        /// </summary>
+        public List<int> ApiIdList { set; get; }
     }
 }

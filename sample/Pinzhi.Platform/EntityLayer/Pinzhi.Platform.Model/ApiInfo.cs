@@ -33,14 +33,6 @@ namespace Pinzhi.Platform.Model
         /// </summary>
         public string Message { get; set; }
         /// <summary>
-        /// 执行方法
-        /// </summary>
-        public string Action { get; set; }
-        /// <summary>
-        /// 资源描述
-        /// </summary>
-        public string ActionName { get; set; }
-        /// <summary>
         /// 控制器
         /// </summary>
         public string Controller { get; set; }
@@ -53,9 +45,9 @@ namespace Pinzhi.Platform.Model
         /// </summary>
         public bool Disabled { get; set; }
         /// <summary>
-        /// 是否允许匿名访问
+        /// 容许访问范围
         /// </summary>
-        public bool IsAnonymous { get; set; }
+        public int AllowScope { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

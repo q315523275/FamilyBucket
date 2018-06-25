@@ -23,3 +23,4 @@ D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\obj\Release\netst
 D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\obj\Release\netstandard2.0\Bucket.Redis.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\obj\Release\netstandard2.0\Bucket.Redis.dll
 D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\obj\Release\netstandard2.0\Bucket.Redis.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Redis\obj\Release\netstandard2.0\Bucket.Redis.csprojAssemblyReference.cache

@@ -24,6 +24,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Bucket.DbContext;
 using Bucket.Logging;
 using Bucket.Utility;
+
 namespace Pinzhi.Identity.WebApi
 {
     /// <summary>
@@ -89,7 +90,6 @@ namespace Pinzhi.Identity.WebApi
             // 添加过滤器
             services.AddMvc(options =>
             {
-               options.Filters.Add(typeof(WebApiTraceFilterAttribute));
                options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
@@ -135,18 +135,16 @@ namespace Pinzhi.Identity.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 认证授权
-            app.UseAuthentication();
-            // 链路追踪
-            app.UseTracer();
             // 全局错误日志
             app.UseErrorLog();
+            // 认证授权
+            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由
             ConfigRoute(app);
             // 服务注册
-            app.UseConsulRegisterService(Configuration);
+            // app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域

@@ -27,6 +27,10 @@ namespace Pinzhi.Platform.DTO
         /// </summary>
         public string Mobile { set; get; }
         /// <summary>
+        /// 邮箱
+        /// </summary>
+        public string Email { set; get; }
+        /// <summary>
         /// 账户状态
         /// </summary>
         public int State { set; get; }
