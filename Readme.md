@@ -1,6 +1,6 @@
 ﻿# FamilyBucket应用框架介绍
 
-FamilyBucket主要通过组合各个系统形成的直接应用的微服务系统，当前仅对各组件进行了简单基础实现，[FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)持续开发中心
+FamilyBucket主要通过组合各个系统形成的直接应用的微服务系统，当前仅对各组件进行了简单基础实现，[FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)持续开发中
 
 ## 配置中心应用
 
