@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.DrawingCore;
 using System.DrawingCore.Drawing2D;
 using System.DrawingCore.Imaging;
 using System.IO;
-using System.Text;
+using System.Security.Cryptography;
 
 namespace Bucket.Utility.Helpers
 {
@@ -144,7 +143,102 @@ namespace Bucket.Utility.Helpers
         }
         #endregion
 
-        #region 验证码图片  
+        #region 验证码图片
+        private static readonly byte[] randb = new byte[4];
+        private static RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
+        private FontFamily[] fontFamily ={
+            new FontFamily("Times New Roman"),
+            new FontFamily("Georgia"),
+            new FontFamily("Arial"),
+            new FontFamily("Comic Sans MS")
+        };
+        /// <summary>
+        /// 获得下一个随机数
+        /// </summary>
+        /// <param name="max">最大值</param>
+        private static int Next(int max)
+        {
+            rand.GetBytes(randb);
+            int value = BitConverter.ToInt32(randb, 0);
+            value = value % (max + 1);
+            if (value < 0) value = -value;
+            return value;
+        }
+        /// <summary>
+        /// 获得下一个随机数
+        /// </summary>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        private static int Next(int min, int max)
+        {
+            int value = Next(max - min) + min;
+            return value;
+        }
+        /// <summary>
+        /// 获取 验证码图形 的 byte 数组对象
+        /// </summary>
+        /// <returns></returns>
+        public byte[] GetBytes(Bitmap bitmap)
+        {
+            var ms = new MemoryStream();
+            bitmap.Save(ms, ImageFormat.Bmp);
+            byte[] bytes = ms.GetBuffer();
+            ms.Close();
+            return bytes;
+        }
+        /// <summary>
+        /// 字体随机颜色
+        /// </summary>
+        public Color GetRandomColor()
+        {
+            Random RandomNum_First = new Random((int)DateTime.Now.Ticks);
+            System.Threading.Thread.Sleep(RandomNum_First.Next(50));
+            Random RandomNum_Sencond = new Random((int)DateTime.Now.Ticks);
+            int int_Red = RandomNum_First.Next(180);
+            int int_Green = RandomNum_Sencond.Next(180);
+            int int_Blue = (int_Red + int_Green > 300) ? 0 : 400 - int_Red - int_Green;
+            int_Blue = (int_Blue > 255) ? 255 : int_Blue;
+            return Color.FromArgb(int_Red, int_Green, int_Blue);
+        }
+
+        /// <summary>
+        /// 正弦曲线Wave扭曲图片
+        /// </summary>
+        /// <param name="srcBmp">图片路径</param>
+        /// <param name="bXDir">如果扭曲则选择为True</param>
+        /// <param name="nMultValue">波形的幅度倍数，越大扭曲的程度越高,一般为3</param>
+        /// <param name="dPhase">波形的起始相位,取值区间[0-2*PI)</param>
+        public Bitmap TwistImage(Bitmap srcBmp, bool bXDir, double dMultValue, double dPhase)
+        {
+            double PI = 6.283185307179586476925286766559;
+            Bitmap destBmp = new Bitmap(srcBmp.Width, srcBmp.Height);
+            Graphics graph = Graphics.FromImage(destBmp);
+            graph.FillRectangle(new SolidBrush(Color.White), 0, 0, destBmp.Width, destBmp.Height);
+            graph.Dispose();
+            double dBaseAxisLen = bXDir ? (double)destBmp.Height : (double)destBmp.Width;
+            for (int i = 0; i < destBmp.Width; i++)
+            {
+                for (int j = 0; j < destBmp.Height; j++)
+                {
+                    double dx = 0;
+                    dx = bXDir ? (PI * (double)j) / dBaseAxisLen : (PI * (double)i) / dBaseAxisLen;
+                    dx += dPhase;
+                    double dy = Math.Sin(dx);
+                    int nOldX = 0, nOldY = 0;
+                    nOldX = bXDir ? i + (int)(dy * dMultValue) : i;
+                    nOldY = bXDir ? j : j + (int)(dy * dMultValue);
+
+                    Color color = srcBmp.GetPixel(i, j);
+                    if (nOldX >= 0 && nOldX < destBmp.Width
+                     && nOldY >= 0 && nOldY < destBmp.Height)
+                    {
+                        destBmp.SetPixel(nOldX, nOldY, color);
+                    }
+                }
+            }
+            srcBmp.Dispose();
+            return destBmp;
+        }
         /// <summary>  
         /// 验证码图片 => Bitmap  
         /// </summary>  
@@ -154,43 +248,48 @@ namespace Bucket.Utility.Helpers
         /// <returns>Bitmap</returns>  
         public Bitmap CreateBitmapByImgVerifyCode(string verifyCode, int width, int height)
         {
-            Font font = new Font("Arial", 14, (FontStyle.Bold | FontStyle.Italic));
-            Brush brush;
+            var textLength = verifyCode.Length;
             Bitmap bitmap = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(bitmap);
-            SizeF totalSizeF = g.MeasureString(verifyCode, font);
-            SizeF curCharSizeF;
-            PointF startPointF = new PointF(0, (height - totalSizeF.Height) / 2);
-            Random random = new Random(); //随机数产生器  
-            g.Clear(Color.White); //清空图片背景色    
-            for (int i = 0; i < verifyCode.Length; i++)
+            int fontSize = height / 2;
+            g.Clear(Color.White);
+            var color = GetRandomColor();
+            // 干扰曲线
+            var bezierLength = Next(2, 6);
+            for (int i = 0; i < bezierLength; i++)
             {
-                brush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), Color.FromArgb(random.Next(255), random.Next(255), random.Next(255)), Color.FromArgb(random.Next(255), random.Next(255), random.Next(255)));
-                g.DrawString(verifyCode[i].ToString(), font, brush, startPointF);
-                curCharSizeF = g.MeasureString(verifyCode[i].ToString(), font);
-                startPointF.X += curCharSizeF.Width;
+                Point p1 = new Point(0, Next(bitmap.Height));
+                Point p2 = new Point(Next(bitmap.Width), Next(bitmap.Height));
+                Point p3 = new Point(Next(bitmap.Width), Next(bitmap.Height));
+                Point p4 = new Point(bitmap.Width, Next(bitmap.Height));
+                Point[] p = { p1, p2, p3, p4 };
+                Brush newBrush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), color, color);
+                Pen pen = new Pen(newBrush);
+                g.DrawBeziers(pen, p);
             }
-
-            //画图片的干扰线    
-            for (int i = 0; i < 10; i++)
+            // 验证码
+            int _x = -12, _y = 0;
+            for (int int_index = 0; int_index < textLength; int_index++)
             {
-                int x1 = random.Next(bitmap.Width);
-                int x2 = random.Next(bitmap.Width);
-                int y1 = random.Next(bitmap.Height);
-                int y2 = random.Next(bitmap.Height);
-                g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
+                _x += fontSize + Next(-5, 5);
+                _y = Next(-3, 3);
+                string str_char = verifyCode[int_index].ToString();
+                str_char = Next(1) == 1 ? str_char.ToLower() : str_char.ToUpper();
+                Font font = new Font(fontFamily[Next(fontFamily.Length - 1)], fontSize + Next(-2, 2), (FontStyle.Bold | FontStyle.Italic));
+                Brush newBrush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), color, color);
+                Point thePos = new Point(_x, _y);
+                g.DrawString(str_char, font, newBrush, thePos);
+                font.Dispose();
             }
-
-            //画图片的前景干扰点    
+            // 噪点
             for (int i = 0; i < 100; i++)
             {
-                int x = random.Next(bitmap.Width);
-                int y = random.Next(bitmap.Height);
-                bitmap.SetPixel(x, y, Color.FromArgb(random.Next()));
+                int x = Next(bitmap.Width - 1);
+                int y = Next(bitmap.Height - 1);
+                bitmap.SetPixel(x, y, color);
             }
-
-            g.DrawRectangle(new Pen(Color.Silver), 0, 0, bitmap.Width - 1, bitmap.Height - 1); //画图片的边框线    
-            g.Dispose();
+            bitmap = TwistImage(bitmap, true, Next(2, 3), Next(4, 6));
+            g.DrawRectangle(new Pen(Color.LightGray, 1), 0, 0, bitmap.Width - 1, (bitmap.Height - 1));
             return bitmap;
         }
 
@@ -203,50 +302,9 @@ namespace Bucket.Utility.Helpers
         /// <returns>byte[]</returns>  
         public byte[] CreateByteByImgVerifyCode(string verifyCode, int width, int height)
         {
-            Font font = new Font("Arial", 16, (FontStyle.Bold | FontStyle.Italic));
-            Brush brush;
-            Bitmap bitmap = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(bitmap);
-            SizeF totalSizeF = g.MeasureString(verifyCode, font);
-            SizeF curCharSizeF;
-            PointF startPointF = new PointF(0, (height - totalSizeF.Height) / 2);
-            Random random = new Random(); //随机数产生器  
-            g.Clear(Color.White); //清空图片背景色   
-            for (int i = 0; i < verifyCode.Length; i++)
-            {
-                brush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)), Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
-                g.DrawString(verifyCode[i].ToString(), font, brush, startPointF);
-                curCharSizeF = g.MeasureString(verifyCode[i].ToString(), font);
-                startPointF.X += curCharSizeF.Width;
-            }
-
-            //画图片的干扰线    
-            for (int i = 0; i < 10; i++)
-            {
-                int x1 = random.Next(bitmap.Width);
-                int x2 = random.Next(bitmap.Width);
-                int y1 = random.Next(bitmap.Height);
-                int y2 = random.Next(bitmap.Height);
-                g.DrawLine(new Pen(Color.Silver), x1, y1, x2, y2);
-            }
-
-            //画图片的前景干扰点    
-            for (int i = 0; i < 100; i++)
-            {
-                int x = random.Next(bitmap.Width);
-                int y = random.Next(bitmap.Height);
-                bitmap.SetPixel(x, y, Color.FromArgb(random.Next()));
-            }
-
-            g.DrawRectangle(new Pen(Color.Silver), 0, 0, bitmap.Width - 1, bitmap.Height - 1); //画图片的边框线    
-            g.Dispose();
-
-            //保存图片数据    
-            MemoryStream stream = new MemoryStream();
-            bitmap.Save(stream, ImageFormat.Jpeg);
+            var bitmap = CreateBitmapByImgVerifyCode(verifyCode, width, height);
             //输出图片流    
-            return stream.ToArray();
-
+            return GetBytes(bitmap);
         }
         #endregion
     }
