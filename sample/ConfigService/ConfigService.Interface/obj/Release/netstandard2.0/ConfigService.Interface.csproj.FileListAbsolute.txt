@@ -3,10 +3,10 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\bin\Release\n
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\bin\Release\netstandard2.0\ConfigService.Interface.pdb
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\bin\Release\netstandard2.0\ConfigService.DTO.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\bin\Release\netstandard2.0\ConfigService.DTO.pdb
+D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.pdb
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Interface\obj\Release\netstandard2.0\ConfigService.Interface.csprojAssemblyReference.cache

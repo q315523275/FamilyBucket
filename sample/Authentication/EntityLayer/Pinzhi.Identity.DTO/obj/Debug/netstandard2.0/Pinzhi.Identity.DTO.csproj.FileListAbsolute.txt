@@ -9,7 +9,6 @@ D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.DTO\obj\Debug\n
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\bin\Debug\netstandard2.0\Pinzhi.Identity.DTO.deps.json
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\bin\Debug\netstandard2.0\Pinzhi.Identity.DTO.dll
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\bin\Debug\netstandard2.0\Pinzhi.Identity.DTO.pdb
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\obj\Debug\netstandard2.0\Pinzhi.Identity.DTO.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\obj\Debug\netstandard2.0\Pinzhi.Identity.DTO.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\obj\Debug\netstandard2.0\Pinzhi.Identity.DTO.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Pinzhi.Identity.DTO\obj\Debug\netstandard2.0\Pinzhi.Identity.DTO.AssemblyInfo.cs

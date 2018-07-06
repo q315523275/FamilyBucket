@@ -16,6 +16,8 @@ using SqlSugar;
 using ConfigService.Interface;
 using ConfigService.Business;
 using Bucket.Utility;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ConfigService.WebApi
 {
@@ -62,7 +64,6 @@ namespace ConfigService.WebApi
                 {
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
                 });
             });
@@ -90,6 +91,9 @@ namespace ConfigService.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "品值配置中心接口文档", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "ConfigService.WebApi.xml"));
+                // Swagger验证部分
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
             // 添加工具
             services.AddUtil();
@@ -129,7 +133,7 @@ namespace ConfigService.WebApi
             // 路由
             ConfigRoute(app);
             // 服务注册
-            // app.UseConsulRegisterService(Configuration);
+            app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域

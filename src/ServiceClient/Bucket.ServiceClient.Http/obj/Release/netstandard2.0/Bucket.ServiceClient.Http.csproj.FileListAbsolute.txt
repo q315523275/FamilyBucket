@@ -17,7 +17,6 @@ D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Htt
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\bin\Release\netstandard2.0\Bucket.ServiceClient.Http.pdb
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\bin\Release\netstandard2.0\Bucket.Core.dll
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\bin\Release\netstandard2.0\Bucket.Core.pdb
-D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\obj\Release\netstandard2.0\Bucket.ServiceClient.Http.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\obj\Release\netstandard2.0\Bucket.ServiceClient.Http.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\obj\Release\netstandard2.0\Bucket.ServiceClient.Http.AssemblyInfoInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\ServiceClient\Bucket.ServiceClient.Http\obj\Release\netstandard2.0\Bucket.ServiceClient.Http.AssemblyInfo.cs

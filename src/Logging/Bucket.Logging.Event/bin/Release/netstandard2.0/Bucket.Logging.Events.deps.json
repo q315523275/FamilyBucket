@@ -7,10 +7,10 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.Logging.Events/1.1.0": {
+      "Bucket.Logging.Events/1.1.0.1": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Logging": "1.1.0",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1",
           "NETStandard.Library": "2.0.3"
         },
         "runtime": {
@@ -765,12 +765,16 @@
           }
         }
       },
-      "Bucket.EventBus.Common/1.0.0": {
+      "Bucket.EventBus/1.1.0.1": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
-          "Bucket.EventBus.Common.dll": {}
+          "Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0": {
+      "Bucket.Logging/1.1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0"
@@ -782,7 +786,7 @@
     }
   },
   "libraries": {
-    "Bucket.Logging.Events/1.1.0": {
+    "Bucket.Logging.Events/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1228,12 +1232,12 @@
       "path": "system.threading.tasks.extensions/4.5.0",
       "hashPath": "system.threading.tasks.extensions.4.5.0.nupkg.sha512"
     },
-    "Bucket.EventBus.Common/1.0.0": {
+    "Bucket.EventBus/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Logging/1.1.0": {
+    "Bucket.Logging/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

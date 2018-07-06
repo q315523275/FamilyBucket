@@ -1,4 +1,0 @@
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Business\obj\Debug\netstandard2.0\Pinzhi.Platform.Business.csprojAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Business\obj\Debug\netstandard2.0\Pinzhi.Platform.Business.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Business\obj\Debug\netstandard2.0\Pinzhi.Platform.Business.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\BusinessLayer\Pinzhi.Platform.Business\obj\Debug\netstandard2.0\Pinzhi.Platform.Business.AssemblyInfo.cs

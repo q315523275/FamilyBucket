@@ -38,7 +38,7 @@ namespace Bucket.Ocelot
                         .AddJsonFile("appsettings.json", true, true)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                         .AddJsonFile("ocelot.json")
-                        .AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json")
+                        //.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json")
                         .AddEnvironmentVariables();
                 })
                 .ConfigureServices((hostingContext, s) => {
@@ -67,7 +67,6 @@ namespace Bucket.Ocelot
                         {
                             opt.HostName = eventConfig["HostName"];
                             opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                            opt.ExchangeName = eventConfig["ExchangeName"];
                             opt.QueueName = eventConfig["QueueName"];
                         });
                     });
@@ -112,7 +111,7 @@ namespace Bucket.Ocelot
                 .UseIISIntegration()
                 .Configure(app =>
                 {
-                    app.ApplicationServices.GetService<ILoggerFactory>().AddBucketLog(app, "Bucket.Ocelot");
+                    var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>().AddBucketLog(app, "Bucket.Ocelot");
                     app.UseCors("CorsPolicy");
                     app.UseOcelot().Wait();
                 })
@@ -123,6 +122,7 @@ namespace Bucket.Ocelot
         /// 授权认证
         /// </summary>
         /// <param name="services"></param>
+        /// <param name="configuration"></param>
         /// <param name="isHttps"></param>
         private static void AddOcelotJwtBearer(IServiceCollection services, IConfiguration configuration, bool isHttps = false)
         {

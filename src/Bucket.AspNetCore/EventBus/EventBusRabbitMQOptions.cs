@@ -28,8 +28,6 @@ namespace Bucket.AspNetCore.EventBus
         public string UserName { get; set; } = DefaultPass;
         public string Password { get; set; } = DefaultUser;
         public string VirtualHost { get; set; } = DefaultVHost;
-        public string ExchangeName { set; get; }
         public string QueueName { set; get; }
-        public bool OnlyPublish { set; get; } = true;
     }
 }

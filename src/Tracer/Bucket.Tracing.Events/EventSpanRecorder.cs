@@ -1,7 +1,7 @@
 ﻿using Bucket.OpenTracing;
 using System;
 using Newtonsoft.Json;
-using Bucket.EventBus.Common.Events;
+using Bucket.EventBus.Abstractions;
 
 namespace Bucket.Tracing.Events
 {
@@ -15,7 +15,7 @@ namespace Bucket.Tracing.Events
 
         public void Record(ISpan span)
         {
-            _eventBus.PublishAsync(new TracingEvent(SpanContractUtils.CreateFromSpan(span)));
+            _eventBus.Publish(new TracingEvent(SpanContractUtils.CreateFromSpan(span)));
         }
     }
 }

@@ -67,7 +67,6 @@ namespace Pinzhi.Platform.WebApi
                 {
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
                 });
             });
@@ -111,14 +110,9 @@ namespace Pinzhi.Platform.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "品值POC接口文档", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Platform.WebApi.xml"));
-                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                {
-                    Description = "Authorization: Bearer {token}",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
-                });
-                
+                // Swagger验证部分
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
             // 添加工具
             services.AddUtil();

@@ -1,6 +1,0 @@
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.csprojAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.RazorAssemblyInfo.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.RazorAssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\obj\Debug\netcoreapp2.1\Pinzhi.Platform.WebApi.AssemblyInfo.cs

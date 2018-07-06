@@ -1,27 +1,26 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "ca5cb6c60fd76a78477350519e90fa35ed9c797e"
+    "signature": "641d7613f8eb63e16377b72fd8b3e0db1aacc90b"
   },
   "compilationOptions": {},
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.AspNetCore/1.0.8.1": {
+      "Bucket.AspNetCore/1.0.8.2": {
         "dependencies": {
-          "Bucket.ConfigCenter": "1.1.0",
+          "Bucket.ConfigCenter": "1.1.0.1",
           "Bucket.Core": "1.1.0",
-          "Bucket.ErrorCodeStore": "1.1.0",
-          "Bucket.EventBus.AspNetCore": "1.0.0",
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.EventBus.RabbitMQ": "1.1.0",
-          "Bucket.Logging": "1.1.0",
-          "Bucket.Logging.Events": "1.1.0",
+          "Bucket.ErrorCodeStore": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus.RabbitMQ": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1",
+          "Bucket.Logging.Events": "1.1.0.1",
           "Bucket.Redis": "1.0.0",
           "Bucket.ServiceClient.Http": "1.1.0",
           "Bucket.ServiceDiscovery.Consul": "1.1.0",
           "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0",
+          "Bucket.Tracing.Events": "1.0.0.1",
           "Microsoft.AspNetCore.Authentication": "2.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
           "Microsoft.AspNetCore.Mvc": "2.1.0",
@@ -68,6 +67,18 @@
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {
             "assemblyVersion": "0.5.0.0",
             "fileVersion": "0.5.0.0"
+          }
+        }
+      },
+      "Autofac/4.8.1": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3",
+          "System.ComponentModel": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/Autofac.dll": {
+            "assemblyVersion": "4.8.1.0",
+            "fileVersion": "4.8.1.0"
           }
         }
       },
@@ -1450,6 +1461,14 @@
           }
         }
       },
+      "Polly/6.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Polly.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1.0"
+          }
+        }
+      },
       "RabbitMQ.Client/5.0.1": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
@@ -2799,7 +2818,7 @@
           }
         }
       },
-      "Bucket.ConfigCenter/1.1.0": {
+      "Bucket.ConfigCenter/1.1.0.1": {
         "dependencies": {
           "Bucket.Core": "1.1.0",
           "Bucket.Redis": "1.0.0"
@@ -2817,7 +2836,7 @@
           "Bucket.Core.dll": {}
         }
       },
-      "Bucket.ErrorCodeStore/1.1.0": {
+      "Bucket.ErrorCodeStore/1.1.0.1": {
         "dependencies": {
           "Bucket.Core": "1.1.0"
         },
@@ -2825,32 +2844,29 @@
           "Bucket.ErrorCodeStore.dll": {}
         }
       },
-      "Bucket.EventBus.AspNetCore/1.0.0": {
+      "Bucket.EventBus/1.1.0.1": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Microsoft.AspNetCore": "2.1.0"
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
-          "Bucket.EventBus.AspNetCore.dll": {}
+          "Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.Common/1.0.0": {
-        "runtime": {
-          "Bucket.EventBus.Common.dll": {}
-        }
-      },
-      "Bucket.EventBus.RabbitMQ/1.1.0": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.1": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
+          "Autofac": "4.8.1",
+          "Bucket.EventBus": "1.1.0.1",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
+          "Polly": "6.0.1",
           "RabbitMQ.Client": "5.0.1"
         },
         "runtime": {
           "Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0": {
+      "Bucket.Logging/1.1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0"
@@ -2859,10 +2875,10 @@
           "Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0": {
+      "Bucket.Logging.Events/1.1.0.1": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Logging": "1.1.0"
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1"
         },
         "runtime": {
           "Bucket.Logging.Events.dll": {}
@@ -2911,10 +2927,10 @@
           "Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0": {
+      "Bucket.Tracing.Events/1.0.0.1": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Logging": "1.1.0",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1",
           "Bucket.Tracing": "1.0.0.1"
         },
         "runtime": {
@@ -2924,7 +2940,7 @@
     }
   },
   "libraries": {
-    "Bucket.AspNetCore/1.0.8.1": {
+    "Bucket.AspNetCore/1.0.8.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -2949,6 +2965,13 @@
       "sha512": "sha512-ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
       "path": "aspectcore.extensions.reflection/0.5.0",
       "hashPath": "aspectcore.extensions.reflection.0.5.0.nupkg.sha512"
+    },
+    "Autofac/4.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
+      "path": "autofac/4.8.1",
+      "hashPath": "autofac.4.8.1.nupkg.sha512"
     },
     "Consul/0.7.2.4": {
       "type": "package",
@@ -3698,6 +3721,13 @@
       "sha512": "sha512-5PYT/IqQ+UK31AmZiSS102R6EsTo+LGTSI8bp7WAUqDKaF4wHXD8U9u4WxTI1vc64tYi++8p3dk3WWNqPFgldw==",
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
+    },
+    "Polly/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nwL8qNLkrphkehUftQqJZOExH6sJ+PPWhkrksqoouAvy9TuEgYUjFujlUVC8PyYLIWIneR9R4opcFpPKn1HQ1A==",
+      "path": "polly/6.0.1",
+      "hashPath": "polly.6.0.1.nupkg.sha512"
     },
     "RabbitMQ.Client/5.0.1": {
       "type": "package",
@@ -4469,7 +4499,7 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
-    "Bucket.ConfigCenter/1.1.0": {
+    "Bucket.ConfigCenter/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4479,32 +4509,27 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.ErrorCodeStore/1.1.0": {
+    "Bucket.ErrorCodeStore/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.AspNetCore/1.0.0": {
+    "Bucket.EventBus/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.Common/1.0.0": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0": {
+    "Bucket.Logging/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Logging/1.1.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Bucket.Logging.Events/1.1.0": {
+    "Bucket.Logging.Events/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4529,7 +4554,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracing.Events/1.0.0": {
+    "Bucket.Tracing.Events/1.0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

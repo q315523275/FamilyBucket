@@ -5,18 +5,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netcoreapp2.1\Pinzhi.Identity.WebApi.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp2.1\Pinzhi.Identity.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
   
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bucket.AspNetCore" Version="1.0.8" />
+    <PackageReference Include="Bucket.AspNetCore" Version="1.0.8.2" />
     <PackageReference Include="Bucket.DbContext" Version="1.0.3" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.0" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
-    <PackageReference Include="SkiaSharp" Version="1.60.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1500,17 +1500,21 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus.Common/1.0.0": {
+      "Bucket.EventBus/1.1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
         "compile": {
-          "bin/placeholder/Bucket.EventBus.Common.dll": {}
+          "bin/placeholder/Bucket.EventBus.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Bucket.EventBus.Common.dll": {}
+          "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0": {
+      "Bucket.Logging/1.1.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1546,12 +1550,12 @@
           "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0": {
+      "Bucket.Tracing.Events/1.0.0.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
-          "Bucket.Logging": "1.1.0",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1",
           "Bucket.Tracing": "1.0.0.1"
         },
         "compile": {
@@ -4801,12 +4805,12 @@
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.EventBus.Common/1.0.0": {
+    "Bucket.EventBus/1.1.0.1": {
       "type": "project",
-      "path": "../../EventBus/Bucket.EventBus.Common/Bucket.EventBus.Common.csproj",
-      "msbuildProject": "../../EventBus/Bucket.EventBus.Common/Bucket.EventBus.Common.csproj"
+      "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
+      "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.Logging/1.1.0": {
+    "Bucket.Logging/1.1.0.1": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging/Bucket.Logging.csproj"
@@ -4816,7 +4820,7 @@
       "path": "../Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Bucket.Tracing/Bucket.Tracing.csproj"
     },
-    "Bucket.Tracing.Events/1.0.0": {
+    "Bucket.Tracing.Events/1.0.0.1": {
       "type": "project",
       "path": "../Bucket.Tracing.Events/Bucket.Tracing.Events.csproj",
       "msbuildProject": "../Bucket.Tracing.Events/Bucket.Tracing.Events.csproj"
@@ -4824,9 +4828,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.EventBus.Common >= 1.0.0",
+      "Bucket.EventBus >= 1.1.0.1",
       "Bucket.Tracing >= 1.0.0.1",
-      "Bucket.Tracing.Events >= 1.0.0",
+      "Bucket.Tracing.Events >= 1.0.0.1",
       "Microsoft.Extensions.Caching.Memory >= 2.1.0",
       "Microsoft.Extensions.Options >= 2.1.0",
       "NEST >= 5.6.1",
@@ -4840,11 +4844,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj",
       "projectName": "Bucket.Tracing.EventSubscribe",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.EventSubscribe\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.EventSubscribe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4864,14 +4868,14 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.Common\\Bucket.EventBus.Common.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
             }
           }
         }

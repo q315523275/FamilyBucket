@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Bucket.Tracing.EventSubscribe/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus": "1.0.0",
           "Bucket.Tracing": "1.0.0.1",
           "Bucket.Tracing.Events": "1.0.0",
           "Microsoft.Extensions.Caching.Memory": "2.1.0",
@@ -1312,9 +1312,13 @@
           "Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus.Common/1.0.0": {
+      "Bucket.EventBus/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
-          "Bucket.EventBus.Common.dll": {}
+          "Bucket.EventBus.dll": {}
         }
       },
       "Bucket.Logging/1.1.0": {
@@ -1345,7 +1349,7 @@
       },
       "Bucket.Tracing.Events/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus": "1.0.0",
           "Bucket.Logging": "1.1.0",
           "Bucket.Tracing": "1.0.0.1"
         },
@@ -2122,7 +2126,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.Common/1.0.0": {
+    "Bucket.EventBus/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

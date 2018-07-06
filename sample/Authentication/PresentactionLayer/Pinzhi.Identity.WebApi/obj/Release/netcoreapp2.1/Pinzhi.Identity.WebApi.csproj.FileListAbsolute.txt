@@ -21,3 +21,4 @@ D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.W
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Release\netcoreapp2.1\Pinzhi.Identity.WebApi.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Release\netcoreapp2.1\Pinzhi.Identity.WebApi.dll
 D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\obj\Release\netcoreapp2.1\Pinzhi.Identity.WebApi.pdb
+D:\work2017\Git\FamilyBucket\Authentication\PresentactionLayer\Pinzhi.Identity.WebApi\bin\Release\netcoreapp2.1\Pinzhi.Identity.WebApi.xml

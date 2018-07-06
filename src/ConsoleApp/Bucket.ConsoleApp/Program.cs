@@ -8,11 +8,11 @@ using System.IO;
 using Bucket.AspNetCore.Extensions;
 using Bucket.Logging.EventSubscribe;
 using Bucket.AspNetCore.EventBus;
-using Bucket.EventBus.Common.Events;
 using Bucket.Logging.Events;
 using Bucket.Tracing.EventSubscribe.Elasticsearch;
 using Bucket.Tracing.Events;
 using Bucket.Tracing.EventSubscribe;
+using Bucket.EventBus.Abstractions;
 
 namespace Bucket.ConsoleApp
 {
@@ -35,7 +35,7 @@ namespace Bucket.ConsoleApp
             // 添加配置文件
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("config.json");
+            builder.AddJsonFile("appsettings.json");
             var configuration = builder.Build();
             // 添加DI容器
             var services = new ServiceCollection().AddOptions().AddLogging();
@@ -50,9 +50,7 @@ namespace Bucket.ConsoleApp
                 {
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
-                    opt.OnlyPublish = false;
                 });
             });
             // 添加日志消费数据库配置
@@ -62,7 +60,7 @@ namespace Bucket.ConsoleApp
                 DbShardingRule = 0,
                 DbType = "MySql",
                 IsDbSharding = false,
-                IsWriteConsole = false
+                IsWriteConsole = true
             });
             // 添加链路追踪ES消费配置
             services.Configure<ElasticsearchOptions>(configuration.GetSection("Elasticsearch"));

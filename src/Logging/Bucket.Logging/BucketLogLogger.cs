@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Bucket.Logging
 {
@@ -76,7 +78,8 @@ namespace Bucket.Logging
                 {
                     var url = string.Empty;
                     var ip = string.Empty;
-                    if (_httpContextAccessor != null && _httpContextAccessor.HttpContext != null) {
+                    if (_httpContextAccessor != null && _httpContextAccessor.HttpContext != null)
+                    {
                         ip = GetServerIp(_httpContextAccessor.HttpContext);
                         url = _httpContextAccessor.HttpContext?.Request?.GetDisplayUrl();
                     }
@@ -104,24 +107,29 @@ namespace Bucket.Logging
                     Console.WriteLine(message);
             }
         }
-
-        private string Substring2(string message, int v)
-        {
-            throw new NotImplementedException();
-        }
-
-        private string GetUserIp(HttpContext context)
-        {
-            var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault();
-            if (string.IsNullOrEmpty(ip))
-            {
-                ip = context.Connection.RemoteIpAddress.ToString();
-            }
-            return ip;
-        }
+        /// <summary>
+        /// 服务端Ip地址
+        /// </summary>
         private string GetServerIp(HttpContext context)
         {
-            return context.Connection.LocalIpAddress.ToString();
+            var list = new[] { "127.0.0.1", "::1" };
+            var result = context?.Connection?.LocalIpAddress.ToString();
+            if (string.IsNullOrWhiteSpace(result) || list.Contains(result))
+                result = GetLanIp();
+            return result;
+        }
+
+        /// <summary>
+        /// 获取局域网IP
+        /// </summary>
+        private string GetLanIp()
+        {
+            foreach (var hostAddress in Dns.GetHostAddresses(Dns.GetHostName()))
+            {
+                if (hostAddress.AddressFamily == AddressFamily.InterNetwork)
+                    return hostAddress.ToString();
+            }
+            return string.Empty;
         }
         /// <summary>
         /// 部分字符串获取
@@ -129,7 +137,7 @@ namespace Bucket.Logging
         /// <param name="str"></param>
         /// <param name="maxlen"></param>
         /// <returns></returns>
-        private string SubString2(string str, int maxlen)
+        private string Substring2(string str, int maxlen)
         {
             if (string.IsNullOrEmpty(str))
                 return str;

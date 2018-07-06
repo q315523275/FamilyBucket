@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Bucket.Logging.EventSubscribe/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus": "1.0.0",
           "Bucket.Logging.Events": "1.1.0",
           "Dapper": "1.50.5",
           "MySql.Data": "8.0.11",
@@ -972,9 +972,13 @@
           }
         }
       },
-      "Bucket.EventBus.Common/1.0.0": {
+      "Bucket.EventBus/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Newtonsoft.Json": "11.0.2"
+        },
         "runtime": {
-          "Bucket.EventBus.Common.dll": {}
+          "Bucket.EventBus.dll": {}
         }
       },
       "Bucket.Logging/1.1.0": {
@@ -988,7 +992,7 @@
       },
       "Bucket.Logging.Events/1.1.0": {
         "dependencies": {
-          "Bucket.EventBus.Common": "1.0.0",
+          "Bucket.EventBus": "1.0.0",
           "Bucket.Logging": "1.1.0"
         },
         "runtime": {
@@ -1612,7 +1616,7 @@
       "path": "system.threading.tasks.extensions/4.5.0",
       "hashPath": "system.threading.tasks.extensions.4.5.0.nupkg.sha512"
     },
-    "Bucket.EventBus.Common/1.0.0": {
+    "Bucket.EventBus/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

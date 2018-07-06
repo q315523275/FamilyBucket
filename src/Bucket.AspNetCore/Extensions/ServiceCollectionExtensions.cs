@@ -3,8 +3,6 @@ using Bucket.Redis;
 using Bucket.ConfigCenter;
 using Bucket.LoadBalancer;
 
-using Bucket.EventBus.AspNetCore;
-using Bucket.EventBus.Common.Events;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +39,9 @@ using Bucket.Tracing.AspNetCore;
 using Bucket.Tracing.Events;
 using Bucket.Tracing.Diagnostics;
 using Bucket.Tracing.Components;
+
+using Bucket.EventBus.Events;
+using Bucket.EventBus;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -214,10 +215,10 @@ namespace Bucket.AspNetCore.Extensions
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
-            services.AddSingleton<IEventHandlerExecutionContext>(new EventHandlerExecutionContext(services, sc => sc.BuildServiceProvider()));
-
             var options = new EventBusOptions();
             configAction?.Invoke(options);
+
+            services.AddSingleton<IEventBusSubscriptionsManager>(new InMemoryEventBusSubscriptionsManager(services));
 
             foreach (var serviceExtension in options.Extensions)
                 serviceExtension.AddServices(services);

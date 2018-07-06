@@ -68,7 +68,6 @@ namespace Bucket.MVC
                 {
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
                 });
             });

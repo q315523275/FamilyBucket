@@ -22,15 +22,3 @@ D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\De
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.dll
 D:\work2017\Git\FamilyBucket\Microservice\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.pdb
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\bin\Debug\netstandard2.0\Bucket.ErrorCodeStore.deps.json
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\bin\Debug\netstandard2.0\Bucket.ErrorCodeStore.dll
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\bin\Debug\netstandard2.0\Bucket.ErrorCodeStore.pdb
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\bin\Debug\netstandard2.0\Bucket.Core.dll
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\bin\Debug\netstandard2.0\Bucket.Core.pdb
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.csprojAssemblyReference.cache
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.csproj.CoreCompileInputs.cache
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.AssemblyInfoInputs.cache
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.AssemblyInfo.cs
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.csproj.CopyComplete
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.dll
-D:\work2017\Github\FamilyBucket\src\ErrorCode\Bucket.ErrorCodeStore\obj\Debug\netstandard2.0\Bucket.ErrorCodeStore.pdb

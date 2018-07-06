@@ -1,4 +1,5 @@
-﻿using Bucket.EventBus.Common.Events;
+﻿using Bucket.EventBus.Events;
+using Bucket.EventBus.Attributes;
 using Nest;
 using System;
 using System.Threading;
@@ -8,10 +9,12 @@ using Bucket.Tracing.Events;
 using Bucket.Tracing.EventSubscribe.Elasticsearch;
 using System.Collections.Generic;
 using Bucket.Tracing.DataContract;
+using Bucket.EventBus.Abstractions;
 
 namespace Bucket.Tracing.EventSubscribe
 {
-    public class TracingEventHandler : IEventHandler<TracingEvent>
+    [QueueConsumer("Bucket.Tracing.Event")]
+    public class TracingEventHandler : IIntegrationEventHandler<TracingEvent>
     {
         private readonly ISpanStorage _spanStorage;
         public TracingEventHandler(ISpanStorage spanStorage)
@@ -19,25 +22,24 @@ namespace Bucket.Tracing.EventSubscribe
             _spanStorage = spanStorage;
         }
 
-        public bool CanHandle(IEvent @event)
-            => @event.GetType().Equals(typeof(TracingEvent));
-
-        public async Task<bool> HandleAsync(TracingEvent @event, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task Handle(TracingEvent @event)
         {
-            /// 需要增加缓存区
-            var span = @event.TraceSpan;
-            if (span != null)
+            try
             {
-                var StartTime = DateTime.Now;
-                var spans = new List<Span>{ span };
-                await _spanStorage.StoreAsync(spans);
-                var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
-                Console.WriteLine("es数据创建耗时"+ TimeLength + "毫秒");
+                /// 需要增加缓存区
+                var span = @event.TraceSpan;
+                if (span != null)
+                {
+                    var StartTime = DateTime.Now;
+                    await _spanStorage.StoreAsync(new List<Span> { span });
+                    var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
+                    Console.WriteLine("Elasticsearch数据创建耗时" + TimeLength + "毫秒");
+                }
             }
-            return true;
+            catch(Exception ex)
+            {
+                Console.WriteLine("Tracing消费:" + ex.Message + ex.InnerException.Message + ex.StackTrace);
+            }
         }
-
-        public Task<bool> HandleAsync(IEvent @event, CancellationToken cancellationToken = default(CancellationToken))
-            => CanHandle(@event) ? HandleAsync((TracingEvent)@event, cancellationToken) : Task.FromResult(false);
     }
 }

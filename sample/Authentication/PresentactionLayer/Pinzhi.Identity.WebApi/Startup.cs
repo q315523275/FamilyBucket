@@ -24,6 +24,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Bucket.DbContext;
 using Bucket.Logging;
 using Bucket.Utility;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Pinzhi.Identity.WebApi
 {
@@ -75,7 +77,6 @@ namespace Pinzhi.Identity.WebApi
                 {
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
                     opt.QueueName = eventConfig["QueueName"];
                 });
             });
@@ -101,6 +102,9 @@ namespace Pinzhi.Identity.WebApi
             {
                 c.SwaggerDoc("v1", new Info { Title = "品值认证授权中心", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Identity.WebApi.xml"));
+                // Swagger验证部分
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
             // 添加工具
             services.AddUtil();
@@ -144,7 +148,7 @@ namespace Pinzhi.Identity.WebApi
             // 路由
             ConfigRoute(app);
             // 服务注册
-            // app.UseConsulRegisterService(Configuration);
+            app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域

@@ -4,7 +4,7 @@
       "DownstreamPathTemplate": "/auth/login",
       "UpstreamPathTemplate": "/auth/login",
       "UpstreamHttpMethod": [
-        "Post", "OPTIONS"
+        "Post"
       ],
       "AddHeadersToRequest": {},
       "AddClaimsToRequest": {},

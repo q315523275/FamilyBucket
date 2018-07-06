@@ -10,7 +10,7 @@ namespace Bucket.MVC.Controllers
     {
         public IActionResult Index()
         {
-            var code = Utility.Helpers.VerifyCode.GetSingleObj().CreateVerifyCode(Utility.Helpers.VerifyCode.VerifyCodeType.MixVerifyCode);
+            var code = Utility.Helpers.Randoms.CreateRandomValue(4, false);
             var p = Utility.Helpers.VerifyCode.GetSingleObj().CreateByteByImgVerifyCode(code, 100, 38);
             return File(p, "image/Jpeg");
         }

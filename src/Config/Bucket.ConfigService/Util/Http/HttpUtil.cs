@@ -24,14 +24,14 @@ namespace Bucket.ConfigCenter.Util.Http
                     RequestUri = new Uri(httpRequest.Url),
                     Method = HttpMethod.Get,
                 };
-                var result = _httpClient.SendAsync(request).GetAwaiter().GetResult();
-                if (result.StatusCode == HttpStatusCode.OK || result.StatusCode == HttpStatusCode.NotModified)
+                var response = await _httpClient.SendAsync(request);
+                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NotModified)
                 {
-                    var content = await result.Content.ReadAsStringAsync();
+                    var content = response.Content.ReadAsStringAsync().Result;
                     T body = jsonHelper.DeserializeObject<T>(content);
-                    return new HttpResponse<T>(result.StatusCode, body);
+                    return new HttpResponse<T>(response.StatusCode, body);
                 }
-                throw new RemoteStatusCodeException(result.StatusCode, string.Format("Get operation failed for {0}", httpRequest.Url));
+                throw new RemoteStatusCodeException(response.StatusCode, string.Format("Get operation failed for {0}", httpRequest.Url));
             }
             catch (Exception ex)
             {

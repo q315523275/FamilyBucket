@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EventBus\Bucket.EventBus.Common\Bucket.EventBus.Common.csproj" />
+    <ProjectReference Include="..\..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
     <ProjectReference Include="..\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
   </ItemGroup>
 

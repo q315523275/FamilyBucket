@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.ErrorCodeStore/1.1.0": {
+      "Bucket.ErrorCodeStore/1.1.0.1": {
         "dependencies": {
           "Bucket.Core": "1.1.0",
           "NETStandard.Library": "2.0.3"
@@ -189,7 +189,7 @@
     }
   },
   "libraries": {
-    "Bucket.ErrorCodeStore/1.1.0": {
+    "Bucket.ErrorCodeStore/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

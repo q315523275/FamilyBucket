@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "Bucket.ConfigCenter/1.1.0": {
+      "Bucket.ConfigCenter/1.1.0.1": {
         "dependencies": {
           "Bucket.Core": "1.1.0",
           "Bucket.Redis": "1.0.0",
@@ -917,7 +917,7 @@
     }
   },
   "libraries": {
-    "Bucket.ConfigCenter/1.1.0": {
+    "Bucket.ConfigCenter/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

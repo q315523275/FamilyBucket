@@ -27,7 +27,7 @@ namespace Bucket.Utility.Helpers
         /// <param name="dateTime">时间</param>
         public static void SetTime(string dateTime)
         {
-            _dateTime = Bucket.Utility.Helpers.Converts.ToDateOrNull(dateTime);
+            _dateTime = Converts.ToDateOrNull(dateTime);
         }
 
         /// <summary>

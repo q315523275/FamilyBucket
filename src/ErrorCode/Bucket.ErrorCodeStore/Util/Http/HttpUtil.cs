@@ -23,10 +23,10 @@ namespace Bucket.ErrorCodeStore.Util.Http
                     RequestUri = new Uri(httpRequest.Url),
                     Method = HttpMethod.Get,
                 };
-                var result = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+                var result = await _httpClient.SendAsync(request);
                 if (result.StatusCode == HttpStatusCode.OK || result.StatusCode == HttpStatusCode.NotModified)
                 {
-                    var content = await result.Content.ReadAsStringAsync();
+                    var content = result.Content.ReadAsStringAsync().Result;
                     T body = jsonHelper.DeserializeObject<T>(content);
                     return new HttpResponse<T>(result.StatusCode, body);
                 }

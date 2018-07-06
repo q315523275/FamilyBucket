@@ -1,4 +1,4 @@
-﻿using Bucket.EventBus.Common.Events;
+﻿using Bucket.EventBus.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +16,7 @@ namespace Bucket.Logging.Events
 
         public void Post(LogInfo logs)
         {
-            _eventBus.PublishAsync(new LogEvent(logs));
+            _eventBus.Publish(new LogEvent(logs));
         }
     }
 }
