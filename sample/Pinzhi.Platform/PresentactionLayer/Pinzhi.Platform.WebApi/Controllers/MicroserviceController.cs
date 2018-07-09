@@ -23,9 +23,31 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [HttpGet("/Microservice/QueryServiceList")]
         [Authorize]
-        public async Task<QueryServiceListOutput> QueryServiceList()
+        public async Task<QueryServiceListOutput> QueryServiceList([FromQuery]QueryServiceListInput input)
         {
-            return await _microserviceBusines.QueryServiceList();
+            return await _microserviceBusines.QueryServiceList(input);
+        }
+        /// <summary>
+        /// 服务注册
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Microservice/SetServiceInfo")]
+        [Authorize]
+        public async Task<SetServiceInfoOutput> SetServiceInfo([FromBody]SetServiceInfoInput input)
+        {
+            return await _microserviceBusines.SetServiceInfo(input);
+        }
+        /// <summary>
+        /// 服务移除
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [HttpPost("/Microservice/DeleteService")]
+        [Authorize]
+        public async Task<DeleteServiceOutput> DeleteService([FromBody]DeleteServiceInput input)
+        {
+            return await _microserviceBusines.DeleteService(input);
         }
     }
 }

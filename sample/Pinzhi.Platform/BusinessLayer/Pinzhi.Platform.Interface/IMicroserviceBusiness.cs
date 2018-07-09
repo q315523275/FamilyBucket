@@ -12,6 +12,8 @@ namespace Pinzhi.Platform.Interface
         /// 查询服务发现列表
         /// </summary>
         /// <returns></returns>
-        Task<QueryServiceListOutput> QueryServiceList();
+        Task<QueryServiceListOutput> QueryServiceList(QueryServiceListInput input);
+        Task<SetServiceInfoOutput> SetServiceInfo(SetServiceInfoInput input);
+        Task<DeleteServiceOutput> DeleteService(DeleteServiceInput input);
     }
 }

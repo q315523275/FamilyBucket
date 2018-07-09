@@ -22,10 +22,46 @@ namespace Pinzhi.Platform.Interface
         /// 查询服务发现服务列表
         /// </summary>
         /// <returns></returns>
-        public async Task<QueryServiceListOutput> QueryServiceList()
+        public async Task<QueryServiceListOutput> QueryServiceList(QueryServiceListInput input)
         {
-            var list = await _serviceDiscovery.FindAllServicesAsync();
-            return new QueryServiceListOutput { Data = list };
+            var result = new object();
+            if (input.State == 0)
+            {
+                result = await _serviceDiscovery.FindAllServicesAsync();
+            }
+            if (input.State == 1)
+            {
+                if (string.IsNullOrWhiteSpace(input.Name))
+                {
+                    result = await _serviceDiscovery.FindServiceInstancesAsync();
+                }
+                else
+                {
+                    result = await _serviceDiscovery.FindServiceInstancesAsync(input.Name);
+                }
+            }
+            return new QueryServiceListOutput { Data = result };
         }
+        /// <summary>
+        /// 服务注册
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<SetServiceInfoOutput> SetServiceInfo(SetServiceInfoInput input)
+        {
+            var result = await _serviceDiscovery.RegisterServiceAsync(input.Name, input.Version, new Uri($"http://{input.HostAndPort.Host}:{input.HostAndPort.Port}"), tags: input.Tags);
+            return new SetServiceInfoOutput { };
+        }
+        /// <summary>
+        /// 服务移除
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<DeleteServiceOutput> DeleteService(DeleteServiceInput input)
+        {
+            await _serviceDiscovery.DeregisterServiceAsync(input.ServiceId);
+            return new DeleteServiceOutput { };
+        }
+
     }
 }

@@ -1,0 +1,9 @@
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\bin\Debug\netstandard2.0\Pinzhi.Platform.Model.deps.json
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\bin\Debug\netstandard2.0\Pinzhi.Platform.Model.dll
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\bin\Debug\netstandard2.0\Pinzhi.Platform.Model.pdb
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.dll
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.Model\obj\Debug\netstandard2.0\Pinzhi.Platform.Model.pdb
