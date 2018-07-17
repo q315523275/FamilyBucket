@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "63dfca453b6fbcf8eea342f1372976fdb4a51721"
+    "signature": "4919f8f4e6a8925740ff89f5f503037d9873e743"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,10 +10,10 @@
       "Pinzhi.Platform.Business/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.2.2",
-          "Bucket.Core": "1.1.0",
+          "Bucket.Core": "1.1.0.2",
           "Bucket.DbContext": "1.0.3",
           "Bucket.Redis": "1.0.0",
-          "Bucket.Utility": "1.1.0.2",
+          "Bucket.Utility": "1.1.0.3",
           "NETStandard.Library": "2.0.3",
           "Pinzhi.Platform.DTO": "1.0.0",
           "Pinzhi.Platform.Interface": "1.0.0",
@@ -44,15 +44,15 @@
           }
         }
       },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.Core.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
+            "assemblyVersion": "1.1.0.2",
+            "fileVersion": "1.1.0.2"
           }
         }
       },
@@ -79,20 +79,20 @@
           }
         }
       },
-      "Bucket.Utility/1.1.0.2": {
+      "Bucket.Utility/1.1.0.3": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.1.0",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Nito.AsyncEx.Context": "1.1.0",
-          "System.ComponentModel.Annotations": "4.5.0",
-          "ZKWeb.System.Drawing": "4.0.1"
+          "SkiaSharp": "1.60.2",
+          "System.ComponentModel.Annotations": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.Utility.dll": {
-            "assemblyVersion": "1.1.0.2",
-            "fileVersion": "1.1.0.2"
+            "assemblyVersion": "1.1.0.3",
+            "fileVersion": "1.1.0.3"
           }
         }
       },
@@ -639,6 +639,14 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
+      "SkiaSharp/1.60.2": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {
+            "assemblyVersion": "1.60.0.0",
+            "fileVersion": "1.60.2.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
@@ -1767,22 +1775,6 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "ZKWeb.System.Drawing/4.0.1": {
-        "dependencies": {
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Threading.Thread": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Pinzhi.Platform.DTO/1.0.0": {
         "dependencies": {
           "System.ComponentModel.Annotations": "4.5.0"
@@ -1822,12 +1814,12 @@
       "path": "automapper/6.2.2",
       "hashPath": "automapper.6.2.2.nupkg.sha512"
     },
-    "Bucket.Core/1.1.0": {
+    "Bucket.Core/1.1.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DR8WM8yonCj0PJeVnsWW4Ehgf2FFs+ZVshYPlRALBfGyuGkmBpupqEdLgNMC3zzrv7DHxoXYptv0S26O3JVHDQ==",
-      "path": "bucket.core/1.1.0",
-      "hashPath": "bucket.core.1.1.0.nupkg.sha512"
+      "sha512": "sha512-SI7O59gRZjArkmHrjaq9boiNKn8Q6scEzeEC2Dnqbiw+BUhnYMazqcqHHi8drdys5OZVioqk8d37KCniK+TraQ==",
+      "path": "bucket.core/1.1.0.2",
+      "hashPath": "bucket.core.1.1.0.2.nupkg.sha512"
     },
     "Bucket.DbContext/1.0.3": {
       "type": "package",
@@ -1843,12 +1835,12 @@
       "path": "bucket.redis/1.0.0",
       "hashPath": "bucket.redis.1.0.0.nupkg.sha512"
     },
-    "Bucket.Utility/1.1.0.2": {
+    "Bucket.Utility/1.1.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0LjknAv5cqOyvumnxbMtUu4F3OJSCpiVHu21yO2ftS7MfmexYQDuDsIVSiHRMMARi9yu6qfBiyn/9civVj1G2g==",
-      "path": "bucket.utility/1.1.0.2",
-      "hashPath": "bucket.utility.1.1.0.2.nupkg.sha512"
+      "sha512": "sha512-B24frIsHuxkYNQ/vJsF3rfqp0sUbVnC0o58ZXiR0EMi0aIsA7uqCGyGNBbuANoq5QTAZdTpE6OpCkAIx2PubPA==",
+      "path": "bucket.utility/1.1.0.3",
+      "hashPath": "bucket.utility.1.1.0.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting/2.1.0": {
       "type": "package",
@@ -2276,6 +2268,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SkiaSharp/1.60.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JcMB63zAfGX2Vdi7hbKlNDdh3QljV/lHDf/yMAuxz1yy0iHtGx840gZqJJgLBzyJw4Ojs9braR+LKO1S3cgyqw==",
+      "path": "skiasharp/1.60.2",
+      "hashPath": "skiasharp.1.60.2.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "type": "package",
@@ -2864,13 +2863,6 @@
       "sha512": "sha512-by4v2HCJUqTcxq8hxJKObHpPxENMrzA3eX2g6vqrGgsgnMp+1RNA7Sn8rW8ywlC3/mMxoc9+14/jlz/2uprW/g==",
       "path": "system.threading.timer/4.3.0",
       "hashPath": "system.threading.timer.4.3.0.nupkg.sha512"
-    },
-    "ZKWeb.System.Drawing/4.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-r8OLPZ2cb9SSwjm8GNkMbqOgo58N8d8RwxJN1yF01atv+MQdNOqa5Xx117tIjWUbB6pBnVe6u+pXkYVORaCeWw==",
-      "path": "zkweb.system.drawing/4.0.1",
-      "hashPath": "zkweb.system.drawing.4.0.1.nupkg.sha512"
     },
     "Pinzhi.Platform.DTO/1.0.0": {
       "type": "project",

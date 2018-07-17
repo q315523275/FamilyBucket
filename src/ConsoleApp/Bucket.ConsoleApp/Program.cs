@@ -7,13 +7,13 @@ using System.IO;
 
 using Bucket.AspNetCore.Extensions;
 using Bucket.Logging.EventSubscribe;
-using Bucket.AspNetCore.EventBus;
 using Bucket.Logging.Events;
 using Bucket.Tracing.EventSubscribe.Elasticsearch;
 using Bucket.Tracing.Events;
 using Bucket.Tracing.EventSubscribe;
+using Bucket.EventBus.Extensions;
 using Bucket.EventBus.Abstractions;
-
+using Bucket.EventBus.RabbitMQ;
 namespace Bucket.ConsoleApp
 {
     class Program
@@ -21,7 +21,7 @@ namespace Bucket.ConsoleApp
         private static IServiceProvider serviceProvider;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("品值基础事件订阅消费启动!");
             // 初始化
             Initialize();
             // 业务
@@ -35,7 +35,7 @@ namespace Bucket.ConsoleApp
             // 添加配置文件
             var builder = new ConfigurationBuilder();
             builder.SetBasePath(Directory.GetCurrentDirectory());
-            builder.AddJsonFile("appsettings.json");
+            builder.AddJsonFile("appsettings.json", true, true);
             var configuration = builder.Build();
             // 添加DI容器
             var services = new ServiceCollection().AddOptions().AddLogging();
@@ -48,6 +48,8 @@ namespace Bucket.ConsoleApp
             {
                 option.UseRabbitMQ(opt =>
                 {
+                    opt.UserName = eventConfig["UserName"];
+                    opt.Password = eventConfig["Password"];
                     opt.HostName = eventConfig["HostName"];
                     opt.Port = Convert.ToInt32(eventConfig["Port"]);
                     opt.QueueName = eventConfig["QueueName"];

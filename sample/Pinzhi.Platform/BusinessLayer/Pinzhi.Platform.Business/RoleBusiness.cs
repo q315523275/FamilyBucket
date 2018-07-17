@@ -4,14 +4,12 @@ using Bucket.Redis;
 using Pinzhi.Platform.DTO;
 using Pinzhi.Platform.Model;
 using SqlSugar;
-using System.Linq;
 using System;
 using System.Threading.Tasks;
 using Pinzhi.Platform.Interface;
 using Bucket.Utility;
 using System.Collections.Generic;
-using Bucket.ConfigCenter;
-using Bucket.Utility;
+using Bucket.Config;
 namespace Pinzhi.Platform.Business
 {
     /// <summary>
@@ -27,13 +25,13 @@ namespace Pinzhi.Platform.Business
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
-        private readonly IConfigCenter _configCenter;
+        private readonly IConfig _configCenter;
         public RoleBusiness(SqlSugarClient dbContext,
             IMapper mapper,
             RedisClient redisClient,
             IJsonHelper jsonHelper,
             IUser user,
-            IConfigCenter configCenter)
+            IConfig configCenter)
         {
             _dbContext = dbContext;
             _mapper = mapper;

@@ -1,9 +1,7 @@
-﻿using Autofac;
-using Bucket.EventBus.Abstractions;
+﻿using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Events;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
@@ -13,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Bucket.EventBus.RabbitMQ
 {
@@ -89,7 +86,7 @@ namespace Bucket.EventBus.RabbitMQ
                     .Name;
 
                 channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                    type: "direct");
+                                        type: "direct");
 
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
@@ -134,9 +131,6 @@ namespace Bucket.EventBus.RabbitMQ
                                       exchange: BROKER_NAME,
                                       routingKey: eventName,
                                       arguments: new Dictionary<string, object>{ { "x-queue-mode","lazy"} });
-
-                    var properties = channel.CreateBasicProperties();
-                    properties.DeliveryMode = 2;
                 }
             }
             _subsManager.AddSubscription<T, TH>();
@@ -180,7 +174,7 @@ namespace Bucket.EventBus.RabbitMQ
             var channel = _persistentConnection.CreateModel();
 
             channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                 type: "direct");
+                                        type: "direct");
 
             channel.QueueDeclare(queue: _queueName,
                                  durable: true,

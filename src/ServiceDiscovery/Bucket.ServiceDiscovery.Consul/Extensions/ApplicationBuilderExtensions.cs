@@ -1,0 +1,141 @@
+﻿using Bucket.Values;
+using Consul;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Bucket.ServiceDiscovery.Consul
+{
+    public static class ApplicationBuilderExtensions
+    {
+        //the method check the service discovery parameter register ipaddress to generate service agent
+        //those service agents will deregister when the app stop 
+        public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, IConfiguration configuration)
+        {
+            ConsulServiceDiscoveryOption serviceDiscoveryOption = new ConsulServiceDiscoveryOption();
+            configuration.GetSection("ServiceDiscovery").Bind(serviceDiscoveryOption);
+            app.UseConsulRegisterService(serviceDiscoveryOption);
+            return app;
+        }
+        //the method check the service discovery parameter register ipaddress to generate service agent
+        //those service agents will deregister when the app stop 
+        public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, ConsulServiceDiscoveryOption serviceDiscoveryOption)
+        {
+            var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>() ??
+               throw new ArgumentException("Missing Dependency", nameof(IApplicationLifetime));
+            if (serviceDiscoveryOption.Consul == null)
+                throw new ArgumentException("Missing Dependency", nameof(serviceDiscoveryOption.Consul));
+
+            if (string.IsNullOrEmpty(serviceDiscoveryOption.ServiceName))
+                throw new ArgumentException("service name must be configure", nameof(serviceDiscoveryOption.ServiceName));
+
+            IEnumerable<Uri> addresses = null;
+            if (serviceDiscoveryOption.Endpoints != null && serviceDiscoveryOption.Endpoints.Length > 0)
+            {
+                addresses = serviceDiscoveryOption.Endpoints.Select(p => new Uri(p));
+            }
+            else
+            {
+                var features = app.Properties["server.Features"] as FeatureCollection;
+                addresses = features.Get<IServerAddressesFeature>().Addresses.Select(p => new Uri(p)).ToArray();
+            }
+
+            var serviceChecks = new List<AgentServiceCheck>();
+
+            foreach (var address in addresses)
+            {
+                var serviceID = GetServiceId(serviceDiscoveryOption.ServiceName, address);
+
+                Uri healthCheck = null;
+                if (!string.IsNullOrEmpty(serviceDiscoveryOption.HealthCheckTemplate))
+                {
+                    healthCheck = new Uri(address, serviceDiscoveryOption.HealthCheckTemplate);
+                }
+                var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName, serviceDiscoveryOption.Version, address, healthCheckUri: healthCheck, tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}" });
+
+                applicationLifetime.ApplicationStopping.Register(() =>
+                {
+                    app.RemoveTenant(registryInformation.Id);
+                });
+            }
+            return app;
+        }
+
+        private static string GetServiceId(string serviceName, Uri uri)
+        {
+            return $"{serviceName}_{uri.Host.Replace(".", "_")}_{uri.Port}";
+        }
+
+
+        public static ServiceInformation AddTenant(this IApplicationBuilder app, string serviceName, string version, Uri uri, Uri healthCheckUri = null, IEnumerable<string> tags = null)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+
+            var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
+            var registryInformation = serviceRegistry.RegisterServiceAsync(serviceName, version, uri, healthCheckUri, tags)
+                .Result;
+
+            return registryInformation;
+        }
+
+        public static bool RemoveTenant(this IApplicationBuilder app, string serviceId)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+            if (string.IsNullOrEmpty(serviceId))
+            {
+                throw new ArgumentNullException(nameof(serviceId));
+            }
+
+            var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
+            return serviceRegistry.DeregisterServiceAsync(serviceId)
+                .Result;
+        }
+
+        public static string AddHealthCheck(this IApplicationBuilder app, ServiceInformation registryInformation, Uri checkUri, TimeSpan? interval = null, string notes = null)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+            if (registryInformation == null)
+            {
+                throw new ArgumentNullException(nameof(registryInformation));
+            }
+
+            var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
+            string checkId = serviceRegistry.RegisterHealthCheckAsync(registryInformation.Name, registryInformation.Id, checkUri, interval, notes)
+                .Result;
+
+            return checkId;
+        }
+
+        public static bool RemoveHealthCheck(this IApplicationBuilder app, string checkId)
+        {
+            if (app == null)
+            {
+                throw new ArgumentNullException(nameof(app));
+            }
+            if (string.IsNullOrEmpty(checkId))
+            {
+                throw new ArgumentNullException(nameof(checkId));
+            }
+
+            var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
+            return serviceRegistry.DeregisterHealthCheckAsync(checkId)
+                .Result;
+        }
+    }
+}

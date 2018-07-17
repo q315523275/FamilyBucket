@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>c0add475-6b0c-4646-9a78-42bf47f04b7e</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -15,11 +16,20 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
-    <PackageReference Include="Bucket.AspNetCore" Version="1.0.8.2" />
+    <PackageReference Include="Bucket.AspNetCore" Version="1.1.0.2" />
     <PackageReference Include="Bucket.DbContext" Version="1.0.3" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.ErrorCode" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.EventBus" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.0.3" />
+    <PackageReference Include="Bucket.Logging" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.Logging.Events" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.ServiceDiscovery" Version="1.0.0.1" />
+    <PackageReference Include="Bucket.ServiceDiscovery.Consul" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.Tracing" Version="1.0.0.2" />
+    <PackageReference Include="Bucket.Tracing.Events" Version="1.0.0.2" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

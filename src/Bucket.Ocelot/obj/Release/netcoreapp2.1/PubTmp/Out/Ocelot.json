@@ -20,8 +20,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 8092
+          "Host": "192.168.1.52",
+          "Port": 18082
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18082
         }
       ],
       "QoSOptions": {
@@ -30,7 +34,7 @@
         "TimeoutValue": 0
       },
       "LoadBalancerOptions": {
-        "Type": "LeastConnection"
+        "Type": "RoundRobin"
       },
       "RateLimitOptions": {
         "ClientWhitelist": [],
@@ -75,8 +79,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 8093
+          "Host": "192.168.1.52",
+          "Port": 18083
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18083
         }
       ],
       "QoSOptions": {
@@ -85,7 +93,7 @@
         "TimeoutValue": 0
       },
       "LoadBalancerOptions": {
-        "Type": "LeastConnection"
+        "Type": "RoundRobin"
       },
       "RateLimitOptions": {
         "ClientWhitelist": [],
@@ -159,8 +167,12 @@
       "UseServiceDiscovery": false,
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 8092
+          "Host": "192.168.1.52",
+          "Port": 18082
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18082
         }
       ],
       "UpstreamHost": "",
@@ -175,11 +187,11 @@
   "GlobalConfiguration": {
     "RequestIdKey": "ot-requestid",
     "ServiceDiscoveryProvider": {
-      "Host": "127.0.0.1",
+      "Host": "192.168.1.52",
       "Port": 8500,
       "Type": "Consul",
       "Token": null,
-      "ConfigurationKey": null,
+      "ConfigurationKey": "PinzhiGatewayRoutes",
       "PollingInterval": 0
     },
     "RateLimitOptions": {
@@ -194,9 +206,8 @@
       "DurationOfBreak": 0,
       "TimeoutValue": 0
     },
-    "BaseUrl": "http://localhost:8090",
     "LoadBalancerOptions": {
-      "Type": null,
+      "Type": "RoundRobin",
       "Key": null,
       "Expiry": 0
     },

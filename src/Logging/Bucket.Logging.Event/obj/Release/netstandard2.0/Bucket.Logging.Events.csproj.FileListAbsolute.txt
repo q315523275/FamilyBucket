@@ -1,10 +1,12 @@
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.deps.json
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.Events.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Core.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.EventBus.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.dll
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.EventBus.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Logging.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\bin\Release\netstandard2.0\Bucket.Core.pdb
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csprojAssemblyReference.cache
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.csproj.CoreCompileInputs.cache
 D:\work2017\Git\FamilyBucket\Microservice\Logging\Bucket.Logging.Event\obj\Release\netstandard2.0\Bucket.Logging.Events.AssemblyInfoInputs.cache

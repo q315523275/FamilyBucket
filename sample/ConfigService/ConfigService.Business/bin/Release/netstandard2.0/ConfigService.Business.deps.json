@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "de11433de73da9d3fad9277dc6ea4a07aabe6622"
+    "signature": "ee8a60123f363129cf9a9ab78ca93d3227bf91c9"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,8 +10,8 @@
       "ConfigService.Business/1.0.0": {
         "dependencies": {
           "AutoMapper": "6.2.2",
-          "Bucket.Core": "1.1.0",
-          "Bucket.Utility": "1.1.0",
+          "Bucket.Core": "1.1.0.2",
+          "Bucket.Utility": "1.1.0.3",
           "ConfigService.DTO": "1.0.0",
           "ConfigService.Interface": "1.0.0",
           "ConfigService.Model": "1.0.0",
@@ -42,15 +42,15 @@
           }
         }
       },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.Core.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
+            "assemblyVersion": "1.1.0.2",
+            "fileVersion": "1.1.0.2"
           }
         }
       },
@@ -66,19 +66,20 @@
           }
         }
       },
-      "Bucket.Utility/1.1.0": {
+      "Bucket.Utility/1.1.0.3": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.1.0",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Nito.AsyncEx.Context": "1.1.0",
+          "SkiaSharp": "1.60.2",
           "System.ComponentModel.Annotations": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.Utility.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
+            "assemblyVersion": "1.1.0.3",
+            "fileVersion": "1.1.0.3"
           }
         }
       },
@@ -625,6 +626,14 @@
       "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
       "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {},
+      "SkiaSharp/1.60.2": {
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {
+            "assemblyVersion": "1.60.0.0",
+            "fileVersion": "1.60.2.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
@@ -1752,12 +1761,12 @@
       "path": "automapper/6.2.2",
       "hashPath": "automapper.6.2.2.nupkg.sha512"
     },
-    "Bucket.Core/1.1.0": {
+    "Bucket.Core/1.1.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DR8WM8yonCj0PJeVnsWW4Ehgf2FFs+ZVshYPlRALBfGyuGkmBpupqEdLgNMC3zzrv7DHxoXYptv0S26O3JVHDQ==",
-      "path": "bucket.core/1.1.0",
-      "hashPath": "bucket.core.1.1.0.nupkg.sha512"
+      "sha512": "sha512-SI7O59gRZjArkmHrjaq9boiNKn8Q6scEzeEC2Dnqbiw+BUhnYMazqcqHHi8drdys5OZVioqk8d37KCniK+TraQ==",
+      "path": "bucket.core/1.1.0.2",
+      "hashPath": "bucket.core.1.1.0.2.nupkg.sha512"
     },
     "Bucket.DbContext/1.0.3": {
       "type": "package",
@@ -1766,12 +1775,12 @@
       "path": "bucket.dbcontext/1.0.3",
       "hashPath": "bucket.dbcontext.1.0.3.nupkg.sha512"
     },
-    "Bucket.Utility/1.1.0": {
+    "Bucket.Utility/1.1.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5jzpZyGi8hhdw38Z11gtVmRwDyQrkIE1PAUihzAhrX+qtfE51Q9cXwNJjVrc2oqbRc1Y3nc/N0y7ETVt0yrAVQ==",
-      "path": "bucket.utility/1.1.0",
-      "hashPath": "bucket.utility.1.1.0.nupkg.sha512"
+      "sha512": "sha512-B24frIsHuxkYNQ/vJsF3rfqp0sUbVnC0o58ZXiR0EMi0aIsA7uqCGyGNBbuANoq5QTAZdTpE6OpCkAIx2PubPA==",
+      "path": "bucket.utility/1.1.0.3",
+      "hashPath": "bucket.utility.1.1.0.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting/2.1.0": {
       "type": "package",
@@ -2199,6 +2208,13 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "SkiaSharp/1.60.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JcMB63zAfGX2Vdi7hbKlNDdh3QljV/lHDf/yMAuxz1yy0iHtGx840gZqJJgLBzyJw4Ojs9braR+LKO1S3cgyqw==",
+      "path": "skiasharp/1.60.2",
+      "hashPath": "skiasharp.1.60.2.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "type": "package",

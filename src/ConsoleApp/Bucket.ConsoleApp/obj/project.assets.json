@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "AspectCore.Abstractions/0.5.0": {
+      "AspectCore.Abstractions/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -15,11 +15,11 @@
           "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
         }
       },
-      "AspectCore.Core/0.5.0": {
+      "AspectCore.Core/0.7.0": {
         "type": "package",
         "dependencies": {
-          "AspectCore.Abstractions": "0.5.0",
-          "AspectCore.Extensions.Reflection": "0.5.0",
+          "AspectCore.Abstractions": "0.7.0",
+          "AspectCore.Extensions.Reflection": "0.7.0",
           "Microsoft.CSharp": "4.5.0-rc1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
@@ -31,7 +31,7 @@
           "lib/netstandard2.0/AspectCore.Core.dll": {}
         }
       },
-      "AspectCore.Extensions.Reflection/0.5.0": {
+      "AspectCore.Extensions.Reflection/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -42,41 +42,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
-      "Autofac/4.8.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.ComponentModel": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {}
-        }
-      },
-      "Consul/0.7.2.4": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "10.0.2",
-          "System.Collections": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Net.Http": "4.3.0",
-          "System.Net.Http.WinHttpHandler": "4.0.0",
-          "System.Runtime": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Thread": "4.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Consul.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Consul.dll": {}
         }
       },
       "Dapper/1.50.5": {
@@ -109,18 +74,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/Elasticsearch.Net.dll": {}
-        }
-      },
-      "Google.Protobuf/3.5.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
       "MessagePack/1.7.3.4": {
@@ -1459,7 +1412,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -1508,14 +1461,15 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -1771,10 +1725,9 @@
           }
         }
       },
-      "MySql.Data/8.0.11": {
+      "MySql.Data/6.10.7": {
         "type": "package",
         "dependencies": {
-          "Google.Protobuf": "3.5.1",
           "System.Configuration.ConfigurationManager": "4.4.0",
           "System.Security.Permissions": "4.4.0",
           "System.Text.Encoding.CodePages": "4.0.1"
@@ -2095,15 +2048,6 @@
             "assetType": "native",
             "rid": "win-x86"
           }
-        }
-      },
-      "SemanticVersioning/1.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/SemVer.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/SemVer.dll": {}
         }
       },
       "StackExchange.Redis/1.2.6": {
@@ -2731,43 +2675,6 @@
             "rid": "unix"
           },
           "runtimes/win/lib/netstandard1.3/System.Net.Http.dll": {
-            "assetType": "runtime",
-            "rid": "win"
-          }
-        }
-      },
-      "System.Net.Http.WinHttpHandler/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.0.1",
-          "Microsoft.Win32.Primitives": "4.0.1",
-          "System.Collections": "4.0.11",
-          "System.Diagnostics.Debug": "4.0.11",
-          "System.Diagnostics.DiagnosticSource": "4.0.0",
-          "System.Globalization": "4.0.11",
-          "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
-          "System.Net.Http": "4.1.0",
-          "System.Net.Primitives": "4.0.11",
-          "System.Resources.ResourceManager": "4.0.1",
-          "System.Runtime": "4.1.0",
-          "System.Runtime.Extensions": "4.1.0",
-          "System.Runtime.Handles": "4.0.1",
-          "System.Runtime.InteropServices": "4.1.0",
-          "System.Security.Cryptography.X509Certificates": "4.1.0",
-          "System.Text.Encoding": "4.0.11",
-          "System.Threading": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
-        },
-        "compile": {
-          "ref/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -3822,26 +3729,19 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.0.8.2": {
+      "Bucket.AspNetCore/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.ConfigCenter": "1.1.0.1",
-          "Bucket.Core": "1.1.0",
-          "Bucket.ErrorCodeStore": "1.1.0.1",
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.EventBus.RabbitMQ": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Logging.Events": "1.1.0.1",
+          "Bucket.Core": "1.1.0.2",
           "Bucket.Redis": "1.0.0",
           "Bucket.ServiceClient.Http": "1.1.0",
-          "Bucket.ServiceDiscovery.Consul": "1.1.0",
-          "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0.1",
+          "Bucket.Tracing": "1.0.0.2",
           "Microsoft.AspNetCore.Authentication": "2.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
           "Microsoft.AspNetCore.Mvc": "2.1.0",
-          "Microsoft.IdentityModel.Tokens": "5.2.2"
+          "Microsoft.Extensions.Logging": "2.1.0",
+          "Microsoft.IdentityModel.Tokens": "5.2.4"
         },
         "compile": {
           "bin/placeholder/Bucket.AspNetCore.dll": {}
@@ -3850,21 +3750,7 @@
           "bin/placeholder/Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.ConfigCenter/1.1.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Bucket.Redis": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ConfigCenter.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ConfigCenter.dll": {}
-        }
-      },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3878,23 +3764,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.ErrorCodeStore/1.1.0.1": {
+      "Bucket.EventBus/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ErrorCodeStore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ErrorCodeStore.dll": {}
-        }
-      },
-      "Bucket.EventBus/1.1.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -3905,12 +3779,11 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Autofac": "4.8.1",
-          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.2",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -3923,7 +3796,7 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.1": {
+      "Bucket.Logging/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3937,12 +3810,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.1": {
+      "Bucket.Logging.Events/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1"
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging": "1.1.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -3955,10 +3828,10 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging.Events": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging.Events": "1.1.0.2",
           "Dapper": "1.50.5",
-          "MySql.Data": "8.0.11"
+          "MySql.Data": "6.10.7"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.EventSubscribe.dll": {}
@@ -3984,7 +3857,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0"
+          "Bucket.Core": "1.1.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
@@ -3993,33 +3866,20 @@
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery.Consul/1.1.0": {
+      "Bucket.Tracing/1.0.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Consul": "0.7.2.4",
-          "SemanticVersioning": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
-        }
-      },
-      "Bucket.Tracing/1.0.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AspectCore.Core": "0.5.0",
-          "Bucket.Core": "1.1.0",
+          "AspectCore.Core": "0.7.0",
+          "Bucket.Core": "1.1.0.2",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.0",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
           "Microsoft.Extensions.Primitives": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -4030,13 +3890,13 @@
           "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0.1": {
+      "Bucket.Tracing.Events/1.0.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1"
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging": "1.1.0.2",
+          "Bucket.Tracing": "1.0.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.Events.dll": {}
@@ -4049,9 +3909,9 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0.1",
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Tracing": "1.0.0.2",
+          "Bucket.Tracing.Events": "1.0.0.2",
           "Microsoft.Extensions.Caching.Memory": "2.1.0",
           "Microsoft.Extensions.Options": "2.1.0",
           "NEST": "5.6.1"
@@ -4066,58 +3926,37 @@
     }
   },
   "libraries": {
-    "AspectCore.Abstractions/0.5.0": {
-      "sha512": "fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
+    "AspectCore.Abstractions/0.7.0": {
+      "sha512": "AgV1OFl0V1i+HBK+dsztIfFMhIDozwDjamqflJW4kpQH20WYCi7b7U35+BcDAd/DePQexGPLesHd0pojNNGCNA==",
       "type": "package",
-      "path": "aspectcore.abstractions/0.5.0",
+      "path": "aspectcore.abstractions/0.7.0",
       "files": [
-        "aspectcore.abstractions.0.5.0.nupkg.sha512",
+        "aspectcore.abstractions.0.7.0.nupkg.sha512",
         "aspectcore.abstractions.nuspec",
+        "lib/net45/AspectCore.Abstractions.dll",
         "lib/netstandard2.0/AspectCore.Abstractions.dll"
       ]
     },
-    "AspectCore.Core/0.5.0": {
-      "sha512": "F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
+    "AspectCore.Core/0.7.0": {
+      "sha512": "4CtgUQkCkLZAGhzLM1Quc1SoH75qo2l0rdCphiax3oRpus7K7FUu+jvKPKeaRi1u+qLAi28sbCSak9WDATz2Bg==",
       "type": "package",
-      "path": "aspectcore.core/0.5.0",
+      "path": "aspectcore.core/0.7.0",
       "files": [
-        "aspectcore.core.0.5.0.nupkg.sha512",
+        "aspectcore.core.0.7.0.nupkg.sha512",
         "aspectcore.core.nuspec",
+        "lib/net45/AspectCore.Core.dll",
         "lib/netstandard2.0/AspectCore.Core.dll"
       ]
     },
-    "AspectCore.Extensions.Reflection/0.5.0": {
-      "sha512": "ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
+    "AspectCore.Extensions.Reflection/0.7.0": {
+      "sha512": "cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
       "type": "package",
-      "path": "aspectcore.extensions.reflection/0.5.0",
+      "path": "aspectcore.extensions.reflection/0.7.0",
       "files": [
-        "aspectcore.extensions.reflection.0.5.0.nupkg.sha512",
+        "aspectcore.extensions.reflection.0.7.0.nupkg.sha512",
         "aspectcore.extensions.reflection.nuspec",
+        "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
-      ]
-    },
-    "Autofac/4.8.1": {
-      "sha512": "aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
-      "type": "package",
-      "path": "autofac/4.8.1",
-      "files": [
-        "autofac.4.8.1.nupkg.sha512",
-        "autofac.nuspec",
-        "lib/net45/Autofac.dll",
-        "lib/net45/Autofac.xml",
-        "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml"
-      ]
-    },
-    "Consul/0.7.2.4": {
-      "sha512": "MjiFTzAFTwrlb8HmCLlSS673y4FgOF0csB1C50SOZ7zxGMZaQ45wEWZBOiKtzDMRdvntoxGmlZVpW3NtPohPvg==",
-      "type": "package",
-      "path": "consul/0.7.2.4",
-      "files": [
-        "consul.0.7.2.4.nupkg.sha512",
-        "consul.nuspec",
-        "lib/net45/Consul.dll",
-        "lib/netstandard1.3/Consul.dll"
       ]
     },
     "Dapper/1.50.5": {
@@ -4148,19 +3987,6 @@
         "lib/net46/Elasticsearch.Net.xml",
         "lib/netstandard1.3/Elasticsearch.Net.dll",
         "lib/netstandard1.3/Elasticsearch.Net.xml"
-      ]
-    },
-    "Google.Protobuf/3.5.1": {
-      "sha512": "f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
-      "type": "package",
-      "path": "google.protobuf/3.5.1",
-      "files": [
-        "google.protobuf.3.5.1.nupkg.sha512",
-        "google.protobuf.nuspec",
-        "lib/net45/Google.Protobuf.dll",
-        "lib/net45/Google.Protobuf.xml",
-        "lib/netstandard1.0/Google.Protobuf.dll",
-        "lib/netstandard1.0/Google.Protobuf.xml"
       ]
     },
     "MessagePack/1.7.3.4": {
@@ -5399,11 +5225,12 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
-      "sha512": "rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
+    "Microsoft.IdentityModel.Logging/5.2.4": {
+      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.2",
+      "path": "microsoft.identitymodel.logging/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.pdb",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -5413,7 +5240,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -5447,11 +5274,12 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
-      "sha512": "A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -5461,7 +5289,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -5894,20 +5722,20 @@
         "version.txt"
       ]
     },
-    "MySql.Data/8.0.11": {
-      "sha512": "P5zKcnM2SVtdHD6gfReymJguIYLhNL5Og8Qm5TC9MEsSupsAYrRu4AB4nsbalrjqqv8VHBqVREWsXg9lY+q03A==",
+    "MySql.Data/6.10.7": {
+      "sha512": "2fptledJVo4GaF/DOpWgumn+pteZ2eNlaZTE8I6CUvK7Zz5UGPWTg3v9l4Ymp9ewivodYI5VDn6ucVyKL/e++A==",
       "type": "package",
-      "path": "mysql.data/8.0.11",
+      "path": "mysql.data/6.10.7",
       "files": [
         "lib/net452/MySql.Data.dll",
         "lib/net452/MySql.Data.xml",
         "lib/netcoreapp2.0/MySql.Data.dll",
         "lib/netcoreapp2.0/MySql.Data.xml",
-        "lib/netstandard1.6/MySql.Data.dll",
-        "lib/netstandard1.6/MySql.Data.xml",
+        "lib/netstandard1.3/MySql.Data.dll",
+        "lib/netstandard1.3/MySql.Data.xml",
         "lib/netstandard2.0/MySql.Data.dll",
         "lib/netstandard2.0/MySql.Data.xml",
-        "mysql.data.8.0.11.nupkg.sha512",
+        "mysql.data.6.10.7.nupkg.sha512",
         "mysql.data.nuspec"
       ]
     },
@@ -6382,19 +6210,6 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
-      ]
-    },
-    "SemanticVersioning/1.1.0": {
-      "sha512": "0+IumI7Ugf31sEfMU2X68H/tfMZpZ8X17zB6t0/2QzHMpr4z/KGeOXYkDK2CJLAucBV7w6J7ueKuck3t/ZydiQ==",
-      "type": "package",
-      "path": "semanticversioning/1.1.0",
-      "files": [
-        "lib/net35/SemVer.dll",
-        "lib/net45/SemVer.dll",
-        "lib/netstandard1.1/SemVer.dll",
-        "lib/netstandard2.0/SemVer.dll",
-        "semanticversioning.1.1.0.nupkg.sha512",
-        "semanticversioning.nuspec"
       ]
     },
     "StackExchange.Redis/1.2.6": {
@@ -8236,33 +8051,6 @@
         "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
         "system.net.http.4.3.0.nupkg.sha512",
         "system.net.http.nuspec"
-      ]
-    },
-    "System.Net.Http.WinHttpHandler/4.0.0": {
-      "sha512": "86HNmRaoJZRtu2Yrd3ZVC3kd8tvdYphuXhBlW+QFP5nuHzuCMThVLDWjSXRA4PIoiTPhxYggtKAjmBt6CAZGaw==",
-      "type": "package",
-      "path": "system.net.http.winhttphandler/4.0.0",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/net46/System.Net.Http.WinHttpHandler.dll",
-        "ref/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "ref/netstandard1.3/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/de/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/es/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/fr/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/it/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ja/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ko/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/ru/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/zh-hans/System.Net.Http.WinHttpHandler.xml",
-        "ref/netstandard1.3/zh-hant/System.Net.Http.WinHttpHandler.xml",
-        "runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "runtimes/win/lib/net46/System.Net.Http.WinHttpHandler.dll",
-        "runtimes/win/lib/netcore50/_._",
-        "runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll",
-        "system.net.http.winhttphandler.4.0.0.nupkg.sha512",
-        "system.net.http.winhttphandler.nuspec"
       ]
     },
     "System.Net.NameResolution/4.3.0": {
@@ -11094,42 +10882,32 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Bucket.AspNetCore/1.0.8.2": {
+    "Bucket.AspNetCore/1.1.0.2": {
       "type": "project",
       "path": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.ConfigCenter/1.1.0.1": {
-      "type": "project",
-      "path": "../../Config/Bucket.ConfigService/Bucket.ConfigCenter.csproj",
-      "msbuildProject": "../../Config/Bucket.ConfigService/Bucket.ConfigCenter.csproj"
-    },
-    "Bucket.Core/1.1.0": {
+    "Bucket.Core/1.1.0.2": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.ErrorCodeStore/1.1.0.1": {
-      "type": "project",
-      "path": "../../ErrorCode/Bucket.ErrorCodeStore/Bucket.ErrorCodeStore.csproj",
-      "msbuildProject": "../../ErrorCode/Bucket.ErrorCodeStore/Bucket.ErrorCodeStore.csproj"
-    },
-    "Bucket.EventBus/1.1.0.1": {
+    "Bucket.EventBus/1.1.0.2": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.3": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.Logging/1.1.0.1": {
+    "Bucket.Logging/1.1.0.2": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.0.1": {
+    "Bucket.Logging.Events/1.1.0.2": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj"
@@ -11149,17 +10927,12 @@
       "path": "../../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj",
       "msbuildProject": "../../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj"
     },
-    "Bucket.ServiceDiscovery.Consul/1.1.0": {
-      "type": "project",
-      "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
-      "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
-    },
-    "Bucket.Tracing/1.0.0.1": {
+    "Bucket.Tracing/1.0.0.2": {
       "type": "project",
       "path": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
     },
-    "Bucket.Tracing.Events/1.0.0.1": {
+    "Bucket.Tracing.Events/1.0.0.2": {
       "type": "project",
       "path": "../../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj",
       "msbuildProject": "../../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj"
@@ -11172,11 +10945,13 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "Bucket.AspNetCore >= 1.0.8.2",
-      "Bucket.Core >= 1.1.0",
+      "Bucket.AspNetCore >= 1.1.0.2",
+      "Bucket.Core >= 1.1.0.2",
+      "Bucket.EventBus >= 1.1.0.2",
+      "Bucket.EventBus.RabbitMQ >= 1.1.0.3",
       "Bucket.Logging.EventSubscribe >= 1.0.0",
       "Bucket.Tracing.EventSubscribe >= 1.0.0",
-      "Bucket.Tracing.Events >= 1.0.0.1",
+      "Bucket.Tracing.Events >= 1.0.0.2",
       "Microsoft.Extensions.Configuration >= 2.1.0",
       "Microsoft.Extensions.Configuration.FileExtensions >= 2.1.0",
       "Microsoft.Extensions.Configuration.Json >= 2.1.0",
@@ -11221,6 +10996,12 @@
             },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj"

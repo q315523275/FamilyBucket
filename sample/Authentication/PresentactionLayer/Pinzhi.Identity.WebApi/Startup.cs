@@ -12,21 +12,29 @@ using Pinzhi.Identity.Model;
 using Pinzhi.Identity.Interface;
 using Pinzhi.Identity.Business.Auth;
 
-using SqlSugar;
-
-using Bucket.AspNetCore.Filters;
-using Bucket.AspNetCore.EventBus;
-using Bucket.AspNetCore.Extensions;
-
-using Newtonsoft.Json.Serialization;
-using Swashbuckle.AspNetCore.Swagger;
-
-using Bucket.DbContext;
-using Bucket.Logging;
-using Bucket.Utility;
 using System.Collections.Generic;
 using System.Linq;
 
+using SqlSugar;
+using Newtonsoft.Json.Serialization;
+using Swashbuckle.AspNetCore.Swagger;
+
+
+using Bucket.DbContext;
+using Bucket.Utility;
+
+using Bucket.ErrorCode.Extensions;
+using Bucket.Config.Extensions;
+using Bucket.EventBus.Extensions;
+using Bucket.EventBus.RabbitMQ;
+using Bucket.ServiceDiscovery.Extensions;
+using Bucket.ServiceDiscovery.Consul;
+using Bucket.AspNetCore.Extensions;
+using Bucket.AspNetCore.Filters;
+using Bucket.Tracing.Extensions;
+using Bucket.Tracing.Events;
+using Bucket.Logging;
+using Bucket.Logging.Events;
 namespace Pinzhi.Identity.WebApi
 {
     /// <summary>
@@ -66,26 +74,18 @@ namespace Pinzhi.Identity.WebApi
                 config.InitKeyType = InitKeyType.Attribute;
             });
             // 添加错误码服务
-            services.AddErrorCodeService(Configuration);
+            services.AddErrorCodeServer(Configuration);
             // 添加配置服务
             services.AddConfigService(Configuration);
             // 添加事件驱动
-            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = eventConfig["HostName"];
-                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.QueueName = eventConfig["QueueName"];
-                });
-            });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscoveryConsul(Configuration);
+            services.AddServiceDiscovery(builder => { builder.UseConsul(Configuration); });
             // 添加事件队列日志
             services.AddEventLog();
             // 添加链路追踪
             services.AddTracer(Configuration);
+            services.AddEventTrace();
             // 添加业务注册
             services.AddScoped<IAuthBusiness, AuthBusiness>();
             // 添加过滤器

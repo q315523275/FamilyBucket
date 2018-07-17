@@ -159,7 +159,7 @@
           "lib/netstandard1.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -175,14 +175,15 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2362,11 +2363,12 @@
         "microsoft.extensions.primitives.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
-      "sha512": "rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
+    "Microsoft.IdentityModel.Logging/5.2.4": {
+      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.2",
+      "path": "microsoft.identitymodel.logging/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.pdb",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -2376,15 +2378,16 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
-      "sha512": "A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -2394,7 +2397,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -7161,7 +7164,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Microsoft.IdentityModel.Tokens >= 5.2.2",
+      "Microsoft.IdentityModel.Tokens >= 5.2.4",
       "NETStandard.Library >= 2.0.3",
       "sqlSugarCore >= 4.6.4.9"
     ]
@@ -7210,7 +7213,7 @@
         "dependencies": {
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "[5.2.2, )"
+            "version": "[5.2.4, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

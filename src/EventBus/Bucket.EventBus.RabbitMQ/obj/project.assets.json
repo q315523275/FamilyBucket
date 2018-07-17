@@ -2,17 +2,58 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "Autofac/4.8.1": {
+      "Microsoft.AspNetCore.Http/2.1.0": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.ComponentModel": "4.0.1"
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.1.0",
+          "Microsoft.Extensions.ObjectPool": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0",
+          "Microsoft.Net.Http.Headers": "2.1.0"
         },
         "compile": {
-          "lib/netstandard1.1/Autofac.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.1.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.WebUtilities/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Net.Http.Headers": "2.1.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration/2.1.0": {
@@ -96,6 +137,15 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.ObjectPool/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
+        }
+      },
       "Microsoft.Extensions.Options/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -120,6 +170,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.1.0",
+          "System.Buffers": "4.5.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -384,10 +447,10 @@
           }
         }
       },
-      "System.Buffers/4.4.0": {
+      "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/_._": {}
+          "ref/netstandard2.0/System.Buffers.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Buffers.dll": {}
@@ -423,18 +486,6 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Concurrent.dll": {}
-        }
-      },
-      "System.ComponentModel/4.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.1.0"
-        },
-        "compile": {
-          "ref/netstandard1.0/System.ComponentModel.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
       "System.Console/4.3.0": {
@@ -1125,6 +1176,15 @@
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
         }
       },
+      "System.Text.Encodings.Web/4.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
+        }
+      },
       "System.Text.RegularExpressions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1202,10 +1262,25 @@
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.1": {
+      "Bucket.Core/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.1.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Bucket.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bucket.Core.dll": {}
+        }
+      },
+      "Bucket.EventBus/1.1.0.2": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1219,17 +1294,52 @@
     }
   },
   "libraries": {
-    "Autofac/4.8.1": {
-      "sha512": "aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
+    "Microsoft.AspNetCore.Http/2.1.0": {
+      "sha512": "ZclDVdAuZ0T2UwAppCW/GTrPAIM6vjzYO5ggVlufeh6zIsrGgrJijtHpRvngEXueUSM2/sv4i88MugK4I3enrw==",
       "type": "package",
-      "path": "autofac/4.8.1",
+      "path": "microsoft.aspnetcore.http/2.1.0",
       "files": [
-        "autofac.4.8.1.nupkg.sha512",
-        "autofac.nuspec",
-        "lib/net45/Autofac.dll",
-        "lib/net45/Autofac.xml",
-        "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml"
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.xml",
+        "microsoft.aspnetcore.http.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
+      "sha512": "M67hU3/uAmRKXW6Oe/SYKy/r6wEgJecZgmPWDDsulzJCrZJRc/xdZtKrQ1lof40dGeuzIzBjD5jpJXblb8AMjg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.abstractions/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
+        "microsoft.aspnetcore.http.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/2.1.0": {
+      "sha512": "V1lLM0JBEEyZb0e0LTVr2hD8hWGZi6jHlvwmIn7hvJ5FTal63BnKwkBHNe2aYgISzZ3ag6bmwVmPQigzHd7p6w==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.WebUtilities/2.1.0": {
+      "sha512": "5UMRFQwM3qlnTEo/nGJjEz5jxLTuEjdt/7wIudfitYGYHALw9mkn6+VA/mX/PkXUAQgnqeStoff4Xo9qBYE2FQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.webutilities/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
+        "microsoft.aspnetcore.webutilities.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
     "Microsoft.Extensions.Configuration/2.1.0": {
@@ -1320,6 +1430,18 @@
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
     },
+    "Microsoft.Extensions.ObjectPool/2.1.0": {
+      "sha512": "NtPhlCLtF5t4pl0M6r1fy8B0eKdN60JtxuSgJWxRqxPIf2hlb+Q1iaFt8Auz4Qbh7SLJ9f16Y8EBxiEN4Ea2wg==",
+      "type": "package",
+      "path": "microsoft.extensions.objectpool/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.xml",
+        "microsoft.extensions.objectpool.2.1.0.nupkg.sha512",
+        "microsoft.extensions.objectpool.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Options/2.1.0": {
       "sha512": "PNsRGgCThrO0sW0JHkAFcycPeGshTuFQ/0Ss6hRM7goZM331bzexYhPVfuOVl9TEpLqC3MLz9DwlLlKSPvGl1Q==",
       "type": "package",
@@ -1342,6 +1464,18 @@
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
         "microsoft.extensions.primitives.2.1.0.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
+      ]
+    },
+    "Microsoft.Net.Http.Headers/2.1.0": {
+      "sha512": "5RrJbRuChaurKaDmFoD+k7VfmVnIqckiNWR+bXENoU8NbOiX8+9RyDges5JIVLGPTa882RpJyQ3zWE6hMP0pvA==",
+      "type": "package",
+      "path": "microsoft.net.http.headers/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
+        "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
+        "microsoft.net.http.headers.2.1.0.nupkg.sha512",
+        "microsoft.net.http.headers.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -1783,11 +1917,12 @@
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "System.Buffers/4.4.0": {
-      "sha512": "AwarXzzoDwX6BgrhjoJsk6tUezZEozOT5Y9QKF94Gl4JK91I4PIIBkBco9068Y9/Dra8Dkbie99kXB8+1BaYKw==",
+    "System.Buffers/4.5.0": {
+      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
       "type": "package",
-      "path": "system.buffers/4.4.0",
+      "path": "system.buffers/4.5.0",
       "files": [
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -1795,12 +1930,16 @@
         "lib/netstandard1.1/System.Buffers.xml",
         "lib/netstandard2.0/System.Buffers.dll",
         "lib/netstandard2.0/System.Buffers.xml",
+        "lib/uap10.0.16299/_._",
+        "ref/net45/System.Buffers.dll",
+        "ref/net45/System.Buffers.xml",
         "ref/netcoreapp2.0/_._",
         "ref/netstandard1.1/System.Buffers.dll",
         "ref/netstandard1.1/System.Buffers.xml",
         "ref/netstandard2.0/System.Buffers.dll",
         "ref/netstandard2.0/System.Buffers.xml",
-        "system.buffers.4.4.0.nupkg.sha512",
+        "ref/uap10.0.16299/_._",
+        "system.buffers.4.5.0.nupkg.sha512",
         "system.buffers.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -1936,63 +2075,6 @@
         "ref/xamarinwatchos10/_._",
         "system.collections.concurrent.4.3.0.nupkg.sha512",
         "system.collections.concurrent.nuspec"
-      ]
-    },
-    "System.ComponentModel/4.0.1": {
-      "sha512": "oBZFnm7seFiVfugsIyOvQCWobNZs7FzqDV/B7tx20Ep/l3UUFCPDkdTnCNaJZTU27zjeODmy2C/cP60u3D4c9w==",
-      "type": "package",
-      "path": "system.componentmodel/4.0.1",
-      "files": [
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/netcore50/System.ComponentModel.dll",
-        "lib/netstandard1.3/System.ComponentModel.dll",
-        "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/System.ComponentModel.dll",
-        "ref/netcore50/System.ComponentModel.xml",
-        "ref/netcore50/de/System.ComponentModel.xml",
-        "ref/netcore50/es/System.ComponentModel.xml",
-        "ref/netcore50/fr/System.ComponentModel.xml",
-        "ref/netcore50/it/System.ComponentModel.xml",
-        "ref/netcore50/ja/System.ComponentModel.xml",
-        "ref/netcore50/ko/System.ComponentModel.xml",
-        "ref/netcore50/ru/System.ComponentModel.xml",
-        "ref/netcore50/zh-hans/System.ComponentModel.xml",
-        "ref/netcore50/zh-hant/System.ComponentModel.xml",
-        "ref/netstandard1.0/System.ComponentModel.dll",
-        "ref/netstandard1.0/System.ComponentModel.xml",
-        "ref/netstandard1.0/de/System.ComponentModel.xml",
-        "ref/netstandard1.0/es/System.ComponentModel.xml",
-        "ref/netstandard1.0/fr/System.ComponentModel.xml",
-        "ref/netstandard1.0/it/System.ComponentModel.xml",
-        "ref/netstandard1.0/ja/System.ComponentModel.xml",
-        "ref/netstandard1.0/ko/System.ComponentModel.xml",
-        "ref/netstandard1.0/ru/System.ComponentModel.xml",
-        "ref/netstandard1.0/zh-hans/System.ComponentModel.xml",
-        "ref/netstandard1.0/zh-hant/System.ComponentModel.xml",
-        "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.componentmodel.4.0.1.nupkg.sha512",
-        "system.componentmodel.nuspec"
       ]
     },
     "System.Console/4.3.0": {
@@ -3909,6 +3991,24 @@
         "system.text.encoding.nuspec"
       ]
     },
+    "System.Text.Encodings.Web/4.5.0": {
+      "sha512": "JF+wDdfFiRl3rz3dPMfR6aR568AW2J5CUMmhSflgHDz4zbVK4/00ax8UHnHyEMvblPewgNugjuA4oyoL8Pex2g==",
+      "type": "package",
+      "path": "system.text.encodings.web/4.5.0",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard1.0/System.Text.Encodings.Web.xml",
+        "lib/netstandard2.0/System.Text.Encodings.Web.dll",
+        "lib/netstandard2.0/System.Text.Encodings.Web.xml",
+        "system.text.encodings.web.4.5.0.nupkg.sha512",
+        "system.text.encodings.web.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Text.RegularExpressions/4.3.0": {
       "sha512": "uZPT3jUGEhSbT1qzSyE+p47mAe9k69VAw6LyJQFi7d5PukIHisgS4F6PbLjxX+Qqu+EOjBY8LQHwAfXNSByeyA==",
       "type": "package",
@@ -4255,7 +4355,12 @@
         "system.threading.timer.nuspec"
       ]
     },
-    "Bucket.EventBus/1.1.0.1": {
+    "Bucket.Core/1.1.0.2": {
+      "type": "project",
+      "path": "../../Bucket.Core/Bucket.Core.csproj",
+      "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
+    },
+    "Bucket.EventBus/1.1.0.2": {
       "type": "project",
       "path": "../Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../Bucket.EventBus/Bucket.EventBus.csproj"
@@ -4263,8 +4368,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Autofac >= 4.8.1",
-      "Bucket.EventBus >= 1.1.0.1",
+      "Bucket.EventBus >= 1.1.0.2",
       "Microsoft.Extensions.Logging >= 2.1.0",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 11.0.2",
@@ -4277,7 +4381,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0.1",
+    "version": "1.1.0.3",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "projectName": "Bucket.EventBus.RabbitMQ",
@@ -4318,10 +4422,6 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "Autofac": {
-            "target": "Package",
-            "version": "[4.8.1, )"
-          },
           "Microsoft.Extensions.Logging": {
             "target": "Package",
             "version": "[2.1.0, )"

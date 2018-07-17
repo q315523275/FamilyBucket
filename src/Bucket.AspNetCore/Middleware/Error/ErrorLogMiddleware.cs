@@ -13,11 +13,11 @@ namespace Bucket.AspNetCore.Middleware.Error
     {
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
-        private readonly IErrorCodeStore _errorCodeStore;
+        private readonly IErrorCode _errorCodeStore;
         private readonly IJsonHelper _jsonHelper;
         public ErrorLogMiddleware(RequestDelegate next, 
             ILoggerFactory loggerFactory, 
-            IErrorCodeStore errorCodeStore,
+            IErrorCode errorCodeStore,
             IJsonHelper jsonHelper)
         {
             _next = next;

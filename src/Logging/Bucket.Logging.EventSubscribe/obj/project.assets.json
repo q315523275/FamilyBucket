@@ -16,18 +16,6 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
-      "Google.Protobuf/3.5.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {}
-        }
-      },
       "Microsoft.AspNetCore/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -738,10 +726,9 @@
           }
         }
       },
-      "MySql.Data/8.0.11": {
+      "MySql.Data/6.10.7": {
         "type": "package",
         "dependencies": {
-          "Google.Protobuf": "3.5.1",
           "System.Configuration.ConfigurationManager": "4.4.0",
           "System.Security.Permissions": "4.4.0",
           "System.Text.Encoding.CodePages": "4.0.1"
@@ -1153,10 +1140,25 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.1": {
+      "Bucket.Core/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.1.0",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Bucket.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bucket.Core.dll": {}
+        }
+      },
+      "Bucket.EventBus/1.1.0.2": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1167,7 +1169,7 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.1": {
+      "Bucket.Logging/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1181,12 +1183,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.1": {
+      "Bucket.Logging.Events/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1"
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging": "1.1.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -1211,19 +1213,6 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
-      ]
-    },
-    "Google.Protobuf/3.5.1": {
-      "sha512": "f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
-      "type": "package",
-      "path": "google.protobuf/3.5.1",
-      "files": [
-        "google.protobuf.3.5.1.nupkg.sha512",
-        "google.protobuf.nuspec",
-        "lib/net45/Google.Protobuf.dll",
-        "lib/net45/Google.Protobuf.xml",
-        "lib/netstandard1.0/Google.Protobuf.dll",
-        "lib/netstandard1.0/Google.Protobuf.xml"
       ]
     },
     "Microsoft.AspNetCore/2.1.0": {
@@ -1878,20 +1867,20 @@
         "version.txt"
       ]
     },
-    "MySql.Data/8.0.11": {
-      "sha512": "P5zKcnM2SVtdHD6gfReymJguIYLhNL5Og8Qm5TC9MEsSupsAYrRu4AB4nsbalrjqqv8VHBqVREWsXg9lY+q03A==",
+    "MySql.Data/6.10.7": {
+      "sha512": "2fptledJVo4GaF/DOpWgumn+pteZ2eNlaZTE8I6CUvK7Zz5UGPWTg3v9l4Ymp9ewivodYI5VDn6ucVyKL/e++A==",
       "type": "package",
-      "path": "mysql.data/8.0.11",
+      "path": "mysql.data/6.10.7",
       "files": [
         "lib/net452/MySql.Data.dll",
         "lib/net452/MySql.Data.xml",
         "lib/netcoreapp2.0/MySql.Data.dll",
         "lib/netcoreapp2.0/MySql.Data.xml",
-        "lib/netstandard1.6/MySql.Data.dll",
-        "lib/netstandard1.6/MySql.Data.xml",
+        "lib/netstandard1.3/MySql.Data.dll",
+        "lib/netstandard1.3/MySql.Data.xml",
         "lib/netstandard2.0/MySql.Data.dll",
         "lib/netstandard2.0/MySql.Data.xml",
-        "mysql.data.8.0.11.nupkg.sha512",
+        "mysql.data.6.10.7.nupkg.sha512",
         "mysql.data.nuspec"
       ]
     },
@@ -3289,17 +3278,22 @@
         "version.txt"
       ]
     },
-    "Bucket.EventBus/1.1.0.1": {
+    "Bucket.Core/1.1.0.2": {
+      "type": "project",
+      "path": "../../Bucket.Core/Bucket.Core.csproj",
+      "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
+    },
+    "Bucket.EventBus/1.1.0.2": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.Logging/1.1.0.1": {
+    "Bucket.Logging/1.1.0.2": {
       "type": "project",
       "path": "../Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.0.1": {
+    "Bucket.Logging.Events/1.1.0.2": {
       "type": "project",
       "path": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj"
@@ -3307,10 +3301,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.EventBus >= 1.1.0.1",
-      "Bucket.Logging.Events >= 1.1.0.1",
+      "Bucket.EventBus >= 1.1.0.2",
+      "Bucket.Logging.Events >= 1.1.0.2",
       "Dapper >= 1.50.5",
-      "MySql.Data >= 8.0.11",
+      "MySql.Data >= 6.10.7",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -3369,7 +3363,7 @@
           },
           "MySql.Data": {
             "target": "Package",
-            "version": "[8.0.11, )"
+            "version": "[6.10.7, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

@@ -1,18 +1,20 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "528ba68d8470ac8fb93b9099229a0ce6576d5268"
+    "signature": "2ed3836f49a60d2544287e84658d0fc833ee633e"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "Bucket.ConsoleApp/1.0.0": {
         "dependencies": {
-          "Bucket.AspNetCore": "1.0.8.1",
-          "Bucket.Core": "1.1.0",
+          "Bucket.AspNetCore": "1.0.8.3",
+          "Bucket.Core": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus.RabbitMQ": "1.1.0.2",
           "Bucket.Logging.EventSubscribe": "1.0.0",
           "Bucket.Tracing.EventSubscribe": "1.0.0",
-          "Bucket.Tracing.Events": "1.0.0",
+          "Bucket.Tracing.Events": "1.0.0.1",
           "Microsoft.Extensions.Configuration": "2.1.0",
           "Microsoft.Extensions.Configuration.FileExtensions": "2.1.0",
           "Microsoft.Extensions.Configuration.Json": "2.1.0",
@@ -23,73 +25,42 @@
           "Bucket.ConsoleApp.dll": {}
         }
       },
-      "AspectCore.Abstractions/0.5.0": {
+      "AspectCore.Abstractions/0.7.0": {
         "dependencies": {
           "System.ComponentModel": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Abstractions.dll": {
-            "assemblyVersion": "0.5.0.0",
-            "fileVersion": "0.5.0.0"
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
           }
         }
       },
-      "AspectCore.Core/0.5.0": {
+      "AspectCore.Core/0.7.0": {
         "dependencies": {
-          "AspectCore.Abstractions": "0.5.0",
-          "AspectCore.Extensions.Reflection": "0.5.0",
+          "AspectCore.Abstractions": "0.7.0",
+          "AspectCore.Extensions.Reflection": "0.7.0",
           "Microsoft.CSharp": "4.5.0",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Core.dll": {
-            "assemblyVersion": "0.5.0.0",
-            "fileVersion": "0.5.0.0"
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
           }
         }
       },
-      "AspectCore.Extensions.Reflection/0.5.0": {
+      "AspectCore.Extensions.Reflection/0.7.0": {
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.0"
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {
-            "assemblyVersion": "0.5.0.0",
-            "fileVersion": "0.5.0.0"
-          }
-        }
-      },
-      "Autofac/4.8.1": {
-        "dependencies": {
-          "System.ComponentModel": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {
-            "assemblyVersion": "4.8.1.0",
-            "fileVersion": "4.8.1.0"
-          }
-        }
-      },
-      "Consul/0.7.2.4": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
-          "System.Collections": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Net.Http": "4.3.0",
-          "System.Net.Http.WinHttpHandler": "4.0.0",
-          "System.Runtime": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Thread": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.3/Consul.dll": {
-            "assemblyVersion": "0.7.2.4",
-            "fileVersion": "0.7.2.4"
+            "assemblyVersion": "0.7.0.0",
+            "fileVersion": "0.7.0.0"
           }
         }
       },
@@ -119,14 +90,6 @@
           "lib/netstandard1.3/Elasticsearch.Net.dll": {
             "assemblyVersion": "5.0.0.0",
             "fileVersion": "5.6.1.0"
-          }
-        }
-      },
-      "Google.Protobuf/3.5.1": {
-        "runtime": {
-          "lib/netstandard1.0/Google.Protobuf.dll": {
-            "assemblyVersion": "3.5.1.0",
-            "fileVersion": "3.5.1.0"
           }
         }
       },
@@ -1350,7 +1313,7 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "dependencies": {
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -1359,15 +1322,15 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {
-            "assemblyVersion": "5.2.2.0",
-            "fileVersion": "5.2.2.50423"
+            "assemblyVersion": "5.2.4.0",
+            "fileVersion": "5.2.4.50619"
           }
         }
       },
       "Microsoft.IdentityModel.Protocols/5.2.0": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
-          "Microsoft.IdentityModel.Tokens": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
+          "Microsoft.IdentityModel.Tokens": "5.2.4",
           "System.Collections.Specialized": "4.3.0",
           "System.Diagnostics.Contracts": "4.3.0",
           "System.Net.Http": "4.3.0"
@@ -1393,12 +1356,13 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "Newtonsoft.Json": "11.0.2",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -1412,8 +1376,8 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {
-            "assemblyVersion": "5.2.2.0",
-            "fileVersion": "5.2.2.50423"
+            "assemblyVersion": "5.2.4.0",
+            "fileVersion": "5.2.4.50619"
           }
         }
       },
@@ -1463,17 +1427,16 @@
           }
         }
       },
-      "MySql.Data/8.0.11": {
+      "MySql.Data/6.10.7": {
         "dependencies": {
-          "Google.Protobuf": "3.5.1",
           "System.Configuration.ConfigurationManager": "4.4.0",
           "System.Security.Permissions": "4.5.0",
           "System.Text.Encoding.CodePages": "4.4.0"
         },
         "runtime": {
           "lib/netcoreapp2.0/MySql.Data.dll": {
-            "assemblyVersion": "8.0.11.0",
-            "fileVersion": "8.0.11.0"
+            "assemblyVersion": "6.10.7.0",
+            "fileVersion": "6.10.7.0"
           }
         }
       },
@@ -1704,14 +1667,6 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "4.6.25512.1"
-          }
-        }
-      },
-      "SemanticVersioning/1.1.0": {
-        "runtime": {
-          "lib/netstandard2.0/SemVer.dll": {
-            "assemblyVersion": "1.1.0.0",
-            "fileVersion": "1.1.0.0"
           }
         }
       },
@@ -1994,7 +1949,7 @@
       },
       "System.IdentityModel.Tokens.Jwt/5.2.0": {
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "5.2.2",
+          "Microsoft.IdentityModel.Tokens": "5.2.4",
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
@@ -2157,42 +2112,6 @@
           "runtime/win/lib/_._": {
             "rid": "win",
             "assetType": "runtime"
-          }
-        }
-      },
-      "System.Net.Http.WinHttpHandler/4.0.0": {
-        "dependencies": {
-          "Microsoft.Win32.Primitives": "4.3.0",
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.5.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.Compression": "4.3.0",
-          "System.Net.Http": "4.3.0",
-          "System.Net.Primitives": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
-            "rid": "unix",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "1.0.24212.1"
-          },
-          "runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll": {
-            "rid": "win",
-            "assetType": "runtime",
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "1.0.24212.1"
           }
         }
       },
@@ -2946,39 +2865,23 @@
           "System.Xml.XPath": "4.3.0"
         }
       },
-      "Bucket.AspNetCore/1.0.8.1": {
+      "Bucket.AspNetCore/1.0.8.3": {
         "dependencies": {
-          "Bucket.ConfigCenter": "1.1.0",
-          "Bucket.Core": "1.1.0",
-          "Bucket.ErrorCodeStore": "1.1.0",
-          "Bucket.EventBus": "1.0.0",
-          "Bucket.EventBus.RabbitMQ": "1.1.0",
-          "Bucket.Logging": "1.1.0",
-          "Bucket.Logging.Events": "1.1.0",
+          "Bucket.Core": "1.1.0.1",
           "Bucket.Redis": "1.0.0",
           "Bucket.ServiceClient.Http": "1.1.0",
-          "Bucket.ServiceDiscovery.Consul": "1.1.0",
           "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
           "Microsoft.AspNetCore.Mvc": "2.1.0",
-          "Microsoft.IdentityModel.Tokens": "5.2.2"
+          "Microsoft.Extensions.Logging": "2.1.0",
+          "Microsoft.IdentityModel.Tokens": "5.2.4"
         },
         "runtime": {
           "Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.ConfigCenter/1.1.0": {
-        "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Bucket.Redis": "1.0.0"
-        },
-        "runtime": {
-          "Bucket.ConfigCenter.dll": {}
-        }
-      },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
@@ -2987,16 +2890,9 @@
           "Bucket.Core.dll": {}
         }
       },
-      "Bucket.ErrorCodeStore/1.1.0": {
+      "Bucket.EventBus/1.1.0.1": {
         "dependencies": {
-          "Bucket.Core": "1.1.0"
-        },
-        "runtime": {
-          "Bucket.ErrorCodeStore.dll": {}
-        }
-      },
-      "Bucket.EventBus/1.0.0": {
-        "dependencies": {
+          "Bucket.Core": "1.1.0.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -3004,10 +2900,9 @@
           "Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.2": {
         "dependencies": {
-          "Autofac": "4.8.1",
-          "Bucket.EventBus": "1.0.0",
+          "Bucket.EventBus": "1.1.0.1",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -3017,7 +2912,7 @@
           "Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0": {
+      "Bucket.Logging/1.1.0.1": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0"
@@ -3026,10 +2921,10 @@
           "Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0": {
+      "Bucket.Logging.Events/1.1.0.1": {
         "dependencies": {
-          "Bucket.EventBus": "1.0.0",
-          "Bucket.Logging": "1.1.0"
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1"
         },
         "runtime": {
           "Bucket.Logging.Events.dll": {}
@@ -3037,10 +2932,10 @@
       },
       "Bucket.Logging.EventSubscribe/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus": "1.0.0",
-          "Bucket.Logging.Events": "1.1.0",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging.Events": "1.1.0.1",
           "Dapper": "1.50.5",
-          "MySql.Data": "8.0.11"
+          "MySql.Data": "6.10.7"
         },
         "runtime": {
           "Bucket.Logging.EventSubscribe.dll": {}
@@ -3056,32 +2951,24 @@
       },
       "Bucket.ServiceClient.Http/1.1.0": {
         "dependencies": {
-          "Bucket.Core": "1.1.0"
+          "Bucket.Core": "1.1.0.1"
         },
         "runtime": {
           "Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery.Consul/1.1.0": {
-        "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Consul": "0.7.2.4",
-          "SemanticVersioning": "1.1.0"
-        },
-        "runtime": {
-          "Bucket.ServiceDiscovery.Consul.dll": {}
-        }
-      },
       "Bucket.Tracing/1.0.0.1": {
         "dependencies": {
-          "AspectCore.Core": "0.5.0",
-          "Bucket.Core": "1.1.0",
+          "AspectCore.Core": "0.7.0",
+          "Bucket.Core": "1.1.0.1",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.0",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
           "Microsoft.Extensions.Primitives": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -3089,10 +2976,10 @@
           "Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0": {
+      "Bucket.Tracing.Events/1.0.0.1": {
         "dependencies": {
-          "Bucket.EventBus": "1.0.0",
-          "Bucket.Logging": "1.1.0",
+          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.Logging": "1.1.0.1",
           "Bucket.Tracing": "1.0.0.1"
         },
         "runtime": {
@@ -3101,9 +2988,9 @@
       },
       "Bucket.Tracing.EventSubscribe/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus": "1.0.0",
+          "Bucket.EventBus": "1.1.0.1",
           "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0",
+          "Bucket.Tracing.Events": "1.0.0.1",
           "Microsoft.Extensions.Caching.Memory": "2.1.0",
           "Microsoft.Extensions.Options": "2.1.0",
           "NEST": "5.6.1"
@@ -3120,40 +3007,26 @@
       "serviceable": false,
       "sha512": ""
     },
-    "AspectCore.Abstractions/0.5.0": {
+    "AspectCore.Abstractions/0.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
-      "path": "aspectcore.abstractions/0.5.0",
-      "hashPath": "aspectcore.abstractions.0.5.0.nupkg.sha512"
+      "sha512": "sha512-AgV1OFl0V1i+HBK+dsztIfFMhIDozwDjamqflJW4kpQH20WYCi7b7U35+BcDAd/DePQexGPLesHd0pojNNGCNA==",
+      "path": "aspectcore.abstractions/0.7.0",
+      "hashPath": "aspectcore.abstractions.0.7.0.nupkg.sha512"
     },
-    "AspectCore.Core/0.5.0": {
+    "AspectCore.Core/0.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
-      "path": "aspectcore.core/0.5.0",
-      "hashPath": "aspectcore.core.0.5.0.nupkg.sha512"
+      "sha512": "sha512-4CtgUQkCkLZAGhzLM1Quc1SoH75qo2l0rdCphiax3oRpus7K7FUu+jvKPKeaRi1u+qLAi28sbCSak9WDATz2Bg==",
+      "path": "aspectcore.core/0.7.0",
+      "hashPath": "aspectcore.core.0.7.0.nupkg.sha512"
     },
-    "AspectCore.Extensions.Reflection/0.5.0": {
+    "AspectCore.Extensions.Reflection/0.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
-      "path": "aspectcore.extensions.reflection/0.5.0",
-      "hashPath": "aspectcore.extensions.reflection.0.5.0.nupkg.sha512"
-    },
-    "Autofac/4.8.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
-      "path": "autofac/4.8.1",
-      "hashPath": "autofac.4.8.1.nupkg.sha512"
-    },
-    "Consul/0.7.2.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-MjiFTzAFTwrlb8HmCLlSS673y4FgOF0csB1C50SOZ7zxGMZaQ45wEWZBOiKtzDMRdvntoxGmlZVpW3NtPohPvg==",
-      "path": "consul/0.7.2.4",
-      "hashPath": "consul.0.7.2.4.nupkg.sha512"
+      "sha512": "sha512-cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
+      "path": "aspectcore.extensions.reflection/0.7.0",
+      "hashPath": "aspectcore.extensions.reflection.0.7.0.nupkg.sha512"
     },
     "Dapper/1.50.5": {
       "type": "package",
@@ -3168,13 +3041,6 @@
       "sha512": "sha512-4bFyEVjjjJ1wKXm7aGy6kVMR5OWDllTadCCgLplPU5pco4cPGO/nbInG9zh0j9fkxVT78CMI3o1pUVYiBjGfFw==",
       "path": "elasticsearch.net/5.6.1",
       "hashPath": "elasticsearch.net.5.6.1.nupkg.sha512"
-    },
-    "Google.Protobuf/3.5.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
-      "path": "google.protobuf/3.5.1",
-      "hashPath": "google.protobuf.3.5.1.nupkg.sha512"
     },
     "MessagePack/1.7.3.4": {
       "type": "package",
@@ -3834,12 +3700,12 @@
       "path": "microsoft.extensions.webencoders/2.1.0",
       "hashPath": "microsoft.extensions.webencoders.2.1.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
+    "Microsoft.IdentityModel.Logging/5.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
-      "path": "microsoft.identitymodel.logging/5.2.2",
-      "hashPath": "microsoft.identitymodel.logging.5.2.2.nupkg.sha512"
+      "sha512": "sha512-ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
+      "path": "microsoft.identitymodel.logging/5.2.4",
+      "hashPath": "microsoft.identitymodel.logging.5.2.4.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Protocols/5.2.0": {
       "type": "package",
@@ -3855,12 +3721,12 @@
       "path": "microsoft.identitymodel.protocols.openidconnect/5.2.0",
       "hashPath": "microsoft.identitymodel.protocols.openidconnect.5.2.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
-      "hashPath": "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512"
+      "sha512": "sha512-rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
+      "hashPath": "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512"
     },
     "Microsoft.Net.Http.Headers/2.1.0": {
       "type": "package",
@@ -3890,12 +3756,12 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
-    "MySql.Data/8.0.11": {
+    "MySql.Data/6.10.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-P5zKcnM2SVtdHD6gfReymJguIYLhNL5Og8Qm5TC9MEsSupsAYrRu4AB4nsbalrjqqv8VHBqVREWsXg9lY+q03A==",
-      "path": "mysql.data/8.0.11",
-      "hashPath": "mysql.data.8.0.11.nupkg.sha512"
+      "sha512": "sha512-2fptledJVo4GaF/DOpWgumn+pteZ2eNlaZTE8I6CUvK7Zz5UGPWTg3v9l4Ymp9ewivodYI5VDn6ucVyKL/e++A==",
+      "path": "mysql.data/6.10.7",
+      "hashPath": "mysql.data.6.10.7.nupkg.sha512"
     },
     "NEST/5.6.1": {
       "type": "package",
@@ -4078,13 +3944,6 @@
       "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
-    },
-    "SemanticVersioning/1.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0+IumI7Ugf31sEfMU2X68H/tfMZpZ8X17zB6t0/2QzHMpr4z/KGeOXYkDK2CJLAucBV7w6J7ueKuck3t/ZydiQ==",
-      "path": "semanticversioning/1.1.0",
-      "hashPath": "semanticversioning.1.1.0.nupkg.sha512"
     },
     "StackExchange.Redis/1.2.6": {
       "type": "package",
@@ -4344,13 +4203,6 @@
       "sha512": "sha512-670pLfhdZvAjPNbPPstQHm+WViFqm/fEh5ngUb9OQVTeiRPtVs8B/mNMuwCt2hgNax6IDzdzIee2j4v3bhUb2w==",
       "path": "system.net.http/4.3.0",
       "hashPath": "system.net.http.4.3.0.nupkg.sha512"
-    },
-    "System.Net.Http.WinHttpHandler/4.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-86HNmRaoJZRtu2Yrd3ZVC3kd8tvdYphuXhBlW+QFP5nuHzuCMThVLDWjSXRA4PIoiTPhxYggtKAjmBt6CAZGaw==",
-      "path": "system.net.http.winhttphandler/4.0.0",
-      "hashPath": "system.net.http.winhttphandler.4.0.0.nupkg.sha512"
     },
     "System.Net.NameResolution/4.3.0": {
       "type": "package",
@@ -4765,42 +4617,32 @@
       "path": "system.xml.xpath.xdocument/4.3.0",
       "hashPath": "system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
     },
-    "Bucket.AspNetCore/1.0.8.1": {
+    "Bucket.AspNetCore/1.0.8.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.ConfigCenter/1.1.0": {
+    "Bucket.Core/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Core/1.1.0": {
+    "Bucket.EventBus/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.ErrorCodeStore/1.1.0": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus/1.0.0": {
+    "Bucket.Logging/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Bucket.Logging/1.1.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Bucket.Logging.Events/1.1.0": {
+    "Bucket.Logging.Events/1.1.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4820,17 +4662,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.ServiceDiscovery.Consul/1.1.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Bucket.Tracing/1.0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracing.Events/1.0.0": {
+    "Bucket.Tracing.Events/1.0.0.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

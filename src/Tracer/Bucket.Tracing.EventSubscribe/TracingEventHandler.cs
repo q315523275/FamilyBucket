@@ -30,15 +30,15 @@ namespace Bucket.Tracing.EventSubscribe
                 var span = @event.TraceSpan;
                 if (span != null)
                 {
-                    var StartTime = DateTime.Now;
+                    //var StartTime = DateTime.Now;
                     await _spanStorage.StoreAsync(new List<Span> { span });
-                    var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
-                    Console.WriteLine("Elasticsearch数据创建耗时" + TimeLength + "毫秒");
+                    //var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
+                    //Console.WriteLine("Elasticsearch数据创建耗时" + TimeLength + "毫秒");
                 }
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Tracing消费:" + ex.Message + ex.InnerException.Message + ex.StackTrace);
+                Console.WriteLine("Tracing消费:" + ex.Message);
             }
         }
     }

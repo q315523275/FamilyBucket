@@ -2,223 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "App.Metrics/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Core": "2.1.0",
-          "App.Metrics.Formatters.Json": "2.1.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.dll": {}
-        }
-      },
-      "App.Metrics.Abstractions/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/App.Metrics.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/App.Metrics.Abstractions.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Abstractions/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "2.0.1",
-          "Microsoft.AspNetCore.Routing.Abstractions": "2.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Core/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.AspNetCore.Abstractions": "2.0.0",
-          "App.Metrics.Core": "2.0.0",
-          "App.Metrics.Extensions.Configuration": "2.0.0",
-          "App.Metrics.Extensions.DependencyInjection": "2.0.0",
-          "Microsoft.AspNetCore.Http.Extensions": "2.0.1",
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Endpoints/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.AspNetCore.Hosting": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Hosting/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.AspNetCore.Core": "2.0.0",
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Reporting/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.AspNetCore.Core": "2.0.0",
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll": {}
-        }
-      },
-      "App.Metrics.AspNetCore.Tracking/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.AspNetCore.Hosting": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll": {}
-        }
-      },
-      "App.Metrics.Concurrency/2.0.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/App.Metrics.Concurrency.dll": {}
-        }
-      },
-      "App.Metrics.Core/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Abstractions": "2.1.0",
-          "App.Metrics.Concurrency": "2.0.1",
-          "App.Metrics.Formatters.Ascii": "2.1.0",
-          "Microsoft.CSharp": "4.4.1",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.Core.dll": {}
-        }
-      },
-      "App.Metrics.Extensions.Configuration/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics": "2.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll": {}
-        }
-      },
-      "App.Metrics.Extensions.DependencyInjection/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics": "2.0.0",
-          "Microsoft.Extensions.DependencyInjection": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll": {}
-        }
-      },
-      "App.Metrics.Formatters.Ascii/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Abstractions": "2.1.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll": {}
-        }
-      },
-      "App.Metrics.Formatters.InfluxDB/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Core": "2.0.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll": {}
-        }
-      },
-      "App.Metrics.Formatters.Json/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Abstractions": "2.1.0",
-          "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "10.0.3"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.Formatters.Json.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.Formatters.Json.dll": {}
-        }
-      },
-      "App.Metrics.Reporting.InfluxDB/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "App.Metrics.Abstractions": "2.0.0",
-          "App.Metrics.Formatters.InfluxDB": "2.0.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll": {}
-        }
-      },
-      "AspectCore.Abstractions/0.5.0": {
+      "AspectCore.Abstractions/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -231,11 +15,11 @@
           "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
         }
       },
-      "AspectCore.Core/0.5.0": {
+      "AspectCore.Core/0.7.0": {
         "type": "package",
         "dependencies": {
-          "AspectCore.Abstractions": "0.5.0",
-          "AspectCore.Extensions.Reflection": "0.5.0",
+          "AspectCore.Abstractions": "0.7.0",
+          "AspectCore.Extensions.Reflection": "0.7.0",
           "Microsoft.CSharp": "4.5.0-rc1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
@@ -260,7 +44,7 @@
           "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll": {}
         }
       },
-      "AspectCore.Extensions.Reflection/0.5.0": {
+      "AspectCore.Extensions.Reflection/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -271,19 +55,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
-      "Autofac/4.8.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.ComponentModel": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {}
         }
       },
       "Butterfly.Client/0.0.8": {
@@ -2801,7 +2572,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2866,10 +2637,10 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.WsFederation.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.1",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
@@ -3194,7 +2965,7 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Ocelot/7.0.6": {
+      "Ocelot/7.0.9": {
         "type": "package",
         "dependencies": {
           "Butterfly.Client": "0.0.8",
@@ -3553,15 +3324,6 @@
           }
         }
       },
-      "SemanticVersioning/1.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/SemVer.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/SemVer.dll": {}
-        }
-      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "type": "package",
         "dependencies": {
@@ -3656,40 +3418,6 @@
         },
         "runtime": {
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
-        }
-      },
-      "StackExchange.Redis/1.2.6": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1",
-          "System.Collections": "4.3.0",
-          "System.Collections.Concurrent": "4.3.0",
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Diagnostics.Tools": "4.3.0",
-          "System.IO.Compression": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Net.NameResolution": "4.3.0",
-          "System.Net.Security": "4.3.0",
-          "System.Net.Sockets": "4.3.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0",
-          "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.X509Certificates": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Thread": "4.3.0",
-          "System.Threading.ThreadPool": "4.3.0",
-          "System.Threading.Timer": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.5/StackExchange.Redis.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.5/StackExchange.Redis.dll": {}
         }
       },
       "Steeltoe.CloudFoundry.ConnectorBase/2.0.0": {
@@ -3838,7 +3566,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -5243,7 +4971,7 @@
           "System.Runtime.Handles": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Threading.ThreadPool.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
@@ -5407,49 +5135,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.0.8.2": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.ConfigCenter": "1.1.0.1",
-          "Bucket.Core": "1.1.0",
-          "Bucket.ErrorCodeStore": "1.1.0.1",
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.EventBus.RabbitMQ": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Logging.Events": "1.1.0.1",
-          "Bucket.Redis": "1.0.0",
-          "Bucket.ServiceClient.Http": "1.1.0",
-          "Bucket.ServiceDiscovery.Consul": "1.1.0",
-          "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0.1",
-          "Microsoft.AspNetCore.Authentication": "2.1.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
-          "Microsoft.AspNetCore.Mvc": "2.1.0",
-          "Microsoft.IdentityModel.Tokens": "5.2.2"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.AspNetCore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.AspNetCore.dll": {}
-        }
-      },
-      "Bucket.ConfigCenter/1.1.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Bucket.Redis": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ConfigCenter.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ConfigCenter.dll": {}
-        }
-      },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5463,23 +5149,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.ErrorCodeStore/1.1.0.1": {
+      "Bucket.EventBus/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ErrorCodeStore.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ErrorCodeStore.dll": {}
-        }
-      },
-      "Bucket.EventBus/1.1.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -5490,12 +5164,11 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Autofac": "4.8.1",
-          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.2",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -5508,7 +5181,7 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.1": {
+      "Bucket.Logging/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5522,12 +5195,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.1": {
+      "Bucket.Logging.Events/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1"
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging": "1.1.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -5536,59 +5209,20 @@
           "bin/placeholder/Bucket.Logging.Events.dll": {}
         }
       },
-      "Bucket.Redis/1.0.0": {
+      "Bucket.Tracing/1.0.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "StackExchange.Redis": "1.2.6"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.Redis.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.Redis.dll": {}
-        }
-      },
-      "Bucket.ServiceClient.Http/1.1.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
-        }
-      },
-      "Bucket.ServiceDiscovery.Consul/1.1.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Consul": "0.7.2.4",
-          "SemanticVersioning": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
-        }
-      },
-      "Bucket.Tracing/1.0.0.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AspectCore.Core": "0.5.0",
-          "Bucket.Core": "1.1.0",
+          "AspectCore.Core": "0.7.0",
+          "Bucket.Core": "1.1.0.2",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.0",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
           "Microsoft.Extensions.Primitives": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -5599,13 +5233,13 @@
           "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0.1": {
+      "Bucket.Tracing.Events/1.0.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1"
+          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.Logging": "1.1.0.2",
+          "Bucket.Tracing": "1.0.0.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.Events.dll": {}
@@ -5617,217 +5251,25 @@
     }
   },
   "libraries": {
-    "App.Metrics/2.1.0": {
-      "sha512": "dj8Ietm8LKawQO+mZDl3nXKr6V5Dm/5yxlWv0k28xruvFcB6vadFkyPO9MG7rOgVk3M7Vxkm+RlNDAPRbN+sxg==",
+    "AspectCore.Abstractions/0.7.0": {
+      "sha512": "AgV1OFl0V1i+HBK+dsztIfFMhIDozwDjamqflJW4kpQH20WYCi7b7U35+BcDAd/DePQexGPLesHd0pojNNGCNA==",
       "type": "package",
-      "path": "app.metrics/2.1.0",
+      "path": "aspectcore.abstractions/0.7.0",
       "files": [
-        "app.metrics.2.1.0.nupkg.sha512",
-        "app.metrics.nuspec",
-        "lib/net452/App.Metrics.dll",
-        "lib/net452/App.Metrics.xml",
-        "lib/netstandard1.6/App.Metrics.dll",
-        "lib/netstandard1.6/App.Metrics.xml"
-      ]
-    },
-    "App.Metrics.Abstractions/2.1.0": {
-      "sha512": "TIEFdQ0K7/2zgBFSY2WT+SZIAF/aTE4MHgCCIvr8gZ5kKX+mXoXQWJOPOX9TOklNJIO8CIcW8Ilkwc0s4dohIw==",
-      "type": "package",
-      "path": "app.metrics.abstractions/2.1.0",
-      "files": [
-        "app.metrics.abstractions.2.1.0.nupkg.sha512",
-        "app.metrics.abstractions.nuspec",
-        "lib/net45/App.Metrics.Abstractions.dll",
-        "lib/net45/App.Metrics.Abstractions.xml",
-        "lib/netstandard1.1/App.Metrics.Abstractions.dll",
-        "lib/netstandard1.1/App.Metrics.Abstractions.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Abstractions/2.0.0": {
-      "sha512": "Q+Agya5gOsaHX+XTi58qJKhft4JTAv2L31Z/PSsHEq8GHFzABPacZFmuvYfzK8N/JVrzTjw+/SliihSn/60ALA==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.abstractions/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.abstractions.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.abstractions.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Abstractions.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Core/2.0.0": {
-      "sha512": "ZyMcvU4c9VReBzaQHOjMpSn/5prjUNo5z7RGJGYt71uBHW+cG3tsMkQTRsLUWON1xx8E8Ol3XT06t/4Xy7w48A==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.core/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.core.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.core.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Core.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Core.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Endpoints/2.0.0": {
-      "sha512": "6EElE0NrjEoe8a16H1G0Z7zylPgIUdxBaG8chSc1vDoaV2iunBlGITKMOy14rFb1nOAxgSWdsAUtDbDyCDSVnQ==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.endpoints/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.endpoints.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.endpoints.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Endpoints.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Hosting/2.0.0": {
-      "sha512": "iGNGQaxtB8RIny4pjEEnLMeDvWt+MU7MSZ9baejKyfaXRGWLYcn9KrFKYrTcetakuphYiIVAzIxn/6JZz2NXtA==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.hosting/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.hosting.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.hosting.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Hosting.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Reporting/2.0.0": {
-      "sha512": "wScACj1EgTD3eiXdZOXlZdiInH3CMdzJgpRnyH34MJLw7wH8ru4hPftNLKn4f2ac6HR9B2/mzD0aoqE0ZWLOfQ==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.reporting/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.reporting.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.reporting.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Reporting.xml"
-      ]
-    },
-    "App.Metrics.AspNetCore.Tracking/2.0.0": {
-      "sha512": "B789nyUG6qPwkcLrClWLG3+ZEoeewwHlFV7GgCFm+2sEmnwwGepbHp2xs/872h4dyMtG/W0tql6be9sOQ0bMGA==",
-      "type": "package",
-      "path": "app.metrics.aspnetcore.tracking/2.0.0",
-      "files": [
-        "app.metrics.aspnetcore.tracking.2.0.0.nupkg.sha512",
-        "app.metrics.aspnetcore.tracking.nuspec",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.dll",
-        "lib/netstandard2.0/App.Metrics.AspNetCore.Tracking.xml"
-      ]
-    },
-    "App.Metrics.Concurrency/2.0.1": {
-      "sha512": "XJ7eYseDig2/S61DygC8XCTckHHKNnGVGR9qTGjdeJ2x3LElKIQuScrhnEuxU3J6pqs0+UMjkATEeE7WsOf87w==",
-      "type": "package",
-      "path": "app.metrics.concurrency/2.0.1",
-      "files": [
-        "app.metrics.concurrency.2.0.1.nupkg.sha512",
-        "app.metrics.concurrency.nuspec",
-        "lib/net45/App.Metrics.Concurrency.dll",
-        "lib/net45/App.Metrics.Concurrency.pdb",
-        "lib/net45/App.Metrics.Concurrency.xml",
-        "lib/netstandard1.1/App.Metrics.Concurrency.dll",
-        "lib/netstandard1.1/App.Metrics.Concurrency.pdb",
-        "lib/netstandard1.1/App.Metrics.Concurrency.xml"
-      ]
-    },
-    "App.Metrics.Core/2.1.0": {
-      "sha512": "20E1MKxXY9Ds7aK/d9VUGvp1QvshOxp1rQPdnBBTNuurdZpJZUCNscrAa/i2qkbGeQoC8MeXwjlRoBNvqA9icA==",
-      "type": "package",
-      "path": "app.metrics.core/2.1.0",
-      "files": [
-        "app.metrics.core.2.1.0.nupkg.sha512",
-        "app.metrics.core.nuspec",
-        "lib/net452/App.Metrics.Core.dll",
-        "lib/net452/App.Metrics.Core.xml",
-        "lib/netstandard1.6/App.Metrics.Core.dll",
-        "lib/netstandard1.6/App.Metrics.Core.xml"
-      ]
-    },
-    "App.Metrics.Extensions.Configuration/2.0.0": {
-      "sha512": "8eZ3+zqoSxolNPjwbbP2iY3BlZMYx0A+2Be+py2j4lOT9sj7gjjpcZnwChjWx0NuE4R3MEZ5L1TiQcsYWtkkQQ==",
-      "type": "package",
-      "path": "app.metrics.extensions.configuration/2.0.0",
-      "files": [
-        "app.metrics.extensions.configuration.2.0.0.nupkg.sha512",
-        "app.metrics.extensions.configuration.nuspec",
-        "lib/netstandard2.0/App.Metrics.Extensions.Configuration.dll",
-        "lib/netstandard2.0/App.Metrics.Extensions.Configuration.xml"
-      ]
-    },
-    "App.Metrics.Extensions.DependencyInjection/2.0.0": {
-      "sha512": "L2LcvgoxLHiRBB51IIsJ9OV7Xep5EuiQLmQNnKX74w69YbhG66hJ/IvdbpBxZS2/4yY8n3un4HYa2m7eCU1Ajg==",
-      "type": "package",
-      "path": "app.metrics.extensions.dependencyinjection/2.0.0",
-      "files": [
-        "app.metrics.extensions.dependencyinjection.2.0.0.nupkg.sha512",
-        "app.metrics.extensions.dependencyinjection.nuspec",
-        "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.dll",
-        "lib/netstandard2.0/App.Metrics.Extensions.DependencyInjection.xml"
-      ]
-    },
-    "App.Metrics.Formatters.Ascii/2.1.0": {
-      "sha512": "pnbnWd5Wh7AYcYUvCRk9gPG/Zym7Q9YJc2yb6VTBPDQnlp/HHx4TuZDiiRW0kNvgw6zpGzI+zP/agdp6PNEeqQ==",
-      "type": "package",
-      "path": "app.metrics.formatters.ascii/2.1.0",
-      "files": [
-        "app.metrics.formatters.ascii.2.1.0.nupkg.sha512",
-        "app.metrics.formatters.ascii.nuspec",
-        "lib/net452/App.Metrics.Formatters.Ascii.dll",
-        "lib/net452/App.Metrics.Formatters.Ascii.xml",
-        "lib/netstandard1.6/App.Metrics.Formatters.Ascii.dll",
-        "lib/netstandard1.6/App.Metrics.Formatters.Ascii.xml"
-      ]
-    },
-    "App.Metrics.Formatters.InfluxDB/2.0.0": {
-      "sha512": "nTZCa/PvaBMoieFqeCFvk/dbe/poMrM17yVpr8UNmkYGiVb6/dwZHOSjGtGiJS+/GTcQra0fXqGOpuvb3vpERA==",
-      "type": "package",
-      "path": "app.metrics.formatters.influxdb/2.0.0",
-      "files": [
-        "app.metrics.formatters.influxdb.2.0.0.nupkg.sha512",
-        "app.metrics.formatters.influxdb.nuspec",
-        "lib/net452/App.Metrics.Formatters.InfluxDB.dll",
-        "lib/net452/App.Metrics.Formatters.InfluxDB.xml",
-        "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.dll",
-        "lib/netstandard1.6/App.Metrics.Formatters.InfluxDB.xml"
-      ]
-    },
-    "App.Metrics.Formatters.Json/2.1.0": {
-      "sha512": "qpHEYX2zIfXT3HzcV7aGeTXu+F2msRq8YCN+Nl8sUaFqGvYypxikBXsPxaumqdXIhnLPoKtX15RFXoaMc8Oqmg==",
-      "type": "package",
-      "path": "app.metrics.formatters.json/2.1.0",
-      "files": [
-        "app.metrics.formatters.json.2.1.0.nupkg.sha512",
-        "app.metrics.formatters.json.nuspec",
-        "lib/net452/App.Metrics.Formatters.Json.dll",
-        "lib/net452/App.Metrics.Formatters.Json.xml",
-        "lib/netstandard1.6/App.Metrics.Formatters.Json.dll",
-        "lib/netstandard1.6/App.Metrics.Formatters.Json.xml"
-      ]
-    },
-    "App.Metrics.Reporting.InfluxDB/2.0.0": {
-      "sha512": "E+1xWjeh3D81IV7b0mfS+8VPHcK1KSs4FJRr3wdfq87LpfiNTTP62DaF7f1t0iZ0pilYiW8ZDbuGkIubeNZn2Q==",
-      "type": "package",
-      "path": "app.metrics.reporting.influxdb/2.0.0",
-      "files": [
-        "app.metrics.reporting.influxdb.2.0.0.nupkg.sha512",
-        "app.metrics.reporting.influxdb.nuspec",
-        "lib/net452/App.Metrics.Reporting.InfluxDB.dll",
-        "lib/net452/App.Metrics.Reporting.InfluxDB.xml",
-        "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.dll",
-        "lib/netstandard1.6/App.Metrics.Reporting.InfluxDB.xml"
-      ]
-    },
-    "AspectCore.Abstractions/0.5.0": {
-      "sha512": "fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
-      "type": "package",
-      "path": "aspectcore.abstractions/0.5.0",
-      "files": [
-        "aspectcore.abstractions.0.5.0.nupkg.sha512",
+        "aspectcore.abstractions.0.7.0.nupkg.sha512",
         "aspectcore.abstractions.nuspec",
+        "lib/net45/AspectCore.Abstractions.dll",
         "lib/netstandard2.0/AspectCore.Abstractions.dll"
       ]
     },
-    "AspectCore.Core/0.5.0": {
-      "sha512": "F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
+    "AspectCore.Core/0.7.0": {
+      "sha512": "4CtgUQkCkLZAGhzLM1Quc1SoH75qo2l0rdCphiax3oRpus7K7FUu+jvKPKeaRi1u+qLAi28sbCSak9WDATz2Bg==",
       "type": "package",
-      "path": "aspectcore.core/0.5.0",
+      "path": "aspectcore.core/0.7.0",
       "files": [
-        "aspectcore.core.0.5.0.nupkg.sha512",
+        "aspectcore.core.0.7.0.nupkg.sha512",
         "aspectcore.core.nuspec",
+        "lib/net45/AspectCore.Core.dll",
         "lib/netstandard2.0/AspectCore.Core.dll"
       ]
     },
@@ -5841,27 +5283,15 @@
         "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll"
       ]
     },
-    "AspectCore.Extensions.Reflection/0.5.0": {
-      "sha512": "ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
+    "AspectCore.Extensions.Reflection/0.7.0": {
+      "sha512": "cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
       "type": "package",
-      "path": "aspectcore.extensions.reflection/0.5.0",
+      "path": "aspectcore.extensions.reflection/0.7.0",
       "files": [
-        "aspectcore.extensions.reflection.0.5.0.nupkg.sha512",
+        "aspectcore.extensions.reflection.0.7.0.nupkg.sha512",
         "aspectcore.extensions.reflection.nuspec",
+        "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
-      ]
-    },
-    "Autofac/4.8.1": {
-      "sha512": "aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
-      "type": "package",
-      "path": "autofac/4.8.1",
-      "files": [
-        "autofac.4.8.1.nupkg.sha512",
-        "autofac.nuspec",
-        "lib/net45/Autofac.dll",
-        "lib/net45/Autofac.xml",
-        "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml"
       ]
     },
     "Butterfly.Client/0.0.8": {
@@ -8033,21 +7463,18 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
-      "sha512": "rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
+    "Microsoft.IdentityModel.Logging/5.2.1": {
+      "sha512": "kbmvhMYu5OZXWN3toFXhrj3bSN7B+ZzNWzAZQ4Ofp5x2srk9ZCYFljETGS5faxzPwGd5+7W4WZlAfOI7QvzhlA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.2",
+      "path": "microsoft.identitymodel.logging/5.2.1",
       "files": [
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
-        "lib/net45/Microsoft.IdentityModel.Logging.pdb",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
         "lib/net451/Microsoft.IdentityModel.Logging.dll",
-        "lib/net451/Microsoft.IdentityModel.Logging.pdb",
         "lib/net451/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.1.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -8096,21 +7523,18 @@
         "microsoft.identitymodel.protocols.wsfederation.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
-      "sha512": "A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
+    "Microsoft.IdentityModel.Tokens/5.2.1": {
+      "sha512": "wVWYpXfE6gpkSrIRNo5TDVC7ss6KPTTrmT6x8ysHiZRIMSRAZ8TyHEAmpdATBBPNRmnlevyAs4CK6nPfDpCTqw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
+      "path": "microsoft.identitymodel.tokens/5.2.1",
       "files": [
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
-        "lib/net45/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
         "lib/net451/Microsoft.IdentityModel.Tokens.dll",
-        "lib/net451/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net451/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
-        "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.1.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -8735,13 +8159,13 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Ocelot/7.0.6": {
-      "sha512": "W27AZ2hg57LBOXu7PujrEC5WV3MzvXUC8wWJvCUhreM8nlKDfJsJYlroI15Kl0rTECey0HF6BMXCSak8+wbvRg==",
+    "Ocelot/7.0.9": {
+      "sha512": "vCX/LLHMKEz5QS4Hj5gCGZwcMMe8pQVsmC2Xl/7RhuE4xC/e6A/5z2x7RM9HedegFrk9JARA2edR6wfEFa2p9Q==",
       "type": "package",
-      "path": "ocelot/7.0.6",
+      "path": "ocelot/7.0.9",
       "files": [
         "lib/netstandard2.0/Ocelot.dll",
-        "ocelot.7.0.6.nupkg.sha512",
+        "ocelot.7.0.9.nupkg.sha512",
         "ocelot.nuspec"
       ]
     },
@@ -9083,19 +8507,6 @@
         "version.txt"
       ]
     },
-    "SemanticVersioning/1.1.0": {
-      "sha512": "0+IumI7Ugf31sEfMU2X68H/tfMZpZ8X17zB6t0/2QzHMpr4z/KGeOXYkDK2CJLAucBV7w6J7ueKuck3t/ZydiQ==",
-      "type": "package",
-      "path": "semanticversioning/1.1.0",
-      "files": [
-        "lib/net35/SemVer.dll",
-        "lib/net45/SemVer.dll",
-        "lib/netstandard1.1/SemVer.dll",
-        "lib/netstandard2.0/SemVer.dll",
-        "semanticversioning.1.1.0.nupkg.sha512",
-        "semanticversioning.nuspec"
-      ]
-    },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
@@ -9217,21 +8628,6 @@
         "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.7.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
-      ]
-    },
-    "StackExchange.Redis/1.2.6": {
-      "sha512": "uBzdFmPmsCJWZ/Iau85+2Ogal6nPiY5gT8pl2gA7R4dQ14GwRpwyTGkTuD1+hgHVuBW+zkCSnysmWc7h277r/g==",
-      "type": "package",
-      "path": "stackexchange.redis/1.2.6",
-      "files": [
-        "lib/net45/StackExchange.Redis.dll",
-        "lib/net45/StackExchange.Redis.xml",
-        "lib/net46/StackExchange.Redis.dll",
-        "lib/net46/StackExchange.Redis.xml",
-        "lib/netstandard1.5/StackExchange.Redis.dll",
-        "lib/netstandard1.5/StackExchange.Redis.xml",
-        "stackexchange.redis.1.2.6.nupkg.sha512",
-        "stackexchange.redis.nuspec"
       ]
     },
     "Steeltoe.CloudFoundry.ConnectorBase/2.0.0": {
@@ -13902,67 +13298,37 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Bucket.AspNetCore/1.0.8.2": {
-      "type": "project",
-      "path": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
-      "msbuildProject": "../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
-    },
-    "Bucket.ConfigCenter/1.1.0.1": {
-      "type": "project",
-      "path": "../Config/Bucket.ConfigService/Bucket.ConfigCenter.csproj",
-      "msbuildProject": "../Config/Bucket.ConfigService/Bucket.ConfigCenter.csproj"
-    },
-    "Bucket.Core/1.1.0": {
+    "Bucket.Core/1.1.0.2": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.ErrorCodeStore/1.1.0.1": {
-      "type": "project",
-      "path": "../ErrorCode/Bucket.ErrorCodeStore/Bucket.ErrorCodeStore.csproj",
-      "msbuildProject": "../ErrorCode/Bucket.ErrorCodeStore/Bucket.ErrorCodeStore.csproj"
-    },
-    "Bucket.EventBus/1.1.0.1": {
+    "Bucket.EventBus/1.1.0.2": {
       "type": "project",
       "path": "../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.3": {
       "type": "project",
       "path": "../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.Logging/1.1.0.1": {
+    "Bucket.Logging/1.1.0.2": {
       "type": "project",
       "path": "../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../Logging/Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.0.1": {
+    "Bucket.Logging.Events/1.1.0.2": {
       "type": "project",
       "path": "../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj"
     },
-    "Bucket.Redis/1.0.0": {
-      "type": "project",
-      "path": "../Utility/Bucket.Redis/Bucket.Redis.csproj",
-      "msbuildProject": "../Utility/Bucket.Redis/Bucket.Redis.csproj"
-    },
-    "Bucket.ServiceClient.Http/1.1.0": {
-      "type": "project",
-      "path": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj",
-      "msbuildProject": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj"
-    },
-    "Bucket.ServiceDiscovery.Consul/1.1.0": {
-      "type": "project",
-      "path": "../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
-      "msbuildProject": "../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
-    },
-    "Bucket.Tracing/1.0.0.1": {
+    "Bucket.Tracing/1.0.0.2": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
     },
-    "Bucket.Tracing.Events/1.0.0.1": {
+    "Bucket.Tracing.Events/1.0.0.2": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj"
@@ -13970,17 +13336,15 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "App.Metrics >= 2.1.0",
-      "App.Metrics.AspNetCore.Endpoints >= 2.0.0",
-      "App.Metrics.AspNetCore.Reporting >= 2.0.0",
-      "App.Metrics.AspNetCore.Tracking >= 2.0.0",
-      "App.Metrics.Formatters.Json >= 2.1.0",
-      "App.Metrics.Reporting.InfluxDB >= 2.0.0",
-      "Bucket.AspNetCore >= 1.0.8.2",
-      "Bucket.Logging >= 1.1.0.1",
+      "Bucket.EventBus >= 1.1.0.2",
+      "Bucket.EventBus.RabbitMQ >= 1.1.0.3",
+      "Bucket.Logging >= 1.1.0.2",
+      "Bucket.Logging.Events >= 1.1.0.2",
+      "Bucket.Tracing >= 1.0.0.2",
+      "Bucket.Tracing.Events >= 1.0.0.2",
       "Microsoft.AspNetCore.App >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Ocelot >= 7.0.6"
+      "Ocelot >= 7.0.9"
     ]
   },
   "packageFolders": {
@@ -14014,11 +13378,23 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
             },
             "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
               "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
+            },
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
             }
           }
         }
@@ -14032,33 +13408,11 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
-          "App.Metrics": {
-            "target": "Package",
-            "version": "[2.1.0, )"
-          },
-          "App.Metrics.AspNetCore.Endpoints": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "App.Metrics.AspNetCore.Reporting": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "App.Metrics.AspNetCore.Tracking": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
-          "App.Metrics.Formatters.Json": {
-            "target": "Package",
-            "version": "[2.1.0, )"
-          },
-          "App.Metrics.Reporting.InfluxDB": {
-            "target": "Package",
-            "version": "[2.0.0, )"
-          },
           "Microsoft.AspNetCore.App": {
+            "suppressParent": "All",
             "target": "Package",
-            "version": "[2.1.0, )"
+            "version": "[2.1.0, )",
+            "autoReferenced": true
           },
           "Microsoft.NETCore.App": {
             "target": "Package",
@@ -14067,7 +13421,7 @@
           },
           "Ocelot": {
             "target": "Package",
-            "version": "[7.0.6, )"
+            "version": "[7.0.9, )"
           }
         },
         "imports": [

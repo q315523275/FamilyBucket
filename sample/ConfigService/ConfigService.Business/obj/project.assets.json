@@ -24,7 +24,7 @@
           "lib/netstandard1.3/AutoMapper.dll": {}
         }
       },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
@@ -50,7 +50,7 @@
           "lib/netstandard2.0/Bucket.DbContext.dll": {}
         }
       },
-      "Bucket.Utility/1.1.0": {
+      "Bucket.Utility/1.1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.1.0",
@@ -58,6 +58,7 @@
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Nito.AsyncEx.Context": "1.1.0",
+          "SkiaSharp": "1.60.2",
           "System.ComponentModel.Annotations": "4.5.0"
         },
         "compile": {
@@ -841,6 +842,37 @@
           "runtimes/win-x86/native/sni.dll": {
             "assetType": "native",
             "rid": "win-x86"
+          }
+        }
+      },
+      "SkiaSharp/1.60.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/tizen-armel/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-armel"
+          },
+          "runtimes/tizen-x86/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-x86"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
           }
         }
       },
@@ -2368,12 +2400,12 @@
         "lib/netstandard1.3/AutoMapper.xml"
       ]
     },
-    "Bucket.Core/1.1.0": {
-      "sha512": "DR8WM8yonCj0PJeVnsWW4Ehgf2FFs+ZVshYPlRALBfGyuGkmBpupqEdLgNMC3zzrv7DHxoXYptv0S26O3JVHDQ==",
+    "Bucket.Core/1.1.0.2": {
+      "sha512": "SI7O59gRZjArkmHrjaq9boiNKn8Q6scEzeEC2Dnqbiw+BUhnYMazqcqHHi8drdys5OZVioqk8d37KCniK+TraQ==",
       "type": "package",
-      "path": "bucket.core/1.1.0",
+      "path": "bucket.core/1.1.0.2",
       "files": [
-        "bucket.core.1.1.0.nupkg.sha512",
+        "bucket.core.1.1.0.2.nupkg.sha512",
         "bucket.core.nuspec",
         "lib/netstandard2.0/Bucket.Core.dll"
       ]
@@ -2388,12 +2420,12 @@
         "lib/netstandard2.0/Bucket.DbContext.dll"
       ]
     },
-    "Bucket.Utility/1.1.0": {
-      "sha512": "5jzpZyGi8hhdw38Z11gtVmRwDyQrkIE1PAUihzAhrX+qtfE51Q9cXwNJjVrc2oqbRc1Y3nc/N0y7ETVt0yrAVQ==",
+    "Bucket.Utility/1.1.0.3": {
+      "sha512": "B24frIsHuxkYNQ/vJsF3rfqp0sUbVnC0o58ZXiR0EMi0aIsA7uqCGyGNBbuANoq5QTAZdTpE6OpCkAIx2PubPA==",
       "type": "package",
-      "path": "bucket.utility/1.1.0",
+      "path": "bucket.utility/1.1.0.3",
       "files": [
-        "bucket.utility.1.1.0.nupkg.sha512",
+        "bucket.utility.1.1.0.3.nupkg.sha512",
         "bucket.utility.nuspec",
         "lib/netstandard2.0/Bucket.Utility.dll"
       ]
@@ -3408,6 +3440,53 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "SkiaSharp/1.60.2": {
+      "sha512": "JcMB63zAfGX2Vdi7hbKlNDdh3QljV/lHDf/yMAuxz1yy0iHtGx840gZqJJgLBzyJw4Ojs9braR+LKO1S3cgyqw==",
+      "type": "package",
+      "path": "skiasharp/1.60.2",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net45/SkiaSharp.targets",
+        "build/tizen40/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.xml",
+        "lib/Xamarin.TVOS/SkiaSharp.dll",
+        "lib/Xamarin.TVOS/SkiaSharp.xml",
+        "lib/Xamarin.WatchOS/SkiaSharp.dll",
+        "lib/Xamarin.WatchOS/SkiaSharp.xml",
+        "lib/Xamarin.iOS/SkiaSharp.dll",
+        "lib/Xamarin.iOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/tizen-armel/native/libSkiaSharp.so",
+        "runtimes/tizen-x86/native/libSkiaSharp.so",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.60.2.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
       ]
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
@@ -7419,8 +7498,8 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "AutoMapper >= 6.2.2",
-      "Bucket.Core >= 1.1.0",
-      "Bucket.Utility >= 1.1.0",
+      "Bucket.Core >= 1.1.0.2",
+      "Bucket.Utility >= 1.1.0.3",
       "ConfigService.DTO >= 1.0.0",
       "ConfigService.Interface >= 1.0.0",
       "ConfigService.Model >= 1.0.0",
@@ -7485,11 +7564,11 @@
           },
           "Bucket.Core": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.1.0.2, )"
           },
           "Bucket.Utility": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.1.0.3, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

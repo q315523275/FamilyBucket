@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.EventBus.RabbitMQ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0.3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.EventBus.RabbitMQ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.EventBus.RabbitMQ")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.3")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

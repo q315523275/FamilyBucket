@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
 using Pinzhi.Platform.DTO;
 using Microsoft.AspNetCore.Authorization;
-using Bucket.ConfigCenter;
-using Microsoft.AspNetCore.Cors;
 
 namespace Pinzhi.Platform.WebApi.Controllers
 {
@@ -19,17 +13,13 @@ namespace Pinzhi.Platform.WebApi.Controllers
     public class ApiController : Controller
     {
         private readonly IApiBusiness _apiBusiness;
-        private readonly IConfigCenter _configCenter;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="apiBusiness"></param>
-        /// <param name="configCenter"></param>
-        public ApiController(IApiBusiness apiBusiness,IConfigCenter configCenter)
+        public ApiController(IApiBusiness apiBusiness)
         {
             _apiBusiness = apiBusiness;
-            _configCenter = configCenter;
-
         }
         /// <summary>
         /// 查询Api资源

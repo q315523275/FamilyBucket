@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspectCore.Core" Version="0.5.0" />
+    <PackageReference Include="AspectCore.Core" Version="0.7.0" />
     <PackageReference Include="MessagePack" Version="1.7.3.4" />
     <PackageReference Include="MessagePackAnalyzer" Version="1.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.1.0" />
@@ -15,6 +15,8 @@
       <NoWarn>NU1701</NoWarn>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>

@@ -11,15 +11,17 @@ using Swashbuckle.AspNetCore.Swagger;
 
 using Bucket.Logging;
 using Bucket.DbContext;
-
+using Bucket.Config.Extensions;
+using Bucket.ErrorCode.Extensions;
+using Bucket.EventBus.Extensions;
+using Bucket.EventBus.RabbitMQ;
 using Bucket.AspNetCore.Filters;
-using Bucket.AspNetCore.EventBus;
 using Bucket.AspNetCore.Extensions;
-using Bucket.AspNetCore.ServiceDiscovery;
-using System.Net.Http;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-
+using Bucket.ServiceDiscovery.Extensions;
+using Bucket.ServiceDiscovery.Consul;
+using Bucket.Tracing.Extensions;
+using Bucket.Logging.Events;
+using Bucket.Tracing.Events;
 
 namespace Bucket.MVC
 {
@@ -57,27 +59,20 @@ namespace Bucket.MVC
                 config.InitKeyType = InitKeyType.Attribute;
             });
             // 添加错误码服务
-            services.AddErrorCodeService(Configuration);
+            services.AddErrorCodeServer(Configuration);
             // 添加配置服务
             services.AddConfigService(Configuration);
             // 添加事件驱动
-            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = eventConfig["HostName"];
-                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.QueueName = eventConfig["QueueName"];
-                });
-            });
+            services.AddEventBus(builder =>{ builder.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscoveryConsul(Configuration);
+            services.AddServiceDiscovery(builder => {
+                builder.UseConsul(Configuration);
+            });
             // 添加服务之间调用
             services.AddServiceClient();
             // 添加链路追踪
             services.AddTracer(Configuration);
-
+            services.AddEventTrace();
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options =>
             {
@@ -133,7 +128,7 @@ namespace Bucket.MVC
             // 路由
             ConfigRoute(app);
             // 服务注册
-            // app.UseConsulRegisterService(Configuration);
+            app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域
@@ -142,7 +137,7 @@ namespace Bucket.MVC
         {
             app.UseMvc(routes => {
                 routes.MapRoute("areaRoute", "view/{area:exists}/{controller}/{action=Index}/{id?}");
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{controller=Tool}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
         }

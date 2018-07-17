@@ -119,36 +119,5 @@ namespace Bucket.DbContext
 
             return config;
         }
-
-        #region 注释
-        /// <summary>
-        ///     Registers the given context as a service in the <see cref="IServiceCollection" />.
-        ///     You use this method when using dependency injection in your application, such as with ASP.NET.
-        ///     For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-        /// </summary>
-        /// <example>
-        ///     <code>
-        ///          public void ConfigureServices(IServiceCollection services)
-        ///          {
-        ///              var connectionString = "connection string to database";
-        ///
-        ///              services.AddSQLSugarClient&lt;MyContext&gt;(ServiceLifetime.Scoped);
-        ///          }
-        ///      </code>
-        /// </example>
-        /// <typeparam name="TSugarClient"> The type of context to be registered. </typeparam>
-        /// <param name="serviceCollection"> The <see cref="IServiceCollection" /> to add services to. </param>
-        /// <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-        /// <param name="configLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-        /// <returns>
-        ///     The same service collection so that multiple calls can be chained.
-        /// </returns>
-        //public static IServiceCollection AddSQLSugarClient<TSugarClient>(
-        //    this IServiceCollection serviceCollection,
-        //    ServiceLifetime contextLifetime,
-        //    ServiceLifetime configLifetime = ServiceLifetime.Scoped)
-        //    where TSugarClient : SqlSugarClient
-        //    => AddSQLSugarClient<TSugarClient>(serviceCollection, (Action<IServiceProvider, ConnectionConfig>)null, contextLifetime, configLifetime); 
-        #endregion
     }
 }

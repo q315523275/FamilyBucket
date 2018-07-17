@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Bucket.ConfigCenter;
+using Bucket.Config;
 using Bucket.Core;
 using Bucket.Redis;
 using Pinzhi.Platform.DTO;
@@ -23,9 +23,9 @@ namespace Pinzhi.Platform.Business
         private readonly SqlSugarClient _dbContext;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
-        private readonly IConfigCenter _configCenter;
+        private readonly IConfig _configCenter;
         private readonly RedisClient _redisClient;
-        public PlatformBusiness(SqlSugarClient dbContext, IMapper mapper,RedisClient redisClient,IJsonHelper jsonHelper, IConfigCenter configCenter)
+        public PlatformBusiness(SqlSugarClient dbContext, IMapper mapper,RedisClient redisClient,IJsonHelper jsonHelper, IConfig configCenter)
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -71,7 +71,7 @@ namespace Pinzhi.Platform.Business
                 await _dbContext.Insertable(model).ExecuteCommandAsync();
             }
 
-            var redis = _redisClient.GetDatabase(_configCenter.Get(SysConfig.RedisConnectionKey, "192.168.1.199:6379,allowadmin=true"), 2);
+            var redis = _redisClient.GetDatabase(_configCenter.Get(SysConfig.RedisConnectionKey, "localhost:6379,allowadmin=true"), 2);
             await redis.KeyDeleteAsync(CacheKeys.PlatformKey);
 
             return new SetPlatformOutput { };

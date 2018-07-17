@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
@@ -15,7 +15,7 @@
           "lib/netstandard2.0/Bucket.Core.dll": {}
         }
       },
-      "Bucket.Utility/1.1.0.2": {
+      "Bucket.Utility/1.1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.1.0",
@@ -23,8 +23,8 @@
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Nito.AsyncEx.Context": "1.1.0",
-          "System.ComponentModel.Annotations": "4.5.0",
-          "ZKWeb.System.Drawing": "4.0.1"
+          "SkiaSharp": "1.60.2",
+          "System.ComponentModel.Annotations": "4.5.0"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.Utility.dll": {}
@@ -392,7 +392,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -408,14 +408,15 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -825,6 +826,37 @@
           }
         }
       },
+      "SkiaSharp/1.60.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/tizen-armel/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-armel"
+          },
+          "runtimes/tizen-x86/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-x86"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "type": "package",
         "dependencies": {
@@ -948,7 +980,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Collections.Specialized.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
@@ -2319,7 +2351,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/System.Threading.Thread.dll": {}
+          "ref/netstandard1.3/_._": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Threading.Thread.dll": {}
@@ -2447,23 +2479,6 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "ZKWeb.System.Drawing/4.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Threading.Thread": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
-        }
-      },
       "Pinzhi.Identity.DTO/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
@@ -2494,7 +2509,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "5.2.2",
+          "Microsoft.IdentityModel.Tokens": "5.2.4",
           "sqlSugarCore": "4.6.4.9"
         },
         "compile": {
@@ -2507,22 +2522,22 @@
     }
   },
   "libraries": {
-    "Bucket.Core/1.1.0": {
-      "sha512": "DR8WM8yonCj0PJeVnsWW4Ehgf2FFs+ZVshYPlRALBfGyuGkmBpupqEdLgNMC3zzrv7DHxoXYptv0S26O3JVHDQ==",
+    "Bucket.Core/1.1.0.2": {
+      "sha512": "SI7O59gRZjArkmHrjaq9boiNKn8Q6scEzeEC2Dnqbiw+BUhnYMazqcqHHi8drdys5OZVioqk8d37KCniK+TraQ==",
       "type": "package",
-      "path": "bucket.core/1.1.0",
+      "path": "bucket.core/1.1.0.2",
       "files": [
-        "bucket.core.1.1.0.nupkg.sha512",
+        "bucket.core.1.1.0.2.nupkg.sha512",
         "bucket.core.nuspec",
         "lib/netstandard2.0/Bucket.Core.dll"
       ]
     },
-    "Bucket.Utility/1.1.0.2": {
-      "sha512": "0LjknAv5cqOyvumnxbMtUu4F3OJSCpiVHu21yO2ftS7MfmexYQDuDsIVSiHRMMARi9yu6qfBiyn/9civVj1G2g==",
+    "Bucket.Utility/1.1.0.3": {
+      "sha512": "B24frIsHuxkYNQ/vJsF3rfqp0sUbVnC0o58ZXiR0EMi0aIsA7uqCGyGNBbuANoq5QTAZdTpE6OpCkAIx2PubPA==",
       "type": "package",
-      "path": "bucket.utility/1.1.0.2",
+      "path": "bucket.utility/1.1.0.3",
       "files": [
-        "bucket.utility.1.1.0.2.nupkg.sha512",
+        "bucket.utility.1.1.0.3.nupkg.sha512",
         "bucket.utility.nuspec",
         "lib/netstandard2.0/Bucket.Utility.dll"
       ]
@@ -2865,11 +2880,12 @@
         "microsoft.extensions.primitives.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
-      "sha512": "rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
+    "Microsoft.IdentityModel.Logging/5.2.4": {
+      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.2",
+      "path": "microsoft.identitymodel.logging/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.pdb",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -2879,15 +2895,16 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
-      "sha512": "A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -2897,7 +2914,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -3516,6 +3533,53 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "SkiaSharp/1.60.2": {
+      "sha512": "JcMB63zAfGX2Vdi7hbKlNDdh3QljV/lHDf/yMAuxz1yy0iHtGx840gZqJJgLBzyJw4Ojs9braR+LKO1S3cgyqw==",
+      "type": "package",
+      "path": "skiasharp/1.60.2",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net45/SkiaSharp.targets",
+        "build/tizen40/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.xml",
+        "lib/Xamarin.TVOS/SkiaSharp.dll",
+        "lib/Xamarin.TVOS/SkiaSharp.xml",
+        "lib/Xamarin.WatchOS/SkiaSharp.dll",
+        "lib/Xamarin.WatchOS/SkiaSharp.xml",
+        "lib/Xamarin.iOS/SkiaSharp.dll",
+        "lib/Xamarin.iOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/tizen-armel/native/libSkiaSharp.so",
+        "runtimes/tizen-x86/native/libSkiaSharp.so",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.60.2.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
       ]
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
@@ -7849,17 +7913,6 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "ZKWeb.System.Drawing/4.0.1": {
-      "sha512": "r8OLPZ2cb9SSwjm8GNkMbqOgo58N8d8RwxJN1yF01atv+MQdNOqa5Xx117tIjWUbB6pBnVe6u+pXkYVORaCeWw==",
-      "type": "package",
-      "path": "zkweb.system.drawing/4.0.1",
-      "files": [
-        "lib/net45/ZKWeb.System.Drawing.dll",
-        "lib/netstandard2.0/ZKWeb.System.Drawing.dll",
-        "zkweb.system.drawing.4.0.1.nupkg.sha512",
-        "zkweb.system.drawing.nuspec"
-      ]
-    },
     "Pinzhi.Identity.DTO/1.0.0": {
       "type": "project",
       "path": "../../EntityLayer/Pinzhi.Identity.DTO/Pinzhi.Identity.DTO.csproj",
@@ -7878,8 +7931,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.0",
-      "Bucket.Utility >= 1.1.0.2",
+      "Bucket.Core >= 1.1.0.2",
+      "Bucket.Utility >= 1.1.0.3",
       "NETStandard.Library >= 2.0.3",
       "Pinzhi.Identity.Interface >= 1.0.0",
       "Pinzhi.Identity.Model >= 1.0.0"
@@ -7936,11 +7989,11 @@
         "dependencies": {
           "Bucket.Core": {
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.1.0.2, )"
           },
           "Bucket.Utility": {
             "target": "Package",
-            "version": "[1.1.0.2, )"
+            "version": "[1.1.0.3, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

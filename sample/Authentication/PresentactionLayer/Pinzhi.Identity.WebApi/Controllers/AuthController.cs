@@ -3,9 +3,6 @@ using System.Threading.Tasks;
 using Pinzhi.Identity.Interface;
 using Pinzhi.Identity.DTO.Auth;
 using Bucket.WebApi;
-using Bucket.ErrorCode;
-using Bucket.ConfigCenter;
-
 namespace Pinzhi.Identity.WebApi.Controllers
 {
     /// <summary>

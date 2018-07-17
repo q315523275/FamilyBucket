@@ -18,7 +18,7 @@ namespace Pinzhi.Identity.WebApi.Controllers
         public IActionResult ValidateCode(int width = 100, int height = 32)
         {
             var code = Bucket.Utility.Helpers.Randoms.CreateRandomValue(4, false);
-            var st = Bucket.Utility.Helpers.VerifyCode.GetSingleObj().CreateByteByImgVerifyCode(code, width, height);
+            var st = Bucket.Utility.Helpers.VerifyCode.CreateByteByImgVerifyCode(code, width, height);
             return File(st, "image/jpeg");
         }
     }

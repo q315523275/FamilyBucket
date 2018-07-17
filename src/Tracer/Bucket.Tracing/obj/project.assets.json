@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "AspectCore.Abstractions/0.5.0": {
+      "AspectCore.Abstractions/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -15,11 +15,11 @@
           "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
         }
       },
-      "AspectCore.Core/0.5.0": {
+      "AspectCore.Core/0.7.0": {
         "type": "package",
         "dependencies": {
-          "AspectCore.Abstractions": "0.5.0",
-          "AspectCore.Extensions.Reflection": "0.5.0",
+          "AspectCore.Abstractions": "0.7.0",
+          "AspectCore.Extensions.Reflection": "0.7.0",
           "Microsoft.CSharp": "4.5.0-rc1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
@@ -31,7 +31,7 @@
           "lib/netstandard2.0/AspectCore.Core.dll": {}
         }
       },
-      "AspectCore.Extensions.Reflection/0.5.0": {
+      "AspectCore.Extensions.Reflection/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -182,6 +182,18 @@
           "lib/netstandard2.0/Microsoft.CSharp.dll": {}
         }
       },
+      "Microsoft.Extensions.Configuration/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -192,6 +204,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration.Binder/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll": {}
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
@@ -271,6 +295,21 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Options.ConfigurationExtensions/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Configuration.Binder": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
         }
       },
       "Microsoft.Extensions.Primitives/2.1.0": {
@@ -597,7 +636,7 @@
           "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -614,33 +653,36 @@
     }
   },
   "libraries": {
-    "AspectCore.Abstractions/0.5.0": {
-      "sha512": "fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
+    "AspectCore.Abstractions/0.7.0": {
+      "sha512": "AgV1OFl0V1i+HBK+dsztIfFMhIDozwDjamqflJW4kpQH20WYCi7b7U35+BcDAd/DePQexGPLesHd0pojNNGCNA==",
       "type": "package",
-      "path": "aspectcore.abstractions/0.5.0",
+      "path": "aspectcore.abstractions/0.7.0",
       "files": [
-        "aspectcore.abstractions.0.5.0.nupkg.sha512",
+        "aspectcore.abstractions.0.7.0.nupkg.sha512",
         "aspectcore.abstractions.nuspec",
+        "lib/net45/AspectCore.Abstractions.dll",
         "lib/netstandard2.0/AspectCore.Abstractions.dll"
       ]
     },
-    "AspectCore.Core/0.5.0": {
-      "sha512": "F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
+    "AspectCore.Core/0.7.0": {
+      "sha512": "4CtgUQkCkLZAGhzLM1Quc1SoH75qo2l0rdCphiax3oRpus7K7FUu+jvKPKeaRi1u+qLAi28sbCSak9WDATz2Bg==",
       "type": "package",
-      "path": "aspectcore.core/0.5.0",
+      "path": "aspectcore.core/0.7.0",
       "files": [
-        "aspectcore.core.0.5.0.nupkg.sha512",
+        "aspectcore.core.0.7.0.nupkg.sha512",
         "aspectcore.core.nuspec",
+        "lib/net45/AspectCore.Core.dll",
         "lib/netstandard2.0/AspectCore.Core.dll"
       ]
     },
-    "AspectCore.Extensions.Reflection/0.5.0": {
-      "sha512": "ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
+    "AspectCore.Extensions.Reflection/0.7.0": {
+      "sha512": "cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
       "type": "package",
-      "path": "aspectcore.extensions.reflection/0.5.0",
+      "path": "aspectcore.extensions.reflection/0.7.0",
       "files": [
-        "aspectcore.extensions.reflection.0.5.0.nupkg.sha512",
+        "aspectcore.extensions.reflection.0.7.0.nupkg.sha512",
         "aspectcore.extensions.reflection.nuspec",
+        "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
       ]
     },
@@ -836,6 +878,18 @@
         "version.txt"
       ]
     },
+    "Microsoft.Extensions.Configuration/2.1.0": {
+      "sha512": "9OBzLBp9iD0slK3YKwnaWQ7VMWf5Vq2u8A1iULvMA5pXJ/A03bap24HQoH6AZR6O4HDOYRnjkfy9AydHRD7jVQ==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.2.1.0.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Configuration.Abstractions/2.1.0": {
       "sha512": "uGoebD8CvAeIY6GrZRVUYHuYT0s1Ci9A1Jcjvirfras/fKeMfottVuO2HrK7+V1LzAAU2YAdZKB2pZTAqjwBvQ==",
       "type": "package",
@@ -846,6 +900,18 @@
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "microsoft.extensions.configuration.abstractions.2.1.0.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Configuration.Binder/2.1.0": {
+      "sha512": "f98sU3mGlDiUx5YO2gMaDpm+0KZUCkWDirbZ6Me9CwmUDGajyOtFJ9Ftgk1QYGQcK3m1Kp2jec3OUIgAyGzAQg==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration.binder/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
+        "microsoft.extensions.configuration.binder.2.1.0.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.nuspec"
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
@@ -934,6 +1000,18 @@
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
         "microsoft.extensions.options.2.1.0.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Options.ConfigurationExtensions/2.1.0": {
+      "sha512": "60wD22vAzOTsmgnvOoCC92sRh9ERW+eskuq41T83wRWRPYtRHWnW7f29/rMFvzBfQ6B148Tt2sjIG04ijyKZzA==",
+      "type": "package",
+      "path": "microsoft.extensions.options.configurationextensions/2.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
+        "microsoft.extensions.options.configurationextensions.2.1.0.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec"
       ]
     },
     "Microsoft.Extensions.Primitives/2.1.0": {
@@ -2222,7 +2300,7 @@
         "system.valuetuple.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0": {
+    "Bucket.Core/1.1.0.2": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -2230,14 +2308,16 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "AspectCore.Core >= 0.5.0",
-      "Bucket.Core >= 1.1.0",
+      "AspectCore.Core >= 0.7.0",
+      "Bucket.Core >= 1.1.0.2",
       "MessagePack >= 1.7.3.4",
       "MessagePackAnalyzer >= 1.6.0",
       "Microsoft.AspNetCore.Http.Extensions >= 2.1.0",
       "Microsoft.AspNetCore.MiddlewareAnalysis >= 2.1.0",
       "Microsoft.Extensions.DiagnosticAdapter >= 2.1.0",
       "Microsoft.Extensions.Hosting.Abstractions >= 2.1.0",
+      "Microsoft.Extensions.Options >= 2.1.0",
+      "Microsoft.Extensions.Options.ConfigurationExtensions >= 2.1.0",
       "Microsoft.Extensions.Primitives >= 2.1.0",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 11.0.2"
@@ -2248,7 +2328,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0.1",
+    "version": "1.0.0.2",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj",
       "projectName": "Bucket.Tracing",
@@ -2291,7 +2371,7 @@
         "dependencies": {
           "AspectCore.Core": {
             "target": "Package",
-            "version": "[0.5.0, )"
+            "version": "[0.7.0, )"
           },
           "MessagePack": {
             "target": "Package",
@@ -2317,6 +2397,14 @@
             ]
           },
           "Microsoft.Extensions.Hosting.Abstractions": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          },
+          "Microsoft.Extensions.Options": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          },
+          "Microsoft.Extensions.Options.ConfigurationExtensions": {
             "target": "Package",
             "version": "[2.1.0, )"
           },

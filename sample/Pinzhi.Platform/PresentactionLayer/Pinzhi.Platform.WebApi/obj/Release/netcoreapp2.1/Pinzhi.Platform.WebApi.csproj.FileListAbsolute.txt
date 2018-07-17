@@ -1,3 +1,4 @@
+D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\bin\Release\netcoreapp2.1\Pinzhi.Platform.WebApi.xml
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\bin\Release\netcoreapp2.1\Pinzhi.Platform.WebApi.deps.json
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\bin\Release\netcoreapp2.1\Pinzhi.Platform.WebApi.runtimeconfig.json
 D:\work2017\Git\FamilyBucket\Pinzhi.Platform\PresentactionLayer\Pinzhi.Platform.WebApi\bin\Release\netcoreapp2.1\Pinzhi.Platform.WebApi.runtimeconfig.dev.json

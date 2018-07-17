@@ -3,23 +3,33 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SqlSugar;
-using Bucket.DbContext;
 using Newtonsoft.Json.Serialization;
-using Bucket.AspNetCore.Filters;
-using Bucket.AspNetCore.Extensions;
 using AutoMapper;
 using Pinzhi.Platform.Interface;
 using Pinzhi.Platform.Business;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
-using Bucket.AspNetCore.EventBus;
-using Bucket.Logging;
 using System;
-using Bucket.Utility;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
+using Bucket.DbContext;
+using Bucket.Utility;
+
+using Bucket.ErrorCode.Extensions;
+using Bucket.Config.Extensions;
+using Bucket.EventBus.Extensions;
+using Bucket.EventBus.RabbitMQ;
+using Bucket.ServiceDiscovery.Extensions;
+using Bucket.ServiceDiscovery.Consul;
+using Bucket.AspNetCore.Extensions;
+using Bucket.AspNetCore.Filters;
+using Bucket.Tracing.Extensions;
+using Bucket.Tracing.Events;
+using Bucket.Logging;
+using Bucket.Logging.Events;
+using Bucket.LoadBalancer.Extensions;
 namespace Pinzhi.Platform.WebApi
 {
     /// <summary>
@@ -56,37 +66,25 @@ namespace Pinzhi.Platform.WebApi
                 config.InitKeyType = InitKeyType.Attribute;
             });
             // 添加错误码服务
-            services.AddErrorCodeService(Configuration);
+            services.AddErrorCodeServer(Configuration);
             // 添加配置服务
             services.AddConfigService(Configuration);
             // 添加事件驱动
             var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = eventConfig["HostName"];
-                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.QueueName = eventConfig["QueueName"];
-                });
-            });
+            services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscoveryConsul(Configuration);
+            services.AddServiceDiscovery(option => { option.UseConsul(Configuration); });
+            // 添加服务路由
+            services.AddLoadBalancer();
             // 添加事件队列日志
             services.AddEventLog();
             // 添加链路追踪
             services.AddTracer(Configuration);
+            services.AddEventTrace();
             // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
             services.AddAutoMapper();
             // 添加业务注册
             #region
-            //services.AddScoped<IMenuBusiness, MenuBusiness>();
-            //services.AddScoped<IPlatformBusiness, PlatformBusiness>();
-            //services.AddScoped<IProjectBusiness, ProjectBusiness>();
-            //services.AddScoped<IRoleBusiness, RoleBusiness>();
-            //services.AddScoped<IUserBusiness, UserBusiness>();
-            //services.AddScoped<IApiBusiness, ApiBusiness>();
-            //services.AddScoped<IConfigBusiness, ConfigBusiness>();
             foreach (var item in GetClassName("Pinzhi.Platform.Business"))
             {
                 foreach (var typeArray in item.Value)

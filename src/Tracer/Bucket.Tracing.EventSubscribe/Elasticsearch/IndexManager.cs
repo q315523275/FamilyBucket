@@ -11,8 +11,8 @@ namespace Bucket.Tracing.EventSubscribe.Elasticsearch
 {
     public class IndexManager : IIndexManager
     {
-        private const string TracingIndexSuffix = "butterfly-tracing";
-        private const string ServiceIndexSuffix = "butterfly-service";
+        private const string TracingIndexSuffix = "pinzhi-tracing";
+        private const string ServiceIndexSuffix = "pinzhi-service";
 
         private readonly IMemoryCache _memoryCache;
         private readonly ElasticClient _elasticClient;
@@ -40,7 +40,7 @@ namespace Bucket.Tracing.EventSubscribe.Elasticsearch
                 return $"{TracingIndexSuffix}-*";
             }
 
-            var index = $"{TracingIndexSuffix}-{dateTimeOffset.Value:yyyyMMdd}";
+            var index = $"{TracingIndexSuffix}-{dateTimeOffset.Value:yyyyMM}";
 
             return GetOrCreateIndex(index, IndexExists, CreateTracingIndexExecute);
         }

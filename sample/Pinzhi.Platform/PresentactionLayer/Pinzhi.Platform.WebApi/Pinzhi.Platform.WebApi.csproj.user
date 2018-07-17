@@ -11,7 +11,7 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <ActiveDebugProfile>Pinzhi.Platform.Api</ActiveDebugProfile>
     <ShowAllFiles>false</ShowAllFiles>
-    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>FolderProfile2</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>

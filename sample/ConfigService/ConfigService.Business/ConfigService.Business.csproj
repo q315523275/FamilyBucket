@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Bucket.Core" Version="1.1.0" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.0" />
+    <PackageReference Include="Bucket.Core" Version="1.1.0.2" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.0.3" />
   </ItemGroup>
 
   <ItemGroup>

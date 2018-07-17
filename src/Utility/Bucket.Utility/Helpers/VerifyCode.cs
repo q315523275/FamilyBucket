@@ -1,45 +1,23 @@
 ﻿using System;
-using System.DrawingCore;
-using System.DrawingCore.Drawing2D;
-using System.DrawingCore.Imaging;
+using System.Collections.Generic;
+using SkiaSharp;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace Bucket.Utility.Helpers
 {
-    public class VerifyCode
+    public static class VerifyCode
     {
-        #region 单例模式  
-        //创建私有化静态obj锁    
-        private static readonly object _ObjLock = new object();
-        //创建私有静态字段，接收类的实例化对象    
-        private static VerifyCode _VerifyCodeHelper = null;
-        //构造函数私有化    
-        private VerifyCode() { }
-        //创建单利对象资源并返回    
-        public static VerifyCode GetSingleObj()
-        {
-            if (_VerifyCodeHelper == null)
-            {
-                lock (_ObjLock)
-                {
-                    if (_VerifyCodeHelper == null)
-                        _VerifyCodeHelper = new VerifyCode();
-                }
-            }
-            return _VerifyCodeHelper;
-        }
-        #endregion
-
         #region 生产验证码  
-        public enum VerifyCodeType { NumberVerifyCode, AbcVerifyCode, MixVerifyCode };
+        public enum VerifyCodeType { NumberVerifyCode, AbcVerifyCode, MixVerifyCode, ChineseVerifyCode };
 
         /// <summary>  
         /// 1.数字验证码  
         /// </summary>  
         /// <param name="length"></param>  
         /// <returns></returns>  
-        private string CreateNumberVerifyCode(int length)
+        private static string CreateNumberVerifyCode(int length)
         {
             int[] randMembers = new int[length];
             int[] validateNums = new int[length];
@@ -83,7 +61,7 @@ namespace Bucket.Utility.Helpers
         /// </summary>  
         /// <param name="length">字符长度</param>  
         /// <returns>验证码字符</returns>  
-        private string CreateAbcVerifyCode(int length)
+        private static string CreateAbcVerifyCode(int length)
         {
             char[] verification = new char[length];
             char[] dictionary = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -102,7 +80,7 @@ namespace Bucket.Utility.Helpers
         /// </summary>  
         /// <param name="length">字符长度</param>  
         /// <returns>验证码字符</returns>  
-        private string CreateMixVerifyCode(int length)
+        private static string CreateMixVerifyCode(int length)
         {
             char[] verification = new char[length];
             char[] dictionary = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -116,42 +94,51 @@ namespace Bucket.Utility.Helpers
             }
             return new string(verification);
         }
-
+        /// 4.混合验证码  
+        /// </summary>  
+        /// <param name="length">字符长度</param>  
+        /// <returns>验证码字符</returns>  
+        private static string CreateChineseVerifyCode(int length)
+        {
+            string verification = string.Empty;
+            string[] dictionary = @"的,一,了,是,我,不,在,人,们,有,来,他,这,上,着,个,地,到,大,里,说,去,子,得,也,和,那,要,下,看,天,时,过,出,小,么,起,你,都,把,好,还,多,没,为,又,可,家,学,只,以,主,会,样,年,想,能,生,同,老,中,从,自,面,前,头,到,它,后,然,走,很,像,见,两,用,她,国,动,进,成,回,什,边,作,对,开,而,已,些,现,山,民,候,经,发,工,向,事,命,给,长,水,几,义,三,声,于,高,正,妈,手,知,理,眼,志,点,心,战,二,问,但,身,方,实,吃,做,叫,当,住,听,革,打,呢,真,党,全,才,四,已,所,敌,之,最,光,产,情,路,分,总,条,白,话,东,席,次,亲,如,被,花,口,放,儿,常,西,气,五,第,使,写,军,吧,文,运,在,果,怎,定,许,快,明,行,因,别,飞,外,树,物,活,部,门,无,往,船,望,新,带,队,先,力,完,间,却,站,代,员,机,更,九,您,每,风,级,跟,笑,啊,孩,万,少,直,意,夜,比,阶,连,车,重,便,斗,马,哪,化,太,指,变,社,似,士,者,干,石,满,决,百,原,拿,群,究,各,六,本,思,解,立,河,爸,村,八,难,早,论,吗,根,共,让,相,研,今,其,书,坐,接,应,关,信,觉,死,步,反,处,记,将,千,找,争,领,或,师,结,块,跑,谁,草,越,字,加,脚,紧,爱,等,习,阵,怕,月,青,半,火,法,题,建,赶,位,唱,海,七,女,任,件,感,准,张,团,屋,爷,离,色,脸,片,科,倒,睛,利,世,病,刚,且,由,送,切,星,晚,表,够,整,认,响,雪,流,未,场,该,并,底,深,刻,平,伟,忙,提,确,近,亮,轻,讲,农,古,黑,告,界,拉,名,呀,土,清,阳,照,办,史,改,历,转,画,造,嘴,此,治,北,必,服,雨,穿,父,内,识,验,传,业,菜,爬,睡,兴,客".Split(new Char[] { ',' });
+            Random random = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                verification = verification + dictionary[random.Next(dictionary.Length - 1)];
+            }
+            return verification;
+        }
         /// <summary>  
         /// 产生验证码（随机产生4-6位）  
         /// </summary>  
         /// <param name="type">验证码类型：数字，字符，符合</param>  
         /// <returns></returns>  
-        public string CreateVerifyCode(VerifyCodeType type)
+        public static string CreateVerifyCode(VerifyCodeType type, int length = 4)
         {
             string verifyCode = string.Empty;
-            Random random = new Random();
-            int length = random.Next(4, 6);
             switch (type)
             {
                 case VerifyCodeType.NumberVerifyCode:
-                    verifyCode = GetSingleObj().CreateNumberVerifyCode(length);
+                    verifyCode = CreateNumberVerifyCode(length);
                     break;
                 case VerifyCodeType.AbcVerifyCode:
-                    verifyCode = GetSingleObj().CreateAbcVerifyCode(length);
+                    verifyCode = CreateAbcVerifyCode(length);
                     break;
                 case VerifyCodeType.MixVerifyCode:
-                    verifyCode = GetSingleObj().CreateMixVerifyCode(length);
+                    verifyCode = CreateMixVerifyCode(length);
+                    break;
+                case VerifyCodeType.ChineseVerifyCode:
+                    verifyCode = CreateChineseVerifyCode(length);
                     break;
             }
             return verifyCode;
         }
         #endregion
 
-        #region 验证码图片
+        //#region 验证码图片
         private static readonly byte[] randb = new byte[4];
         private static RNGCryptoServiceProvider rand = new RNGCryptoServiceProvider();
-        private FontFamily[] fontFamily ={
-            new FontFamily("Times New Roman"),
-            new FontFamily("Georgia"),
-            new FontFamily("Arial"),
-            new FontFamily("Comic Sans MS")
-        };
         /// <summary>
         /// 获得下一个随机数
         /// </summary>
@@ -174,138 +161,67 @@ namespace Bucket.Utility.Helpers
             int value = Next(max - min) + min;
             return value;
         }
-        /// <summary>
-        /// 获取 验证码图形 的 byte 数组对象
-        /// </summary>
-        /// <returns></returns>
-        public byte[] GetBytes(Bitmap bitmap)
-        {
-            var ms = new MemoryStream();
-            bitmap.Save(ms, ImageFormat.Bmp);
-            byte[] bytes = ms.GetBuffer();
-            ms.Close();
-            return bytes;
-        }
-        /// <summary>
-        /// 字体随机颜色
-        /// </summary>
-        public Color GetRandomColor()
-        {
-            Random RandomNum_First = new Random((int)DateTime.Now.Ticks);
-            System.Threading.Thread.Sleep(RandomNum_First.Next(50));
-            Random RandomNum_Sencond = new Random((int)DateTime.Now.Ticks);
-            int int_Red = RandomNum_First.Next(180);
-            int int_Green = RandomNum_Sencond.Next(180);
-            int int_Blue = (int_Red + int_Green > 300) ? 0 : 400 - int_Red - int_Green;
-            int_Blue = (int_Blue > 255) ? 255 : int_Blue;
-            return Color.FromArgb(int_Red, int_Green, int_Blue);
-        }
 
-        /// <summary>
-        /// 正弦曲线Wave扭曲图片
-        /// </summary>
-        /// <param name="srcBmp">图片路径</param>
-        /// <param name="bXDir">如果扭曲则选择为True</param>
-        /// <param name="nMultValue">波形的幅度倍数，越大扭曲的程度越高,一般为3</param>
-        /// <param name="dPhase">波形的起始相位,取值区间[0-2*PI)</param>
-        public Bitmap TwistImage(Bitmap srcBmp, bool bXDir, double dMultValue, double dPhase)
+        private static List<SKColor> colors = new List<SKColor>()
         {
-            double PI = 6.283185307179586476925286766559;
-            Bitmap destBmp = new Bitmap(srcBmp.Width, srcBmp.Height);
-            Graphics graph = Graphics.FromImage(destBmp);
-            graph.FillRectangle(new SolidBrush(Color.White), 0, 0, destBmp.Width, destBmp.Height);
-            graph.Dispose();
-            double dBaseAxisLen = bXDir ? (double)destBmp.Height : (double)destBmp.Width;
-            for (int i = 0; i < destBmp.Width; i++)
+            new SKColor(205,104,0),
+            new SKColor(151,155,22),
+            new SKColor(108,163,44),
+            new SKColor(121,85,72),
+            new SKColor(96,125,139),
+            new SKColor(76,175,80),
+            new SKColor(0,150,136),
+            new SKColor(4,167,187),
+            new SKColor(33,150,243),
+            new SKColor(63,81,181)
+        };
+        public static byte[] CreateByteByImgVerifyCode(string verifyCode, int width, int height)
+        {
+            byte[] bytes;
+            var text = verifyCode.ToUpper().ToList();
+            SKBitmap bmp = new SKBitmap(width, height);
+            using (SKCanvas canvas = new SKCanvas(bmp))
             {
-                for (int j = 0; j < destBmp.Height; j++)
-                {
-                    double dx = 0;
-                    dx = bXDir ? (PI * (double)j) / dBaseAxisLen : (PI * (double)i) / dBaseAxisLen;
-                    dx += dPhase;
-                    double dy = Math.Sin(dx);
-                    int nOldX = 0, nOldY = 0;
-                    nOldX = bXDir ? i + (int)(dy * dMultValue) : i;
-                    nOldY = bXDir ? j : j + (int)(dy * dMultValue);
+                // 背景色
+                canvas.DrawColor(SKColors.White);
 
-                    Color color = srcBmp.GetPixel(i, j);
-                    if (nOldX >= 0 && nOldX < destBmp.Width
-                     && nOldY >= 0 && nOldY < destBmp.Height)
+                using (SKPaint sKPaint = new SKPaint())
+                {
+                    sKPaint.TextSize = 18; // 字体大小
+                    sKPaint.FakeBoldText = true;
+                    sKPaint.IsAntialias = true; // 开启抗锯齿 
+                    sKPaint.Typeface = SKTypeface.FromFamilyName("WenQuanYi Micro Hei", SKTypefaceStyle.Normal);//字体
+
+                    SKRect size = new SKRect();
+                    sKPaint.MeasureText(text[0].ToString(), ref size); // 计算文字宽度以及高度
+
+                    float _x = (width - size.Width * text.Count) / 2 - size.Width;
+                    float _y = size.Height;
+                    int num = Next(0, 9);
+                    sKPaint.Color = colors[num];
+                    // 干扰线
+                    for (int i = 0; i < 3; i++)
                     {
-                        destBmp.SetPixel(nOldX, nOldY, color);
+                        canvas.DrawLine(Next(0, 40), Next(1, 29), Next(41, 80), Next(1, 29), sKPaint);
+                    }
+                    // 文字
+                    for (int i = 0; i < text.Count; i++)
+                    {
+                        _x += size.Width + Next(0, 3);
+                        _y = size.Height + Next(5, 15);
+                        canvas.DrawText(text[i].ToString(), _x , _y, sKPaint); // 画文字
+                    }
+                }
+                // 页面展示图片
+                using (SKImage img = SKImage.FromBitmap(bmp))
+                {
+                    using (SKData p = img.Encode())
+                    {
+                        bytes = p.ToArray();
                     }
                 }
             }
-            srcBmp.Dispose();
-            return destBmp;
+            return bytes;
         }
-        /// <summary>  
-        /// 验证码图片 => Bitmap  
-        /// </summary>  
-        /// <param name="verifyCode">验证码</param>  
-        /// <param name="width">宽</param>  
-        /// <param name="height">高</param>  
-        /// <returns>Bitmap</returns>  
-        public Bitmap CreateBitmapByImgVerifyCode(string verifyCode, int width, int height)
-        {
-            var textLength = verifyCode.Length;
-            Bitmap bitmap = new Bitmap(width, height);
-            Graphics g = Graphics.FromImage(bitmap);
-            int fontSize = height / 2;
-            g.Clear(Color.White);
-            var color = GetRandomColor();
-            // 干扰曲线
-            var bezierLength = Next(2, 6);
-            for (int i = 0; i < bezierLength; i++)
-            {
-                Point p1 = new Point(0, Next(bitmap.Height));
-                Point p2 = new Point(Next(bitmap.Width), Next(bitmap.Height));
-                Point p3 = new Point(Next(bitmap.Width), Next(bitmap.Height));
-                Point p4 = new Point(bitmap.Width, Next(bitmap.Height));
-                Point[] p = { p1, p2, p3, p4 };
-                Brush newBrush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), color, color);
-                Pen pen = new Pen(newBrush);
-                g.DrawBeziers(pen, p);
-            }
-            // 验证码
-            int _x = -12, _y = 0;
-            for (int int_index = 0; int_index < textLength; int_index++)
-            {
-                _x += fontSize + Next(-5, 5);
-                _y = Next(-3, 3);
-                string str_char = verifyCode[int_index].ToString();
-                str_char = Next(1) == 1 ? str_char.ToLower() : str_char.ToUpper();
-                Font font = new Font(fontFamily[Next(fontFamily.Length - 1)], fontSize + Next(-2, 2), (FontStyle.Bold | FontStyle.Italic));
-                Brush newBrush = new LinearGradientBrush(new Point(0, 0), new Point(1, 1), color, color);
-                Point thePos = new Point(_x, _y);
-                g.DrawString(str_char, font, newBrush, thePos);
-                font.Dispose();
-            }
-            // 噪点
-            for (int i = 0; i < 100; i++)
-            {
-                int x = Next(bitmap.Width - 1);
-                int y = Next(bitmap.Height - 1);
-                bitmap.SetPixel(x, y, color);
-            }
-            bitmap = TwistImage(bitmap, true, Next(2, 3), Next(4, 6));
-            g.DrawRectangle(new Pen(Color.LightGray, 1), 0, 0, bitmap.Width - 1, (bitmap.Height - 1));
-            return bitmap;
-        }
-
-        /// <summary>  
-        /// 验证码图片 => byte[]  
-        /// </summary>  
-        /// <param name="verifyCode">验证码</param>  
-        /// <param name="width">宽</param>  
-        /// <param name="height">高</param>  
-        /// <returns>byte[]</returns>  
-        public byte[] CreateByteByImgVerifyCode(string verifyCode, int width, int height)
-        {
-            var bitmap = CreateBitmapByImgVerifyCode(verifyCode, width, height);
-            //输出图片流    
-            return GetBytes(bitmap);
-        }
-        #endregion
     }
 }

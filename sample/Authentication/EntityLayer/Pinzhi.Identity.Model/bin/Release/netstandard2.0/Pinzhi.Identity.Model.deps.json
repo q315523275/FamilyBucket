@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "1e0b2a74c3d28528d1a59f8189d133fa2f1b456d"
+    "signature": "70a8c649cdd3cfa5b867e0dfeebfcdcf1a966778"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Pinzhi.Identity.Model/1.0.0": {
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "5.2.2",
+          "Microsoft.IdentityModel.Tokens": "5.2.4",
           "NETStandard.Library": "2.0.3",
           "sqlSugarCore": "4.6.4.9"
         },
@@ -163,7 +163,7 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "System.Diagnostics.Tracing": "4.3.0",
@@ -173,18 +173,19 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {
-            "assemblyVersion": "5.2.2.0",
-            "fileVersion": "5.2.2.50423"
+            "assemblyVersion": "5.2.4.0",
+            "fileVersion": "5.2.4.50619"
           }
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "NETStandard.Library": "2.0.3",
           "Newtonsoft.Json": "10.0.3",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -198,8 +199,8 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {
-            "assemblyVersion": "5.2.2.0",
-            "fileVersion": "5.2.2.50423"
+            "assemblyVersion": "5.2.4.0",
+            "fileVersion": "5.2.4.50619"
           }
         }
       },
@@ -1672,19 +1673,19 @@
       "path": "microsoft.extensions.primitives/1.1.1",
       "hashPath": "microsoft.extensions.primitives.1.1.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
+    "Microsoft.IdentityModel.Logging/5.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
-      "path": "microsoft.identitymodel.logging/5.2.2",
-      "hashPath": "microsoft.identitymodel.logging.5.2.2.nupkg.sha512"
+      "sha512": "sha512-ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
+      "path": "microsoft.identitymodel.logging/5.2.4",
+      "hashPath": "microsoft.identitymodel.logging.5.2.4.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
-      "hashPath": "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512"
+      "sha512": "sha512-rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
+      "hashPath": "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",

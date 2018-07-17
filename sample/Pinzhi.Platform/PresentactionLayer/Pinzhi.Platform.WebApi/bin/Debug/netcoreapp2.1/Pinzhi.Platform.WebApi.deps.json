@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "34c6ee60f5ad361238fbe9649b09d3aaedaf2b01"
+    "signature": "b58c7a78241d305fee59f7ee47a59c7bae1fb0ce"
   },
   "compilationOptions": {
     "defines": [
@@ -26,14 +26,14 @@
         "dependencies": {
           "AutoMapper": "7.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "4.0.1",
-          "Bucket.AspNetCore": "1.0.8.2",
+          "Bucket.AspNetCore": "1.0.8.3",
           "Bucket.DbContext": "1.0.3",
           "Bucket.Utility": "1.1.0.2",
           "Microsoft.AspNetCore.App": "2.1.0",
           "Microsoft.NETCore.App": "2.1.0",
           "Pinzhi.Platform.Business": "1.0.0",
           "Pinzhi.Platform.Interface": "1.0.0",
-          "Swashbuckle.AspNetCore": "2.5.0"
+          "Swashbuckle.AspNetCore": "3.0.0"
         },
         "runtime": {
           "Pinzhi.Platform.WebApi.dll": {}
@@ -90,21 +90,6 @@
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
         }
       },
-      "Autofac/4.8.1": {
-        "dependencies": {
-          "NETStandard.Library": "2.0.3",
-          "System.ComponentModel": "4.3.0"
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {
-            "assemblyVersion": "4.8.1.0",
-            "fileVersion": "4.8.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard1.1/Autofac.dll": {}
-        }
-      },
       "AutoMapper/7.0.1": {
         "dependencies": {
           "System.ValueTuple": "4.5.0"
@@ -134,13 +119,13 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.0.8.2": {
+      "Bucket.AspNetCore/1.0.8.3": {
         "dependencies": {
           "Bucket.ConfigCenter": "1.1.0.1",
           "Bucket.Core": "1.1.0",
           "Bucket.ErrorCodeStore": "1.1.0.1",
           "Bucket.EventBus": "1.1.0.1",
-          "Bucket.EventBus.RabbitMQ": "1.1.0.1",
+          "Bucket.EventBus.RabbitMQ": "1.1.0.2",
           "Bucket.Logging": "1.1.0.1",
           "Bucket.Logging.Events": "1.1.0.1",
           "Bucket.Redis": "1.0.0",
@@ -155,8 +140,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.AspNetCore.dll": {
-            "assemblyVersion": "1.0.8.2",
-            "fileVersion": "1.0.8.2"
+            "assemblyVersion": "1.0.8.3",
+            "fileVersion": "1.0.8.3"
           }
         },
         "compile": {
@@ -237,9 +222,8 @@
           "lib/netstandard2.0/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.2": {
         "dependencies": {
-          "Autofac": "4.8.1",
           "Bucket.EventBus": "1.1.0.1",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
@@ -248,8 +232,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {
-            "assemblyVersion": "1.1.0.1",
-            "fileVersion": "1.1.0.1"
+            "assemblyVersion": "1.1.0.2",
+            "fileVersion": "1.1.0.2"
           }
         },
         "compile": {
@@ -982,24 +966,24 @@
           "lib/netstandard1.5/StackExchange.Redis.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore/2.5.0": {
+      "Swashbuckle.AspNetCore/3.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "Swashbuckle.AspNetCore.Swagger": "2.5.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "2.5.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "2.5.0"
+          "Swashbuckle.AspNetCore.Swagger": "3.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "3.0.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "3.0.0"
         },
         "runtime": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         },
         "compile": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/2.5.0": {
+      "Swashbuckle.AspNetCore.Swagger/3.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.1.0",
           "Microsoft.AspNetCore.Mvc.Formatters.Json": "2.1.0",
@@ -1007,34 +991,34 @@
         },
         "runtime": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         },
         "compile": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/2.5.0": {
+      "Swashbuckle.AspNetCore.SwaggerGen/3.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.ApiExplorer": "2.1.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.1.0",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "2.1.0",
           "NETStandard.Library": "2.0.3",
-          "Swashbuckle.AspNetCore.Swagger": "2.5.0",
+          "Swashbuckle.AspNetCore.Swagger": "3.0.0",
           "System.Xml.XPath": "4.3.0"
         },
         "runtime": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         },
         "compile": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/2.5.0": {
+      "Swashbuckle.AspNetCore.SwaggerUI/3.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Routing": "2.1.0",
           "Microsoft.AspNetCore.StaticFiles": "2.1.0",
@@ -1044,8 +1028,8 @@
         },
         "runtime": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
           }
         },
         "compile": {
@@ -4405,13 +4389,6 @@
       "path": "aspectcore.extensions.reflection/0.5.0",
       "hashPath": "aspectcore.extensions.reflection.0.5.0.nupkg.sha512"
     },
-    "Autofac/4.8.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
-      "path": "autofac/4.8.1",
-      "hashPath": "autofac.4.8.1.nupkg.sha512"
-    },
     "AutoMapper/7.0.1": {
       "type": "package",
       "serviceable": true,
@@ -4426,12 +4403,12 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/4.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.4.0.1.nupkg.sha512"
     },
-    "Bucket.AspNetCore/1.0.8.2": {
+    "Bucket.AspNetCore/1.0.8.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YtiymwFmpwjguV9BxwBt/B6+NANV8voWvMS32ccH2D9QIXOquIS+o1E5x2R0gPGyc82tocO97hNg42vsjeMjuA==",
-      "path": "bucket.aspnetcore/1.0.8.2",
-      "hashPath": "bucket.aspnetcore.1.0.8.2.nupkg.sha512"
+      "sha512": "sha512-KuLBcRPyeMl3pBUSSdCWrBHIAcz38BQRBC9X/clY/aIn7kLpbrd1hY95OV+eIlpHf6HpXnWTc7oI3mWmsIaGxg==",
+      "path": "bucket.aspnetcore/1.0.8.3",
+      "hashPath": "bucket.aspnetcore.1.0.8.3.nupkg.sha512"
     },
     "Bucket.ConfigCenter/1.1.0.1": {
       "type": "package",
@@ -4468,12 +4445,12 @@
       "path": "bucket.eventbus/1.1.0.1",
       "hashPath": "bucket.eventbus.1.1.0.1.nupkg.sha512"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sLhxoqeq2Bz/ALa/U4gpuJa20uD5plPitTbdcR7ad0S9/391T08jCr1bsEuP4Akgz7CIzuCT8ZrGooY5YWcZBQ==",
-      "path": "bucket.eventbus.rabbitmq/1.1.0.1",
-      "hashPath": "bucket.eventbus.rabbitmq.1.1.0.1.nupkg.sha512"
+      "sha512": "sha512-Izpfl9n8KLN3e8uImDIU1CL7xdfYZbdSqPjPrzUWb8Lufxfw8w7MT0vstwymrkoVRWLZ6FIDcgD164PYbHaKrg==",
+      "path": "bucket.eventbus.rabbitmq/1.1.0.2",
+      "hashPath": "bucket.eventbus.rabbitmq.1.1.0.2.nupkg.sha512"
     },
     "Bucket.Logging/1.1.0.1": {
       "type": "package",
@@ -4755,33 +4732,33 @@
       "path": "stackexchange.redis/1.2.6",
       "hashPath": "stackexchange.redis.1.2.6.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore/2.5.0": {
+    "Swashbuckle.AspNetCore/3.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MDGQGeHQbQrEfto4hQt4CuolBz6szWLxpDXaQMV4xHV2bBnrYDcu25fF2rdqvnGiQlUbhw4pSXHOesUx+3/iow==",
-      "path": "swashbuckle.aspnetcore/2.5.0",
-      "hashPath": "swashbuckle.aspnetcore.2.5.0.nupkg.sha512"
+      "sha512": "sha512-aM17YeBlYLIftD+4xCUPw/yT+FLjCyOCFinikXj42hntFYkkAuTRGLm9x+t7kfC13/OBiMJ1XEjl3MGeknx1cw==",
+      "path": "swashbuckle.aspnetcore/3.0.0",
+      "hashPath": "swashbuckle.aspnetcore.3.0.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.Swagger/2.5.0": {
+    "Swashbuckle.AspNetCore.Swagger/3.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u7QeHMOlxP6aqTwdlDantmChT7zzg90WI3m4Cy8oRVgPKss3uZBjvweDMIHxkMUsvt6Bt6EyiWBWyndYEEyyzA==",
-      "path": "swashbuckle.aspnetcore.swagger/2.5.0",
-      "hashPath": "swashbuckle.aspnetcore.swagger.2.5.0.nupkg.sha512"
+      "sha512": "sha512-smrewcRU7HK+3WRZWNYFXVAqD1apyIEwcYEdzVu23tNJek8GQM1V8yqIlj41D8CbYoqaeF+fDhkUDY6FSXUDuw==",
+      "path": "swashbuckle.aspnetcore.swagger/3.0.0",
+      "hashPath": "swashbuckle.aspnetcore.swagger.3.0.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/2.5.0": {
+    "Swashbuckle.AspNetCore.SwaggerGen/3.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ox81z9CNerBFOFPW3spwQExoz/Lc3DoKfaJgvlC4oFJExelQ8skfgvAA1tURu9Ltbihg+BPDJS9ANfi6NAmWkw==",
-      "path": "swashbuckle.aspnetcore.swaggergen/2.5.0",
-      "hashPath": "swashbuckle.aspnetcore.swaggergen.2.5.0.nupkg.sha512"
+      "sha512": "sha512-DjGV/s6dUi+Xg4ofc2/TCDJlFhGAstvStCBAJ8F2mllIRAtf+s0HsfAIPmFy+W0gOzo1/voRtMKU1uvINZtDFw==",
+      "path": "swashbuckle.aspnetcore.swaggergen/3.0.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.3.0.0.nupkg.sha512"
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/2.5.0": {
+    "Swashbuckle.AspNetCore.SwaggerUI/3.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Vl/b/evziaRvdgA2VYf58PLdQnZyEhtSE1cBikwgORXexnAjeSHGb9ksgQLd8ZvTUD7hTYjnbXQHuKCYe2S3zA==",
-      "path": "swashbuckle.aspnetcore.swaggerui/2.5.0",
-      "hashPath": "swashbuckle.aspnetcore.swaggerui.2.5.0.nupkg.sha512"
+      "sha512": "sha512-Gg3rELfq7qJOx8d4xO6hvqSdhMk9ofQCdtLVjBAAVyKehkJRCqiXUO+hJ+/GeEngkaLEglaK/+6an4gC/AxOlg==",
+      "path": "swashbuckle.aspnetcore.swaggerui/3.0.0",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.3.0.0.nupkg.sha512"
     },
     "System.ComponentModel/4.3.0": {
       "type": "package",

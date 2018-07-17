@@ -1,0 +1,12 @@
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\bin\Release\netstandard2.0\Bucket.ServiceDiscovery.deps.json
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\bin\Release\netstandard2.0\Bucket.ServiceDiscovery.dll
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\bin\Release\netstandard2.0\Bucket.ServiceDiscovery.pdb
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\bin\Release\netstandard2.0\Bucket.Core.dll
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\bin\Release\netstandard2.0\Bucket.Core.pdb
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.dll
+D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery\obj\Release\netstandard2.0\Bucket.ServiceDiscovery.pdb

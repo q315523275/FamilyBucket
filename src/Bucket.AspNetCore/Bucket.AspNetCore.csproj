@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.8.2</Version>
+    <Version>1.1.0.2</Version>
     <Description>Bucket.AspNetCore</Description>
     <Authors>Bucket.AspNetCore</Authors>
     <Company>Bucket.AspNetCore</Company>
@@ -24,20 +24,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Bucket.Core\Bucket.Core.csproj" />
-    <ProjectReference Include="..\Config\Bucket.ConfigService\Bucket.ConfigCenter.csproj" />
-    <ProjectReference Include="..\ErrorCode\Bucket.ErrorCodeStore\Bucket.ErrorCodeStore.csproj" />
-    <ProjectReference Include="..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
-    <ProjectReference Include="..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
-    <ProjectReference Include="..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
-    <ProjectReference Include="..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\ServiceClient\Bucket.ServiceClient.Http\Bucket.ServiceClient.Http.csproj" />
-    <ProjectReference Include="..\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
-    <ProjectReference Include="..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
     <ProjectReference Include="..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
     <ProjectReference Include="..\Utility\Bucket.Redis\Bucket.Redis.csproj" />
   </ItemGroup>

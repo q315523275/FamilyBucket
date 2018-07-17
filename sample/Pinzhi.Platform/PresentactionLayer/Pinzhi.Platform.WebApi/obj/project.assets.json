@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "AspectCore.Abstractions/0.5.0": {
+      "AspectCore.Abstractions/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -15,11 +15,11 @@
           "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
         }
       },
-      "AspectCore.Core/0.5.0": {
+      "AspectCore.Core/0.7.0": {
         "type": "package",
         "dependencies": {
-          "AspectCore.Abstractions": "0.5.0",
-          "AspectCore.Extensions.Reflection": "0.5.0",
+          "AspectCore.Abstractions": "0.7.0",
+          "AspectCore.Extensions.Reflection": "0.7.0",
           "Microsoft.CSharp": "4.5.0-rc1",
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.Lightweight": "4.3.0"
@@ -31,7 +31,7 @@
           "lib/netstandard2.0/AspectCore.Core.dll": {}
         }
       },
-      "AspectCore.Extensions.Reflection/0.5.0": {
+      "AspectCore.Extensions.Reflection/0.7.0": {
         "type": "package",
         "dependencies": {
           "System.Reflection.Emit.Lightweight": "4.3.0",
@@ -42,19 +42,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
-      "Autofac/4.8.1": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.ComponentModel": "4.0.1"
-        },
-        "compile": {
-          "lib/netstandard1.1/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.1/Autofac.dll": {}
         }
       },
       "AutoMapper/7.0.1": {
@@ -82,25 +69,18 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.0.8.2": {
+      "Bucket.AspNetCore/1.1.0.2": {
         "type": "package",
         "dependencies": {
-          "Bucket.ConfigCenter": "1.1.0.1",
-          "Bucket.Core": "1.1.0",
-          "Bucket.ErrorCodeStore": "1.1.0.1",
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.EventBus.RabbitMQ": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Logging.Events": "1.1.0.1",
+          "Bucket.Core": "1.1.0.2",
           "Bucket.Redis": "1.0.0",
           "Bucket.ServiceClient.Http": "1.1.0",
-          "Bucket.ServiceDiscovery.Consul": "1.1.0",
           "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0.1",
           "Microsoft.AspNetCore.Authentication": "2.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
           "Microsoft.AspNetCore.Mvc": "2.1.0",
-          "Microsoft.IdentityModel.Tokens": "5.2.2"
+          "Microsoft.Extensions.Logging": "2.1.0",
+          "Microsoft.IdentityModel.Tokens": "5.2.4"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
@@ -109,20 +89,23 @@
           "lib/netstandard2.0/Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.ConfigCenter/1.1.0.1": {
+      "Bucket.Config/1.1.0.2": {
         "type": "package",
         "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Bucket.Redis": "1.0.0"
+          "Bucket.Core": "1.1.0.2",
+          "Bucket.Redis": "1.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0"
         },
         "compile": {
-          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
+          "lib/netstandard2.0/Bucket.Config.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Bucket.ConfigCenter.dll": {}
+          "lib/netstandard2.0/Bucket.Config.dll": {}
         }
       },
-      "Bucket.Core/1.1.0": {
+      "Bucket.Core/1.1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
@@ -148,21 +131,25 @@
           "lib/netstandard2.0/Bucket.DbContext.dll": {}
         }
       },
-      "Bucket.ErrorCodeStore/1.1.0.1": {
+      "Bucket.ErrorCode/1.1.0.2": {
         "type": "package",
         "dependencies": {
-          "Bucket.Core": "1.1.0"
+          "Bucket.Core": "1.1.0.2",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0"
         },
         "compile": {
-          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
+          "lib/netstandard2.0/Bucket.ErrorCode.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Bucket.ErrorCodeStore.dll": {}
+          "lib/netstandard2.0/Bucket.ErrorCode.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.1": {
+      "Bucket.EventBus/1.1.0.2": {
         "type": "package",
         "dependencies": {
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -173,11 +160,10 @@
           "lib/netstandard2.0/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.1": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.3": {
         "type": "package",
         "dependencies": {
-          "Autofac": "4.8.1",
-          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.2",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -190,7 +176,19 @@
           "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.1": {
+      "Bucket.LoadBalancer/1.0.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.LoadBalancer.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.LoadBalancer.dll": {}
+        }
+      },
+      "Bucket.Logging/1.1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.0",
@@ -203,11 +201,11 @@
           "lib/netstandard2.0/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.1": {
+      "Bucket.Logging.Events/1.1.0.2": {
         "type": "package",
         "dependencies": {
           "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1"
+          "Bucket.Logging": "1.1.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.Logging.Events.dll": {}
@@ -240,11 +238,30 @@
           "lib/netstandard2.0/Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery.Consul/1.1.0": {
+      "Bucket.ServiceDiscovery/1.0.0.1": {
         "type": "package",
         "dependencies": {
-          "Bucket.Core": "1.1.0",
-          "Consul": "0.7.2.4",
+          "Bucket.Core": "1.1.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Bucket.ServiceDiscovery.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Bucket.ServiceDiscovery.dll": {}
+        }
+      },
+      "Bucket.ServiceDiscovery.Consul/1.1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Bucket.Core": "1.1.0.2",
+          "Bucket.ServiceDiscovery": "1.0.0.1",
+          "Consul": "0.7.2.5",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Configuration": "2.1.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
           "SemanticVersioning": "1.1.0"
         },
         "compile": {
@@ -254,17 +271,19 @@
           "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
-      "Bucket.Tracing/1.0.0.1": {
+      "Bucket.Tracing/1.0.0.2": {
         "type": "package",
         "dependencies": {
-          "AspectCore.Core": "0.5.0",
-          "Bucket.Core": "1.1.0",
+          "AspectCore.Core": "0.7.0",
+          "Bucket.Core": "1.1.0.2",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.0",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.Options": "2.1.0",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
           "Microsoft.Extensions.Primitives": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -275,12 +294,12 @@
           "lib/netstandard2.0/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0.1": {
+      "Bucket.Tracing.Events/1.0.0.2": {
         "type": "package",
         "dependencies": {
           "Bucket.EventBus": "1.1.0.1",
           "Bucket.Logging": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1"
+          "Bucket.Tracing": "1.0.0.2"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.Tracing.Events.dll": {}
@@ -289,7 +308,7 @@
           "lib/netstandard2.0/Bucket.Tracing.Events.dll": {}
         }
       },
-      "Bucket.Utility/1.1.0.2": {
+      "Bucket.Utility/1.1.0.3": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.1.0",
@@ -297,8 +316,8 @@
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Nito.AsyncEx.Context": "1.1.0",
-          "System.ComponentModel.Annotations": "4.5.0",
-          "ZKWeb.System.Drawing": "4.0.1"
+          "SkiaSharp": "1.60.2",
+          "System.ComponentModel.Annotations": "4.5.0"
         },
         "compile": {
           "lib/netstandard2.0/Bucket.Utility.dll": {}
@@ -307,7 +326,7 @@
           "lib/netstandard2.0/Bucket.Utility.dll": {}
         }
       },
-      "Consul/0.7.2.4": {
+      "Consul/0.7.2.5": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2634,7 +2653,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.2": {
+      "Microsoft.IdentityModel.Logging/5.2.4": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2699,14 +2718,15 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.WsFederation.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.2": {
+      "Microsoft.IdentityModel.Tokens/5.2.4": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.2",
+          "Microsoft.IdentityModel.Logging": "5.2.4",
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
+          "System.Reflection": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -3402,6 +3422,37 @@
           "lib/netstandard2.0/SemVer.dll": {}
         }
       },
+      "SkiaSharp/1.60.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/tizen-armel/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-armel"
+          },
+          "runtimes/tizen-x86/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-x86"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_green/1.1.7": {
         "type": "package",
         "dependencies": {
@@ -3549,13 +3600,13 @@
           "lib/netstandard1.5/StackExchange.Redis.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore/2.5.0": {
+      "Swashbuckle.AspNetCore/3.0.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "Swashbuckle.AspNetCore.Swagger": "2.5.0",
-          "Swashbuckle.AspNetCore.SwaggerGen": "2.5.0",
-          "Swashbuckle.AspNetCore.SwaggerUI": "2.5.0"
+          "Swashbuckle.AspNetCore.Swagger": "3.0.0",
+          "Swashbuckle.AspNetCore.SwaggerGen": "3.0.0",
+          "Swashbuckle.AspNetCore.SwaggerUI": "3.0.0"
         },
         "compile": {
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
@@ -3564,7 +3615,7 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.Swagger/2.5.0": {
+      "Swashbuckle.AspNetCore.Swagger/3.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "1.0.4",
@@ -3578,14 +3629,14 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerGen/2.5.0": {
+      "Swashbuckle.AspNetCore.SwaggerGen/3.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.ApiExplorer": "1.0.4",
           "Microsoft.AspNetCore.Mvc.Core": "1.0.4",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.4",
           "NETStandard.Library": "1.6.1",
-          "Swashbuckle.AspNetCore.Swagger": "2.5.0",
+          "Swashbuckle.AspNetCore.Swagger": "3.0.0",
           "System.Xml.XPath": "4.0.1"
         },
         "compile": {
@@ -3595,7 +3646,7 @@
           "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll": {}
         }
       },
-      "Swashbuckle.AspNetCore.SwaggerUI/2.5.0": {
+      "Swashbuckle.AspNetCore.SwaggerUI/3.0.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Routing": "1.0.4",
@@ -5511,32 +5562,15 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "ZKWeb.System.Drawing/4.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Collections.NonGeneric": "4.3.0",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Threading.Thread": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/ZKWeb.System.Drawing.dll": {}
-        }
-      },
       "Pinzhi.Platform.Business/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AutoMapper": "6.2.2",
-          "Bucket.Core": "1.1.0",
+          "Bucket.Core": "1.1.0.2",
           "Bucket.DbContext": "1.0.3",
           "Bucket.Redis": "1.0.0",
-          "Bucket.Utility": "1.1.0.2",
+          "Bucket.Utility": "1.1.0.3",
           "Pinzhi.Platform.DTO": "1.0.0",
           "Pinzhi.Platform.Interface": "1.0.0",
           "Pinzhi.Platform.Model": "1.0.0"
@@ -5590,47 +5624,37 @@
     }
   },
   "libraries": {
-    "AspectCore.Abstractions/0.5.0": {
-      "sha512": "fQDiIrOGH5vDkLfSWsQjSaf8aK1JyD0Mh8lzr+oUjf2TxQ2R9IcBtf6Mv0hnyMSrc0qA9sI/3YFPYPjHiWOfRA==",
+    "AspectCore.Abstractions/0.7.0": {
+      "sha512": "AgV1OFl0V1i+HBK+dsztIfFMhIDozwDjamqflJW4kpQH20WYCi7b7U35+BcDAd/DePQexGPLesHd0pojNNGCNA==",
       "type": "package",
-      "path": "aspectcore.abstractions/0.5.0",
+      "path": "aspectcore.abstractions/0.7.0",
       "files": [
-        "aspectcore.abstractions.0.5.0.nupkg.sha512",
+        "aspectcore.abstractions.0.7.0.nupkg.sha512",
         "aspectcore.abstractions.nuspec",
+        "lib/net45/AspectCore.Abstractions.dll",
         "lib/netstandard2.0/AspectCore.Abstractions.dll"
       ]
     },
-    "AspectCore.Core/0.5.0": {
-      "sha512": "F65asZpPynOKshZ7W/hNK9JA7eP6/ptYMrQXAlD47F+ue2ILluRx34grlcqeGhV7kAIAb5SOwHEvux4rq5ykLQ==",
+    "AspectCore.Core/0.7.0": {
+      "sha512": "4CtgUQkCkLZAGhzLM1Quc1SoH75qo2l0rdCphiax3oRpus7K7FUu+jvKPKeaRi1u+qLAi28sbCSak9WDATz2Bg==",
       "type": "package",
-      "path": "aspectcore.core/0.5.0",
+      "path": "aspectcore.core/0.7.0",
       "files": [
-        "aspectcore.core.0.5.0.nupkg.sha512",
+        "aspectcore.core.0.7.0.nupkg.sha512",
         "aspectcore.core.nuspec",
+        "lib/net45/AspectCore.Core.dll",
         "lib/netstandard2.0/AspectCore.Core.dll"
       ]
     },
-    "AspectCore.Extensions.Reflection/0.5.0": {
-      "sha512": "ExGw2xUPG9HlXpRWwQk8PoeD1atZUruGOI1/TNOCJpeSjXQuI9uEKzDYynFeGHT1CSyO7rJ94cZArkfN4wEssg==",
+    "AspectCore.Extensions.Reflection/0.7.0": {
+      "sha512": "cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
       "type": "package",
-      "path": "aspectcore.extensions.reflection/0.5.0",
+      "path": "aspectcore.extensions.reflection/0.7.0",
       "files": [
-        "aspectcore.extensions.reflection.0.5.0.nupkg.sha512",
+        "aspectcore.extensions.reflection.0.7.0.nupkg.sha512",
         "aspectcore.extensions.reflection.nuspec",
+        "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
-      ]
-    },
-    "Autofac/4.8.1": {
-      "sha512": "aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
-      "type": "package",
-      "path": "autofac/4.8.1",
-      "files": [
-        "autofac.4.8.1.nupkg.sha512",
-        "autofac.nuspec",
-        "lib/net45/Autofac.dll",
-        "lib/net45/Autofac.xml",
-        "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml"
       ]
     },
     "AutoMapper/7.0.1": {
@@ -5664,32 +5688,32 @@
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
       ]
     },
-    "Bucket.AspNetCore/1.0.8.2": {
-      "sha512": "YtiymwFmpwjguV9BxwBt/B6+NANV8voWvMS32ccH2D9QIXOquIS+o1E5x2R0gPGyc82tocO97hNg42vsjeMjuA==",
+    "Bucket.AspNetCore/1.1.0.2": {
+      "sha512": "JOArjhn6deVhaUAqS91N0q4gvcxgJxMYsI1CS3FXvTO4SlUfw4jgiI8OIZKQhUaUZw8GtLwEW07UGOIcBpCSfQ==",
       "type": "package",
-      "path": "bucket.aspnetcore/1.0.8.2",
+      "path": "bucket.aspnetcore/1.1.0.2",
       "files": [
-        "bucket.aspnetcore.1.0.8.2.nupkg.sha512",
+        "bucket.aspnetcore.1.1.0.2.nupkg.sha512",
         "bucket.aspnetcore.nuspec",
         "lib/netstandard2.0/Bucket.AspNetCore.dll"
       ]
     },
-    "Bucket.ConfigCenter/1.1.0.1": {
-      "sha512": "g37LKxFtb+j0Zc2zGksYtSxIpp6VTORLsO05MZEj3CCYcSSTdSowUgI1qN+9gt8W2IvycgcsdT9RgYXOITLYrQ==",
+    "Bucket.Config/1.1.0.2": {
+      "sha512": "KmaqfezLfdTJ8XDsfmvh/VVvxJrBBQALa7lFIDyVXG2V/hmcohclRHcH6Bm3ipULVcWcAFvr7I03+3nEWJRPLQ==",
       "type": "package",
-      "path": "bucket.configcenter/1.1.0.1",
+      "path": "bucket.config/1.1.0.2",
       "files": [
-        "bucket.configcenter.1.1.0.1.nupkg.sha512",
-        "bucket.configcenter.nuspec",
-        "lib/netstandard2.0/Bucket.ConfigCenter.dll"
+        "bucket.config.1.1.0.2.nupkg.sha512",
+        "bucket.config.nuspec",
+        "lib/netstandard2.0/Bucket.Config.dll"
       ]
     },
-    "Bucket.Core/1.1.0": {
-      "sha512": "DR8WM8yonCj0PJeVnsWW4Ehgf2FFs+ZVshYPlRALBfGyuGkmBpupqEdLgNMC3zzrv7DHxoXYptv0S26O3JVHDQ==",
+    "Bucket.Core/1.1.0.2": {
+      "sha512": "SI7O59gRZjArkmHrjaq9boiNKn8Q6scEzeEC2Dnqbiw+BUhnYMazqcqHHi8drdys5OZVioqk8d37KCniK+TraQ==",
       "type": "package",
-      "path": "bucket.core/1.1.0",
+      "path": "bucket.core/1.1.0.2",
       "files": [
-        "bucket.core.1.1.0.nupkg.sha512",
+        "bucket.core.1.1.0.2.nupkg.sha512",
         "bucket.core.nuspec",
         "lib/netstandard2.0/Bucket.Core.dll"
       ]
@@ -5704,52 +5728,62 @@
         "lib/netstandard2.0/Bucket.DbContext.dll"
       ]
     },
-    "Bucket.ErrorCodeStore/1.1.0.1": {
-      "sha512": "NSLPPi/fkGyqYYIlXJfsqrTriakUOveBDDB3fKO7e2jQNY7yxIWBFkOnWc5DKCJhfZ++x5h4R2+AF9m7Z9qVrQ==",
+    "Bucket.ErrorCode/1.1.0.2": {
+      "sha512": "ynJFS3XeKEi1kZ9gmVm3flZlgaZcu7XSHRU746vG5USLrfY4yaT5YxObZ8rJ5E8kqVJ2YJ4bfOucpCR+bO8SQA==",
       "type": "package",
-      "path": "bucket.errorcodestore/1.1.0.1",
+      "path": "bucket.errorcode/1.1.0.2",
       "files": [
-        "bucket.errorcodestore.1.1.0.1.nupkg.sha512",
-        "bucket.errorcodestore.nuspec",
-        "lib/netstandard2.0/Bucket.ErrorCodeStore.dll"
+        "bucket.errorcode.1.1.0.2.nupkg.sha512",
+        "bucket.errorcode.nuspec",
+        "lib/netstandard2.0/Bucket.ErrorCode.dll"
       ]
     },
-    "Bucket.EventBus/1.1.0.1": {
-      "sha512": "Ul9pRC5HbpFJ82ufp/2zb4KK84Z3Q4ia8LIW3ghrSfnT+QOS5rms5KaksFTiOA75pVrqHh4Hmy16wIu6nQehOA==",
+    "Bucket.EventBus/1.1.0.2": {
+      "sha512": "TOY6oPd72laBqOE0X34+IVdGIsATeLAby24jnXBfpoNXp7DaYrQChzAoLui5s/3EUNF9BC/tKTsCwbXIQzZSAQ==",
       "type": "package",
-      "path": "bucket.eventbus/1.1.0.1",
+      "path": "bucket.eventbus/1.1.0.2",
       "files": [
-        "bucket.eventbus.1.1.0.1.nupkg.sha512",
+        "bucket.eventbus.1.1.0.2.nupkg.sha512",
         "bucket.eventbus.nuspec",
         "lib/netstandard2.0/Bucket.EventBus.dll"
       ]
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.1": {
-      "sha512": "sLhxoqeq2Bz/ALa/U4gpuJa20uD5plPitTbdcR7ad0S9/391T08jCr1bsEuP4Akgz7CIzuCT8ZrGooY5YWcZBQ==",
+    "Bucket.EventBus.RabbitMQ/1.1.0.3": {
+      "sha512": "nThNqg1f5pmWJ+JEVcdn/Xj+IGcpeTVEHjrdhF8k8jjB42VLomVQfiKB+UamfU74L5c+qVWcgju+g5eConxhvQ==",
       "type": "package",
-      "path": "bucket.eventbus.rabbitmq/1.1.0.1",
+      "path": "bucket.eventbus.rabbitmq/1.1.0.3",
       "files": [
-        "bucket.eventbus.rabbitmq.1.1.0.1.nupkg.sha512",
+        "bucket.eventbus.rabbitmq.1.1.0.3.nupkg.sha512",
         "bucket.eventbus.rabbitmq.nuspec",
         "lib/netstandard2.0/Bucket.EventBus.RabbitMQ.dll"
       ]
     },
-    "Bucket.Logging/1.1.0.1": {
-      "sha512": "gf8kQINIokdtMjFHNNky1Cacf7hqNqK8qusKEXpqHSvh6LLL6gg1SLGEhuRvYX3/kULxDJcEtBKA1+M8iQRPgA==",
+    "Bucket.LoadBalancer/1.0.0.1": {
+      "sha512": "3a2dgJ/RPhxM6vnJEb4G20jlqAFeMFiCVbliQbr6S214tMxahpq/7JBAUpn/MnWD9tDftuXqg+jCoGCEjS4bQA==",
       "type": "package",
-      "path": "bucket.logging/1.1.0.1",
+      "path": "bucket.loadbalancer/1.0.0.1",
       "files": [
-        "bucket.logging.1.1.0.1.nupkg.sha512",
+        "bucket.loadbalancer.1.0.0.1.nupkg.sha512",
+        "bucket.loadbalancer.nuspec",
+        "lib/netstandard2.0/Bucket.LoadBalancer.dll"
+      ]
+    },
+    "Bucket.Logging/1.1.0.2": {
+      "sha512": "mdVd9mnQ+KrcPjYxaRvwCPS/wrPgLgiXwvb6115EGTxaWhOXmaxsSh89t/1Fn1qrB+iKLEyVHT9R8mqf++SaqQ==",
+      "type": "package",
+      "path": "bucket.logging/1.1.0.2",
+      "files": [
+        "bucket.logging.1.1.0.2.nupkg.sha512",
         "bucket.logging.nuspec",
         "lib/netstandard2.0/Bucket.Logging.dll"
       ]
     },
-    "Bucket.Logging.Events/1.1.0.1": {
-      "sha512": "UmjMDZuMfYFOSJ50Hm06De7yGqhTcKvnGnpA23c3rqFxjGK66oV3M+oehC8FYpNQeqiH3IE0C012QfVDy8BnBw==",
+    "Bucket.Logging.Events/1.1.0.2": {
+      "sha512": "0Tta/ll6y+cqY5dALf1nIoLXdMLf46835va2mvD9m98x76MUgnj1HfTNjRfu3eb2+VFBqUGqmviHzP0gwdTncg==",
       "type": "package",
-      "path": "bucket.logging.events/1.1.0.1",
+      "path": "bucket.logging.events/1.1.0.2",
       "files": [
-        "bucket.logging.events.1.1.0.1.nupkg.sha512",
+        "bucket.logging.events.1.1.0.2.nupkg.sha512",
         "bucket.logging.events.nuspec",
         "lib/netstandard2.0/Bucket.Logging.Events.dll"
       ]
@@ -5774,52 +5808,62 @@
         "lib/netstandard2.0/Bucket.ServiceClient.Http.dll"
       ]
     },
-    "Bucket.ServiceDiscovery.Consul/1.1.0": {
-      "sha512": "ObtWrcLNOshqe71nSskWVeJoEr5VJeCWmAasssn9/zTwNHb1cYhR+vDREZIynzld+gMKf/9Q2xm43XLD3o+kZw==",
+    "Bucket.ServiceDiscovery/1.0.0.1": {
+      "sha512": "QFP5o1+85qPWoKIfKffEtecAHdJQuZD2AsnrDDD8kQp/bxjJymPy6JwtkZhwC3BDPuj4OjTr6tdG2502nF3gyA==",
       "type": "package",
-      "path": "bucket.servicediscovery.consul/1.1.0",
+      "path": "bucket.servicediscovery/1.0.0.1",
       "files": [
-        "bucket.servicediscovery.consul.1.1.0.nupkg.sha512",
+        "bucket.servicediscovery.1.0.0.1.nupkg.sha512",
+        "bucket.servicediscovery.nuspec",
+        "lib/netstandard2.0/Bucket.ServiceDiscovery.dll"
+      ]
+    },
+    "Bucket.ServiceDiscovery.Consul/1.1.0.2": {
+      "sha512": "5e6OqZfAP4HCzwuCriiO0CqlIoaCNH6rF5iategICawQ1esoATIARsKN29QRfO5xTyKt443w7KmmVoYDerjm6A==",
+      "type": "package",
+      "path": "bucket.servicediscovery.consul/1.1.0.2",
+      "files": [
+        "bucket.servicediscovery.consul.1.1.0.2.nupkg.sha512",
         "bucket.servicediscovery.consul.nuspec",
         "lib/netstandard2.0/Bucket.ServiceDiscovery.Consul.dll"
       ]
     },
-    "Bucket.Tracing/1.0.0.1": {
-      "sha512": "oh57k88HZdgcuhdln+K9x81CR3NVZdmpixcZK2iNfav5d9Nj+KxN3xpzakUTNQwfmYjs6FVABD24vNZHl1GU8Q==",
+    "Bucket.Tracing/1.0.0.2": {
+      "sha512": "Gl7TEm4b40f+n3/5gazFlayt24iT2u4MglUd2PJLrJuiodSyy8HNzdQ/LUXuxRzvjeZO0yAClzmEoqsQclcRbw==",
       "type": "package",
-      "path": "bucket.tracing/1.0.0.1",
+      "path": "bucket.tracing/1.0.0.2",
       "files": [
-        "bucket.tracing.1.0.0.1.nupkg.sha512",
+        "bucket.tracing.1.0.0.2.nupkg.sha512",
         "bucket.tracing.nuspec",
         "lib/netstandard2.0/Bucket.Tracing.dll"
       ]
     },
-    "Bucket.Tracing.Events/1.0.0.1": {
-      "sha512": "deQ2XBL9C1CWA6xaQiAdC+u7FhvRqDEbg7azI4fJCVi9eQJwIJgmzAL8bbdZHHm0LwEi3MHYPguTWNv37QBiRA==",
+    "Bucket.Tracing.Events/1.0.0.2": {
+      "sha512": "S2I7/CH7sjW7ju3Jkx8yqDSjCgtv49qDSdeAcf9Db2PZjIZEZHkWtf+9qIthi3qf6MflU6pMqgeVOn0GbAuhRQ==",
       "type": "package",
-      "path": "bucket.tracing.events/1.0.0.1",
+      "path": "bucket.tracing.events/1.0.0.2",
       "files": [
-        "bucket.tracing.events.1.0.0.1.nupkg.sha512",
+        "bucket.tracing.events.1.0.0.2.nupkg.sha512",
         "bucket.tracing.events.nuspec",
         "lib/netstandard2.0/Bucket.Tracing.Events.dll"
       ]
     },
-    "Bucket.Utility/1.1.0.2": {
-      "sha512": "0LjknAv5cqOyvumnxbMtUu4F3OJSCpiVHu21yO2ftS7MfmexYQDuDsIVSiHRMMARi9yu6qfBiyn/9civVj1G2g==",
+    "Bucket.Utility/1.1.0.3": {
+      "sha512": "B24frIsHuxkYNQ/vJsF3rfqp0sUbVnC0o58ZXiR0EMi0aIsA7uqCGyGNBbuANoq5QTAZdTpE6OpCkAIx2PubPA==",
       "type": "package",
-      "path": "bucket.utility/1.1.0.2",
+      "path": "bucket.utility/1.1.0.3",
       "files": [
-        "bucket.utility.1.1.0.2.nupkg.sha512",
+        "bucket.utility.1.1.0.3.nupkg.sha512",
         "bucket.utility.nuspec",
         "lib/netstandard2.0/Bucket.Utility.dll"
       ]
     },
-    "Consul/0.7.2.4": {
-      "sha512": "MjiFTzAFTwrlb8HmCLlSS673y4FgOF0csB1C50SOZ7zxGMZaQ45wEWZBOiKtzDMRdvntoxGmlZVpW3NtPohPvg==",
+    "Consul/0.7.2.5": {
+      "sha512": "GPFXGD9+V5Uzwrz5wEg90JDSnn+PKCO9mI7g+zDDDrYyZAvEf41+zRYm3UPnyogKHLfkvZjzsYSfCF3RMzJzSw==",
       "type": "package",
-      "path": "consul/0.7.2.4",
+      "path": "consul/0.7.2.5",
       "files": [
-        "consul.0.7.2.4.nupkg.sha512",
+        "consul.0.7.2.5.nupkg.sha512",
         "consul.nuspec",
         "lib/net45/Consul.dll",
         "lib/netstandard1.3/Consul.dll"
@@ -7824,11 +7868,12 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.2": {
-      "sha512": "rBXNKl47ExFyZGNCOU4CimiiC+FenfmIwovu0h/0MdgEvSONO0J14Pidjj7PfMoMcvJVPIbP5Z/lAQsjgagJNw==",
+    "Microsoft.IdentityModel.Logging/5.2.4": {
+      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.2",
+      "path": "microsoft.identitymodel.logging/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.pdb",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
@@ -7838,7 +7883,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -7887,11 +7932,12 @@
         "microsoft.identitymodel.protocols.wsfederation.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.2": {
-      "sha512": "A8UR+TQEG28zft8TGXYdvbHAwvK31dVT76isBa7jwD190TsMMaL0ttivABKH8upabvezHQrAmmQc6bGwQGJeAw==",
+    "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.2",
+      "path": "microsoft.identitymodel.tokens/5.2.4",
       "files": [
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
@@ -7901,7 +7947,7 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.2.nupkg.sha512",
+        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -8938,6 +8984,53 @@
         "semanticversioning.nuspec"
       ]
     },
+    "SkiaSharp/1.60.2": {
+      "sha512": "JcMB63zAfGX2Vdi7hbKlNDdh3QljV/lHDf/yMAuxz1yy0iHtGx840gZqJJgLBzyJw4Ojs9braR+LKO1S3cgyqw==",
+      "type": "package",
+      "path": "skiasharp/1.60.2",
+      "files": [
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net45/SkiaSharp.targets",
+        "build/tizen40/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.xml",
+        "lib/Xamarin.TVOS/SkiaSharp.dll",
+        "lib/Xamarin.TVOS/SkiaSharp.xml",
+        "lib/Xamarin.WatchOS/SkiaSharp.dll",
+        "lib/Xamarin.WatchOS/SkiaSharp.xml",
+        "lib/Xamarin.iOS/SkiaSharp.dll",
+        "lib/Xamarin.iOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/tizen-armel/native/libSkiaSharp.so",
+        "runtimes/tizen-x86/native/libSkiaSharp.so",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.60.2.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
+      ]
+    },
     "SQLitePCLRaw.bundle_green/1.1.7": {
       "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
@@ -9086,53 +9179,53 @@
         "stackexchange.redis.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore/2.5.0": {
-      "sha512": "MDGQGeHQbQrEfto4hQt4CuolBz6szWLxpDXaQMV4xHV2bBnrYDcu25fF2rdqvnGiQlUbhw4pSXHOesUx+3/iow==",
+    "Swashbuckle.AspNetCore/3.0.0": {
+      "sha512": "aM17YeBlYLIftD+4xCUPw/yT+FLjCyOCFinikXj42hntFYkkAuTRGLm9x+t7kfC13/OBiMJ1XEjl3MGeknx1cw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore/2.5.0",
+      "path": "swashbuckle.aspnetcore/3.0.0",
       "files": [
         "lib/net451/Swashbuckle.AspNetCore.dll",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.dll",
-        "swashbuckle.aspnetcore.2.5.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.3.0.0.nupkg.sha512",
         "swashbuckle.aspnetcore.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.Swagger/2.5.0": {
-      "sha512": "u7QeHMOlxP6aqTwdlDantmChT7zzg90WI3m4Cy8oRVgPKss3uZBjvweDMIHxkMUsvt6Bt6EyiWBWyndYEEyyzA==",
+    "Swashbuckle.AspNetCore.Swagger/3.0.0": {
+      "sha512": "smrewcRU7HK+3WRZWNYFXVAqD1apyIEwcYEdzVu23tNJek8GQM1V8yqIlj41D8CbYoqaeF+fDhkUDY6FSXUDuw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swagger/2.5.0",
+      "path": "swashbuckle.aspnetcore.swagger/3.0.0",
       "files": [
         "lib/net451/Swashbuckle.AspNetCore.Swagger.dll",
         "lib/net451/Swashbuckle.AspNetCore.Swagger.xml",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.dll",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.Swagger.xml",
-        "swashbuckle.aspnetcore.swagger.2.5.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swagger.3.0.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swagger.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerGen/2.5.0": {
-      "sha512": "Ox81z9CNerBFOFPW3spwQExoz/Lc3DoKfaJgvlC4oFJExelQ8skfgvAA1tURu9Ltbihg+BPDJS9ANfi6NAmWkw==",
+    "Swashbuckle.AspNetCore.SwaggerGen/3.0.0": {
+      "sha512": "DjGV/s6dUi+Xg4ofc2/TCDJlFhGAstvStCBAJ8F2mllIRAtf+s0HsfAIPmFy+W0gOzo1/voRtMKU1uvINZtDFw==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggergen/2.5.0",
+      "path": "swashbuckle.aspnetcore.swaggergen/3.0.0",
       "files": [
         "lib/net451/Swashbuckle.AspNetCore.SwaggerGen.dll",
         "lib/net451/Swashbuckle.AspNetCore.SwaggerGen.xml",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.dll",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerGen.xml",
-        "swashbuckle.aspnetcore.swaggergen.2.5.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggergen.3.0.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggergen.nuspec"
       ]
     },
-    "Swashbuckle.AspNetCore.SwaggerUI/2.5.0": {
-      "sha512": "Vl/b/evziaRvdgA2VYf58PLdQnZyEhtSE1cBikwgORXexnAjeSHGb9ksgQLd8ZvTUD7hTYjnbXQHuKCYe2S3zA==",
+    "Swashbuckle.AspNetCore.SwaggerUI/3.0.0": {
+      "sha512": "Gg3rELfq7qJOx8d4xO6hvqSdhMk9ofQCdtLVjBAAVyKehkJRCqiXUO+hJ+/GeEngkaLEglaK/+6an4gC/AxOlg==",
       "type": "package",
-      "path": "swashbuckle.aspnetcore.swaggerui/2.5.0",
+      "path": "swashbuckle.aspnetcore.swaggerui/3.0.0",
       "files": [
         "lib/net451/Swashbuckle.AspNetCore.SwaggerUI.dll",
         "lib/net451/Swashbuckle.AspNetCore.SwaggerUI.xml",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.dll",
         "lib/netstandard1.6/Swashbuckle.AspNetCore.SwaggerUI.xml",
-        "swashbuckle.aspnetcore.swaggerui.2.5.0.nupkg.sha512",
+        "swashbuckle.aspnetcore.swaggerui.3.0.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
@@ -14181,17 +14274,6 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "ZKWeb.System.Drawing/4.0.1": {
-      "sha512": "r8OLPZ2cb9SSwjm8GNkMbqOgo58N8d8RwxJN1yF01atv+MQdNOqa5Xx117tIjWUbB6pBnVe6u+pXkYVORaCeWw==",
-      "type": "package",
-      "path": "zkweb.system.drawing/4.0.1",
-      "files": [
-        "lib/net45/ZKWeb.System.Drawing.dll",
-        "lib/netstandard2.0/ZKWeb.System.Drawing.dll",
-        "zkweb.system.drawing.4.0.1.nupkg.sha512",
-        "zkweb.system.drawing.nuspec"
-      ]
-    },
     "Pinzhi.Platform.Business/1.0.0": {
       "type": "project",
       "path": "../../BusinessLayer/Pinzhi.Platform.Business/Pinzhi.Platform.Business.csproj",
@@ -14217,14 +14299,25 @@
     ".NETCoreApp,Version=v2.1": [
       "AutoMapper >= 7.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 4.0.1",
-      "Bucket.AspNetCore >= 1.0.8.2",
+      "Bucket.AspNetCore >= 1.1.0.2",
+      "Bucket.Config >= 1.1.0.2",
       "Bucket.DbContext >= 1.0.3",
-      "Bucket.Utility >= 1.1.0.2",
+      "Bucket.ErrorCode >= 1.1.0.2",
+      "Bucket.EventBus.RabbitMQ >= 1.1.0.3",
+      "Bucket.LoadBalancer >= 1.0.0.1",
+      "Bucket.Logging >= 1.1.0.2",
+      "Bucket.Logging.Events >= 1.1.0.2",
+      "Bucket.ServiceClient.Http >= 1.1.0",
+      "Bucket.ServiceDiscovery >= 1.0.0.1",
+      "Bucket.ServiceDiscovery.Consul >= 1.1.0.2",
+      "Bucket.Tracing >= 1.0.0.2",
+      "Bucket.Tracing.Events >= 1.0.0.2",
+      "Bucket.Utility >= 1.1.0.3",
       "Microsoft.AspNetCore.App >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "Pinzhi.Platform.Business >= 1.0.0",
       "Pinzhi.Platform.Interface >= 1.0.0",
-      "Swashbuckle.AspNetCore >= 2.5.0"
+      "Swashbuckle.AspNetCore >= 3.0.0"
     ]
   },
   "packageFolders": {
@@ -14286,15 +14379,59 @@
           },
           "Bucket.AspNetCore": {
             "target": "Package",
-            "version": "[1.0.8.2, )"
+            "version": "[1.1.0.2, )"
+          },
+          "Bucket.Config": {
+            "target": "Package",
+            "version": "[1.1.0.2, )"
           },
           "Bucket.DbContext": {
             "target": "Package",
             "version": "[1.0.3, )"
           },
-          "Bucket.Utility": {
+          "Bucket.ErrorCode": {
             "target": "Package",
             "version": "[1.1.0.2, )"
+          },
+          "Bucket.EventBus.RabbitMQ": {
+            "target": "Package",
+            "version": "[1.1.0.3, )"
+          },
+          "Bucket.LoadBalancer": {
+            "target": "Package",
+            "version": "[1.0.0.1, )"
+          },
+          "Bucket.Logging": {
+            "target": "Package",
+            "version": "[1.1.0.2, )"
+          },
+          "Bucket.Logging.Events": {
+            "target": "Package",
+            "version": "[1.1.0.2, )"
+          },
+          "Bucket.ServiceClient.Http": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "Bucket.ServiceDiscovery": {
+            "target": "Package",
+            "version": "[1.0.0.1, )"
+          },
+          "Bucket.ServiceDiscovery.Consul": {
+            "target": "Package",
+            "version": "[1.1.0.2, )"
+          },
+          "Bucket.Tracing": {
+            "target": "Package",
+            "version": "[1.0.0.2, )"
+          },
+          "Bucket.Tracing.Events": {
+            "target": "Package",
+            "version": "[1.0.0.2, )"
+          },
+          "Bucket.Utility": {
+            "target": "Package",
+            "version": "[1.1.0.3, )"
           },
           "Microsoft.AspNetCore.App": {
             "target": "Package",
@@ -14307,7 +14444,7 @@
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
-            "version": "[2.5.0, )"
+            "version": "[3.0.0, )"
           }
         },
         "imports": [

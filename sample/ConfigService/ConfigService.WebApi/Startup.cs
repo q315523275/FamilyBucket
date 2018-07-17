@@ -5,20 +5,29 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
-using Bucket.Logging;
-using Bucket.AspNetCore.EventBus;
-using Bucket.AspNetCore.Extensions;
-using Bucket.DbContext;
-using Bucket.AspNetCore.Filters;
+using System.Linq;
+using System.Collections.Generic;
 using Swashbuckle.AspNetCore.Swagger;
 using AutoMapper;
 using SqlSugar;
+
 using ConfigService.Interface;
 using ConfigService.Business;
-using Bucket.Utility;
-using System.Collections.Generic;
-using System.Linq;
 
+using Bucket.DbContext;
+using Bucket.Utility;
+
+using Bucket.ErrorCode.Extensions;
+using Bucket.EventBus.Extensions;
+using Bucket.EventBus.RabbitMQ;
+using Bucket.ServiceDiscovery.Extensions;
+using Bucket.ServiceDiscovery.Consul;
+using Bucket.AspNetCore.Extensions;
+using Bucket.AspNetCore.Filters;
+using Bucket.Tracing.Extensions;
+using Bucket.Tracing.Events;
+using Bucket.Logging;
+using Bucket.Logging.Events;
 namespace ConfigService.WebApi
 {
     /// <summary>
@@ -55,24 +64,16 @@ namespace ConfigService.WebApi
                 config.InitKeyType = InitKeyType.Attribute;
             });
             // 添加错误码服务
-            services.AddErrorCodeService(Configuration);
+            services.AddErrorCodeServer(Configuration);
             // 添加事件驱动
-            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = eventConfig["HostName"];
-                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.QueueName = eventConfig["QueueName"];
-                });
-            });
+            services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscoveryConsul(Configuration);
+            services.AddServiceDiscovery(option => { option.UseConsul(Configuration); });
             // 添加事件队列日志
             services.AddEventLog();
             // 添加链路追踪
             services.AddTracer(Configuration);
+            services.AddEventTrace();
             // 模型映射
             services.AddAutoMapper();
             // 业务注册

@@ -6,4 +6,3 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.DTO\obj\Release\netstan
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.DTO\obj\Release\netstandard2.0\ConfigService.DTO.AssemblyInfo.cs
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.DTO\obj\Release\netstandard2.0\ConfigService.DTO.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.DTO\obj\Release\netstandard2.0\ConfigService.DTO.pdb
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.DTO\obj\Release\netstandard2.0\ConfigService.DTO.csprojAssemblyReference.cache

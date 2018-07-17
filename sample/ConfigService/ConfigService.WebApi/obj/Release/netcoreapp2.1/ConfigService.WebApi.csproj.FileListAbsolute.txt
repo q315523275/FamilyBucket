@@ -22,3 +22,4 @@ D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netc
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.1\ConfigService.WebApi.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.1\ConfigService.WebApi.dll
 D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.1\ConfigService.WebApi.pdb
+D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.WebApi\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs

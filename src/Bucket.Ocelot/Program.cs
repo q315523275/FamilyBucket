@@ -1,31 +1,29 @@
-﻿using System;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Ocelot.Middleware;
-using Ocelot.DependencyInjection;
-using Newtonsoft.Json.Serialization;
-
-using Bucket.AspNetCore.Extensions;
-using Bucket.AspNetCore.EventBus;
-using Microsoft.AspNetCore.Builder;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using Bucket.Logging;
-
-namespace Bucket.Ocelot
+﻿namespace Bucket.Ocelot
 {
-    /// <summary>
-    /// 应用程序
-    /// </summary>
+    using System.IO;
+    using System.Text;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.IdentityModel.Tokens;
+    using Microsoft.AspNetCore.Builder;
+    using System;
+    using global::Ocelot.DependencyInjection;
+    using global::Ocelot.Middleware;
+  
+
+    using Bucket.Logging;
+    using Bucket.Logging.Events;
+    using Bucket.EventBus.Extensions;
+    using Bucket.EventBus.RabbitMQ;
+    using Bucket.Tracing.Extensions;
+    using Bucket.Tracing.Events;
+ 
+    using Newtonsoft.Json.Serialization;
+
     public class Program
     {
-        /// <summary>
-        /// 应用程序入口点
-        /// </summary>
-        /// <param name="args">入口点参数</param>
         public static void Main(string[] args)
         {
             new WebHostBuilder()
@@ -38,9 +36,9 @@ namespace Bucket.Ocelot
                         .AddJsonFile("appsettings.json", true, true)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                         .AddJsonFile("ocelot.json")
-                        //.AddJsonFile($"ocelot.{hostingContext.HostingEnvironment.EnvironmentName}.json")
                         .AddEnvironmentVariables();
                 })
+                .UseUrls("http://*:5000")
                 .ConfigureServices((hostingContext, s) => {
                     // 授权认证
                     AddOcelotJwtBearer(s, hostingContext.Configuration);
@@ -60,58 +58,29 @@ namespace Bucket.Ocelot
                         options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                     });
                     // 添加事件驱动
-                    var eventConfig = hostingContext.Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-                    s.AddEventBus(option =>
-                    {
-                        option.UseRabbitMQ(opt =>
-                        {
-                            opt.HostName = eventConfig["HostName"];
-                            opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                            opt.QueueName = eventConfig["QueueName"];
-                        });
-                    });
+                    s.AddEventBus(option => { option.UseRabbitMQ(hostingContext.Configuration); });
                     // 添加队列日志
                     s.AddEventLog();
                     // 添加链路
                     s.AddTracer(hostingContext.Configuration);
+                    s.AddEventTrace();
                     // 添加网关
                     s.AddOcelot()
-                        .AddCacheManager(x => {
-                            x.WithDictionaryHandle();
-                        })
-                        .AddAdministration("/administration", "axon@2018");
-                    // 添加统计
-                    #region 监控统计
-                    //var metrics = AppMetrics.CreateDefaultBuilder()
-                    //    .Configuration.Configure(options =>{
-                    //        options.AddAppTag("RepairApp");
-                    //        options.AddEnvTag("stage");
-                    //    })
-                    //    .Report.ToInfluxDb(options => {
-                    //        options.InfluxDb.BaseUri = new Uri("http://192.168.1.199:8086");
-                    //        options.InfluxDb.Database = "MetricsDB";
-                    //        options.InfluxDb.UserName = "bucket";
-                    //        options.InfluxDb.Password = "123456";
-                    //        options.HttpPolicy.BackoffPeriod = TimeSpan.FromSeconds(30);
-                    //        options.HttpPolicy.FailuresBeforeBackoff = 5;
-                    //        options.HttpPolicy.Timeout = TimeSpan.FromSeconds(10);
-                    //        options.FlushInterval = TimeSpan.FromSeconds(5);
-                    //    })
-                    //    .Build();
-                    //services.AddMetrics(metrics);
-                    //services.AddMetricsReportScheduler();
-                    //services.AddMetricsTrackingMiddleware();
-                    //services.AddMetricsEndpoints();
-                    #endregion
+                     .AddCacheManager(x =>
+                     {
+                         x.WithDictionaryHandle();
+                     })
+                     .AddStoreOcelotConfigurationInConsul()
+                     .AddAdministration("/administration", "pinzhigo@2018");
                 })
                 .ConfigureLogging((hostingContext, logging) =>
                 {
                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                 })
-                .UseIISIntegration()
+                //.UseIISIntegration()
                 .Configure(app =>
                 {
-                    var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>().AddBucketLog(app, "Bucket.Ocelot");
+                    var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>().AddBucketLog(app, "Pinzhi.ApiGateway");
                     app.UseCors("CorsPolicy");
                     app.UseOcelot().Wait();
                 })

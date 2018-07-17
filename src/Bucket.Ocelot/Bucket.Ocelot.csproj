@@ -1,11 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.1\Bucket.Ocelot.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,19 +9,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="App.Metrics" Version="2.1.0" />
-    <PackageReference Include="App.Metrics.AspNetCore.Endpoints" Version="2.0.0" />
-    <PackageReference Include="App.Metrics.AspNetCore.Reporting" Version="2.0.0" />
-    <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="2.0.0" />
-    <PackageReference Include="App.Metrics.Formatters.Json" Version="2.1.0" />
-    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" />
-    <PackageReference Include="Ocelot" Version="7.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Ocelot" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
+    <ProjectReference Include="..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
+    <ProjectReference Include="..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
     <ProjectReference Include="..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
+    <ProjectReference Include="..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
+    <ProjectReference Include="..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
   </ItemGroup>
 
 </Project>
