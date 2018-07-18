@@ -196,7 +196,7 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -624,7 +624,7 @@
         "version.txt"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -632,7 +632,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.0.2",
+      "Bucket.Core >= 1.1.1",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -641,7 +641,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0.1",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj",
       "projectName": "Bucket.ServiceDiscovery",

@@ -24,12 +24,12 @@
     ".NETCoreApp,Version=v2.1": {
       "Bucket.Ocelot/1.0.0": {
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.EventBus.RabbitMQ": "1.1.0.2",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Logging.Events": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1",
-          "Bucket.Tracing.Events": "1.0.0.1",
+          "Bucket.EventBus": "1.1.0.3",
+          "Bucket.EventBus.RabbitMQ": "1.1.0.3",
+          "Bucket.Logging": "1.1.0.3",
+          "Bucket.Logging.Events": "1.1.0.2",
+          "Bucket.Tracing": "1.0.0.3",
+          "Bucket.Tracing.Events": "1.0.0.2",
           "Microsoft.AspNetCore.App": "2.1.0",
           "Microsoft.NETCore.App": "2.1.0",
           "Ocelot": "7.0.9"
@@ -1333,7 +1333,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Bucket.Core/1.1.0.1": {
+      "Bucket.Core/1.1.0.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Http": "2.1.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
@@ -1345,9 +1345,9 @@
           "Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.1": {
+      "Bucket.EventBus/1.1.0.3": {
         "dependencies": {
-          "Bucket.Core": "1.1.0.1",
+          "Bucket.Core": "1.1.0.2",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1358,9 +1358,9 @@
           "Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.2": {
+      "Bucket.EventBus.RabbitMQ/1.1.0.3": {
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
+          "Bucket.EventBus": "1.1.0.3",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -1373,7 +1373,7 @@
           "Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.1": {
+      "Bucket.Logging/1.1.0.3": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.1.0",
           "Microsoft.Extensions.Logging": "2.1.0"
@@ -1385,10 +1385,10 @@
           "Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.1": {
+      "Bucket.Logging.Events/1.1.0.2": {
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1"
+          "Bucket.EventBus": "1.1.0.3",
+          "Bucket.Logging": "1.1.0.3"
         },
         "runtime": {
           "Bucket.Logging.Events.dll": {}
@@ -1397,10 +1397,10 @@
           "Bucket.Logging.Events.dll": {}
         }
       },
-      "Bucket.Tracing/1.0.0.1": {
+      "Bucket.Tracing/1.0.0.3": {
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.0.1",
+          "Bucket.Core": "1.1.0.2",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
@@ -1419,11 +1419,11 @@
           "Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0.1": {
+      "Bucket.Tracing.Events/1.0.0.2": {
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.1",
-          "Bucket.Logging": "1.1.0.1",
-          "Bucket.Tracing": "1.0.0.1"
+          "Bucket.EventBus": "1.1.0.3",
+          "Bucket.Logging": "1.1.0.3",
+          "Bucket.Tracing": "1.0.0.3"
         },
         "runtime": {
           "Bucket.Tracing.Events.dll": {}
@@ -4703,37 +4703,37 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Bucket.Core/1.1.0.1": {
+    "Bucket.Core/1.1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus/1.1.0.1": {
+    "Bucket.EventBus/1.1.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.2": {
+    "Bucket.EventBus.RabbitMQ/1.1.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Logging/1.1.0.1": {
+    "Bucket.Logging/1.1.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Logging.Events/1.1.0.1": {
+    "Bucket.Logging.Events/1.1.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracing/1.0.0.1": {
+    "Bucket.Tracing/1.0.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracing.Events/1.0.0.1": {
+    "Bucket.Tracing.Events/1.0.0.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

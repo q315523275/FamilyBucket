@@ -14,7 +14,7 @@ namespace Bucket.ErrorCode.Util.Http
             _httpClient.Timeout = TimeSpan.FromSeconds(15);
             _httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
         }
-        public static async Task<HttpResponse<T>> Get<T>(HttpRequest httpRequest, IJsonHelper jsonHelper)
+        public static HttpResponse<T> Get<T>(HttpRequest httpRequest, IJsonHelper jsonHelper)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace Bucket.ErrorCode.Util.Http
                     RequestUri = new Uri(httpRequest.Url),
                     Method = HttpMethod.Get,
                 };
-                var result = await _httpClient.SendAsync(request);
+                var result = _httpClient.SendAsync(request).Result;
                 if (result.StatusCode == HttpStatusCode.OK || result.StatusCode == HttpStatusCode.NotModified)
                 {
                     var content = result.Content.ReadAsStringAsync().Result;

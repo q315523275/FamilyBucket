@@ -21,6 +21,7 @@
     using Bucket.Tracing.Events;
  
     using Newtonsoft.Json.Serialization;
+    using Microsoft.AspNetCore.Http;
 
     public class Program
     {
@@ -81,8 +82,24 @@
                 .Configure(app =>
                 {
                     var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>().AddBucketLog(app, "Pinzhi.ApiGateway");
+                    // 使用跨域
                     app.UseCors("CorsPolicy");
-                    app.UseOcelot().Wait();
+                    // 使用网关
+                    var conf = new OcelotPipelineConfiguration()
+                    {
+                        PreErrorResponderMiddleware = async (ctx, next) =>
+                        {
+                            if (ctx.HttpContext.Request.Path.Equals(new PathString("/")))
+                            {
+                                await ctx.HttpContext.Response.WriteAsync("ok");
+                            }
+                            else
+                            {
+                                await next.Invoke();
+                            }
+                        }
+                    };
+                    app.UseOcelot(conf).Wait();
                 })
                 .Build()
                 .Run();

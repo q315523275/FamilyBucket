@@ -22,8 +22,8 @@ namespace Bucket.ErrorCode
         private ErrorCodeSetting _errorCodeConfiguration;
         private CancellationTokenSource _cancellationTokenSource;
         private ILogger _logger;
-        private ManualResetEventSlim _eventSlim;
         private IJsonHelper _jsonHelper;
+        private static readonly object _lock = new object();
         public RemoteStoreRepository(IOptions<ErrorCodeSetting> errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
         {
             _logger = loggerFactory.CreateLogger<RemoteStoreRepository>();
@@ -31,71 +31,37 @@ namespace Bucket.ErrorCode
             _errorCodeConfiguration = errorCodeConfiguration.Value;
             _jsonHelper = jsonHelper;
         }
-        protected void Sync()
-        {
-            lock (this)
-            {
-                try
-                {
-                    LoadErrorCodeStore().GetAwaiter();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-        /// <summary>
-        /// 定时刷新
-        /// </summary>
-        public void InitScheduleRefresh()
-        {
-            _cancellationTokenSource = new CancellationTokenSource();
-            _eventSlim = new ManualResetEventSlim(false, spinCount: 1);
-            var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
-        }
-        private void ScheduleRefresh()
-        {
-            _logger.LogInformation($"erroCode schedule refresh with interval: {_errorCodeConfiguration.RefreshInteval} s");
-            while (!_cancellationTokenSource.IsCancellationRequested)
-            {
-                Task.Factory.StartNew(() => { Thread.Sleep(_errorCodeConfiguration.RefreshInteval * 1000); _eventSlim.Set(); });
-                _logger.LogInformation($"refresh errorcode for ding");
-                Sync();
-                try
-                {
-                    _eventSlim.Wait(_cancellationTokenSource.Token);
-                    _eventSlim.Reset();
-                }
-                catch (OperationCanceledException ex)
-                {
-                    _logger.LogError($"load errorcode from ding error !\r\n exception: {ExceptionUtil.GetDetailMessage(ex)}");
-                }
-            }
-        }
         public ConcurrentDictionary<string, string> GetStore()
         {
             if (_config.KV == null)
             {
-                _config.KV = new ConcurrentDictionary<string, string>();
-                Sync();
+                lock (_lock)
+                {
+                    if (_config.KV == null)
+                    {
+                        LoadErrorCodeStore();
+                        InitScheduleRefresh();
+                    }
+                }
             }
             return _config.KV;
         }
-        private async Task LoadErrorCodeStore()
+        private void LoadErrorCodeStore()
         {
             var islocalcache = false;
             var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localerrorcode.json");
             try
             {
-                var url = AssembleQueryConfigUrl();
+                var url = GetQueryConfigUrl();
                 _logger.LogInformation($"loading errorcode from  {url}");
-                var response = await HttpUtil.Get<ApiInfo>(new HttpRequest(url), _jsonHelper);
+                var response = HttpUtil.Get<ApiInfo>(new HttpRequest(url), _jsonHelper);
                 _logger.LogInformation($"errorcode server responds with {response.StatusCode} HTTP status code.");
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     if (response.Body != null && response.Body.Value != null && response.Body.Value.Count > 0)
                     {
+                        if (_config.KV == null)
+                            _config.KV = new ConcurrentDictionary<string, string>();
                         foreach (var kv in response.Body.Value)
                         {
                             _config.KV.AddOrUpdate(kv.ErrorCode, kv.ErrorMessage, (x, y) => kv.ErrorMessage);
@@ -116,7 +82,7 @@ namespace Bucket.ErrorCode
             }
             catch (Exception ex)
             {
-                _logger.LogError($"errorCode load error from ding: {ExceptionUtil.GetDetailMessage(ex)}");
+                _logger.LogError($"errorCode load error from ding:", ex);
                 if (System.IO.File.Exists(localcachepath))
                 {
                     var json = System.IO.File.ReadAllText(localcachepath);
@@ -125,13 +91,28 @@ namespace Bucket.ErrorCode
                 _logger.LogInformation($"errorCode load error from ding,local disk cache recovery success.");
             }
         }
-        private string AssembleQueryConfigUrl()
+        private string GetQueryConfigUrl()
         {
             string url = _errorCodeConfiguration.ServerUrl.TrimEnd('/');
 
             var uri = $"{url}/ErrorCode/GetList";
             var query = $"source=PZGO";
             return $"{uri}?{query}";
+        }
+        private void InitScheduleRefresh()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+        }
+        private void ScheduleRefresh()
+        {
+            _logger.LogInformation($"erroCode schedule refresh with interval: {_errorCodeConfiguration.RefreshInteval} s");
+            while (!_cancellationTokenSource.IsCancellationRequested)
+            {
+                Thread.Sleep(_errorCodeConfiguration.RefreshInteval * 1000);
+                _logger.LogInformation($"refresh errorcode for ding");
+                LoadErrorCodeStore();
+            }
         }
         public void Dispose()
         {

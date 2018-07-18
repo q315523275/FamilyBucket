@@ -1992,7 +1992,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0.2",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj",
       "projectName": "Bucket.Logging",

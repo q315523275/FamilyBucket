@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.EventBus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0.3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.EventBus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.EventBus")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.3")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

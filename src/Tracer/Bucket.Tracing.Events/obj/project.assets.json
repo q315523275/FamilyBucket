@@ -1137,7 +1137,7 @@
           "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1151,11 +1151,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.2": {
+      "Bucket.EventBus/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1166,7 +1166,7 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.2": {
+      "Bucket.Logging/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1180,12 +1180,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Tracing/1.0.0.2": {
+      "Bucket.Tracing/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
@@ -3393,22 +3393,22 @@
         "system.valuetuple.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.EventBus/1.1.0.2": {
+    "Bucket.EventBus/1.1.1": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.Logging/1.1.0.2": {
+    "Bucket.Logging/1.1.1": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Tracing/1.0.0.2": {
+    "Bucket.Tracing/1.1.1": {
       "type": "project",
       "path": "../Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Bucket.Tracing/Bucket.Tracing.csproj"
@@ -3416,9 +3416,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.EventBus >= 1.1.0.2",
-      "Bucket.Logging >= 1.1.0.2",
-      "Bucket.Tracing >= 1.0.0.2",
+      "Bucket.EventBus >= 1.1.1",
+      "Bucket.Logging >= 1.1.1",
+      "Bucket.Tracing >= 1.1.1",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -3427,7 +3427,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0.2",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj",
       "projectName": "Bucket.Tracing.Events",

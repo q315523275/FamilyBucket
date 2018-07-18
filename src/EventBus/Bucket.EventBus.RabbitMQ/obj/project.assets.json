@@ -1262,7 +1262,7 @@
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1276,11 +1276,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.2": {
+      "Bucket.EventBus/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -4355,12 +4355,12 @@
         "system.threading.timer.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.EventBus/1.1.0.2": {
+    "Bucket.EventBus/1.1.1": {
       "type": "project",
       "path": "../Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../Bucket.EventBus/Bucket.EventBus.csproj"
@@ -4368,7 +4368,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.EventBus >= 1.1.0.2",
+      "Bucket.EventBus >= 1.1.1",
       "Microsoft.Extensions.Logging >= 2.1.0",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 11.0.2",
@@ -4381,7 +4381,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0.3",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "projectName": "Bucket.EventBus.RabbitMQ",

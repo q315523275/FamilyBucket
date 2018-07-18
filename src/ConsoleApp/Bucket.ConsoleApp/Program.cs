@@ -62,7 +62,7 @@ namespace Bucket.ConsoleApp
                 DbShardingRule = 0,
                 DbType = "MySql",
                 IsDbSharding = false,
-                IsWriteConsole = true
+                IsWriteConsole = false
             });
             // 添加链路追踪ES消费配置
             services.Configure<ElasticsearchOptions>(configuration.GetSection("Elasticsearch"));

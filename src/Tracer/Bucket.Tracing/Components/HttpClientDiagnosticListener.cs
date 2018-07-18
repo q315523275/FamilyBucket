@@ -27,6 +27,11 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("System.Net.Http.Request")]
         public void HttpRequest([Property(Name = "Request")] HttpRequestMessage request)
         {
+            var patterns = _options.IgnoredRoutesRegexPatterns;
+            if (patterns == null || patterns.Any(x => Regex.IsMatch(request.RequestUri.AbsolutePath, x)))
+            {
+                return;
+            }
             var spanBuilder = new SpanBuilder($"httpclient {request.Method}");
             var spanContext = _tracer.Tracer.GetEntrySpan()?.SpanContext;
             if (spanContext != null)

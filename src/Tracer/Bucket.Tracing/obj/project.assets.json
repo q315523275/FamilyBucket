@@ -636,7 +636,7 @@
           "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2300,7 +2300,7 @@
         "system.valuetuple.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -2309,7 +2309,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "AspectCore.Core >= 0.7.0",
-      "Bucket.Core >= 1.1.0.2",
+      "Bucket.Core >= 1.1.1",
       "MessagePack >= 1.7.3.4",
       "MessagePackAnalyzer >= 1.6.0",
       "Microsoft.AspNetCore.Http.Extensions >= 2.1.0",
@@ -2328,7 +2328,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0.2",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj",
       "projectName": "Bucket.Tracing",

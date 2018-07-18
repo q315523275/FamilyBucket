@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.ServiceClient.Http")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("子服务请求组件")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.0")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.ServiceClient.Http")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.ServiceClient.Http")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

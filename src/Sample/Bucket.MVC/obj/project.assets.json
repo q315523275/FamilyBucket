@@ -6164,14 +6164,14 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.1.0.2": {
+      "Bucket.AspNetCore/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Bucket.Redis": "1.0.0",
-          "Bucket.ServiceClient.Http": "1.1.0",
-          "Bucket.Tracing": "1.0.0.2",
+          "Bucket.ServiceClient.Http": "1.1.1",
+          "Bucket.Tracing": "1.1.1",
           "Microsoft.AspNetCore.Authentication": "2.1.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.0",
           "Microsoft.AspNetCore.Mvc": "2.1.0",
@@ -6185,11 +6185,11 @@
           "bin/placeholder/Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.Config/1.1.0.2": {
+      "Bucket.Config/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Bucket.Redis": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
@@ -6202,7 +6202,7 @@
           "bin/placeholder/Bucket.Config.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6216,7 +6216,7 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.DbContext/1.0.3": {
+      "Bucket.DbContext/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6230,11 +6230,11 @@
           "bin/placeholder/Bucket.DbContext.dll": {}
         }
       },
-      "Bucket.ErrorCode/1.1.0.2": {
+      "Bucket.ErrorCode/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.0",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0"
@@ -6246,11 +6246,11 @@
           "bin/placeholder/Bucket.ErrorCode.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.2": {
+      "Bucket.EventBus/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -6261,11 +6261,11 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.0.3": {
+      "Bucket.EventBus.RabbitMQ/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.2",
+          "Bucket.EventBus": "1.1.1",
           "Microsoft.Extensions.Logging": "2.1.0",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.0.1",
@@ -6278,7 +6278,7 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.2": {
+      "Bucket.Logging/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6292,12 +6292,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.2": {
+      "Bucket.Logging.Events/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.2",
-          "Bucket.Logging": "1.1.0.2"
+          "Bucket.EventBus": "1.1.1",
+          "Bucket.Logging": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -6319,11 +6319,11 @@
           "bin/placeholder/Bucket.Redis.dll": {}
         }
       },
-      "Bucket.ServiceClient.Http/1.1.0": {
+      "Bucket.ServiceClient.Http/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2"
+          "Bucket.Core": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
@@ -6332,11 +6332,11 @@
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery/1.0.0.1": {
+      "Bucket.ServiceDiscovery/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2"
+          "Bucket.Core": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
@@ -6345,12 +6345,12 @@
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery.Consul/1.1.0.2": {
+      "Bucket.ServiceDiscovery.Consul/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
-          "Bucket.ServiceDiscovery": "1.0.0.1",
+          "Bucket.Core": "1.1.1",
+          "Bucket.ServiceDiscovery": "1.1.1",
           "Consul": "0.7.2.5",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.0",
           "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
@@ -6367,12 +6367,12 @@
           "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
-      "Bucket.Tracing/1.0.0.2": {
+      "Bucket.Tracing/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
@@ -6391,13 +6391,13 @@
           "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.0.0.2": {
+      "Bucket.Tracing.Events/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.2",
-          "Bucket.Logging": "1.1.0.2",
-          "Bucket.Tracing": "1.0.0.2"
+          "Bucket.EventBus": "1.1.1",
+          "Bucket.Logging": "1.1.1",
+          "Bucket.Tracing": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.Events.dll": {}
@@ -15947,47 +15947,47 @@
         "windowsazure.storage.nuspec"
       ]
     },
-    "Bucket.AspNetCore/1.1.0.2": {
+    "Bucket.AspNetCore/1.1.1": {
       "type": "project",
       "path": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.Config/1.1.0.2": {
+    "Bucket.Config/1.1.1": {
       "type": "project",
       "path": "../../Config/Bucket.Config/Bucket.Config.csproj",
       "msbuildProject": "../../Config/Bucket.Config/Bucket.Config.csproj"
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.DbContext/1.0.3": {
+    "Bucket.DbContext/1.1.1": {
       "type": "project",
       "path": "../../ORM/Bucket.DbContext/Bucket.DbContext.csproj",
       "msbuildProject": "../../ORM/Bucket.DbContext/Bucket.DbContext.csproj"
     },
-    "Bucket.ErrorCode/1.1.0.2": {
+    "Bucket.ErrorCode/1.1.1": {
       "type": "project",
       "path": "../../ErrorCode/Bucket.ErrorCode/Bucket.ErrorCode.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode/Bucket.ErrorCode.csproj"
     },
-    "Bucket.EventBus/1.1.0.2": {
+    "Bucket.EventBus/1.1.1": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.0.3": {
+    "Bucket.EventBus.RabbitMQ/1.1.1": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.Logging/1.1.0.2": {
+    "Bucket.Logging/1.1.1": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.0.2": {
+    "Bucket.Logging.Events/1.1.1": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj"
@@ -15997,27 +15997,27 @@
       "path": "../../Utility/Bucket.Redis/Bucket.Redis.csproj",
       "msbuildProject": "../../Utility/Bucket.Redis/Bucket.Redis.csproj"
     },
-    "Bucket.ServiceClient.Http/1.1.0": {
+    "Bucket.ServiceClient.Http/1.1.1": {
       "type": "project",
       "path": "../../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj",
       "msbuildProject": "../../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj"
     },
-    "Bucket.ServiceDiscovery/1.0.0.1": {
+    "Bucket.ServiceDiscovery/1.1.1": {
       "type": "project",
       "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj",
       "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj"
     },
-    "Bucket.ServiceDiscovery.Consul/1.1.0.2": {
+    "Bucket.ServiceDiscovery.Consul/1.1.1": {
       "type": "project",
       "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
       "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
     },
-    "Bucket.Tracing/1.0.0.2": {
+    "Bucket.Tracing/1.1.1": {
       "type": "project",
       "path": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
     },
-    "Bucket.Tracing.Events/1.0.0.2": {
+    "Bucket.Tracing.Events/1.1.1": {
       "type": "project",
       "path": "../../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj",
       "msbuildProject": "../../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj"
@@ -16030,18 +16030,18 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "Bucket.AspNetCore >= 1.1.0.2",
-      "Bucket.Config >= 1.1.0.2",
-      "Bucket.DbContext >= 1.0.3",
-      "Bucket.ErrorCode >= 1.1.0.2",
-      "Bucket.EventBus >= 1.1.0.2",
-      "Bucket.EventBus.RabbitMQ >= 1.1.0.3",
-      "Bucket.Logging >= 1.1.0.2",
-      "Bucket.Logging.Events >= 1.1.0.2",
-      "Bucket.ServiceDiscovery >= 1.0.0.1",
-      "Bucket.ServiceDiscovery.Consul >= 1.1.0.2",
-      "Bucket.Tracing >= 1.0.0.2",
-      "Bucket.Tracing.Events >= 1.0.0.2",
+      "Bucket.AspNetCore >= 1.1.1",
+      "Bucket.Config >= 1.1.1",
+      "Bucket.DbContext >= 1.1.1",
+      "Bucket.ErrorCode >= 1.1.1",
+      "Bucket.EventBus >= 1.1.1",
+      "Bucket.EventBus.RabbitMQ >= 1.1.1",
+      "Bucket.Logging >= 1.1.1",
+      "Bucket.Logging.Events >= 1.1.1",
+      "Bucket.ServiceDiscovery >= 1.1.1",
+      "Bucket.ServiceDiscovery.Consul >= 1.1.1",
+      "Bucket.Tracing >= 1.1.1",
+      "Bucket.Tracing.Events >= 1.1.1",
       "Bucket.Utility >= 1.1.0.3",
       "Microsoft.AspNetCore.All >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",

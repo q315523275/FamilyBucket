@@ -1573,7 +1573,7 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1587,11 +1587,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery/1.0.0.1": {
+      "Bucket.ServiceDiscovery/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2"
+          "Bucket.Core": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
@@ -5421,12 +5421,12 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.ServiceDiscovery/1.0.0.1": {
+    "Bucket.ServiceDiscovery/1.1.1": {
       "type": "project",
       "path": "../Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj",
       "msbuildProject": "../Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj"
@@ -5434,8 +5434,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.0.2",
-      "Bucket.ServiceDiscovery >= 1.0.0.1",
+      "Bucket.Core >= 1.1.1",
+      "Bucket.ServiceDiscovery >= 1.1.1",
       "Consul >= 0.7.2.5",
       "Microsoft.AspNetCore.Hosting.Abstractions >= 2.1.0",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.1.0",
@@ -5452,7 +5452,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0.2",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj",
       "projectName": "Bucket.ServiceDiscovery.Consul",

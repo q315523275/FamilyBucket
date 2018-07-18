@@ -1,5 +1,4 @@
-﻿using Bucket.Config.Exceptions;
-using Bucket.Core;
+﻿using Bucket.Core;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -15,7 +14,7 @@ namespace Bucket.Config.Util.Http
             _httpClient.Timeout = TimeSpan.FromSeconds(15);
             _httpClient.DefaultRequestHeaders.Connection.Add("keep-alive");
         }
-        public static async Task<HttpResponse<T>> Get<T>(HttpRequest httpRequest, IJsonHelper jsonHelper)
+        public static HttpResponse<T> Get<T>(HttpRequest httpRequest, IJsonHelper jsonHelper)
         {
             try
             {
@@ -24,18 +23,18 @@ namespace Bucket.Config.Util.Http
                     RequestUri = new Uri(httpRequest.Url),
                     Method = HttpMethod.Get,
                 };
-                var response = await _httpClient.SendAsync(request);
+                var response = _httpClient.SendAsync(request).Result;
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.NotModified)
                 {
                     var content = response.Content.ReadAsStringAsync().Result;
                     T body = jsonHelper.DeserializeObject<T>(content);
                     return new HttpResponse<T>(response.StatusCode, body);
                 }
-                throw new RemoteStatusCodeException(response.StatusCode, string.Format("Get operation failed for {0}", httpRequest.Url));
+                throw new Exception($"Get operation failed for {httpRequest.Url}, status {response.StatusCode}");
             }
             catch (Exception ex)
             {
-                throw new RemoteException("Could not complete get operation", ex);
+                throw new Exception("Could not complete get operation", ex);
             }
         }
     }

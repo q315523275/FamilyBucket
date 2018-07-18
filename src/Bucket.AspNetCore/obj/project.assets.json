@@ -3006,7 +3006,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3033,11 +3033,11 @@
           "bin/placeholder/Bucket.Redis.dll": {}
         }
       },
-      "Bucket.ServiceClient.Http/1.1.0": {
+      "Bucket.ServiceClient.Http/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2"
+          "Bucket.Core": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
@@ -3046,12 +3046,12 @@
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.Tracing/1.0.0.2": {
+      "Bucket.Tracing/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
@@ -8959,7 +8959,7 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -8969,12 +8969,12 @@
       "path": "../Utility/Bucket.Redis/Bucket.Redis.csproj",
       "msbuildProject": "../Utility/Bucket.Redis/Bucket.Redis.csproj"
     },
-    "Bucket.ServiceClient.Http/1.1.0": {
+    "Bucket.ServiceClient.Http/1.1.1": {
       "type": "project",
       "path": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj",
       "msbuildProject": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj"
     },
-    "Bucket.Tracing/1.0.0.2": {
+    "Bucket.Tracing/1.1.1": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
@@ -8982,10 +8982,10 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.0.2",
+      "Bucket.Core >= 1.1.1",
       "Bucket.Redis >= 1.0.0",
-      "Bucket.ServiceClient.Http >= 1.1.0",
-      "Bucket.Tracing >= 1.0.0.2",
+      "Bucket.ServiceClient.Http >= 1.1.1",
+      "Bucket.Tracing >= 1.1.1",
       "Microsoft.AspNetCore.Authentication >= 2.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.1.0",
       "Microsoft.AspNetCore.Mvc >= 2.1.0",
@@ -8999,7 +8999,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0.2",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "projectName": "Bucket.AspNetCore",

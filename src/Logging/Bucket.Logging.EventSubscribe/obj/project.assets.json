@@ -1140,7 +1140,7 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
-      "Bucket.Core/1.1.0.2": {
+      "Bucket.Core/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1154,11 +1154,11 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.0.2": {
+      "Bucket.EventBus/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.0.2",
+          "Bucket.Core": "1.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
@@ -1169,7 +1169,7 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.0.2": {
+      "Bucket.Logging/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1183,12 +1183,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.0.2": {
+      "Bucket.Logging.Events/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.0.2",
-          "Bucket.Logging": "1.1.0.2"
+          "Bucket.EventBus": "1.1.1",
+          "Bucket.Logging": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -3278,22 +3278,22 @@
         "version.txt"
       ]
     },
-    "Bucket.Core/1.1.0.2": {
+    "Bucket.Core/1.1.1": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.EventBus/1.1.0.2": {
+    "Bucket.EventBus/1.1.1": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.Logging/1.1.0.2": {
+    "Bucket.Logging/1.1.1": {
       "type": "project",
       "path": "../Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.0.2": {
+    "Bucket.Logging.Events/1.1.1": {
       "type": "project",
       "path": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../Bucket.Logging.Event/Bucket.Logging.Events.csproj"
@@ -3301,8 +3301,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.EventBus >= 1.1.0.2",
-      "Bucket.Logging.Events >= 1.1.0.2",
+      "Bucket.EventBus >= 1.1.1",
+      "Bucket.Logging.Events >= 1.1.1",
       "Dapper >= 1.50.5",
       "MySql.Data >= 6.10.7",
       "NETStandard.Library >= 2.0.3"

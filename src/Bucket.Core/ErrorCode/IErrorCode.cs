@@ -8,6 +8,5 @@ namespace Bucket.ErrorCode
     public interface IErrorCode
     {
         string StringGet(string code);
-        Task<string> StringGetAsync(string code);
     }
 }

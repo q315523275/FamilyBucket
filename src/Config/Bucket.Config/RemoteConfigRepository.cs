@@ -10,23 +10,21 @@ using StackExchange.Redis;
 using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using Bucket.Core;
-using Microsoft.Extensions.Options;
-
 namespace Bucket.Config
 {
     /// <summary>
     /// 远程配置仓储
     /// </summary>
-    public class RemoteConfigRepository
+    public class RemoteConfigRepository: IDisposable
     {
         private BucketConfig _config;
         private ConfigSetting _setting;
         private CancellationTokenSource _cancellationTokenSource;
         private RedisClient _redisClient;
         private ILoadBalancerHouse _loadBalancerHouse;
-        private ILogger _logger;
-        private ManualResetEventSlim _eventSlim;
         private IJsonHelper _jsonHelper;
+        private ILogger _logger;
+        private static readonly object _lock = new object();
         public RemoteConfigRepository(ConfigSetting setting, 
             RedisClient redisClient, 
             ILoadBalancerHouse loadBalancerHouse,
@@ -40,100 +38,41 @@ namespace Bucket.Config
             _loadBalancerHouse = loadBalancerHouse;
             _jsonHelper = jsonHelper;
         }
-        protected void Sync()
-        {
-            lock (this)
-            {
-                try
-                {
-                    LoadBucketConfig().GetAwaiter();
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-        }
-        /// <summary>
-        /// 定时刷新
-        /// </summary>
-        public void InitScheduleRefresh()
-        {
-            _cancellationTokenSource = new CancellationTokenSource();
-            _eventSlim = new ManualResetEventSlim(false, spinCount: 1);
-            var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
-        }
-        private void ScheduleRefresh()
-        {
-            _logger.LogInformation($"Schedule refresh with interval: {_setting.RefreshInteval} s");
-            while (!_cancellationTokenSource.IsCancellationRequested)
-            {
-                Task.Factory.StartNew(() => { Thread.Sleep(_setting.RefreshInteval * 1000); _eventSlim.Set(); });
-                _logger.LogInformation($"refresh config for appid: {_setting.AppId}");
-                Sync();
-                try
-                {
-                    _eventSlim.Wait(_cancellationTokenSource.Token);
-                    _eventSlim.Reset();
-                }
-                catch (OperationCanceledException ex)
-                {
-                    _logger.LogError($"load config from appid: {_setting.AppId} error !\r\n exception: {ExceptionUtil.GetDetailMessage(ex)}");
-                }
-            }
-        }
         public ConcurrentDictionary<string, string> GetConfig()
         {
             if(_config.KV == null)
             {
-                _config.KV = new ConcurrentDictionary<string, string>();
-                Sync();
+                lock (_lock)
+                {
+                    if (_config.KV == null)
+                    {
+                        LoadConfig();
+                        InitScheduleRefresh();
+                        AddChangeListener();
+                    }
+                }
             }
             return _config.KV;
         }
-        /// <summary>
-        /// 变更监听
-        /// </summary>
-        public void AddChangeListener()
-        {
-            if (_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
-            {
-                ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
-                sub.SubscribeAsync("Bucket_ConfigCenter_Event", (channel, message) =>
-                {
-                    var command = _jsonHelper.DeserializeObject<ConfigNetCommand>(message);
-                    if(command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigUpdate)
-                    {
-                        // 更新
-                        Sync();
-                    }
-                    if (command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigReload)
-                    {
-
-                        // 重载
-                        _config.Version = 0;
-                        Sync();
-                    }
-                });
-            }
-        }
-        private async Task LoadBucketConfig()
+        private void LoadConfig()
         {
             var islocalcache = false;
             var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localconfig.json");
             try
             {
-                var url = AssembleQueryConfigUrl();
+                var url = GetQueryConfigUrl();
                 _logger.LogInformation($"{_setting.AppId} loading config from  {url}");
-                var response = await HttpUtil.Get<HttpConfigResult>(new HttpRequest(url), _jsonHelper);
+                var response = HttpUtil.Get<HttpConfigResult>(new HttpRequest(url), _jsonHelper);
                 _logger.LogInformation($"{_setting.AppId} config server responds with {response.StatusCode} HTTP status code.");
                 // request error
                 if (response.Body.ErrorCode != "000000")
                     _logger.LogInformation($"{_setting.AppId} config request error:" + response.Body.Message);
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                   if(response.Body.Version > _config.Version)
+                    if (response.Body.Version > _config.Version)
                     {
+                        if (_config.KV == null)
+                            _config.KV = new ConcurrentDictionary<string, string>();
                         foreach (var kv in response.Body.KV)
                         {
                             _config.KV.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
@@ -157,7 +96,7 @@ namespace Bucket.Config
             }
             catch (Exception ex)
             {
-                _logger.LogError($"config load error from appid {_setting.AppId}: {ExceptionUtil.GetDetailMessage(ex)}");
+                _logger.LogError($"config load error from appid {_setting.AppId}", ex);
                 if (System.IO.File.Exists(localcachepath))
                 {
                     var json = System.IO.File.ReadAllText(localcachepath);
@@ -166,13 +105,13 @@ namespace Bucket.Config
                 _logger.LogInformation($"config load error from appid {_setting.AppId},local disk cache recovery success.");
             }
         }
-        private string AssembleQueryConfigUrl()
+        private string GetQueryConfigUrl()
         {
             string url = string.Empty;
             if (_setting.UseServiceDiscovery && _loadBalancerHouse != null)
             {
-                var _load = _loadBalancerHouse.Get(_setting.ServiceName, "RoundRobin").GetAwaiter().GetResult();
-                var HostAndPort = _load.Lease().GetAwaiter().GetResult();
+                var _load = _loadBalancerHouse.Get(_setting.ServiceName, "RoundRobin").Result;
+                var HostAndPort = _load.Lease().Result;
                 url = $"{HostAndPort.ToUri()}";
             }
             else
@@ -187,6 +126,43 @@ namespace Bucket.Config
             var sign = $"appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
             return $"{uri}?{query}&sign=" + SecureHelper.SHA256(sign);
         }
+        public void InitScheduleRefresh()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+        }
+        private void ScheduleRefresh()
+        {
+            _logger.LogInformation($"schedule refresh with interval: {_setting.RefreshInteval} s");
+            while (!_cancellationTokenSource.IsCancellationRequested)
+            {
+                Thread.Sleep(_setting.RefreshInteval * 1000);
+                _logger.LogInformation($"refresh config for appid: {_setting.AppId}");
+                LoadConfig();
+            }
+        }
+        private void AddChangeListener()
+        {
+            if (_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
+            {
+                ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
+                sub.SubscribeAsync("Bucket_Config_ChangeListener", (channel, message) =>
+                {
+                    var command = _jsonHelper.DeserializeObject<ConfigNetCommand>(message);
+                    if(command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigUpdate)
+                    {
+                        // 更新
+                        LoadConfig();
+                    }
+                    if (command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigReload)
+                    {
+                        // 重载
+                        _config.Version = 0;
+                        LoadConfig();
+                    }
+                });
+            }
+        }
         public void Dispose()
         {
             if (_cancellationTokenSource != null)
@@ -196,7 +172,7 @@ namespace Bucket.Config
             if(_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
             {
                 ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
-                sub.UnsubscribeAsync("Bucket_ConfigCenter_Event");
+                sub.UnsubscribeAsync("Bucket_Config_ChangeListener");
             }
         }
     }

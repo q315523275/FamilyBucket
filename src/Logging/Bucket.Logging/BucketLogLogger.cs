@@ -68,7 +68,7 @@ namespace Bucket.Logging
                     message += "→" + (Convert.IsDBNull(expt.Message) ? "" : expt.Message) + "\r\n";
                     expt = expt.InnerException;
                 }
-                // message += exception.StackTrace;
+                message += exception.StackTrace;
             }
 
             if (!string.IsNullOrEmpty(message)
@@ -95,7 +95,7 @@ namespace Bucket.Logging
                         ProjectName = _projectName,
                         ClassName = _className,
                         IP = ip,
-                        AddTime = DateTime.UtcNow,
+                        AddTime = DateTime.Now,
 
                         LogMessage = message,
                         LogType = logLevel.ToString(),
