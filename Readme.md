@@ -86,6 +86,10 @@ mysql的几个基础库，包括用户的角色等
 
 针对对应项目进行打包，把打包文件放在一个统一的位置，Nuget设置一个本地路径即可
 
+## 进程守护
+
+对比之下，pm2比较好用，linux cd到目录直接 pm2 start pm2.json; 网关中带有示例
+
 
 ## 应用示例
 
@@ -114,8 +118,11 @@ namespace Platform.WebApi
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证
-            services.AddBucketAuthentication(Configuration);
+            // auth 默认配置
+            var audienceConfig = Configuration.GetSection("Audience");
+            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(audienceConfig["Secret"])), SecurityAlgorithms.HmacSha256);
+            var permissionRequirement = new PermissionRequirement(audienceConfig["Issuer"], audienceConfig["Audience"], signingCredentials, TimeSpan.FromHours(4));
+            services.AddSingleton(permissionRequirement);
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -126,54 +133,43 @@ namespace Platform.WebApi
                 config.InitKeyType = InitKeyType.Attribute;
             });
             // 添加错误码服务
-            services.AddErrorCodeService(Configuration);
+            services.AddErrorCodeServer(Configuration);
             // 添加配置服务
             services.AddConfigService(Configuration);
             // 添加事件驱动
-            var eventConfig = Configuration.GetSection("EventBus").GetSection("RabbitMQ");
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(opt =>
-                {
-                    opt.HostName = eventConfig["HostName"];
-                    opt.Port = Convert.ToInt32(eventConfig["Port"]);
-                    opt.ExchangeName = eventConfig["ExchangeName"];
-                    opt.QueueName = eventConfig["QueueName"];
-                });
-            });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscoveryConsul(Configuration);
+            services.AddServiceDiscovery(builder => { builder.UseConsul(Configuration); });
             // 添加事件队列日志
             services.AddEventLog();
             // 添加链路追踪
             services.AddTracer(Configuration);
-            // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
-            services.AddAutoMapper();
+            services.AddEventTrace();
             // 添加业务注册
-
+            foreach (var item in GetClassName("Pinzhi.Identity.Business"))
+            {
+                foreach (var typeArray in item.Value)
+                {
+                    services.AddScoped(typeArray, item.Key);
+                }
+            }
             // 添加过滤器
             services.AddMvc(options =>
             {
-               options.Filters.Add(typeof(WebApiTraceFilterAttribute));
                options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
             });
-            // 添加Swagger
+            // 添加接口文档
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "接口文档", Version = "v1" });
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Platform.WebApi.xml"));
-                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                {
-                    Description = "Authorization: Bearer {token}",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
-                });
-                
+                c.SwaggerDoc("v1", new Info { Title = "认证中心", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Identity.WebApi.xml"));
+                // Swagger验证部分
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
             // 添加工具
             services.AddUtil();
@@ -181,10 +177,13 @@ namespace Platform.WebApi
         /// <summary>
         /// 配置请求管道
         /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
+        /// <param name="loggerFactory"></param>
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            // 日志
-            loggerFactory.AddBucketLog(app, "Pinzhi.Platform");
+            // 日志,事件驱动日志
+            loggerFactory.AddBucketLog(app, "Pinzhi.Identity");
             // 文档
             ConfigSwagger(app);
             // 公共配置
@@ -205,12 +204,10 @@ namespace Platform.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            // 认证授权
-            app.UseAuthentication();
-            // 链路追踪
-            app.UseTracer();
             // 全局错误日志
             app.UseErrorLog();
+            // 认证授权
+            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由
@@ -228,6 +225,27 @@ namespace Platform.WebApi
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
+        }
+        /// <summary>  
+        /// 获取程序集中的实现类对应的多个接口
+        /// </summary>  
+        /// <param name="assemblyName">程序集</param>
+        private Dictionary<Type, Type[]> GetClassName(string assemblyName)
+        {
+            if (!String.IsNullOrEmpty(assemblyName))
+            {
+                Assembly assembly = Assembly.Load(assemblyName);
+                List<Type> ts = assembly.GetTypes().ToList();
+
+                var result = new Dictionary<Type, Type[]>();
+                foreach (var item in ts.Where(s => !s.IsInterface))
+                {
+                    var interfaceType = item.GetInterfaces();
+                    result.Add(item, interfaceType);
+                }
+                return result;
+            }
+            return new Dictionary<Type, Type[]>();
         }
     }
 }
