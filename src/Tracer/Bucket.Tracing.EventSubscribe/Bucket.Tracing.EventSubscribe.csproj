@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Bucket.Tracing\Bucket.Tracing.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbContext\" />
+  </ItemGroup>
+
 </Project>

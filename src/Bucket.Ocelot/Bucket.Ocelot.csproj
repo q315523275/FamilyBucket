@@ -22,4 +22,10 @@
     <ProjectReference Include="..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="pm2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
