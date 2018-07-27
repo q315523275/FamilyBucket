@@ -80,9 +80,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ServiceDiscovery", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.LoadBalancer", "ServiceDiscovery\Bucket.LoadBalancer\Bucket.LoadBalancer.csproj", "{4186448E-CD65-44E4-804B-43AA2F278D77}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Ocelot", "Bucket.Ocelot\Bucket.Ocelot.csproj", "{54436BF3-D655-4127-B3AB-E4A53B63ACD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Grpc", "Sample\Bucket.Grpc\Bucket.Grpc.csproj", "{4413163F-BF87-4436-AE8C-23A95B585DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Grpc", "Sample\Bucket.Grpc\Bucket.Grpc.csproj", "{4413163F-BF87-4436-AE8C-23A95B585DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ApiGateway", "Bucket.ApiGateway\Bucket.ApiGateway.csproj", "{65FCEFAC-CEDD-4A2F-8F4A-30EB6EC2F44A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -186,14 +186,14 @@ Global
 		{4186448E-CD65-44E4-804B-43AA2F278D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4186448E-CD65-44E4-804B-43AA2F278D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4186448E-CD65-44E4-804B-43AA2F278D77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54436BF3-D655-4127-B3AB-E4A53B63ACD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54436BF3-D655-4127-B3AB-E4A53B63ACD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54436BF3-D655-4127-B3AB-E4A53B63ACD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54436BF3-D655-4127-B3AB-E4A53B63ACD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4413163F-BF87-4436-AE8C-23A95B585DE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4413163F-BF87-4436-AE8C-23A95B585DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4413163F-BF87-4436-AE8C-23A95B585DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4413163F-BF87-4436-AE8C-23A95B585DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65FCEFAC-CEDD-4A2F-8F4A-30EB6EC2F44A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65FCEFAC-CEDD-4A2F-8F4A-30EB6EC2F44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65FCEFAC-CEDD-4A2F-8F4A-30EB6EC2F44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65FCEFAC-CEDD-4A2F-8F4A-30EB6EC2F44A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
