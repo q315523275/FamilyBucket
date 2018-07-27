@@ -12,22 +12,15 @@ namespace Bucket.EventBus
 {
     public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
     {
-
-        private readonly IServiceCollection _registry;
-        private readonly Func<IServiceCollection, IServiceProvider> _serviceProviderFactory;
-
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _eventTypes;
 
         public event EventHandler<string> OnEventRemoved;
 
-        public InMemoryEventBusSubscriptionsManager(IServiceCollection registry, Func<IServiceCollection, IServiceProvider> serviceProviderFactory = null)
+        public InMemoryEventBusSubscriptionsManager()
         {
             _handlers = new Dictionary<string, List<Type>>();
             _eventTypes = new List<Type>();
-
-            _registry = registry;
-            _serviceProviderFactory = serviceProviderFactory ?? (sc => registry.BuildServiceProvider());
         }
         /// <summary>
         /// 是否空事件处理器
@@ -54,8 +47,6 @@ namespace Bucket.EventBus
             }
             _handlers[eventName].Add(typeof(TH));
             _eventTypes.Add(typeof(T));
-            // core 容器注入事件执行器
-            _registry.AddSingleton(typeof(TH));
         }
 
         /// <summary>
@@ -169,31 +160,6 @@ namespace Bucket.EventBus
         {
             return typeof(T).Name;
         }
-        private Type GetEventTypeByName(string eventName) => _eventTypes.FirstOrDefault(t => t.Name == eventName);
-        /// <summary>
-        /// 执行事件执行器
-        /// </summary>
-        /// <param name="eventName"></param>
-        /// <param name="message"></param>
-        /// <returns></returns>
-        public async Task ProcessEvent(string eventName, string message)
-        {
-            if (HasSubscriptionsForEvent(eventName))
-            {
-                var subscriptions = GetHandlersForEvent(eventName);
-                var serviceProvider = _serviceProviderFactory(_registry);
-                using (var childScope = serviceProvider.CreateScope())
-                {
-                    var eventType = GetEventTypeByName(eventName);
-                    var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
-                    foreach (var subscription in subscriptions)
-                    {
-                        var handler = childScope.ServiceProvider.GetService(subscription);
-                        var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
-                        await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
-                    }
-                }
-            }
-        }
+        public Type GetEventTypeByName(string eventName) => _eventTypes.FirstOrDefault(t => t.Name == eventName);
     }
 }

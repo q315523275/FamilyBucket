@@ -1,0 +1,12 @@
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\bin\Release\netstandard2.0\Bucket.EventBus.deps.json
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\bin\Release\netstandard2.0\Bucket.EventBus.dll
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\bin\Release\netstandard2.0\Bucket.EventBus.pdb
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\bin\Release\netstandard2.0\Bucket.Core.dll
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\bin\Release\netstandard2.0\Bucket.Core.pdb
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.dll
+D:\work2017\Git\FamilyBucket\Microservice\EventBus\Bucket.EventBus\obj\Release\netstandard2.0\Bucket.EventBus.pdb

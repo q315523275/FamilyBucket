@@ -20,7 +20,7 @@ namespace Bucket.EventBus.Extensions
             var options = new EventBusOptions();
             configAction?.Invoke(options);
 
-            services.AddSingleton<IEventBusSubscriptionsManager>(new InMemoryEventBusSubscriptionsManager(services));
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
 
             foreach (var serviceExtension in options.Extensions)
                 serviceExtension.AddServices(services);

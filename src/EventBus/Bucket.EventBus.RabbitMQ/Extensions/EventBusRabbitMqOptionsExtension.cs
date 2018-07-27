@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using RabbitMQ.Client;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Bucket.EventBus.Abstractions;
 using Bucket.DependencyInjection;
-
+using RabbitMQ.Client;
 namespace Bucket.EventBus.RabbitMQ
 {
     public class EventBusRabbitMqOptionsExtension : IOptionsExtension
@@ -31,9 +29,12 @@ namespace Bucket.EventBus.RabbitMQ
             ));
             services.AddSingleton<IEventBus>(sp => new EventBusRabbitMQ(
                 sp.GetRequiredService<IRabbitMQPersistentConnection>(), 
-                sp.GetRequiredService<ILogger<EventBusRabbitMQ>>(), 
+                sp.GetRequiredService<ILogger<EventBusRabbitMQ>>(),
+                sp,
                 sp.GetRequiredService<IEventBusSubscriptionsManager>(), 
-                _options.QueueName
+                _options.QueueName,
+                prefetchCount: _options.PrefetchCount,
+                retryCount: 5
             ));
         }
     }

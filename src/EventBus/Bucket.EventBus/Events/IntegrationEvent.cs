@@ -9,7 +9,7 @@ namespace Bucket.EventBus.Events
         public IntegrationEvent()
         {
             Id = Guid.NewGuid();
-            CreationDate = DateTime.UtcNow;
+            CreationDate = DateTime.Now;
         }
 
         public Guid Id { get; }

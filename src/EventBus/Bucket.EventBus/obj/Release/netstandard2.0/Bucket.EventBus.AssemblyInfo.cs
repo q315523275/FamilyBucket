@@ -12,7 +12,7 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.EventBus")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.3.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.EventBus")]

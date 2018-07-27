@@ -27,7 +27,6 @@ namespace Bucket.EventBus
         IEnumerable<Type> GetHandlersForEvent<T>() where T : IntegrationEvent;
         IEnumerable<Type> GetHandlersForEvent(string eventName);
         string GetEventKey<T>();
-
-        Task ProcessEvent(string eventName, string message);
+        Type GetEventTypeByName(string eventName);
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.EventBus.RabbitMQ
+﻿namespace Bucket.EventBus.RabbitMQ
 {
     public class EventBusRabbitMqOptions
     {
@@ -22,6 +18,11 @@ namespace Bucket.EventBus.RabbitMQ
         /// <remarks> PLEASE KEEP THIS MATCHING THE DOC ABOVE.</remarks>
         public const string DefaultVHost = "/";
 
+        /// <summary>
+        /// Qos限速
+        /// </summary>
+        public const ushort DefaultPrefetchCount = 1;
+
         /// <summary>The host to connect to.</summary>
         public string HostName { get; set; } = "localhost";
         public int Port { set; get; } = -1;
@@ -29,5 +30,6 @@ namespace Bucket.EventBus.RabbitMQ
         public string Password { get; set; } = DefaultUser;
         public string VirtualHost { get; set; } = DefaultVHost;
         public string QueueName { set; get; }
+        public ushort PrefetchCount { set; get; } = DefaultPrefetchCount;
     }
 }

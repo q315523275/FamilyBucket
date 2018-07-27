@@ -1,6 +1,7 @@
 ﻿using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Events;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Retry;
@@ -11,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Bucket.EventBus.RabbitMQ
 {
@@ -21,19 +24,22 @@ namespace Bucket.EventBus.RabbitMQ
         private readonly IRabbitMQPersistentConnection _persistentConnection;
         private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
+        private readonly IServiceProvider _autofac;
         private readonly int _retryCount;
+        private readonly ushort _prefetchCount;
 
         private IModel _consumerChannel;
         private string _queueName;
-        private bool _createdConsumerChannel;
 
-        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
-            IEventBusSubscriptionsManager subsManager, string queueName = null, int retryCount = 5)
+        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IServiceProvider autofac,
+            IEventBusSubscriptionsManager subsManager, string queueName = null, ushort prefetchCount = 1, int retryCount = 5)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? throw new ArgumentNullException(nameof(subsManager));
             _queueName = queueName;
+            _autofac = autofac;
+            _prefetchCount = prefetchCount;
             _retryCount = retryCount;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
         }
@@ -105,7 +111,7 @@ namespace Bucket.EventBus.RabbitMQ
             }
         }
         /// <summary>
-        /// 订阅
+        /// 订阅注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TH"></typeparam>
@@ -114,6 +120,11 @@ namespace Bucket.EventBus.RabbitMQ
             where TH : IIntegrationEventHandler<T>
         {
             var eventName = _subsManager.GetEventKey<T>();
+            DoInternalSubscription(eventName);
+            _subsManager.AddSubscription<T, TH>();
+        }
+        private void DoInternalSubscription(string eventName)
+        {
             var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);
             if (!containsKey)
             {
@@ -121,19 +132,18 @@ namespace Bucket.EventBus.RabbitMQ
                 {
                     _persistentConnection.TryConnect();
                 }
-                if (!_createdConsumerChannel)
-                {
+
+                if(_consumerChannel == null)
                     _consumerChannel = CreateConsumerChannel();
-                }
+
                 using (var channel = _persistentConnection.CreateModel())
                 {
                     channel.QueueBind(queue: _queueName,
                                       exchange: BROKER_NAME,
                                       routingKey: eventName,
-                                      arguments: new Dictionary<string, object>{ { "x-queue-mode","lazy"} });
+                                      arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
                 }
             }
-            _subsManager.AddSubscription<T, TH>();
         }
         /// <summary>
         /// 取消订阅
@@ -146,7 +156,9 @@ namespace Bucket.EventBus.RabbitMQ
         {
             _subsManager.RemoveSubscription<T, TH>();
         }
-
+        /// <summary>
+        /// 释放
+        /// </summary>
         public void Dispose()
         {
             if (_consumerChannel != null)
@@ -156,16 +168,12 @@ namespace Bucket.EventBus.RabbitMQ
 
             _subsManager.Clear();
         }
-
         /// <summary>
         /// 创建消费监听
         /// </summary>
         /// <returns></returns>
         private IModel CreateConsumerChannel()
         {
-            // 已创建消费通道
-            _createdConsumerChannel = true;
-
             if (!_persistentConnection.IsConnected)
             {
                 _persistentConnection.TryConnect();
@@ -180,31 +188,68 @@ namespace Bucket.EventBus.RabbitMQ
                                  durable: true,
                                  exclusive: false,
                                  autoDelete: false,
-                                 arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy"} });
+                                 arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+            return channel;
+        }
+        /// <summary>
+        /// 存在未订阅已消费误差,故有之
+        /// </summary>
+        public void StartSubscribe()
+        {
+            if (_consumerChannel == null || _consumerChannel.IsClosed)
+                _consumerChannel = CreateConsumerChannel();
 
-            var consumer = new EventingBasicConsumer(channel);
+            _consumerChannel.BasicQos(0, _prefetchCount, false);
+
+            var consumer = new EventingBasicConsumer(_consumerChannel);
+
+            _consumerChannel.BasicConsume(queue: _queueName,
+                     autoAck: false,
+                     consumer: consumer);
+            
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
                 var message = Encoding.UTF8.GetString(ea.Body);
 
-                await _subsManager.ProcessEvent(eventName, message);
+                await ProcessEvent(eventName, message);
 
-                channel.BasicAck(ea.DeliveryTag, multiple: false);
+                _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
             };
 
-            channel.BasicConsume(queue: _queueName,
-                                 autoAck: false,
-                                 consumer: consumer);
-
-            channel.CallbackException += (sender, ea) =>
+            _consumerChannel.CallbackException += (sender, ea) =>
             {
                 _consumerChannel.Dispose();
                 _consumerChannel = CreateConsumerChannel();
             };
-            channel.BasicQos(0, 1, false);
-
-            return channel;
         }
+        /// <summary>
+        /// 执行器
+        /// </summary>
+        /// <param name="eventName"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        private async Task ProcessEvent(string eventName, string message)
+        {
+            if (_subsManager.HasSubscriptionsForEvent(eventName))
+            {
+                using (var scope = _autofac.CreateScope())
+                {
+                    var subscriptions = _subsManager.GetHandlersForEvent(eventName);
+                    foreach (var subscription in subscriptions)
+                    {
+                        var eventType = _subsManager.GetEventTypeByName(eventName);
+                        if (eventType != null)
+                        {
+                            var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
+                            var handler = scope.ServiceProvider.GetRequiredService(subscription);
+                            var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+                            await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

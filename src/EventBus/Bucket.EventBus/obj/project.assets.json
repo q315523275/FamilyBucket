@@ -56,18 +56,6 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/2.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll": {}
-        }
-      },
       "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
         "type": "package",
         "compile": {
@@ -280,22 +268,6 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.WebUtilities.xml",
         "microsoft.aspnetcore.webutilities.2.1.0.nupkg.sha512",
         "microsoft.aspnetcore.webutilities.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.DependencyInjection/2.1.0": {
-      "sha512": "9lHaNBx9sW5I4Lxfb/jyKYgnyjggqST0bnkpyVNIudJtqoXayiVDO8GCIC+S3YRK+JM2oviDJh4X5tJzdXJoSg==",
-      "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/2.1.0",
-      "files": [
-        ".signature.p7s",
-        "lib/net461/Microsoft.Extensions.DependencyInjection.dll",
-        "lib/net461/Microsoft.Extensions.DependencyInjection.xml",
-        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.dll",
-        "lib/netcoreapp2.0/Microsoft.Extensions.DependencyInjection.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.2.1.0.nupkg.sha512",
-        "microsoft.extensions.dependencyinjection.nuspec"
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
@@ -698,7 +670,6 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Bucket.Core >= 1.1.1",
-      "Microsoft.Extensions.DependencyInjection >= 2.1.0",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 11.0.2"
     ]
@@ -708,7 +679,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.1",
+    "version": "1.1.3",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj",
       "projectName": "Bucket.EventBus",
@@ -749,10 +720,6 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": {
-            "target": "Package",
-            "version": "[2.1.0, )"
-          },
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
