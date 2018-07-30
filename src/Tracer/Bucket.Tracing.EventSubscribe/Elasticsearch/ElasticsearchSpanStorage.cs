@@ -1,9 +1,7 @@
 ﻿using Bucket.Tracing.DataContract;
 using Nest;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -36,7 +34,7 @@ namespace Bucket.Tracing.EventSubscribe.Elasticsearch
 
             foreach (var span in spans)
             {
-                var operation = new BulkIndexOperation<Span>(span) { Index = _indexManager.CreateTracingIndex(DateTimeOffset.UtcNow) };
+                var operation = new BulkIndexOperation<Span>(span) { Index = _indexManager.CreateTracingIndex(DateTimeOffset.Now) };
                 bulkRequest.Operations.Add(operation);
             }
 

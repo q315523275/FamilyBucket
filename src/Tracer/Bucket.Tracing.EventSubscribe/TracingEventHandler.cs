@@ -35,6 +35,7 @@ namespace Bucket.Tracing.EventSubscribe
                     //var TimeLength = Math.Round((DateTime.Now - StartTime).TotalMilliseconds, 4);
                     //Console.WriteLine("Elasticsearch数据创建耗时" + TimeLength + "毫秒");
                 }
+                Console.WriteLine("Trace数据消费，线程ID:"+ Thread.CurrentThread.ManagedThreadId + ",时间："+ DateTime.Now.ToString());
             }
             catch(Exception ex)
             {

@@ -11512,11 +11512,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.Grpc\\Bucket.Grpc.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.Grpc\\Bucket.Grpc.csproj",
       "projectName": "Bucket.Grpc",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.Grpc\\Bucket.Grpc.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.Grpc\\Bucket.Grpc.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.Grpc\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.Grpc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

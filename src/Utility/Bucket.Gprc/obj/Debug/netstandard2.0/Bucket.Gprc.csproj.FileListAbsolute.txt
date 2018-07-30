@@ -1,0 +1,12 @@
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\bin\Debug\netstandard2.0\Bucket.Gprc.deps.json
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\bin\Debug\netstandard2.0\Bucket.Gprc.dll
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\bin\Debug\netstandard2.0\Bucket.Gprc.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\bin\Debug\netstandard2.0\Bucket.Core.dll
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\bin\Debug\netstandard2.0\Bucket.Core.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.dll
+D:\work2017\Git\FamilyBucket\Microservice\Utility\Bucket.Gprc\obj\Debug\netstandard2.0\Bucket.Gprc.pdb

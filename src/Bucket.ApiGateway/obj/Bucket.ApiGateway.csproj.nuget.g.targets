@@ -10,6 +10,6 @@
     <Import Project="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\build\netcoreapp2.1\Microsoft.NETCore.App.targets" Condition="Exists('C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\build\netcoreapp2.1\Microsoft.NETCore.App.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\2.1.1\build\netstandard2.0\Microsoft.Extensions.FileProviders.Embedded.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\2.1.1\build\netstandard2.0\Microsoft.Extensions.FileProviders.Embedded.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.viewcompilation\2.1.1\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.viewcompilation\2.1.1\build\netstandard2.0\Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.targets')" />
-    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.app\2.1.1\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.app\2.1.1\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.app\2.1.2\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.app\2.1.2\build\netcoreapp2.1\Microsoft.AspNetCore.App.targets')" />
   </ImportGroup>
 </Project>

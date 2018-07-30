@@ -10,12 +10,12 @@ namespace Bucket.OpenTracing
         public LogField Fields { get; }
 
         public LogData()
-            : this(DateTime.UtcNow, null)
+            : this(DateTime.Now, null)
         {
         }
 
         public LogData(IDictionary<string, object> fields)
-            : this(DateTime.UtcNow, fields)
+            : this(DateTime.Now, fields)
         {
         }
 

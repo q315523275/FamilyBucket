@@ -3046,7 +3046,7 @@
           "bin/placeholder/Bucket.ServiceClient.Http.dll": {}
         }
       },
-      "Bucket.Tracing/1.1.1": {
+      "Bucket.Tracing/1.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -8974,7 +8974,7 @@
       "path": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj",
       "msbuildProject": "../ServiceClient/Bucket.ServiceClient.Http/Bucket.ServiceClient.Http.csproj"
     },
-    "Bucket.Tracing/1.1.1": {
+    "Bucket.Tracing/1.1.3": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
@@ -8985,7 +8985,7 @@
       "Bucket.Core >= 1.1.1",
       "Bucket.Redis >= 1.0.0",
       "Bucket.ServiceClient.Http >= 1.1.1",
-      "Bucket.Tracing >= 1.1.1",
+      "Bucket.Tracing >= 1.1.3",
       "Microsoft.AspNetCore.Authentication >= 2.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 2.1.0",
       "Microsoft.AspNetCore.Mvc >= 2.1.0",
@@ -9001,11 +9001,11 @@
   "project": {
     "version": "1.1.1",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "projectName": "Bucket.AspNetCore",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9025,17 +9025,17 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceClient\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceClient\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceClient\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceClient\\Bucket.ServiceClient.Http\\Bucket.ServiceClient.Http.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Redis\\Bucket.Redis.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Redis\\Bucket.Redis.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Redis\\Bucket.Redis.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Redis\\Bucket.Redis.csproj"
             }
           }
         }

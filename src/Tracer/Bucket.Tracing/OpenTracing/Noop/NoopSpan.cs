@@ -26,7 +26,7 @@ namespace Bucket.OpenTracing.Noop
 
         public void Dispose()
         {
-            Finish(DateTimeOffset.UtcNow);
+            Finish(DateTimeOffset.Now);
         }
     }
 }

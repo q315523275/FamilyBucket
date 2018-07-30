@@ -32,7 +32,7 @@ namespace Bucket.Tracing.Components
             {
                 return;
             }
-            var spanBuilder = new SpanBuilder($"httpclient {request.Method}");
+            var spanBuilder = new SpanBuilder($"httpclient {request.Method} {request.RequestUri.AbsolutePath}");
             var spanContext = _tracer.Tracer.GetEntrySpan()?.SpanContext;
             if (spanContext != null)
             {

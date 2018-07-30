@@ -4355,11 +4355,11 @@
   "project": {
     "version": "1.1.4",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "projectName": "Bucket.EventBus.RabbitMQ",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -4379,8 +4379,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             }
           }
         }

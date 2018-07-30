@@ -81,7 +81,7 @@ namespace Bucket.OpenTracing
 
             var sampled = spanBuilder.Sampled ?? _sampler?.ShouldSample();
             var spanContext = _spanContextFactory.Create(new SpanContextPackage(traceId, null, sampled.GetValueOrDefault(true), baggage, spanBuilder.References));
-            return new Span(spanBuilder.OperationName, spanBuilder.StartTimestamp ?? DateTimeOffset.UtcNow, spanContext, _spanRecorder);
+            return new Span(spanBuilder.OperationName, spanBuilder.StartTimestamp ?? DateTimeOffset.Now, spanContext, _spanRecorder);
         }
     }
 }

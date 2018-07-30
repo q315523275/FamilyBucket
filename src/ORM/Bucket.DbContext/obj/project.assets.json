@@ -6753,11 +6753,11 @@
   "project": {
     "version": "1.1.1",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj",
       "projectName": "Bucket.DbContext",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ORM\\Bucket.DbContext\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ORM\\Bucket.DbContext\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

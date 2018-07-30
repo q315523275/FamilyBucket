@@ -64,12 +64,12 @@ namespace Bucket.OpenTracing
 
         public static ISpan Log(this ISpan span, LogField fields)
         {
-            return Log(span, DateTime.UtcNow, fields);
+            return Log(span, DateTime.Now, fields);
         }
 
         public static void Finish(this ISpan span)
         {
-            span?.Finish(DateTimeOffset.UtcNow);
+            span?.Finish(DateTimeOffset.Now);
         }
 
         public static ISpan Exception(this ISpan span, Exception exception)

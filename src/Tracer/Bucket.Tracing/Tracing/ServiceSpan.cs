@@ -31,7 +31,7 @@ namespace Bucket.Tracing
 
         public void Dispose()
         {
-            Finish(DateTimeOffset.UtcNow);
+            Finish(DateTimeOffset.Now);
         }
 
         public void Finish(DateTimeOffset finishTimestamp)

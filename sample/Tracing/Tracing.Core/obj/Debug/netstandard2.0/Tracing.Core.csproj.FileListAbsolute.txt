@@ -1,0 +1,12 @@
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\bin\Debug\netstandard2.0\Tracing.Core.deps.json
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\bin\Debug\netstandard2.0\Tracing.Core.dll
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\bin\Debug\netstandard2.0\Tracing.Core.pdb
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\bin\Debug\netstandard2.0\Tracing.DataContract.dll
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\bin\Debug\netstandard2.0\Tracing.DataContract.pdb
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.dll
+D:\work2017\Git\FamilyBucket\Tracing\Tracing.Core\obj\Debug\netstandard2.0\Tracing.Core.pdb

@@ -1,0 +1,12 @@
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\bin\Release\netstandard2.0\Bucket.Tracing.deps.json
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\bin\Release\netstandard2.0\Bucket.Tracing.dll
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\bin\Release\netstandard2.0\Bucket.Tracing.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\bin\Release\netstandard2.0\Bucket.Core.dll
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\bin\Release\netstandard2.0\Bucket.Core.pdb
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.csprojAssemblyReference.cache
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.csproj.CoreCompileInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.AssemblyInfoInputs.cache
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.AssemblyInfo.cs
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.csproj.CopyComplete
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.dll
+D:\work2017\Git\FamilyBucket\Microservice\Tracer\Bucket.Tracing\obj\Release\netstandard2.0\Bucket.Tracing.pdb

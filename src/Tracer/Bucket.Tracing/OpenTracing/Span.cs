@@ -34,14 +34,14 @@ namespace Bucket.OpenTracing
 
         public void Dispose()
         {
-            Finish(DateTimeOffset.UtcNow);
+            Finish(DateTimeOffset.Now);
         }
 
         public void Finish(DateTimeOffset finishTimestamp)
         {
             if (Interlocked.CompareExchange(ref _state, 1, 0) != 1)
             {
-                _finishTimestamp = DateTime.UtcNow;
+                _finishTimestamp = DateTime.Now;
                 _spanRecorder.Record(this);
             }
         }

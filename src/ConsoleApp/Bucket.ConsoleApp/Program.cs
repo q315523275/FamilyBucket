@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using System;
@@ -29,6 +28,11 @@ namespace Bucket.ConsoleApp
             // 事件订阅
             eventBus.Subscribe<LogEvent, DbLogEventHandler>();
             eventBus.Subscribe<TracingEvent, TracingEventHandler>();
+            eventBus.StartSubscribe();
+            for (var i = 0; i < 200; i++)
+            {
+                eventBus.Publish(new TracingEvent(new Tracing.DataContract.Span { }));
+            }
         }
         private static void Initialize()
         {
@@ -69,6 +73,9 @@ namespace Bucket.ConsoleApp
             services.AddSingleton<IIndexManager, IndexManager>();
             services.AddSingleton<IElasticClientFactory, ElasticClientFactory>();
             services.AddScoped<ISpanStorage, ElasticsearchSpanStorage>();
+            // 
+            services.AddTransient<DbLogEventHandler>();
+            services.AddTransient<TracingEventHandler>();
             // 容器
             serviceProvider = services.BuildServiceProvider();
         }

@@ -23,6 +23,8 @@ namespace Bucket.Tracing.EventSubscribe.Elasticsearch
             _memoryCache = memoryCache;
             _logger = logger;
             _elasticClient = elasticClientFactory.Create();
+
+            Console.WriteLine("ElasticsearchIndex初始化");
         }
 
         [MethodImpl(MethodImplOptions.Synchronized)]

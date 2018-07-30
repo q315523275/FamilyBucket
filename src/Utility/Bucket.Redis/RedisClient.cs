@@ -21,7 +21,12 @@ namespace Bucket.Redis
         private ConnectionMultiplexer GetConnect(string redisConnectionString)
         {
             var hash = redisConnectionString.GetHashCode();
-            return _connections.GetOrAdd(hash, p => { lock (_lock) return ConnectionMultiplexer.Connect(redisConnectionString);});
+            return _connections.GetOrAdd(hash, p => {
+                lock (_lock)
+                {
+                    return ConnectionMultiplexer.Connect(redisConnectionString);
+                }
+            });
         }
         /// <summary>
         /// 获取数据库

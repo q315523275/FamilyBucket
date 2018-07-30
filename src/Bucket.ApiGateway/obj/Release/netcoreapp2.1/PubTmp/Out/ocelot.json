@@ -1,0 +1,222 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/auth/login",
+      "UpstreamPathTemplate": "/auth/login",
+      "UpstreamHttpMethod": [
+        "Post"
+      ],
+      "AddHeadersToRequest": {},
+      "AddClaimsToRequest": {},
+      "RouteClaimsRequirement": {},
+      "AddQueriesToRequest": {},
+      "RequestIdKey": "",
+      "FileCacheOptions": {
+        "TtlSeconds": 0,
+        "Region": ""
+      },
+      "ReRouteIsCaseSensitive": false,
+      "ServiceName": "Pinzhi.Identity.Service",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.52",
+          "Port": 18082
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18082
+        }
+      ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 0,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 0
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": false,
+        "Period": "",
+        "PeriodTimespan": 0,
+        "Limit": 0
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": true,
+        "UseCookieContainer": true,
+        "UseTracing": false
+      },
+      "UseServiceDiscovery": false,
+      "UpstreamHost": null,
+      "Key": null,
+      "DelegatingHandlers": [],
+      "Priority": 1
+    },
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "UpstreamPathTemplate": "/Platform/{url}",
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post"
+      ],
+      "AddHeadersToRequest": {},
+      "AddClaimsToRequest": {},
+      "RouteClaimsRequirement": {},
+      "AddQueriesToRequest": {},
+      "RequestIdKey": "",
+      "FileCacheOptions": {
+        "TtlSeconds": 0,
+        "Region": ""
+      },
+      "ReRouteIsCaseSensitive": false,
+      "ServiceName": "Pinzhi.Platform.Service",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.52",
+          "Port": 18083
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18083
+        }
+      ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 0,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 0
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": false,
+        "Period": "",
+        "PeriodTimespan": 0,
+        "Limit": 0
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": true,
+        "UseCookieContainer": true,
+        "UseTracing": false
+      },
+      "UseServiceDiscovery": false,
+      "UpstreamHost": null,
+      "Key": null,
+      "DelegatingHandlers": [],
+      "Priority": 0
+    },
+    {
+      "DownstreamPathTemplate": "/Tool/ValidateCode",
+      "UpstreamPathTemplate": "/auth/ValidateCode",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "AddHeadersToRequest": {},
+      "UpstreamHeaderTransform": {},
+      "DownstreamHeaderTransform": {},
+      "AddClaimsToRequest": {},
+      "RouteClaimsRequirement": {},
+      "AddQueriesToRequest": {},
+      "RequestIdKey": "",
+      "FileCacheOptions": {
+        "TtlSeconds": 0,
+        "Region": ""
+      },
+      "ReRouteIsCaseSensitive": false,
+      "ServiceName": "",
+      "DownstreamScheme": "http",
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 0,
+        "DurationOfBreak": 0,
+        "TimeoutValue": 0
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin",
+        "Key": "",
+        "Expiry": 0
+      },
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": false,
+        "Period": "",
+        "PeriodTimespan": 0,
+        "Limit": 0
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": false,
+        "UseCookieContainer": false,
+        "UseTracing": false,
+        "UseProxy": false
+      },
+      "UseServiceDiscovery": false,
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.52",
+          "Port": 18082
+        },
+        {
+          "Host": "192.168.1.53",
+          "Port": 18082
+        }
+      ],
+      "UpstreamHost": "",
+      "Key": "",
+      "DelegatingHandlers": [],
+      "Priority": 0,
+      "Timeout": 0,
+      "DangerousAcceptAnyServerCertificateValidator": false
+    }
+  ],
+  "Aggregates": [],
+  "GlobalConfiguration": {
+    "RequestIdKey": "ot-requestid",
+    "ServiceDiscoveryProvider": {
+      "Host": "192.168.1.52",
+      "Port": 8500,
+      "Type": "Consul",
+      "Token": null,
+      "ConfigurationKey": "PinzhiGatewayRoutes",
+      "PollingInterval": 0
+    },
+    "RateLimitOptions": {
+      "ClientIdHeader": "ClientId",
+      "QuotaExceededMessage": "",
+      "RateLimitCounterPrefix": "ocelot",
+      "DisableRateLimitHeaders": false,
+      "HttpStatusCode": 429
+    },
+    "QoSOptions": {
+      "ExceptionsAllowedBeforeBreaking": 0,
+      "DurationOfBreak": 0,
+      "TimeoutValue": 0
+    },
+    "LoadBalancerOptions": {
+      "Type": "RoundRobin",
+      "Key": null,
+      "Expiry": 0
+    },
+    "DownstreamScheme": null,
+    "HttpHandlerOptions": {
+      "AllowAutoRedirect": false,
+      "UseCookieContainer": false,
+      "UseTracing": false,
+      "UseProxy": true
+    }
+  }
+}
