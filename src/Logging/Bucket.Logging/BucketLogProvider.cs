@@ -25,7 +25,7 @@ namespace Bucket.Logging
 
         public void Dispose()
         {
-
+            _loggers.Clear();
         }
     }
 }

@@ -5544,7 +5544,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.WebSockets": "2.1.0",
+          "Microsoft.AspNetCore.WebSockets": "2.1.1",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {

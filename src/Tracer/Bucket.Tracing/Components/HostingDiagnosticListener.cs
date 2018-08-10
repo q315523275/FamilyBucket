@@ -50,7 +50,9 @@ namespace Bucket.Tracing.Components
              .HttpPath(httpContext.Request.Path)
              .HttpStatusCode(httpContext.Response.StatusCode)
              .PeerAddress(httpContext.Connection.RemoteIpAddress.ToString())
-             .PeerPort(httpContext.Connection.RemotePort);
+             .PeerPort(httpContext.Connection.RemotePort)
+             .UserIp(httpContext.GetUserIp());
+
             _tracer.Tracer.SetEntrySpan(span);
         }
 

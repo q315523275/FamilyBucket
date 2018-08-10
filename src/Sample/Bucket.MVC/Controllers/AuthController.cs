@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Bucket.MVC.Models.Dto;
 using SqlSugar;
 using Bucket.WebApi;
-using Bucket.ServiceClient;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -21,13 +20,10 @@ namespace Bucket.MVC.Controllers
         /// </summary>
         private readonly SqlSugarClient _dbContext;
         private readonly ILogger<AuthController> _logger;
-        private readonly IServiceClient _serviceClient;
-        
-        public AuthController(SqlSugarClient dbContext, ILogger<AuthController> logger, IServiceClient serviceClient)
+        public AuthController(SqlSugarClient dbContext, ILogger<AuthController> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
-            _serviceClient = serviceClient;
         }
 
         /// <summary>
@@ -38,8 +34,7 @@ namespace Bucket.MVC.Controllers
         [HttpPost("/authapi/login")]
         public async Task<OutputLogin> Login([FromBody] InputLogin input)
         {
-            var cc = await new HttpClient().PostAsync("http://api.51pinzhi.cn/order/api/Query/QueryPrePayIP8", new StringContent("{}", System.Text.Encoding.UTF8, "application/json"));
-            return new OutputLogin { Data = await cc.Content.ReadAsStringAsync() };
+            return new OutputLogin {  };
         }
     }
 }

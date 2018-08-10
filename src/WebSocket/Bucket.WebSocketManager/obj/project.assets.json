@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     ".NETStandard,Version=v2.0": {
-      "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
+      "Microsoft.AspNetCore.Http.Abstractions/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Features": "2.1.0",
+          "Microsoft.AspNetCore.Http.Features": "2.1.1",
           "System.Text.Encodings.Web": "4.5.0"
         },
         "compile": {
@@ -15,12 +15,12 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Extensions/2.1.0": {
+      "Microsoft.AspNetCore.Http.Extensions/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
-          "Microsoft.Extensions.FileProviders.Abstractions": "2.1.0",
-          "Microsoft.Net.Http.Headers": "2.1.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
+          "Microsoft.Extensions.FileProviders.Abstractions": "2.1.1",
+          "Microsoft.Net.Http.Headers": "2.1.1",
           "System.Buffers": "4.5.0"
         },
         "compile": {
@@ -30,10 +30,10 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Http.Features/2.1.0": {
+      "Microsoft.AspNetCore.Http.Features/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.1.0"
+          "Microsoft.Extensions.Primitives": "2.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
@@ -42,12 +42,12 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {}
         }
       },
-      "Microsoft.AspNetCore.WebSockets/2.1.0": {
+      "Microsoft.AspNetCore.WebSockets/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
-          "Microsoft.Extensions.Options": "2.1.0",
-          "System.Net.WebSockets.WebSocketProtocol": "4.5.0"
+          "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
+          "Microsoft.Extensions.Options": "2.1.1",
+          "System.Net.WebSockets.WebSocketProtocol": "4.5.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.WebSockets.dll": {}
@@ -56,7 +56,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.WebSockets.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -65,10 +65,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/2.1.0": {
+      "Microsoft.Extensions.FileProviders.Abstractions/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.1.0"
+          "Microsoft.Extensions.Primitives": "2.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
@@ -77,11 +77,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Options/2.1.0": {
+      "Microsoft.Extensions.Options/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Primitives": "2.1.0"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Primitives": "2.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
@@ -90,11 +90,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/2.1.0": {
+      "Microsoft.Extensions.Primitives/2.1.1": {
         "type": "package",
         "dependencies": {
-          "System.Memory": "4.5.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Memory": "4.5.1",
+          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
@@ -103,10 +103,10 @@
           "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Microsoft.Net.Http.Headers/2.1.0": {
+      "Microsoft.Net.Http.Headers/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.1.0",
+          "Microsoft.Extensions.Primitives": "2.1.1",
           "System.Buffers": "4.5.0"
         },
         "compile": {
@@ -158,7 +158,7 @@
           "lib/netstandard2.0/System.Buffers.dll": {}
         }
       },
-      "System.Memory/4.5.0": {
+      "System.Memory/4.5.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.4.0",
@@ -172,14 +172,14 @@
           "lib/netstandard2.0/System.Memory.dll": {}
         }
       },
-      "System.Net.WebSockets.WebSocketProtocol/4.5.0": {
+      "System.Net.WebSockets.WebSocketProtocol/4.5.1": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.4.0",
-          "System.Memory": "4.5.0",
+          "System.Memory": "4.5.1",
           "System.Numerics.Vectors": "4.4.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.0",
-          "System.Threading.Tasks.Extensions": "4.5.0"
+          "System.Threading.Tasks.Extensions": "4.5.1"
         },
         "compile": {
           "ref/netstandard2.0/System.Net.WebSockets.WebSocketProtocol.dll": {}
@@ -197,7 +197,7 @@
           "lib/netstandard2.0/System.Numerics.Vectors.dll": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.0": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -215,7 +215,7 @@
           "lib/netstandard2.0/System.Text.Encodings.Web.dll": {}
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.0": {
+      "System.Threading.Tasks.Extensions/4.5.1": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.5.0"
@@ -230,111 +230,111 @@
     }
   },
   "libraries": {
-    "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
-      "sha512": "M67hU3/uAmRKXW6Oe/SYKy/r6wEgJecZgmPWDDsulzJCrZJRc/xdZtKrQ1lof40dGeuzIzBjD5jpJXblb8AMjg==",
+    "Microsoft.AspNetCore.Http.Abstractions/2.1.1": {
+      "sha512": "0TPQgjRy2xJ75GcK18vvrT6/zCtSAWUEBSskSJN/lY0zuvQx2or8lzwr0TdKyMNK8A8MLP4QMLPqL9NOAxe0yg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.abstractions/2.1.0",
+      "path": "microsoft.aspnetcore.http.abstractions/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.xml",
-        "microsoft.aspnetcore.http.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.abstractions.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.http.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Extensions/2.1.0": {
-      "sha512": "lF5Hw+4kXTrAx+WR/cub7H9qOyqVbA0k+gBqu1OYb+TC4a0oG51TWaRD9VbRqcxvbU995SoW5HmPFP92MLThBg==",
+    "Microsoft.AspNetCore.Http.Extensions/2.1.1": {
+      "sha512": "0dgKLajNfwElW6fLElwjo+fEyfhXdSN74QeXhOUgPam5UIbU3EBQU/+xD83MnfprAiUPDWHqueTKuB8oa/cjNQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.extensions/2.1.0",
+      "path": "microsoft.aspnetcore.http.extensions/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Extensions.xml",
-        "microsoft.aspnetcore.http.extensions.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.extensions.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.http.extensions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Http.Features/2.1.0": {
-      "sha512": "V1lLM0JBEEyZb0e0LTVr2hD8hWGZi6jHlvwmIn7hvJ5FTal63BnKwkBHNe2aYgISzZ3ag6bmwVmPQigzHd7p6w==",
+    "Microsoft.AspNetCore.Http.Features/2.1.1": {
+      "sha512": "cMnTXRH+8T7GLht6cXRCMmN1HaYfXti2WEUdXqMUuyJgi4oH9cmzW4nECSBkQjsCs5O06BphyDDDAsTW/zQmpg==",
       "type": "package",
-      "path": "microsoft.aspnetcore.http.features/2.1.0",
+      "path": "microsoft.aspnetcore.http.features/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
-        "microsoft.aspnetcore.http.features.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.WebSockets/2.1.0": {
-      "sha512": "WL811JIincOL2OGXAvZu/fmGvPkMson24iuA3ToGPmyZxzUK2Y8J6HvSsy+Yi9C10ZGjsPfSxoXjR8JK0ThO6g==",
+    "Microsoft.AspNetCore.WebSockets/2.1.1": {
+      "sha512": "6m4KkYR1UG3f0Aucop1s+XmJbAlrDVLNvq69nJ9evhmdWiuJAc/yuR07e3HVED3RvdFzUFla6AQm0gnEiViUJQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.websockets/2.1.0",
+      "path": "microsoft.aspnetcore.websockets/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.WebSockets.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.WebSockets.xml",
-        "microsoft.aspnetcore.websockets.2.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.websockets.2.1.1.nupkg.sha512",
         "microsoft.aspnetcore.websockets.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.0": {
-      "sha512": "Y139tetrEc1Y347FoOK8Oqm1S0aq8jPg5m6L4ti9N7ki0o4amSa7XOq048EhpeQnO/9jrVJKlqBdq/aQduW31A==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.1": {
+      "sha512": "PW1596sF97gpIc1JuUuYvTmeLfeqC5whbWPsWgJhN0fdwz683him3b/HB0dqhFesVssOjnnA0fEz4+S0gUeBqA==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.0",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.2.1.1.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/2.1.0": {
-      "sha512": "V9nYz+uL09zSV4hcR3mbmm16/YZM2ze4Ih7qqR4AHP3GbpKZZ+Ha8PDJ5+sA8bT6c2jFVJBNLgb48OnyAkztbw==",
+    "Microsoft.Extensions.FileProviders.Abstractions/2.1.1": {
+      "sha512": "qOJP+VAlXDeMQSJ6iflW62bEsN3S1NJIPHmhKFA9L37yU+jce2wbwesA7sDe9WdJ8+SoKtLnHPUxvOyQrAcRCA==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/2.1.0",
+      "path": "microsoft.extensions.fileproviders.abstractions/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.2.1.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.2.1.1.nupkg.sha512",
         "microsoft.extensions.fileproviders.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options/2.1.0": {
-      "sha512": "PNsRGgCThrO0sW0JHkAFcycPeGshTuFQ/0Ss6hRM7goZM331bzexYhPVfuOVl9TEpLqC3MLz9DwlLlKSPvGl1Q==",
+    "Microsoft.Extensions.Options/2.1.1": {
+      "sha512": "j0zOfTt1Qm+JDW2m+6Q/aj1m4C8+onudUu4ls/fN69VxruZkMWmX1bPKkbkYIPNNxJsf4k7FOkVq5o1vEFq9pQ==",
       "type": "package",
-      "path": "microsoft.extensions.options/2.1.0",
+      "path": "microsoft.extensions.options/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.2.1.0.nupkg.sha512",
+        "microsoft.extensions.options.2.1.1.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
       ]
     },
-    "Microsoft.Extensions.Primitives/2.1.0": {
-      "sha512": "U+TqiIAwTQQVlX/+270Z1pv+4aVOl7/Dd39znQcdDpK8nzbdaEt0qahI0e6ZPb8b/1YvQ/iUeWpuYq91NWjaTg==",
+    "Microsoft.Extensions.Primitives/2.1.1": {
+      "sha512": "Svz25/egj1TsNL4118jyMqkhDiu0l8QYWq2p52P4BBN0GbqwR18ZRIctSP5TTDJy0m0EFC8aB2FOVjGtvEGWSA==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/2.1.0",
+      "path": "microsoft.extensions.primitives/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.2.1.0.nupkg.sha512",
+        "microsoft.extensions.primitives.2.1.1.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
       ]
     },
-    "Microsoft.Net.Http.Headers/2.1.0": {
-      "sha512": "5RrJbRuChaurKaDmFoD+k7VfmVnIqckiNWR+bXENoU8NbOiX8+9RyDges5JIVLGPTa882RpJyQ3zWE6hMP0pvA==",
+    "Microsoft.Net.Http.Headers/2.1.1": {
+      "sha512": "tNh1YCfZ943/d3WSE6cD57O05rhvi3lmKgwoi3zFg4wc/O/oec5FNHZmBCRau4GfzRC5zS/CBdOAkRwbvtZSaQ==",
       "type": "package",
-      "path": "microsoft.net.http.headers/2.1.0",
+      "path": "microsoft.net.http.headers/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll",
         "lib/netstandard2.0/Microsoft.Net.Http.Headers.xml",
-        "microsoft.net.http.headers.2.1.0.nupkg.sha512",
+        "microsoft.net.http.headers.2.1.1.nupkg.sha512",
         "microsoft.net.http.headers.nuspec"
       ]
     },
@@ -534,48 +534,34 @@
         "version.txt"
       ]
     },
-    "System.Memory/4.5.0": {
-      "sha512": "P56/L4B9vhz0YFTC4qIXFgx+VgMhg3JhCm5/EASihTotyjwmBt2QEAQdmd2tNctYET/w0CRJzVH1cwxgbKGnDQ==",
+    "System.Memory/4.5.1": {
+      "sha512": "vcG3/MbfpxznMkkkaAblJi7RHOmuP7kawQMhDgLSuA1tRpRQYsFSCTxRSINDUgn2QNn2jWeLxv8er5BXbyACkw==",
       "type": "package",
-      "path": "system.memory/4.5.0",
+      "path": "system.memory/4.5.1",
       "files": [
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
         "lib/netcoreapp2.1/_._",
         "lib/netstandard1.1/System.Memory.dll",
         "lib/netstandard1.1/System.Memory.xml",
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
-        "lib/uap10.0.16300/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "lib/xamarintvos10/_._",
-        "lib/xamarinwatchos10/_._",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
         "ref/netcoreapp2.1/_._",
         "ref/netstandard1.1/System.Memory.dll",
         "ref/netstandard1.1/System.Memory.xml",
         "ref/netstandard2.0/System.Memory.dll",
         "ref/netstandard2.0/System.Memory.xml",
-        "ref/uap10.0.16300/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.memory.4.5.0.nupkg.sha512",
+        "system.memory.4.5.1.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
     },
-    "System.Net.WebSockets.WebSocketProtocol/4.5.0": {
-      "sha512": "S3Bhg9+bKzK4+NxecTp5L3bPwOA42v43kuDU96qnGZMOeGClH1rXRxG9biRI4a+LukC3obzQn2SzkSONJ1NzzA==",
+    "System.Net.WebSockets.WebSocketProtocol/4.5.1": {
+      "sha512": "ME9tj5H/VM0SJW1Qq9zGcUxILhR+OBCNQEmEocoVxRwh5Y/H+Azob2dCP/7Tfk1ag7PmKZ1f5Iqv1ptgDYTHlQ==",
       "type": "package",
-      "path": "system.net.websockets.websocketprotocol/4.5.0",
+      "path": "system.net.websockets.websocketprotocol/4.5.1",
       "files": [
         ".signature.p7s",
         "LICENSE.TXT",
@@ -583,7 +569,7 @@
         "lib/netcoreapp2.1/System.Net.WebSockets.WebSocketProtocol.dll",
         "lib/netstandard2.0/System.Net.WebSockets.WebSocketProtocol.dll",
         "ref/netstandard2.0/System.Net.WebSockets.WebSocketProtocol.dll",
-        "system.net.websockets.websocketprotocol.4.5.0.nupkg.sha512",
+        "system.net.websockets.websocketprotocol.4.5.1.nupkg.sha512",
         "system.net.websockets.websocketprotocol.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -630,10 +616,10 @@
         "version.txt"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.0": {
-      "sha512": "6zBxkHYemB0kQiHP3vGXGRXejZVoNVuMn2paUuqKKi5Wyjkxfkp+D0rd0c3VrGwotidRINt6KpOi2smL4VkJKw==",
+    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "sha512": "qUJMNWhbm9oZ3XaMFiEMiYmRPszbnXIkRIi7+4b2Md2xZ6JUOepf0/kY3S85qistRohl9OdMe4PsO+RdG2kTIQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.0",
+      "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
         ".signature.p7s",
         "LICENSE.TXT",
@@ -644,13 +630,11 @@
         "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "lib/uap10.0.16300/_._",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "ref/uap10.0.16300/_._",
-        "system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -674,14 +658,16 @@
         "version.txt"
       ]
     },
-    "System.Threading.Tasks.Extensions/4.5.0": {
-      "sha512": "cWndlAQKAhHfsS6rZbYEE07HXJI9dPdyMAPOXXnVUO+hm+3G6qneMIqLDesoNBiVAPsKErsUVa2N/FRSKi+SeA==",
+    "System.Threading.Tasks.Extensions/4.5.1": {
+      "sha512": "rckdhLJtzQ3EI+0BGuq7dUVtCSnerqAoAmL3S6oMRZ4VMZTL3Rq9DS8IDW57c6PYVebA4O0NbSA1BDvyE18UMA==",
       "type": "package",
-      "path": "system.threading.tasks.extensions/4.5.0",
+      "path": "system.threading.tasks.extensions/4.5.1",
       "files": [
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
         "lib/netcoreapp2.1/_._",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.dll",
         "lib/netstandard1.0/System.Threading.Tasks.Extensions.xml",
@@ -689,14 +675,22 @@
         "lib/netstandard2.0/System.Threading.Tasks.Extensions.xml",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.dll",
         "lib/portable-net45+win8+wp8+wpa81/System.Threading.Tasks.Extensions.xml",
-        "lib/uap10.0.16300/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
         "ref/netcoreapp2.1/_._",
         "ref/netstandard1.0/System.Threading.Tasks.Extensions.dll",
         "ref/netstandard1.0/System.Threading.Tasks.Extensions.xml",
         "ref/netstandard2.0/System.Threading.Tasks.Extensions.dll",
         "ref/netstandard2.0/System.Threading.Tasks.Extensions.xml",
-        "ref/uap10.0.16300/_._",
-        "system.threading.tasks.extensions.4.5.0.nupkg.sha512",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.threading.tasks.extensions.4.5.1.nupkg.sha512",
         "system.threading.tasks.extensions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -705,7 +699,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Microsoft.AspNetCore.WebSockets >= 2.1.0",
+      "Microsoft.AspNetCore.WebSockets >= 2.1.1",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 11.0.2"
     ]
@@ -754,7 +748,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.WebSockets": {
             "target": "Package",
-            "version": "[2.1.0, )"
+            "version": "[2.1.1, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

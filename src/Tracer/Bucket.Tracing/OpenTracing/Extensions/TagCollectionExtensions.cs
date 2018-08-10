@@ -250,5 +250,15 @@ namespace Bucket.OpenTracing
         {
             return Set(tagCollection, Tags.SpanKind, Tags.SpanKindProducer);
         }
+
+        public static TagCollection UserIp(this TagCollection tagCollection, string ip)
+        {
+            return Set(tagCollection, Tags.UserIp, ip);
+        }
+
+        public static TagCollection UserId(this TagCollection tagCollection, string id)
+        {
+            return Set(tagCollection, Tags.UserId, id);
+        }
     }
 }

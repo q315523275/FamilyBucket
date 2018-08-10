@@ -3037,7 +3037,7 @@
           "lib/netstandard2.0/Pivotal.Discovery.EurekaBase.dll": {}
         }
       },
-      "Polly/6.0.1": {
+      "Polly/6.1.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Polly.dll": {}
@@ -3046,7 +3046,7 @@
           "lib/netstandard2.0/Polly.dll": {}
         }
       },
-      "RabbitMQ.Client/5.0.1": {
+      "RabbitMQ.Client/5.1.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -5166,12 +5166,12 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Bucket.Core/1.1.1": {
+      "Bucket.Core/1.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Http": "2.1.0",
-          "Microsoft.Extensions.Logging.Abstractions": "2.1.0"
+          "Microsoft.Extensions.DependencyInjection": "2.1.1",
+          "Microsoft.Extensions.Logging.Abstractions": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Core.dll": {}
@@ -5184,7 +5184,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.1",
+          "Bucket.Core": "1.1.3",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -5194,16 +5194,16 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.4": {
+      "Bucket.EventBus.RabbitMQ/1.1.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Logging": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Logging": "2.1.1",
           "Newtonsoft.Json": "11.0.2",
-          "Polly": "6.0.1",
-          "RabbitMQ.Client": "5.0.1"
+          "Polly": "6.1.0",
+          "RabbitMQ.Client": "5.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
@@ -5212,12 +5212,12 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.1": {
+      "Bucket.Logging/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore": "2.1.0",
-          "Microsoft.Extensions.Logging": "2.1.0"
+          "Microsoft.AspNetCore": "2.1.2",
+          "Microsoft.Extensions.Logging": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.dll": {}
@@ -5226,12 +5226,12 @@
           "bin/placeholder/Bucket.Logging.dll": {}
         }
       },
-      "Bucket.Logging.Events/1.1.1": {
+      "Bucket.Logging.Events/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.Logging": "1.1.1"
+          "Bucket.Logging": "1.1.2"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -5240,21 +5240,21 @@
           "bin/placeholder/Bucket.Logging.Events.dll": {}
         }
       },
-      "Bucket.Tracing/1.1.3": {
+      "Bucket.Tracing/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.1",
+          "Bucket.Core": "1.1.3",
           "MessagePack": "1.7.3.4",
           "MessagePackAnalyzer": "1.6.0",
-          "Microsoft.AspNetCore.Http.Extensions": "2.1.0",
-          "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.0",
+          "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
+          "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.1",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Options": "2.1.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
-          "Microsoft.Extensions.Primitives": "2.1.0",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Options": "2.1.1",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
+          "Microsoft.Extensions.Primitives": "2.1.1",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -5264,13 +5264,13 @@
           "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
-      "Bucket.Tracing.Events/1.1.1": {
+      "Bucket.Tracing.Events/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.Logging": "1.1.1",
-          "Bucket.Tracing": "1.1.3"
+          "Bucket.Logging": "1.1.2",
+          "Bucket.Tracing": "1.1.6"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.Events.dll": {}
@@ -8224,10 +8224,10 @@
         "pivotal.discovery.eurekabase.nuspec"
       ]
     },
-    "Polly/6.0.1": {
-      "sha512": "nwL8qNLkrphkehUftQqJZOExH6sJ+PPWhkrksqoouAvy9TuEgYUjFujlUVC8PyYLIWIneR9R4opcFpPKn1HQ1A==",
+    "Polly/6.1.0": {
+      "sha512": "qEbkPKwPjV+/Yho5VWRDBnvqeEbfNpLpF7UxNlUploVCorbHTDazCl/aOsJqspH4q6Bskm8jActOavV5//OQRQ==",
       "type": "package",
-      "path": "polly/6.0.1",
+      "path": "polly/6.1.0",
       "files": [
         "lib/netstandard1.1/Polly.deps.json",
         "lib/netstandard1.1/Polly.dll",
@@ -8237,20 +8237,20 @@
         "lib/netstandard2.0/Polly.dll",
         "lib/netstandard2.0/Polly.pdb",
         "lib/netstandard2.0/Polly.xml",
-        "polly.6.0.1.nupkg.sha512",
+        "polly.6.1.0.nupkg.sha512",
         "polly.nuspec"
       ]
     },
-    "RabbitMQ.Client/5.0.1": {
-      "sha512": "89eFEAr5mV5GG2H3d4WFZEuhKmCR+EUjcphZ4+QLEkHPdo7B9kRH6X5WS0c6bHAY/B48uR0GuubnMTp5jGGmrA==",
+    "RabbitMQ.Client/5.1.0": {
+      "sha512": "oMXzDw2NLDHYlAYVJs5AHZDGkTsuzmaAPNfHjgkPqq3VfnxAXgsJ643ts6xsdXJftpwPbDAwN5YP65lHm+MiNg==",
       "type": "package",
-      "path": "rabbitmq.client/5.0.1",
+      "path": "rabbitmq.client/5.1.0",
       "files": [
         "lib/net451/RabbitMQ.Client.dll",
         "lib/net451/RabbitMQ.Client.xml",
         "lib/netstandard1.5/RabbitMQ.Client.dll",
         "lib/netstandard1.5/RabbitMQ.Client.xml",
-        "rabbitmq.client.5.0.1.nupkg.sha512",
+        "rabbitmq.client.5.1.0.nupkg.sha512",
         "rabbitmq.client.nuspec"
       ]
     },
@@ -13334,7 +13334,7 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Bucket.Core/1.1.1": {
+    "Bucket.Core/1.1.3": {
       "type": "project",
       "path": "../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../Bucket.Core/Bucket.Core.csproj"
@@ -13344,27 +13344,27 @@
       "path": "../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.4": {
+    "Bucket.EventBus.RabbitMQ/1.1.5": {
       "type": "project",
       "path": "../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.Logging/1.1.1": {
+    "Bucket.Logging/1.1.2": {
       "type": "project",
       "path": "../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../Logging/Bucket.Logging/Bucket.Logging.csproj"
     },
-    "Bucket.Logging.Events/1.1.1": {
+    "Bucket.Logging.Events/1.1.2": {
       "type": "project",
       "path": "../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj",
       "msbuildProject": "../Logging/Bucket.Logging.Event/Bucket.Logging.Events.csproj"
     },
-    "Bucket.Tracing/1.1.3": {
+    "Bucket.Tracing/1.1.6": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
     },
-    "Bucket.Tracing.Events/1.1.1": {
+    "Bucket.Tracing.Events/1.1.2": {
       "type": "project",
       "path": "../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj",
       "msbuildProject": "../Tracer/Bucket.Tracing.Events/Bucket.Tracing.Events.csproj"
@@ -13373,11 +13373,11 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Bucket.EventBus >= 1.1.3",
-      "Bucket.EventBus.RabbitMQ >= 1.1.4",
-      "Bucket.Logging >= 1.1.1",
-      "Bucket.Logging.Events >= 1.1.1",
-      "Bucket.Tracing >= 1.1.3",
-      "Bucket.Tracing.Events >= 1.1.1",
+      "Bucket.EventBus.RabbitMQ >= 1.1.5",
+      "Bucket.Logging >= 1.1.2",
+      "Bucket.Logging.Events >= 1.1.2",
+      "Bucket.Tracing >= 1.1.6",
+      "Bucket.Tracing.Events >= 1.1.2",
       "Microsoft.AspNetCore.App >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
       "Ocelot >= 8.0.2",

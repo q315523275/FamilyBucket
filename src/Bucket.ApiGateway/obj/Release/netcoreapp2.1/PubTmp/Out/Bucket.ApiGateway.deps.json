@@ -28,7 +28,7 @@
           "Bucket.EventBus.RabbitMQ": "1.1.4",
           "Bucket.Logging": "1.1.1",
           "Bucket.Logging.Events": "1.1.1",
-          "Bucket.Tracing": "1.1.3",
+          "Bucket.Tracing": "1.1.5",
           "Bucket.Tracing.Events": "1.1.1",
           "Microsoft.AspNetCore.App": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
@@ -1429,7 +1429,7 @@
           "Bucket.Logging.Events.dll": {}
         }
       },
-      "Bucket.Tracing/1.1.3": {
+      "Bucket.Tracing/1.1.5": {
         "dependencies": {
           "AspectCore.Core": "0.7.0",
           "Bucket.Core": "1.1.1",
@@ -1455,7 +1455,7 @@
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
           "Bucket.Logging": "1.1.1",
-          "Bucket.Tracing": "1.1.3"
+          "Bucket.Tracing": "1.1.5"
         },
         "runtime": {
           "Bucket.Tracing.Events.dll": {}
@@ -4763,7 +4763,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Bucket.Tracing/1.1.3": {
+    "Bucket.Tracing/1.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

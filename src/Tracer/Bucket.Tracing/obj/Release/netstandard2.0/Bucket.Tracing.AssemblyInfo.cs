@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.Tracing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.3.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.3")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.6.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.Tracing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.Tracing")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.3.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.6.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

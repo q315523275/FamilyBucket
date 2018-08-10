@@ -5,6 +5,7 @@ using System;
 using Bucket.Redis;
 using Microsoft.Extensions.Logging;
 using Bucket.Core;
+using System.Net.Http;
 
 namespace Bucket.Config.Extensions
 {
@@ -54,19 +55,14 @@ namespace Bucket.Config.Extensions
         {
             if (configSetting.UseServiceDiscovery)
             {
-                services.AddSingleton(configSetting);
-                services.AddSingleton<RemoteConfigRepository>();
+                services.AddSingleton<ConfigServiceLocator>();
             }
             else
             {
-                services.AddSingleton(sp => new RemoteConfigRepository(
-                    configSetting,
-                    sp.GetRequiredService<RedisClient>(),
-                    null,
-                    sp.GetRequiredService<ILoggerFactory>(),
-                    sp.GetRequiredService<IJsonHelper>()
-                ));
+                services.AddSingleton(sp => new ConfigServiceLocator(configSetting, null));
             }
+            services.AddSingleton(configSetting);
+            services.AddSingleton<RemoteConfigRepository>();
             services.AddSingleton<IConfig, DefaultConfig>();
             return services;
         }

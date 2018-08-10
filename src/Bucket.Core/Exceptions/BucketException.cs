@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bucket.Exceptions
 {
@@ -8,18 +6,18 @@ namespace Bucket.Exceptions
     {
         public BucketException(string code)
         {
-            this.ErrorCode = code;
+            ErrorCode = code;
         }
         public BucketException(string code, string message) : base(message)
         {
-            this.ErrorCode = code;
-            this.ErrorMessage = message;
+            ErrorCode = code;
+            ErrorMessage = message;
         }
 
         public BucketException(string code, string message, Exception exception) : base(message, exception)
         {
-            this.ErrorCode = code;
-            this.ErrorMessage = message + exception.Message;
+            ErrorCode = code;
+            ErrorMessage = message + exception.Message;
         }
         /// <summary>
         /// 错误码

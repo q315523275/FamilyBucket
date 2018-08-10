@@ -1,13 +1,11 @@
 ﻿using Bucket.Core;
-using Bucket.ErrorCode;
 using Bucket.ErrorCode.Model;
-using Bucket.ErrorCode.Util;
-using Bucket.ErrorCode.Util.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Concurrent;
 using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,13 +21,15 @@ namespace Bucket.ErrorCode
         private CancellationTokenSource _cancellationTokenSource;
         private ILogger _logger;
         private IJsonHelper _jsonHelper;
+        private readonly IHttpClientFactory _httpClientFactory;
         private static readonly object _lock = new object();
-        public RemoteStoreRepository(IOptions<ErrorCodeSetting> errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper)
+        public RemoteStoreRepository(IOptions<ErrorCodeSetting> errorCodeConfiguration, ILoggerFactory loggerFactory, IJsonHelper jsonHelper, IHttpClientFactory httpClientFactory)
         {
             _logger = loggerFactory.CreateLogger<RemoteStoreRepository>();
             _config = new ErrorCodeConfig();
             _errorCodeConfiguration = errorCodeConfiguration.Value;
             _jsonHelper = jsonHelper;
+            _httpClientFactory = httpClientFactory;
         }
         public ConcurrentDictionary<string, string> GetStore()
         {
@@ -52,23 +52,25 @@ namespace Bucket.ErrorCode
             var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localerrorcode.json");
             try
             {
+                var client = _httpClientFactory.CreateClient();
                 var url = GetQueryConfigUrl();
                 _logger.LogInformation($"loading errorcode from  {url}");
-                var response = HttpUtil.Get<ApiInfo>(new HttpRequest(url), _jsonHelper);
+                var response = client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url)).ConfigureAwait(false).GetAwaiter().GetResult();
                 _logger.LogInformation($"errorcode server responds with {response.StatusCode} HTTP status code.");
-                if (response.StatusCode == HttpStatusCode.OK)
+                if (response.IsSuccessStatusCode)
                 {
-                    if (response.Body != null && response.Body.Value != null && response.Body.Value.Count > 0)
+                    var codedto = _jsonHelper.DeserializeObject<ApiInfo>(response.Content.ReadAsStringAsync().Result);
+                    if (codedto != null && codedto.Value != null && codedto.Value.Count > 0)
                     {
                         if (_config.KV == null)
                             _config.KV = new ConcurrentDictionary<string, string>();
-                        foreach (var kv in response.Body.Value)
+                        foreach (var kv in codedto.Value)
                         {
                             _config.KV.AddOrUpdate(kv.ErrorCode, kv.ErrorMessage, (x, y) => kv.ErrorMessage);
                         }
                         islocalcache = true;
                     }
-                    _logger.LogInformation($"Loaded errorcode {response.Body}");
+                    _logger.LogInformation($"Loaded errorcode {response}");
                 }
                 if (islocalcache)
                 {

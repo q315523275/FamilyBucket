@@ -129,5 +129,15 @@ namespace Bucket.OpenTracing
         /// A constant for setting the "span.kind" to indicate that it represents a server span.
         /// </summary>
         public const string SpanKindServer = "server";
+
+        /// <summary>
+        /// httpcontext user id
+        /// </summary>
+        public const string UserId = "user.id";
+
+        /// <summary>
+        /// httpcontext user ip
+        /// </summary>
+        public const string UserIp = "user.ip";
     }
 }

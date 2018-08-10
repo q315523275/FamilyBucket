@@ -13,6 +13,7 @@ namespace Bucket.Tracing.Components
 {
     public class HttpClientDiagnosticListener : ITracingDiagnosticListener
     {
+        private static Regex _tbbrRegex = new Regex(@"\s*|\t|\r|\n", RegexOptions.IgnoreCase);
         private readonly IServiceTracer _tracer;
         private readonly TracingOptions _options;
 
@@ -51,8 +52,12 @@ namespace Bucket.Tracing.Components
             _tracer.Tracer.Inject(span.SpanContext, request.Headers, (c, k, v) => c.Add(k, v));
             span.Log(LogField.CreateNew().ClientSend());
             if(request.Method == HttpMethod.Post)
-                span.Tags.Add("request", request.Content.ReadAsStringAsync().Result);
-
+            {
+                var result = request.Content.ReadAsStringAsync().Result;
+                if (!string.IsNullOrWhiteSpace(result))
+                    span.Tags.Add("http.request", _tbbrRegex.Replace(result, ""));
+            }
+                
             _tracer.Tracer.SetExitSpan(span);
         }
 
@@ -71,7 +76,8 @@ namespace Bucket.Tracing.Components
             var result = response.Content.ReadAsStringAsync().Result;
             if (result.Length > 2048)
                 result = result.Substring(0, 2048) + "...";
-            span.Tags.Add("response", result);
+            if(!string.IsNullOrWhiteSpace(result))
+                span.Tags.Add("http.response", _tbbrRegex.Replace(result, ""));
 
             span.Finish();
             _tracer.Tracer.SetExitSpan(null);

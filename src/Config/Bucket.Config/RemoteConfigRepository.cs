@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using Bucket.Config.Util;
 using Bucket.LoadBalancer;
-using Bucket.Config.Util.Http;
 using Bucket.Redis;
-using StackExchange.Redis;
-using Microsoft.Extensions.Logging;
-using System.Collections.Concurrent;
 using Bucket.Core;
+using System.Collections.Concurrent;
+using StackExchange.Redis;
+using System.Net.Http;
+
 namespace Bucket.Config
 {
     /// <summary>
@@ -18,25 +19,31 @@ namespace Bucket.Config
     public class RemoteConfigRepository: IDisposable
     {
         private BucketConfig _config;
-        private ConfigSetting _setting;
         private CancellationTokenSource _cancellationTokenSource;
-        private RedisClient _redisClient;
-        private ILoadBalancerHouse _loadBalancerHouse;
-        private IJsonHelper _jsonHelper;
-        private ILogger _logger;
+        private readonly ConfigSetting _setting;
+        private readonly RedisClient _redisClient;
+        private ConfigServiceLocator _serviceLocator;
+        private readonly IJsonHelper _jsonHelper;
+        private readonly ILogger _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
         private static readonly object _lock = new object();
         public RemoteConfigRepository(ConfigSetting setting, 
-            RedisClient redisClient, 
-            ILoadBalancerHouse loadBalancerHouse,
+            RedisClient redisClient,
+            ConfigServiceLocator configServiceLocator,
             ILoggerFactory loggerFactory,
-            IJsonHelper jsonHelper)
+            IJsonHelper jsonHelper,
+            IHttpClientFactory httpClientFactory)
         {
             _logger = loggerFactory.CreateLogger<RemoteConfigRepository>();
             _config = new BucketConfig();
+
             _setting = setting;
             _redisClient = redisClient;
-            _loadBalancerHouse = loadBalancerHouse;
+
+            _serviceLocator = configServiceLocator;
+
             _jsonHelper = jsonHelper;
+            _httpClientFactory = httpClientFactory;
         }
         public ConcurrentDictionary<string, string> GetConfig()
         {
@@ -60,28 +67,29 @@ namespace Bucket.Config
             var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localconfig.json");
             try
             {
-                var url = GetQueryConfigUrl();
-                _logger.LogInformation($"{_setting.AppId} loading config from  {url}");
-                var response = HttpUtil.Get<HttpConfigResult>(new HttpRequest(url), _jsonHelper);
-                _logger.LogInformation($"{_setting.AppId} config server responds with {response.StatusCode} HTTP status code.");
-                // request error
-                if (response.Body.ErrorCode != "000000")
-                    _logger.LogInformation($"{_setting.AppId} config request error:" + response.Body.Message);
-                if (response.StatusCode == HttpStatusCode.OK)
+                var client = _httpClientFactory.CreateClient();
+                var serverUrl = _serviceLocator.GetConfigService(); // 配置请求地址
+                var url = AssembleQueryConfigUrl(serverUrl);
+                // 死锁问题
+                var response = client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url)).ConfigureAwait(false).GetAwaiter().GetResult();
+                if(!response.IsSuccessStatusCode)
+                    _logger.LogError($"{_setting.AppId} config request error status {response.StatusCode}");
+                if (response.IsSuccessStatusCode)
                 {
-                    if (response.Body.Version > _config.Version)
+                    var configdto = _jsonHelper.DeserializeObject<HttpConfigResult>(response.Content.ReadAsStringAsync().Result);
+                    if (configdto.Version > _config.Version)
                     {
                         if (_config.KV == null)
                             _config.KV = new ConcurrentDictionary<string, string>();
-                        foreach (var kv in response.Body.KV)
+                        foreach (var kv in configdto.KV)
                         {
                             _config.KV.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
                         }
-                        _config.AppName = response.Body.AppName;
-                        _config.Version = response.Body.Version;
+                        _config.AppName = configdto.AppName;
+                        _config.Version = configdto.Version;
                         islocalcache = true;
                     }
-                    _logger.LogInformation($"{_setting.AppId} loaded config {response.Body}");
+                    _logger.LogInformation($"{_setting.AppId} loaded config {configdto}");
                 }
                 // 本地缓存
                 if (islocalcache)
@@ -105,19 +113,9 @@ namespace Bucket.Config
                 _logger.LogInformation($"config load error from appid {_setting.AppId},local disk cache recovery success.");
             }
         }
-        private string GetQueryConfigUrl()
+        private string AssembleQueryConfigUrl(string url)
         {
-            string url = string.Empty;
-            if (_setting.UseServiceDiscovery && _loadBalancerHouse != null)
-            {
-                var _load = _loadBalancerHouse.Get(_setting.ServiceName, "RoundRobin").Result;
-                var HostAndPort = _load.Lease().Result;
-                url = $"{HostAndPort.ToUri()}";
-            }
-            else
-            {
-                url = _setting.ServerUrl;
-            }
+            // 配置请求地址
             string appId = _setting.AppId;
             string secret = _setting.AppSercet;
 
@@ -126,7 +124,7 @@ namespace Bucket.Config
             var sign = $"appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
             return $"{uri}?{query}&sign=" + SecureHelper.SHA256(sign);
         }
-        public void InitScheduleRefresh()
+        private void InitScheduleRefresh()
         {
             _cancellationTokenSource = new CancellationTokenSource();
             var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);

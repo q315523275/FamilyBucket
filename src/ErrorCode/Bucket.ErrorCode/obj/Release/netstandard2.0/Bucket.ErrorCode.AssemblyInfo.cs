@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.ErrorCode")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("错误码")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.2.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.ErrorCode")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.ErrorCode")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.2.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

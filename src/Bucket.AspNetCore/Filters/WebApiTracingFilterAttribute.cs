@@ -2,19 +2,20 @@
 using Bucket.OpenTracing;
 using Bucket.Tracing;
 using Bucket.Tracing.Extensions;
+using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Bucket.AspNetCore.Filters
 {
     public class WebApiTracingFilterAttribute : Attribute, IResourceFilter
     {
+        private static Regex _tbbrRegex = new Regex(@"\s*|\t|\r|\n", RegexOptions.IgnoreCase);
         private readonly IJsonHelper _jsonHelper;
         private readonly IServiceTracer _tracer;
 
@@ -34,12 +35,14 @@ namespace Bucket.AspNetCore.Filters
                     var objectResult = context.Result as ObjectResult;
                     if (objectResult.Value != null)
                     {
-                        span.Tags.Add("response", _jsonHelper.SerializeObject(objectResult.Value));
+                        span.Tags.Add("http.response", _jsonHelper.SerializeObject(objectResult.Value));
                     }
                 }
                 else if (context.Result is ContentResult)
                 {
-                    span.Tags.Add("response", (context.Result as ContentResult).Content);
+                    var content = (context.Result as ContentResult).Content;
+                    if (!string.IsNullOrWhiteSpace(content))
+                        span.Tags.Add("http.response", _tbbrRegex.Replace(content, ""));
                 }
                 _tracer.Tracer.SetEntrySpan(span);
             }
@@ -53,22 +56,20 @@ namespace Bucket.AspNetCore.Filters
                 var httpContext = context.HttpContext;
                 if (httpContext.Request.Method.ToLower() == HttpMethod.Post.ToString().ToLower())
                 {
-                    if (httpContext.Request.Body.CanRead)
-                    {
-                        var memery = new MemoryStream();
-                        httpContext.Request.Body.CopyTo(memery);
-                        memery.Position = 0;
-                        span.Tags.Add("request", new StreamReader(memery, Encoding.UTF8).ReadToEnd());
-                        memery.Position = 0;
-                        httpContext.Request.Body = memery;
-                    }
+                    httpContext.Request.EnableRewind();
+                    var initialBody = httpContext.Request.Body;
+                    httpContext.Request.Body.Position = 0;
+                    var content = new StreamReader(httpContext.Request.Body, Encoding.UTF8).ReadToEnd();
+                    if(!string.IsNullOrWhiteSpace(content))
+                        span.Tags.Add("http.request", _tbbrRegex.Replace(content, ""));
+                    httpContext.Request.Body.Position = 0;
+                    httpContext.Request.Body = initialBody;
                 }
-
-                if (httpContext.User.HasClaim(it => it.Type == "Uid"))
-                    span.Tags.Add("uid", httpContext.User.Claims.FirstOrDefault(c => c.Type == "Uid").Value);
-
-               _tracer.Tracer.SetEntrySpan(span);
+                span.Tags.UserId(httpContext.GetUserId())
+                         .UserIp(httpContext.GetUserIp());
+                _tracer.Tracer.SetEntrySpan(span);
             }
         }
+        
     }
 }

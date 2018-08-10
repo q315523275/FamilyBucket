@@ -1,10 +1,4 @@
-﻿using Bucket.ErrorCode;
-using Bucket.ErrorCode.Util;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
-namespace Bucket.ErrorCode
+﻿namespace Bucket.ErrorCode
 {
     public class DefaultErrorCode : IErrorCode
     {

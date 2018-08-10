@@ -1,1 +1,0 @@
-dotnet Bucket.ApiGateway.dll

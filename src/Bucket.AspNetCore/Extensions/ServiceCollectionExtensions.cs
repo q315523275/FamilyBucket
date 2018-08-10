@@ -8,8 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Bucket.Core;
 using Bucket.Redis;
 using Bucket.ErrorCode;
-using Bucket.ServiceClient;
-using Bucket.ServiceClient.Http;
 using Bucket.AspNetCore.Commons;
 using Bucket.AspNetCore.Authentication;
 
@@ -35,7 +33,6 @@ namespace Bucket.AspNetCore.Extensions
             services.AddSingleton<IRequestScopedDataRepository, HttpDataRepository>();
             services.AddSingleton<IJsonHelper, JsonHelper>();
             services.AddSingleton<IErrorCode, EmptyErrorCode>();
-
             return services;
         }
         /// <summary>
@@ -113,16 +110,6 @@ namespace Bucket.AspNetCore.Extensions
                 opt.TokenValidationParameters = tokenValidationParameters;
             });
 
-            return services;
-        }
-        /// <summary>
-        /// 服务发现接口请求
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddServiceClient(this IServiceCollection services)
-        {
-            services.AddSingleton<IServiceClient, BucketHttpClient>();
             return services;
         }
         /// <summary>

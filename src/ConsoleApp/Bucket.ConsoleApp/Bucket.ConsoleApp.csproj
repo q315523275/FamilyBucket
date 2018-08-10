@@ -17,16 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Bucket.Core\Bucket.Core.csproj" />
+    <ProjectReference Include="..\..\Config\Bucket.Config\Bucket.Config.csproj" />
     <ProjectReference Include="..\..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging.EventSubscribe\Bucket.Logging.EventSubscribe.csproj" />

@@ -68,15 +68,13 @@ namespace Bucket.MVC
             services.AddServiceDiscovery(builder => {
                 builder.UseConsul(Configuration);
             });
-            // 添加服务之间调用
-            services.AddServiceClient();
             // 添加链路追踪
             services.AddTracer(Configuration);
             services.AddEventTrace();
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options =>
             {
-                // options.Filters.Add(typeof(WebApiTraceFilterAttribute));
+                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
                 options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
