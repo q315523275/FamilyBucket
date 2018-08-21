@@ -74,7 +74,10 @@
                          x.WithDictionaryHandle();
                      })
                      .AddStoreOcelotConfigurationInConsul()
-                     .AddAdministration("/administration", "pinzhigo@2018");
+                     .AddAdministration(hostingContext.Configuration.GetSection("ApiGateway").GetValue<string>("AdminPath"), 
+                                        hostingContext.Configuration.GetSection("ApiGateway").GetValue<string>("AdminPwd"));
+                    // 添加监控
+
                 })
                 .ConfigureLogging((hostingContext, logging) =>
                 {
@@ -86,7 +89,7 @@
                     var loggerFactory = app.ApplicationServices.GetRequiredService<ILoggerFactory>().AddBucketLog(app, "Pinzhi.ApiGateway");
                     // 使用跨域
                     app.UseCors("CorsPolicy");
-                    // 使用网关
+                    // 健康检查地址
                     var conf = new OcelotPipelineConfiguration()
                     {
                         PreErrorResponderMiddleware = async (ctx, next) =>
@@ -101,6 +104,9 @@
                             }
                         }
                     };
+                    // 使用监控
+
+                    // 使用网关
                     app.UseOcelot(conf).Wait();
                 })
                 .Build()

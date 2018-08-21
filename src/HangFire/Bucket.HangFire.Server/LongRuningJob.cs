@@ -3,14 +3,13 @@ using Hangfire;
 using Hangfire.Console;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Bucket.HangFire.Server
 {
     [AutomaticRetry(Attempts = 0)]
     public class LongRuningJob: IRecurringJob
     {
-        /// <summary>
-        /// 这个log是程序日志的logger
-        /// </summary>
         private static bool IsRunning;
         private static object _obj = new object();
 
@@ -27,7 +26,10 @@ namespace Bucket.HangFire.Server
                         try
                         {
                             context.GetJobData();
-
+                            using (var scope = Static.serviceProvider.CreateScope())
+                            {
+                                // doing ....
+                            }
                             context.WriteLine("结束执行缓存更新任务");
                         }
                         catch (Exception ex)

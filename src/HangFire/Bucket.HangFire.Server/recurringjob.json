@@ -1,0 +1,10 @@
+﻿[
+  {
+    "job-name": "LongRuningJob",
+    "job-type": "Bucket.HangFire.Server.LongRuningJob, Bucket.HangFire.Server",
+    "cron-expression": "*/1 * * * *",
+    "job-data": {},
+    "timezone": "China Standard Time",
+    "enable": true
+  }
+]

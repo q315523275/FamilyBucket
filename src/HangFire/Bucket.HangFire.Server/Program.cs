@@ -14,11 +14,25 @@ namespace Bucket.HangFire.Server
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-        }
+            // 默认配置
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("hosting.json", optional: true)
+                .AddEnvironmentVariables() // 添加环境变量
+                .Build();
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                  .UseKestrel()
+                  .UseContentRoot(Directory.GetCurrentDirectory())
+                  .ConfigureAppConfiguration((hostingContext, _config) => {
+                      _config
+                      .AddJsonFile("appsettings.json", true, true)
+                      .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);
+                  })
+                  .UseConfiguration(config)
+                  .UseStartup<Startup>()
+                  .Build()
+                  .Run();
+        }
     }
 }
