@@ -83,7 +83,7 @@ namespace Bucket.Logging
                         ip = GetServerIp(_httpContextAccessor.HttpContext);
                         url = _httpContextAccessor.HttpContext?.Request?.GetDisplayUrl();
                     }
-                    if(message.Length > 5120)
+                    if (message.Length > 5120)
                     {
                         // 日志长度过长,暂时不采用其他解决方案
                         message = Substring2(message, 5120);

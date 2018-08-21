@@ -1,5 +1,6 @@
 ﻿namespace Bucket.ApiGateway
 {
+    using System;
     using System.IO;
     using System.Text;
     using Microsoft.AspNetCore.Hosting;
@@ -8,10 +9,13 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Microsoft.AspNetCore.Builder;
-    using System;
+
     using global::Ocelot.DependencyInjection;
     using global::Ocelot.Middleware;
-  
+    using Ocelot.Cache.CacheManager;
+    using Ocelot.Administration;
+    using Ocelot.Provider.Consul;
+    using Ocelot.Provider.Polly;
 
     using Bucket.Logging;
     using Bucket.Logging.Events;
@@ -19,10 +23,9 @@
     using Bucket.EventBus.RabbitMQ;
     using Bucket.Tracing.Extensions;
     using Bucket.Tracing.Events;
- 
+
     using Newtonsoft.Json.Serialization;
     using Microsoft.AspNetCore.Http;
-    using System.Linq;
 
     public class Program
     {
@@ -38,7 +41,7 @@
                         .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile("appsettings.json", true, true)
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                        .AddJsonFile("ocelot.json")
+                        .AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
                         .AddEnvironmentVariables();
                 })
                 .UseUrls("http://*:5000")
@@ -73,9 +76,12 @@
                      {
                          x.WithDictionaryHandle();
                      })
-                     .AddStoreOcelotConfigurationInConsul()
+                     .AddPolly()
+                     .AddConsul()
+                     .AddConfigStoredInConsul()
                      .AddAdministration(hostingContext.Configuration.GetSection("ApiGateway").GetValue<string>("AdminPath"), 
-                                        hostingContext.Configuration.GetSection("ApiGateway").GetValue<string>("AdminPwd"));
+                         hostingContext.Configuration.GetSection("ApiGateway").GetValue<string>("AdminPwd"))
+                     ;
                     // 添加监控
 
                 })

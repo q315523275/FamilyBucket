@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.Gprc
+﻿namespace Bucket.Gprc
 {
     public class RpcServiceDiscoveryOptions
     {
@@ -12,6 +8,14 @@ namespace Bucket.Gprc
 
         public string HealthCheckTemplate { get; set; }
 
-        public string[] Endpoints { get; set; }
+        public string Endpoint { get; set; }
+
+        public RpcEndpointOptions RpcEndpoint { get; set; }
+    }
+    public class RpcEndpointOptions
+    {
+        public string Address { get; set; }
+
+        public int Port { get; set; }
     }
 }

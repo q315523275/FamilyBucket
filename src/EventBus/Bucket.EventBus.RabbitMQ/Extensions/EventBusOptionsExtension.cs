@@ -1,8 +1,6 @@
 ﻿using Bucket.EventBus.Extensions;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bucket.EventBus.RabbitMQ
 {

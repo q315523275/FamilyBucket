@@ -12698,11 +12698,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\HangFire\\Bucket.HangFire.Server\\Bucket.HangFire.Server.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\HangFire\\Bucket.HangFire.Server\\Bucket.HangFire.Server.csproj",
       "projectName": "Bucket.HangFire.Server",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\HangFire\\Bucket.HangFire.Server\\Bucket.HangFire.Server.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\HangFire\\Bucket.HangFire.Server\\Bucket.HangFire.Server.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\HangFire\\Bucket.HangFire.Server\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\HangFire\\Bucket.HangFire.Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -2,9 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Net;
 using Bucket.Config.Util;
-using Bucket.LoadBalancer;
 using Bucket.Redis;
 using Bucket.Core;
 using System.Collections.Concurrent;
@@ -16,7 +14,7 @@ namespace Bucket.Config
     /// <summary>
     /// 远程配置仓储
     /// </summary>
-    public class RemoteConfigRepository: IDisposable
+    public class RemoteConfigRepository : IDisposable
     {
         private BucketConfig _config;
         private CancellationTokenSource _cancellationTokenSource;
@@ -27,7 +25,7 @@ namespace Bucket.Config
         private readonly ILogger _logger;
         private readonly IHttpClientFactory _httpClientFactory;
         private static readonly object _lock = new object();
-        public RemoteConfigRepository(ConfigSetting setting, 
+        public RemoteConfigRepository(ConfigSetting setting,
             RedisClient redisClient,
             ConfigServiceLocator configServiceLocator,
             ILoggerFactory loggerFactory,
@@ -47,7 +45,7 @@ namespace Bucket.Config
         }
         public ConcurrentDictionary<string, string> GetConfig()
         {
-            if(_config.KV == null)
+            if (_config.KV == null)
             {
                 lock (_lock)
                 {
@@ -72,7 +70,7 @@ namespace Bucket.Config
                 var url = AssembleQueryConfigUrl(serverUrl);
                 // 死锁问题
                 var response = client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url)).ConfigureAwait(false).GetAwaiter().GetResult();
-                if(!response.IsSuccessStatusCode)
+                if (!response.IsSuccessStatusCode)
                     _logger.LogError($"{_setting.AppId} config request error status {response.StatusCode}");
                 if (response.IsSuccessStatusCode)
                 {
@@ -147,7 +145,7 @@ namespace Bucket.Config
                 sub.SubscribeAsync("Bucket_Config_ChangeListener", (channel, message) =>
                 {
                     var command = _jsonHelper.DeserializeObject<ConfigNetCommand>(message);
-                    if(command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigUpdate)
+                    if (command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigUpdate)
                     {
                         // 更新
                         LoadConfig();
@@ -167,7 +165,7 @@ namespace Bucket.Config
             {
                 _cancellationTokenSource.Cancel();
             }
-            if(_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
+            if (_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
             {
                 ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
                 sub.UnsubscribeAsync("Bucket_Config_ChangeListener");

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Concurrent;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;

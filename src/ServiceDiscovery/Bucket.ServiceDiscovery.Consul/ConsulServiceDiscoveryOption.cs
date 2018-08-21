@@ -14,6 +14,6 @@ namespace Bucket.ServiceDiscovery.Consul
 
         public string HealthCheckTemplate { get; set; }
 
-        public string[] Endpoints { get; set; }
+        public string Endpoint { get; set; }
     }
 }

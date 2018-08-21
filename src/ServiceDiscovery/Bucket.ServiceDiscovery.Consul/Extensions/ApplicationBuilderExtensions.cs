@@ -15,8 +15,6 @@ namespace Bucket.ServiceDiscovery.Consul
 {
     public static class ApplicationBuilderExtensions
     {
-        //the method check the service discovery parameter register ipaddress to generate service agent
-        //those service agents will deregister when the app stop 
         public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, IConfiguration configuration)
         {
             ConsulServiceDiscoveryOption serviceDiscoveryOption = new ConsulServiceDiscoveryOption();
@@ -24,8 +22,6 @@ namespace Bucket.ServiceDiscovery.Consul
             app.UseConsulRegisterService(serviceDiscoveryOption);
             return app;
         }
-        //the method check the service discovery parameter register ipaddress to generate service agent
-        //those service agents will deregister when the app stop 
         public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, ConsulServiceDiscoveryOption serviceDiscoveryOption)
         {
             var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>() ??
@@ -36,29 +32,27 @@ namespace Bucket.ServiceDiscovery.Consul
             if (string.IsNullOrEmpty(serviceDiscoveryOption.ServiceName))
                 throw new ArgumentException("service name must be configure", nameof(serviceDiscoveryOption.ServiceName));
 
-            IEnumerable<Uri> addresses = null;
-            if (serviceDiscoveryOption.Endpoints != null && serviceDiscoveryOption.Endpoints.Length > 0)
-            {
-                addresses = serviceDiscoveryOption.Endpoints.Select(p => new Uri(p));
-            }
+            Uri address = null;
+            if (!string.IsNullOrWhiteSpace(serviceDiscoveryOption.Endpoint))
+                address = new Uri(serviceDiscoveryOption.Endpoint);
             else
             {
                 var features = app.Properties["server.Features"] as FeatureCollection;
-                addresses = features.Get<IServerAddressesFeature>().Addresses.Select(p => new Uri(p)).ToArray();
+                address = features.Get<IServerAddressesFeature>()?.Addresses?.Select(p => new Uri(p))?.FirstOrDefault();
             }
 
-            var serviceChecks = new List<AgentServiceCheck>();
-
-            foreach (var address in addresses)
+            if (address != null)
             {
-                var serviceID = GetServiceId(serviceDiscoveryOption.ServiceName, address);
-
                 Uri healthCheck = null;
                 if (!string.IsNullOrEmpty(serviceDiscoveryOption.HealthCheckTemplate))
-                {
-                    healthCheck = new Uri(address, serviceDiscoveryOption.HealthCheckTemplate);
-                }
-                var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName, serviceDiscoveryOption.Version, address, healthCheckUri: healthCheck, tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}" });
+                    healthCheck = new Uri(serviceDiscoveryOption.HealthCheckTemplate);
+
+                var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName,
+                    serviceDiscoveryOption.Version,
+                    address,
+                    healthCheckUri: healthCheck,
+                    tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}"
+                    });
 
                 applicationLifetime.ApplicationStopping.Register(() =>
                 {

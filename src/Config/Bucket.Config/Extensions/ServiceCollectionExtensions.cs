@@ -2,10 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System;
-using Bucket.Redis;
-using Microsoft.Extensions.Logging;
-using Bucket.Core;
-using System.Net.Http;
 
 namespace Bucket.Config.Extensions
 {

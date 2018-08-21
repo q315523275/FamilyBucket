@@ -31,19 +31,6 @@
           "lib/netstandard2.0/AspectCore.Core.dll": {}
         }
       },
-      "AspectCore.Extensions.DependencyInjection/0.2.4": {
-        "type": "package",
-        "dependencies": {
-          "AspectCore.Core": "0.2.4",
-          "Microsoft.Extensions.DependencyInjection": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll": {}
-        }
-      },
       "AspectCore.Extensions.Reflection/0.7.0": {
         "type": "package",
         "dependencies": {
@@ -55,69 +42,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
-      "Butterfly.Client/0.0.8": {
-        "type": "package",
-        "dependencies": {
-          "AspectCore.Core": "0.2.4",
-          "Butterfly.DataContract": "0.0.7",
-          "Butterfly.OpenTracing": "0.0.8",
-          "NETStandard.Library": "1.6.1",
-          "Newtonsoft.Json": "10.0.3"
-        },
-        "compile": {
-          "lib/netstandard1.6/Butterfly.Client.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Butterfly.Client.dll": {}
-        }
-      },
-      "Butterfly.Client.AspNetCore/0.0.8": {
-        "type": "package",
-        "dependencies": {
-          "AspectCore.Extensions.DependencyInjection": "0.2.4",
-          "Butterfly.Client": "0.0.8",
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0",
-          "Microsoft.AspNetCore.Http.Abstractions": "2.0.1",
-          "Microsoft.AspNetCore.Mvc.Abstractions": "2.0.0",
-          "Microsoft.AspNetCore.Routing.Abstractions": "2.0.0",
-          "Microsoft.Extensions.DiagnosticAdapter": "2.0.0",
-          "Microsoft.Extensions.Options": "2.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
-          "System.Diagnostics.DiagnosticSource": "4.4.1"
-        },
-        "compile": {
-          "lib/netcoreapp2.0/Butterfly.Client.AspNetCore.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp2.0/Butterfly.Client.AspNetCore.dll": {}
-        }
-      },
-      "Butterfly.DataContract/0.0.7": {
-        "type": "package",
-        "dependencies": {
-          "MessagePack": "1.7.3.4",
-          "MessagePackAnalyzer": "1.6.0",
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/Butterfly.DataContract.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Butterfly.DataContract.dll": {}
-        }
-      },
-      "Butterfly.OpenTracing/0.0.8": {
-        "type": "package",
-        "dependencies": {
-          "NETStandard.Library": "1.6.1"
-        },
-        "compile": {
-          "lib/netstandard1.6/Butterfly.OpenTracing.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Butterfly.OpenTracing.dll": {}
         }
       },
       "CacheManager.Core/1.1.2": {
@@ -162,7 +86,7 @@
           "lib/netstandard1.2/CacheManager.Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Consul/0.7.2.5": {
+      "Consul/0.7.2.6": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -1895,25 +1819,6 @@
           "lib/netstandard2.0/Microsoft.Data.Sqlite.dll": {}
         }
       },
-      "Microsoft.DotNet.InternalAbstractions/1.0.500-preview2-1-003177": {
-        "type": "package",
-        "dependencies": {
-          "System.AppContext": "4.3.0",
-          "System.Collections": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.IO.FileSystem": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.InteropServices.RuntimeInformation": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard1.3/Microsoft.DotNet.InternalAbstractions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.3/Microsoft.DotNet.InternalAbstractions.dll": {}
-        }
-      },
       "Microsoft.DotNet.PlatformAbstractions/2.1.0": {
         "type": "package",
         "dependencies": {
@@ -2972,18 +2877,10 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Ocelot/8.0.2": {
+      "Ocelot/10.0.3": {
         "type": "package",
         "dependencies": {
-          "Butterfly.Client": "0.0.8",
-          "Butterfly.Client.AspNetCore": "0.0.8",
-          "CacheManager.Core": "1.1.2",
-          "CacheManager.Microsoft.Extensions.Configuration": "1.1.2",
-          "CacheManager.Microsoft.Extensions.Logging": "1.1.2",
-          "Consul": "0.7.2.5",
           "FluentValidation": "7.6.104",
-          "IdentityServer4": "2.2.0",
-          "IdentityServer4.AccessTokenValidation": "2.6.0",
           "Microsoft.AspNetCore": "2.1.1",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.1",
           "Microsoft.AspNetCore.Mvc": "2.1.1",
@@ -2996,9 +2893,6 @@
           "Microsoft.Extensions.Logging.Console": "2.1.1",
           "Microsoft.Extensions.Logging.Debug": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
-          "Pivotal.Discovery.ClientCore": "2.0.1",
-          "Polly": "6.0.1",
-          "Rafty": "0.4.4",
           "System.Text.RegularExpressions": "4.3.0"
         },
         "compile": {
@@ -3008,33 +2902,59 @@
           "lib/netstandard2.0/Ocelot.dll": {}
         }
       },
-      "Pivotal.Discovery.ClientCore/2.0.1": {
+      "Ocelot.Administration/0.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.0",
-          "Pivotal.Discovery.EurekaBase": "2.0.1",
-          "Steeltoe.CloudFoundry.ConnectorBase": "2.0.0",
-          "Steeltoe.Common": "2.0.0",
-          "Steeltoe.Discovery.EurekaBase": "2.0.1"
+          "IdentityServer4": "2.2.0",
+          "IdentityServer4.AccessTokenValidation": "2.6.0",
+          "Ocelot": "10.0.2"
         },
         "compile": {
-          "lib/netstandard2.0/Pivotal.Discovery.ClientCore.dll": {}
+          "lib/netstandard2.0/Ocelot.Administration.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Pivotal.Discovery.ClientCore.dll": {}
+          "lib/netstandard2.0/Ocelot.Administration.dll": {}
         }
       },
-      "Pivotal.Discovery.EurekaBase/2.0.1": {
+      "Ocelot.Cache.CacheManager/0.1.0": {
         "type": "package",
         "dependencies": {
-          "Steeltoe.CloudFoundry.ConnectorBase": "2.0.0",
-          "Steeltoe.Discovery.EurekaBase": "2.0.1"
+          "CacheManager.Core": "1.1.2",
+          "CacheManager.Microsoft.Extensions.Configuration": "1.1.2",
+          "CacheManager.Microsoft.Extensions.Logging": "1.1.2",
+          "Ocelot": "8.0.8"
         },
         "compile": {
-          "lib/netstandard2.0/Pivotal.Discovery.EurekaBase.dll": {}
+          "lib/netstandard2.0/Ocelot.Cache.CacheManager.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Pivotal.Discovery.EurekaBase.dll": {}
+          "lib/netstandard2.0/Ocelot.Cache.CacheManager.dll": {}
+        }
+      },
+      "Ocelot.Provider.Consul/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Consul": "0.7.2.6",
+          "Ocelot": "9.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ocelot.Provider.Consul.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ocelot.Provider.Consul.dll": {}
+        }
+      },
+      "Ocelot.Provider.Polly/0.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Ocelot": "10.0.3",
+          "Polly": "6.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Ocelot.Provider.Polly.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Ocelot.Provider.Polly.dll": {}
         }
       },
       "Polly/6.1.0": {
@@ -3075,21 +2995,6 @@
           "lib/netstandard1.5/RabbitMQ.Client.dll": {}
         }
       },
-      "Rafty/0.4.4": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.DotNet.InternalAbstractions": "1.0.500-preview2-1-003177",
-          "Microsoft.Extensions.Logging": "2.0.2",
-          "Newtonsoft.Json": "10.0.1",
-          "System.ValueTuple": "4.4.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Rafty.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Rafty.dll": {}
-        }
-      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3112,7 +3017,7 @@
           "lib/netstandard1.0/Remotion.Linq.dll": {}
         }
       },
-      "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/debian.8-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3121,7 +3026,7 @@
           }
         }
       },
-      "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/fedora.23-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3130,7 +3035,7 @@
           }
         }
       },
-      "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/fedora.24-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3211,19 +3116,19 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "dependencies": {
-          "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2",
-          "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2"
+          "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0",
+          "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -3232,7 +3137,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/opensuse.13.2-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3241,7 +3146,7 @@
           }
         }
       },
-      "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/opensuse.42.1-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3259,7 +3164,7 @@
           }
         }
       },
-      "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/osx.10.10-x64/native/System.Security.Cryptography.Native.OpenSsl.dylib": {
@@ -3268,7 +3173,7 @@
           }
         }
       },
-      "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/rhel.7-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3277,7 +3182,7 @@
           }
         }
       },
-      "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.14.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3286,7 +3191,7 @@
           }
         }
       },
-      "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.16.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3295,7 +3200,7 @@
           }
         }
       },
-      "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
+      "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
           "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so": {
@@ -3449,79 +3354,6 @@
         },
         "runtime": {
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
-        }
-      },
-      "Steeltoe.CloudFoundry.ConnectorBase/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "2.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "2.0.0",
-          "Microsoft.Extensions.Options": "2.0.0",
-          "Steeltoe.Extensions.Configuration.CloudFoundryBase": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Steeltoe.CloudFoundry.ConnectorBase.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Steeltoe.CloudFoundry.ConnectorBase.dll": {}
-        }
-      },
-      "Steeltoe.Common/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "2.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Steeltoe.Common.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Steeltoe.Common.dll": {}
-        }
-      },
-      "Steeltoe.Common.Http/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "Newtonsoft.Json": "10.0.3",
-          "Steeltoe.Common": "2.0.0",
-          "System.Net.Http": "4.3.3"
-        },
-        "compile": {
-          "lib/netstandard2.0/Steeltoe.Common.Http.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Steeltoe.Common.Http.dll": {}
-        }
-      },
-      "Steeltoe.Discovery.EurekaBase/2.0.1": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.0.0",
-          "Newtonsoft.Json": "10.0.3",
-          "Steeltoe.Common.Http": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Steeltoe.Discovery.EurekaBase.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Steeltoe.Discovery.EurekaBase.dll": {}
-        }
-      },
-      "Steeltoe.Extensions.Configuration.CloudFoundryBase/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "2.0.0",
-          "Microsoft.Extensions.Configuration.EnvironmentVariables": "2.0.0",
-          "Microsoft.Extensions.Configuration.Json": "2.0.0",
-          "Steeltoe.Common": "2.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Steeltoe.Extensions.Configuration.CloudFoundryBase.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Steeltoe.Extensions.Configuration.CloudFoundryBase.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4043,7 +3875,7 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "System.Net.Http/4.3.3": {
+      "System.Net.Http/4.3.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -4071,7 +3903,7 @@
           "System.Threading.Tasks": "4.3.0",
           "runtime.native.System": "4.3.0",
           "runtime.native.System.Net.Http": "4.3.0",
-          "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2"
+          "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Http.dll": {}
@@ -5304,16 +5136,6 @@
         "lib/netstandard2.0/AspectCore.Core.dll"
       ]
     },
-    "AspectCore.Extensions.DependencyInjection/0.2.4": {
-      "sha512": "5vO0xFHWJbWPIuahIi8CqNGiNdzQhPCBuT/TMMRZtNjnyYNu9zMnY0LaPz1HN1xMzOGLYIKZzTwe6Ty/dyK1Rw==",
-      "type": "package",
-      "path": "aspectcore.extensions.dependencyinjection/0.2.4",
-      "files": [
-        "aspectcore.extensions.dependencyinjection.0.2.4.nupkg.sha512",
-        "aspectcore.extensions.dependencyinjection.nuspec",
-        "lib/netstandard2.0/AspectCore.Extensions.DependencyInjection.dll"
-      ]
-    },
     "AspectCore.Extensions.Reflection/0.7.0": {
       "sha512": "cAueSyGBzMnQTGveYEP8tbJa8/1uu9DhMXIdyOD7sx2sqi2t9FC1P47oXs4RAW4HlUFQRKn/9CVX+c8PMBdYpg==",
       "type": "package",
@@ -5323,50 +5145,6 @@
         "aspectcore.extensions.reflection.nuspec",
         "lib/net45/AspectCore.Extensions.Reflection.dll",
         "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
-      ]
-    },
-    "Butterfly.Client/0.0.8": {
-      "sha512": "tGLgKVawJNgFPoUUHztUbaX5NWeyk3guClMK2tNP3irrGZupxlza6pRA7cEonWxR6BU+WHr1YevjZqiRVR6pdg==",
-      "type": "package",
-      "path": "butterfly.client/0.0.8",
-      "files": [
-        "butterfly.client.0.0.8.nupkg.sha512",
-        "butterfly.client.nuspec",
-        "lib/net45/Butterfly.Client.dll",
-        "lib/netstandard1.6/Butterfly.Client.dll"
-      ]
-    },
-    "Butterfly.Client.AspNetCore/0.0.8": {
-      "sha512": "s48Hf4pIJG7smO87PL1YvZJOFxCaVP8MQL3EHdofoJTY/jxiGLoIFuLVpMNKKodUlVNn1vmLz7+uksVFe3e/GA==",
-      "type": "package",
-      "path": "butterfly.client.aspnetcore/0.0.8",
-      "files": [
-        "butterfly.client.aspnetcore.0.0.8.nupkg.sha512",
-        "butterfly.client.aspnetcore.nuspec",
-        "lib/net461/Butterfly.Client.AspNetCore.dll",
-        "lib/netcoreapp2.0/Butterfly.Client.AspNetCore.dll"
-      ]
-    },
-    "Butterfly.DataContract/0.0.7": {
-      "sha512": "O2N18I4uvtQ6MaUIeGWwASwI26QlMtRUS7WAZ3MquX9Kapwt2uMUvZT/WS0TV0ZsSW62PW/1DGv7L4oDs8pG8g==",
-      "type": "package",
-      "path": "butterfly.datacontract/0.0.7",
-      "files": [
-        "butterfly.datacontract.0.0.7.nupkg.sha512",
-        "butterfly.datacontract.nuspec",
-        "lib/net45/Butterfly.DataContract.dll",
-        "lib/netstandard1.6/Butterfly.DataContract.dll"
-      ]
-    },
-    "Butterfly.OpenTracing/0.0.8": {
-      "sha512": "BODXwsTDwXsVjPrvEBd+XR5n3CeT+MQN2h1Qe4xQanu39tDRJPQ6eLbL2uB+1TOpTqaVrx+JjzUw3WJH2r929w==",
-      "type": "package",
-      "path": "butterfly.opentracing/0.0.8",
-      "files": [
-        "butterfly.opentracing.0.0.8.nupkg.sha512",
-        "butterfly.opentracing.nuspec",
-        "lib/net45/Butterfly.OpenTracing.dll",
-        "lib/netstandard1.6/Butterfly.OpenTracing.dll"
       ]
     },
     "CacheManager.Core/1.1.2": {
@@ -5410,12 +5188,12 @@
         "lib/netstandard1.2/CacheManager.Microsoft.Extensions.Logging.xml"
       ]
     },
-    "Consul/0.7.2.5": {
-      "sha512": "GPFXGD9+V5Uzwrz5wEg90JDSnn+PKCO9mI7g+zDDDrYyZAvEf41+zRYm3UPnyogKHLfkvZjzsYSfCF3RMzJzSw==",
+    "Consul/0.7.2.6": {
+      "sha512": "0inTc+PLbk/TELmdO12q5N/4lZ2kn5w2EmOqG0g686JXgr1OKEGPCuGZxWYE+NuROy7dwX/FBxKUTph7vuyjPA==",
       "type": "package",
-      "path": "consul/0.7.2.5",
+      "path": "consul/0.7.2.6",
       "files": [
-        "consul.0.7.2.5.nupkg.sha512",
+        "consul.0.7.2.6.nupkg.sha512",
         "consul.nuspec",
         "lib/net45/Consul.dll",
         "lib/netstandard1.3/Consul.dll"
@@ -6841,17 +6619,6 @@
         "microsoft.data.sqlite.core.nuspec"
       ]
     },
-    "Microsoft.DotNet.InternalAbstractions/1.0.500-preview2-1-003177": {
-      "sha512": "wEkDYPRP19wqmn7Q5iMTzSBmBgm+DMM9RdqAtvgeD+bMYCBfVhN2mK96vAAywfqXdx2RL4JixLU5I0joYEaciQ==",
-      "type": "package",
-      "path": "microsoft.dotnet.internalabstractions/1.0.500-preview2-1-003177",
-      "files": [
-        "lib/net451/Microsoft.DotNet.InternalAbstractions.dll",
-        "lib/netstandard1.3/Microsoft.DotNet.InternalAbstractions.dll",
-        "microsoft.dotnet.internalabstractions.1.0.500-preview2-1-003177.nupkg.sha512",
-        "microsoft.dotnet.internalabstractions.nuspec"
-      ]
-    },
     "Microsoft.DotNet.PlatformAbstractions/2.1.0": {
       "sha512": "wkCXkBS0q+5hsbeikjfsHCGP3nNe1L1MrDEBPCBKm+4UH8nXqHLxDZuBrTYaVY85CGIx2y1qW90nO6b+ORAfrA==",
       "type": "package",
@@ -8194,34 +7961,59 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
-    "Ocelot/8.0.2": {
-      "sha512": "Je6H/QXCDkcbpXNQhLmfsDnrPEIEggVJAjyM+niNzmsmK92t8Jtl1qA3oNCWEWAmy/zoqMFkL+4zFNmeunbMkg==",
+    "Ocelot/10.0.3": {
+      "sha512": "77CxGwBYx0hL6FBtGOxeV1ES9r51RGytW+5OYMbYQpUbqSokdb0/D0alG66Ap/qDyqK3DfrK0Ic1bnN8VaAb5g==",
       "type": "package",
-      "path": "ocelot/8.0.2",
+      "path": "ocelot/10.0.3",
       "files": [
+        ".signature.p7s",
         "lib/netstandard2.0/Ocelot.dll",
-        "ocelot.8.0.2.nupkg.sha512",
+        "ocelot.10.0.3.nupkg.sha512",
         "ocelot.nuspec"
       ]
     },
-    "Pivotal.Discovery.ClientCore/2.0.1": {
-      "sha512": "QTmgdCSdYWdWhTLDhknFdqPVD0F5RHPUW0NLLYaDA15c6whW5vZ33u75ZBgoMa3fBXE+oDM1e7E7THhOBQmz/w==",
+    "Ocelot.Administration/0.1.0": {
+      "sha512": "mM1STkUZyV4m8IG8M3CLU3O7E/ECbj/qpLJj/aCYjV4vt9MKeH+u0PK/YY/OMxNSd2d0BsnEZ2UGVObY4m4fog==",
       "type": "package",
-      "path": "pivotal.discovery.clientcore/2.0.1",
+      "path": "ocelot.administration/0.1.0",
       "files": [
-        "lib/netstandard2.0/Pivotal.Discovery.ClientCore.dll",
-        "pivotal.discovery.clientcore.2.0.1.nupkg.sha512",
-        "pivotal.discovery.clientcore.nuspec"
+        ".signature.p7s",
+        "lib/netstandard2.0/Ocelot.Administration.dll",
+        "ocelot.administration.0.1.0.nupkg.sha512",
+        "ocelot.administration.nuspec"
       ]
     },
-    "Pivotal.Discovery.EurekaBase/2.0.1": {
-      "sha512": "zd1HRkP5lZxdIP+9I+VNhFllZectmhDSURbyUahVlAy5wRMUUYumsrzODta+PuO6Jx6OGHTfjceUho/Z5DuAwQ==",
+    "Ocelot.Cache.CacheManager/0.1.0": {
+      "sha512": "zKPZgPDLAfgb3bumvfLBRlxpTuutIzqQrw8fFYFqJaKlff0vfC1copdReJ6rBPNYvFQKxPbjDmkAQC/XaEDLaA==",
       "type": "package",
-      "path": "pivotal.discovery.eurekabase/2.0.1",
+      "path": "ocelot.cache.cachemanager/0.1.0",
       "files": [
-        "lib/netstandard2.0/Pivotal.Discovery.EurekaBase.dll",
-        "pivotal.discovery.eurekabase.2.0.1.nupkg.sha512",
-        "pivotal.discovery.eurekabase.nuspec"
+        ".signature.p7s",
+        "lib/netstandard2.0/Ocelot.Cache.CacheManager.dll",
+        "ocelot.cache.cachemanager.0.1.0.nupkg.sha512",
+        "ocelot.cache.cachemanager.nuspec"
+      ]
+    },
+    "Ocelot.Provider.Consul/0.1.0": {
+      "sha512": "wHAVC31nHU1Z304b2havTRYV50wh5oman1nIh/1ssaupQIRx3YunNnR8Eg1rcI7xkwjs5+epPfXFLZRZIMTxBQ==",
+      "type": "package",
+      "path": "ocelot.provider.consul/0.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Ocelot.Provider.Consul.dll",
+        "ocelot.provider.consul.0.1.0.nupkg.sha512",
+        "ocelot.provider.consul.nuspec"
+      ]
+    },
+    "Ocelot.Provider.Polly/0.1.0": {
+      "sha512": "pYnkUIKl/ADgz9fPzgshy8g2XQPkEm1Z317680fV7XB9iP1vr2ptpymN7Bwfgh2XWKxrSB6zcsrqTaltlCNqXg==",
+      "type": "package",
+      "path": "ocelot.provider.polly/0.1.0",
+      "files": [
+        ".signature.p7s",
+        "lib/netstandard2.0/Ocelot.Provider.Polly.dll",
+        "ocelot.provider.polly.0.1.0.nupkg.sha512",
+        "ocelot.provider.polly.nuspec"
       ]
     },
     "Polly/6.1.0": {
@@ -8254,16 +8046,6 @@
         "rabbitmq.client.nuspec"
       ]
     },
-    "Rafty/0.4.4": {
-      "sha512": "OtZlNsoY3DgcpHOsAPWALDQkr9tFaAutnQv7CVgSc16Z3T1zsBlp5qkqg8QcSAYv9UYSEfgVh0WWNu8Qe+1R1Q==",
-      "type": "package",
-      "path": "rafty/0.4.4",
-      "files": [
-        "lib/netstandard2.0/Rafty.dll",
-        "rafty.0.4.4.nupkg.sha512",
-        "rafty.nuspec"
-      ]
-    },
     "Remotion.Linq/2.2.0": {
       "sha512": "fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
       "type": "package",
@@ -8283,38 +8065,38 @@
         "remotion.linq.nuspec"
       ]
     },
-    "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "7VSGO0URRKoMEAq0Sc9cRz8mb6zbyx/BZDEWhgPdzzpmFhkam3fJ1DAGWFXBI4nGlma+uPKpfuMQP5LXRnOH5g==",
+    "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "5CwadkVweHmkNbRKTG3CE9j0Gz1mLAnRanT+4O943hqGliiVmXr4jEsXLZFyRsVbZTXcJe+lWufFwDq+CAWXyg==",
       "type": "package",
-      "path": "runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/debian.8-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "0oAaTAm6e2oVH+/Zttt0cuhGaePQYKII1dY8iaqP7CvOpVKgLybKRFvQjXR2LtxXOXTVPNv14j0ot8uV+HrUmw==",
+    "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "kz15q9FLwkQb8Al6kQNYhmpAbJZ1ZJgvH0mV7se/s6GfwyNCrZiZePWz8iVd2ZFfR4YMF0SFnxFg5SzQniiGcQ==",
       "type": "package",
-      "path": "runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/fedora.23-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "G24ibsCNi5Kbz0oXWynBoRgtGvsw5ZSVEWjv13/KiCAM8C6wz9zzcCniMeQFIkJ2tasjo2kXlvlBZhplL51kGg==",
+    "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "wGs3CsvtwYCs346D262hgOmn/cEMtCO0/1SDVDM8AeDOf2+PdqAVxg2AQFCwzyF/Q/xLELsJHZQQVe1p1ssf5Q==",
       "type": "package",
-      "path": "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/fedora.24-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
@@ -8392,38 +8174,38 @@
         "runtime.native.system.security.cryptography.apple.nuspec"
       ]
     },
-    "runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "QR1OwtwehHxSeQvZKXe+iSd+d3XZNkEcuWMFYa2i0aG1l+lR739HPicKMlTbJst3spmeekDVBUS7SeS26s4U/g==",
+    "runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "h8kRP6HzCgNgVlSGQtvITa7+27le89rqdkD4UP/bTlOenLAJDwbbqYMjSbJ/5SWRYq67O1nvMg9JqJtZCTv/bA==",
       "type": "package",
-      "path": "runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
-        "runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.native.system.security.cryptography.openssl.nuspec"
       ]
     },
-    "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "I+GNKGg2xCHueRd1m9PzeEW7WLbNNLznmTuEi8/vZX71HudUbx1UTwlGkiwMri7JLl8hGaIAWnA/GONhu+LOyQ==",
+    "runtime.opensuse.13.2-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "knUEbwuk87eZBKS3CUQ9AifKzRj9HKPucZIbKlcn2jJEIyocGqQGrY+/F52uHL3sWlY3xxj00tgxAJ7jdXTTzg==",
       "type": "package",
-      "path": "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.opensuse.13.2-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/opensuse.13.2-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "1Z3TAq1ytS1IBRtPXJvEUZdVsfWfeNEhBkbiOCGEl9wwAfsjP2lz3ZFDx5tq8p60/EqbS0HItG5piHuB71RjoA==",
+    "runtime.opensuse.42.1-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "M042cm6telfnp6TDEmjp/Gd/F5bUJHxXQq7sA1RxHk9WPvdGLB3Qv0XZj9smmpMaWXoH3uREbGefHczSmkoGKA==",
       "type": "package",
-      "path": "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.opensuse.42.1-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/opensuse.42.1-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
@@ -8440,62 +8222,62 @@
         "runtimes/osx.10.10-x64/native/System.Security.Cryptography.Native.Apple.dylib"
       ]
     },
-    "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "6mU/cVmmHtQiDXhnzUImxIcDL48GbTk+TsptXyJA+MIOG9LRjPoAQC/qBFB7X+UNyK86bmvGwC8t+M66wsYC8w==",
+    "runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "KmR8P31c8o5tmFG7MQ3pg9/aanvY/mBOaMvwP2oO6gGSnxB6EyE9/8FWS1bK5lD8syPWVcKesIt5CtYXLBiWkA==",
       "type": "package",
-      "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.osx.10.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/osx.10.10-x64/native/System.Security.Cryptography.Native.OpenSsl.dylib"
       ]
     },
-    "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "vjwG0GGcTW/PPg6KVud8F9GLWYuAV1rrw1BKAqY0oh4jcUqg15oYF1+qkGR2x2ZHM4DQnWKQ7cJgYbfncz/lYg==",
+    "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "rzPhZBtk2ZSow7qLHZeGkekNS8gR4W59HCEEaax3peAqozX9o4jqxF/1SF65341zW77FUG6ziNwKR0NA9iW2Ug==",
       "type": "package",
-      "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/rhel.7-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "7KMFpTkHC/zoExs+PwP8jDCWcrK9H6L7soowT80CUx3e+nxP/AFnq0AQAW5W76z2WYbLAYCRyPfwYFG6zkvQRw==",
+    "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "K6UGMr4UMqMvknb2ugJXrKpATg8Y048iBTxw5SwWLxTL7V4NF6ZuCb60id0BtZvLSf4chJgErhujMsgh9MGodQ==",
       "type": "package",
-      "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.14.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "xrlmRCnKZJLHxyyLIqkZjNXqgxnKdZxfItrPkjI+6pkRo5lHX8YvSZlWrSI5AVwLMi4HbNWP7064hcAWeZKp5w==",
+    "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "dZHZBcwu7KU4qe9fr8XIZV/RnDo4rSCLT/PW7IO3YmLcgX+51lFw4Lod+7nNv9bH1lMbfJ6PNLDTLZ00aqYsCw==",
       "type": "package",
-      "path": "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.04-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
     },
-    "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
-      "sha512": "leXiwfiIkW7Gmn7cgnNcdtNAU70SjmKW3jxGj1iKHOvdn0zRWsgv/l2OJUO5zdGdiv2VRFnAsxxhDgMzofPdWg==",
+    "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
+      "sha512": "9yn/WCpi1zBptbdGVsgrOMo+1pRGhB+jYqOHbtm34JK8Kft609Ts6vhqLbJoL73TqmBblK3pXkAzTqvWNVXhRQ==",
       "type": "package",
-      "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2",
+      "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+        "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
       ]
@@ -8671,60 +8453,6 @@
         "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.1.1.11.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
-      ]
-    },
-    "Steeltoe.CloudFoundry.ConnectorBase/2.0.0": {
-      "sha512": "Rzp/T0yIo8qU+6++3dhr9HzP95mOA/ARBxVdePM0s9zF486Oj7QMsQUaJQ06B2qPwK65MVL2g5za2ljXCmzM/g==",
-      "type": "package",
-      "path": "steeltoe.cloudfoundry.connectorbase/2.0.0",
-      "files": [
-        "lib/netstandard2.0/Steeltoe.CloudFoundry.ConnectorBase.dll",
-        "lib/netstandard2.0/Steeltoe.CloudFoundry.ConnectorBase.xml",
-        "steeltoe.cloudfoundry.connectorbase.2.0.0.nupkg.sha512",
-        "steeltoe.cloudfoundry.connectorbase.nuspec"
-      ]
-    },
-    "Steeltoe.Common/2.0.0": {
-      "sha512": "09ArWhrNRzXqsi8LDH8FRNYmAjv/QQ8g5fgIU34OE7j5iz07cVg1jUUQYaYwgxDvWsYBE2GiI2fSk1Ic1/fazg==",
-      "type": "package",
-      "path": "steeltoe.common/2.0.0",
-      "files": [
-        "lib/netstandard2.0/Steeltoe.Common.dll",
-        "lib/netstandard2.0/Steeltoe.Common.xml",
-        "steeltoe.common.2.0.0.nupkg.sha512",
-        "steeltoe.common.nuspec"
-      ]
-    },
-    "Steeltoe.Common.Http/2.0.0": {
-      "sha512": "BZkDweYwU3Vy37kymLtK8+8RaTrJHB67e2jTdrSySJUgcTDMN5uI0eoYAkiy9lbeFO0QUsKpiZ+FVVdZ+6t+TA==",
-      "type": "package",
-      "path": "steeltoe.common.http/2.0.0",
-      "files": [
-        "lib/netstandard2.0/Steeltoe.Common.Http.dll",
-        "lib/netstandard2.0/Steeltoe.Common.Http.xml",
-        "steeltoe.common.http.2.0.0.nupkg.sha512",
-        "steeltoe.common.http.nuspec"
-      ]
-    },
-    "Steeltoe.Discovery.EurekaBase/2.0.1": {
-      "sha512": "7XNi//vwhmxe7KMTadPTfRKrK4BHegoKnZXuaTs3ITpzbVHHaaZvSkNfEZ9nIsC/U5fkEJryEHtr2zZF5Ac6qA==",
-      "type": "package",
-      "path": "steeltoe.discovery.eurekabase/2.0.1",
-      "files": [
-        "lib/netstandard2.0/Steeltoe.Discovery.EurekaBase.dll",
-        "steeltoe.discovery.eurekabase.2.0.1.nupkg.sha512",
-        "steeltoe.discovery.eurekabase.nuspec"
-      ]
-    },
-    "Steeltoe.Extensions.Configuration.CloudFoundryBase/2.0.0": {
-      "sha512": "eMRwjthXafVPDoOSIGg9fH8wft4ktuwenyzMfvVwnhoesjsfdV27qq453ysBo1KEW7P1CfRWOgUtWNenW5L/3A==",
-      "type": "package",
-      "path": "steeltoe.extensions.configuration.cloudfoundrybase/2.0.0",
-      "files": [
-        "lib/netstandard2.0/Steeltoe.Extensions.Configuration.CloudFoundryBase.dll",
-        "lib/netstandard2.0/Steeltoe.Extensions.Configuration.CloudFoundryBase.xml",
-        "steeltoe.extensions.configuration.cloudfoundrybase.2.0.0.nupkg.sha512",
-        "steeltoe.extensions.configuration.cloudfoundrybase.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -10413,10 +10141,10 @@
         "version.txt"
       ]
     },
-    "System.Net.Http/4.3.3": {
-      "sha512": "7rCqIbkC/P2+A00NoDH5gnvFhADmX7Dc4INvsOajbU1MVhktE9vZNrjPtF82N6Uo7obK+yzlrPUv/M+snnN/9w==",
+    "System.Net.Http/4.3.0": {
+      "sha512": "670pLfhdZvAjPNbPPstQHm+WViFqm/fEh5ngUb9OQVTeiRPtVs8B/mNMuwCt2hgNax6IDzdzIee2j4v3bhUb2w==",
       "type": "package",
-      "path": "system.net.http/4.3.3",
+      "path": "system.net.http/4.3.0",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -10436,9 +10164,49 @@
         "ref/monotouch10/_._",
         "ref/net45/_._",
         "ref/net46/System.Net.Http.dll",
+        "ref/net46/System.Net.Http.xml",
+        "ref/net46/de/System.Net.Http.xml",
+        "ref/net46/es/System.Net.Http.xml",
+        "ref/net46/fr/System.Net.Http.xml",
+        "ref/net46/it/System.Net.Http.xml",
+        "ref/net46/ja/System.Net.Http.xml",
+        "ref/net46/ko/System.Net.Http.xml",
+        "ref/net46/ru/System.Net.Http.xml",
+        "ref/net46/zh-hans/System.Net.Http.xml",
+        "ref/net46/zh-hant/System.Net.Http.xml",
         "ref/netcore50/System.Net.Http.dll",
+        "ref/netcore50/System.Net.Http.xml",
+        "ref/netcore50/de/System.Net.Http.xml",
+        "ref/netcore50/es/System.Net.Http.xml",
+        "ref/netcore50/fr/System.Net.Http.xml",
+        "ref/netcore50/it/System.Net.Http.xml",
+        "ref/netcore50/ja/System.Net.Http.xml",
+        "ref/netcore50/ko/System.Net.Http.xml",
+        "ref/netcore50/ru/System.Net.Http.xml",
+        "ref/netcore50/zh-hans/System.Net.Http.xml",
+        "ref/netcore50/zh-hant/System.Net.Http.xml",
         "ref/netstandard1.1/System.Net.Http.dll",
+        "ref/netstandard1.1/System.Net.Http.xml",
+        "ref/netstandard1.1/de/System.Net.Http.xml",
+        "ref/netstandard1.1/es/System.Net.Http.xml",
+        "ref/netstandard1.1/fr/System.Net.Http.xml",
+        "ref/netstandard1.1/it/System.Net.Http.xml",
+        "ref/netstandard1.1/ja/System.Net.Http.xml",
+        "ref/netstandard1.1/ko/System.Net.Http.xml",
+        "ref/netstandard1.1/ru/System.Net.Http.xml",
+        "ref/netstandard1.1/zh-hans/System.Net.Http.xml",
+        "ref/netstandard1.1/zh-hant/System.Net.Http.xml",
         "ref/netstandard1.3/System.Net.Http.dll",
+        "ref/netstandard1.3/System.Net.Http.xml",
+        "ref/netstandard1.3/de/System.Net.Http.xml",
+        "ref/netstandard1.3/es/System.Net.Http.xml",
+        "ref/netstandard1.3/fr/System.Net.Http.xml",
+        "ref/netstandard1.3/it/System.Net.Http.xml",
+        "ref/netstandard1.3/ja/System.Net.Http.xml",
+        "ref/netstandard1.3/ko/System.Net.Http.xml",
+        "ref/netstandard1.3/ru/System.Net.Http.xml",
+        "ref/netstandard1.3/zh-hans/System.Net.Http.xml",
+        "ref/netstandard1.3/zh-hant/System.Net.Http.xml",
         "ref/portable-net45+win8+wpa81/_._",
         "ref/win8/_._",
         "ref/wpa81/_._",
@@ -10449,7 +10217,7 @@
         "runtimes/win/lib/net46/System.Net.Http.dll",
         "runtimes/win/lib/netcore50/System.Net.Http.dll",
         "runtimes/win/lib/netstandard1.3/System.Net.Http.dll",
-        "system.net.http.4.3.3.nupkg.sha512",
+        "system.net.http.4.3.0.nupkg.sha512",
         "system.net.http.nuspec"
       ]
     },
@@ -13380,7 +13148,11 @@
       "Bucket.Tracing.Events >= 1.1.2",
       "Microsoft.AspNetCore.App >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
-      "Ocelot >= 8.0.2",
+      "Ocelot >= 10.0.3",
+      "Ocelot.Administration >= 0.1.0",
+      "Ocelot.Cache.CacheManager >= 0.1.0",
+      "Ocelot.Provider.Consul >= 0.1.0",
+      "Ocelot.Provider.Polly >= 0.1.0",
       "System.Text.Encoding.CodePages >= 4.5.0"
     ]
   },
@@ -13391,11 +13163,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ApiGateway\\Bucket.ApiGateway.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ApiGateway\\Bucket.ApiGateway.csproj",
       "projectName": "Bucket.ApiGateway",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ApiGateway\\Bucket.ApiGateway.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ApiGateway\\Bucket.ApiGateway.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.ApiGateway\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.ApiGateway\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13415,23 +13187,23 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing\\Bucket.Tracing.csproj"
             }
           }
         }
@@ -13456,7 +13228,23 @@
           },
           "Ocelot": {
             "target": "Package",
-            "version": "[8.0.2, )"
+            "version": "[10.0.3, )"
+          },
+          "Ocelot.Administration": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
+          "Ocelot.Cache.CacheManager": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
+          "Ocelot.Provider.Consul": {
+            "target": "Package",
+            "version": "[0.1.0, )"
+          },
+          "Ocelot.Provider.Polly": {
+            "target": "Package",
+            "version": "[0.1.0, )"
           },
           "System.Text.Encoding.CodePages": {
             "target": "Package",

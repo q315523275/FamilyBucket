@@ -1,12 +1,8 @@
 ﻿using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Events;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bucket.EventBus
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.ErrorCode
+﻿namespace Bucket.ErrorCode
 {
     public class ErrorCodeSetting
     {

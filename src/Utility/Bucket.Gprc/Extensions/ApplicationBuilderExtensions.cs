@@ -27,43 +27,39 @@ namespace Bucket.Gprc.Extensions
             var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>() ??
                 throw new ArgumentException("Missing Dependency", nameof(IApplicationLifetime));
 
-            var serviceDiscovery = app.ApplicationServices.GetRequiredService<IServiceDiscovery>() ?? 
+            var serviceDiscovery = app.ApplicationServices.GetRequiredService<IServiceDiscovery>() ??
                 throw new ArgumentException("Missing Dependency", nameof(IServiceDiscovery));
 
             if (string.IsNullOrEmpty(serviceDiscoveryOption.ServiceName))
                 throw new ArgumentException("service name must be configure", nameof(serviceDiscoveryOption.ServiceName));
 
-            IEnumerable<Uri> addresses = null;
-            if (serviceDiscoveryOption.Endpoints != null && serviceDiscoveryOption.Endpoints.Length > 0)
-            {
-                addresses = serviceDiscoveryOption.Endpoints.Select(p => new Uri(p));
-            }
+            if (serviceDiscoveryOption.RpcEndpoint == null)
+                throw new ArgumentException("RpcEndpoint must be configure", nameof(serviceDiscoveryOption.RpcEndpoint));
+
+            // 开启rpc服务
+            var grpcServer = InitializeGrpcServer(serviceDiscoveryOption.RpcEndpoint);
+
+            Uri healthCheck = null;
+            if (!string.IsNullOrEmpty(serviceDiscoveryOption.HealthCheckTemplate))
+                healthCheck = new Uri(serviceDiscoveryOption.HealthCheckTemplate);
+
+            Uri address = null;
+            if (!string.IsNullOrWhiteSpace(serviceDiscoveryOption.Endpoint))
+                address = new Uri(serviceDiscoveryOption.Endpoint);
             else
             {
                 var features = app.Properties["server.Features"] as FeatureCollection;
-                addresses = features.Get<IServerAddressesFeature>().Addresses.Select(p => new Uri(p)).ToArray();
+                address = features.Get<IServerAddressesFeature>()?.Addresses?.Select(p => new Uri(p))?.FirstOrDefault();
             }
-            // 以默认第一个地址开启rpc服务
-            var grpcServer = InitializeGrpcServer(addresses.FirstOrDefault());
 
-            foreach (var address in addresses)
+            if (address != null)
             {
-                UriBuilder myUri = new UriBuilder(address.Scheme, address.Host, address.Port);
-
-                var serviceID = GetRpcServiceId(serviceDiscoveryOption.ServiceName, myUri.Uri);
-
-                Uri healthCheck = null;
-                if (!string.IsNullOrEmpty(serviceDiscoveryOption.HealthCheckTemplate))
-                {
-                    healthCheck = new Uri(myUri.Uri, serviceDiscoveryOption.HealthCheckTemplate);
-                }
-
-                var registryInformation = serviceDiscovery.RegisterServiceAsync(serviceDiscoveryOption.ServiceName, 
-                    serviceDiscoveryOption.Version, 
-                    myUri.Uri, 
-                    healthCheckUri: healthCheck, 
-                    tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}"
-                    }).Result;
+                var registryInformation = serviceDiscovery.RegisterServiceAsync(serviceDiscoveryOption.ServiceName,
+                    serviceDiscoveryOption.Version,
+                    address,
+                    healthCheckUri: healthCheck,
+                    tags: new[] { "GRPC", $"urlprefix-/{serviceDiscoveryOption.ServiceName}"
+                }).Result;
 
                 applicationLifetime.ApplicationStopping.Register(() =>
                 {
@@ -78,18 +74,17 @@ namespace Bucket.Gprc.Extensions
                     serviceDiscovery.DeregisterServiceAsync(registryInformation.Id);
                 });
             }
-
             return app;
         }
         private static string GetRpcServiceId(string serviceName, Uri uri)
         {
             return $"GRPC_{serviceName}_{uri.Host.Replace(".", "_")}_{uri.Port}";
         }
-        private static GRpcServer InitializeGrpcServer(Uri addresses)
+        private static GRpcServer InitializeGrpcServer(RpcEndpointOptions options)
         {
             var grpcServer = new GRpcServer
             {
-                Ports = { new ServerPort(addresses.Host, addresses.Port, ServerCredentials.Insecure) },
+                Ports = { new ServerPort(options.Address, options.Port, ServerCredentials.Insecure) },
                 Services = { MagicOnionEngine.BuildServerServiceDefinition() }
             };
             grpcServer.Start();

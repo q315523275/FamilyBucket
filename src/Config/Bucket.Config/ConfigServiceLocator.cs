@@ -1,5 +1,4 @@
-﻿using Bucket.Config.Util;
-using Bucket.LoadBalancer;
+﻿using Bucket.LoadBalancer;
 
 namespace Bucket.Config
 {

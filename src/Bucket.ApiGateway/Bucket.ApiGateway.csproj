@@ -10,7 +10,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
-    <PackageReference Include="Ocelot" Version="8.0.2" />
+    <PackageReference Include="Ocelot" Version="10.0.3" />
+    <PackageReference Include="Ocelot.Administration" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Provider.Consul" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Provider.Polly" Version="0.1.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
   </ItemGroup>
 
