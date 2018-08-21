@@ -23,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ServiceDiscovery\Bucket.LoadBalancer\Bucket.LoadBalancer.csproj" />
+    <ProjectReference Include="..\..\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
+    <ProjectReference Include="..\..\ServiceDiscovery\Bucket.ServiceDiscovery\Bucket.ServiceDiscovery.csproj" />
     <ProjectReference Include="..\..\Utility\Bucket.Gprc\Bucket.Gprc.csproj" />
   </ItemGroup>
 
