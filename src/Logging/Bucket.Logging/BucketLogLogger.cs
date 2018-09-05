@@ -62,13 +62,9 @@ namespace Bucket.Logging
 
             if (null != exception)
             {
-                var expt = exception;
-                while (expt != null)
-                {
-                    message += "→" + (Convert.IsDBNull(expt.Message) ? "" : expt.Message) + "\r\n";
-                    expt = expt.InnerException;
-                }
-                message += exception.StackTrace;
+                message = string.Format("【抛出信息】：{0} <br />【异常类型】：{1} <br />【异常信息】：{2} <br />【堆栈调用】：{3}", new object[] { message, exception.GetType().Name, exception.Message, exception.StackTrace });
+                message = message.Replace("\r\n", "<br />");
+                message = message.Replace("位置", "<strong style=\"color:red\">位置</strong>");
             }
 
             if (!string.IsNullOrEmpty(message)

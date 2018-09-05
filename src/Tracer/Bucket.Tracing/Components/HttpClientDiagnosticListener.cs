@@ -1,14 +1,10 @@
 ﻿using Bucket.OpenTracing;
 using Bucket.Tracing.Diagnostics;
-using Bucket.Tracing;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 namespace Bucket.Tracing.Components
 {
     public class HttpClientDiagnosticListener : ITracingDiagnosticListener
@@ -51,7 +47,7 @@ namespace Bucket.Tracing.Components
 
             _tracer.Tracer.Inject(span.SpanContext, request.Headers, (c, k, v) => c.Add(k, v));
             span.Log(LogField.CreateNew().ClientSend());
-            if(request.Method == HttpMethod.Post)
+            if(request.Method == HttpMethod.Post && _options.SetHttpBody)
             {
                 var result = request.Content.ReadAsStringAsync().Result;
                 if (!string.IsNullOrWhiteSpace(result))
@@ -72,13 +68,14 @@ namespace Bucket.Tracing.Components
 
             span.Log(LogField.CreateNew().ClientReceive());
             span.Tags.HttpStatusCode((int)response.StatusCode);
-
-            var result = response.Content.ReadAsStringAsync().Result;
-            if (result.Length > 2048)
-                result = result.Substring(0, 2048) + "...";
-            if(!string.IsNullOrWhiteSpace(result))
-                span.Tags.Add("http.response", _tbbrRegex.Replace(result, ""));
-
+            if (_options.SetHttpBody)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                if (result.Length > 2048)
+                    result = result.Substring(0, 2048) + "...";
+                if (!string.IsNullOrWhiteSpace(result))
+                    span.Tags.Add("http.response", _tbbrRegex.Replace(result, ""));
+            }
             span.Finish();
             _tracer.Tracer.SetExitSpan(null);
         }

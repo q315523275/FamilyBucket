@@ -310,11 +310,11 @@
   "project": {
     "version": "1.1.3",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj",
       "projectName": "Bucket.EventBus",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -334,8 +334,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             }
           }
         }

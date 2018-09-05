@@ -76,25 +76,6 @@
           "lib/netstandard1.3/Elasticsearch.Net.dll": {}
         }
       },
-      "MessagePack/1.7.3.4": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Threading.Tasks.Extensions": "4.3.0",
-          "System.ValueTuple": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/MessagePack.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/MessagePack.dll": {}
-        }
-      },
-      "MessagePackAnalyzer/1.6.0": {
-        "type": "package"
-      },
       "Microsoft.AspNetCore/2.1.2": {
         "type": "package",
         "dependencies": {
@@ -3749,10 +3730,11 @@
         "dependencies": {
           "Bucket.Core": "1.1.3",
           "Bucket.Redis": "1.0.0",
-          "Bucket.Tracing": "1.1.6",
+          "Bucket.Tracing": "1.1.7",
           "Microsoft.AspNetCore.Authentication": "2.1.1",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "2.1.1",
           "Microsoft.AspNetCore.Mvc": "2.1.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
           "Microsoft.IdentityModel.Tokens": "5.2.4"
         },
@@ -3827,7 +3809,7 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.Logging/1.1.2": {
+      "Bucket.Logging/1.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -3846,7 +3828,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.Logging": "1.1.2"
+          "Bucket.Logging": "1.1.3"
         },
         "compile": {
           "bin/placeholder/Bucket.Logging.Events.dll": {}
@@ -3884,22 +3866,18 @@
           "bin/placeholder/Bucket.Redis.dll": {}
         }
       },
-      "Bucket.Tracing/1.1.6": {
+      "Bucket.Tracing/1.1.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "AspectCore.Core": "0.7.0",
-          "Bucket.Core": "1.1.3",
-          "MessagePack": "1.7.3.4",
-          "MessagePackAnalyzer": "1.6.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
           "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.1",
           "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "2.1.1",
           "Microsoft.Extensions.Options": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
-          "Microsoft.Extensions.Primitives": "2.1.1",
-          "Newtonsoft.Json": "11.0.2"
+          "Microsoft.Extensions.Primitives": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.dll": {}
@@ -3913,8 +3891,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.Logging": "1.1.2",
-          "Bucket.Tracing": "1.1.6"
+          "Bucket.Logging": "1.1.3",
+          "Bucket.Tracing": "1.1.7"
         },
         "compile": {
           "bin/placeholder/Bucket.Tracing.Events.dll": {}
@@ -3928,7 +3906,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.Tracing": "1.1.6",
+          "Bucket.Tracing": "1.1.7",
           "Bucket.Tracing.Events": "1.1.2",
           "Microsoft.Extensions.Caching.Memory": "2.1.1",
           "Microsoft.Extensions.Options": "2.1.1",
@@ -4005,35 +3983,6 @@
         "lib/net46/Elasticsearch.Net.xml",
         "lib/netstandard1.3/Elasticsearch.Net.dll",
         "lib/netstandard1.3/Elasticsearch.Net.xml"
-      ]
-    },
-    "MessagePack/1.7.3.4": {
-      "sha512": "QSKZVq6BmNaz/B4n0bAM/moQnc4E6XZ7uXRbJcEXxUzZufJiDYDE6awYqDtNz6acupYoPt2QupGV4rpyPCRRtg==",
-      "type": "package",
-      "path": "messagepack/1.7.3.4",
-      "files": [
-        "lib/net45/MessagePack.dll",
-        "lib/net45/MessagePack.xml",
-        "lib/net47/MessagePack.dll",
-        "lib/net47/MessagePack.xml",
-        "lib/netstandard1.6/MessagePack.dll",
-        "lib/netstandard1.6/MessagePack.xml",
-        "lib/netstandard2.0/MessagePack.dll",
-        "lib/netstandard2.0/MessagePack.xml",
-        "messagepack.1.7.3.4.nupkg.sha512",
-        "messagepack.nuspec"
-      ]
-    },
-    "MessagePackAnalyzer/1.6.0": {
-      "sha512": "gWH/And7eJFxDT/q/hWFyWjrCni6HJ01fgDB2NUhYaqrEZN2LtsaTwAkSPhd26AdAbeYkZg7kS/umlt2Wci2HQ==",
-      "type": "package",
-      "path": "messagepackanalyzer/1.6.0",
-      "files": [
-        "analyzers/dotnet/cs/MessagePackAnalyzer.dll",
-        "messagepackanalyzer.1.6.0.nupkg.sha512",
-        "messagepackanalyzer.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
       ]
     },
     "Microsoft.AspNetCore/2.1.2": {
@@ -10931,7 +10880,7 @@
       "path": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.Logging/1.1.2": {
+    "Bucket.Logging/1.1.3": {
       "type": "project",
       "path": "../../Logging/Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../../Logging/Bucket.Logging/Bucket.Logging.csproj"
@@ -10951,7 +10900,7 @@
       "path": "../../Utility/Bucket.Redis/Bucket.Redis.csproj",
       "msbuildProject": "../../Utility/Bucket.Redis/Bucket.Redis.csproj"
     },
-    "Bucket.Tracing/1.1.6": {
+    "Bucket.Tracing/1.1.7": {
       "type": "project",
       "path": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
       "msbuildProject": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
@@ -10993,11 +10942,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp\\Bucket.ConsoleApp\\Bucket.ConsoleApp.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp\\Bucket.ConsoleApp\\Bucket.ConsoleApp.csproj",
       "projectName": "Bucket.ConsoleApp",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp\\Bucket.ConsoleApp\\Bucket.ConsoleApp.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp\\Bucket.ConsoleApp\\Bucket.ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ConsoleApp\\Bucket.ConsoleApp\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ConsoleApp\\Bucket.ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11017,29 +10966,29 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config\\Bucket.Config.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config\\Bucket.Config.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config\\Bucket.Config.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config\\Bucket.Config.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.EventSubscribe\\Bucket.Logging.EventSubscribe.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.EventSubscribe\\Bucket.Tracing.EventSubscribe.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.Tracing.Events\\Bucket.Tracing.Events.csproj"
             }
           }
         }

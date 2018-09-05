@@ -872,7 +872,7 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.Logging/1.1.2": {
+      "Bucket.Logging/1.1.3": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2024,7 +2024,7 @@
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.Logging/1.1.2": {
+    "Bucket.Logging/1.1.3": {
       "type": "project",
       "path": "../Bucket.Logging/Bucket.Logging.csproj",
       "msbuildProject": "../Bucket.Logging/Bucket.Logging.csproj"
@@ -2033,7 +2033,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "Bucket.EventBus >= 1.1.3",
-      "Bucket.Logging >= 1.1.2",
+      "Bucket.Logging >= 1.1.3",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -2044,11 +2044,11 @@
   "project": {
     "version": "1.1.2",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj",
       "projectName": "Bucket.Logging.Events",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2068,11 +2068,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
             }
           }
         }

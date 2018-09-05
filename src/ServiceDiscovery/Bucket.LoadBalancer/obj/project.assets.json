@@ -272,11 +272,11 @@
   "project": {
     "version": "1.1.1",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.LoadBalancer\\Bucket.LoadBalancer.csproj",
+      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.LoadBalancer\\Bucket.LoadBalancer.csproj",
       "projectName": "Bucket.LoadBalancer",
-      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.LoadBalancer\\Bucket.LoadBalancer.csproj",
+      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.LoadBalancer\\Bucket.LoadBalancer.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.LoadBalancer\\obj\\",
+      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.LoadBalancer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -296,8 +296,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
             }
           }
         }

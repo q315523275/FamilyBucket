@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Bucket.Core;
 using Bucket.Redis;
 using Bucket.ErrorCode;
 using Bucket.AspNetCore.Commons;
+using Bucket.AspNetCore.Serialize;
 using Bucket.AspNetCore.Authentication;
 
 using System;
@@ -31,10 +33,11 @@ namespace Bucket.AspNetCore.Extensions
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IUser, HttpContextUser>();
             services.AddSingleton<IRequestScopedDataRepository, HttpDataRepository>();
-            services.AddSingleton<IJsonHelper, JsonHelper>();
+            services.AddSingleton<IJsonHelper, DefaultJsonHelper>();
             services.AddSingleton<IErrorCode, EmptyErrorCode>();
             return services;
         }
+
         /// <summary>
         /// Bucket授权认证
         /// </summary>
