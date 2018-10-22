@@ -47,7 +47,7 @@ namespace Bucket.Tracing.Components
 
             _tracer.Tracer.Inject(span.SpanContext, request.Headers, (c, k, v) => c.Add(k, v));
             span.Log(LogField.CreateNew().ClientSend());
-            if(request.Method == HttpMethod.Post && _options.SetHttpBody)
+            if(request.Method == HttpMethod.Post && _options.TraceHttpContent && request.Content != null)
             {
                 var result = request.Content.ReadAsStringAsync().Result;
                 if (!string.IsNullOrWhiteSpace(result))
@@ -60,15 +60,16 @@ namespace Bucket.Tracing.Components
         [DiagnosticName("System.Net.Http.Response")]
         public void HttpResponse([Property(Name = "Response")] HttpResponseMessage response)
         {
+            if (response == null)
+                return;
+
             var span = _tracer.Tracer.GetExitSpan();
             if (span == null)
-            {
                 return;
-            }
 
             span.Log(LogField.CreateNew().ClientReceive());
             span.Tags.HttpStatusCode((int)response.StatusCode);
-            if (_options.SetHttpBody)
+            if (_options.TraceHttpContent && response.Content != null)
             {
                 var result = response.Content.ReadAsStringAsync().Result;
                 if (result.Length > 2048)

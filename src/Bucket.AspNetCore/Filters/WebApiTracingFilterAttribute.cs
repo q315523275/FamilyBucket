@@ -28,7 +28,7 @@ namespace Bucket.AspNetCore.Filters
 
         public void OnResourceExecuted(ResourceExecutedContext context)
         {
-            if (_options.SetHttpBody)
+            if (_options.TraceHttpContent)
             {
                 var span = _tracer.Tracer.GetEntrySpan();
                 if (span != null)
@@ -54,7 +54,7 @@ namespace Bucket.AspNetCore.Filters
 
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
-            if (_options.SetHttpBody)
+            if (_options.TraceHttpContent)
             {
                 var span = _tracer.Tracer.GetEntrySpan();
                 if (span != null)

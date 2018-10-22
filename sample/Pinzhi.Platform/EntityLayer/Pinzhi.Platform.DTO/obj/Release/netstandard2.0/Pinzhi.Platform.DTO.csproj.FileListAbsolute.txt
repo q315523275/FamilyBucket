@@ -1,8 +1,0 @@
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\bin\Release\netstandard2.0\Pinzhi.Platform.DTO.deps.json
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\bin\Release\netstandard2.0\Pinzhi.Platform.DTO.dll
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\bin\Release\netstandard2.0\Pinzhi.Platform.DTO.pdb
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\obj\Release\netstandard2.0\Pinzhi.Platform.DTO.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\obj\Release\netstandard2.0\Pinzhi.Platform.DTO.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\obj\Release\netstandard2.0\Pinzhi.Platform.DTO.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\obj\Release\netstandard2.0\Pinzhi.Platform.DTO.dll
-D:\work2017\Git\FamilyBucket\Pinzhi.Platform\EntityLayer\Pinzhi.Platform.DTO\obj\Release\netstandard2.0\Pinzhi.Platform.DTO.pdb

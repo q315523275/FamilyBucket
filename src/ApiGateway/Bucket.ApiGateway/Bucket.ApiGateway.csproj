@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
+    <PackageReference Include="Ocelot.Administration" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Cache.CacheManager" Version="0.1.0" />
+    <PackageReference Include="Ocelot.Provider.Consul" Version="0.1.2" />
+    <PackageReference Include="Ocelot.Provider.Polly" Version="0.1.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
+    <ProjectReference Include="C:\Users\tl\Desktop\Ocelot-develop\src\Ocelot\Ocelot.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="hosting.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="ocelot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="pm2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="start.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

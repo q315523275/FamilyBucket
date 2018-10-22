@@ -178,6 +178,11 @@
             配置
             </summary>
         </member>
+        <member name="P:Bucket.MVC.Startup.AutofacContainer">
+            <summary>
+            AutofacDI容器
+            </summary>
+        </member>
         <member name="M:Bucket.MVC.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置服务

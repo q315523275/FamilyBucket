@@ -1,0 +1,16 @@
+﻿{
+  "apps": [
+    {
+      "name": "platform",
+      "script": "start.sh",
+      "watch": false,
+      "ignore_watch": [],
+      "out_file": "/pinzhi/logs/platform_out.log",
+      "error_file": "/pinzhi/logs/platform_error.log",
+      "max_memory_restart": "1G",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "production"
+      }
+    }
+  ]
+}

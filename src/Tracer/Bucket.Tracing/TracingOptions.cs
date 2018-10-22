@@ -9,8 +9,8 @@
         public string ServiceIdentity { set; get; }
         public string[] IgnoredRoutesRegexPatterns { set; get; }
         /// <summary>
-        /// 记录httpbody
+        /// 追踪HttpContent
         /// </summary>
-        public bool SetHttpBody { set; get; }
+        public bool TraceHttpContent { set; get; }
     }
 }

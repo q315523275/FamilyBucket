@@ -1,0 +1,111 @@
+﻿{
+  "ReRoutes": [
+    {
+      "UpstreamPathTemplate": "/auth/{everyting}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/{everyting}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.10.188.136",
+          "Port": 18082
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "ReRouteIsCaseSensitive": false,
+      "DelegatingHandlers": [],
+      "Priority": 1,
+      "DangerousAcceptAnyServerCertificateValidator": false
+    },
+    {
+      "UpstreamPathTemplate": "/Platform/{everyting}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/{everyting}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.10.188.136",
+          "Port": 18083
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "ReRouteIsCaseSensitive": false,
+      "DelegatingHandlers": [],
+      "Priority": 1,
+      "DangerousAcceptAnyServerCertificateValidator": false
+    },
+    {
+      "UpstreamPathTemplate": "/tracing/{everyting}",
+      "UpstreamHttpMethod": [
+        "Post",
+        "Get"
+      ],
+      "DownstreamPathTemplate": "/{everyting}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.10.188.136",
+          "Port": 18084
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "",
+        "AllowedScopes": []
+      },
+      "ReRouteIsCaseSensitive": false,
+      "DelegatingHandlers": [],
+      "Priority": 1,
+      "DangerousAcceptAnyServerCertificateValidator": false
+    }
+  ],
+  "DynamicReRoutes": [],
+  "Aggregates": [],
+  "GlobalConfiguration": {
+    "RequestIdKey": "requestid",
+    "ServiceDiscoveryProvider": {
+      "Host": "127.0.0.1",
+      "Port": 8500,
+      "Type": "",
+      "Token": "",
+      "ConfigurationKey": "ApiGatewayConfiguration",
+      "PollingInterval": 0
+    },
+    "RateLimitOptions": {
+      "ClientIdHeader": "ClientId",
+      "QuotaExceededMessage": "",
+      "RateLimitCounterPrefix": "ocelot",
+      "DisableRateLimitHeaders": false,
+      "HttpStatusCode": 429
+    },
+    "QoSOptions": {
+      "ExceptionsAllowedBeforeBreaking": 0,
+      "DurationOfBreak": 0,
+      "TimeoutValue": 0
+    },
+    "BaseUrl": "",
+    "LoadBalancerOptions": {
+      "Type": "RoundRobin",
+      "Key": "",
+      "Expiry": 0
+    },
+    "DownstreamScheme": "",
+    "HttpHandlerOptions": {
+      "AllowAutoRedirect": false,
+      "UseCookieContainer": false,
+      "UseTracing": false,
+      "UseProxy": true
+    }
+  }
+}

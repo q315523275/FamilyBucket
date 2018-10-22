@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Bucket.Core" Version="1.1.3" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EntityLayer\ConfigService.DTO\ConfigService.DTO.csproj" />
+    <ProjectReference Include="..\..\EntityLayer\ConfigService.Model\ConfigService.Model.csproj" />
+    <ProjectReference Include="..\ConfigService.Interface\ConfigService.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

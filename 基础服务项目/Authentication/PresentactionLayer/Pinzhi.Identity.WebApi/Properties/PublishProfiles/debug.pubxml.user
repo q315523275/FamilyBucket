@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\webapp\Pinzhi.Identity</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>09/03/2018 13:45:10</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>09/19/2018 10:32:00</publishTime>
+    </File>
+    <File Include="AspectCore.Abstractions.dll">
+      <publishTime>06/23/2018 13:11:20</publishTime>
+    </File>
+    <File Include="AspectCore.Core.dll">
+      <publishTime>06/23/2018 13:11:22</publishTime>
+    </File>
+    <File Include="AspectCore.Extensions.Reflection.dll">
+      <publishTime>06/23/2018 13:11:20</publishTime>
+    </File>
+    <File Include="Autofac.dll">
+      <publishTime>05/09/2018 11:57:54</publishTime>
+    </File>
+    <File Include="Autofac.Extensions.DependencyInjection.dll">
+      <publishTime>08/16/2018 20:38:12</publishTime>
+    </File>
+    <File Include="Bucket.AspNetCore.dll">
+      <publishTime>09/18/2018 03:38:14</publishTime>
+    </File>
+    <File Include="Bucket.Config.dll">
+      <publishTime>08/23/2018 07:48:20</publishTime>
+    </File>
+    <File Include="Bucket.Core.dll">
+      <publishTime>08/08/2018 07:09:24</publishTime>
+    </File>
+    <File Include="Bucket.DbContext.dll">
+      <publishTime>08/27/2018 04:02:14</publishTime>
+    </File>
+    <File Include="Bucket.ErrorCode.dll">
+      <publishTime>08/08/2018 07:09:24</publishTime>
+    </File>
+    <File Include="Bucket.EventBus.dll">
+      <publishTime>07/26/2018 08:44:10</publishTime>
+    </File>
+    <File Include="Bucket.EventBus.RabbitMQ.dll">
+      <publishTime>08/08/2018 07:11:06</publishTime>
+    </File>
+    <File Include="Bucket.Logging.dll">
+      <publishTime>09/05/2018 01:30:26</publishTime>
+    </File>
+    <File Include="Bucket.Logging.Events.dll">
+      <publishTime>08/08/2018 07:13:42</publishTime>
+    </File>
+    <File Include="Bucket.Redis.dll">
+      <publishTime>05/31/2018 08:36:00</publishTime>
+    </File>
+    <File Include="Bucket.ServiceDiscovery.Consul.dll">
+      <publishTime>08/22/2018 05:02:04</publishTime>
+    </File>
+    <File Include="Bucket.ServiceDiscovery.dll">
+      <publishTime>07/18/2018 05:39:46</publishTime>
+    </File>
+    <File Include="Bucket.Tracing.dll">
+      <publishTime>09/18/2018 03:45:26</publishTime>
+    </File>
+    <File Include="Bucket.Tracing.Events.dll">
+      <publishTime>08/08/2018 07:16:14</publishTime>
+    </File>
+    <File Include="Bucket.Utility.dll">
+      <publishTime>08/08/2018 07:16:38</publishTime>
+    </File>
+    <File Include="Consul.dll">
+      <publishTime>07/25/2018 19:02:34</publishTime>
+    </File>
+    <File Include="hosting.json">
+      <publishTime>09/19/2018 10:15:21</publishTime>
+    </File>
+    <File Include="Microsoft.Data.Sqlite.dll">
+      <publishTime>10/18/2017 11:01:38</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.PlatformAbstractions.dll">
+      <publishTime>05/31/2018 14:55:54</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Logging.dll">
+      <publishTime>06/19/2018 03:42:34</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>06/19/2018 03:46:36</publishTime>
+    </File>
+    <File Include="MySql.Data.dll">
+      <publishTime>10/09/2017 04:58:08</publishTime>
+    </File>
+    <File Include="Nito.AsyncEx.Context.dll">
+      <publishTime>09/18/2016 01:39:38</publishTime>
+    </File>
+    <File Include="Nito.AsyncEx.Tasks.dll">
+      <publishTime>09/18/2016 01:33:38</publishTime>
+    </File>
+    <File Include="Nito.Disposables.dll">
+      <publishTime>08/16/2016 03:15:26</publishTime>
+    </File>
+    <File Include="Pinzhi.Component.dll">
+      <publishTime>07/25/2018 08:54:26</publishTime>
+    </File>
+    <File Include="Pinzhi.Component.UdcService.dll">
+      <publishTime>08/08/2018 01:45:50</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Business.dll">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Business.pdb">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Dto.dll">
+      <publishTime>09/25/2018 14:12:16</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Dto.pdb">
+      <publishTime>09/25/2018 14:12:16</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Interface.dll">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Interface.pdb">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Model.dll">
+      <publishTime>09/25/2018 14:12:16</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Model.pdb">
+      <publishTime>09/25/2018 14:12:16</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Repository.dll">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.Repository.pdb">
+      <publishTime>09/25/2018 14:12:17</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.WebApi.deps.json">
+      <publishTime>09/25/2018 14:12:24</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.WebApi.dll">
+      <publishTime>09/25/2018 14:12:18</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.WebApi.pdb">
+      <publishTime>09/25/2018 14:12:18</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.WebApi.runtimeconfig.json">
+      <publishTime>09/25/2018 14:12:24</publishTime>
+    </File>
+    <File Include="Pinzhi.Identity.WebApi.xml">
+      <publishTime>09/25/2018 14:12:18</publishTime>
+    </File>
+    <File Include="Pinzhi.Sms.Event.dll">
+      <publishTime>07/30/2018 16:20:08</publishTime>
+    </File>
+    <File Include="pm2.json">
+      <publishTime>07/18/2018 10:19:42</publishTime>
+    </File>
+    <File Include="Polly.dll">
+      <publishTime>07/14/2018 16:33:24</publishTime>
+    </File>
+    <File Include="RabbitMQ.Client.dll">
+      <publishTime>06/18/2018 15:49:02</publishTime>
+    </File>
+    <File Include="runtimes/linux-x64/native/libe_sqlite3.so">
+      <publishTime>08/15/2018 14:51:28</publishTime>
+    </File>
+    <File Include="runtimes/linux-x86/native/libe_sqlite3.so">
+      <publishTime>08/15/2018 14:51:22</publishTime>
+    </File>
+    <File Include="runtimes/osx-x64/native/libe_sqlite3.dylib">
+      <publishTime>08/15/2018 14:51:23</publishTime>
+    </File>
+    <File Include="runtimes/osx/native/libSkiaSharp.dylib">
+      <publishTime>06/14/2018 18:08:36</publishTime>
+    </File>
+    <File Include="runtimes/tizen-armel/native/libSkiaSharp.so">
+      <publishTime>06/14/2018 18:08:38</publishTime>
+    </File>
+    <File Include="runtimes/tizen-x86/native/libSkiaSharp.so">
+      <publishTime>06/14/2018 18:08:38</publishTime>
+    </File>
+    <File Include="runtimes/unix/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll">
+      <publishTime>06/11/2016 23:14:00</publishTime>
+    </File>
+    <File Include="runtimes/win/lib/netstandard1.3/System.Net.Http.WinHttpHandler.dll">
+      <publishTime>06/11/2016 23:14:00</publishTime>
+    </File>
+    <File Include="runtimes/win7-x64/native/e_sqlite3.dll">
+      <publishTime>08/15/2018 14:51:23</publishTime>
+    </File>
+    <File Include="runtimes/win7-x64/native/libSkiaSharp.dll">
+      <publishTime>06/14/2018 18:08:40</publishTime>
+    </File>
+    <File Include="runtimes/win7-x86/native/e_sqlite3.dll">
+      <publishTime>08/15/2018 14:51:23</publishTime>
+    </File>
+    <File Include="runtimes/win7-x86/native/libSkiaSharp.dll">
+      <publishTime>06/14/2018 18:08:40</publishTime>
+    </File>
+    <File Include="SemVer.dll">
+      <publishTime>07/22/2018 09:18:30</publishTime>
+    </File>
+    <File Include="SkiaSharp.dll">
+      <publishTime>06/14/2018 18:08:42</publishTime>
+    </File>
+    <File Include="SQLitePCLRaw.batteries_green.dll">
+      <publishTime>08/15/2018 14:51:28</publishTime>
+    </File>
+    <File Include="SQLitePCLRaw.batteries_v2.dll">
+      <publishTime>08/15/2018 14:51:28</publishTime>
+    </File>
+    <File Include="SQLitePCLRaw.core.dll">
+      <publishTime>08/15/2018 14:51:28</publishTime>
+    </File>
+    <File Include="SQLitePCLRaw.provider.e_sqlite3.dll">
+      <publishTime>08/15/2018 14:51:23</publishTime>
+    </File>
+    <File Include="SqlSugar.dll">
+      <publishTime>05/05/2018 18:29:14</publishTime>
+    </File>
+    <File Include="StackExchange.Redis.dll">
+      <publishTime>08/01/2017 12:19:14</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.dll">
+      <publishTime>07/06/2018 17:09:06</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.Swagger.dll">
+      <publishTime>07/06/2018 17:09:02</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
+      <publishTime>07/06/2018 17:09:02</publishTime>
+    </File>
+    <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
+      <publishTime>07/06/2018 17:09:04</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>09/25/2018 14:12:24</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

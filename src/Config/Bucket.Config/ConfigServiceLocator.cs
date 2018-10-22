@@ -4,9 +4,9 @@ namespace Bucket.Config
 {
     public class ConfigServiceLocator
     {
-        private readonly ConfigSetting _setting;
+        private readonly ConfigOptions _setting;
         private readonly ILoadBalancerHouse _loadBalancerHouse;
-        public ConfigServiceLocator(ConfigSetting setting, ILoadBalancerHouse loadBalancerHouse)
+        public ConfigServiceLocator(ConfigOptions setting, ILoadBalancerHouse loadBalancerHouse)
         {
             _setting = setting;
             _loadBalancerHouse = loadBalancerHouse;

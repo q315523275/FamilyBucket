@@ -1,8 +1,0 @@
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\bin\Debug\netstandard2.0\Tracing.DataContract.deps.json
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\bin\Debug\netstandard2.0\Tracing.DataContract.dll
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\bin\Debug\netstandard2.0\Tracing.DataContract.pdb
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\obj\Debug\netstandard2.0\Tracing.DataContract.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\obj\Debug\netstandard2.0\Tracing.DataContract.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\obj\Debug\netstandard2.0\Tracing.DataContract.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\obj\Debug\netstandard2.0\Tracing.DataContract.dll
-D:\work2017\Git\FamilyBucket\Tracing\Tracing.DataContract\obj\Debug\netstandard2.0\Tracing.DataContract.pdb

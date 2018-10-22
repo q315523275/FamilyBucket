@@ -22,6 +22,8 @@ using Bucket.ServiceDiscovery.Consul;
 using Bucket.Tracing.Extensions;
 using Bucket.Logging.Events;
 using Bucket.Tracing.Events;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace Bucket.MVC
 {
@@ -43,9 +45,13 @@ namespace Bucket.MVC
         /// </summary>
         public IConfiguration Configuration { get; }
         /// <summary>
+        /// AutofacDI容器
+        /// </summary>
+        public IContainer AutofacContainer { get; private set; }
+        /// <summary>
         /// 配置服务
         /// </summary>
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // 添加授权认证
             services.AddBucketAuthentication(Configuration);
@@ -89,6 +95,13 @@ namespace Bucket.MVC
                 c.SwaggerDoc("v1", new Info { Title = "品值POC接口文档", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Bucket.MVC.xml"));
             });
+            services.AddHttpClient();
+
+            // 添加autofac容器替换，默认容器注册方式缺少功能
+            var autofac_builder = new ContainerBuilder();
+            autofac_builder.Populate(services);
+            AutofacContainer = autofac_builder.Build();
+            return new AutofacServiceProvider(AutofacContainer);
         }
         /// <summary>
         /// 配置请求管道

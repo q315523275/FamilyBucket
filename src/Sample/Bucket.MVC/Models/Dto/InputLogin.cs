@@ -10,7 +10,7 @@ namespace Bucket.MVC.Models.Dto
         /// <summary>
         /// 账户
         /// </summary>
-        [NotEmpty("GO_0004007","不能为空")]
+        [NotEmpty("credit_0001","不能为空")]
         public string UserName { set; get; }
         public string Password { set; get; }
     }

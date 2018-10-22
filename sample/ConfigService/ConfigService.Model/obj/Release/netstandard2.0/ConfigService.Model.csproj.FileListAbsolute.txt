@@ -1,9 +1,0 @@
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\bin\Release\netstandard2.0\ConfigService.Model.deps.json
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\bin\Release\netstandard2.0\ConfigService.Model.dll
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\bin\Release\netstandard2.0\ConfigService.Model.pdb
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.dll
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.pdb
-D:\work2017\Git\FamilyBucket\ConfigService\ConfigService.Model\obj\Release\netstandard2.0\ConfigService.Model.csprojAssemblyReference.cache

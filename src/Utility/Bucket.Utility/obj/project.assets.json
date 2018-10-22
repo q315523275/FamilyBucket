@@ -2660,7 +2660,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\Bucket.Utility.csproj",
       "projectName": "Bucket.Utility",

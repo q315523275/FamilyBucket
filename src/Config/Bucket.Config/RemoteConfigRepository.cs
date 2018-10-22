@@ -18,14 +18,14 @@ namespace Bucket.Config
     {
         private BucketConfig _config;
         private CancellationTokenSource _cancellationTokenSource;
-        private readonly ConfigSetting _setting;
+        private readonly ConfigOptions _setting;
         private readonly RedisClient _redisClient;
         private ConfigServiceLocator _serviceLocator;
         private readonly IJsonHelper _jsonHelper;
         private readonly ILogger _logger;
         private readonly IHttpClientFactory _httpClientFactory;
         private static readonly object _lock = new object();
-        public RemoteConfigRepository(ConfigSetting setting,
+        public RemoteConfigRepository(ConfigOptions setting,
             RedisClient redisClient,
             ConfigServiceLocator configServiceLocator,
             ILoggerFactory loggerFactory,
@@ -75,7 +75,8 @@ namespace Bucket.Config
                 if (response.IsSuccessStatusCode)
                 {
                     var configdto = _jsonHelper.DeserializeObject<HttpConfigResult>(response.Content.ReadAsStringAsync().Result);
-                    if (configdto.Version > _config.Version)
+                    // 请求成功并有更新配置
+                    if (configdto.ErrorCode == "000000" && configdto.Version > _config.Version)
                     {
                         if (_config.KV == null)
                             _config.KV = new ConcurrentDictionary<string, string>();
@@ -86,6 +87,11 @@ namespace Bucket.Config
                         _config.AppName = configdto.AppName;
                         _config.Version = configdto.Version;
                         islocalcache = true;
+                    }
+                    // 请求成功验证不通过，并未初始化
+                    else if(configdto.ErrorCode == "000000" && _config.KV == null)
+                    {
+                        _config.KV = new ConcurrentDictionary<string, string>();
                     }
                     _logger.LogInformation($"{_setting.AppId} loaded config {configdto}");
                 }
@@ -102,7 +108,7 @@ namespace Bucket.Config
             }
             catch (Exception ex)
             {
-                _logger.LogError($"config load error from appid {_setting.AppId}", ex);
+                _logger.LogError(ex, $"config load error from appid {_setting.AppId}");
                 if (System.IO.File.Exists(localcachepath))
                 {
                     var json = System.IO.File.ReadAllText(localcachepath);
@@ -120,7 +126,7 @@ namespace Bucket.Config
             var uri = $"{url.TrimEnd('/')}/configs/{_setting.AppId}/{_setting.NamespaceName}";
             var query = $"version={_config.Version}";
             var sign = $"appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
-            return $"{uri}?{query}&sign=" + SecureHelper.SHA256(sign);
+            return $"{uri}?{query}&env={_setting.Env}&sign=" + SecureHelper.SHA256(sign);
         }
         private void InitScheduleRefresh()
         {

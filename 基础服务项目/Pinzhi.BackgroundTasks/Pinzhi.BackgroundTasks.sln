@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Sms.EventSubscribe", "Pinzhi.Sms.EventSubscribe\Pinzhi.Sms.EventSubscribe.csproj", "{8C009FED-C26D-408D-AD81-8D67CD1D5A22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Logging.EventSubscribe", "Pinzhi.Logging.EventSubscribe\Pinzhi.Logging.EventSubscribe.csproj", "{0F80F08F-5275-4B2E-94B8-8C62C5D59E8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Tracing.EventSubscribe", "Pinzhi.Tracing.EventSubscribe\Pinzhi.Tracing.EventSubscribe.csproj", "{FD45917D-E05A-46BB-BAD9-EE52D1C6C8F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.BackgroundTasks", "Pinzhi.BackgroundTasks\Pinzhi.BackgroundTasks.csproj", "{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinzhi.Trace.BackgroundTasks", "Pinzhi.Trace.BackgroundTasks\Pinzhi.Trace.BackgroundTasks.csproj", "{F1B14E35-2823-42EF-A704-1DB6486FBEFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C009FED-C26D-408D-AD81-8D67CD1D5A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C009FED-C26D-408D-AD81-8D67CD1D5A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C009FED-C26D-408D-AD81-8D67CD1D5A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C009FED-C26D-408D-AD81-8D67CD1D5A22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F80F08F-5275-4B2E-94B8-8C62C5D59E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F80F08F-5275-4B2E-94B8-8C62C5D59E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F80F08F-5275-4B2E-94B8-8C62C5D59E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F80F08F-5275-4B2E-94B8-8C62C5D59E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD45917D-E05A-46BB-BAD9-EE52D1C6C8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD45917D-E05A-46BB-BAD9-EE52D1C6C8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD45917D-E05A-46BB-BAD9-EE52D1C6C8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD45917D-E05A-46BB-BAD9-EE52D1C6C8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30E55E91-AF11-478C-8C5F-8DB3D37565E0}
+	EndGlobalSection
+EndGlobal

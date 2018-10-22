@@ -13,11 +13,11 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IServiceCollection AddConfigService(this IServiceCollection services, Action<ConfigSetting> configAction)
+        public static IServiceCollection AddConfigService(this IServiceCollection services, Action<ConfigOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
 
-            var configSetting = new ConfigSetting();
+            var configSetting = new ConfigOptions();
             configAction.Invoke(configSetting);
 
             AddConfigService(services, configSetting);
@@ -34,7 +34,7 @@ namespace Bucket.Config.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            var configSetting = new ConfigSetting();
+            var configSetting = new ConfigOptions();
             configuration.GetSection("ConfigService").Bind(configSetting);
 
             AddConfigService(services, configSetting);
@@ -47,8 +47,10 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configSetting"></param>
         /// <returns></returns>
-        private static IServiceCollection AddConfigService(this IServiceCollection services, ConfigSetting configSetting)
+        private static IServiceCollection AddConfigService(this IServiceCollection services, ConfigOptions configSetting)
         {
+            if (configSetting == null) throw new ArgumentNullException(nameof(configSetting));
+
             if (configSetting.UseServiceDiscovery)
             {
                 services.AddSingleton<ConfigServiceLocator>();

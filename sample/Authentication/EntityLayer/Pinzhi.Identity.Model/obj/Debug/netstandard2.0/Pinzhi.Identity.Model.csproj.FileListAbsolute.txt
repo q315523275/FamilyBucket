@@ -1,8 +1,0 @@
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\bin\Debug\netstandard2.0\Pinzhi.Identity.Model.deps.json
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\bin\Debug\netstandard2.0\Pinzhi.Identity.Model.dll
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\bin\Debug\netstandard2.0\Pinzhi.Identity.Model.pdb
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\obj\Debug\netstandard2.0\Pinzhi.Identity.Model.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\obj\Debug\netstandard2.0\Pinzhi.Identity.Model.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\obj\Debug\netstandard2.0\Pinzhi.Identity.Model.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\obj\Debug\netstandard2.0\Pinzhi.Identity.Model.dll
-D:\work2017\Git\FamilyBucket\Authentication\EntityLayer\Identity.Model\obj\Debug\netstandard2.0\Pinzhi.Identity.Model.pdb

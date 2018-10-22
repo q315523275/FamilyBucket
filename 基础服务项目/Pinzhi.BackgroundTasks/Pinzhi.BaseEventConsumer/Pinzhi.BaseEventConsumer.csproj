@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bucket.AspNetCore" Version="1.1.5" />
+    <PackageReference Include="Bucket.Config" Version="1.1.3" />
+    <PackageReference Include="Bucket.EventBus" Version="1.1.3" />
+    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.5" />
+    <PackageReference Include="Bucket.Logging.Events" Version="1.1.2" />
+    <PackageReference Include="Bucket.Tracing.Events" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="Pinzhi.Sms.Event" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pinzhi.Logging.EventSubscribe\Pinzhi.Logging.EventSubscribe.csproj" />
+    <ProjectReference Include="..\Pinzhi.Sms.EventSubscribe\Pinzhi.Sms.EventSubscribe.csproj" />
+    <ProjectReference Include="..\Pinzhi.Tracing.EventSubscribe\Pinzhi.Tracing.EventSubscribe.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="pm2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
