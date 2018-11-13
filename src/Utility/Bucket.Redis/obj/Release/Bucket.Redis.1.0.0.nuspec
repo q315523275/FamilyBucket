@@ -9,7 +9,7 @@
     <description>Package Description</description>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="StackExchange.Redis" version="1.2.6" exclude="Build,Analyzers" />
+        <dependency id="StackExchange.Redis" version="2.0.513" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
