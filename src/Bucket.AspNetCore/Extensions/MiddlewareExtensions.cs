@@ -1,5 +1,4 @@
-﻿using Bucket.AspNetCore.Middleware;
-using Bucket.AspNetCore.Middleware.Error;
+﻿using Bucket.AspNetCore.Middleware.Error;
 using Microsoft.AspNetCore.Builder;
 
 namespace Bucket.AspNetCore.Extensions

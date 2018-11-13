@@ -25,33 +25,6 @@ namespace Bucket.AspNetCore.Filters
             _tracer = tracer;
             _options = options.Value;
         }
-
-        public void OnResourceExecuted(ResourceExecutedContext context)
-        {
-            if (_options.TraceHttpContent)
-            {
-                var span = _tracer.Tracer.GetEntrySpan();
-                if (span != null)
-                {
-                    if (context.Result is ObjectResult)
-                    {
-                        var objectResult = context.Result as ObjectResult;
-                        if (objectResult.Value != null)
-                        {
-                            span.Tags.Add("http.response", _jsonHelper.SerializeObject(objectResult.Value));
-                        }
-                    }
-                    else if (context.Result is ContentResult)
-                    {
-                        var content = (context.Result as ContentResult).Content;
-                        if (!string.IsNullOrWhiteSpace(content))
-                            span.Tags.Add("http.response", _tbbrRegex.Replace(content, ""));
-                    }
-                    _tracer.Tracer.SetEntrySpan(span);
-                }
-            }
-        }
-
         public void OnResourceExecuting(ResourceExecutingContext context)
         {
             if (_options.TraceHttpContent)
@@ -74,6 +47,32 @@ namespace Bucket.AspNetCore.Filters
                     }
                     span.Tags.UserId(context.HttpContext.GetUserId())
                              .UserIp(context.HttpContext.GetUserIp());
+                    _tracer.Tracer.SetEntrySpan(span);
+                }
+            }
+        }
+
+        public void OnResourceExecuted(ResourceExecutedContext context)
+        {
+            if (_options.TraceHttpContent)
+            {
+                var span = _tracer.Tracer.GetEntrySpan();
+                if (span != null)
+                {
+                    if (context.Result is ObjectResult)
+                    {
+                        var objectResult = context.Result as ObjectResult;
+                        if (objectResult.Value != null)
+                        {
+                            span.Tags.Add("http.response", _jsonHelper.SerializeObject(objectResult.Value));
+                        }
+                    }
+                    else if (context.Result is ContentResult)
+                    {
+                        var content = (context.Result as ContentResult).Content;
+                        if (!string.IsNullOrWhiteSpace(content))
+                            span.Tags.Add("http.response", _tbbrRegex.Replace(content, ""));
+                    }
                     _tracer.Tracer.SetEntrySpan(span);
                 }
             }

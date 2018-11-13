@@ -16,6 +16,7 @@ namespace Bucket.AspNetCore.Commons
         }
 
         public string Id => _httpContextAccessor.HttpContext.User.Claims.First(c => c.Type == "Uid").Value;
+        public string Ids => _httpContextAccessor.HttpContext.User.Claims.First(c => c.Type == "Uids").Value;
         public string Name => _httpContextAccessor.HttpContext.User.Claims.First(c => c.Type == "Name").Value;
         public string MobilePhone => _httpContextAccessor.HttpContext.User.Claims.First(c => c.Type == "MobilePhone").Value;
         public IEnumerable<Claim> Claims => _httpContextAccessor.HttpContext.User.Claims;

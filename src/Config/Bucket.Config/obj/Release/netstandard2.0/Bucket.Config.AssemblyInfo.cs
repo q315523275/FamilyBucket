@@ -14,11 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bucket.Config")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("配置中心客户端")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.4")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.1.6.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.1.6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bucket.Config")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bucket.Config")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.1.4.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.1.6.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 

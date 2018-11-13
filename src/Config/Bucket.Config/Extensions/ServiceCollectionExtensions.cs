@@ -62,6 +62,7 @@ namespace Bucket.Config.Extensions
             services.AddSingleton(configSetting);
             services.AddSingleton<RemoteConfigRepository>();
             services.AddSingleton<IConfig, DefaultConfig>();
+            services.AddHostedService<HttpConfigurationPoller>();
             return services;
         }
     }

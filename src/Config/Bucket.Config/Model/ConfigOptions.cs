@@ -7,7 +7,9 @@
         public string NamespaceName { set; get; }
         public string Env { set; get; } = "pro";
         public string ServerUrl { set; get; }
-
+        /// <summary>
+        /// 定时器周期，单位（秒）
+        /// </summary>
         public int RefreshInteval { set; get; }
         public bool RedisListener { set; get; }
         public string RedisConnectionString { set; get; }

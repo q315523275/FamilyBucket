@@ -2564,14 +2564,14 @@
           "lib/netstandard2.0/Microsoft.Extensions.FileSystemGlobbing.dll": {}
         }
       },
-      "Microsoft.Extensions.Hosting/2.1.0": {
+      "Microsoft.Extensions.Hosting/2.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "2.1.0",
-          "Microsoft.Extensions.DependencyInjection": "2.1.0",
-          "Microsoft.Extensions.FileProviders.Physical": "2.1.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Logging": "2.1.0"
+          "Microsoft.Extensions.Configuration": "2.1.1",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1",
+          "Microsoft.Extensions.FileProviders.Physical": "2.1.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "2.1.1",
+          "Microsoft.Extensions.Logging": "2.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.dll": {}
@@ -2860,20 +2860,19 @@
           "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.4": {
+      "Microsoft.IdentityModel.Logging/5.3.0": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "1.6.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
         }
       },
       "Microsoft.IdentityModel.Protocols/5.2.0": {
@@ -2925,11 +2924,10 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.WsFederation.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "Microsoft.IdentityModel.Tokens/5.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.4",
-          "NETStandard.Library": "1.6.1",
+          "Microsoft.IdentityModel.Logging": "5.3.0",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
@@ -2946,10 +2944,10 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
       "Microsoft.IdentityModel.Tokens.Saml/5.2.0": {
@@ -6230,7 +6228,7 @@
           "lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.1.6": {
+      "Bucket.AspNetCore/1.1.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6242,7 +6240,7 @@
           "Microsoft.AspNetCore.Mvc": "2.1.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
-          "Microsoft.IdentityModel.Tokens": "5.2.4"
+          "Microsoft.IdentityModel.Tokens": "5.3.0"
         },
         "compile": {
           "bin/placeholder/Bucket.AspNetCore.dll": {}
@@ -6251,7 +6249,7 @@
           "bin/placeholder/Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.Config/1.1.4": {
+      "Bucket.Config/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6259,6 +6257,7 @@
           "Bucket.Redis": "1.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
+          "Microsoft.Extensions.Hosting": "2.1.1",
           "Microsoft.Extensions.Http": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1"
         },
@@ -8716,15 +8715,15 @@
         "microsoft.extensions.filesystemglobbing.nuspec"
       ]
     },
-    "Microsoft.Extensions.Hosting/2.1.0": {
-      "sha512": "jBe9n219et1fhHsQzrkYXFAwwY1mWsSk+vhyynsvY6KY55MLenYHevYKZ1HvJyfGaPkw89cSLkCfTBfSDVGiyw==",
+    "Microsoft.Extensions.Hosting/2.1.1": {
+      "sha512": "JCQMO9b49MO7b2e3myP6b0KsAJvRL9auv0A/Pn4w2Q1dt9D29tWvuji8b2jGfHVZcal9GRbtwwdnAD1mN4x3VQ==",
       "type": "package",
-      "path": "microsoft.extensions.hosting/2.1.0",
+      "path": "microsoft.extensions.hosting/2.1.1",
       "files": [
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Hosting.xml",
-        "microsoft.extensions.hosting.2.1.0.nupkg.sha512",
+        "microsoft.extensions.hosting.2.1.1.nupkg.sha512",
         "microsoft.extensions.hosting.nuspec"
       ]
     },
@@ -8999,10 +8998,10 @@
         "microsoft.identitymodel.clients.activedirectory.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.4": {
-      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
+    "Microsoft.IdentityModel.Logging/5.3.0": {
+      "sha512": "y2Hu8ypzoZbyxJiU2LQHkkCUjl5H1oAVapRbEQBbhrUe7hG2g8t+1Hb3NAhmM1SqStd71+rZR27TWv2mc6Isfw==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.4",
+      "path": "microsoft.identitymodel.logging/5.3.0",
       "files": [
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
@@ -9011,10 +9010,16 @@
         "lib/net451/Microsoft.IdentityModel.Logging.dll",
         "lib/net451/Microsoft.IdentityModel.Logging.pdb",
         "lib/net451/Microsoft.IdentityModel.Logging.xml",
+        "lib/net461/Microsoft.IdentityModel.Logging.dll",
+        "lib/net461/Microsoft.IdentityModel.Logging.pdb",
+        "lib/net461/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.pdb",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
+        "microsoft.identitymodel.logging.5.3.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -9063,10 +9068,10 @@
         "microsoft.identitymodel.protocols.wsfederation.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.4": {
-      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
+    "Microsoft.IdentityModel.Tokens/5.3.0": {
+      "sha512": "g+JFqRJcMv8gRdyIgaloL9Rk8iLJLGdCuLVcg84/W5vfGq9WWHF9DHmcyxO7Ac1fdm2Q3PmY/nvUhsOhB3TwXA==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.4",
+      "path": "microsoft.identitymodel.tokens/5.3.0",
       "files": [
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
@@ -9075,10 +9080,16 @@
         "lib/net451/Microsoft.IdentityModel.Tokens.dll",
         "lib/net451/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net451/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net461/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net461/Microsoft.IdentityModel.Tokens.pdb",
+        "lib/net461/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
+        "microsoft.identitymodel.tokens.5.3.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -16123,12 +16134,12 @@
         "windowsazure.storage.nuspec"
       ]
     },
-    "Bucket.AspNetCore/1.1.6": {
+    "Bucket.AspNetCore/1.1.7": {
       "type": "project",
       "path": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.Config/1.1.4": {
+    "Bucket.Config/1.1.6": {
       "type": "project",
       "path": "../../Config/Bucket.Config/Bucket.Config.csproj",
       "msbuildProject": "../../Config/Bucket.Config/Bucket.Config.csproj"
@@ -16203,8 +16214,8 @@
     ".NETCoreApp,Version=v2.1": [
       "Autofac >= 4.8.1",
       "Autofac.Extensions.DependencyInjection >= 4.3.0",
-      "Bucket.AspNetCore >= 1.1.6",
-      "Bucket.Config >= 1.1.4",
+      "Bucket.AspNetCore >= 1.1.7",
+      "Bucket.Config >= 1.1.6",
       "Bucket.DbContext >= 1.1.3",
       "Bucket.ErrorCode >= 1.1.2",
       "Bucket.EventBus >= 1.1.3",

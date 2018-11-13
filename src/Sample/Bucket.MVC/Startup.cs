@@ -54,7 +54,7 @@ namespace Bucket.MVC
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // 添加授权认证
-            services.AddBucketAuthentication(Configuration);
+            services.AddApiJwtAuthorize(Configuration, (context) => { return true; });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -133,7 +133,7 @@ namespace Bucket.MVC
             // 全局错误日志
             app.UseErrorLog();
             // 认证授权
-            app.UseAuthentication();
+            // app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由

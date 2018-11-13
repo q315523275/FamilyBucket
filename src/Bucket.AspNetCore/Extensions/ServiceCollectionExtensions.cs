@@ -11,10 +11,11 @@ using Bucket.Redis;
 using Bucket.ErrorCode;
 using Bucket.AspNetCore.Commons;
 using Bucket.AspNetCore.Serialize;
-using Bucket.AspNetCore.Authentication;
-
 using System;
 using System.Text;
+using Microsoft.AspNetCore.Authentication;
+using Bucket.AspNetCore.Authorize;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -37,84 +38,6 @@ namespace Bucket.AspNetCore.Extensions
             services.AddSingleton<IErrorCode, EmptyErrorCode>();
             return services;
         }
-
-        /// <summary>
-        /// Bucket授权认证
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddBucketAuthentication(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.Configure<AuthenticationOptions>(configuration.GetSection("Audience"));
-            AuthenticationOptions config = new AuthenticationOptions();
-            configuration.GetSection("Audience").Bind(config);
-            var keyByteArray = Encoding.ASCII.GetBytes(config.Secret);
-            var signingKey = new SymmetricSecurityKey(keyByteArray);
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = signingKey,
-                ValidateIssuer = true,
-                ValidIssuer = config.Issuer,//发行人
-                ValidateAudience = true,
-                ValidAudience = config.Audience,//订阅人
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero,
-                RequireExpirationTime = true,
-            };
-            services.AddAuthentication(options =>
-            {
-                //认证middleware配置
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(opt =>
-            {
-                //不使用https
-                opt.RequireHttpsMetadata = false;
-                opt.TokenValidationParameters = tokenValidationParameters;
-            });
-            return services;
-        }
-        /// <summary>
-        /// Bucket授权认证
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddBucketAuthentication(this IServiceCollection services, Action<AuthenticationOptions> configAction)
-        {
-            if (configAction == null) throw new ArgumentNullException(nameof(configAction));
-
-            var config = new AuthenticationOptions();
-            configAction?.Invoke(config);
-
-            var keyByteArray = Encoding.ASCII.GetBytes(config.Secret);
-            var signingKey = new SymmetricSecurityKey(keyByteArray);
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = signingKey,
-                ValidateIssuer = true,
-                ValidIssuer = config.Issuer,//发行人
-                ValidateAudience = true,
-                ValidAudience = config.Audience,//订阅人
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.Zero,
-                RequireExpirationTime = true,
-            };
-            services.AddAuthentication(options =>
-            {
-                //认证middleware配置
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(opt =>
-            {
-                //不使用https
-                opt.RequireHttpsMetadata = false;
-                opt.TokenValidationParameters = tokenValidationParameters;
-            });
-
-            return services;
-        }
         /// <summary>
         /// 跨域服务
         /// </summary>
@@ -132,6 +55,67 @@ namespace Bucket.AspNetCore.Extensions
                 );
             });
             return services;
+        }
+
+        /// <summary>
+        /// In the API Project, the Startup. Cs class ConfigureServices method is called
+        /// </summary>
+        /// <param name="services">Service Collection</param>
+        /// <param name="validatePermission">validate permission action</param>
+        /// <returns></returns>
+        public static AuthenticationBuilder AddApiJwtAuthorize(this IServiceCollection services, IConfiguration configuration, Func<HttpContext, bool> validatePermission)
+        {
+            var config = configuration.GetSection("JwtAuthorize");
+
+            var keyByteArray = Encoding.ASCII.GetBytes(config["Secret"]);
+            var signingKey = new SymmetricSecurityKey(keyByteArray);
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = signingKey,
+                ValidateIssuer = true,
+                ValidIssuer = config["Issuer"],
+                ValidateAudience = true,
+                ValidAudience = config["Audience"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero,
+                RequireExpirationTime = bool.Parse(config["RequireExpirationTime"])
+            };
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
+
+            var permissionRequirement = new JwtAuthorizationRequirement(config["Issuer"], config["Audience"], signingCredentials);
+            permissionRequirement.ValidatePermission = validatePermission;
+
+            services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
+            services.AddSingleton(permissionRequirement);
+            return services.AddAuthorization(options =>
+            {
+                options.AddPolicy(config["PolicyName"],
+                          policy => policy.Requirements.Add(permissionRequirement));
+
+            })
+            .AddAuthentication(options =>
+            {
+                options.DefaultScheme = config["DefaultScheme"];
+            })
+            .AddJwtBearer(config["DefaultScheme"], o =>
+            {
+                o.RequireHttpsMetadata = bool.Parse(config["IsHttps"]);
+                o.TokenValidationParameters = tokenValidationParameters;
+            });
+        }
+        /// <summary>
+        /// In the Authorize Project, the Startup. Cs class ConfigureServices method is called
+        /// </summary>
+        /// <param name="services">Service Collection</param>
+        /// <returns></returns>
+        public static IServiceCollection AddTokenJwtAuthorize(this IServiceCollection services, IConfiguration configuration)
+        {
+            var config = configuration.GetSection("JwtAuthorize");
+            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config["Secret"])), SecurityAlgorithms.HmacSha256);
+            var permissionRequirement = new JwtAuthorizationRequirement(config["Issuer"], config["Audience"], signingCredentials );
+            services.AddSingleton<ITokenBuilder, TokenBuilder>();
+            return services.AddSingleton(permissionRequirement);
         }
     }
 }

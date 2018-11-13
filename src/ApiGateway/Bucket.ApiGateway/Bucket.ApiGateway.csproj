@@ -24,7 +24,7 @@
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
     <ProjectReference Include="..\..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
-    <ProjectReference Include="C:\Users\tl\Desktop\Ocelot-develop\src\Ocelot\Ocelot.csproj" />
+    <ProjectReference Include="..\Ocelot\Ocelot.csproj" />
   </ItemGroup>
 
   <ItemGroup>

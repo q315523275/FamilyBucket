@@ -1030,20 +1030,19 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Logging/5.2.4": {
+      "Microsoft.IdentityModel.Logging/5.3.0": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "1.6.1",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
           "System.IO.FileSystem": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll": {}
         }
       },
       "Microsoft.IdentityModel.Protocols/5.2.0": {
@@ -1079,11 +1078,10 @@
           "lib/netstandard1.4/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Tokens/5.2.4": {
+      "Microsoft.IdentityModel.Tokens/5.3.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.IdentityModel.Logging": "5.2.4",
-          "NETStandard.Library": "1.6.1",
+          "Microsoft.IdentityModel.Logging": "5.3.0",
           "Newtonsoft.Json": "10.0.1",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tools": "4.3.0",
@@ -1100,10 +1098,10 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
+          "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
       "Microsoft.Net.Http.Headers/2.1.1": {
@@ -3906,10 +3904,10 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Logging/5.2.4": {
-      "sha512": "ftwC4hEI/LpKxgyXPvwWMSbd/GbhliWDIA90niq8SY8RtFw1hnJJ9f/7YiMQ96c0ibwGT2WEbS4IzvVFmhaiwA==",
+    "Microsoft.IdentityModel.Logging/5.3.0": {
+      "sha512": "y2Hu8ypzoZbyxJiU2LQHkkCUjl5H1oAVapRbEQBbhrUe7hG2g8t+1Hb3NAhmM1SqStd71+rZR27TWv2mc6Isfw==",
       "type": "package",
-      "path": "microsoft.identitymodel.logging/5.2.4",
+      "path": "microsoft.identitymodel.logging/5.3.0",
       "files": [
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
@@ -3918,10 +3916,16 @@
         "lib/net451/Microsoft.IdentityModel.Logging.dll",
         "lib/net451/Microsoft.IdentityModel.Logging.pdb",
         "lib/net451/Microsoft.IdentityModel.Logging.xml",
+        "lib/net461/Microsoft.IdentityModel.Logging.dll",
+        "lib/net461/Microsoft.IdentityModel.Logging.pdb",
+        "lib/net461/Microsoft.IdentityModel.Logging.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Logging.xml",
-        "microsoft.identitymodel.logging.5.2.4.nupkg.sha512",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.pdb",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Logging.xml",
+        "microsoft.identitymodel.logging.5.3.0.nupkg.sha512",
         "microsoft.identitymodel.logging.nuspec"
       ]
     },
@@ -3955,10 +3959,10 @@
         "microsoft.identitymodel.protocols.openidconnect.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Tokens/5.2.4": {
-      "sha512": "rM/youDq83z+n1M4EojYLt++yZ4eOgs0vbkpZTufi+xNS0PS78SIyYve3KJq2++p9BLDFSx7zRr6/qsvI+gEjw==",
+    "Microsoft.IdentityModel.Tokens/5.3.0": {
+      "sha512": "g+JFqRJcMv8gRdyIgaloL9Rk8iLJLGdCuLVcg84/W5vfGq9WWHF9DHmcyxO7Ac1fdm2Q3PmY/nvUhsOhB3TwXA==",
       "type": "package",
-      "path": "microsoft.identitymodel.tokens/5.2.4",
+      "path": "microsoft.identitymodel.tokens/5.3.0",
       "files": [
         ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
@@ -3967,10 +3971,16 @@
         "lib/net451/Microsoft.IdentityModel.Tokens.dll",
         "lib/net451/Microsoft.IdentityModel.Tokens.pdb",
         "lib/net451/Microsoft.IdentityModel.Tokens.xml",
+        "lib/net461/Microsoft.IdentityModel.Tokens.dll",
+        "lib/net461/Microsoft.IdentityModel.Tokens.pdb",
+        "lib/net461/Microsoft.IdentityModel.Tokens.xml",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.pdb",
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
-        "microsoft.identitymodel.tokens.5.2.4.nupkg.sha512",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.pdb",
+        "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.xml",
+        "microsoft.identitymodel.tokens.5.3.0.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
@@ -8641,7 +8651,7 @@
       "Microsoft.AspNetCore.Mvc >= 2.1.1",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 2.1.1",
       "Microsoft.Extensions.Logging >= 2.1.1",
-      "Microsoft.IdentityModel.Tokens >= 5.2.4",
+      "Microsoft.IdentityModel.Tokens >= 5.3.0",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -8650,7 +8660,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.6",
+    "version": "1.1.7",
     "restore": {
       "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj",
       "projectName": "Bucket.AspNetCore",
@@ -8719,7 +8729,7 @@
           },
           "Microsoft.IdentityModel.Tokens": {
             "target": "Package",
-            "version": "[5.2.4, )"
+            "version": "[5.3.0, )"
           },
           "NETStandard.Library": {
             "suppressParent": "All",

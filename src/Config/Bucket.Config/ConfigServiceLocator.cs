@@ -1,5 +1,4 @@
 ﻿using Bucket.LoadBalancer;
-
 namespace Bucket.Config
 {
     public class ConfigServiceLocator
@@ -20,8 +19,8 @@ namespace Bucket.Config
             string configHttpUrl = string.Empty;
             if (_setting.UseServiceDiscovery && _loadBalancerHouse != null)
             {
-                var _load = _loadBalancerHouse.Get(_setting.ServiceName, "RoundRobin").GetAwaiter().GetResult();
-                var HostAndPort = _load.Lease().GetAwaiter().GetResult();
+                var _load = _loadBalancerHouse.Get(_setting.ServiceName, "RoundRobin").ConfigureAwait(false).GetAwaiter().GetResult();
+                var HostAndPort = _load.Lease().ConfigureAwait(false).GetAwaiter().GetResult();
                 configHttpUrl = $"{HostAndPort.ToUri()}";
             }
             else

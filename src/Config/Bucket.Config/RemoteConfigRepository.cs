@@ -14,16 +14,15 @@ namespace Bucket.Config
     /// <summary>
     /// 远程配置仓储
     /// </summary>
-    public class RemoteConfigRepository : IDisposable
+    public class RemoteConfigRepository
     {
         private BucketConfig _config;
-        private CancellationTokenSource _cancellationTokenSource;
+        private ConfigServiceLocator _serviceLocator; // 配置拉取地址方法
         private readonly ConfigOptions _setting;
-        private readonly RedisClient _redisClient;
-        private ConfigServiceLocator _serviceLocator;
         private readonly IJsonHelper _jsonHelper;
         private readonly ILogger _logger;
         private readonly IHttpClientFactory _httpClientFactory;
+        private bool initialized = false; // 是否初始化配置
         private static readonly object _lock = new object();
         public RemoteConfigRepository(ConfigOptions setting,
             RedisClient redisClient,
@@ -36,65 +35,61 @@ namespace Bucket.Config
             _config = new BucketConfig();
 
             _setting = setting;
-            _redisClient = redisClient;
 
             _serviceLocator = configServiceLocator;
 
             _jsonHelper = jsonHelper;
+
             _httpClientFactory = httpClientFactory;
         }
+        /// <summary>
+        /// 配置键值返回
+        /// </summary>
+        /// <returns></returns>
         public ConcurrentDictionary<string, string> GetConfig()
         {
-            if (_config.KV == null)
+            // 未初始化参数
+            if (!initialized)
             {
                 lock (_lock)
                 {
-                    if (_config.KV == null)
+                    if (!initialized)
                     {
-                        LoadConfig();
-                        InitScheduleRefresh();
-                        AddChangeListener();
+                        LoadConfig().ConfigureAwait(false).GetAwaiter().GetResult(); // 加载配置
                     }
                 }
             }
             return _config.KV;
         }
-        private void LoadConfig()
+        /// <summary>
+        /// 加载配置
+        /// </summary>
+        public async Task LoadConfig(bool reload = false)
         {
             var islocalcache = false;
-            var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localconfig.json");
+            var localcachepath = System.IO.Path.Combine(AppContext.BaseDirectory, "localconfig.json"); // 容灾配置文件地址
             try
             {
-                var client = _httpClientFactory.CreateClient();
+                if (reload) _config.Version = 0; // 重载
+                var client = _httpClientFactory.CreateClient(); // 创建http请求
                 var serverUrl = _serviceLocator.GetConfigService(); // 配置请求地址
                 var url = AssembleQueryConfigUrl(serverUrl);
-                // 死锁问题
-                var response = client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url)).ConfigureAwait(false).GetAwaiter().GetResult();
-                if (!response.IsSuccessStatusCode)
-                    _logger.LogError($"{_setting.AppId} config request error status {response.StatusCode}");
-                if (response.IsSuccessStatusCode)
+                var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, url));
+                response.EnsureSuccessStatusCode();
+                var content = await response.Content.ReadAsStringAsync();
+                var configdto = _jsonHelper.DeserializeObject<HttpConfigResult>(content);
+                // 请求成功并有更新配置
+                if (configdto.ErrorCode == "000000" && configdto.Version > _config.Version)
                 {
-                    var configdto = _jsonHelper.DeserializeObject<HttpConfigResult>(response.Content.ReadAsStringAsync().Result);
-                    // 请求成功并有更新配置
-                    if (configdto.ErrorCode == "000000" && configdto.Version > _config.Version)
+                    foreach (var kv in configdto.KV)
                     {
-                        if (_config.KV == null)
-                            _config.KV = new ConcurrentDictionary<string, string>();
-                        foreach (var kv in configdto.KV)
-                        {
-                            _config.KV.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
-                        }
-                        _config.AppName = configdto.AppName;
-                        _config.Version = configdto.Version;
-                        islocalcache = true;
+                        _config.KV.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
                     }
-                    // 请求成功验证不通过，并未初始化
-                    else if(configdto.ErrorCode == "000000" && _config.KV == null)
-                    {
-                        _config.KV = new ConcurrentDictionary<string, string>();
-                    }
-                    _logger.LogInformation($"{_setting.AppId} loaded config {configdto}");
+                    _config.AppName = configdto.AppName;
+                    _config.Version = configdto.Version;
+                    islocalcache = true;
                 }
+                _logger.LogInformation($"{_setting.AppId} loaded config {configdto}");
                 // 本地缓存
                 if (islocalcache)
                 {
@@ -116,7 +111,13 @@ namespace Bucket.Config
                 }
                 _logger.LogInformation($"config load error from appid {_setting.AppId},local disk cache recovery success.");
             }
+            initialized = true; // 初始化成功
         }
+        /// <summary>
+        /// 配置中心请求参数配置
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         private string AssembleQueryConfigUrl(string url)
         {
             // 配置请求地址
@@ -127,55 +128,6 @@ namespace Bucket.Config
             var query = $"version={_config.Version}";
             var sign = $"appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
             return $"{uri}?{query}&env={_setting.Env}&sign=" + SecureHelper.SHA256(sign);
-        }
-        private void InitScheduleRefresh()
-        {
-            _cancellationTokenSource = new CancellationTokenSource();
-            var _processQueueTask = Task.Factory.StartNew(ScheduleRefresh, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
-        }
-        private void ScheduleRefresh()
-        {
-            _logger.LogInformation($"schedule refresh with interval: {_setting.RefreshInteval} s");
-            while (!_cancellationTokenSource.IsCancellationRequested)
-            {
-                Thread.Sleep(_setting.RefreshInteval * 1000);
-                _logger.LogInformation($"refresh config for appid: {_setting.AppId}");
-                LoadConfig();
-            }
-        }
-        private void AddChangeListener()
-        {
-            if (_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
-            {
-                ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
-                sub.SubscribeAsync("Bucket_Config_ChangeListener", (channel, message) =>
-                {
-                    var command = _jsonHelper.DeserializeObject<ConfigNetCommand>(message);
-                    if (command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigUpdate)
-                    {
-                        // 更新
-                        LoadConfig();
-                    }
-                    if (command != null && command.AppId == _setting.AppId && command.CommandType == EnumCommandType.ConfigReload)
-                    {
-                        // 重载
-                        _config.Version = 0;
-                        LoadConfig();
-                    }
-                });
-            }
-        }
-        public void Dispose()
-        {
-            if (_cancellationTokenSource != null)
-            {
-                _cancellationTokenSource.Cancel();
-            }
-            if (_setting.RedisListener && !string.IsNullOrWhiteSpace(_setting.RedisConnectionString))
-            {
-                ISubscriber sub = _redisClient.GetSubscriber(_setting.RedisConnectionString);
-                sub.UnsubscribeAsync("Bucket_Config_ChangeListener");
-            }
         }
     }
 }
