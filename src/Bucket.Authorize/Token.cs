@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bucket.AspNetCore.Authorize
+namespace Bucket.Authorize
 {
     /// <summary>
     /// back token

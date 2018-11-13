@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
 
-namespace Bucket.AspNetCore.Authorize
+namespace Bucket.Authorize
 {
     /// <summary>
     ///jwt authorizationrequirement

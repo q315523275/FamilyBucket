@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace Bucket.AspNetCore.Authorize
+namespace Bucket.Authorize
 {
     /// <summary>
     /// TokenBuilder

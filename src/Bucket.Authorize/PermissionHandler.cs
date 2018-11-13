@@ -2,13 +2,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Bucket.AspNetCore.Authorize
+namespace Bucket.Authorize
 {
     /// <summary>
     /// customer permission policy handler
@@ -72,6 +69,11 @@ namespace Bucket.AspNetCore.Authorize
                     }
                     else
                     {
+                        // 由于Jwt无状态方式，所以无法控制token无效关闭锁定等情况
+                        // 可以通过一些特殊情况来处理
+                        // token 黑名单
+                        // token ip 变更
+
                         var ip = httpContext.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>()?.RemoteIpAddress?.ToString();
                         if (ipClaim.Value == ip)
                         {

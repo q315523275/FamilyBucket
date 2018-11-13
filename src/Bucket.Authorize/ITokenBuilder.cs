@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace Bucket.AspNetCore.Authorize
+namespace Bucket.Authorize
 {
     /// <summary>
     /// TokenBuilder interface
