@@ -108,7 +108,7 @@ namespace Pinzhi.Identity.WebApi
             // 添加接口文档
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "品值认证授权中心", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "认证授权中心", Version = "v1" });
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Identity.WebApi.xml"));
                 // Swagger验证部分
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
@@ -119,7 +119,6 @@ namespace Pinzhi.Identity.WebApi
             // 添加HttpClient工厂
             services.AddHttpClient();
             // 添加业务组件
-            services.AddSingleton<IUdcService, UdcService>();
             // 添加autofac容器替换，默认容器注册方式缺少功能
             var autofac_builder = new ContainerBuilder();
             autofac_builder.Populate(services);

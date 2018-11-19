@@ -30,8 +30,6 @@
     <PackageReference Include="Bucket.Tracing.Events" Version="1.1.2" />
     <PackageReference Include="Bucket.Utility" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
-    <PackageReference Include="Pinzhi.Component" Version="1.0.3" />
-    <PackageReference Include="Pinzhi.Component.UdcService" Version="1.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
