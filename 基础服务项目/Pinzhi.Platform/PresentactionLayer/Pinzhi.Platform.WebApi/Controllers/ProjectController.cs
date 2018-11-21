@@ -25,7 +25,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查看项目列表信息
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Project/QueryProject")]
         public async Task<QueryProjectOutput> QueryProject()
         {

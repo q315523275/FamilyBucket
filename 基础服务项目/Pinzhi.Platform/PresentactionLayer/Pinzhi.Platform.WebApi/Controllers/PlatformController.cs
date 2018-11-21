@@ -25,7 +25,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查询平台列表
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Platform/QueryPlatforms")]
         public async Task<QueryPlatformsOutput> QueryPlatforms()
         {
@@ -36,7 +36,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Platform/SetPlatform")]
         public async Task<SetPlatformOutput> SetPlatform([FromBody]SetPlatformInput input)
         {

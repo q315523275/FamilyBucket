@@ -1,4 +1,5 @@
 ﻿using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.DTO.Microservice;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,5 +16,7 @@ namespace Pinzhi.Platform.Interface
         Task<QueryServiceListOutput> QueryServiceList(QueryServiceListInput input);
         Task<SetServiceInfoOutput> SetServiceInfo(SetServiceInfoInput input);
         Task<DeleteServiceOutput> DeleteService(DeleteServiceInput input);
+        Task<GetApiGatewayConfigurationOutput> GetApiGatewayConfiguration();
+        Task<BaseOutput> SetApiGatewayConfiguration();
     }
 }

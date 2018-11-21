@@ -26,7 +26,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Api/QueryApiList")]
         public async Task<QueryApisOutput> QueryApiList(QueryApisInput input)
         {
@@ -37,7 +37,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Api/SetApi")]
         public async Task<SetApiOutput> SetApi(SetApiInput input)
         {

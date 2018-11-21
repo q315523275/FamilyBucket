@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Bucket.Config;
 using Bucket.ServiceDiscovery;
+using Bucket.Utility.Helpers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Newtonsoft.Json.Linq;
 using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.DTO.Microservice;
 
 namespace Pinzhi.Platform.Interface
 {
@@ -13,9 +20,11 @@ namespace Pinzhi.Platform.Interface
     public class MicroserviceBusiness : IMicroserviceBusiness
     {
         private readonly IServiceDiscovery _serviceDiscovery;
-        public MicroserviceBusiness(IServiceDiscovery serviceDiscovery)
+        private readonly IConfig _config;
+        public MicroserviceBusiness(IServiceDiscovery serviceDiscovery, IConfig config)
         {
             _serviceDiscovery = serviceDiscovery;
+            _config = config;
         }
 
         /// <summary>
@@ -67,5 +76,36 @@ namespace Pinzhi.Platform.Interface
             return new DeleteServiceOutput { };
         }
 
+        /// <summary>
+        /// 查询ApiGatewayConfiguration
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public async Task<GetApiGatewayConfigurationOutput> GetApiGatewayConfiguration()
+        {
+            var key = _config.StringGet("ApiGatewayConfigurationKey");
+            var value = await _serviceDiscovery.KeyValueGetAsync(key);
+            return new GetApiGatewayConfigurationOutput { Data = JObject.Parse(value) };
+        }
+        /// <summary>
+        /// 设置ApiGatewayConfiguration
+        /// </summary>
+        /// <returns></returns>
+        public async Task<BaseOutput> SetApiGatewayConfiguration()
+        {
+            #region body
+            var req = Web.HttpContext.Request;
+            req.EnableRewind();
+            var originBody = req.Body;
+            req.Body.Position = 0;
+            var bodyStr = await new StreamReader(req.Body).ReadToEndAsync();
+            req.Body.Position = 0;
+            req.Body = originBody;
+            #endregion
+
+            var key = _config.StringGet("ApiGatewayConfigurationKey");
+            await _serviceDiscovery.KeyValuePutAsync(key, bodyStr);
+            return new BaseOutput { };
+        }
     }
 }

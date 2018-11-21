@@ -85,8 +85,7 @@
                      })
                      .AddPolly()
                      .AddConsul()
-                     // .AddConfigStoredInConsul()
-                     .AddAdministration(hostingContext.Configuration.GetValue<string>("ApiGateway:AdminPath"),  hostingContext.Configuration.GetValue<string>("ApiGateway:AdminPwd"));
+                     .AddConfigStoredInConsul();
                      // 添加监控
 
                 })

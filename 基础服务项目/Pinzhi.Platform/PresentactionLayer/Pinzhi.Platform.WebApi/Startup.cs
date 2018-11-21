@@ -28,6 +28,10 @@ using Bucket.Tracing.Events;
 using Bucket.Logging;
 using Bucket.Logging.Events;
 using Bucket.LoadBalancer.Extensions;
+using Autofac;
+using Bucket.Authorize;
+using Autofac.Extensions.DependencyInjection;
+
 namespace Pinzhi.Platform.WebApi
 {
     /// <summary>
@@ -48,12 +52,16 @@ namespace Pinzhi.Platform.WebApi
         /// </summary>
         public IConfiguration Configuration { get; }
         /// <summary>
+        /// AutofacDI容器
+        /// </summary>
+        public IContainer AutofacContainer { get; private set; }
+        /// <summary>
         /// 配置服务
         /// </summary>
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // 添加授权认证
-            services.AddBucketAuthentication(Configuration);
+            services.AddApiJwtAuthorize(Configuration, (context) => { return true; });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -80,16 +88,6 @@ namespace Pinzhi.Platform.WebApi
             services.AddEventTrace();
             // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
             services.AddAutoMapper();
-            // 添加业务注册
-            #region
-            foreach (var item in GetClassName("Pinzhi.Platform.Business"))
-            {
-                foreach (var typeArray in item.Value)
-                {
-                    services.AddScoped(typeArray, item.Key);
-                }
-            }
-            #endregion
             // 添加过滤器
             services.AddMvc(options =>
             {
@@ -113,6 +111,12 @@ namespace Pinzhi.Platform.WebApi
             services.AddUtil();
             // 添加HttpClient管理
             services.AddHttpClient();
+            // 添加autofac容器替换，默认容器注册方式缺少功能
+            var autofac_builder = new ContainerBuilder();
+            autofac_builder.Populate(services);
+            autofac_builder.RegisterModule<AutofacModuleRegister>();
+            AutofacContainer = autofac_builder.Build();
+            return new AutofacServiceProvider(AutofacContainer);
         }
         /// <summary>
         /// 配置请求管道
@@ -163,26 +167,24 @@ namespace Pinzhi.Platform.WebApi
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
         }
-        /// <summary>  
-        /// 获取程序集中的实现类对应的多个接口
-        /// </summary>  
-        /// <param name="assemblyName">程序集</param>
-        private Dictionary<Type, Type[]> GetClassName(string assemblyName)
+        /// <summary>
+        /// Autofac扩展注册
+        /// </summary>
+        public class AutofacModuleRegister : Autofac.Module
         {
-            if (!String.IsNullOrEmpty(assemblyName))
+            /// <summary>
+            /// 装载autofac方式注册
+            /// </summary>
+            /// <param name="builder"></param>
+            protected override void Load(ContainerBuilder builder)
             {
-                Assembly assembly = Assembly.Load(assemblyName);
-                List<Type> ts = assembly.GetTypes().ToList();
-
-                var result = new Dictionary<Type, Type[]>();
-                foreach (var item in ts.Where(s => !s.IsInterface))
-                {
-                    var interfaceType = item.GetInterfaces();
-                    result.Add(item, interfaceType);
-                }
-                return result;
+                // 业务应用注册
+                Assembly bus_assembly = Assembly.Load("Pinzhi.Platform.Business");
+                builder.RegisterAssemblyTypes(bus_assembly)
+                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
             }
-            return new Dictionary<Type, Type[]>();
         }
     }
 }

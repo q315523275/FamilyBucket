@@ -16,11 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
-    <PackageReference Include="Bucket.AspNetCore" Version="1.1.6" />
-    <PackageReference Include="Bucket.Config" Version="1.1.4" />
-    <PackageReference Include="Bucket.DbContext" Version="1.1.3" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Bucket.AspNetCore" Version="1.1.9" />
+    <PackageReference Include="Bucket.Authorize" Version="1.0.2" />
+    <PackageReference Include="Bucket.Config" Version="1.1.6" />
+    <PackageReference Include="Bucket.DbContext" Version="1.1.5" />
     <PackageReference Include="Bucket.ErrorCode" Version="1.1.2" />
     <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.5" />
     <PackageReference Include="Bucket.LoadBalancer" Version="1.1.1" />
@@ -33,7 +36,7 @@
     <PackageReference Include="Bucket.Tracing.Events" Version="1.1.2" />
     <PackageReference Include="Bucket.Utility" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
   
   <ItemGroup>

@@ -26,7 +26,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Role/QueryAllRoles")]
         public async Task<QueryRolesOutput> QueryAllRoles(QueryRolesInput input)
         {
@@ -37,7 +37,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Role/QueryRoles")]
         public async Task<QueryRolesOutput> QueryRoles(QueryRolesInput input)
         {
@@ -48,7 +48,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Role/QueryRoleInfo")]
         public async Task<QueryRoleInfoOutput> QueryRoleInfo(QueryRoleInfoInput input)
         {
@@ -59,7 +59,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Role/SetRole")]
         public async Task<SetRoleOutput> SetRole([FromBody]SetRoleInput input)
         {

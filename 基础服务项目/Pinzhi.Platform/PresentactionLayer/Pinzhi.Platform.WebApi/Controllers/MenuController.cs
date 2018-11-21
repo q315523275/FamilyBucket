@@ -27,7 +27,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Menu/QueryAllMenus")]
         public async Task<QueryAllMenusOutput> QueryAllMenus(QueryAllMenusInput input)
         {
@@ -38,7 +38,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Menu/SetPlatform")]
         public async Task<SetMenuOutput> SetPlatform([FromBody]SetMenuInput input)
         {
@@ -48,7 +48,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查询用户菜单
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Menu/QueryUserMenus")]
         public async Task<QueryUserMenusOutput> QueryUserMenus()
         {

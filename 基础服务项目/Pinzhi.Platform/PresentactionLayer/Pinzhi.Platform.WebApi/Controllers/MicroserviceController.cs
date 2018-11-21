@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.DTO.Microservice;
 using Pinzhi.Platform.Interface;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -22,7 +23,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("/Microservice/QueryServiceList")]
-        [Authorize]
+        [Authorize("permission")]
         public async Task<QueryServiceListOutput> QueryServiceList([FromQuery]QueryServiceListInput input)
         {
             return await _microserviceBusines.QueryServiceList(input);
@@ -33,7 +34,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/Microservice/SetServiceInfo")]
-        [Authorize]
+        [Authorize("permission")]
         public async Task<SetServiceInfoOutput> SetServiceInfo([FromBody]SetServiceInfoInput input)
         {
             return await _microserviceBusines.SetServiceInfo(input);
@@ -44,10 +45,30 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <param name="input"></param>
         /// <returns></returns>
         [HttpPost("/Microservice/DeleteService")]
-        [Authorize]
+        [Authorize("permission")]
         public async Task<DeleteServiceOutput> DeleteService([FromBody]DeleteServiceInput input)
         {
             return await _microserviceBusines.DeleteService(input);
+        }
+        /// <summary>
+        /// 查询网关配置
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("/Microservice/GetApiGatewayConfiguration")]
+        [Authorize("permission")]
+        public async Task<GetApiGatewayConfigurationOutput> GetApiGatewayConfiguration()
+        {
+            return await _microserviceBusines.GetApiGatewayConfiguration();
+        }
+        /// <summary>
+        /// 设置网关配置
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("/Microservice/SetApiGatewayConfiguration")]
+        [Authorize("permission")]
+        public async Task<BaseOutput> SetApiGatewayConfiguration()
+        {
+            return await _microserviceBusines.SetApiGatewayConfiguration();
         }
     }
 }

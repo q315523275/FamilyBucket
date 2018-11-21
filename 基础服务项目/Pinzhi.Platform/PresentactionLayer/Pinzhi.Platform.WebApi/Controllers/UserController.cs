@@ -23,7 +23,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/User/QueryUsers")]
         public async Task<QueryUsersOutput> QueryUsers(QueryUsersInput input)
         {
@@ -35,7 +35,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/User/SetUser")]
         public async Task<SetUserOutput> SetUser([FromBody]SetUserInput input)
         {

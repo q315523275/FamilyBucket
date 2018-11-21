@@ -29,7 +29,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查看所有项目组
         /// </summary>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Config/QueryAppList")]
         public async Task<QueryAppListOutput> QueryAppList()
         {
@@ -40,7 +40,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Config/SetAppInfo")]
         public async Task<SetAppInfoOutput> SetAppInfo([FromBody]SetAppInfoInput input)
         {
@@ -51,7 +51,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Config/QueryAppProjectList")]
         public async Task<QueryAppProjectListOutput> QueryAppProjectList(QueryAppProjectListInput input)
         {
@@ -62,7 +62,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Config/SetAppProjectInfo")]
         public async Task<SetAppProjectInfoOutput> SetAppProjectInfo([FromBody]SetAppProjectInfoInput input)
         {
@@ -73,7 +73,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpGet("/Config/QueryAppConfigList")]
         public async Task<QueryAppConfigListOutput> QueryAppConfigList(QueryAppConfigListInput input)
         {
@@ -84,7 +84,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize]
+        [Authorize("permission")]
         [HttpPost("/Config/SetAppConfigInfo")]
         public async Task<SetAppConfigInfoOutput> SetAppConfigInfo([FromBody]SetAppConfigInfoInput input)
         {
