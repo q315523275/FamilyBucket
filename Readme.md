@@ -4,87 +4,223 @@ FamilyBucket主要通过组合各个系统形成的直接应用的微服务系�
 
 ## 配置中心应用
 
-在项目很多的情况下通过配置文件的方式，其对应的弊端越来越明显，管理麻烦、容易遗漏，尤其在更改生产环境的配置时更不用说了；
+配置中心主要解决：单文件配置管理麻烦、容易遗漏、更新麻烦、配置共享、环境切换等情况
+
+配置服务端主要提供http接口请求访问配置信息，通过appid和serct进行认证
 
 配置中心主要通过接口请求方式获取项目对应的配置信息，通过appid和serct方式进行认证，一个appid下可以挂在多个项目和通用配置；
 
 目前配置更新的方式有两种，定时轮询和广播订阅，如果有共享redis环境，可以配置redis对应参数进行广播订阅实现实时订阅；
 
-目前使用redis方式进行实时更新，如果没有对应的环境可以升级为http长连接推送方式；
+使用配置与方法
+
+```csharp
+  "ConfigService": {
+    "AppId": "",
+    "AppSercet": "",
+    "RedisConnectionString": "",
+    "RedisListener": false,
+    "RefreshInteval": 300,
+    "ServerUrl": "https://www.xxxx.cn/",
+    "UseServiceDiscovery": false,
+    "ServiceName": "Pinzhi.Config.WebApi",
+    "NamespaceName": "Pinzhi.Credit",
+    "Env": "dev"
+  }
+  public IServiceProvider ConfigureServices(IServiceCollection services)
+  {
+      // 添加配置服务
+      services.AddConfigService(Configuration);
+  }
+```
 
 ## 日志中心应用
 
-在很多时候基本都是人手一份日志，最后弄的服务器或者数据库到处都是日志文件；
+主要用户手机所有服务日志信息，方便统计管理、查看、告警
 
-当前使用事件队列方式进行日志传输，通过elasticsearch进行存储，kibana进行查看；
+当前使用消息总线进行日志传输，通过elasticsearch进行存储，kibana进行查看
 
-也可以使用ELK方式进行日志收集与存储，通过NLOG或者LOG4NET进行日志文件输出；
+下一步将进行NLog、Log4集成扩展，增加存储收集方式，集成都以原生日志组件实现方式进行
+
+使用配置与方法
+
+```csharp
+  public IServiceProvider ConfigureServices(IServiceCollection services)
+  {
+      // 添加事件队列日志
+      services.AddEventLog();
+  }
+  public void Configure(IApplicationBuilder app, IILoggerFactory loggerFactory)
+  {
+      // 日志,事件驱动日志
+      loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
+   }
+```
+
 
 ## 错误码应用
 
-这个应用有点鸡肋，主要应用原因，是因为运营人员对于接口返回对应用业务描述（模型验证，业务办理失败，规则不满足等等），不断的修改，不胜其烦
+主要解决运营人员对于接口返回对应用业务描述（模型验证，业务办理失败，规则不满足等等），可设置错误码级别，是否告警通知，配置告警人员等等
 
 原理是定义对应的Exception，遇到需要直接返回的时候，直接throw对应的异常，其中包含对应的错误码和对内描述，通过全局异常中间件进行对应转化；
 
-从此过上清静的生活；
+```csharp
+  "ErrorCodeService": {
+    "RefreshInteval": 1800,
+    "ServerUrl": "http://xxxx"
+  },
+  public IServiceProvider ConfigureServices(IServiceCollection services)
+  {
+      // 添加错误码服务
+      services.AddErrorCodeServer(Configuration);
+  }
+```
 
 ## 微服务网关
 
-这个就不用说了，必然存在的东西，使用Ocelot作为服务的网关，网上资料很多；[项目地址](https://github.com/ThreeMammals/Ocelot)
+Ocelot作为服务的网关，已经很强大；[项目地址](https://github.com/ThreeMammals/Ocelot)；当前使用Consul进行网关配置信息存储
 
 ## 服务注册发现
 
-目前使用Consul进行服务的相关操作，Consul官方的UI缺少对应的服务管理，只能进行相关的查看；更多资料查看官方网址
+目前使用Consul进行实现
 
-在服务启动的时候通过配置文件信息进行服务注册，程序停止的时候进行服务的关闭；
+```csharp
+  "ServiceDiscovery": {
+    "ServiceName": "xxxxx",
+    "Version": "1.1.0",
+    "HealthCheckTemplate": "",
+    "Endpoint": "http://xxxx",
+    "Consul": {
+      "HttpEndpoint": "http://127.0.0.1:8500",
+      "DnsEndpoint": {
+        "Address": "127.0.0.1",
+        "Port": 8500
+      }
+    }
+  },
+  public IServiceProvider ConfigureServices(IServiceCollection services)
+  {
+      // 添加服务发现
+      services.AddServiceDiscovery(build => { build.UseConsul(configuration); });
+      services.AddLoadBalancer();
+  }
+  public void Configure(IApplicationBuilder app, IILoggerFactory loggerFactory)
+  {
+      app.UseConsulRegisterService(Configuration);
+  }
+```
+服务地址查询
 
-接下来需要进行Eureka的服务管理的增加...
+```csharp
+  static void Main(string[] args)
+  {
+     Initialize();
+     Console.WriteLine("Hello World!");
+     var _loadBalancerHouse = serviceProvider.GetRequiredService<ILoadBalancerHouse>();
+     var _rpcChannelFactory = serviceProvider.GetRequiredService<IGrpcChannelFactory>();
+     // 服务发现地址
+     var endpoints = _loadBalancerHouse.Get("Bucket.Grpc.Server").Result;
+     var endpoint = endpoints.Lease().Result;
+     var channel = _rpcChannelFactory.Get(endpoint.Address, endpoint.Port);
+  }
+```
+
 
 ## 链路追踪应用
 
-这个在业务办理系统中，起到非常重要的作用，业务系统一般都要穿越过很多的系统，如果没有这个，一有问题将会很难定位；
+参考 
 
-通过追踪的接入可以实现调用链信息、耗时分析定位、问题定位、请求出入参的查看与分析；
+[OpenSkywalking](https://github.com/OpenSkywalking/skywalking-netcore)
+[butterfly](https://github.com/liuhaoyang/butterfly)
 
-使用后可以发现可以有很多的扩展用户，比如定制的告警、用户的实时监控（测试人员输入手机号通过websocket实时展示其办理情况）等等；
+由于一些使用需求特性，故没有直接使用直接组件，进行了一些二次开发，目前正在重构
 
-当前使用事件队列方式进行传输，通过elasticsearch进行存储；
+实现APM、调用链信息、耗时分析定位、问题定位、请求出入参的查看与分析；
 
-参考 [OpenSkywalking](https://github.com/OpenSkywalking/skywalking-netcore),[butterfly](https://github.com/liuhaoyang/butterfly),在butterfly扩展使用EventBus传输,(RPC构建中)，可直接用butterfly-ui查看结果
+目前使用消息总线进行传输、相关数据可以进行一些比较实用的扩展；
 
-## 事件驱动应用
 
-这个不用说了，在系统中可说是会经常用到的东西，如订单对应的相关事件，代码参考博友的文章；
+## 消息总线应用
+
+在微服务中起到比较重要的作用，用法多样，可实现多种功能，分布式事务、消息队列、事件驱动等等
+
+```csharp
+  "EventBus": {
+    "RabbitMQ": {
+      "HostName": "10.10.133.205",
+      "Port": 5672,
+      "UserName": "guest",
+      "Password": "guest",
+      "QueueName": "xxxx"
+    }
+  },
+  public IServiceProvider ConfigureServices(IServiceCollection services)
+  {
+     // 添加事件驱动
+     services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
+  }
+```
 
 ## 度量监控应用
 
-应用实时性能监控，流量走向，系统吞吐量等，主要通过App.Metrics客户端进行数据的提取，granfana + influx进行数据的展示与存储；
-
-相关资料也有不少
+应用实时性能监控，流量走向，系统吞吐量等，主要通过App.Metrics客户端进行数据的提取，granfana + influx 进行数据的展示与存储；
 
 ## 用户认证应用
 
-配置Ocelot路由的时候就会发现，网关是通过AuthenticationProviderKey和AllowedScopes进行认证授权的；
+Ocelot网关路由，通过AuthenticationProviderKey 和 AllowedScopes 进行认证和权限验证, 路由一般我配置是整个子项目的基地址，所以认证授权已移至后向子服务
 
-在/sample/Authentication demo项目中有一个简单的登陆应用；
+组件为Bucket.Authorize Bucket.Authorize.MySql
 
-子服务并未进行具体角色的验证，只进行token验证；
+标签属性
+```csharp
+[Authorize("permission")]
+```
+当只需要认证token是否有效时
+```csharp
+services.AddApiJwtAuthorize(Configuration)
+```
+当需要对角色进行验证时
+```csharp
+services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
+```
+全配置
+```csharp
+"JwtAuthorize": {
+    "Secret": "xxxxxxxxxxxxxxxxxxxxx",
+    "Issuer": "poc",
+    "Audience": "axon",
+    "PolicyName": "permission",
+    "DefaultScheme": "Bearer",
+    "IsHttps": false,
+    "RequireExpirationTime": true,
+    "MySqlConnectionString": "characterset=utf8;server=127.0.0.1;port=3306;database=bucket;uid=root;pwd=123;",
+    "ProjectName": "Pinzhi.Platform",
+    "RefreshInteval": 300
+  },
+```
 
-如果子服务也需要进行对应的角色验证，需要进行对应的扩展，目前资料也很多了；
+## 使用
 
-## 其他
+mysql初始化文件 /基础服务项目/init_mysql.sql
 
-sample 里有配置中间的简单服务端，
+基础服务项目
 
-mysql的几个基础库，包括用户的角色等
+配置中心服务端项目  /基础服务项目/ConfigService
 
-平台基础项目
+用户登陆项目  /基础服务项目/Authentication
 
+基础消息总线消费端  /基础服务项目/Pinzhi.BackgroundTasks
+
+基础管理项目  /基础服务项目/Pinzhi.Platform (微服务配置、服务管理、配置中心设置、用户角色菜单平台管理)
+
+链路追踪查询项目  /基础服务项目/Tracing
+
+前端VUE项目
 [FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)正在开发中，其中包括很多页面操作，用户权限，项目资源、配置中心、网关路由、链路追踪等
 
 ## 项目包引用
 
-针对对应项目进行打包，把打包文件放在一个统一的位置，Nuget设置一个本地路径即可
+Nuget搜索Bucket.xxxx
 
 ## 进程守护
 
@@ -122,13 +258,12 @@ namespace Platform.WebApi
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证, return true;标识不验证角色等
-            services.AddApiJwtAuthorize(Configuration, (context) => { return true; });
+            // 添加认证+MySql权限认证
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
-            services.AddSQLSugarClient<SqlSugarClient>(config =>
-            {
+            services.AddSQLSugarClient<SqlSugarClient>(config => {
                 config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
                 config.DbType = DbType.MySql;
                 config.IsAutoCloseConnection = false;
@@ -139,29 +274,33 @@ namespace Platform.WebApi
             // 添加配置服务
             services.AddConfigService(Configuration);
             // 添加事件驱动
-            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
+            services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
             // 添加服务发现
-            services.AddServiceDiscovery(builder => { builder.UseConsul(Configuration); });
+            services.AddServiceDiscovery(option => { option.UseConsul(Configuration); });
+            // 添加服务路由
+            services.AddLoadBalancer();
             // 添加事件队列日志
             services.AddEventLog();
             // 添加链路追踪
             services.AddTracer(Configuration);
             services.AddEventTrace();
+            // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
+            services.AddAutoMapper();
             // 添加过滤器
-            services.AddMvc(option =>
+            services.AddMvc(options =>
             {
-                option.Filters.Add(typeof(WebApiTracingFilterAttribute));
-                option.Filters.Add(typeof(WebApiActionFilterAttribute));
+                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
+                options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
-            // 添加接口文档
+            // 添加Swagger
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "xxxxxx", Version = "v1" });
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "xxxxxx.WebApi.xml"));
+                c.SwaggerDoc("v1", new Info { Title = "接口文档", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Platform.WebApi.xml"));
                 // Swagger验证部分
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
                 c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
@@ -170,7 +309,6 @@ namespace Platform.WebApi
             services.AddUtil();
             // 添加HttpClient管理
             services.AddHttpClient();
-            // 添加业务组件注册
             // 添加autofac容器替换，默认容器注册方式缺少功能
             var autofac_builder = new ContainerBuilder();
             autofac_builder.Populate(services);
@@ -181,20 +319,14 @@ namespace Platform.WebApi
         /// <summary>
         /// 配置请求管道
         /// </summary>
-        /// <param name="app"></param>
-        /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        /// <param name="appLifetime"></param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            // 日志,事件驱动日志
-            loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
+            // 日志
+            loggerFactory.AddBucketLog(app, "Pinzhi.Platform");
             // 文档
             ConfigSwagger(app);
             // 公共配置
             CommonConfig(app);
-            // Autofac容器释放
-            appLifetime.ApplicationStopped.Register(() => { AutofacContainer.Dispose(); });
         }
         /// <summary>
         /// 配置Swagger
@@ -211,12 +343,8 @@ namespace Platform.WebApi
         /// </summary>
         private void CommonConfig(IApplicationBuilder app)
         {
-            //// gzip压缩
-            //app.UseResponseCompression();
             // 全局错误日志
             app.UseErrorLog();
-            // 认证授权
-            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由
@@ -246,10 +374,10 @@ namespace Platform.WebApi
             /// <param name="builder"></param>
             protected override void Load(ContainerBuilder builder)
             {
-                // 业务仓储注册
-                Assembly bus_rop_assembly = Assembly.Load("xxxxxx.Repository");
-                builder.RegisterAssemblyTypes(bus_rop_assembly)
-                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Repository"))
+                // 业务应用注册
+                Assembly bus_assembly = Assembly.Load("Pinzhi.Platform.Business");
+                builder.RegisterAssemblyTypes(bus_assembly)
+                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
                     .AsImplementedInterfaces()
                     .InstancePerLifetimeScope();
                 // 数据仓储泛型注册
