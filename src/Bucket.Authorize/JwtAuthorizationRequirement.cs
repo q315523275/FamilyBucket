@@ -11,12 +11,6 @@ namespace Bucket.Authorize
     public class JwtAuthorizationRequirement : IAuthorizationRequirement
     {
         /// <summary>
-        /// validate permission Func
-        /// </summary>
-        public Func<HttpContext, bool> ValidatePermission
-        { get; internal set; }
-
-        /// <summary>
         /// issuer
         /// </summary>
         public string Issuer { get; set; }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.DTO.csproj" />
+    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.Dto.csproj" />
     <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.Model\Pinzhi.Platform.Model.csproj" />
     <ProjectReference Include="..\Pinzhi.Platform.Interface\Pinzhi.Platform.Interface.csproj" />
   </ItemGroup>

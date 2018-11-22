@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Pinzhi.Platform.DTO
+namespace Pinzhi.Platform.Dto
 {
     /// <summary>
     /// 对象不能为空

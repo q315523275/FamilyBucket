@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -25,7 +21,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/User/QueryUsers")]
-        public async Task<QueryUsersOutput> QueryUsers(QueryUsersInput input)
+        public async Task<QueryUsersOutput> QueryUsers([FromQuery] QueryUsersInput input)
         {
             return await _userBusiness.QueryUsers(input);
         }
@@ -37,7 +33,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/User/SetUser")]
-        public async Task<SetUserOutput> SetUser([FromBody]SetUserInput input)
+        public async Task<SetUserOutput> SetUser([FromBody] SetUserInput input)
         {
             return await _userBusiness.SetUser(input);
         }

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pinzhi.Platform.DTO;
-using Pinzhi.Platform.DTO.Microservice;
+using Pinzhi.Platform.Dto;
+using Pinzhi.Platform.Dto.Microservice;
 using Pinzhi.Platform.Interface;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -24,7 +24,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [HttpGet("/Microservice/QueryServiceList")]
         [Authorize("permission")]
-        public async Task<QueryServiceListOutput> QueryServiceList([FromQuery]QueryServiceListInput input)
+        public async Task<QueryServiceListOutput> QueryServiceList([FromQuery] QueryServiceListInput input)
         {
             return await _microserviceBusines.QueryServiceList(input);
         }
@@ -35,7 +35,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [HttpPost("/Microservice/SetServiceInfo")]
         [Authorize("permission")]
-        public async Task<SetServiceInfoOutput> SetServiceInfo([FromBody]SetServiceInfoInput input)
+        public async Task<SetServiceInfoOutput> SetServiceInfo([FromBody] SetServiceInfoInput input)
         {
             return await _microserviceBusines.SetServiceInfo(input);
         }
@@ -46,7 +46,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [HttpPost("/Microservice/DeleteService")]
         [Authorize("permission")]
-        public async Task<DeleteServiceOutput> DeleteService([FromBody]DeleteServiceInput input)
+        public async Task<DeleteServiceOutput> DeleteService([FromBody] DeleteServiceInput input)
         {
             return await _microserviceBusines.DeleteService(input);
         }

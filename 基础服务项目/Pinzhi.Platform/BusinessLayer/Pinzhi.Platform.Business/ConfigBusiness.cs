@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Bucket.Exceptions;
 using Bucket.Core;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Interface;
 using Pinzhi.Platform.Model;
 using SqlSugar;

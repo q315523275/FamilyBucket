@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Bucket.Authorize
@@ -13,7 +14,7 @@ namespace Bucket.Authorize
         /// </summary>
         /// <param name="claims">claim array</param>
         /// <returns></returns>
-        Token BuildJwtToken(Claim[] claims, DateTime? expires = null);
+        Token BuildJwtToken(IEnumerable<Claim> claims, DateTime? expires = null);
         /// <summary>
         /// get the token of jwt
         /// </summary>
@@ -21,7 +22,7 @@ namespace Bucket.Authorize
         /// <param name="notBefore">not Before time</param>
         /// <param name="expires">expires</param>
         /// <returns></returns>
-        Token BuildJwtToken(Claim[] claims, DateTime notBefore, DateTime? expires = null);
+        Token BuildJwtToken(IEnumerable<Claim> claims, DateTime notBefore, DateTime? expires = null);
 
         /// <summary>
         /// get the token of jwt
@@ -31,6 +32,6 @@ namespace Bucket.Authorize
         /// <param name="notBefore">not Before time</param>
         /// <param name="expires">expires</param>
         /// <returns></returns>
-        Token BuildJwtToken(Claim[] claims, string ip, DateTime? notBefore = null, DateTime? expires = null);
+        Token BuildJwtToken(IEnumerable<Claim> claims, string ip, DateTime? notBefore = null, DateTime? expires = null);
     }
 }

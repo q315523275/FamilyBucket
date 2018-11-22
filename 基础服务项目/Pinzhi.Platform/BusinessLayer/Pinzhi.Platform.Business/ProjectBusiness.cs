@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Bucket.Core;
 using Bucket.Redis;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Model;
 using SqlSugar;
 using System.Threading.Tasks;

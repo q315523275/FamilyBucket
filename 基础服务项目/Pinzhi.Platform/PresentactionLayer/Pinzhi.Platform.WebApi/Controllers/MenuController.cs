@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Bucket.WebApi;
@@ -29,7 +29,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Menu/QueryAllMenus")]
-        public async Task<QueryAllMenusOutput> QueryAllMenus(QueryAllMenusInput input)
+        public async Task<QueryAllMenusOutput> QueryAllMenus([FromQuery] QueryAllMenusInput input)
         {
             return await _menuBusiness.QueryAllMenus(input);
         }
@@ -40,7 +40,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Menu/SetPlatform")]
-        public async Task<SetMenuOutput> SetPlatform([FromBody]SetMenuInput input)
+        public async Task<SetMenuOutput> SetPlatform([FromBody] SetMenuInput input)
         {
             return await _menuBusiness.SetPlatform(input);
         }

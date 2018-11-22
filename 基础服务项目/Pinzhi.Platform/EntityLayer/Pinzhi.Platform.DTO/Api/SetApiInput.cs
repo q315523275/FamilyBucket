@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pinzhi.Platform.DTO
+namespace Pinzhi.Platform.Dto
 {
     public class SetApiInput
     {
@@ -41,7 +41,7 @@ namespace Pinzhi.Platform.DTO
         /// <summary>
         /// 是否允许匿名访问
         /// </summary>
-        public bool AllowScope { get; set; }
+        public int AllowScope { get; set; }
         /// <summary>
         /// 创建时间
         /// </summary>

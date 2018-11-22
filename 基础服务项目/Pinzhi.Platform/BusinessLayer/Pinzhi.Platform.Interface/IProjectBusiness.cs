@@ -1,4 +1,4 @@
-﻿using Pinzhi.Platform.DTO;
+﻿using Pinzhi.Platform.Dto;
 using System.Threading.Tasks;
 
 namespace Pinzhi.Platform.Interface

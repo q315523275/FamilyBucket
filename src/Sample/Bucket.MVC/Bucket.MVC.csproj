@@ -34,6 +34,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Bucket.Authorize.MySql\Bucket.Authorize.MySql.csproj" />
+    <ProjectReference Include="..\..\Bucket.Authorize\Bucket.Authorize.csproj" />
     <ProjectReference Include="..\..\Config\Bucket.Config\Bucket.Config.csproj" />
     <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode\Bucket.ErrorCode.csproj" />
     <ProjectReference Include="..\..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />

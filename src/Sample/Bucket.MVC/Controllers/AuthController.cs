@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.AspNetCore.Http.Internal;
-
+using Microsoft.AspNetCore.Authorization;
 namespace Bucket.MVC.Controllers
 {
     /// <summary>
@@ -33,7 +33,8 @@ namespace Bucket.MVC.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [HttpPost("/authapi/login")]
+        [HttpPost("/auth/login")]
+        [Authorize("permission")]
         public async Task<OutputLogin> Login([FromBody] InputLogin input)
         {
             Request.EnableRewind();
@@ -45,6 +46,12 @@ namespace Bucket.MVC.Controllers
                 body = reader.ReadToEnd();
             }
             return new OutputLogin {  };
+        }
+        [HttpGet("/User/QueryUsers")]
+        [Authorize("permission")]
+        public string User()
+        {
+            return "0";
         }
     }
 }

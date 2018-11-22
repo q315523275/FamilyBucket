@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pinzhi.Platform.DTO
+namespace Pinzhi.Platform.Dto
 {
     public class QueryUsersInput: BasePageInput
     {
@@ -24,9 +24,9 @@ namespace Pinzhi.Platform.DTO
         [Mobile("104002","不是有效手机号")]
         public string Mobile { set; get; }
         /// <summary>
-        /// 项目名称
+        /// 平台名称
         /// </summary>
-        public string ProjectName { set; get; }
+        public string PlatformKey { set; get; }
         /// <summary>
         /// 角色
         /// </summary>

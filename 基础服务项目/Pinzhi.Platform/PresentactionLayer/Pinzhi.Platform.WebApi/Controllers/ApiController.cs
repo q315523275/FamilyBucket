@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -28,7 +28,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Api/QueryApiList")]
-        public async Task<QueryApisOutput> QueryApiList(QueryApisInput input)
+        public async Task<QueryApisOutput> QueryApiList([FromQuery] QueryApisInput input)
         {
             return await _apiBusiness.QueryApis(input);
         }
@@ -39,7 +39,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Api/SetApi")]
-        public async Task<SetApiOutput> SetApi(SetApiInput input)
+        public async Task<SetApiOutput> SetApi([FromBody] SetApiInput input)
         {
             return await _apiBusiness.SetApi(input);
         }

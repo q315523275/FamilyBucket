@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.DTO.csproj" />
+    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.Dto.csproj" />
   </ItemGroup>
 
 </Project>

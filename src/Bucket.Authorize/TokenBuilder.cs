@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -28,14 +29,13 @@ namespace Bucket.Authorize
         /// <param name="claims">claim array</param>
         /// <param name="expires">expires</param>
         /// <returns></returns>
-        public Token BuildJwtToken(Claim[] claims, DateTime? expires = null)
+        public Token BuildJwtToken(IEnumerable<Claim> claims, DateTime? expires = null)
         {
-            var claimList = new List<Claim>(claims);
             var now = DateTime.UtcNow;
             var jwt = new JwtSecurityToken(
                 issuer: _jwtAuthorizationRequirement.Issuer,
                 audience: _jwtAuthorizationRequirement.Audience,
-                claims: claimList.ToArray(),
+                claims: claims,
                 notBefore: now,
                 expires: expires,
                 signingCredentials: _jwtAuthorizationRequirement.SigningCredentials
@@ -56,7 +56,7 @@ namespace Bucket.Authorize
         /// <param name="notBefore">not Before time</param>
         /// <param name="expires">expires</param>
         /// <returns></returns>
-        public Token BuildJwtToken(Claim[] claims, DateTime notBefore, DateTime? expires = null)
+        public Token BuildJwtToken(IEnumerable<Claim> claims, DateTime notBefore, DateTime? expires = null)
         {
             var claimList = new List<Claim>(claims);
             var jwt = new JwtSecurityToken(
@@ -85,16 +85,15 @@ namespace Bucket.Authorize
         /// <param name="notBefore">not Before time</param>
         /// <param name="expires">expires</param>
         /// <returns></returns>
-        public Token BuildJwtToken(Claim[] claims, string ip, DateTime? notBefore = null, DateTime? expires = null)
+        public Token BuildJwtToken(IEnumerable<Claim> claims, string ip, DateTime? notBefore = null, DateTime? expires = null)
         {
-
-            var claimList = new List<Claim>(claims);
+            var claimList = claims.ToList();
             claimList.Add(new Claim("ip", ip));
             var now = notBefore.HasValue ? notBefore.Value : DateTime.UtcNow;
             var jwt = new JwtSecurityToken(
                 issuer: _jwtAuthorizationRequirement.Issuer,
                 audience: _jwtAuthorizationRequirement.Audience,
-                claims: claimList.ToArray(),
+                claims: claimList,
                 notBefore: notBefore,
                 expires: expires,
                 signingCredentials: _jwtAuthorizationRequirement.SigningCredentials

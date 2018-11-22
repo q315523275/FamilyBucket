@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Bucket.Core;
 using Bucket.Redis;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Model;
 using SqlSugar;
 using System.Threading.Tasks;
@@ -56,7 +56,7 @@ namespace Pinzhi.Platform.Business
             if (model.Id > 0)
             {
                 model.UpdateTime = DateTime.Now;
-                await _dbContext.Updateable(model).IgnoreColumns(it => new { it.CreateTime, it.Url }).ExecuteCommandAsync();
+                await _dbContext.Updateable(model).IgnoreColumns(it => new { it.CreateTime }).ExecuteCommandAsync();
             }
             else
             {

@@ -1,13 +1,10 @@
-﻿
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.Extensions.Configuration;
-
 using System;
 using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 
 namespace Bucket.Authorize
 {
@@ -17,9 +14,9 @@ namespace Bucket.Authorize
         /// In the API Project, the Startup. Cs class ConfigureServices method is called
         /// </summary>
         /// <param name="services">Service Collection</param>
-        /// <param name="validatePermission">validate permission action</param>
+        /// <param name="configuration">IConfiguration</param>
         /// <returns></returns>
-        public static AuthenticationBuilder AddApiJwtAuthorize(this IServiceCollection services, IConfiguration configuration, Func<HttpContext, bool> validatePermission)
+        public static AuthenticationBuilder AddApiJwtAuthorize(this IServiceCollection services, IConfiguration configuration)
         {
             var config = configuration.GetSection("JwtAuthorize");
 
@@ -40,10 +37,14 @@ namespace Bucket.Authorize
             var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
             var permissionRequirement = new JwtAuthorizationRequirement(config["Issuer"], config["Audience"], signingCredentials);
-            permissionRequirement.ValidatePermission = validatePermission;
 
+            services.AddSingleton<IClaimsParser, ClaimsParser>();
+            services.AddSingleton<IPermissionAuthoriser, EmptyAuthoriser>();
+            services.AddSingleton<IPermissionRepository, EmptyPermissionRepository>();
             services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
             services.AddSingleton(permissionRequirement);
+
+
             return services.AddAuthorization(options =>
             {
                 options.AddPolicy(config["PolicyName"],
@@ -59,6 +60,17 @@ namespace Bucket.Authorize
                 o.RequireHttpsMetadata = bool.Parse(config["IsHttps"]);
                 o.TokenValidationParameters = tokenValidationParameters;
             });
+        }
+        /// <summary>
+        /// use Authoriser
+        /// </summary>
+        /// <param name="authenticationBuilder"></param>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IAuthoriserBuilder UseAuthoriser(this AuthenticationBuilder authenticationBuilder, IServiceCollection services, IConfiguration configuration)
+        {
+            return new AuthoriserBuilder(services, configuration);
         }
         /// <summary>
         /// In the Authorize Project, the Startup. Cs class ConfigureServices method is called

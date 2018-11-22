@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Interface;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -42,7 +42,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Config/SetAppInfo")]
-        public async Task<SetAppInfoOutput> SetAppInfo([FromBody]SetAppInfoInput input)
+        public async Task<SetAppInfoOutput> SetAppInfo([FromBody] SetAppInfoInput input)
         {
             return await _configBusniess.SetAppInfo(input);
         }
@@ -53,7 +53,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Config/QueryAppProjectList")]
-        public async Task<QueryAppProjectListOutput> QueryAppProjectList(QueryAppProjectListInput input)
+        public async Task<QueryAppProjectListOutput> QueryAppProjectList([FromQuery] QueryAppProjectListInput input)
         {
             return await _configBusniess.QueryAppProjectList(input);
         }
@@ -64,7 +64,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Config/SetAppProjectInfo")]
-        public async Task<SetAppProjectInfoOutput> SetAppProjectInfo([FromBody]SetAppProjectInfoInput input)
+        public async Task<SetAppProjectInfoOutput> SetAppProjectInfo([FromBody] SetAppProjectInfoInput input)
         {
             return await _configBusniess.SetAppProjectInfo(input);
         }
@@ -75,7 +75,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Config/QueryAppConfigList")]
-        public async Task<QueryAppConfigListOutput> QueryAppConfigList(QueryAppConfigListInput input)
+        public async Task<QueryAppConfigListOutput> QueryAppConfigList([FromQuery] QueryAppConfigListInput input)
         {
             return await _configBusniess.QueryAppConfigList(input);
         }
@@ -86,7 +86,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Config/SetAppConfigInfo")]
-        public async Task<SetAppConfigInfoOutput> SetAppConfigInfo([FromBody]SetAppConfigInfoInput input)
+        public async Task<SetAppConfigInfoOutput> SetAppConfigInfo([FromBody] SetAppConfigInfoInput input)
         {
             return await _configBusniess.SetAppConfigInfo(input);
         }

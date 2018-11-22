@@ -16,14 +16,18 @@ namespace Bucket.Authorize
         /// authentication scheme provider
         /// </summary>
         readonly IAuthenticationSchemeProvider _schemes;
-
+        /// <summary>
+        /// validate permission
+        /// </summary>
+        readonly IPermissionAuthoriser _permissionAuthoriser;
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="schemes"></param>
-        public PermissionHandler(IAuthenticationSchemeProvider schemes)
+        public PermissionHandler(IAuthenticationSchemeProvider schemes, IPermissionAuthoriser permissionAuthoriser)
         {
             _schemes = schemes;
+            _permissionAuthoriser = permissionAuthoriser;
         }
         /// <summary>
         /// handle requirement
@@ -57,7 +61,7 @@ namespace Bucket.Authorize
                     var ipClaim = httpContext.User.Claims.SingleOrDefault(c => c.Type == "ip");
                     if (ipClaim == null)
                     {
-                        var invockResult = jwtAuthorizationRequirement.ValidatePermission(httpContext);
+                        var invockResult = _permissionAuthoriser.Authorise(httpContext);
                         if (invockResult)
                         {
                             context.Succeed(jwtAuthorizationRequirement);
@@ -78,7 +82,7 @@ namespace Bucket.Authorize
                         if (ipClaim.Value == ip)
                         {
                             httpContext.User = result.Principal;
-                            var invockResult = jwtAuthorizationRequirement.ValidatePermission(httpContext);
+                            var invockResult = _permissionAuthoriser.Authorise(httpContext);
                             if (invockResult)
                             {
                                 context.Succeed(jwtAuthorizationRequirement);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pinzhi.Platform.DTO
+namespace Pinzhi.Platform.Dto
 {
     public class SetServiceInfoOutput: BaseOutput
     {

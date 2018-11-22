@@ -1,4 +1,4 @@
-﻿using Pinzhi.Platform.DTO;
+﻿using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Model;
 using AutoMapper;
 namespace Pinzhi.Platform.WebApi.Common

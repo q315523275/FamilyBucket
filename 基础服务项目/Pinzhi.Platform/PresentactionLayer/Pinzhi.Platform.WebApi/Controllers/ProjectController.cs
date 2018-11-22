@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers

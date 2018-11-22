@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -38,7 +38,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Platform/SetPlatform")]
-        public async Task<SetPlatformOutput> SetPlatform([FromBody]SetPlatformInput input)
+        public async Task<SetPlatformOutput> SetPlatform([FromBody] SetPlatformInput input)
         {
             return await _platformBusiness.SetPlatform(input);
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pinzhi.Platform.DTO.Microservice
+namespace Pinzhi.Platform.Dto.Microservice
 {
     public class GetApiGatewayConfigurationOutput : BaseOutput
     {

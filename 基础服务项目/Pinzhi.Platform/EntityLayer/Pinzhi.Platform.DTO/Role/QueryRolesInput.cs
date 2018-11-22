@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pinzhi.Platform.DTO
+namespace Pinzhi.Platform.Dto
 {
     public class QueryRolesInput
     {
         /// <summary>
-        /// 项目标识
+        /// 平台标识
         /// </summary>
-        public string ProjectKey { set; get; }
+        public string PlatformKey { set; get; }
     }
 }

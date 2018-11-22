@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Interface;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -28,7 +28,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Role/QueryAllRoles")]
-        public async Task<QueryRolesOutput> QueryAllRoles(QueryRolesInput input)
+        public async Task<QueryRolesOutput> QueryAllRoles([FromQuery] QueryRolesInput input)
         {
             return await _roleBusiness.QueryAllRoles(input);
         }
@@ -39,7 +39,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Role/QueryRoles")]
-        public async Task<QueryRolesOutput> QueryRoles(QueryRolesInput input)
+        public async Task<QueryRolesOutput> QueryRoles([FromQuery] QueryRolesInput input)
         {
             return await _roleBusiness.QueryRoles(input);
         }
@@ -50,7 +50,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpGet("/Role/QueryRoleInfo")]
-        public async Task<QueryRoleInfoOutput> QueryRoleInfo(QueryRoleInfoInput input)
+        public async Task<QueryRoleInfoOutput> QueryRoleInfo([FromQuery] QueryRoleInfoInput input)
         {
             return await _roleBusiness.QueryRoleInfo(input);
         }
@@ -61,7 +61,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// <returns></returns>
         [Authorize("permission")]
         [HttpPost("/Role/SetRole")]
-        public async Task<SetRoleOutput> SetRole([FromBody]SetRoleInput input)
+        public async Task<SetRoleOutput> SetRole([FromBody] SetRoleInput input)
         {
             return await _roleBusiness.SetRole(input);
         }

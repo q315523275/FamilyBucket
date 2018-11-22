@@ -1,7 +1,5 @@
 ﻿using SqlSugar;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Pinzhi.Platform.Model
 {
@@ -17,9 +15,9 @@ namespace Pinzhi.Platform.Model
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public int Id { get; set; }
         /// <summary>
-        /// 项目名称
+        /// 平台名称
         /// </summary>
-        public string ProjectName { get; set; }
+        public string PlatformKey { get; set; }
         /// <summary>
         /// 角色唯一标示符
         /// </summary>

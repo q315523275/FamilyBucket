@@ -31,6 +31,7 @@ using Bucket.LoadBalancer.Extensions;
 using Autofac;
 using Bucket.Authorize;
 using Autofac.Extensions.DependencyInjection;
+using Bucket.Authorize.MySql;
 
 namespace Pinzhi.Platform.WebApi
 {
@@ -60,8 +61,8 @@ namespace Pinzhi.Platform.WebApi
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证
-            services.AddApiJwtAuthorize(Configuration, (context) => { return true; });
+            // 添加认证+MySql权限认证
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -183,6 +184,9 @@ namespace Pinzhi.Platform.WebApi
                 builder.RegisterAssemblyTypes(bus_assembly)
                     .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
                     .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
+                // 数据仓储泛型注册
+                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
                     .InstancePerLifetimeScope();
             }
         }

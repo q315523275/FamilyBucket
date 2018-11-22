@@ -4,52 +4,6 @@
         <name>Bucket.MVC</name>
     </assembly>
     <members>
-        <member name="P:Bucket.MVC.PermissionRequirement.DeniedAction">
-            <summary>
-            无权限action
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.ClaimType">
-            <summary>
-            认证授权类型
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.LoginPath">
-            <summary>
-            请求路径
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.Issuer">
-            <summary>
-            发行人
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.Audience">
-            <summary>
-            订阅人
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.Expiration">
-            <summary>
-            过期时间
-            </summary>
-        </member>
-        <member name="P:Bucket.MVC.PermissionRequirement.SigningCredentials">
-            <summary>
-            签名验证
-            </summary>
-        </member>
-        <member name="M:Bucket.MVC.PermissionRequirement.#ctor(System.String,System.String,System.String,System.String,Microsoft.IdentityModel.Tokens.SigningCredentials,System.TimeSpan)">
-            <summary>
-            构造
-            </summary>
-            <param name="deniedAction"></param>
-            <param name="claimType"></param>
-            <param name="issuer"></param>
-            <param name="audience"></param>
-            <param name="signingCredentials"></param>
-            <param name="expiration"></param>
-        </member>
         <member name="T:Bucket.MVC.Controllers.AuthController">
             <summary>
             
@@ -164,7 +118,7 @@
         </member>
         <member name="T:Bucket.MVC.Startup">
             <summary>
-            
+            启动
             </summary>
         </member>
         <member name="M:Bucket.MVC.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">

@@ -1,4 +1,4 @@
-﻿namespace Pinzhi.Platform.DTO
+﻿namespace Pinzhi.Platform.Dto
 {
     public class QueryApisInput : BasePageInput
     {

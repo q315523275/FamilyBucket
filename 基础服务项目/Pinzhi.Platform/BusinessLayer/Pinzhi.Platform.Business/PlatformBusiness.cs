@@ -2,7 +2,7 @@
 using Bucket.Config;
 using Bucket.Core;
 using Bucket.Redis;
-using Pinzhi.Platform.DTO;
+using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Interface;
 using Pinzhi.Platform.Model;
 using SqlSugar;
@@ -59,21 +59,33 @@ namespace Pinzhi.Platform.Business
         /// <returns></returns>
         public async Task<SetPlatformOutput> SetPlatform(SetPlatformInput input)
         {
-            var model = _mapper.Map<PlatformInfo>(input);
-            if (model.Id > 0)
+            try
             {
-                await _dbContext.Updateable(model).ExecuteCommandAsync();
+                _dbContext.Ado.BeginTran();
+
+                var model = _mapper.Map<PlatformInfo>(input);
+                if (model.Id > 0)
+                {
+                    await _dbContext.Updateable(model).ExecuteCommandAsync();
+                }
+                else
+                {
+                    model.AddTime = DateTime.Now;
+                    model.IsDel = false;
+                    await _dbContext.Insertable(model).ExecuteCommandAsync();
+                }
+
+                var redis = _redisClient.GetDatabase(_configCenter.StringGet(SysConfig.RedisConnectionKey), 2);
+                await redis.KeyDeleteAsync(CacheKeys.PlatformKey);
+
+                _dbContext.Ado.CommitTran();
+
             }
-            else
+            catch(Exception ex)
             {
-                model.AddTime = DateTime.Now;
-                model.IsDel = false;
-                await _dbContext.Insertable(model).ExecuteCommandAsync();
+                _dbContext.Ado.RollbackTran();
+                throw new Exception("事务执行失败", ex);
             }
-
-            var redis = _redisClient.GetDatabase(_configCenter.StringGet(SysConfig.RedisConnectionKey), 2);
-            await redis.KeyDeleteAsync(CacheKeys.PlatformKey);
-
             return new SetPlatformOutput { };
         }
     }

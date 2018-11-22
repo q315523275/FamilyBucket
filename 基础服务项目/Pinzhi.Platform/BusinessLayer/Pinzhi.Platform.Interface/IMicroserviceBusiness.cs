@@ -1,5 +1,5 @@
-﻿using Pinzhi.Platform.DTO;
-using Pinzhi.Platform.DTO.Microservice;
+﻿using Pinzhi.Platform.Dto;
+using Pinzhi.Platform.Dto.Microservice;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.Business", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.Interface", "BusinessLayer\Pinzhi.Platform.Interface\Pinzhi.Platform.Interface.csproj", "{BD90E127-9E30-40B8-A77F-6C181073C06E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.DTO", "EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.DTO.csproj", "{D97696D0-0241-4404-87EB-4B53C786CCD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.Dto", "EntityLayer\Pinzhi.Platform.DTO\Pinzhi.Platform.Dto.csproj", "{D97696D0-0241-4404-87EB-4B53C786CCD7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.Model", "EntityLayer\Pinzhi.Platform.Model\Pinzhi.Platform.Model.csproj", "{0AE3664D-C41B-4DC9-881C-7B25C67169C0}"
 EndProject

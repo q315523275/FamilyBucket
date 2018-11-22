@@ -22,13 +22,15 @@ using Bucket.ServiceDiscovery.Consul;
 using Bucket.Tracing.Extensions;
 using Bucket.Logging.Events;
 using Bucket.Tracing.Events;
+using Bucket.Authorize;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Bucket.Authorize.MySql;
 
 namespace Bucket.MVC
 {
     /// <summary>
-    /// 
+    /// 启动
     /// </summary>
     public class Startup
     {
@@ -53,8 +55,9 @@ namespace Bucket.MVC
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证
-            services.AddApiJwtAuthorize(Configuration, (context) => { return true; });
+            //services.AddTokenJwtAuthorize(Configuration);
+            // 添加授权认证, return true;标识不验证角色等
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -132,14 +135,12 @@ namespace Bucket.MVC
         {
             // 全局错误日志
             app.UseErrorLog();
-            // 认证授权
-            // app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由
             ConfigRoute(app);
             // 服务注册
-            app.UseConsulRegisterService(Configuration);
+            // app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域
