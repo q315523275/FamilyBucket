@@ -47,7 +47,7 @@ namespace Pinzhi.Identity.Business.Auth
             var rediscontect = _config.StringGet("RedisDefaultServer");
             var redis = _redisClient.GetDatabase(rediscontect, 5);
             var kv = await redis.StringGetAsync($"ImgCode:{input.Guid}");
-            if (kv != input.ImgCode)
+            if (kv.IsNullOrEmpty || kv.ToString().ToLower() != input.ImgCode.ToLower())
                 throw new BucketException("GO_2003", "图形验证码错误");
             // 用户验证
             var userInfo = await _dbContext.Queryable<UserInfo>().Where(it => it.UserName == input.UserName).FirstAsync();
@@ -69,7 +69,7 @@ namespace Pinzhi.Identity.Business.Auth
                 Email = userInfo.Email,
                 Id = userInfo.Id,
                 Mobile = userInfo.Mobile,
-                RealName = userInfo.RealName
+                RealName = userInfo.RealName,
             }, roleList.Select(it => it.Key).ToList());
             return new LoginOutput
             {

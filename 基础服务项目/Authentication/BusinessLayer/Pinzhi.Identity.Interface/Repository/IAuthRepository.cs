@@ -6,12 +6,12 @@ namespace Pinzhi.Identity.Interface
     public interface IAuthRepository
     {
         /// <summary>
-        /// 创建jwt Token
+        /// 创建jwt token
         /// </summary>
-        /// <param name="userTokenDto"></param>
+        /// <param name="userInfo"></param>
         /// <param name="roles"></param>
         /// <returns></returns>
-        string CreateAccessToken(UserTokenDto userTokenDto, List<string> roles);
+        string CreateAccessToken(UserTokenDto userInfo, List<string> roles);
         /// <summary>
         /// 短息发送
         /// </summary>

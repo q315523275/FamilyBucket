@@ -32,11 +32,7 @@ using Bucket.Tracing.Extensions;
 using Bucket.Tracing.Events;
 using Bucket.Logging;
 using Bucket.Logging.Events;
-
-using Pinzhi.Component;
-using Pinzhi.Component.UdcService;
-using Pinzhi.Identity.Model;
-
+using Bucket.Authorize;
 
 namespace Pinzhi.Identity.WebApi
 {
@@ -66,13 +62,8 @@ namespace Pinzhi.Identity.WebApi
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            // auth 默认配置
-            var audienceConfig = Configuration.GetSection("Audience");
-            var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetValue<string>("Audience:Secret"))), SecurityAlgorithms.HmacSha256);
-            var permissionRequirement = new PermissionRequirement(Configuration.GetValue<string>("Audience:Issuer"), Configuration.GetValue<string>("Audience:Audience"), signingCredentials, TimeSpan.FromHours(4));
-            services.AddSingleton(permissionRequirement);
             // 添加授权认证
-            services.AddBucketAuthentication(Configuration);
+            services.AddTokenJwtAuthorize(Configuration);
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
