@@ -9,8 +9,9 @@ namespace Bucket.Config
     /// </summary>
     public class ConfigNetCommand
     {
-        public EnumCommandType CommandType { get; set; }
         public string AppId { get; set; }
+        public string NamespaceName { get; set; }
+        public EnumCommandType CommandType { get; set; }
     }
     /// <summary>
     /// 网络命令类型

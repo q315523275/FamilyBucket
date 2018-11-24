@@ -1,37 +1,39 @@
 ﻿using Microsoft.Extensions.Logging;
-
+using Nito.AsyncEx;
 namespace Bucket.Config
 {
     public class DefaultConfig : IConfig
     {
-        private RemoteConfigRepository _configRepository;
-        private ILogger _logger;
-        public DefaultConfig(RemoteConfigRepository configRepository, ILoggerFactory loggerFactory)
+        private readonly IDataRepository _configRepository;
+        private readonly ILogger<DefaultConfig> _logger;
+        private bool _loaded = false;
+        public DefaultConfig(IDataRepository configRepository, ILogger<DefaultConfig> logger)
         {
             _configRepository = configRepository;
-            _logger = loggerFactory.CreateLogger<DefaultConfig>();
+            _logger = logger;
         }
+
         public string StringGet(string key)
         {
-            if (_configRepository.GetConfig().TryGetValue(key, out string value))
-            {
+            if (!_loaded && _configRepository.Data.Count == 0)
+                AsyncContext.Run(() => _configRepository.Get());
+
+            _loaded = true;
+
+            if (_configRepository.Data.TryGetValue(key, out string value))
                 return value;
-            }
             else
-            {
                 return string.Empty;
-            }
         }
         public string StringGet(string key, string defaultValue)
         {
-            if (_configRepository.GetConfig().TryGetValue(key, out string value))
-            {
+            if (!_loaded && _configRepository.Data.Count == 0)
+                AsyncContext.Run(() => _configRepository.Get());
+
+            if (_configRepository.Data.TryGetValue(key, out string value))
                 return value;
-            }
             else
-            {
                 return defaultValue;
-            }
         }
     }
 }

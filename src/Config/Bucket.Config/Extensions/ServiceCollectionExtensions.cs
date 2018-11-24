@@ -47,22 +47,20 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configSetting"></param>
         /// <returns></returns>
-        private static IServiceCollection AddConfigService(this IServiceCollection services, ConfigOptions configSetting)
+        private static IServiceCollection AddConfigService(this IServiceCollection services, ConfigOptions setting)
         {
-            if (configSetting == null) throw new ArgumentNullException(nameof(configSetting));
+            if (setting == null) throw new ArgumentNullException(nameof(setting));
 
-            if (configSetting.UseServiceDiscovery)
-            {
-                services.AddSingleton<ConfigServiceLocator>();
-            }
-            else
-            {
-                services.AddSingleton(sp => new ConfigServiceLocator(configSetting, null));
-            }
-            services.AddSingleton(configSetting);
-            services.AddSingleton<RemoteConfigRepository>();
+            if (string.IsNullOrWhiteSpace(setting.ServerUrl) && string.IsNullOrWhiteSpace(setting.ServiceName))
+                throw new ArgumentNullException(nameof(setting));
+
+            services.AddSingleton(setting);
             services.AddSingleton<IConfig, DefaultConfig>();
-            services.AddHostedService<HttpConfigurationPoller>();
+            services.AddSingleton<IDataListener, RedisDataListener>();
+            services.AddSingleton<IDataRepository, HttpDataRepository>();
+            services.AddSingleton<IHttpUrlRepository, HttpUrlRepository>();
+            services.AddSingleton<ILocalDataRepository, LocalDataRepository>();
+            services.AddHostedService<ConfigurationPoller>();
             return services;
         }
     }

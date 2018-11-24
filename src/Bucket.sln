@@ -88,7 +88,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Authorize", "Bucket.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.SkrTrace.Core", "Tracer\Bucket.SkrTrace.Core\Bucket.SkrTrace.Core.csproj", "{4E6A88C6-D746-4ACD-9ED4-0B0BDCCDBB76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Authorize.MySql", "Bucket.Authorize.MySql\Bucket.Authorize.MySql.csproj", "{6A05B0D0-22A1-49A4-A344-B760E275982F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Authorize.MySql", "Bucket.Authorize.MySql\Bucket.Authorize.MySql.csproj", "{6A05B0D0-22A1-49A4-A344-B760E275982F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.SkrTrace.Diagnostics.AspNetCore", "Tracer\Bucket.SkrTrace.Diagnostics.AspNetCore\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj", "{1D671EAB-B984-4D44-8990-1FE441D4BD30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -212,6 +214,10 @@ Global
 		{6A05B0D0-22A1-49A4-A344-B760E275982F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A05B0D0-22A1-49A4-A344-B760E275982F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A05B0D0-22A1-49A4-A344-B760E275982F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D671EAB-B984-4D44-8990-1FE441D4BD30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D671EAB-B984-4D44-8990-1FE441D4BD30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D671EAB-B984-4D44-8990-1FE441D4BD30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D671EAB-B984-4D44-8990-1FE441D4BD30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -242,6 +248,7 @@ Global
 		{0FB06F36-2E1E-4C51-A997-AB0BD91453E8} = {67FFA8E6-86B4-4B2A-BAA8-CEF3787034B7}
 		{600E378A-F22A-4287-836E-A6F536FEA978} = {D7BAC7F7-413F-4C18-8F57-F171410F3C93}
 		{4E6A88C6-D746-4ACD-9ED4-0B0BDCCDBB76} = {CD611D5F-B2F5-48DC-BBF9-EE43D08B1162}
+		{1D671EAB-B984-4D44-8990-1FE441D4BD30} = {CD611D5F-B2F5-48DC-BBF9-EE43D08B1162}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA0759A0-104C-4213-9D48-D4F7E3E74EEB}
