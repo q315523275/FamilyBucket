@@ -3,6 +3,8 @@ using Bucket.LoadBalancer;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+
 namespace Bucket.Config
 {
     public class HttpUrlRepository : IHttpUrlRepository
@@ -10,9 +12,9 @@ namespace Bucket.Config
         private readonly ConfigOptions _setting;
         private readonly IServiceProvider _serviceProvider;
 
-        public HttpUrlRepository(ConfigOptions setting, IServiceProvider serviceProvider)
+        public HttpUrlRepository(IOptions<ConfigOptions> setting, IServiceProvider serviceProvider)
         {
-            _setting = setting;
+            _setting = setting.Value;
             _serviceProvider = serviceProvider;
         }
 

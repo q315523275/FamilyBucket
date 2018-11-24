@@ -1,24 +1,23 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bucket.Config
+namespace Bucket.ErrorCode
 {
-    public class BucketConfigBuilder : IBucketConfigBuilder
+    public class BucketErrorCodeBuilder : IBucketErrorCodeBuilder
     {
         public IServiceCollection Services { get; private set; }
         public IConfiguration Configuration { get; private set; }
 
-        public BucketConfigBuilder(IServiceCollection services, IConfiguration configurationRoot)
+        public BucketErrorCodeBuilder(IServiceCollection services, IConfiguration configurationRoot)
         {
             Configuration = configurationRoot;
             Services = services;
 
-            Services.AddSingleton<IConfig, DefaultConfig>();
-            Services.AddSingleton<IDataListener, RedisDataListener>();
             Services.AddSingleton<IDataRepository, HttpDataRepository>();
             Services.AddSingleton<IHttpUrlRepository, HttpUrlRepository>();
             Services.AddSingleton<ILocalDataRepository, LocalDataRepository>();
-            Services.AddHostedService<ConfigurationPoller>();
+            Services.AddSingleton<IErrorCode, DefaultErrorCode>();
+            Services.AddHostedService<ErrorCodePoller>();
         }
     }
 }

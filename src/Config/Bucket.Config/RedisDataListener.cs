@@ -3,6 +3,7 @@ using Bucket.Core;
 using Bucket.Redis;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Bucket.Config
 {
@@ -15,9 +16,9 @@ namespace Bucket.Config
         private readonly IJsonHelper _jsonHelper;
         private readonly string _RedisListenerKey = "Bucket.Config.Listener";
         private RedisClient _redisClient;
-        public RedisDataListener(ConfigOptions setting, IServiceProvider serviceProvider, IDataRepository dataRepository, ILogger<RedisDataListener> logger, IJsonHelper jsonHelper)
+        public RedisDataListener(IOptions<ConfigOptions> setting, IServiceProvider serviceProvider, IDataRepository dataRepository, ILogger<RedisDataListener> logger, IJsonHelper jsonHelper)
         {
-            _setting = setting;
+            _setting = setting.Value;
             _serviceProvider = serviceProvider;
             _dataRepository = dataRepository;
             _logger = logger;

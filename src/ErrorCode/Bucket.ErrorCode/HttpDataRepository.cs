@@ -1,11 +1,15 @@
-﻿using Bucket.Core;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
+using Bucket.Core;
+using Bucket.ErrorCode.Model;
+using Bucket.ErrorCode.Utils;
+using Microsoft.Extensions.Logging;
 
-namespace Bucket.Config
+namespace Bucket.ErrorCode
 {
     public class HttpDataRepository : IDataRepository
     {
@@ -14,8 +18,7 @@ namespace Bucket.Config
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IJsonHelper _jsonHelper;
         private readonly ILogger<HttpDataRepository> _logger;
-        private long _version = 0;
-
+        private readonly ThreadSafe.AtomicReference<IList<ApiErrorCodeInfo>> _dataList;
         public HttpDataRepository(ILocalDataRepository localDataRepository, IHttpUrlRepository httpUrlRepository, IHttpClientFactory httpClientFactory, IJsonHelper jsonHelper, ILogger<HttpDataRepository> logger)
         {
             _localDataRepository = localDataRepository;
@@ -23,40 +26,34 @@ namespace Bucket.Config
             _httpClientFactory = httpClientFactory;
             _jsonHelper = jsonHelper;
             _logger = logger;
+            _dataList = new ThreadSafe.AtomicReference<IList<ApiErrorCodeInfo>>(new List<ApiErrorCodeInfo>());
         }
 
-        public ConcurrentDictionary<string, string> Data { get; private set; } = new ConcurrentDictionary<string, string>();
-        public async Task Get(bool reload)
+        public IList<ApiErrorCodeInfo> Data { get { return _dataList.ReadFullFence(); } }
+
+        public async Task Get()
         {
             try
             {
-                if (reload) _version = 0;
                 var islocalcache = false;
-                var apiurl = await _httpUrlRepository.GetApiUrl(_version);
-                var client = _httpClientFactory.CreateClient(); // 创建http请求
+                var apiurl = _httpUrlRepository.GetApiUrl();
+                var client = _httpClientFactory.CreateClient();
                 var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, apiurl));
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
-                var output = _jsonHelper.DeserializeObject<ApiOutput>(content);
-                if (output.ErrorCode == "000000" && output.Version > _version)
+                var output = _jsonHelper.DeserializeObject<ApiInfo>(content);
+                if (output != null && output.Value != null && output.Value.Count > 0)
                 {
-                    foreach (var kv in output.KV)
-                    {
-                        Data.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
-                    }
-                    _version = output.Version;
+                    _dataList.WriteFullFence(output.Value);
                     islocalcache = true;
                 }
                 if (islocalcache)
-                    _localDataRepository.Set(Data);
+                    _localDataRepository.Set(_dataList.ReadFullFence());
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"加载配置错误");
-                foreach (var kv in _localDataRepository.Get())
-                {
-                    Data.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
-                }
+                _dataList.WriteFullFence(_localDataRepository.Get());
             }
         }
     }

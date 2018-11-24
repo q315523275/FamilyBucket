@@ -1,22 +1,31 @@
-﻿namespace Bucket.ErrorCode
+﻿using Bucket.ErrorCode.Utils;
+using Nito.AsyncEx;
+using System.Linq;
+namespace Bucket.ErrorCode
 {
     public class DefaultErrorCode : IErrorCode
     {
-        private readonly RemoteStoreRepository _storeRepository;
-        public DefaultErrorCode(RemoteStoreRepository storeRepository)
+        private readonly IDataRepository _dataRepository;
+        private readonly ThreadSafe.Boolean _loaded;
+        public DefaultErrorCode(IDataRepository dataRepository)
         {
-            _storeRepository = storeRepository;
+            _dataRepository = dataRepository;
+            _loaded = new ThreadSafe.Boolean(false);
         }
+
         public string StringGet(string code)
         {
-            if (_storeRepository.GetStore().TryGetValue(code, out string value))
-            {
-                return value;
-            }
-            else
-            {
-                return string.Empty;
-            }
+            if (!_loaded.ReadFullFence() && _dataRepository.Data.Count == 0)
+                AsyncContext.Run(() => _dataRepository.Get());
+
+            _loaded.WriteFullFence(true);
+
+            var rec = _dataRepository.Data.FirstOrDefault(it => it.ErrorCode == code);
+
+            if (rec != null)
+                return rec.ErrorMessage;
+
+            return string.Empty;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 
 namespace Bucket.Config.Extensions
 {
@@ -13,16 +14,12 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IServiceCollection AddConfigService(this IServiceCollection services, Action<ConfigOptions> configAction)
+        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, Action<ConfigOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
+            services.Configure(configAction);
 
-            var configSetting = new ConfigOptions();
-            configAction.Invoke(configSetting);
-
-            AddConfigService(services, configSetting);
-
-            return services;
+            return AddConfigService(services);
         }
         /// <summary>
         /// 配置中心
@@ -30,16 +27,13 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IServiceCollection AddConfigService(this IServiceCollection services, IConfiguration configuration)
+        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, IConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            var configSetting = new ConfigOptions();
-            configuration.GetSection("ConfigService").Bind(configSetting);
+            services.Configure<ConfigOptions>(configuration.GetSection("ConfigService"));
 
-            AddConfigService(services, configSetting);
-
-            return services;
+            return AddConfigService(services);
         }
         /// <summary>
         /// 配置中心
@@ -47,21 +41,12 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configSetting"></param>
         /// <returns></returns>
-        private static IServiceCollection AddConfigService(this IServiceCollection services, ConfigOptions setting)
+        private static IBucketConfigBuilder AddConfigService(this IServiceCollection services)
         {
-            if (setting == null) throw new ArgumentNullException(nameof(setting));
+            var service = services.First(x => x.ServiceType == typeof(IConfiguration));
+            var configuration = (IConfiguration)service.ImplementationInstance;
 
-            if (string.IsNullOrWhiteSpace(setting.ServerUrl) && string.IsNullOrWhiteSpace(setting.ServiceName))
-                throw new ArgumentNullException(nameof(setting));
-
-            services.AddSingleton(setting);
-            services.AddSingleton<IConfig, DefaultConfig>();
-            services.AddSingleton<IDataListener, RedisDataListener>();
-            services.AddSingleton<IDataRepository, HttpDataRepository>();
-            services.AddSingleton<IHttpUrlRepository, HttpUrlRepository>();
-            services.AddSingleton<ILocalDataRepository, LocalDataRepository>();
-            services.AddHostedService<ConfigurationPoller>();
-            return services;
+            return new BucketConfigBuilder(services, configuration);
         }
     }
 }

@@ -11,5 +11,6 @@ namespace Bucket.ErrorCode.Model
     {
         public string ErrorCode { get; set; }
         public string ErrorMessage { get; set; }
+        public string Target { get; set; }
     }
 }

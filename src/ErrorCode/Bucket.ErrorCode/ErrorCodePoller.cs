@@ -6,22 +6,20 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Bucket.Config
+namespace Bucket.ErrorCode
 {
-    public class ConfigurationPoller : IHostedService, IDisposable
+    public class ErrorCodePoller : IHostedService, IDisposable
     {
-        private readonly ConfigOptions _setting;
+        private readonly ErrorCodeSetting _errorCodeConfiguration;
         private readonly IDataRepository _dataRepository;
-        private readonly IDataListener  _dataListener;
-        private readonly ILogger<ConfigurationPoller> _logger;
+        private readonly ILogger<ErrorCodePoller> _logger;
         private Timer _timer;
         private bool _polling;
 
-        public ConfigurationPoller(IOptions<ConfigOptions> setting, IDataRepository dataRepository, IDataListener dataListener, ILogger<ConfigurationPoller> logger)
+        public ErrorCodePoller(IOptions<ErrorCodeSetting> errorCodeConfiguration, IDataRepository dataRepository, ILogger<ErrorCodePoller> logger)
         {
-            _setting = setting.Value;
+            _errorCodeConfiguration = errorCodeConfiguration.Value;
             _dataRepository = dataRepository;
-            _dataListener = dataListener;
             _logger = logger;
         }
 
@@ -29,12 +27,12 @@ namespace Bucket.Config
         {
             Console.WriteLine(Welcome());
 
-            if(_setting.RefreshInteval == 0)
+            if(_errorCodeConfiguration.RefreshInteval == 0)
                 return Task.CompletedTask;
 
-            _logger.LogInformation($"Bucket Config {nameof(ConfigurationPoller)} Is Starting.");
+            _logger.LogInformation($"Bucket ErrorCode {nameof(ErrorCodePoller)} Is Starting.");
 
-            var delay = _setting.RefreshInteval * 1000;
+            var delay = _errorCodeConfiguration.RefreshInteval * 1000;
             _timer = new Timer(async x =>
             {
                 if (_polling)
@@ -47,14 +45,12 @@ namespace Bucket.Config
                 _polling = false;
             }, null, delay, delay);
 
-            _dataListener.AddListener();
-
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Bucket Config {nameof(ConfigurationPoller)} Is Stopping.");
+            _logger.LogInformation($"Bucket ErrorCode {nameof(ErrorCodePoller)} Is Stopping.");
 
             _timer?.Change(Timeout.Infinite, 0);
 
@@ -63,11 +59,11 @@ namespace Bucket.Config
 
         private async Task Poll()
         {
-            _logger.LogInformation("Bucket Config Started Polling");
+            _logger.LogInformation("Bucket ErrorCode Started Polling");
 
             await _dataRepository.Get();
 
-            _logger.LogInformation("Bucket Config Finished Polling");
+            _logger.LogInformation("Bucket ErrorCode Finished Polling");
         }
 
         public void Dispose()
@@ -82,7 +78,7 @@ namespace Bucket.Config
             builder.AppendLine();
             builder.AppendLine("***************************************************************");
             builder.AppendLine("*                                                             *");
-            builder.AppendLine("*                  Welcome To Bucket Config                   *");
+            builder.AppendLine("*                 Welcome To Bucket ErrorCode                 *");
             builder.AppendLine("*                                                             *");
             builder.AppendLine("***************************************************************");
             return builder.ToString();
