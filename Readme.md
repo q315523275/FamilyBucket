@@ -10,6 +10,9 @@ FamilyBucket主要通过组合各个系统形成的直接应用的微服务系�
 
 目前配置更新的方式有两种，定时轮询和广播订阅，如果有共享redis环境，可以配置redis对应参数进行广播订阅实现实时订阅；
 
+当前已支持net core默认IConfiguration的使用，组件相关appsetting配置可以移至配置中心
+**一直配置的key的设置，如key JwtAuthorize:Secret
+
 使用配置与方法
 
 ```csharp
@@ -30,6 +33,19 @@ FamilyBucket主要通过组合各个系统形成的直接应用的微服务系�
       // 添加配置服务
       services.AddConfigService(Configuration);
   }
+```
+net core默认IConfiguration支持使用，当前代码比较low0.0待重构
+```csharp
+   .ConfigureAppConfiguration((hostingContext, _config) =>
+   {
+       _config
+       .SetBasePath(Directory.GetCurrentDirectory())
+       .AddJsonFile("appsettings.json", true, true)
+       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+       .AddEnvironmentVariables(); // 添加环境变量
+       var option = new BucketConfigOptions(); _config.Build().GetSection("ConfigService").Bind(option);
+        _config.AddBucketConfig(option);
+   })
 ```
 
 ## 日志中心应用
