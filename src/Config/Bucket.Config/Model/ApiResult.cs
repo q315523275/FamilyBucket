@@ -2,7 +2,7 @@
 
 namespace Bucket.Config
 {
-    public class ApiOutput
+    public class ApiResult
     {
         public string ErrorCode { get; set; }
         public string Message { get; set; }

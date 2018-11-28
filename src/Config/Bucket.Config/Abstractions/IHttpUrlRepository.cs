@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Bucket.Config
+namespace Bucket.Config.Abstractions
 {
     public interface IHttpUrlRepository
     {

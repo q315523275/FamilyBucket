@@ -1,18 +1,19 @@
-﻿using Bucket.Config.Util;
+﻿using Bucket.Config.Utils;
 using Bucket.LoadBalancer;
 using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Bucket.Config.Abstractions;
 
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class HttpUrlRepository : IHttpUrlRepository
     {
-        private readonly ConfigOptions _setting;
+        private readonly BucketConfigOptions _setting;
         private readonly IServiceProvider _serviceProvider;
 
-        public HttpUrlRepository(IOptions<ConfigOptions> setting, IServiceProvider serviceProvider)
+        public HttpUrlRepository(IOptions<BucketConfigOptions> setting, IServiceProvider serviceProvider)
         {
             _setting = setting.Value;
             _serviceProvider = serviceProvider;

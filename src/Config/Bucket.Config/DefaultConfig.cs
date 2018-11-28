@@ -1,4 +1,5 @@
-﻿using Bucket.Config.Utils;
+﻿using Bucket.Config.Abstractions;
+using Bucket.Config.Utils;
 using Microsoft.Extensions.Logging;
 using Nito.AsyncEx;
 namespace Bucket.Config

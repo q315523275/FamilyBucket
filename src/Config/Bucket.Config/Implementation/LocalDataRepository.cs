@@ -3,8 +3,9 @@ using System.IO;
 using Microsoft.Extensions.Logging;
 using Bucket.Core;
 using System.Collections.Concurrent;
+using Bucket.Config.Abstractions;
 
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class LocalDataRepository: ILocalDataRepository
     {

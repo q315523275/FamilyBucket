@@ -1,22 +1,23 @@
 ﻿using System;
+using Bucket.Config.Abstractions;
 using Bucket.Core;
 using Bucket.Redis;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class RedisDataListener : IDataListener, IDisposable
     {
-        private readonly ConfigOptions _setting;
+        private readonly BucketConfigOptions _setting;
         private readonly IServiceProvider _serviceProvider;
         private readonly IDataRepository _dataRepository;
         private readonly ILogger<RedisDataListener> _logger;
         private readonly IJsonHelper _jsonHelper;
         private readonly string _RedisListenerKey = "Bucket.Config.Listener";
         private RedisClient _redisClient;
-        public RedisDataListener(IOptions<ConfigOptions> setting, IServiceProvider serviceProvider, IDataRepository dataRepository, ILogger<RedisDataListener> logger, IJsonHelper jsonHelper)
+        public RedisDataListener(IOptions<BucketConfigOptions> setting, IServiceProvider serviceProvider, IDataRepository dataRepository, ILogger<RedisDataListener> logger, IJsonHelper jsonHelper)
         {
             _setting = setting.Value;
             _serviceProvider = serviceProvider;

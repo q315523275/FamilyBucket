@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Bucket.Config.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class BucketConfigBuilder : IBucketConfigBuilder
     {

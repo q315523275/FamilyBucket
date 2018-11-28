@@ -1,30 +1,30 @@
-﻿using Bucket.Core;
+﻿using Bucket.Config.Abstractions;
+using Bucket.Core;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class HttpDataRepository : IDataRepository
     {
         private readonly ILocalDataRepository _localDataRepository;
         private readonly IHttpUrlRepository _httpUrlRepository;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IJsonHelper _jsonHelper;
         private readonly ILogger<HttpDataRepository> _logger;
+        private readonly IJsonHelper _jsonHepler;
         private long _version = 0;
 
-        public HttpDataRepository(ILocalDataRepository localDataRepository, IHttpUrlRepository httpUrlRepository, IHttpClientFactory httpClientFactory, IJsonHelper jsonHelper, ILogger<HttpDataRepository> logger)
+        public HttpDataRepository(ILocalDataRepository localDataRepository, IHttpUrlRepository httpUrlRepository, IHttpClientFactory httpClientFactory, IJsonHelper jsonHepler, ILogger<HttpDataRepository> logger)
         {
             _localDataRepository = localDataRepository;
             _httpUrlRepository = httpUrlRepository;
             _httpClientFactory = httpClientFactory;
-            _jsonHelper = jsonHelper;
             _logger = logger;
+            _jsonHepler = jsonHepler;
         }
-
         public ConcurrentDictionary<string, string> Data { get; private set; } = new ConcurrentDictionary<string, string>();
         public async Task Get(bool reload)
         {
@@ -37,15 +37,20 @@ namespace Bucket.Config
                 var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, apiurl));
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
-                var output = _jsonHelper.DeserializeObject<ApiOutput>(content);
-                if (output.ErrorCode == "000000" && output.Version > _version)
+                var apiResult = _jsonHepler.DeserializeObject<ApiResult>(content);
+                if (apiResult.ErrorCode == "000000" && apiResult.Version > _version)
                 {
-                    foreach (var kv in output.KV)
+                    foreach (var kv in apiResult.KV)
                     {
                         Data.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
                     }
-                    _version = output.Version;
+                    _version = apiResult.Version;
                     islocalcache = true;
+                    // 注册数据更新监听通知
+                    foreach(var _lits in DataChangeListenerDictionary.ToList())
+                    {
+                        _lits.OnDataChange(apiResult.KV);
+                    }
                 }
                 if (islocalcache)
                     _localDataRepository.Set(Data);
@@ -58,6 +63,10 @@ namespace Bucket.Config
                     Data.AddOrUpdate(kv.Key, kv.Value, (x, y) => kv.Value);
                 }
             }
+        }
+        public void AddChangeListener(IDataChangeListener dataChangeListener)
+        {
+            DataChangeListenerDictionary.Add(dataChangeListener);
         }
     }
 }

@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Linq;
+using Bucket.Config.Abstractions;
+using Bucket.Config.Implementation;
 
 namespace Bucket.Config.Extensions
 {
@@ -14,7 +16,7 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, Action<ConfigOptions> configAction)
+        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, Action<BucketConfigOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
             services.Configure(configAction);
@@ -31,7 +33,7 @@ namespace Bucket.Config.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<ConfigOptions>(configuration.GetSection("ConfigService"));
+            services.Configure<BucketConfigOptions>(configuration.GetSection("ConfigService"));
 
             return AddConfigService(services);
         }

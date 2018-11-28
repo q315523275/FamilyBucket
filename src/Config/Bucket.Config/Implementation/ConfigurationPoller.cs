@@ -2,22 +2,23 @@
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Bucket.Config.Abstractions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Bucket.Config
+namespace Bucket.Config.Implementation
 {
     public class ConfigurationPoller : IHostedService, IDisposable
     {
-        private readonly ConfigOptions _setting;
+        private readonly BucketConfigOptions _setting;
         private readonly IDataRepository _dataRepository;
         private readonly IDataListener  _dataListener;
         private readonly ILogger<ConfigurationPoller> _logger;
         private Timer _timer;
         private bool _polling;
 
-        public ConfigurationPoller(IOptions<ConfigOptions> setting, IDataRepository dataRepository, IDataListener dataListener, ILogger<ConfigurationPoller> logger)
+        public ConfigurationPoller(IOptions<BucketConfigOptions> setting, IDataRepository dataRepository, IDataListener dataListener, ILogger<ConfigurationPoller> logger)
         {
             _setting = setting.Value;
             _dataRepository = dataRepository;

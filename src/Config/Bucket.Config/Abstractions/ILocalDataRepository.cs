@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace Bucket.Config
+namespace Bucket.Config.Abstractions
 {
     public interface ILocalDataRepository
     {
