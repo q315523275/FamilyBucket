@@ -4,6 +4,6 @@ namespace Bucket.Config.Abstractions
 {
     public interface IHttpUrlRepository
     {
-        Task<string> GetApiUrl(long version);
+        string GetApiUrl(long version);
     }
 }

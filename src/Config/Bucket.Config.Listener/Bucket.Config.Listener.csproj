@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bucket.Core\Bucket.Core.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener\Bucket.Listener.csproj" />
+    <ProjectReference Include="..\Bucket.Config\Bucket.Config.csproj" />
+  </ItemGroup>
+
+</Project>

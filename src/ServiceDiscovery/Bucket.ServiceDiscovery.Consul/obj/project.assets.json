@@ -1534,12 +1534,12 @@
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "Bucket.Core/1.1.3": {
+      "Bucket.Core/1.1.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "2.1.1",
-          "Microsoft.Extensions.Logging.Abstractions": "2.1.1"
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Core.dll": {}
@@ -1552,7 +1552,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.3"
+          "Bucket.Core": "1.1.4"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
@@ -5329,7 +5329,7 @@
         "system.xml.xmldocument.nuspec"
       ]
     },
-    "Bucket.Core/1.1.3": {
+    "Bucket.Core/1.1.4": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -5342,7 +5342,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.3",
+      "Bucket.Core >= 1.1.4",
       "Bucket.ServiceDiscovery >= 1.1.1",
       "Consul >= 0.7.2.6",
       "Microsoft.AspNetCore.Hosting.Abstractions >= 2.1.1",

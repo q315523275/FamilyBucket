@@ -19,13 +19,25 @@ using Bucket.AspNetCore.Filters;
 using Bucket.AspNetCore.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
 using Bucket.ServiceDiscovery.Consul;
-using Bucket.Tracing.Extensions;
 using Bucket.Logging.Events;
-using Bucket.Tracing.Events;
 using Bucket.Authorize;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Bucket.Authorize.MySql;
+using Bucket.SkrTrace.DependencyInjection;
+using Bucket.SkrTrace.Diagnostics.AspNetCore;
+using Bucket.SkrTrace.Diagnostics.HttpClient;
+using Bucket.SkrTrace.Transport.EventBus;
+using Bucket.Listener.Extensions;
+using Bucket.Listener.Zookeeper;
+using Bucket.Authorize.Listener;
+using Bucket.Authorize.HostedService;
+using Bucket.Config.Listener;
+using Bucket.ErrorCode.Listener;
+using Bucket.HostedService.AspNetCore;
+using Bucket.Config.HostedService;
+using Bucket.ErrorCode.HostedService;
+using Bucket.Listener.Redis;
 
 namespace Bucket.MVC
 {
@@ -57,7 +69,7 @@ namespace Bucket.MVC
         {
             //services.AddTokenJwtAuthorize(Configuration);
             // 添加授权认证, return true;标识不验证角色等
-            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
+            services.AddApiJwtAuthorize(Configuration); //.UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -70,22 +82,17 @@ namespace Bucket.MVC
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
-            services.AddConfigService(Configuration);
+            services.AddConfigServer(Configuration);
             // 添加事件驱动
-            services.AddEventBus(builder =>{ builder.UseRabbitMQ(Configuration); });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
             // 添加服务发现
             services.AddServiceDiscovery(builder => {
                 builder.UseConsul(Configuration);
             });
             // 添加链路追踪
-            services.AddTracer(Configuration);
-            services.AddEventTrace();
+            services.AddSkrTrace().AddAspNetCoreHosting().AddHttpClient().AddEventBusTransport();
             // 添加过滤器, 模型过滤器,追踪过滤器
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
-                options.Filters.Add(typeof(WebApiActionFilterAttribute));
-            }).AddJsonOptions(options =>
+            services.AddMvc(options => { options.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
@@ -99,7 +106,14 @@ namespace Bucket.MVC
                 c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Bucket.MVC.xml"));
             });
             services.AddHttpClient();
-
+            // 添加应用监听
+            services.AddListener(builder => {
+                builder.UseRedis();
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
+            services.AddBucketHostedService(builder => {
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
             // 添加autofac容器替换，默认容器注册方式缺少功能
             var autofac_builder = new ContainerBuilder();
             autofac_builder.Populate(services);

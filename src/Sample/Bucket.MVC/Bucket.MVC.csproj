@@ -33,20 +33,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize.HostedService\Bucket.Authorize.HostedService.csproj" />
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize.Listener\Bucket.Authorize.Listener.csproj" />
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize.MySql\Bucket.Authorize.MySql.csproj" />
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize\Bucket.Authorize.csproj" />
     <ProjectReference Include="..\..\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\Bucket.Authorize.MySql\Bucket.Authorize.MySql.csproj" />
-    <ProjectReference Include="..\..\Bucket.Authorize\Bucket.Authorize.csproj" />
+    <ProjectReference Include="..\..\Config\Bucket.Config.HostedService\Bucket.Config.HostedService.csproj" />
+    <ProjectReference Include="..\..\Config\Bucket.Config.Listener\Bucket.Config.Listener.csproj" />
     <ProjectReference Include="..\..\Config\Bucket.Config\Bucket.Config.csproj" />
+    <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode.HostedService\Bucket.ErrorCode.HostedService.csproj" />
+    <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode.Listener\Bucket.ErrorCode.Listener.csproj" />
     <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode\Bucket.ErrorCode.csproj" />
     <ProjectReference Include="..\..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\EventBus\Bucket.EventBus\Bucket.EventBus.csproj" />
+    <ProjectReference Include="..\..\HostedService\Bucket.HostedService.AspNetCore\Bucket.HostedService.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener.Redis\Bucket.Listener.Redis.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener.Zookeeper\Bucket.Listener.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener\Bucket.Listener.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
     <ProjectReference Include="..\..\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\Bucket.ServiceDiscovery.Consul.csproj" />
     <ProjectReference Include="..\..\ServiceDiscovery\Bucket.ServiceDiscovery\Bucket.ServiceDiscovery.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Core\Bucket.SkrTrace.Core.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Diagnostics.AspNetCore\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Diagnostics.HttpClient\Bucket.SkrTrace.Diagnostics.HttpClient.csproj" />
+    <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Transport.EventBus\Bucket.SkrTrace.Transport.EventBus.csproj" />
     <ProjectReference Include="..\..\Utility\Bucket.Utility\Bucket.Utility.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.WebSocketManager
+﻿namespace Bucket.WebSocketManager
 {
     public enum MessageType
     {

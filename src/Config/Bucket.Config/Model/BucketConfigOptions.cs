@@ -11,10 +11,5 @@
         /// 定时器周期，单位（秒）
         /// </summary>
         public int RefreshInteval { set; get; }
-        public bool RedisListener { set; get; }
-        public string RedisConnectionString { set; get; }
-
-        public bool UseServiceDiscovery { set; get; }
-        public string ServiceName { set; get; }
     }
 }

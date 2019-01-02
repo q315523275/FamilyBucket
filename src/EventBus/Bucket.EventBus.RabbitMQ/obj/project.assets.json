@@ -1177,12 +1177,12 @@
           "ref/netstandard1.2/System.Threading.Timer.dll": {}
         }
       },
-      "Bucket.Core/1.1.3": {
+      "Bucket.Core/1.1.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "2.1.1",
-          "Microsoft.Extensions.Logging.Abstractions": "2.1.1"
+          "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Core.dll": {}
@@ -1195,7 +1195,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.3",
+          "Bucket.Core": "1.1.4",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -4158,7 +4158,7 @@
         "system.threading.timer.nuspec"
       ]
     },
-    "Bucket.Core/1.1.3": {
+    "Bucket.Core/1.1.4": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"

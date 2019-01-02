@@ -32,7 +32,7 @@ namespace Bucket.Config.Implementation
             {
                 if (reload) _version = 0;
                 var islocalcache = false;
-                var apiurl = await _httpUrlRepository.GetApiUrl(_version);
+                var apiurl = _httpUrlRepository.GetApiUrl(_version);
                 var client = _httpClientFactory.CreateClient(); // 创建http请求
                 var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, apiurl));
                 response.EnsureSuccessStatusCode();

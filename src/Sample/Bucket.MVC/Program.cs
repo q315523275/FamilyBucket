@@ -1,25 +1,32 @@
-﻿using Microsoft.AspNetCore;
+﻿using Bucket.Config;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System.IO;
+
 namespace Bucket.MVC
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                   var env = hostingContext.HostingEnvironment;
-                   config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
-                   config.AddEnvironmentVariables();
-            })
-            .UseStartup<Startup>()
-            .Build();
+                   .UseKestrel()
+                   .UseContentRoot(Directory.GetCurrentDirectory())
+                   .ConfigureAppConfiguration((hostingContext, _config) =>
+                   {
+                       _config
+                       .SetBasePath(Directory.GetCurrentDirectory())
+                       .AddJsonFile("appsettings.json", true, true)
+                       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                       .AddEnvironmentVariables(); // 添加环境变量
+                       var option = new BucketConfigOptions();
+                       _config.Build().GetSection("ConfigServer").Bind(option);
+                       _config.AddBucketConfig(option);
+                   })
+                   .UseStartup<Startup>()
+                   .Build()
+                   .Run();
+        }
     }
 }

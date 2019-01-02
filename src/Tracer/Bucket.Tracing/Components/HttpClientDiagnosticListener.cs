@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
+using Nito.AsyncEx;
 namespace Bucket.Tracing.Components
 {
     public class HttpClientDiagnosticListener : ITracingDiagnosticListener
@@ -49,7 +50,7 @@ namespace Bucket.Tracing.Components
             span.Log(LogField.CreateNew().ClientSend());
             if(request.Method == HttpMethod.Post && _options.TraceHttpContent && request.Content != null)
             {
-                var result = request.Content.ReadAsStringAsync().Result;
+                var result = AsyncContext.Run(() => request.Content.ReadAsStringAsync());
                 if (!string.IsNullOrWhiteSpace(result))
                     span.Tags.Add("http.request", _tbbrRegex.Replace(result, ""));
             }
@@ -71,7 +72,7 @@ namespace Bucket.Tracing.Components
             span.Tags.HttpStatusCode((int)response.StatusCode);
             if (_options.TraceHttpContent && response.Content != null)
             {
-                var result = response.Content.ReadAsStringAsync().Result;
+                var result = AsyncContext.Run(() => response.Content.ReadAsStringAsync());
                 if (result.Length > 2048)
                     result = result.Substring(0, 2048) + "...";
                 if (!string.IsNullOrWhiteSpace(result))

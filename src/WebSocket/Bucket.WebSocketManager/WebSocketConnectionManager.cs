@@ -74,10 +74,16 @@ namespace Bucket.WebSocketManager
 
         public async Task RemoveSocket(string id)
         {
+            if (id == null) return;
+
             if (_sockets.TryRemove(id, out WebSocket socket))
+            {
+                if (socket.State != WebSocketState.Open) return;
+
                 await socket.CloseAsync(closeStatus: WebSocketCloseStatus.NormalClosure,
                                         statusDescription: "Closed by the WebSocketManager",
                                         cancellationToken: CancellationToken.None).ConfigureAwait(false);
+            }
         }
 
         private string CreateConnectionId()

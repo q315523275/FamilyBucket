@@ -16,12 +16,12 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, Action<BucketConfigOptions> configAction)
+        public static IBucketConfigBuilder AddConfigServer(this IServiceCollection services, Action<BucketConfigOptions> configAction)
         {
             if (configAction == null) throw new ArgumentNullException(nameof(configAction));
             services.Configure(configAction);
 
-            return AddConfigService(services);
+            return AddConfigServer(services);
         }
         /// <summary>
         /// 配置中心
@@ -29,13 +29,13 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IBucketConfigBuilder AddConfigService(this IServiceCollection services, IConfiguration configuration)
+        public static IBucketConfigBuilder AddConfigServer(this IServiceCollection services, IConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<BucketConfigOptions>(configuration.GetSection("ConfigService"));
+            services.Configure<BucketConfigOptions>(configuration.GetSection("ConfigServer"));
 
-            return AddConfigService(services);
+            return AddConfigServer(services);
         }
         /// <summary>
         /// 配置中心
@@ -43,7 +43,7 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configSetting"></param>
         /// <returns></returns>
-        private static IBucketConfigBuilder AddConfigService(this IServiceCollection services)
+        private static IBucketConfigBuilder AddConfigServer(this IServiceCollection services)
         {
             var service = services.First(x => x.ServiceType == typeof(IConfiguration));
             var configuration = (IConfiguration)service.ImplementationInstance;

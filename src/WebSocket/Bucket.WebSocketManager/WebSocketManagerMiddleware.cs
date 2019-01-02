@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.WebSockets;
 using System.Text;
@@ -13,7 +13,6 @@ namespace Bucket.WebSocketManager
     {
         private readonly RequestDelegate _next;
         private WebSocketHandler _webSocketHandler { get; set; }
-
         public WebSocketManagerMiddleware(RequestDelegate next,
                                           WebSocketHandler webSocketHandler)
         {
@@ -28,6 +27,7 @@ namespace Bucket.WebSocketManager
                 await _next.Invoke(context);
                 return;
             }
+
             var query = context.Request.QueryString.Value;
             var socket = await context.WebSockets.AcceptWebSocketAsync().ConfigureAwait(false);
             if (string.IsNullOrWhiteSpace(query))
@@ -39,11 +39,12 @@ namespace Bucket.WebSocketManager
                 query = query.TrimStart('?');
                 await _webSocketHandler.OnConnected(query, socket).ConfigureAwait(false);
             }
-            await Receive(socket, async (result, serializedInvocationDescriptor) =>
+            await Receive(socket, async (result, serializedMessage) =>
             {
                 if (result.MessageType == WebSocketMessageType.Text)
                 {
-                    await _webSocketHandler.ReceiveAsync(socket, serializedInvocationDescriptor).ConfigureAwait(false);
+                    Message message = JsonConvert.DeserializeObject<Message>(serializedMessage);
+                    await _webSocketHandler.ReceiveAsync(socket, result, message).ConfigureAwait(false);
                     return;
                 }
                 else if (result.MessageType == WebSocketMessageType.Close)
@@ -52,49 +53,54 @@ namespace Bucket.WebSocketManager
                     {
                         await _webSocketHandler.OnDisconnected(socket);
                     }
-
                     catch (WebSocketException)
                     {
-                        // throw; //let's not swallow any exception for now
+                        throw; //let's not swallow any exception for now
                     }
-                    catch (ArgumentNullException)
-                    {
-                        // throw; //let's not swallow any exception for now
-                    }
-                    catch (Exception)
-                    {
-                        // throw; //let's not swallow any exception for now
-                    }
+
                     return;
                 }
             });
         }
 
-        private async Task Receive(WebSocket socket, Action<WebSocketReceiveResult,string> handleMessage)
+        private async Task Receive(WebSocket socket, Action<WebSocketReceiveResult, string> handleMessage)
         {
             while (socket.State == WebSocketState.Open)
             {
                 ArraySegment<Byte> buffer = new ArraySegment<byte>(new Byte[1024 * 4]);
-                string serializedInvocationDescriptor = null;
+                string message = null;
                 WebSocketReceiveResult result = null;
-                using (var ms = new MemoryStream())
+                try
                 {
-                    do
+                    using (var ms = new MemoryStream())
                     {
-                        result = await socket.ReceiveAsync(buffer, CancellationToken.None).ConfigureAwait(false);
-                        ms.Write(buffer.Array, buffer.Offset, result.Count);
+                        do
+                        {
+                            result = await socket.ReceiveAsync(buffer, CancellationToken.None).ConfigureAwait(false);
+                            ms.Write(buffer.Array, buffer.Offset, result.Count);
+                        }
+                        while (!result.EndOfMessage);
+
+                        ms.Seek(0, SeekOrigin.Begin);
+
+                        using (var reader = new StreamReader(ms, Encoding.UTF8))
+                        {
+                            message = await reader.ReadToEndAsync().ConfigureAwait(false);
+                        }
                     }
-                    while (!result.EndOfMessage);
 
-                    ms.Seek(0, SeekOrigin.Begin);
-
-                    using (var reader = new StreamReader(ms, Encoding.UTF8))
+                    handleMessage(result, message);
+                }
+                catch (WebSocketException e)
+                {
+                    if (e.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely)
                     {
-                        serializedInvocationDescriptor = await reader.ReadToEndAsync().ConfigureAwait(false);
+                        socket.Abort();
                     }
                 }
-                handleMessage(result, serializedInvocationDescriptor);
             }
+
+            await _webSocketHandler.OnDisconnected(socket);
         }
     }
 }

@@ -33,3 +33,4 @@ D:\work2017\Github\FamilyBucket\src\ORM\Bucket.DbContext\obj\Debug\netstandard2.
 D:\work2017\Github\FamilyBucket\src\ORM\Bucket.DbContext\obj\Debug\netstandard2.0\Bucket.DbContext.AssemblyInfo.cs
 D:\work2017\Github\FamilyBucket\src\ORM\Bucket.DbContext\obj\Debug\netstandard2.0\Bucket.DbContext.dll
 D:\work2017\Github\FamilyBucket\src\ORM\Bucket.DbContext\obj\Debug\netstandard2.0\Bucket.DbContext.pdb
+D:\work2017\Github\FamilyBucket\src\ORM\Bucket.DbContext\obj\Debug\netstandard2.0\Bucket.DbContext.csprojAssemblyReference.cache

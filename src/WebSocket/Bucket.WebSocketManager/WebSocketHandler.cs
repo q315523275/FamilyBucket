@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
@@ -57,10 +57,12 @@ namespace Bucket.WebSocketManager
                                        endOfMessage: true,
                                        cancellationToken: CancellationToken.None).ConfigureAwait(false);
             }
-            catch (Exception ex)
+            catch (WebSocketException e)
             {
-                // 如果推送失败,清除连接
-                await OnDisconnected(socket);
+                if (e.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely)
+                {
+                    await OnDisconnected(socket);
+                }
             }
         }
         public async Task SendMessageAsync(string socketId, Message message)
@@ -73,8 +75,18 @@ namespace Bucket.WebSocketManager
         {
             foreach (var pair in WebSocketConnectionManager.GetAll())
             {
-                if (pair.Value.State == WebSocketState.Open)
-                    await SendMessageAsync(pair.Value, message).ConfigureAwait(false);
+                try
+                {
+                    if (pair.Value.State == WebSocketState.Open)
+                        await SendMessageAsync(pair.Value, message).ConfigureAwait(false);
+                }
+                catch (WebSocketException e)
+                {
+                    if (e.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely)
+                    {
+                        await OnDisconnected(pair.Value);
+                    }
+                }
             }
         }
         public async Task SendMessageToGroupAsync(string groupID, Message message)
@@ -100,41 +112,20 @@ namespace Bucket.WebSocketManager
                 }
             }
         }
-        public async Task ReceiveAsync(WebSocket socket, string result)
+        public virtual async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, Message receivedMessage)
         {
-            if (string.IsNullOrWhiteSpace(result))
-            {
-                await SendMessageAsync(socket, new Message()
-                {
-                    MessageType = MessageType.Error,
-                    Data = $"emtity parameters!"
-                }).ConfigureAwait(false);
-            }
-
             try
             {
-                await SendMessageAsync(socket, new Message()
-                {
-                    MessageType = MessageType.Text,
-                    Data = result
-                }).ConfigureAwait(false);
+                await SendMessageAsync(socket, receivedMessage).ConfigureAwait(false);
             }
             catch (TargetParameterCountException)
             {
-                await SendMessageAsync(socket, new Message()
-                {
-                    MessageType = MessageType.Error,
-                    Data = $"does not take parameters!"
-                }).ConfigureAwait(false);
+                await SendMessageAsync(socket, new Message() { MessageType = MessageType.Error, Data = $"does not take parameters!" }).ConfigureAwait(false);
             }
 
             catch (ArgumentException)
             {
-                await SendMessageAsync(socket, new Message()
-                {
-                    MessageType = MessageType.Error,
-                    Data = $"takes different arguments!"
-                }).ConfigureAwait(false);
+                await SendMessageAsync(socket, new Message() { MessageType = MessageType.Error, Data = $"takes different arguments!" }).ConfigureAwait(false);
             }
         }
     }

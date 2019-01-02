@@ -16,7 +16,7 @@
         </member>
         <member name="M:Bucket.MVC.Controllers.AuthController.Login(Bucket.MVC.Models.Dto.InputLogin)">
             <summary>
-            
+            111
             </summary>
             <param name="input"></param>
             <returns></returns>

@@ -1,4 +1,5 @@
-﻿using Bucket.ErrorCode.Utils;
+﻿using Bucket.ErrorCode.Abstractions;
+using Bucket.ErrorCode.Utils;
 using Nito.AsyncEx;
 using System.Linq;
 namespace Bucket.ErrorCode

@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace Bucket.WebSocketManager
 {
     public static class WebSocketManagerExtensions
     {
-        public static IServiceCollection AddWebSocketManager(this IServiceCollection services)
+        public static IServiceCollection AddWebSocketManager(this IServiceCollection services, Assembly assembly = null)
         {
-            services.AddSingleton<WebSocketConnectionManager>();
+            services.AddTransient<WebSocketConnectionManager>();
 
-            foreach (var type in Assembly.GetEntryAssembly().ExportedTypes)
+            Assembly ass = assembly ?? Assembly.GetEntryAssembly();
+
+            foreach (var type in ass.ExportedTypes)
             {
                 if (type.GetTypeInfo().BaseType == typeof(WebSocketHandler))
                 {

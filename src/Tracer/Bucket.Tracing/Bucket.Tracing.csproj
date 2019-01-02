@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.1.9</Version>
+    <Version>1.1.9.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspectCore.Core" Version="0.7.0" />
+    <PackageReference Include="AspectCore.Core" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.MiddlewareAnalysis" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.DiagnosticAdapter" Version="2.1.0">
@@ -16,6 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.1.1" />
+    <PackageReference Include="Nito.AsyncEx.Context" Version="1.1.0" />
   </ItemGroup>
 
 </Project>

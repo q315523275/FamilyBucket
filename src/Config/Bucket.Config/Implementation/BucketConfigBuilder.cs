@@ -15,11 +15,9 @@ namespace Bucket.Config.Implementation
             Services = services;
 
             Services.AddSingleton<IConfig, DefaultConfig>();
-            Services.AddSingleton<IDataListener, RedisDataListener>();
             Services.AddSingleton<IDataRepository, HttpDataRepository>();
             Services.AddSingleton<IHttpUrlRepository, HttpUrlRepository>();
             Services.AddSingleton<ILocalDataRepository, LocalDataRepository>();
-            Services.AddHostedService<ConfigurationPoller>();
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Bucket.WebSocketServer.Controllers
         }
 
         [HttpPost("/Push/SendPrivateMessage")]
-        public async Task<SendMessageOutput> SendPrivateMessage([FromBody]SendPrivateMessageInput input)
+        public async Task<SendMessageOutput> SendPrivateMessage([FromBody] SendPrivateMessageInput input)
         {
             if (string.IsNullOrWhiteSpace(input.PushId) || string.IsNullOrWhiteSpace(input.Message))
                 return new SendMessageOutput { ErrorCode = "101", Message = "参数异常" };

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Bucket.ErrorCode.Abstractions;
+using Bucket.ErrorCode.Implementation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -32,7 +34,7 @@ namespace Bucket.ErrorCode.Extensions
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<ErrorCodeSetting>(configuration.GetSection("ErrorCodeService"));
+            services.Configure<ErrorCodeSetting>(configuration.GetSection("ErrorCodeServer"));
 
             return new BucketErrorCodeBuilder(services, configuration);
         }
