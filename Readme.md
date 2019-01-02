@@ -16,7 +16,7 @@ FamilyBucket主要通过组合各个系统形成的直接应用的微服务系�
 使用配置与方法
 
 ```csharp
-  "ConfigService": {
+  "ConfigServer": {
     "AppId": "",
     "AppSercet": "",
     "RedisConnectionString": "",
@@ -31,7 +31,7 @@ FamilyBucket主要通过组合各个系统形成的直接应用的微服务系�
   public IServiceProvider ConfigureServices(IServiceCollection services)
   {
       // 添加配置服务
-      services.AddConfigService(Configuration);
+      services.AddConfigServer(Configuration);
   }
 ```
 net core默认IConfiguration支持使用，当前代码比较low0.0待重构
@@ -195,7 +195,7 @@ services.AddApiJwtAuthorize(Configuration)
 ```
 当需要对角色进行验证时
 ```csharp
-services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
+services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
 ```
 全配置
 ```csharp
@@ -273,7 +273,7 @@ namespace Platform.WebApi
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // 添加认证+MySql权限认证
-            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -286,7 +286,7 @@ namespace Platform.WebApi
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
-            services.AddConfigService(Configuration);
+            services.AddConfigServer(Configuration);
             // 添加事件驱动
             services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
             // 添加服务发现
@@ -298,6 +298,15 @@ namespace Platform.WebApi
             // 添加链路追踪
             services.AddTracer(Configuration);
             services.AddEventTrace();
+            // 添加应用监听
+            services.AddListener(builder => {
+                builder.UseRedis();
+                // builder.UseZookeeper();
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
+            services.AddBucketHostedService(builder => {
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
             // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
             services.AddAutoMapper();
             // 添加过滤器
