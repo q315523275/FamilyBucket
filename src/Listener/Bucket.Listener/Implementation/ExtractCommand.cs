@@ -14,7 +14,7 @@ namespace Bucket.Listener.Implementation
             _bucketListeners = bucketListeners;
         }
 
-        public async Task CommandNotify(NetworkCommand command)
+        public async Task ExtractCommandMessage(NetworkCommand command)
         {
             foreach (var listener in _bucketListeners)
             {

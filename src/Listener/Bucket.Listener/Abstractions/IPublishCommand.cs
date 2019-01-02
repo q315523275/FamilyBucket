@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 
 namespace Bucket.Listener.Abstractions
 {
-    public interface IExtractCommand
+    public interface IPublishCommand
     {
         /// <summary>
-        /// 提取命令
+        /// 推送命令
         /// </summary>
+        /// <param name="applicationCode"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        Task ExtractCommandMessage(NetworkCommand command);
+        Task PublishCommandMessage(string applicationCode, NetworkCommand command);
     }
 }

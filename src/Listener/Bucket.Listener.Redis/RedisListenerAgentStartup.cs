@@ -29,7 +29,7 @@ namespace Bucket.Listener.Redis
             return _subscriber.SubscribeAsync(RedisListenerKey, (channel, message) =>
             {
                 var command = JsonConvert.DeserializeObject<Bucket.Values.NetworkCommand>(message);
-                _extractCommand.CommandNotify(command);
+                _extractCommand.ExtractCommandMessage(command);
             });
         }
 

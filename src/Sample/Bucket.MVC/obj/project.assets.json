@@ -2,47 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "AspectCore.Abstractions/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Threading.Tasks.Extensions": "4.5.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AspectCore.Abstractions.dll": {}
-        }
-      },
-      "AspectCore.Core/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "AspectCore.Abstractions": "1.0.1",
-          "AspectCore.Extensions.Reflection": "1.0.1",
-          "Microsoft.CSharp": "4.5.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/AspectCore.Core.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AspectCore.Core.dll": {}
-        }
-      },
-      "AspectCore.Extensions.Reflection/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Threading.Tasks.Extensions": "4.4.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll": {}
-        }
-      },
       "Autofac/4.8.1": {
         "type": "package",
         "dependencies": {
@@ -1130,11 +1089,11 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Localization.Routing.dll": {}
         }
       },
-      "Microsoft.AspNetCore.MiddlewareAnalysis/2.1.1": {
+      "Microsoft.AspNetCore.MiddlewareAnalysis/2.1.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0",
           "System.Diagnostics.DiagnosticSource": "4.5.0"
         },
         "compile": {
@@ -3942,7 +3901,7 @@
           "lib/netstandard1.1/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
-      "sqlSugarCore/4.7.0": {
+      "sqlSugarCore/4.8.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Data.Sqlite": "2.0.0",
@@ -6059,13 +6018,12 @@
           "lib/netstandard1.3/ZooKeeperNetEx.dll": {}
         }
       },
-      "Bucket.AspNetCore/1.1.8": {
+      "Bucket.AspNetCore/1.1.9": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Bucket.Redis": "1.0.2",
-          "Bucket.Tracing": "1.1.9.1",
           "Microsoft.AspNetCore.Mvc": "2.1.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
@@ -6078,7 +6036,7 @@
           "bin/placeholder/Bucket.AspNetCore.dll": {}
         }
       },
-      "Bucket.Authorize/1.0.5": {
+      "Bucket.Authorize/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6093,13 +6051,13 @@
           "bin/placeholder/Bucket.Authorize.dll": {}
         }
       },
-      "Bucket.Authorize.HostedService/1.0.0": {
+      "Bucket.Authorize.HostedService/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Authorize": "1.0.5",
-          "Bucket.Core": "1.1.4",
-          "Bucket.HostedService.AspNetCore": "1.0.0"
+          "Bucket.Authorize": "1.1.0",
+          "Bucket.Core": "1.1.5",
+          "Bucket.HostedService.AspNetCore": "1.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.Authorize.HostedService.dll": {}
@@ -6108,13 +6066,13 @@
           "bin/placeholder/Bucket.Authorize.HostedService.dll": {}
         }
       },
-      "Bucket.Authorize.Listener/1.0.0": {
+      "Bucket.Authorize.Listener/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Authorize": "1.0.5",
-          "Bucket.Core": "1.1.4",
-          "Bucket.Listener": "1.0.0"
+          "Bucket.Authorize": "1.1.0",
+          "Bucket.Core": "1.1.5",
+          "Bucket.Listener": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Authorize.Listener.dll": {}
@@ -6123,11 +6081,11 @@
           "bin/placeholder/Bucket.Authorize.Listener.dll": {}
         }
       },
-      "Bucket.Authorize.MySql/1.0.2": {
+      "Bucket.Authorize.MySql/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Authorize": "1.0.5",
+          "Bucket.Authorize": "1.1.0",
           "Dapper": "1.50.5",
           "MySql.Data": "6.10.8"
         },
@@ -6138,11 +6096,11 @@
           "bin/placeholder/Bucket.Authorize.MySql.dll": {}
         }
       },
-      "Bucket.Config/1.2.0": {
+      "Bucket.Config/1.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Bucket.Redis": "1.0.2",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
@@ -6159,13 +6117,13 @@
           "bin/placeholder/Bucket.Config.dll": {}
         }
       },
-      "Bucket.Config.HostedService/1.0.0": {
+      "Bucket.Config.HostedService/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Config": "1.2.0",
-          "Bucket.Core": "1.1.4",
-          "Bucket.HostedService.AspNetCore": "1.0.0"
+          "Bucket.Config": "1.2.1",
+          "Bucket.Core": "1.1.5",
+          "Bucket.HostedService.AspNetCore": "1.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.Config.HostedService.dll": {}
@@ -6174,13 +6132,13 @@
           "bin/placeholder/Bucket.Config.HostedService.dll": {}
         }
       },
-      "Bucket.Config.Listener/1.0.0": {
+      "Bucket.Config.Listener/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Config": "1.2.0",
-          "Bucket.Core": "1.1.4",
-          "Bucket.Listener": "1.0.0"
+          "Bucket.Config": "1.2.1",
+          "Bucket.Core": "1.1.5",
+          "Bucket.Listener": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.Config.Listener.dll": {}
@@ -6189,7 +6147,7 @@
           "bin/placeholder/Bucket.Config.Listener.dll": {}
         }
       },
-      "Bucket.Core/1.1.4": {
+      "Bucket.Core/1.1.5": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6203,12 +6161,12 @@
           "bin/placeholder/Bucket.Core.dll": {}
         }
       },
-      "Bucket.DbContext/1.1.3": {
+      "Bucket.DbContext/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
-          "sqlSugarCore": "4.7.0"
+          "sqlSugarCore": "4.8.1"
         },
         "compile": {
           "bin/placeholder/Bucket.DbContext.dll": {}
@@ -6217,11 +6175,11 @@
           "bin/placeholder/Bucket.DbContext.dll": {}
         }
       },
-      "Bucket.ErrorCode/1.2.0": {
+      "Bucket.ErrorCode/1.2.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.Hosting": "2.1.1",
@@ -6236,13 +6194,13 @@
           "bin/placeholder/Bucket.ErrorCode.dll": {}
         }
       },
-      "Bucket.ErrorCode.HostedService/1.0.0": {
+      "Bucket.ErrorCode.HostedService/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
-          "Bucket.ErrorCode": "1.2.0",
-          "Bucket.HostedService.AspNetCore": "1.0.0"
+          "Bucket.Core": "1.1.5",
+          "Bucket.ErrorCode": "1.2.1",
+          "Bucket.HostedService.AspNetCore": "1.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.ErrorCode.HostedService.dll": {}
@@ -6251,12 +6209,12 @@
           "bin/placeholder/Bucket.ErrorCode.HostedService.dll": {}
         }
       },
-      "Bucket.ErrorCode.Listener/1.0.0": {
+      "Bucket.ErrorCode.Listener/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.ErrorCode": "1.2.0",
-          "Bucket.Listener": "1.0.0"
+          "Bucket.ErrorCode": "1.2.1",
+          "Bucket.Listener": "1.1.1"
         },
         "compile": {
           "bin/placeholder/Bucket.ErrorCode.Listener.dll": {}
@@ -6269,7 +6227,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -6297,11 +6255,11 @@
           "bin/placeholder/Bucket.EventBus.RabbitMQ.dll": {}
         }
       },
-      "Bucket.HostedService.AspNetCore/1.0.0": {
+      "Bucket.HostedService.AspNetCore/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Microsoft.Extensions.Hosting": "2.1.1"
         },
         "compile": {
@@ -6311,11 +6269,11 @@
           "bin/placeholder/Bucket.HostedService.AspNetCore.dll": {}
         }
       },
-      "Bucket.Listener/1.0.0": {
+      "Bucket.Listener/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Microsoft.Extensions.Hosting": "2.1.1"
         },
         "compile": {
@@ -6325,11 +6283,11 @@
           "bin/placeholder/Bucket.Listener.dll": {}
         }
       },
-      "Bucket.Listener.Redis/1.0.0": {
+      "Bucket.Listener.Redis/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Listener": "1.0.0",
+          "Bucket.Listener": "1.1.1",
           "Bucket.Redis": "1.0.2",
           "Microsoft.Extensions.Configuration": "2.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
@@ -6342,11 +6300,11 @@
           "bin/placeholder/Bucket.Listener.Redis.dll": {}
         }
       },
-      "Bucket.Listener.Zookeeper/1.0.0": {
+      "Bucket.Listener.Zookeeper/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Listener": "1.0.0",
+          "Bucket.Listener": "1.1.1",
           "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
           "Newtonsoft.Json": "12.0.1",
           "Rabbit.Zookeeper": "1.0.0"
@@ -6403,7 +6361,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4"
+          "Bucket.Core": "1.1.5"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
@@ -6416,7 +6374,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.4",
+          "Bucket.Core": "1.1.5",
           "Bucket.ServiceDiscovery": "1.1.1",
           "Consul": "0.7.2.6",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
@@ -6434,7 +6392,7 @@
           "bin/placeholder/Bucket.ServiceDiscovery.Consul.dll": {}
         }
       },
-      "Bucket.SkrTrace.Core/1.0.0": {
+      "Bucket.SkrTrace.Core/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6453,11 +6411,11 @@
           "bin/placeholder/Bucket.SkrTrace.Core.dll": {}
         }
       },
-      "Bucket.SkrTrace.Diagnostics.AspNetCore/1.0.0": {
+      "Bucket.SkrTrace.Diagnostics.AspNetCore/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.SkrTrace.Core": "1.0.0",
+          "Bucket.SkrTrace.Core": "1.1.0",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.1.3"
         },
@@ -6468,11 +6426,11 @@
           "bin/placeholder/Bucket.SkrTrace.Diagnostics.AspNetCore.dll": {}
         }
       },
-      "Bucket.SkrTrace.Diagnostics.HttpClient/1.0.0": {
+      "Bucket.SkrTrace.Diagnostics.HttpClient/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.SkrTrace.Core": "1.0.0"
+          "Bucket.SkrTrace.Core": "1.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.SkrTrace.Diagnostics.HttpClient.dll": {}
@@ -6481,39 +6439,18 @@
           "bin/placeholder/Bucket.SkrTrace.Diagnostics.HttpClient.dll": {}
         }
       },
-      "Bucket.SkrTrace.Transport.EventBus/1.0.0": {
+      "Bucket.SkrTrace.Transport.EventBus/1.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.EventBus": "1.1.3",
-          "Bucket.SkrTrace.Core": "1.0.0"
+          "Bucket.SkrTrace.Core": "1.1.0"
         },
         "compile": {
           "bin/placeholder/Bucket.SkrTrace.Transport.EventBus.dll": {}
         },
         "runtime": {
           "bin/placeholder/Bucket.SkrTrace.Transport.EventBus.dll": {}
-        }
-      },
-      "Bucket.Tracing/1.1.9.1": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "AspectCore.Core": "1.0.1",
-          "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
-          "Microsoft.AspNetCore.MiddlewareAnalysis": "2.1.1",
-          "Microsoft.Extensions.DiagnosticAdapter": "2.1.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "2.1.1",
-          "Microsoft.Extensions.Options": "2.1.1",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
-          "Microsoft.Extensions.Primitives": "2.1.1",
-          "Nito.AsyncEx.Context": "1.1.0"
-        },
-        "compile": {
-          "bin/placeholder/Bucket.Tracing.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Bucket.Tracing.dll": {}
         }
       },
       "Bucket.Utility/1.1.2": {
@@ -6538,45 +6475,6 @@
     }
   },
   "libraries": {
-    "AspectCore.Abstractions/1.0.1": {
-      "sha512": "Cc+wBEV5dVevxrke2XCUI1tpzKnbezw+FccFE4JjZ+om27Z3cIWTcqGBy7gtpOt2ejhUo0mIsJpmLU9XyvDPwA==",
-      "type": "package",
-      "path": "aspectcore.abstractions/1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "aspectcore.abstractions.1.0.1.nupkg.sha512",
-        "aspectcore.abstractions.nuspec",
-        "lib/net45/AspectCore.Abstractions.dll",
-        "lib/netstandard2.0/AspectCore.Abstractions.dll"
-      ]
-    },
-    "AspectCore.Core/1.0.1": {
-      "sha512": "2WAOi6f7SogGVxcjxOYznZE+Nz8c0vNLmS3/7rxa30iZHea02lBK4HdAuTQYwS5C/52ejmvI5ufFFpw9Slabdg==",
-      "type": "package",
-      "path": "aspectcore.core/1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "aspectcore.core.1.0.1.nupkg.sha512",
-        "aspectcore.core.nuspec",
-        "lib/net45/AspectCore.Core.dll",
-        "lib/netstandard2.0/AspectCore.Core.dll"
-      ]
-    },
-    "AspectCore.Extensions.Reflection/1.0.1": {
-      "sha512": "7H8vlTfnLOpIKDIyjidVl+nhuUm87nRLg30NecAzcE2U5DqSYa9H2ErexfnuYlG7K1Z0177ZgTjP4UnbPdFrBA==",
-      "type": "package",
-      "path": "aspectcore.extensions.reflection/1.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "aspectcore.extensions.reflection.1.0.1.nupkg.sha512",
-        "aspectcore.extensions.reflection.nuspec",
-        "lib/net45/AspectCore.Extensions.Reflection.dll",
-        "lib/netstandard2.0/AspectCore.Extensions.Reflection.dll"
-      ]
-    },
     "Autofac/4.8.1": {
       "sha512": "aIT9rupCOdab5RMfxvWTBmOxGU77tLqmvSF4V89SzV6oQcJrtuKw/Xp55xy9EijSktbMka55SbroAPOyT+lziw==",
       "type": "package",
@@ -7385,16 +7283,15 @@
         "microsoft.aspnetcore.localization.routing.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.MiddlewareAnalysis/2.1.1": {
-      "sha512": "qEH68Ps12p0xCEf68ZEWVTWRqvxJAr0Fy1JivDx80d4GSFN9WdDuljVAYCeE6S3tExBQx2m7/o9P/TGbmRfIUw==",
+    "Microsoft.AspNetCore.MiddlewareAnalysis/2.1.0": {
+      "sha512": "e9aJrGZUg4dAKHhTZaXCxmvgvqeRR49hoNQsv9p0ZdrC8Cb3+MNHbKrN7dqA3BQs3dCk8BR/BUVpca6WfP3riQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.middlewareanalysis/2.1.1",
+      "path": "microsoft.aspnetcore.middlewareanalysis/2.1.0",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.MiddlewareAnalysis.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.MiddlewareAnalysis.xml",
-        "microsoft.aspnetcore.middlewareanalysis.2.1.1.nupkg.sha512",
+        "microsoft.aspnetcore.middlewareanalysis.2.1.0.nupkg.sha512",
         "microsoft.aspnetcore.middlewareanalysis.nuspec"
       ]
     },
@@ -10762,15 +10659,14 @@
         "sqlitepclraw.provider.e_sqlite3.netstandard11.nuspec"
       ]
     },
-    "sqlSugarCore/4.7.0": {
-      "sha512": "zMRVMkBrDyaFVrua/V9/tDQXt1UR+xCpQ3IlAmxIuY9lPc4dgVs6Z4+yUdL8Upxvp+S4F1ZAMFWSDivq8AzYrw==",
+    "sqlSugarCore/4.8.1": {
+      "sha512": "ZzwDEbDTK0odtFsUQq/ZIxg4h1vpS8Jwt2wycXapUd3cJd/kQ+83OS0kO4m0F1i1ePsLKJESBvu2YrTr4rXlDQ==",
       "type": "package",
-      "path": "sqlsugarcore/4.7.0",
+      "path": "sqlsugarcore/4.8.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/SqlSugar.dll",
-        "sqlsugarcore.4.7.0.nupkg.sha512",
+        "sqlsugarcore.4.8.1.nupkg.sha512",
         "sqlsugarcore.nuspec"
       ]
     },
@@ -16018,67 +15914,67 @@
         "zookeepernetex.nuspec"
       ]
     },
-    "Bucket.AspNetCore/1.1.8": {
+    "Bucket.AspNetCore/1.1.9": {
       "type": "project",
       "path": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj",
       "msbuildProject": "../../Bucket.AspNetCore/Bucket.AspNetCore.csproj"
     },
-    "Bucket.Authorize/1.0.5": {
+    "Bucket.Authorize/1.1.0": {
       "type": "project",
       "path": "../../Authorize/Bucket.Authorize/Bucket.Authorize.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize/Bucket.Authorize.csproj"
     },
-    "Bucket.Authorize.HostedService/1.0.0": {
+    "Bucket.Authorize.HostedService/1.1.0": {
       "type": "project",
       "path": "../../Authorize/Bucket.Authorize.HostedService/Bucket.Authorize.HostedService.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize.HostedService/Bucket.Authorize.HostedService.csproj"
     },
-    "Bucket.Authorize.Listener/1.0.0": {
+    "Bucket.Authorize.Listener/1.1.0": {
       "type": "project",
       "path": "../../Authorize/Bucket.Authorize.Listener/Bucket.Authorize.Listener.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize.Listener/Bucket.Authorize.Listener.csproj"
     },
-    "Bucket.Authorize.MySql/1.0.2": {
+    "Bucket.Authorize.MySql/1.1.0": {
       "type": "project",
       "path": "../../Authorize/Bucket.Authorize.MySql/Bucket.Authorize.MySql.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize.MySql/Bucket.Authorize.MySql.csproj"
     },
-    "Bucket.Config/1.2.0": {
+    "Bucket.Config/1.2.1": {
       "type": "project",
       "path": "../../Config/Bucket.Config/Bucket.Config.csproj",
       "msbuildProject": "../../Config/Bucket.Config/Bucket.Config.csproj"
     },
-    "Bucket.Config.HostedService/1.0.0": {
+    "Bucket.Config.HostedService/1.1.0": {
       "type": "project",
       "path": "../../Config/Bucket.Config.HostedService/Bucket.Config.HostedService.csproj",
       "msbuildProject": "../../Config/Bucket.Config.HostedService/Bucket.Config.HostedService.csproj"
     },
-    "Bucket.Config.Listener/1.0.0": {
+    "Bucket.Config.Listener/1.1.0": {
       "type": "project",
       "path": "../../Config/Bucket.Config.Listener/Bucket.Config.Listener.csproj",
       "msbuildProject": "../../Config/Bucket.Config.Listener/Bucket.Config.Listener.csproj"
     },
-    "Bucket.Core/1.1.4": {
+    "Bucket.Core/1.1.5": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
     },
-    "Bucket.DbContext/1.1.3": {
+    "Bucket.DbContext/1.1.6": {
       "type": "project",
       "path": "../../ORM/Bucket.DbContext/Bucket.DbContext.csproj",
       "msbuildProject": "../../ORM/Bucket.DbContext/Bucket.DbContext.csproj"
     },
-    "Bucket.ErrorCode/1.2.0": {
+    "Bucket.ErrorCode/1.2.1": {
       "type": "project",
       "path": "../../ErrorCode/Bucket.ErrorCode/Bucket.ErrorCode.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode/Bucket.ErrorCode.csproj"
     },
-    "Bucket.ErrorCode.HostedService/1.0.0": {
+    "Bucket.ErrorCode.HostedService/1.1.0": {
       "type": "project",
       "path": "../../ErrorCode/Bucket.ErrorCode.HostedService/Bucket.ErrorCode.HostedService.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode.HostedService/Bucket.ErrorCode.HostedService.csproj"
     },
-    "Bucket.ErrorCode.Listener/1.0.0": {
+    "Bucket.ErrorCode.Listener/1.1.0": {
       "type": "project",
       "path": "../../ErrorCode/Bucket.ErrorCode.Listener/Bucket.ErrorCode.Listener.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode.Listener/Bucket.ErrorCode.Listener.csproj"
@@ -16093,22 +15989,22 @@
       "path": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
     },
-    "Bucket.HostedService.AspNetCore/1.0.0": {
+    "Bucket.HostedService.AspNetCore/1.1.0": {
       "type": "project",
       "path": "../../HostedService/Bucket.HostedService.AspNetCore/Bucket.HostedService.AspNetCore.csproj",
       "msbuildProject": "../../HostedService/Bucket.HostedService.AspNetCore/Bucket.HostedService.AspNetCore.csproj"
     },
-    "Bucket.Listener/1.0.0": {
+    "Bucket.Listener/1.1.1": {
       "type": "project",
       "path": "../../Listener/Bucket.Listener/Bucket.Listener.csproj",
       "msbuildProject": "../../Listener/Bucket.Listener/Bucket.Listener.csproj"
     },
-    "Bucket.Listener.Redis/1.0.0": {
+    "Bucket.Listener.Redis/1.1.1": {
       "type": "project",
       "path": "../../Listener/Bucket.Listener.Redis/Bucket.Listener.Redis.csproj",
       "msbuildProject": "../../Listener/Bucket.Listener.Redis/Bucket.Listener.Redis.csproj"
     },
-    "Bucket.Listener.Zookeeper/1.0.0": {
+    "Bucket.Listener.Zookeeper/1.1.1": {
       "type": "project",
       "path": "../../Listener/Bucket.Listener.Zookeeper/Bucket.Listener.Zookeeper.csproj",
       "msbuildProject": "../../Listener/Bucket.Listener.Zookeeper/Bucket.Listener.Zookeeper.csproj"
@@ -16138,30 +16034,25 @@
       "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
       "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
     },
-    "Bucket.SkrTrace.Core/1.0.0": {
+    "Bucket.SkrTrace.Core/1.1.0": {
       "type": "project",
       "path": "../../Tracer/Bucket.SkrTrace.Core/Bucket.SkrTrace.Core.csproj",
       "msbuildProject": "../../Tracer/Bucket.SkrTrace.Core/Bucket.SkrTrace.Core.csproj"
     },
-    "Bucket.SkrTrace.Diagnostics.AspNetCore/1.0.0": {
+    "Bucket.SkrTrace.Diagnostics.AspNetCore/1.1.0": {
       "type": "project",
       "path": "../../Tracer/Bucket.SkrTrace.Diagnostics.AspNetCore/Bucket.SkrTrace.Diagnostics.AspNetCore.csproj",
       "msbuildProject": "../../Tracer/Bucket.SkrTrace.Diagnostics.AspNetCore/Bucket.SkrTrace.Diagnostics.AspNetCore.csproj"
     },
-    "Bucket.SkrTrace.Diagnostics.HttpClient/1.0.0": {
+    "Bucket.SkrTrace.Diagnostics.HttpClient/1.1.0": {
       "type": "project",
       "path": "../../Tracer/Bucket.SkrTrace.Diagnostics.HttpClient/Bucket.SkrTrace.Diagnostics.HttpClient.csproj",
       "msbuildProject": "../../Tracer/Bucket.SkrTrace.Diagnostics.HttpClient/Bucket.SkrTrace.Diagnostics.HttpClient.csproj"
     },
-    "Bucket.SkrTrace.Transport.EventBus/1.0.0": {
+    "Bucket.SkrTrace.Transport.EventBus/1.1.0": {
       "type": "project",
       "path": "../../Tracer/Bucket.SkrTrace.Transport.EventBus/Bucket.SkrTrace.Transport.EventBus.csproj",
       "msbuildProject": "../../Tracer/Bucket.SkrTrace.Transport.EventBus/Bucket.SkrTrace.Transport.EventBus.csproj"
-    },
-    "Bucket.Tracing/1.1.9.1": {
-      "type": "project",
-      "path": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj",
-      "msbuildProject": "../../Tracer/Bucket.Tracing/Bucket.Tracing.csproj"
     },
     "Bucket.Utility/1.1.2": {
       "type": "project",
@@ -16173,32 +16064,32 @@
     ".NETCoreApp,Version=v2.1": [
       "Autofac >= 4.8.1",
       "Autofac.Extensions.DependencyInjection >= 4.3.0",
-      "Bucket.AspNetCore >= 1.1.8",
-      "Bucket.Authorize >= 1.0.5",
-      "Bucket.Authorize.HostedService >= 1.0.0",
-      "Bucket.Authorize.Listener >= 1.0.0",
-      "Bucket.Authorize.MySql >= 1.0.2",
-      "Bucket.Config >= 1.2.0",
-      "Bucket.Config.HostedService >= 1.0.0",
-      "Bucket.Config.Listener >= 1.0.0",
-      "Bucket.DbContext >= 1.1.3",
-      "Bucket.ErrorCode >= 1.2.0",
-      "Bucket.ErrorCode.HostedService >= 1.0.0",
-      "Bucket.ErrorCode.Listener >= 1.0.0",
+      "Bucket.AspNetCore >= 1.1.9",
+      "Bucket.Authorize >= 1.1.0",
+      "Bucket.Authorize.HostedService >= 1.1.0",
+      "Bucket.Authorize.Listener >= 1.1.0",
+      "Bucket.Authorize.MySql >= 1.1.0",
+      "Bucket.Config >= 1.2.1",
+      "Bucket.Config.HostedService >= 1.1.0",
+      "Bucket.Config.Listener >= 1.1.0",
+      "Bucket.DbContext >= 1.1.6",
+      "Bucket.ErrorCode >= 1.2.1",
+      "Bucket.ErrorCode.HostedService >= 1.1.0",
+      "Bucket.ErrorCode.Listener >= 1.1.0",
       "Bucket.EventBus >= 1.1.3",
       "Bucket.EventBus.RabbitMQ >= 1.1.5",
-      "Bucket.HostedService.AspNetCore >= 1.0.0",
-      "Bucket.Listener >= 1.0.0",
-      "Bucket.Listener.Redis >= 1.0.0",
-      "Bucket.Listener.Zookeeper >= 1.0.0",
+      "Bucket.HostedService.AspNetCore >= 1.1.0",
+      "Bucket.Listener >= 1.1.1",
+      "Bucket.Listener.Redis >= 1.1.1",
+      "Bucket.Listener.Zookeeper >= 1.1.1",
       "Bucket.Logging >= 1.1.3",
       "Bucket.Logging.Events >= 1.1.2",
       "Bucket.ServiceDiscovery >= 1.1.1",
       "Bucket.ServiceDiscovery.Consul >= 1.1.3",
-      "Bucket.SkrTrace.Core >= 1.0.0",
-      "Bucket.SkrTrace.Diagnostics.AspNetCore >= 1.0.0",
-      "Bucket.SkrTrace.Diagnostics.HttpClient >= 1.0.0",
-      "Bucket.SkrTrace.Transport.EventBus >= 1.0.0",
+      "Bucket.SkrTrace.Core >= 1.1.0",
+      "Bucket.SkrTrace.Diagnostics.AspNetCore >= 1.1.0",
+      "Bucket.SkrTrace.Diagnostics.HttpClient >= 1.1.0",
+      "Bucket.SkrTrace.Transport.EventBus >= 1.1.0",
       "Bucket.Utility >= 1.1.2",
       "Microsoft.AspNetCore.All >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -16213,11 +16104,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.MVC\\Bucket.MVC.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.MVC\\Bucket.MVC.csproj",
       "projectName": "Bucket.MVC",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.MVC\\Bucket.MVC.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.MVC\\Bucket.MVC.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Sample\\Bucket.MVC\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Sample\\Bucket.MVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -16237,86 +16128,86 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.HostedService\\Bucket.Authorize.HostedService.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.HostedService\\Bucket.Authorize.HostedService.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.HostedService\\Bucket.Authorize.HostedService.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.HostedService\\Bucket.Authorize.HostedService.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.Listener\\Bucket.Authorize.Listener.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.Listener\\Bucket.Authorize.Listener.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.Listener\\Bucket.Authorize.Listener.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.Listener\\Bucket.Authorize.Listener.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.MySql\\Bucket.Authorize.MySql.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize.MySql\\Bucket.Authorize.MySql.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.MySql\\Bucket.Authorize.MySql.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize.MySql\\Bucket.Authorize.MySql.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize\\Bucket.Authorize.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Authorize\\Bucket.Authorize\\Bucket.Authorize.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize\\Bucket.Authorize.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Authorize\\Bucket.Authorize\\Bucket.Authorize.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.AspNetCore\\Bucket.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config.HostedService\\Bucket.Config.HostedService.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config.HostedService\\Bucket.Config.HostedService.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config.HostedService\\Bucket.Config.HostedService.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config.HostedService\\Bucket.Config.HostedService.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config.Listener\\Bucket.Config.Listener.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config.Listener\\Bucket.Config.Listener.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config.Listener\\Bucket.Config.Listener.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config.Listener\\Bucket.Config.Listener.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config\\Bucket.Config.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Config\\Bucket.Config\\Bucket.Config.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config\\Bucket.Config.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Config\\Bucket.Config\\Bucket.Config.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode.HostedService\\Bucket.ErrorCode.HostedService.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode.HostedService\\Bucket.ErrorCode.HostedService.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode.HostedService\\Bucket.ErrorCode.HostedService.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode.HostedService\\Bucket.ErrorCode.HostedService.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode.Listener\\Bucket.ErrorCode.Listener.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode.Listener\\Bucket.ErrorCode.Listener.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode.Listener\\Bucket.ErrorCode.Listener.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode.Listener\\Bucket.ErrorCode.Listener.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode\\Bucket.ErrorCode.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ErrorCode\\Bucket.ErrorCode\\Bucket.ErrorCode.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode\\Bucket.ErrorCode.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ErrorCode\\Bucket.ErrorCode\\Bucket.ErrorCode.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus.RabbitMQ\\Bucket.EventBus.RabbitMQ.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\EventBus\\Bucket.EventBus\\Bucket.EventBus.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\HostedService\\Bucket.HostedService.AspNetCore\\Bucket.HostedService.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\HostedService\\Bucket.HostedService.AspNetCore\\Bucket.HostedService.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\HostedService\\Bucket.HostedService.AspNetCore\\Bucket.HostedService.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\HostedService\\Bucket.HostedService.AspNetCore\\Bucket.HostedService.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener.Redis\\Bucket.Listener.Redis.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener.Redis\\Bucket.Listener.Redis.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener.Redis\\Bucket.Listener.Redis.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener.Redis\\Bucket.Listener.Redis.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener.Zookeeper\\Bucket.Listener.Zookeeper.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener.Zookeeper\\Bucket.Listener.Zookeeper.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener.Zookeeper\\Bucket.Listener.Zookeeper.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener.Zookeeper\\Bucket.Listener.Zookeeper.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener\\Bucket.Listener.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Listener\\Bucket.Listener\\Bucket.Listener.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener\\Bucket.Listener.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Listener\\Bucket.Listener\\Bucket.Listener.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging.Event\\Bucket.Logging.Events.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Logging\\Bucket.Logging\\Bucket.Logging.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ORM\\Bucket.DbContext\\Bucket.DbContext.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery.Consul\\Bucket.ServiceDiscovery.Consul.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Core\\Bucket.SkrTrace.Core.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Core\\Bucket.SkrTrace.Core.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Core\\Bucket.SkrTrace.Core.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Core\\Bucket.SkrTrace.Core.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Diagnostics.AspNetCore\\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Diagnostics.AspNetCore\\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Diagnostics.AspNetCore\\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Diagnostics.AspNetCore\\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Diagnostics.HttpClient\\Bucket.SkrTrace.Diagnostics.HttpClient.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Diagnostics.HttpClient\\Bucket.SkrTrace.Diagnostics.HttpClient.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Diagnostics.HttpClient\\Bucket.SkrTrace.Diagnostics.HttpClient.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Diagnostics.HttpClient\\Bucket.SkrTrace.Diagnostics.HttpClient.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Transport.EventBus\\Bucket.SkrTrace.Transport.EventBus.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Tracer\\Bucket.SkrTrace.Transport.EventBus\\Bucket.SkrTrace.Transport.EventBus.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Transport.EventBus\\Bucket.SkrTrace.Transport.EventBus.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Tracer\\Bucket.SkrTrace.Transport.EventBus\\Bucket.SkrTrace.Transport.EventBus.csproj"
             },
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\Bucket.Utility.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Utility\\Bucket.Utility.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Utility\\Bucket.Utility.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Utility\\Bucket.Utility.csproj"
             }
           }
         }

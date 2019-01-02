@@ -4,16 +4,6 @@
         <name>Bucket.MVC</name>
     </assembly>
     <members>
-        <member name="T:Bucket.MVC.Controllers.AuthController">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Bucket.MVC.Controllers.AuthController._dbContext">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="M:Bucket.MVC.Controllers.AuthController.Login(Bucket.MVC.Models.Dto.InputLogin)">
             <summary>
             111

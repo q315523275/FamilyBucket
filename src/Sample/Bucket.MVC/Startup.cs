@@ -108,7 +108,8 @@ namespace Bucket.MVC
             services.AddHttpClient();
             // 添加应用监听
             services.AddListener(builder => {
-                builder.UseRedis();
+                //builder.UseRedis();
+                builder.UseZookeeper();
                 builder.AddAuthorize().AddConfig().AddErrorCode();
             });
             services.AddBucketHostedService(builder => {

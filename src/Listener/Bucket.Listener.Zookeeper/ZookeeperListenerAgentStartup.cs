@@ -33,11 +33,9 @@ namespace Bucket.Listener.Zookeeper
                 await _client.CreateRecursiveAsync(ListenerPath, Encoding.UTF8.GetBytes("Bucket.Listener"));
             await _client.SubscribeDataChange(ListenerPath, async (ct, args) =>
             {
-                if (_isSubscribe)
+                if (!_isSubscribe)
                     return;
-                Console.WriteLine("更新数" + args.CurrentData.Count());
                 var currentData = Encoding.UTF8.GetString(args.CurrentData.ToArray());
-                Console.WriteLine("更新" + currentData);
                 if (!string.IsNullOrWhiteSpace(currentData))
                 {
                     var command = JsonConvert.DeserializeObject<Values.NetworkCommand>(currentData);
@@ -46,7 +44,7 @@ namespace Bucket.Listener.Zookeeper
                         switch (args.Type)
                         {
                             case Watcher.Event.EventType.NodeDataChanged:
-                                await _extractCommand.CommandNotify(command);
+                                await _extractCommand.ExtractCommandMessage(command);
                                 break;
                         }
                     }

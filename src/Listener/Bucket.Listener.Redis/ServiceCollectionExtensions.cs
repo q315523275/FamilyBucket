@@ -9,6 +9,7 @@ namespace Bucket.Listener.Redis
         {
             builder.Services.Configure<RedisListenerOptions>(builder.Configuration.GetSection("BucketListener:Redis"));
             builder.Services.AddSingleton<IListenerAgentStartup, RedisListenerAgentStartup>();
+            builder.Services.AddSingleton<IPublishCommand, RedisPublishCommand>();
             return builder;
         }
     }

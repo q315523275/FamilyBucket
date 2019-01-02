@@ -9,6 +9,7 @@ namespace Bucket.Listener.Zookeeper
         {
             builder.Services.Configure<ZookeeperListenerOptions>(builder.Configuration.GetSection("BucketListener:Zookeeper"));
             builder.Services.AddSingleton<IListenerAgentStartup, ZookeeperListenerAgentStartup>();
+            builder.Services.AddSingleton<IPublishCommand, ZookeeperPublishCommand>();
             return builder;
         }
     }
