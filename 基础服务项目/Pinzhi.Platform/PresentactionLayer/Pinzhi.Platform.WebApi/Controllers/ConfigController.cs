@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pinzhi.Platform.Dto;
+using Pinzhi.Platform.Dto.Config;
 using Pinzhi.Platform.Interface;
 
 namespace Pinzhi.Platform.WebApi.Controllers
@@ -89,6 +90,17 @@ namespace Pinzhi.Platform.WebApi.Controllers
         public async Task<SetAppConfigInfoOutput> SetAppConfigInfo([FromBody] SetAppConfigInfoInput input)
         {
             return await _configBusniess.SetAppConfigInfo(input);
+        }
+        /// <summary>
+        /// 推送配置中心命令
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [Authorize("permission")]
+        [HttpPost("/Config/PublishCommand")]
+        public async Task<PublishCommandOutput> PublishCommand([FromBody] PublishCommandInput input)
+        {
+            return await _configBusniess.PublishCommand(input);
         }
     }
 }

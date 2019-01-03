@@ -18,10 +18,8 @@ namespace Bucket.Authorize.Listener
 
         public async Task ExecuteAsync(string commandText)
         {
-            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.AuthorizeReload.ToString())
+            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.Reload.ToString())
                 await _permissionRepository.Get();
-            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.BlackJwtReload.ToString())
-                await Task.CompletedTask;
         }
     }
 }

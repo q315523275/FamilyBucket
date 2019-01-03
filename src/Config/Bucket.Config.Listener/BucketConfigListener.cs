@@ -19,9 +19,9 @@ namespace Bucket.Config.Listener
 
         public async Task ExecuteAsync(string commandText)
         {
-            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.ConfigRefresh.ToString())
+            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.Refresh.ToString())
                 await _dataRepository.Get();
-            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.ConfigReload.ToString())
+            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.Reload.ToString())
                 await _dataRepository.Get(true);
         }
     }

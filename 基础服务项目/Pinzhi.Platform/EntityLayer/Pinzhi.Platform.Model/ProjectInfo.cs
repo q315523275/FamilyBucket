@@ -19,7 +19,7 @@ namespace Pinzhi.Platform.Model
         /// <summary>
         /// 平台Key
         /// </summary>
-        public string Key { set; get; }
+        public string Code { set; get; }
         /// <summary>
         /// 应用平台
         /// </summary>
@@ -36,5 +36,10 @@ namespace Pinzhi.Platform.Model
         /// 路由前缀
         /// </summary>
         public string RouteKey { set; get; }
+        public bool IsDeleted { set; get; }
+        public DateTime CreateTime { set; get; }
+        public long CreateUid { set; get; }
+        public DateTime LastTime { set; get; }
+        public long LastUid { set; get; }
     }
 }

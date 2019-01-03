@@ -2,36 +2,46 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SqlSugar;
-using Newtonsoft.Json.Serialization;
-using AutoMapper;
-using Swashbuckle.AspNetCore.Swagger;
+
 using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
+using SqlSugar;
+using Newtonsoft.Json.Serialization;
+using AutoMapper;
+using Swashbuckle.AspNetCore.Swagger;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+
 using Bucket.DbContext;
 using Bucket.Utility;
-
-using Bucket.ErrorCode.Extensions;
+using Bucket.Authorize;
+using Bucket.Authorize.Listener;
+using Bucket.Authorize.HostedService;
+using Bucket.Authorize.MySql;
 using Bucket.Config.Extensions;
+using Bucket.Config.Listener;
+using Bucket.Config.HostedService;
+using Bucket.ErrorCode.Extensions;
+using Bucket.ErrorCode.Listener;
+using Bucket.ErrorCode.HostedService;
 using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ;
+using Bucket.Logging;
+using Bucket.Logging.Events;
+using Bucket.Listener.Extensions;
+using Bucket.Listener.Redis;
+using Bucket.HostedService.AspNetCore;
+using Bucket.LoadBalancer.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
 using Bucket.ServiceDiscovery.Consul;
 using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.Filters;
 using Bucket.Tracing.Extensions;
 using Bucket.Tracing.Events;
-using Bucket.Logging;
-using Bucket.Logging.Events;
-using Bucket.LoadBalancer.Extensions;
-using Autofac;
-using Bucket.Authorize;
-using Autofac.Extensions.DependencyInjection;
-using Bucket.Authorize.MySql;
 
 namespace Pinzhi.Platform.WebApi
 {
@@ -62,7 +72,7 @@ namespace Pinzhi.Platform.WebApi
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // 添加认证+MySql权限认证
-            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, Configuration).UseMySqlAuthorize();
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -75,7 +85,7 @@ namespace Pinzhi.Platform.WebApi
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
-            services.AddConfigService(Configuration);
+            services.AddConfigServer(Configuration);
             // 添加事件驱动
             services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
             // 添加服务发现
@@ -110,6 +120,16 @@ namespace Pinzhi.Platform.WebApi
             });
             // 添加工具
             services.AddUtil();
+            // 添加应用监听
+            services.AddListener(builder => {
+                builder.UseRedis();
+                // builder.UseZookeeper();
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
+            // 添加全局启动任务
+            services.AddBucketHostedService(builder => {
+                builder.AddAuthorize().AddConfig().AddErrorCode();
+            });
             // 添加HttpClient管理
             services.AddHttpClient();
             // 添加autofac容器替换，默认容器注册方式缺少功能
@@ -120,12 +140,34 @@ namespace Pinzhi.Platform.WebApi
             return new AutofacServiceProvider(AutofacContainer);
         }
         /// <summary>
+        /// Autofac扩展注册
+        /// </summary>
+        public class AutofacModuleRegister : Autofac.Module
+        {
+            /// <summary>
+            /// 装载autofac方式注册
+            /// </summary>
+            /// <param name="builder"></param>
+            protected override void Load(ContainerBuilder builder)
+            {
+                // 业务应用注册
+                Assembly bus_assembly = Assembly.Load("Pinzhi.Platform.Business");
+                builder.RegisterAssemblyTypes(bus_assembly)
+                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
+                // 数据仓储泛型注册
+                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
+                    .InstancePerLifetimeScope();
+            }
+        }
+        /// <summary>
         /// 配置请求管道
         /// </summary>
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
             // 日志
-            loggerFactory.AddBucketLog(app, "Pinzhi.Platform");
+            loggerFactory.AddBucketLog(app, "Pinzhi.Platform.WebApi");
             // 文档
             ConfigSwagger(app);
             // 公共配置
@@ -167,28 +209,6 @@ namespace Pinzhi.Platform.WebApi
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
-        }
-        /// <summary>
-        /// Autofac扩展注册
-        /// </summary>
-        public class AutofacModuleRegister : Autofac.Module
-        {
-            /// <summary>
-            /// 装载autofac方式注册
-            /// </summary>
-            /// <param name="builder"></param>
-            protected override void Load(ContainerBuilder builder)
-            {
-                // 业务应用注册
-                Assembly bus_assembly = Assembly.Load("Pinzhi.Platform.Business");
-                builder.RegisterAssemblyTypes(bus_assembly)
-                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
-                    .AsImplementedInterfaces()
-                    .InstancePerLifetimeScope();
-                // 数据仓储泛型注册
-                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
-                    .InstancePerLifetimeScope();
-            }
         }
     }
 }

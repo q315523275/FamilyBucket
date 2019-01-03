@@ -19,7 +19,7 @@ namespace Bucket.ErrorCode.Listener
 
         public async Task ExecuteAsync(string commandText)
         {
-            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.ErrorCodeReload.ToString())
+            if (!string.IsNullOrWhiteSpace(commandText) && commandText == NetworkCommandType.Reload.ToString())
                 await _dataRepository.Get();
         }
     }

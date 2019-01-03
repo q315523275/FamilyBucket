@@ -8,24 +8,12 @@
     public enum NetworkCommandType
     {
         /// <summary>
-        /// 配置刷新
+        /// 更新
         /// </summary>
-        ConfigRefresh,
+        Refresh,
         /// <summary>
-        /// 配置重新加载
+        /// 重载
         /// </summary>
-        ConfigReload,
-        /// <summary>
-        /// 权限重载
-        /// </summary>
-        AuthorizeReload,
-        /// <summary>
-        /// 错误重载
-        /// </summary>
-        ErrorCodeReload,
-        /// <summary>
-        /// Jwt黑名单重载
-        /// </summary>
-        BlackJwtReload,
+        Reload,
     }
 }

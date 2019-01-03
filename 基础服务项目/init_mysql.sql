@@ -141,6 +141,25 @@ INSERT INTO `tb_appconfig_dev` VALUES ('1', 'PinzhiGO', 'Public', 'RedisDefaultS
 INSERT INTO `tb_appconfig_dev` VALUES ('3', 'PinzhiGO', 'Pinzhi.Identity', 'WxMiniApiUrl', 'https://api.weixin.qq.com', '微信小程序接口基地址', '2018-07-19 10:49:56', '2018-07-19 10:49:56', '1', '0');
 INSERT INTO `tb_appconfig_dev` VALUES ('24', 'PinzhiGO', 'Pinzhi.Platform', 'ApiGatewayConfigurationKey', 'ApiGatewayConfiguration', '微服务网关配置存储Key', '2018-11-20 18:07:23', '2018-11-20 18:07:23', '78', '0');
 INSERT INTO `tb_appconfig_dev` VALUES ('30', 'PinzhiGO', 'Pinzhi.Identity', 'IsVerifySmsCode', '2', '是否验证短信验证码，2不验证', '2018-11-12 10:02:49', '2018-11-12 10:02:49', '39', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('42', 'PinzhiGO', 'Bucket.Public', 'ServiceDiscovery:Consul:HttpEndpoint', 'http://10.10.188.136:8500', '服务注册ConsulURI', '2019-01-02 09:43:45', '2019-01-02 09:43:45', '65', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('43', 'PinzhiGO', 'Bucket.Public', 'ServiceDiscovery:Consul:DnsEndpoint:Address', '10.10.188.136', '服务注册Consul_IP', '2019-01-02 09:44:41', '2019-01-02 09:44:41', '66', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('44', 'PinzhiGO', 'Bucket.Public', 'ServiceDiscovery:Consul:DnsEndpoint:Port', '8500', '服务注册Consul端口', '2019-01-02 09:45:16', '2019-01-02 09:45:16', '67', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('45', 'PinzhiGO', 'Bucket.Public', 'ErrorCodeServer:ServerUrl', 'http://10.10.188.136:18080', '错误码服务接口地址', '2019-01-02 09:47:34', '2019-01-02 09:47:34', '68', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('46', 'PinzhiGO', 'Bucket.Public', 'ErrorCodeServer:RefreshInteval', '1800', '错误码刷新时间', '2019-01-02 09:48:09', '2019-01-02 09:48:09', '69', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('47', 'PinzhiGO', 'Bucket.Public', 'EventBus:RabbitMQ:HostName', '10.10.188.136', '消息总线RabbitMq IP', '2019-01-02 09:49:07', '2019-01-02 09:49:07', '70', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('48', 'PinzhiGO', 'Bucket.Public', 'EventBus:RabbitMQ:HostName:Port', '5672', '消息总线RabbitMq 端口', '2019-01-02 09:50:06', '2019-01-02 09:50:06', '71', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('49', 'PinzhiGO', 'Bucket.Public', 'EventBus:RabbitMQ:HostName:UserName', 'guest', '消息总线RabbitMq 账号', '2019-01-02 09:50:57', '2019-01-02 09:50:57', '72', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('50', 'PinzhiGO', 'Bucket.Public', 'EventBus:RabbitMQ:HostName:Password', 'guest', '消息总线RabbitMq 密码', '2019-01-02 09:51:33', '2019-01-02 09:51:33', '73', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('51', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:Secret', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', '认证授权密钥', '2019-01-02 09:52:26', '2019-01-02 09:52:26', '74', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('52', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:Issuer', 'poc', '认证授权Issuer', '2019-01-02 09:52:50', '2019-01-02 09:52:50', '75', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('53', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:Audience', 'axon', '认证授权', '2019-01-02 09:53:30', '2019-01-02 09:53:30', '76', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('54', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:PolicyName', 'permission', '认证授权', '2019-01-02 09:54:07', '2019-01-02 09:54:07', '77', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('55', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:DefaultScheme', 'Bearer', '认证授权', '2019-01-02 09:54:37', '2019-01-02 09:54:37', '78', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('56', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:IsHttps', 'false', '认证授权', '2019-01-02 09:55:05', '2019-01-02 09:55:05', '79', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('57', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:RequireExpirationTime', 'true', '认证授权', '2019-01-02 09:55:30', '2019-01-02 09:55:30', '80', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('58', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:MySqlConnectionString', 'characterset=utf8;server=127.0.0.1;port=3306;user id=root;password=123;persistsecurityinfo=True;database=bucket', '认证授权', '2019-01-02 10:00:22', '2019-01-02 10:00:22', '81', '0');
+INSERT INTO `tb_appconfig_dev` VALUES ('59', 'PinzhiGO', 'Bucket.Public', 'JwtAuthorize:RefreshInteval', '300', '认证授权', '2019-01-02 10:01:07', '2019-01-02 10:01:07', '82', '0');
+
 
 -- ----------------------------
 -- Table structure for tb_appconfig_pro
@@ -261,7 +280,7 @@ INSERT INTO `tb_platform_menus` VALUES ('2', '平台菜单', null, '/setting/men
 INSERT INTO `tb_platform_menus` VALUES ('3', '用户设置', null, '/setting/user', '103', '1', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('4', '角色设置', null, '/setting/role', '102', '1', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('5', '平台设置', null, '/setting/platform', '98', '1', '1', '1');
-INSERT INTO `tb_platform_menus` VALUES ('6', '项目设置', null, '/setting/project', '100', '1', '1', '1');
+INSERT INTO `tb_platform_menus` VALUES ('6', '项目管理', null, '/setting/project', '100', '1', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('7', '项目资源', null, '/setting/apimanage', '101', '1', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('8', '配置中心', 'el-icon-refresh', null, '2', '0', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('9', '项目组管理', null, '/configService/appList', '99', '8', '1', '1');
@@ -271,7 +290,8 @@ INSERT INTO `tb_platform_menus` VALUES ('12', '微服务管理', 'el-icon-upload
 INSERT INTO `tb_platform_menus` VALUES ('13', '服务管理', null, '/microservice/service', '99', '12', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('14', '网关路由', null, '/microservice/route', '100', '12', '1', '1');
 INSERT INTO `tb_platform_menus` VALUES ('15', '链路追踪', null, '/microservice/trace', '101', '12', '1', '1');
-INSERT INTO `tb_platform_menus` VALUES ('16', '访问量统计', null, '/microservice/access', '102', '12', '1', '1');
+INSERT INTO `tb_platform_menus` VALUES ('16', '访问量统计', null, '/microservice/access', '103', '12', '1', '1');
+INSERT INTO `tb_platform_menus` VALUES ('17', '链路监听', null, '/microservice/traceOnline', '102', '12', '1', '1');
 
 -- ----------------------------
 -- Table structure for tb_platforms
@@ -294,7 +314,11 @@ CREATE TABLE `tb_platforms` (
 -- ----------------------------
 -- Records of tb_platforms
 -- ----------------------------
-INSERT INTO `tb_platforms` VALUES ('1', 'POC综合管理平台', 'PinzhiPOC', null, null, null, null, '1', '2018-06-21 18:26:23', '0');
+INSERT INTO `tb_platforms` VALUES ('1', '品值综合管理平台', 'Pinzhi.Platform.Poc', null, null, null, null, '1', '2018-06-21 18:26:23', '0');
+INSERT INTO `tb_platforms` VALUES ('2', '品值统一认证平台', 'Pinzhi.Platform.Identity', null, null, null, null, '2', '2018-11-27 09:13:03', '0');
+INSERT INTO `tb_platforms` VALUES ('3', '品值统一消息平台', 'Pinzhi.Platform.MqMessage', null, null, null, null, '3', '2018-11-27 09:14:28', '0');
+INSERT INTO `tb_platforms` VALUES ('4', '品值统一日志平台', 'Pinzhi.Platform.LogMessage', null, null, null, null, '4', '2018-11-27 09:15:32', '0');
+INSERT INTO `tb_platforms` VALUES ('5', '品值统一调度平台', 'Pinzhi.Platform.Task', null, null, null, null, '5', '2018-11-27 09:21:29', '0');
 
 -- ----------------------------
 -- Table structure for tb_projects
@@ -308,13 +332,18 @@ CREATE TABLE `tb_projects` (
   `Secret` varchar(255) DEFAULT NULL,
   `Remark` varchar(500) DEFAULT NULL,
   `RouteKey` varchar(20) DEFAULT NULL,
+  `IsDeleted` tinyint(4) DEFAULT NULL,
+  `CreateTime` datetime DEFAULT NULL,
+  `CreateUid` bigint(20) DEFAULT NULL,
+  `LastTime` datetime DEFAULT NULL,
+  `LastUid` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`Id`,`Key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tb_projects
 -- ----------------------------
-INSERT INTO `tb_projects` VALUES ('2', '平台基础管理', 'Pinzhi.Platform', null, null, null, 'Platform');
+INSERT INTO `tb_projects` VALUES ('2', '平台管理接口服务', 'Pinzhi.Platform.WebApi', null, null, null, 'Platform', '0', '2019-01-03 10:55:33', null, '2019-01-03 14:52:45', '651421238645114');
 
 -- ----------------------------
 -- Table structure for tb_role_apis
@@ -403,7 +432,7 @@ CREATE TABLE `tb_roles` (
 -- ----------------------------
 -- Records of tb_roles
 -- ----------------------------
-INSERT INTO `tb_roles` VALUES ('1', 'PinzhiPOC', 'admin', '超级管理员', '平台基础管理/超级管理员', '1', '2018-05-17 10:39:30', '2018-11-22 12:30:00', '0');
+INSERT INTO `tb_roles` VALUES ('1', 'Pinzhi.Platform.Poc', 'admin', '超级管理员', '平台基础管理/超级管理员', '1', '2018-05-17 10:39:30', '2018-11-22 12:30:00', '0');
 
 -- ----------------------------
 -- Table structure for tb_thirdoauths

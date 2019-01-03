@@ -1,6 +1,8 @@
 ﻿using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Model;
 using AutoMapper;
+using Pinzhi.Platform.Dto.Project;
+
 namespace Pinzhi.Platform.WebApi.Common
 {
     public class MappingProfile : Profile
@@ -18,6 +20,7 @@ namespace Pinzhi.Platform.WebApi.Common
                 .ForMember(destination => destination.CreateTime, option => option.Ignore())
                 .ForMember(destination => destination.LastTime, option => option.Ignore())
                 .ForMember(destination => destination.Version, option => option.Ignore());
+            CreateMap<SetProjectInput, ProjectInfo>();
         }
     }
 }

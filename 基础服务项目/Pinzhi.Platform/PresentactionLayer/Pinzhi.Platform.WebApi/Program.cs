@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Bucket.Config;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,8 +27,10 @@ namespace Pinzhi.Platform.WebApi
                    .ConfigureAppConfiguration((hostingContext, _config) => {
                        _config
                        .AddJsonFile("appsettings.json", true, true)
-                       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                        .AddEnvironmentVariables();
+                       var option = new BucketConfigOptions();
+                       _config.Build().GetSection("ConfigServer").Bind(option);
+                       _config.AddBucketConfig(option);
                    })
                    .UseKestrel()
                    .UseContentRoot(Directory.GetCurrentDirectory())

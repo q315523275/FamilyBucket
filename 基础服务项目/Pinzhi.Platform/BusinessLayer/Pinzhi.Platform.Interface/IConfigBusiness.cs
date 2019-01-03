@@ -1,4 +1,5 @@
 ﻿using Pinzhi.Platform.Dto;
+using Pinzhi.Platform.Dto.Config;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,5 +19,6 @@ namespace Pinzhi.Platform.Interface
         Task<QueryAppConfigListOutput> QueryAppConfigList(QueryAppConfigListInput input);
 
         Task<SetAppConfigInfoOutput> SetAppConfigInfo(SetAppConfigInfoInput input);
+        Task<PublishCommandOutput> PublishCommand(PublishCommandInput input);
     }
 }

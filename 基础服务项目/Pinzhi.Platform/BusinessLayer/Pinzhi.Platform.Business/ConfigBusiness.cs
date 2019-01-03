@@ -8,6 +8,8 @@ using SqlSugar;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Bucket.Listener.Abstractions;
+using Pinzhi.Platform.Dto.Config;
 
 namespace Pinzhi.Platform.Business
 {
@@ -17,15 +19,18 @@ namespace Pinzhi.Platform.Business
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
+        private readonly IPublishCommand _publishCommand;
         public ConfigBusiness(SqlSugarClient dbContext,
             IMapper mapper,
             IJsonHelper jsonHelper,
-            IUser user)
+            IUser user,
+            IPublishCommand publishCommand)
         {
             _dbContext = dbContext;
             _mapper = mapper;
             _jsonHelper = jsonHelper;
             _user = user;
+            _publishCommand = publishCommand;
         }
 
         public async Task<QueryAppConfigListOutput> QueryAppConfigList(QueryAppConfigListInput input)
@@ -41,6 +46,12 @@ namespace Pinzhi.Platform.Business
                     break;
                 case Env.pro:
                     tableName = $"tb_appconfig_{Env.pro.ToString()}";
+                    break;
+                case Env.prepro:
+                    tableName = $"tb_appconfig_{Env.prepro.ToString()}";
+                    break;
+                case Env.uat:
+                    tableName = $"tb_appconfig_{Env.uat.ToString()}";
                     break;
                 default:
                     throw new BucketException("plm_001", "环境不存在");
@@ -65,6 +76,8 @@ namespace Pinzhi.Platform.Business
             var totalNumber = 0;
             var result = await _dbContext.Queryable<AppNamespaceInfo>()
                                 .WhereIF(!string.IsNullOrWhiteSpace(input.AppId), it => it.AppId == input.AppId)
+                                .WhereIF(input.IsPublic == 1, it => it.IsPublic == true)
+                                .WhereIF(input.IsPublic == 0, it => it.IsPublic == false)
                                 .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
             return new QueryAppProjectListOutput { Data = result.Key, CurrentPage = input.PageIndex, Total = totalNumber };
         }
@@ -81,6 +94,12 @@ namespace Pinzhi.Platform.Business
                     break;
                 case Env.pro:
                     tableName = $"tb_appconfig_{Env.pro.ToString()}";
+                    break;
+                case Env.prepro:
+                    tableName = $"tb_appconfig_{Env.prepro.ToString()}";
+                    break;
+                case Env.uat:
+                    tableName = $"tb_appconfig_{Env.uat.ToString()}";
                     break;
                 default:
                     throw new BucketException("plm_001", "环境不存在");
@@ -146,6 +165,12 @@ namespace Pinzhi.Platform.Business
                                 .ExecuteCommandAsync();
             }
             return new SetAppProjectInfoOutput { };
+        }
+
+        public async Task<PublishCommandOutput> PublishCommand(PublishCommandInput input)
+        {
+            await _publishCommand.PublishCommandMessage(input.ProjectName, new Bucket.Values.NetworkCommand { CommandText = input.CommandText, NotifyComponent = input.CommandType });
+            return new PublishCommandOutput { };
         }
     }
 }
