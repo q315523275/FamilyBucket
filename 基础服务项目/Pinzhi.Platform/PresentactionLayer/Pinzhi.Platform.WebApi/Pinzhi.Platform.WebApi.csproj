@@ -29,17 +29,16 @@
     <PackageReference Include="Bucket.ErrorCode" Version="1.2.1" />
     <PackageReference Include="Bucket.ErrorCode.HostedService" Version="1.1.0" />
     <PackageReference Include="Bucket.ErrorCode.Listener" Version="1.1.1" />
-    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.5" />
+    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.6" />
     <PackageReference Include="Bucket.HostedService.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Bucket.Listener" Version="1.1.1" />
     <PackageReference Include="Bucket.Listener.Redis" Version="1.1.1" />
     <PackageReference Include="Bucket.Listener.Zookeeper" Version="1.1.1" />
-    <PackageReference Include="Bucket.LoadBalancer" Version="1.1.1" />
+    <PackageReference Include="Bucket.LoadBalancer" Version="1.1.2" />
     <PackageReference Include="Bucket.Logging" Version="1.1.3" />
     <PackageReference Include="Bucket.Logging.Events" Version="1.1.2" />
-    <PackageReference Include="Bucket.ServiceClient.Http" Version="1.1.1" />
-    <PackageReference Include="Bucket.ServiceDiscovery" Version="1.1.1" />
-    <PackageReference Include="Bucket.ServiceDiscovery.Consul" Version="1.1.3" />
+    <PackageReference Include="Bucket.ServiceDiscovery" Version="1.1.2" />
+    <PackageReference Include="Bucket.ServiceDiscovery.Consul" Version="1.1.4" />
     <PackageReference Include="Bucket.Tracing" Version="1.1.9" />
     <PackageReference Include="Bucket.Tracing.Events" Version="1.1.2" />
     <PackageReference Include="Bucket.Utility" Version="1.1.2" />

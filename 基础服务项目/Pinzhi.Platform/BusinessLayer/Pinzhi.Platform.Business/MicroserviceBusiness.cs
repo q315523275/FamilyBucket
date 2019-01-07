@@ -39,23 +39,14 @@ namespace Pinzhi.Platform.Interface
         /// <returns></returns>
         public async Task<QueryServiceListOutput> QueryServiceList(QueryServiceListInput input)
         {
-            var result = new object();
-            if (input.State == 0)
+            if (string.IsNullOrWhiteSpace(input.Name))
             {
-                result = await _serviceDiscovery.FindAllServicesAsync();
+                return new QueryServiceListOutput { Data = await _serviceDiscovery.FindServiceInstancesAsync() };
             }
-            if (input.State == 1)
+            else
             {
-                if (string.IsNullOrWhiteSpace(input.Name))
-                {
-                    result = await _serviceDiscovery.FindServiceInstancesAsync();
-                }
-                else
-                {
-                    result = await _serviceDiscovery.FindServiceInstancesAsync(input.Name);
-                }
+                return new QueryServiceListOutput { Data = await _serviceDiscovery.FindServiceInstancesAsync(input.Name) };
             }
-            return new QueryServiceListOutput { Data = result };
         }
         /// <summary>
         /// 服务注册

@@ -29,7 +29,7 @@ using Bucket.ErrorCode.Extensions;
 using Bucket.ErrorCode.Listener;
 using Bucket.ErrorCode.HostedService;
 using Bucket.EventBus.Extensions;
-using Bucket.EventBus.RabbitMQ;
+using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.Logging;
 using Bucket.Logging.Events;
 using Bucket.Listener.Extensions;
@@ -37,7 +37,7 @@ using Bucket.Listener.Redis;
 using Bucket.HostedService.AspNetCore;
 using Bucket.LoadBalancer.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
-using Bucket.ServiceDiscovery.Consul;
+using Bucket.ServiceDiscovery.Consul.Extensions;
 using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.Filters;
 using Bucket.Tracing.Extensions;
@@ -87,9 +87,9 @@ namespace Pinzhi.Platform.WebApi
             // 添加配置服务
             services.AddConfigServer(Configuration);
             // 添加事件驱动
-            services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
+            services.AddEventBus(option => { option.UseRabbitMQ(); });
             // 添加服务发现
-            services.AddServiceDiscovery(option => { option.UseConsul(Configuration); });
+            services.AddServiceDiscovery(option => { option.UseConsul(); });
             // 添加服务路由
             services.AddLoadBalancer();
             // 添加事件队列日志
