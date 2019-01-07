@@ -113,7 +113,7 @@
           "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
-      "Bucket.Core/1.1.4": {
+      "Bucket.Core/1.1.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -135,7 +135,6 @@
       "type": "package",
       "path": "microsoft.extensions.configuration.abstractions/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
@@ -176,7 +175,6 @@
       "type": "package",
       "path": "microsoft.extensions.primitives/2.1.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
@@ -329,7 +327,6 @@
       "type": "package",
       "path": "system.buffers/4.4.0",
       "files": [
-        ".nupkg.metadata",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp2.0/_._",
@@ -353,7 +350,6 @@
       "type": "package",
       "path": "system.memory/4.5.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -378,7 +374,6 @@
       "type": "package",
       "path": "system.numerics.vectors/4.4.0",
       "files": [
-        ".nupkg.metadata",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/MonoAndroid10/_._",
@@ -420,7 +415,6 @@
       "type": "package",
       "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
-        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -440,7 +434,7 @@
         "version.txt"
       ]
     },
-    "Bucket.Core/1.1.4": {
+    "Bucket.Core/1.1.7": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -448,7 +442,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.4",
+      "Bucket.Core >= 1.1.7",
       "NETStandard.Library >= 2.0.3"
     ]
   },
@@ -457,13 +451,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.1",
+    "version": "1.1.2",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj",
       "projectName": "Bucket.ServiceDiscovery",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\Bucket.ServiceDiscovery.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\ServiceDiscovery\\Bucket.ServiceDiscovery\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\ServiceDiscovery\\Bucket.ServiceDiscovery\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -483,8 +477,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
             }
           }
         }

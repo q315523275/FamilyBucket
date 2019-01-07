@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace Bucket.EventBus.RabbitMQ
 {
@@ -24,6 +25,7 @@ namespace Bucket.EventBus.RabbitMQ
         private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
         private readonly IServiceProvider _autofac;
+        private readonly EventBusRabbitMqOptions _options;
         private readonly int _retryCount;
         private readonly ushort _prefetchCount;
 
@@ -31,15 +33,16 @@ namespace Bucket.EventBus.RabbitMQ
         private string _queueName;
 
         public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IServiceProvider autofac,
-            IEventBusSubscriptionsManager subsManager, string queueName = null, ushort prefetchCount = 1, int retryCount = 5)
+            IEventBusSubscriptionsManager subsManager, IOptions<EventBusRabbitMqOptions> options)
         {
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? throw new ArgumentNullException(nameof(subsManager));
-            _queueName = queueName;
+            _options = options.Value;
+            _queueName = _options.QueueName;
             _autofac = autofac;
-            _prefetchCount = prefetchCount;
-            _retryCount = retryCount;
+            _prefetchCount = _options.PrefetchCount;
+            _retryCount = _options.RetryCount;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
         }
         /// <summary>
@@ -132,7 +135,7 @@ namespace Bucket.EventBus.RabbitMQ
                     _persistentConnection.TryConnect();
                 }
 
-                if(_consumerChannel == null)
+                if (_consumerChannel == null)
                     _consumerChannel = CreateConsumerChannel();
 
                 using (var channel = _persistentConnection.CreateModel())
@@ -205,7 +208,7 @@ namespace Bucket.EventBus.RabbitMQ
             _consumerChannel.BasicConsume(queue: _queueName,
                      autoAck: false,
                      consumer: consumer);
-            
+
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;

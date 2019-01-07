@@ -23,6 +23,8 @@
         /// </summary>
         public const ushort DefaultPrefetchCount = 1;
 
+        public const int DefaultRetryCount = 5;
+
         /// <summary>The host to connect to.</summary>
         public string HostName { get; set; } = "localhost";
         public int Port { set; get; } = -1;
@@ -31,5 +33,6 @@
         public string VirtualHost { get; set; } = DefaultVHost;
         public string QueueName { set; get; }
         public ushort PrefetchCount { set; get; } = DefaultPrefetchCount;
+        public int RetryCount { set; get; } = DefaultRetryCount;
     }
 }

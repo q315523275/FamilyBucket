@@ -1,7 +1,7 @@
 ﻿using Bucket.Core;
-using Bucket.ServiceDiscovery;
 using Bucket.Values;
 using Consul;
+using Microsoft.Extensions.Options;
 using SemVer;
 using System;
 using System.Collections.Generic;
@@ -17,11 +17,12 @@ namespace Bucket.ServiceDiscovery.Consul
         private const string VERSION_PREFIX = "version-";
 
         private readonly ConsulServiceDiscoveryConfiguration _configuration;
+
         private readonly ConsulClient _consul;
 
-        public ConsulServiceDiscovery(ConsulServiceDiscoveryConfiguration configuration = null)
+        public ConsulServiceDiscovery(IOptions<ConsulServiceDiscoveryConfiguration> configuration)
         {
-            _configuration = configuration;
+            _configuration = configuration.Value;
 
             _consul = new ConsulClient(config =>
             {
@@ -33,18 +34,24 @@ namespace Bucket.ServiceDiscovery.Consul
             });
         }
 
+        #region IResolveServiceInstances
         private string GetVersionFromStrings(IEnumerable<string> strings)
         {
             return strings
                 ?.FirstOrDefault(x => x.StartsWith(VERSION_PREFIX, StringComparison.Ordinal))
                 .TrimStart(VERSION_PREFIX);
         }
+        private async Task<IDictionary<string, string[]>> GetServicesCatalogAsync()
+        {
+            var queryResult = await _consul.Catalog.Services(); // local agent datacenter is implied
+            var services = queryResult.Response;
 
+            return services;
+        }
         public async Task<IList<ServiceInformation>> FindServiceInstancesAsync()
         {
-            return await FindServiceInstancesAsync(nameTagsPredicate: x => true, ServiceInformationPredicate: x => true);
+            return await FindServiceInstancesWithLambdaAsync(nameTagsPredicate: x => true, ServiceInformationPredicate: x => true);
         }
-
         public async Task<IList<ServiceInformation>> FindServiceInstancesAsync(string name)
         {
             var queryResult = await _consul.Health.Service(name, tag: "", passingOnly: true);
@@ -59,7 +66,20 @@ namespace Bucket.ServiceDiscovery.Consul
 
             return instances.ToList();
         }
+        public async Task<IList<ServiceInformation>> FindServiceInstancesWithStatusAsync(string name, bool passingOnly = true)
+        {
+            var queryResult = await _consul.Health.Service(name, tag: "", passingOnly: passingOnly);
+            var instances = queryResult.Response.Select(serviceEntry => new ServiceInformation
+            {
+                Name = serviceEntry.Service.Service,
+                HostAndPort = new HostAndPort(serviceEntry.Service.Address, serviceEntry.Service.Port),
+                Version = GetVersionFromStrings(serviceEntry.Service.Tags),
+                Tags = serviceEntry.Service.Tags ?? Enumerable.Empty<string>(),
+                Id = serviceEntry.Service.ID
+            });
 
+            return instances.ToList();
+        }
         public async Task<IList<ServiceInformation>> FindServiceInstancesWithVersionAsync(string name, string version)
         {
             var instances = await FindServiceInstancesAsync(name);
@@ -67,16 +87,7 @@ namespace Bucket.ServiceDiscovery.Consul
 
             return instances.Where(x => range.IsSatisfied(x.Version)).ToArray();
         }
-
-        private async Task<IDictionary<string, string[]>> GetServicesCatalogAsync()
-        {
-            var queryResult = await _consul.Catalog.Services(); // local agent datacenter is implied
-            var services = queryResult.Response;
-
-            return services;
-        }
-
-        public async Task<IList<ServiceInformation>> FindServiceInstancesAsync(Predicate<KeyValuePair<string, string[]>> nameTagsPredicate, Predicate<ServiceInformation> ServiceInformationPredicate)
+        public async Task<IList<ServiceInformation>> FindServiceInstancesWithLambdaAsync(Predicate<KeyValuePair<string, string[]>> nameTagsPredicate, Predicate<ServiceInformation> ServiceInformationPredicate)
         {
             return (await GetServicesCatalogAsync())
                 .Where(kvp => nameTagsPredicate(kvp))
@@ -86,51 +97,34 @@ namespace Bucket.ServiceDiscovery.Consul
                 .Where(x => ServiceInformationPredicate(x))
                 .ToList();
         }
+        #endregion
 
-        public async Task<IList<ServiceInformation>> FindServiceInstancesAsync(Predicate<KeyValuePair<string, string[]>> predicate)
-        {
-            return await FindServiceInstancesAsync(nameTagsPredicate: predicate, ServiceInformationPredicate: x => true);
-        }
-
-        public async Task<IList<ServiceInformation>> FindServiceInstancesAsync(Predicate<ServiceInformation> predicate)
-        {
-            return await FindServiceInstancesAsync(nameTagsPredicate: x => true, ServiceInformationPredicate: predicate);
-        }
-
-        public async Task<IList<ServiceInformation>> FindAllServicesAsync()
-        {
-            var queryResult = await _consul.Agent.Services();
-            var instances = queryResult.Response.Select(serviceEntry => new ServiceInformation
-            {
-                Name = serviceEntry.Value.Service,
-                Id = serviceEntry.Value.ID,
-                HostAndPort = new HostAndPort(serviceEntry.Value.Address, serviceEntry.Value.Port),
-                Version = GetVersionFromStrings(serviceEntry.Value.Tags),
-                Tags = serviceEntry.Value.Tags
-            });
-
-            return instances.ToList();
-        }
-
+        #region IManageServiceInstances
         private string GetServiceId(string serviceName, Uri uri)
         {
             return $"{serviceName}_{uri.Host.Replace(".", "_")}_{uri.Port}";
         }
 
-        public async Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, Uri uri, Uri healthCheckUri = null, IEnumerable<string> tags = null)
+        public async Task<ServiceInformation> RegisterServiceAsync(string serviceName, string version, Uri uri, ServiceType serviceType = ServiceType.HTTP, Uri healthCheckUri = null, IEnumerable<string> tags = null)
         {
             var serviceId = GetServiceId(serviceName, uri);
+
+            // 健康检查地址
             string checkUrl = healthCheckUri?.ToString() ?? $"{uri}".TrimEnd('/') + "/status";
+            if (serviceType == ServiceType.TCP)
+                checkUrl = (healthCheckUri == null ? $"{uri.Host}:{uri.Port}" : $"{healthCheckUri.Host}:{healthCheckUri.Port}");
 
             var httpCheck = new AgentServiceCheck()
             {
-                DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),//服务启动多久后注册
-                Interval = TimeSpan.FromSeconds(10),//健康检查时间间隔，或者称为心跳间隔
-                HTTP = checkUrl,//健康检查地址
+                DeregisterCriticalServiceAfter = TimeSpan.FromSeconds(5),// 服务启动多久后注册
+                Interval = TimeSpan.FromSeconds(10),// 健康检查时间间隔，或者称为心跳间隔
+                HTTP = (serviceType == ServiceType.HTTP ? checkUrl : null),// 健康检查地址
+                TCP = (serviceType == ServiceType.TCP ? checkUrl : null),// 健康检查地址
                 Timeout = TimeSpan.FromSeconds(10)
             };
 
             string versionLabel = $"{VERSION_PREFIX}{version}";
+
             var tagList = (tags ?? Enumerable.Empty<string>()).ToList();
             tagList.Add(versionLabel);
 
@@ -160,17 +154,18 @@ namespace Bucket.ServiceDiscovery.Consul
         {
             var writeResult = await _consul.Agent.ServiceDeregister(serviceId);
             bool isSuccess = writeResult.StatusCode == HttpStatusCode.OK;
-            string success = isSuccess ? "succeeded" : "failed";
-
             return isSuccess;
         }
+        #endregion
+
+        #region IManageHealthChecks
 
         private string GetCheckId(string serviceId, Uri uri)
         {
             return $"{serviceId}_{uri.GetPath().Replace("/", "")}";
         }
 
-        public async Task<string> RegisterHealthCheckAsync(string serviceName, string serviceId, Uri checkUri, TimeSpan? interval = null, string notes = null)
+        public async Task<string> RegisterHealthCheckAsync(string serviceName, string serviceId, Uri checkUri, ServiceType serviceType = ServiceType.HTTP, TimeSpan? interval = null, string notes = null)
         {
             if (checkUri == null)
             {
@@ -184,13 +179,12 @@ namespace Bucket.ServiceDiscovery.Consul
                 Name = serviceName,
                 Notes = notes,
                 ServiceID = serviceId,
-                HTTP = checkUri.ToString(),
+                HTTP = (serviceType == ServiceType.HTTP ? checkUri.ToString() : null),
+                TCP = (serviceType == ServiceType.TCP ? $"{checkUri.Host}:{checkUri.Port}" : null),
                 Interval = interval
             };
             var writeResult = await _consul.Agent.CheckRegister(checkRegistration);
             bool isSuccess = writeResult.StatusCode == HttpStatusCode.OK;
-            string success = isSuccess ? "succeeded" : "failed";
-
             return checkId;
         }
 
@@ -198,8 +192,6 @@ namespace Bucket.ServiceDiscovery.Consul
         {
             var writeResult = await _consul.Agent.CheckDeregister(checkId);
             bool isSuccess = writeResult.StatusCode == HttpStatusCode.OK;
-            string success = isSuccess ? "succeeded" : "failed";
-
             return isSuccess;
         }
 
@@ -213,6 +205,10 @@ namespace Bucket.ServiceDiscovery.Consul
                 WaitTime = _configuration.LongPollMaxWait
             };
         }
+
+        #endregion
+
+        #region IHaveKeyValues
 
         public async Task KeyValuePutAsync(string key, string value)
         {
@@ -241,5 +237,6 @@ namespace Bucket.ServiceDiscovery.Consul
             var queryResult = await _consul.KV.Keys(prefix ?? "");
             return queryResult.Response;
         }
+        #endregion
     }
 }

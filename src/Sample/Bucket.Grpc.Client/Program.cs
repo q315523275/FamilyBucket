@@ -3,13 +3,14 @@ using Bucket.Gprc.Extensions;
 using Bucket.LoadBalancer;
 using Bucket.LoadBalancer.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
-using Bucket.ServiceDiscovery.Consul;
+using Bucket.ServiceDiscovery.Consul.Extensions;
 using MagicOnion;
 using MagicOnion.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+
 
 namespace Bucket.Grpc.Client
 {
@@ -29,7 +30,7 @@ namespace Bucket.Grpc.Client
             services.AddLoadBalancer();
             services.AddGrpcClient();
             // 添加服务发现
-            services.AddServiceDiscovery(build => { build.UseConsul(configuration); });
+            services.AddServiceDiscovery(build => { build.UseConsul(); });
             // 容器
             serviceProvider = services.BuildServiceProvider();
             // 日志使用

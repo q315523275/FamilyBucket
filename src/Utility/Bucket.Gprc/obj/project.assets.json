@@ -687,7 +687,7 @@
           "lib/netstandard1.0/System.ValueTuple.dll": {}
         }
       },
-      "Bucket.Core/1.1.4": {
+      "Bucket.Core/1.1.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2655,7 +2655,7 @@
         "system.valuetuple.nuspec"
       ]
     },
-    "Bucket.Core/1.1.4": {
+    "Bucket.Core/1.1.7": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -2663,7 +2663,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "Bucket.Core >= 1.1.4",
+      "Bucket.Core >= 1.1.7",
       "MagicOnion >= 0.5.3",
       "Microsoft.AspNetCore.Hosting.Abstractions >= 2.1.1",
       "Microsoft.AspNetCore.Http.Abstractions >= 2.1.1",
@@ -2676,13 +2676,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "restore": {
-      "projectUniqueName": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Gprc\\Bucket.Gprc.csproj",
+      "projectUniqueName": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Gprc\\Bucket.Gprc.csproj",
       "projectName": "Bucket.Gprc",
-      "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Gprc\\Bucket.Gprc.csproj",
+      "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Gprc\\Bucket.Gprc.csproj",
       "packagesPath": "C:\\Users\\tl\\.nuget\\packages\\",
-      "outputPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Utility\\Bucket.Gprc\\obj\\",
+      "outputPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Utility\\Bucket.Gprc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2702,8 +2702,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj": {
-              "projectPath": "D:\\work2017\\Github\\FamilyBucket\\src\\Bucket.Core\\Bucket.Core.csproj"
+            "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj": {
+              "projectPath": "D:\\work2017\\Git\\FamilyBucket\\Microservice\\Bucket.Core\\Bucket.Core.csproj"
             }
           }
         }

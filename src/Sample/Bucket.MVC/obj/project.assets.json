@@ -6022,7 +6022,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.Redis": "1.0.2",
           "Microsoft.AspNetCore.Mvc": "2.1.1",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
@@ -6056,7 +6056,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.Authorize": "1.1.0",
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.HostedService.AspNetCore": "1.1.0"
         },
         "compile": {
@@ -6066,12 +6066,12 @@
           "bin/placeholder/Bucket.Authorize.HostedService.dll": {}
         }
       },
-      "Bucket.Authorize.Listener/1.1.0": {
+      "Bucket.Authorize.Listener/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.Authorize": "1.1.0",
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.Listener": "1.1.1"
         },
         "compile": {
@@ -6100,7 +6100,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.Redis": "1.0.2",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
@@ -6122,7 +6122,7 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.Config": "1.2.1",
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.HostedService.AspNetCore": "1.1.0"
         },
         "compile": {
@@ -6132,12 +6132,12 @@
           "bin/placeholder/Bucket.Config.HostedService.dll": {}
         }
       },
-      "Bucket.Config.Listener/1.1.0": {
+      "Bucket.Config.Listener/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Bucket.Config": "1.2.1",
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.Listener": "1.1.1"
         },
         "compile": {
@@ -6147,7 +6147,7 @@
           "bin/placeholder/Bucket.Config.Listener.dll": {}
         }
       },
-      "Bucket.Core/1.1.5": {
+      "Bucket.Core/1.1.7": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6179,7 +6179,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Microsoft.Extensions.Configuration.Abstractions": "2.1.1",
           "Microsoft.Extensions.DependencyInjection": "2.1.1",
           "Microsoft.Extensions.Hosting": "2.1.1",
@@ -6198,7 +6198,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Bucket.ErrorCode": "1.2.1",
           "Bucket.HostedService.AspNetCore": "1.1.0"
         },
@@ -6209,7 +6209,7 @@
           "bin/placeholder/Bucket.ErrorCode.HostedService.dll": {}
         }
       },
-      "Bucket.ErrorCode.Listener/1.1.0": {
+      "Bucket.ErrorCode.Listener/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -6223,11 +6223,11 @@
           "bin/placeholder/Bucket.ErrorCode.Listener.dll": {}
         }
       },
-      "Bucket.EventBus/1.1.3": {
+      "Bucket.EventBus/1.1.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Newtonsoft.Json": "11.0.2"
         },
         "compile": {
@@ -6237,13 +6237,14 @@
           "bin/placeholder/Bucket.EventBus.dll": {}
         }
       },
-      "Bucket.EventBus.RabbitMQ/1.1.5": {
+      "Bucket.EventBus.RabbitMQ/1.1.6": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.3",
+          "Bucket.EventBus": "1.1.4",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.1",
           "Microsoft.Extensions.Logging": "2.1.1",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.1",
           "Newtonsoft.Json": "11.0.2",
           "Polly": "6.1.0",
           "RabbitMQ.Client": "5.1.0"
@@ -6259,7 +6260,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Microsoft.Extensions.Hosting": "2.1.1"
         },
         "compile": {
@@ -6273,7 +6274,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
+          "Bucket.Core": "1.1.7",
           "Microsoft.Extensions.Hosting": "2.1.1"
         },
         "compile": {
@@ -6334,7 +6335,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.3",
+          "Bucket.EventBus": "1.1.4",
           "Bucket.Logging": "1.1.3"
         },
         "compile": {
@@ -6357,11 +6358,11 @@
           "bin/placeholder/Bucket.Redis.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery/1.1.1": {
+      "Bucket.ServiceDiscovery/1.1.2": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5"
+          "Bucket.Core": "1.1.7"
         },
         "compile": {
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
@@ -6370,12 +6371,12 @@
           "bin/placeholder/Bucket.ServiceDiscovery.dll": {}
         }
       },
-      "Bucket.ServiceDiscovery.Consul/1.1.3": {
+      "Bucket.ServiceDiscovery.Consul/1.1.4": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.Core": "1.1.5",
-          "Bucket.ServiceDiscovery": "1.1.1",
+          "Bucket.Core": "1.1.7",
+          "Bucket.ServiceDiscovery": "1.1.2",
           "Consul": "0.7.2.6",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
@@ -6443,7 +6444,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "Bucket.EventBus": "1.1.3",
+          "Bucket.EventBus": "1.1.4",
           "Bucket.SkrTrace.Core": "1.1.0"
         },
         "compile": {
@@ -15929,7 +15930,7 @@
       "path": "../../Authorize/Bucket.Authorize.HostedService/Bucket.Authorize.HostedService.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize.HostedService/Bucket.Authorize.HostedService.csproj"
     },
-    "Bucket.Authorize.Listener/1.1.0": {
+    "Bucket.Authorize.Listener/1.1.1": {
       "type": "project",
       "path": "../../Authorize/Bucket.Authorize.Listener/Bucket.Authorize.Listener.csproj",
       "msbuildProject": "../../Authorize/Bucket.Authorize.Listener/Bucket.Authorize.Listener.csproj"
@@ -15949,12 +15950,12 @@
       "path": "../../Config/Bucket.Config.HostedService/Bucket.Config.HostedService.csproj",
       "msbuildProject": "../../Config/Bucket.Config.HostedService/Bucket.Config.HostedService.csproj"
     },
-    "Bucket.Config.Listener/1.1.0": {
+    "Bucket.Config.Listener/1.1.1": {
       "type": "project",
       "path": "../../Config/Bucket.Config.Listener/Bucket.Config.Listener.csproj",
       "msbuildProject": "../../Config/Bucket.Config.Listener/Bucket.Config.Listener.csproj"
     },
-    "Bucket.Core/1.1.5": {
+    "Bucket.Core/1.1.7": {
       "type": "project",
       "path": "../../Bucket.Core/Bucket.Core.csproj",
       "msbuildProject": "../../Bucket.Core/Bucket.Core.csproj"
@@ -15974,17 +15975,17 @@
       "path": "../../ErrorCode/Bucket.ErrorCode.HostedService/Bucket.ErrorCode.HostedService.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode.HostedService/Bucket.ErrorCode.HostedService.csproj"
     },
-    "Bucket.ErrorCode.Listener/1.1.0": {
+    "Bucket.ErrorCode.Listener/1.1.1": {
       "type": "project",
       "path": "../../ErrorCode/Bucket.ErrorCode.Listener/Bucket.ErrorCode.Listener.csproj",
       "msbuildProject": "../../ErrorCode/Bucket.ErrorCode.Listener/Bucket.ErrorCode.Listener.csproj"
     },
-    "Bucket.EventBus/1.1.3": {
+    "Bucket.EventBus/1.1.4": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus/Bucket.EventBus.csproj"
     },
-    "Bucket.EventBus.RabbitMQ/1.1.5": {
+    "Bucket.EventBus.RabbitMQ/1.1.6": {
       "type": "project",
       "path": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj",
       "msbuildProject": "../../EventBus/Bucket.EventBus.RabbitMQ/Bucket.EventBus.RabbitMQ.csproj"
@@ -16024,12 +16025,12 @@
       "path": "../../Utility/Bucket.Redis/Bucket.Redis.csproj",
       "msbuildProject": "../../Utility/Bucket.Redis/Bucket.Redis.csproj"
     },
-    "Bucket.ServiceDiscovery/1.1.1": {
+    "Bucket.ServiceDiscovery/1.1.2": {
       "type": "project",
       "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj",
       "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery/Bucket.ServiceDiscovery.csproj"
     },
-    "Bucket.ServiceDiscovery.Consul/1.1.3": {
+    "Bucket.ServiceDiscovery.Consul/1.1.4": {
       "type": "project",
       "path": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj",
       "msbuildProject": "../../ServiceDiscovery/Bucket.ServiceDiscovery.Consul/Bucket.ServiceDiscovery.Consul.csproj"
@@ -16067,25 +16068,25 @@
       "Bucket.AspNetCore >= 1.1.9",
       "Bucket.Authorize >= 1.1.0",
       "Bucket.Authorize.HostedService >= 1.1.0",
-      "Bucket.Authorize.Listener >= 1.1.0",
+      "Bucket.Authorize.Listener >= 1.1.1",
       "Bucket.Authorize.MySql >= 1.1.0",
       "Bucket.Config >= 1.2.1",
       "Bucket.Config.HostedService >= 1.1.0",
-      "Bucket.Config.Listener >= 1.1.0",
+      "Bucket.Config.Listener >= 1.1.1",
       "Bucket.DbContext >= 1.1.6",
       "Bucket.ErrorCode >= 1.2.1",
       "Bucket.ErrorCode.HostedService >= 1.1.0",
-      "Bucket.ErrorCode.Listener >= 1.1.0",
-      "Bucket.EventBus >= 1.1.3",
-      "Bucket.EventBus.RabbitMQ >= 1.1.5",
+      "Bucket.ErrorCode.Listener >= 1.1.1",
+      "Bucket.EventBus >= 1.1.4",
+      "Bucket.EventBus.RabbitMQ >= 1.1.6",
       "Bucket.HostedService.AspNetCore >= 1.1.0",
       "Bucket.Listener >= 1.1.1",
       "Bucket.Listener.Redis >= 1.1.1",
       "Bucket.Listener.Zookeeper >= 1.1.1",
       "Bucket.Logging >= 1.1.3",
       "Bucket.Logging.Events >= 1.1.2",
-      "Bucket.ServiceDiscovery >= 1.1.1",
-      "Bucket.ServiceDiscovery.Consul >= 1.1.3",
+      "Bucket.ServiceDiscovery >= 1.1.2",
+      "Bucket.ServiceDiscovery.Consul >= 1.1.4",
       "Bucket.SkrTrace.Core >= 1.1.0",
       "Bucket.SkrTrace.Diagnostics.AspNetCore >= 1.1.0",
       "Bucket.SkrTrace.Diagnostics.HttpClient >= 1.1.0",

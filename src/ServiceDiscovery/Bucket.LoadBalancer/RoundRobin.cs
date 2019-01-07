@@ -11,7 +11,7 @@ namespace Bucket.LoadBalancer
         private readonly Func<Task<IList<ServiceInformation>>> _services;
         private readonly string _serviceName;
         private int _last;
-
+        private readonly object _lock = new object();
         public RoundRobin(Func<Task<IList<ServiceInformation>>> services, string serviceName)
         {
             _services = services;
@@ -29,15 +29,18 @@ namespace Bucket.LoadBalancer
             if (!services.Any())
                 throw new ArgumentNullException($"{_serviceName}");
 
-
-            if (_last >= services.Count)
+            lock (_lock)
             {
-                _last = 0;
-            }
+                if (_last >= services.Count)
+                {
+                    _last = 0;
+                }
 
-            var next = await Task.FromResult(services[_last]);
-            _last++;
-            return next.HostAndPort;
+                var next = services[_last];
+                _last++;
+
+                return next.HostAndPort;
+            }
         }
 
         public void Release(HostAndPort hostAndPort)

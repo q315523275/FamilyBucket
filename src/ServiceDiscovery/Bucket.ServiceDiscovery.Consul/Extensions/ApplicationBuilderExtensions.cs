@@ -1,33 +1,30 @@
 ﻿using Bucket.Values;
-using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bucket.ServiceDiscovery.Consul
+namespace Bucket.ServiceDiscovery.Consul.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
         public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, IConfiguration configuration)
         {
-            ConsulServiceDiscoveryOption serviceDiscoveryOption = new ConsulServiceDiscoveryOption();
+            ServiceDiscoveryOption serviceDiscoveryOption = new ServiceDiscoveryOption();
             configuration.GetSection("ServiceDiscovery").Bind(serviceDiscoveryOption);
             app.UseConsulRegisterService(serviceDiscoveryOption);
             return app;
         }
-        public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, ConsulServiceDiscoveryOption serviceDiscoveryOption)
+
+        public static IApplicationBuilder UseConsulRegisterService(this IApplicationBuilder app, ServiceDiscoveryOption serviceDiscoveryOption)
         {
             var applicationLifetime = app.ApplicationServices.GetRequiredService<IApplicationLifetime>() ??
                throw new ArgumentException("Missing Dependency", nameof(IApplicationLifetime));
-            if (serviceDiscoveryOption.Consul == null)
-                throw new ArgumentException("Missing Dependency", nameof(serviceDiscoveryOption.Consul));
 
             if (string.IsNullOrEmpty(serviceDiscoveryOption.ServiceName))
                 throw new ArgumentException("service name must be configure", nameof(serviceDiscoveryOption.ServiceName));
@@ -50,6 +47,7 @@ namespace Bucket.ServiceDiscovery.Consul
                 var registryInformation = app.AddTenant(serviceDiscoveryOption.ServiceName,
                     serviceDiscoveryOption.Version,
                     address,
+                    serviceType: serviceDiscoveryOption.ServiceType,
                     healthCheckUri: healthCheck,
                     tags: new[] { $"urlprefix-/{serviceDiscoveryOption.ServiceName}"
                     });
@@ -67,8 +65,7 @@ namespace Bucket.ServiceDiscovery.Consul
             return $"{serviceName}_{uri.Host.Replace(".", "_")}_{uri.Port}";
         }
 
-
-        public static ServiceInformation AddTenant(this IApplicationBuilder app, string serviceName, string version, Uri uri, Uri healthCheckUri = null, IEnumerable<string> tags = null)
+        public static ServiceInformation AddTenant(this IApplicationBuilder app, string serviceName, string version, Uri uri, ServiceType serviceType = ServiceType.HTTP, Uri healthCheckUri = null, IEnumerable<string> tags = null)
         {
             if (app == null)
             {
@@ -76,7 +73,7 @@ namespace Bucket.ServiceDiscovery.Consul
             }
 
             var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
-            var registryInformation = serviceRegistry.RegisterServiceAsync(serviceName, version, uri, healthCheckUri, tags)
+            var registryInformation = serviceRegistry.RegisterServiceAsync(serviceName, version, uri, serviceType, healthCheckUri, tags)
                 .Result;
 
             return registryInformation;
@@ -98,7 +95,7 @@ namespace Bucket.ServiceDiscovery.Consul
                 .Result;
         }
 
-        public static string AddHealthCheck(this IApplicationBuilder app, ServiceInformation registryInformation, Uri checkUri, TimeSpan? interval = null, string notes = null)
+        public static string AddHealthCheck(this IApplicationBuilder app, ServiceInformation registryInformation, Uri checkUri, ServiceType serviceType = ServiceType.HTTP, TimeSpan? interval = null, string notes = null)
         {
             if (app == null)
             {
@@ -110,7 +107,7 @@ namespace Bucket.ServiceDiscovery.Consul
             }
 
             var serviceRegistry = app.ApplicationServices.GetRequiredService<IServiceDiscovery>();
-            string checkId = serviceRegistry.RegisterHealthCheckAsync(registryInformation.Name, registryInformation.Id, checkUri, interval, notes)
+            string checkId = serviceRegistry.RegisterHealthCheckAsync(registryInformation.Name, registryInformation.Id, checkUri, serviceType, interval, notes)
                 .Result;
 
             return checkId;

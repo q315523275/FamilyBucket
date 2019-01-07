@@ -14,11 +14,11 @@ using Bucket.DbContext;
 using Bucket.Config.Extensions;
 using Bucket.ErrorCode.Extensions;
 using Bucket.EventBus.Extensions;
-using Bucket.EventBus.RabbitMQ;
+using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.AspNetCore.Filters;
 using Bucket.AspNetCore.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
-using Bucket.ServiceDiscovery.Consul;
+using Bucket.ServiceDiscovery.Consul.Extensions;
 using Bucket.Logging.Events;
 using Bucket.Authorize;
 using Autofac;
@@ -33,11 +33,10 @@ using Bucket.Listener.Zookeeper;
 using Bucket.Authorize.Listener;
 using Bucket.Authorize.HostedService;
 using Bucket.Config.Listener;
-using Bucket.ErrorCode.Listener;
-using Bucket.HostedService.AspNetCore;
 using Bucket.Config.HostedService;
+using Bucket.ErrorCode.Listener;
 using Bucket.ErrorCode.HostedService;
-using Bucket.Listener.Redis;
+using Bucket.HostedService.AspNetCore;
 
 namespace Bucket.MVC
 {
@@ -69,7 +68,7 @@ namespace Bucket.MVC
         {
             //services.AddTokenJwtAuthorize(Configuration);
             // 添加授权认证, return true;标识不验证角色等
-            services.AddApiJwtAuthorize(Configuration); //.UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
+            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
@@ -84,10 +83,10 @@ namespace Bucket.MVC
             // 添加配置服务
             services.AddConfigServer(Configuration);
             // 添加事件驱动
-            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(); });
             // 添加服务发现
             services.AddServiceDiscovery(builder => {
-                builder.UseConsul(Configuration);
+                builder.UseConsul();
             });
             // 添加链路追踪
             services.AddSkrTrace().AddAspNetCoreHosting().AddHttpClient().AddEventBusTransport();
@@ -155,7 +154,7 @@ namespace Bucket.MVC
             // 路由
             ConfigRoute(app);
             // 服务注册
-            // app.UseConsulRegisterService(Configuration);
+            app.UseConsulRegisterService(Configuration);
         }
         /// <summary>
         /// 路由配置,支持区域

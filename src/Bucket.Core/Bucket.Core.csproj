@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.1.4</Version>
-    <Description>接口核心</Description>
+    <Version>1.1.7</Version>
+    <Description></Description>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Authors>FamilyBucket</Authors>
+    <Company>Bucket.Core</Company>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

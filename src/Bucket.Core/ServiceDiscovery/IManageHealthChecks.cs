@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bucket.Values;
+using System;
 using System.Threading.Tasks;
 
 namespace Bucket.ServiceDiscovery
@@ -14,10 +15,11 @@ namespace Bucket.ServiceDiscovery
         /// <param name="serviceName">服务名称</param>
         /// <param name="serviceId">服务ID</param>
         /// <param name="checkUri">健康检查服务</param>
+        /// <param name="serviceType">服务类型</param>
         /// <param name="interval">间隔时间</param>
         /// <param name="notes"></param>
         /// <returns></returns>
-        Task<string> RegisterHealthCheckAsync(string serviceName, string serviceId, Uri checkUri, TimeSpan? interval = null, string notes = null);
+        Task<string> RegisterHealthCheckAsync(string serviceName, string serviceId, Uri checkUri, ServiceType serviceType = ServiceType.HTTP, TimeSpan? interval = null, string notes = null);
 
         /// <summary>
         /// 注销实例的健康检查服务

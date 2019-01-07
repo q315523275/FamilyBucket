@@ -1,29 +1,40 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bucket.EventBus.Abstractions;
+using Bucket.EventBus.Implementation;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
 
 namespace Bucket.EventBus.Extensions
 {
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// 事件驱动
+        /// 添加事件消息总线
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="configAction"></param>
+        /// <param name="action"></param>
         /// <returns></returns>
-        public static IServiceCollection AddEventBus(this IServiceCollection services, Action<EventBusOptions> configAction)
+        public static IEventBusBuilder AddEventBus(this IServiceCollection services, Action<IEventBusBuilder> action)
         {
-            if (configAction == null) throw new ArgumentNullException(nameof(configAction));
-
-            var options = new EventBusOptions();
-            configAction?.Invoke(options);
-
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-
-            foreach (var serviceExtension in options.Extensions)
-                serviceExtension.AddServices(services);
-
-            return services;
+            var service = services.First(x => x.ServiceType == typeof(IConfiguration));
+            var configuration = (IConfiguration)service.ImplementationInstance;
+            var builder = new EventBusBuilder(services, configuration);
+            action(builder);
+            return builder;
+        }
+        /// <summary>
+        /// 添加事件消息总线
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static IEventBusBuilder AddEventBus(this IServiceCollection services, IConfiguration configuration, Action<IEventBusBuilder> action)
+        {
+            var builder = new EventBusBuilder(services, configuration);
+            action(builder);
+            return builder;
         }
     }
 }

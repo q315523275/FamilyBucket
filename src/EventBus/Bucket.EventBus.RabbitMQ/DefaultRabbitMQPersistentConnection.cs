@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
@@ -13,6 +14,7 @@ namespace Bucket.EventBus.RabbitMQ
     public class DefaultRabbitMQPersistentConnection
        : IRabbitMQPersistentConnection
     {
+        private readonly EventBusRabbitMqOptions _options;
         private readonly IConnectionFactory _connectionFactory;
         private readonly ILogger<DefaultRabbitMQPersistentConnection> _logger;
         private readonly int _retryCount;
@@ -21,11 +23,20 @@ namespace Bucket.EventBus.RabbitMQ
 
         object sync_root = new object();
 
-        public DefaultRabbitMQPersistentConnection(IConnectionFactory connectionFactory, ILogger<DefaultRabbitMQPersistentConnection> logger, int retryCount = 5)
+        public DefaultRabbitMQPersistentConnection(IOptions<EventBusRabbitMqOptions> options, ILogger<DefaultRabbitMQPersistentConnection> logger)
         {
-            _connectionFactory = connectionFactory ?? throw new ArgumentNullException(nameof(connectionFactory));
+            _options = options.Value;
+            _connectionFactory = new ConnectionFactory
+            {
+                HostName = _options.HostName,
+                Port = _options.Port,
+                UserName = _options.UserName,
+                Password = _options.Password,
+                VirtualHost = _options.VirtualHost,
+                AutomaticRecoveryEnabled = true
+            };
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _retryCount = retryCount;
+            _retryCount = _options.RetryCount;
         }
 
         public bool IsConnected

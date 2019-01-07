@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Bucket.ServiceDiscovery.Extensions;
-using Bucket.ServiceDiscovery.Consul;
+using Bucket.ServiceDiscovery.Consul.Extensions;
 using Microsoft.Extensions.Configuration;
 using Bucket.Gprc.Extensions;
 
@@ -31,7 +31,7 @@ namespace Bucket.Grpc.Server
         public void ConfigureServices(IServiceCollection services)
         {
             // 添加服务发现
-            services.AddServiceDiscovery(builder => { builder.UseConsul(Configuration); });
+            services.AddServiceDiscovery(builder => { builder.UseConsul(); });
 
             services.AddMvc();
         }
@@ -46,8 +46,8 @@ namespace Bucket.Grpc.Server
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseGrpcRegisterService(Configuration);
+            app.UseConsulRegisterService(Configuration);
+            app.UseGrpcService(Configuration);
 
             app.UseMvc(routes => {
                 routes.MapRoute("areaRoute", "view/{area:exists}/{controller}/{action=Index}/{id?}");

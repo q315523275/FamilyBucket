@@ -35,17 +35,3 @@ D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscove
 D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csproj.CopyComplete
 D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.dll
 D:\work2017\Git\FamilyBucket\Microservice\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.pdb
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.deps.json
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.dll
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.pdb
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.Core.dll
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.ServiceDiscovery.dll
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.Core.pdb
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\bin\Debug\netstandard2.0\Bucket.ServiceDiscovery.pdb
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csprojAssemblyReference.cache
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csproj.CoreCompileInputs.cache
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.AssemblyInfoInputs.cache
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.AssemblyInfo.cs
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.csproj.CopyComplete
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.dll
-D:\work2017\Github\FamilyBucket\src\ServiceDiscovery\Bucket.ServiceDiscovery.Consul\obj\Debug\netstandard2.0\Bucket.ServiceDiscovery.Consul.pdb
