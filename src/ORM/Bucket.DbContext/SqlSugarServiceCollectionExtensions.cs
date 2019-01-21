@@ -44,6 +44,7 @@ namespace Bucket.DbContext
         /// <returns>
         ///     The same service collection so that multiple calls can be chained.
         /// </returns>
+        [Obsolete("单库注入,请使用最新AddSqlSugarDbContext进行注入支持多库操作")]
         public static IServiceCollection AddSQLSugarClient<TSugarClient>(
             this IServiceCollection serviceCollection,
             Action<ConnectionConfig> configAction,

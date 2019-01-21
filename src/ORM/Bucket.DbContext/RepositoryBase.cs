@@ -25,6 +25,14 @@ namespace Bucket.DbContext
         {
             return await Context.Queryable<T>().SingleAsync(whereExpression);
         }
+        public async Task<T> GetFirstAsync(Expression<Func<T, bool>> whereExpression)
+        {
+            return await Context.Queryable<T>().FirstAsync(whereExpression);
+        }
+        public T GetFirst(Expression<Func<T, bool>> whereExpression)
+        {
+            return Context.Queryable<T>().First(whereExpression);
+        }
         public async Task<List<T>> GetPageListAsync(Expression<Func<T, bool>> whereExpression, PageModel page)
         {
             int count = 0;
@@ -74,7 +82,7 @@ namespace Bucket.DbContext
         {
             return await Context.Insertable(insertObjs).ExecuteCommandAsync() > 0;
         }
-        public async Task<bool> InsertRangeAsync(List<T>[] insertObjs)
+        public async Task<bool> InsertRangeAsync(List<T> insertObjs)
         {
             return await Context.Insertable(insertObjs).ExecuteCommandAsync() > 0;
         }
@@ -105,6 +113,44 @@ namespace Bucket.DbContext
         public async Task<bool> DeleteByIdsAsync(dynamic[] ids)
         {
             return await Context.Deleteable<T>().In(ids).ExecuteCommandAsync() > 0;
+        }
+
+        public bool InsertRange(List<T> insertObjs)
+        {
+            return Context.Insertable(insertObjs).ExecuteCommand() > 0;
+        }
+
+        public DbResult<T2> UseTran<T2>(Func<T2> action)
+        {
+            return Context.Ado.UseTran<T2>(action);
+        }
+
+        public DbResult<bool> UseTran(Action action)
+        {
+            return Context.Ado.UseTran(action);
+        }
+
+        public async Task<DbResult<T2>> UseTranAsync<T2>(Func<T2> action)
+        {
+            return await Context.Ado.UseTranAsync<T2>(action);
+        }
+
+        public async Task<DbResult<bool>> UseTranAsync(Action action)
+        {
+            return await Context.Ado.UseTranAsync(action);
+        }
+
+        public void BeginTran()
+        {
+            Context.Ado.BeginTran();
+        }
+        public void CommitTran()
+        {
+            Context.Ado.CommitTran();
+        }
+        public void RollbackTran()
+        {
+            Context.Ado.RollbackTran();
         }
     }
 }
