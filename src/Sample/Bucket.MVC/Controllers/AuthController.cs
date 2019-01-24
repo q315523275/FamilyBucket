@@ -1,41 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
 using Bucket.MVC.Models.Dto;
-using SqlSugar;
 using Bucket.WebApi;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.IO;
-using Microsoft.AspNetCore.Http.Internal;
-using Microsoft.AspNetCore.Authorization;
-using Bucket.Redis;
-using Newtonsoft.Json;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Http;
-using Rabbit.Zookeeper.Implementation;
-using System.Text;
-using Bucket.Listener.Abstractions;
+
+using Bucket.DbContext;
+using Bucket.MVC.Models;
+using Pinzhi.Credit.Model;
 
 namespace Bucket.MVC.Controllers
 {
-    [Produces("application/json")]
+    /// <summary>
+    /// 
+    /// </summary>
     public class AuthController : ApiControllerBase
     {
-        private readonly RedisClient _redisClient;
-        private readonly IConfiguration _configuration;
+        private readonly IDbRepository<WoPayUserInfo> _userRepository;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IPublishCommand _publishCommand;
 
-        public AuthController(RedisClient redisClient, IConfiguration configuration, IHttpClientFactory httpClientFactory, IPublishCommand publishCommand)
+        public AuthController(IDbRepository<WoPayUserInfo> userRepository, IHttpClientFactory httpClientFactory)
         {
-            _redisClient = redisClient;
-            _configuration = configuration;
+            _userRepository = userRepository;
             _httpClientFactory = httpClientFactory;
-            _publishCommand = publishCommand;
         }
-
-
 
         /// <summary>
         /// 111
@@ -45,20 +32,18 @@ namespace Bucket.MVC.Controllers
         [HttpPost("/auth/login")]
         public async Task<OutputLogin> Login([FromBody] InputLogin input)
         {
-            var client = _httpClientFactory.CreateClient();
-            await client.GetStringAsync("http://www.baidu.com");
             return new OutputLogin {  };
         }
-        [HttpGet("/bucket/set")]
-        public string User()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("/User")]
+        public object User()
         {
-            _publishCommand.PublishCommandMessage("Bucket.Sample", new Values.NetworkCommand { NotifyComponent = "Bucket.Config", CommandText = "ConfigRefresh" }).GetAwaiter();
-            return "0";
-        }
-        [HttpGet("/config/{key}")]
-        public string config(string key)
-        {
-            return _configuration.GetValue<string>(key);
+            var c = _userRepository.UseDb("localhost").Count(it => 1 == 1);
+            var s = _userRepository.UseDb("111").Count(it => 1 == 1);
+            return c + "---" + s;
         }
     }
 }

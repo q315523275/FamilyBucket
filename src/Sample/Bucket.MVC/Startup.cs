@@ -66,18 +66,12 @@ namespace Bucket.MVC
         /// </summary>
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            //services.AddTokenJwtAuthorize(Configuration);
-            // 添加授权认证, return true;标识不验证角色等
+            // 添加授权认证
             services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
-            services.AddSQLSugarClient<SqlSugarClient>(config => {
-                config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
-                config.DbType = DbType.MySql;
-                config.IsAutoCloseConnection = false;
-                config.InitKeyType = InitKeyType.Attribute;
-            });
+            services.AddSqlSugarDbContext();
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
@@ -85,11 +79,9 @@ namespace Bucket.MVC
             // 添加事件驱动
             services.AddEventBus(builder => { builder.UseRabbitMQ(); });
             // 添加服务发现
-            services.AddServiceDiscovery(builder => {
-                builder.UseConsul();
-            });
+            services.AddServiceDiscovery(builder => { builder.UseConsul(); });
             // 添加链路追踪
-            services.AddSkrTrace().AddAspNetCoreHosting().AddHttpClient().AddEventBusTransport();
+            // services.AddSkrTrace().AddAspNetCoreHosting().AddHttpClient().AddEventBusTransport();
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options => { options.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {
@@ -111,14 +103,32 @@ namespace Bucket.MVC
                 builder.UseZookeeper();
                 builder.AddAuthorize().AddConfig().AddErrorCode();
             });
+            // 添加全局定时任务
             services.AddBucketHostedService(builder => {
                 builder.AddAuthorize().AddConfig().AddErrorCode();
             });
             // 添加autofac容器替换，默认容器注册方式缺少功能
             var autofac_builder = new ContainerBuilder();
             autofac_builder.Populate(services);
+            autofac_builder.RegisterModule<AutofacModuleRegister>();
             AutofacContainer = autofac_builder.Build();
             return new AutofacServiceProvider(AutofacContainer);
+        }
+        /// <summary>
+        /// Autofac扩展注册
+        /// </summary>
+        public class AutofacModuleRegister : Autofac.Module
+        {
+            /// <summary>
+            /// 装载autofac方式注册
+            /// </summary>
+            /// <param name="builder"></param>
+            protected override void Load(ContainerBuilder builder)
+            {
+                // 数据仓储泛型注册
+                builder.RegisterGeneric(typeof(SqlSugarRepository<>)).As(typeof(IDbRepository<>))
+                    .InstancePerLifetimeScope();
+            }
         }
         /// <summary>
         /// 配置请求管道
