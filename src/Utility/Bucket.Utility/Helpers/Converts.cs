@@ -98,7 +98,7 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
-        /// 转换为64位浮点型,并按指定小数位舍入，温馨提示：4舍6入5成双
+        /// 转换为64位浮点型,并按指定小数位舍入
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
@@ -108,7 +108,7 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
-        /// 转换为64位可空浮点型,并按指定小数位舍入，温馨提示：4舍6入5成双
+        /// 转换为64位可空浮点型,并按指定小数位舍入
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
@@ -123,7 +123,7 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
-        /// 转换为128位浮点型,并按指定小数位舍入，温馨提示：4舍6入5成双
+        /// 转换为128位浮点型,并按指定小数位舍入
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
@@ -133,7 +133,7 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
-        /// 转换为128位可空浮点型,并按指定小数位舍入，温馨提示：4舍6入5成双
+        /// 转换为128位可空浮点型,并按指定小数位舍入
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
@@ -270,11 +270,12 @@ namespace Bucket.Utility.Helpers
             if (input is string && string.IsNullOrWhiteSpace(input.ToString()))
                 return default(T);
             Type type = Common.GetType<T>();
+            var typeName = type.Name.ToLower();
             try
             {
-                if (type.Name.ToLower() == "string")
+                if (typeName == "string")
                     return (T)(object)input.ToString();
-                if (type.Name.ToLower() == "guid")
+                if (typeName == "guid")
                     return (T)(object)new Guid(input.ToString());
                 if (type.IsEnum)
                     return Enum.Parse<T>(input);

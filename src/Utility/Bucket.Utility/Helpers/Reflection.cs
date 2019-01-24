@@ -99,15 +99,88 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
-        /// 获取实现了接口的所有具体类型
+        /// 查找类型列表
+        /// </summary>
+        /// <typeparam name="TFind">查找类型</typeparam>
+        /// <param name="assemblies">待查找的程序集列表</param>
+        public static List<Type> FindTypes<TFind>(params Assembly[] assemblies)
+        {
+            var findType = typeof(TFind);
+            return FindTypes(findType, assemblies);
+        }
+
+        /// <summary>
+        /// 查找类型列表
+        /// </summary>
+        /// <param name="findType">查找类型</param>
+        /// <param name="assemblies">待查找的程序集列表</param>
+        public static List<Type> FindTypes(Type findType, params Assembly[] assemblies)
+        {
+            var result = new List<Type>();
+            foreach (var assembly in assemblies)
+                result.AddRange(GetTypes(findType, assembly));
+            return result.Distinct().ToList();
+        }
+
+        /// <summary>
+        /// 获取类型列表
+        /// </summary>
+        private static List<Type> GetTypes(Type findType, Assembly assembly)
+        {
+            var result = new List<Type>();
+            if (assembly == null)
+                return result;
+            Type[] types;
+            try
+            {
+                types = assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException)
+            {
+                return result;
+            }
+            foreach (var type in types)
+                AddType(result, findType, type);
+            return result;
+        }
+
+        /// <summary>
+        /// 添加类型
+        /// </summary>
+        private static void AddType(List<Type> result, Type findType, Type type)
+        {
+            if (type.IsInterface || type.IsAbstract)
+                return;
+            if (findType.IsAssignableFrom(type) == false && MatchGeneric(findType, type) == false)
+                return;
+            result.Add(type);
+        }
+
+        /// <summary>
+        /// 泛型匹配
+        /// </summary>
+        private static bool MatchGeneric(Type findType, Type type)
+        {
+            if (findType.IsGenericTypeDefinition == false)
+                return false;
+            var definition = findType.GetGenericTypeDefinition();
+            foreach (var implementedInterface in type.FindInterfaces((filter, criteria) => true, null))
+            {
+                if (implementedInterface.IsGenericType == false)
+                    continue;
+                return definition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 获取实现了接口的所有实例
         /// </summary>
         /// <typeparam name="TInterface">接口类型</typeparam>
-        /// <param name="assembly">在该程序集中查找</param>
-        public static List<TInterface> GetTypesByInterface<TInterface>(Assembly assembly)
+        /// <param name="assemblies">待查找的程序集列表</param>
+        public static List<TInterface> GetInstancesByInterface<TInterface>(params Assembly[] assemblies)
         {
-            var typeInterface = typeof(TInterface);
-            return assembly.GetTypes()
-                .Where(t => typeInterface.GetTypeInfo().IsAssignableFrom(t) && t != typeInterface && t.GetTypeInfo().IsAbstract == false)
+            return FindTypes<TInterface>(assemblies)
                 .Select(t => CreateInstance<TInterface>(t)).ToList();
         }
 
@@ -119,7 +192,7 @@ namespace Bucket.Utility.Helpers
         /// <param name="parameters">传递给构造函数的参数</param>        
         public static T CreateInstance<T>(Type type, params object[] parameters)
         {
-            return Bucket.Utility.Helpers.Converts.To<T>(Activator.CreateInstance(type, parameters));
+            return Helpers.Converts.To<T>(Activator.CreateInstance(type, parameters));
         }
 
         /// <summary>
@@ -297,6 +370,17 @@ namespace Bucket.Utility.Helpers
         }
 
         /// <summary>
+        /// 是否集合
+        /// </summary>
+        /// <param name="type">类型</param>
+        public static bool IsCollection(Type type)
+        {
+            if (type.IsArray)
+                return true;
+            return IsGenericCollection(type);
+        }
+
+        /// <summary>
         /// 是否泛型集合
         /// </summary>
         /// <param name="type">类型</param>
@@ -322,6 +406,40 @@ namespace Bucket.Utility.Helpers
             return Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories).ToList()
                 .Where(t => t.EndsWith(".exe") || t.EndsWith(".dll"))
                 .Select(path => Assembly.Load(new AssemblyName(path))).ToList();
+        }
+
+        /// <summary>
+        /// 获取公共属性列表
+        /// </summary>
+        /// <param name="instance">实例</param>
+        public static List<Item> GetPublicProperties(object instance)
+        {
+            var properties = instance.GetType().GetProperties();
+            return properties.ToList().Select(t => new Item(t.Name, t.GetValue(instance))).ToList();
+        }
+
+        /// <summary>
+        /// 获取顶级基类
+        /// </summary>
+        /// <typeparam name="T">类型</typeparam>
+        public static Type GetTopBaseType<T>()
+        {
+            return GetTopBaseType(typeof(T));
+        }
+
+        /// <summary>
+        /// 获取顶级基类
+        /// </summary>
+        /// <param name="type">类型</param>
+        public static Type GetTopBaseType(Type type)
+        {
+            if (type == null)
+                return null;
+            if (type.IsInterface)
+                return type;
+            if (type.BaseType == typeof(object))
+                return type;
+            return GetTopBaseType(type.BaseType);
         }
     }
 }

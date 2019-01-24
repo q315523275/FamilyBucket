@@ -1,10 +1,7 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using Bucket.Utility.Files;
-using Bucket.Utility.Randoms;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
-
+using Bucket.Utility.Files;
 namespace Bucket.Utility
 {
     /// <summary>
@@ -20,8 +17,6 @@ namespace Bucket.Utility
         {
             // 添加文件操作
             services.AddSingleton<IBucketFileProvider, BucketFileProvider>();
-            // 添加随机ID
-            services.AddSingleton<IRandomGenerator, GuidRandomGenerator>();
             // 值设置
             Helpers.Web.HttpContextAccessor = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
             Helpers.Web.Environment = services.BuildServiceProvider().GetRequiredService<IHostingEnvironment>();

@@ -118,13 +118,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Authorize.HostedServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Authorize.Listener", "Authorize\Bucket.Authorize.Listener\Bucket.Authorize.Listener.csproj", "{D4CE49F7-7FAC-490D-89AD-982E1B44E125}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.ErrorCode.HostedService", "ErrorCode\Bucket.ErrorCode.HostedService\Bucket.ErrorCode.HostedService.csproj", "{C80AA07C-7BA8-451E-A7DE-95451685D55A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ErrorCode.HostedService", "ErrorCode\Bucket.ErrorCode.HostedService\Bucket.ErrorCode.HostedService.csproj", "{C80AA07C-7BA8-451E-A7DE-95451685D55A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.ErrorCode.Listener", "ErrorCode\Bucket.ErrorCode.Listener\Bucket.ErrorCode.Listener.csproj", "{626C3C54-9C05-49CC-8C03-F17F4DECEBEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ErrorCode.Listener", "ErrorCode\Bucket.ErrorCode.Listener\Bucket.ErrorCode.Listener.csproj", "{626C3C54-9C05-49CC-8C03-F17F4DECEBEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Logging.Nlog", "Logging\Bucket.Logging.Nlog\Bucket.Logging.Nlog.csproj", "{451575B0-4861-4A88-8179-6836AAF8855B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Logging.Nlog", "Logging\Bucket.Logging.Nlog\Bucket.Logging.Nlog.csproj", "{451575B0-4861-4A88-8179-6836AAF8855B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Logging.Log4Net", "Logging\Bucket.Logging.Log4Net\Bucket.Logging.Log4Net.csproj", "{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Logging.Log4Net", "Logging\Bucket.Logging.Log4Net\Bucket.Logging.Log4Net.csproj", "{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ImgVerifyCode", "Utility\Bucket.ImgVerifyCode\Bucket.ImgVerifyCode.csproj", "{14B58D49-DD40-4793-9187-50E0EEB6D070}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Rsa", "Utility\Bucket.Rsa\Bucket.Rsa.csproj", "{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Pinyin", "Utility\Bucket.Pinyin\Bucket.Pinyin.csproj", "{899988A0-4C44-4218-9C98-7931F5801F11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Sample\ConsoleApp1\ConsoleApp1.csproj", "{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -308,6 +316,22 @@ Global
 		{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B58D49-DD40-4793-9187-50E0EEB6D070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B58D49-DD40-4793-9187-50E0EEB6D070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B58D49-DD40-4793-9187-50E0EEB6D070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B58D49-DD40-4793-9187-50E0EEB6D070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899988A0-4C44-4218-9C98-7931F5801F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899988A0-4C44-4218-9C98-7931F5801F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899988A0-4C44-4218-9C98-7931F5801F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899988A0-4C44-4218-9C98-7931F5801F11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -355,6 +379,10 @@ Global
 		{626C3C54-9C05-49CC-8C03-F17F4DECEBEE} = {D52E35E4-D189-4E47-8DDB-CE8D04EDE677}
 		{451575B0-4861-4A88-8179-6836AAF8855B} = {8984ACAF-D4CE-442D-AEE5-C23D835C9544}
 		{33EE7DA3-1E7C-4317-8D3E-17B3A52DBEF7} = {8984ACAF-D4CE-442D-AEE5-C23D835C9544}
+		{14B58D49-DD40-4793-9187-50E0EEB6D070} = {D1BD2BBF-B8EB-4831-9693-B89623501692}
+		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1} = {D1BD2BBF-B8EB-4831-9693-B89623501692}
+		{899988A0-4C44-4218-9C98-7931F5801F11} = {D1BD2BBF-B8EB-4831-9693-B89623501692}
+		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6} = {D7BAC7F7-413F-4C18-8F57-F171410F3C93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA0759A0-104C-4213-9D48-D4F7E3E74EEB}

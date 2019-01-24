@@ -6,9 +6,6 @@
 *.cache
 *.suo
 *.log
-packages/
-/.vs
-Thumbs.db
 *.nuspec
 *.dll
 *.pdb
@@ -21,6 +18,10 @@ Thumbs.db
 *.ide
 *.lock
 *.props
+*Thumbs.db
+packages/
 bin/
+bin
 obj/
-src/.vs/Bucket/DesignTimeBuild/.dtbcache
+obj
+.vs/

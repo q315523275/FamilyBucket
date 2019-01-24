@@ -52,7 +52,7 @@
         /// </summary>
         public double GetSizeByK()
         {
-            return Bucket.Utility.Helpers.Converts.ToDouble(_size / 1024.0, 2);
+            return Helpers.Converts.ToDouble(_size / 1024.0, 2);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@
         /// </summary>
         public double GetSizeByM()
         {
-            return Bucket.Utility.Helpers.Converts.ToDouble(_size / 1024.0 / 1024.0, 2);
+            return Helpers.Converts.ToDouble(_size / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@
         /// </summary>
         public double GetSizeByG()
         {
-            return Bucket.Utility.Helpers.Converts.ToDouble(_size / 1024.0 / 1024.0 / 1024.0, 2);
+            return Helpers.Converts.ToDouble(_size / 1024.0 / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>

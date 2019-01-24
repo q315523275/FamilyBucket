@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+    <Authors>FamilyBucket</Authors>
+    <Description>与Java RSAWithSHA256对接,依赖RSAUtil</Description>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="XC.RSAUtil" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

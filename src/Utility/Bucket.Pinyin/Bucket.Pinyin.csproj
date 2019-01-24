@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>汉字转拼音,支持多音字,依赖PinYinConverterCore</Description>
+    <Authors>FamilyBucket</Authors>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PinYinConverterCore" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>

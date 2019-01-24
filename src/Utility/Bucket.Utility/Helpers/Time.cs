@@ -2,7 +2,7 @@
 
 namespace Bucket.Utility.Helpers
 {
-    /// <summary>
+    // <summary>
     /// 时间操作
     /// </summary>
     public static class Time
@@ -72,7 +72,7 @@ namespace Bucket.Utility.Helpers
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
             long ticks = (time - start.Add(new TimeSpan(8, 0, 0))).Ticks;
-            return Bucket.Utility.Helpers.Converts.ToLong(ticks / TimeSpan.TicksPerSecond);
+            return Converts.ToLong(ticks / TimeSpan.TicksPerSecond);
         }
 
         /// <summary>

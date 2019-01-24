@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace Bucket.Utility
 {
@@ -14,7 +15,11 @@ namespace Bucket.Utility
         /// <param name="instance">成员所在的类实例</param>
         public static object GetPropertyValue(this MemberInfo member, object instance)
         {
-            return instance.GetType().GetProperty(member.Name).GetValue(instance);
+            if (member == null)
+                throw new ArgumentNullException(nameof(member));
+            if (instance == null)
+                throw new ArgumentNullException(nameof(instance));
+            return instance.GetType().GetProperty(member.Name)?.GetValue(instance);
         }
     }
 }

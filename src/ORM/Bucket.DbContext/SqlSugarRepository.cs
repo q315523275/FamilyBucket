@@ -14,7 +14,7 @@ namespace Bucket.DbContext
         public SqlSugarRepository(IEnumerable<BucketSqlSugarClient> clients)
         {
             _clients = clients;
-            DbContext = _clients.FirstOrDefault();
+            DbContext = _clients.FirstOrDefault(it => it.Default);
         }
 
         public BucketSqlSugarClient DbContext { get; set; }

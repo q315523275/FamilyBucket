@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using Bucket.Utility.Helpers.Internal;
-
 namespace Bucket.Utility.Helpers
 {
     /// <summary>
     /// 加密操作
-    /// 说明：
-    /// 1. AES加密整理自支付宝SDK
-    /// 2. RSA加密采用 https://github.com/stulzq/DotnetCore.RSA/blob/master/DotnetCore.RSA/RSAHelper.cs
     /// </summary>
     public static class Encrypt
     {
@@ -53,7 +48,7 @@ namespace Bucket.Utility.Helpers
             {
                 md5.Clear();
             }
-            return result.Replace("-", "");
+            return result.Replace("-", "").ToLower();
         }
 
         /// <summary>
@@ -77,297 +72,81 @@ namespace Bucket.Utility.Helpers
 
         #endregion
 
-        #region DES加密
-
-        /// <summary>
-        /// DES密钥,24位字符串
-        /// </summary>
-        public static string DesKey = "#s^un2ye21fcv%|f0XpR,+vh";
-
-        /// <summary>
-        /// DES加密
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        public static string DesEncrypt(object value)
-        {
-            return DesEncrypt(value, DesKey);
-        }
-
-        /// <summary>
-        /// DES加密
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥,24位</param>
-        public static string DesEncrypt(object value, string key)
-        {
-            return DesEncrypt(value, key, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// DES加密
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥,24位</param>
-        /// <param name="encoding">编码</param>
-        public static string DesEncrypt(object value, string key, Encoding encoding)
-        {
-            string text = value.SafeString();
-            if (ValidateDes(text, key) == false)
-                return string.Empty;
-            using (var transform = CreateDesProvider(key).CreateEncryptor())
-            {
-                return GetEncryptResult(text, encoding, transform);
-            }
-        }
-
-        /// <summary>
-        /// 验证Des加密参数
-        /// </summary>
-        private static bool ValidateDes(string text, string key)
-        {
-            if (string.IsNullOrWhiteSpace(text) || string.IsNullOrWhiteSpace(key))
-                return false;
-            return key.Length == 24;
-        }
-
-        /// <summary>
-        /// 创建Des加密服务提供程序
-        /// </summary>
-        private static TripleDESCryptoServiceProvider CreateDesProvider(string key)
-        {
-            return new TripleDESCryptoServiceProvider { Key = Encoding.ASCII.GetBytes(key), Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 };
-        }
-
-        /// <summary>
-        /// 获取加密结果
-        /// </summary>
-        private static string GetEncryptResult(string value, Encoding encoding, ICryptoTransform transform)
-        {
-            var bytes = encoding.GetBytes(value);
-            var result = transform.TransformFinalBlock(bytes, 0, bytes.Length);
-            return System.Convert.ToBase64String(result);
-        }
-
-        /// <summary>
-        /// DES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        public static string DesDecrypt(object value)
-        {
-            return DesDecrypt(value, DesKey);
-        }
-
-        /// <summary>
-        /// DES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        /// <param name="key">密钥,24位</param>
-        public static string DesDecrypt(object value, string key)
-        {
-            return DesDecrypt(value, key, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// DES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        /// <param name="key">密钥,24位</param>
-        /// <param name="encoding">编码</param>
-        public static string DesDecrypt(object value, string key, Encoding encoding)
-        {
-            string text = value.SafeString();
-            if (!ValidateDes(text, key))
-                return string.Empty;
-            using (var transform = CreateDesProvider(key).CreateDecryptor())
-            {
-                return GetDecryptResult(text, encoding, transform);
-            }
-        }
-
-        /// <summary>
-        /// 获取解密结果
-        /// </summary>
-        private static string GetDecryptResult(string value, Encoding encoding, ICryptoTransform transform)
-        {
-            var bytes = System.Convert.FromBase64String(value);
-            var result = transform.TransformFinalBlock(bytes, 0, bytes.Length);
-            return encoding.GetString(result);
-        }
-
-        #endregion
-
         #region AES加密
-
-        /// <summary>
-        /// 128位0向量
-        /// </summary>
-        private static byte[] _iv;
-        /// <summary>
-        /// 128位0向量
-        /// </summary>
-        private static byte[] Iv
-        {
-            get
-            {
-                if (_iv == null)
-                {
-                    var size = 16;
-                    _iv = new byte[size];
-                    for (int i = 0; i < size; i++)
-                        _iv[i] = 0;
-                }
-                return _iv;
-            }
-        }
-
         /// <summary>
         /// AES密钥
         /// </summary>
-        public static string AesKey = "QaP1AF8utIarcBqdhYTZpVGbiNQ9M6IL";
-
+        private static string _aeskey = "0123456789abcdef";
         /// <summary>
-        /// AES加密
+        /// Aes加密
         /// </summary>
-        /// <param name="value">待加密的值</param>
-        public static string AesEncrypt(string value)
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static string AesEncrypt(string content)
         {
-            return AesEncrypt(value, AesKey);
+            return AesEncrypt(content, _aeskey);
         }
-
         /// <summary>
-        /// AES加密
+        /// Aes加密
         /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        public static string AesEncrypt(string value, string key)
+        /// <param name="content"></param>
+        /// <param name="key">常规字符串</param>
+        /// <returns></returns>
+        public static string AesEncrypt(string content, string key)
         {
-            return AesEncrypt(value, key, Encoding.UTF8);
-        }
+            byte[] toEncryptArray = Encoding.UTF8.GetBytes(content);
+            var des = CreateSymmetricAlgorithm(key);
 
-        /// <summary>
-        /// AES加密
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        /// <param name="encoding">编码</param>
-        public static string AesEncrypt(string value, string key, Encoding encoding)
-        {
-            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
-                return string.Empty;
-            var rijndaelManaged = CreateRijndaelManaged(key);
-            using (var transform = rijndaelManaged.CreateEncryptor(rijndaelManaged.Key, rijndaelManaged.IV))
+            using (var cTransform = des.CreateEncryptor())
             {
-                return GetEncryptResult(value, encoding, transform);
+                byte[] resultArray = GetTransformFinalBlock(cTransform, toEncryptArray);
+                return System.Convert.ToBase64String(resultArray);
             }
         }
-
         /// <summary>
-        /// 创建RijndaelManaged
+        /// Aes解密
         /// </summary>
-        private static RijndaelManaged CreateRijndaelManaged(string key)
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static string AesDecrypt(string content)
         {
-            return new RijndaelManaged
+            return AesDecrypt(content, _aeskey);
+        }
+        /// <summary>
+        /// Aes解密
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="key">常规字符串</param>
+        /// <returns></returns>
+        public static string AesDecrypt(string content, string key)
+        {
+            byte[] toEncryptArray = System.Convert.FromBase64String(content);
+            var des = CreateSymmetricAlgorithm(key);
+
+            using (var cTransform = des.CreateDecryptor())
             {
-                Key = System.Convert.FromBase64String(key),
-                Mode = CipherMode.CBC,
-                Padding = PaddingMode.PKCS7,
-                IV = Iv
-            };
-        }
-
-        /// <summary>
-        /// AES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        public static string AesDecrypt(string value)
-        {
-            return AesDecrypt(value, AesKey);
-        }
-
-        /// <summary>
-        /// AES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        /// <param name="key">密钥</param>
-        public static string AesDecrypt(string value, string key)
-        {
-            return AesDecrypt(value, key, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// AES解密
-        /// </summary>
-        /// <param name="value">加密后的值</param>
-        /// <param name="key">密钥</param>
-        /// <param name="encoding">编码</param>
-        public static string AesDecrypt(string value, string key, Encoding encoding)
-        {
-            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
-                return string.Empty;
-            var rijndaelManaged = CreateRijndaelManaged(key);
-            using (var transform = rijndaelManaged.CreateDecryptor(rijndaelManaged.Key, rijndaelManaged.IV))
-            {
-                return GetDecryptResult(value, encoding, transform);
+                byte[] resultArray = GetTransformFinalBlock(cTransform, toEncryptArray);
+                return Encoding.Default.GetString(resultArray);
             }
         }
-
-        #endregion
-
-        #region RSA签名
-
         /// <summary>
-        /// RSA加密，采用 SHA1 算法
+        /// 创建SymmetricAlgorithm
         /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        public static string RsaSign(string value, string key)
+        /// <param name="aesKey"></param>
+        /// <returns></returns>
+        private static SymmetricAlgorithm CreateSymmetricAlgorithm(string aesKey)
         {
-            return RsaSign(value, key, Encoding.UTF8);
+            byte[] keyArray = Encoding.UTF8.GetBytes(aesKey);
+            SymmetricAlgorithm des = Aes.Create();
+            des.Key = keyArray;
+            des.Mode = CipherMode.ECB;
+            des.Padding = PaddingMode.PKCS7;
+            return des;
         }
-
-        /// <summary>
-        /// RSA加密，采用 SHA1 算法
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        /// <param name="encoding">编码</param>
-        public static string RsaSign(string value, string key, Encoding encoding)
+        private static byte[] GetTransformFinalBlock(ICryptoTransform cTransform, byte[] dateArray)
         {
-            return RsaSign(value, key, encoding, RSAType.RSA);
+            return cTransform.TransformFinalBlock(dateArray, 0, dateArray.Length);
         }
-
-        /// <summary>
-        /// RSA加密，采用 SHA256 算法
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        public static string Rsa2Sign(string value, string key)
-        {
-            return Rsa2Sign(value, key, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// RSA加密，采用 SHA256 算法
-        /// </summary>
-        /// <param name="value">待加密的值</param>
-        /// <param name="key">密钥</param>
-        /// <param name="encoding">编码</param>
-        public static string Rsa2Sign(string value, string key, Encoding encoding)
-        {
-            return RsaSign(value, key, encoding, RSAType.RSA2);
-        }
-
-        /// <summary>
-        /// Rsa加密
-        /// </summary>
-        private static string RsaSign(string value, string key, Encoding encoding, RSAType type)
-        {
-            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
-                return string.Empty;
-            var rsa = new RsaHelper(type, encoding, key);
-            return rsa.Sign(value);
-        }
-
         #endregion
 
         #region SHA256加密
@@ -419,7 +198,7 @@ namespace Bucket.Utility.Helpers
                     data = new byte[length];
                     for (int i = 0; i < length; i++)
                     {
-                        data[i] = Convert.ToByte(hexString.Substring(2 * i, 2), 16);
+                        data[i] = System.Convert.ToByte(hexString.Substring(2 * i, 2), 16);
                     }
                 }
             }

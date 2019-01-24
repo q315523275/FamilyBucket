@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SqlSugar;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bucket.DbContext
@@ -16,7 +17,7 @@ namespace Bucket.DbContext
         {
             var service = services.First(x => x.ServiceType == typeof(IConfiguration));
             var configuration = (IConfiguration)service.ImplementationInstance;
-            var connectOptions = configuration.GetSection("DbConfig").Get<DbConnectOption[]>();
+            var connectOptions = configuration.GetSection("DbConfig").Get<List<DbConnectOption>>();
             if(connectOptions != null)
             {
                 foreach(var option in connectOptions)
@@ -27,7 +28,7 @@ namespace Bucket.DbContext
                             DbType = option.DbType,
                             IsAutoCloseConnection = option.IsAutoCloseConnection,
                             InitKeyType = InitKeyType.Attribute
-                        }, option.Name); });
+                        }, option.Name, option.Default); });
                     if (contextLifetime == ServiceLifetime.Singleton)
                         services.AddSingleton(s => {
                             return new BucketSqlSugarClient(new ConnectionConfig
@@ -36,7 +37,7 @@ namespace Bucket.DbContext
                                 DbType = option.DbType,
                                 IsAutoCloseConnection = option.IsAutoCloseConnection,
                                 InitKeyType = InitKeyType.Attribute
-                            }, option.Name);
+                            }, option.Name, option.Default);
                         });
                     if (contextLifetime == ServiceLifetime.Transient)
                         services.AddTransient(s => {
@@ -46,7 +47,7 @@ namespace Bucket.DbContext
                                 DbType = option.DbType,
                                 IsAutoCloseConnection = option.IsAutoCloseConnection,
                                 InitKeyType = InitKeyType.Attribute
-                            }, option.Name);
+                            }, option.Name, option.Default);
                         });
                 }
             }
