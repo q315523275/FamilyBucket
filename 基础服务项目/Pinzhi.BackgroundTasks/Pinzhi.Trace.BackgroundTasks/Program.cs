@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Bucket.Config;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,9 @@ namespace Pinzhi.Trace.BackgroundTasks
                        .AddJsonFile("appsettings.json", true, true)
                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                        .AddEnvironmentVariables();
+                       var option = new BucketConfigOptions();
+                       _config.Build().GetSection("ConfigServer").Bind(option);
+                       _config.AddBucketConfig(option);
                    })
                    .UseStartup<Startup>()
                    .UseUrls(hosting.GetValue<string>("urls"))

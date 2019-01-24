@@ -34,7 +34,7 @@ namespace Pinzhi.Identity.WebApi.Controllers
             var redis = _redisClient.GetDatabase(rediscontect, 5);
             var code = Bucket.Utility.Helpers.Randoms.CreateRandomValue(4, false);
             redis.StringSet($"ImgCode:{guid}", code, new TimeSpan(0, 0, 0, 300));
-            var st = Bucket.Utility.Helpers.VerifyCode.CreateByteByImgVerifyCode(code, width, height);
+            var st = Bucket.ImgVerifyCode.VerifyCode.CreateByteByImgVerifyCode(code, width, height);
             return File(st, "image/jpeg");
         }
     }

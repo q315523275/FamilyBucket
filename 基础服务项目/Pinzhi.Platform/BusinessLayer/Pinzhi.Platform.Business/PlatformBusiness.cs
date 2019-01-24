@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Bucket.Config;
 using Bucket.Core;
+using Bucket.DbContext;
 using Bucket.Redis;
 using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Interface;
@@ -20,12 +21,12 @@ namespace Pinzhi.Platform.Business
         /// <summary>
         /// 数据库操作
         /// </summary>
-        private readonly SqlSugarClient _dbContext;
+        private readonly BucketSqlSugarClient _dbContext;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IConfig _configCenter;
         private readonly RedisClient _redisClient;
-        public PlatformBusiness(SqlSugarClient dbContext, IMapper mapper,RedisClient redisClient,IJsonHelper jsonHelper, IConfig configCenter)
+        public PlatformBusiness(BucketSqlSugarClient dbContext, IMapper mapper,RedisClient redisClient,IJsonHelper jsonHelper, IConfig configCenter)
         {
             _dbContext = dbContext;
             _mapper = mapper;

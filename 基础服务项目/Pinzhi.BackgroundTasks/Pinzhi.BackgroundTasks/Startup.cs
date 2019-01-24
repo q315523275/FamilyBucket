@@ -1,24 +1,31 @@
 ﻿using Bucket.AspNetCore.Extensions;
 using Bucket.Config.Extensions;
+using Bucket.Config.HostedService;
 using Bucket.EventBus.Extensions;
-using Bucket.EventBus.RabbitMQ;
+using Bucket.EventBus.RabbitMQ.Extensions;
+using Bucket.HostedService.AspNetCore;
 using Bucket.Logging;
 using Bucket.Logging.Events;
-using Bucket.Tracing.Events;
 using Bucket.Utility;
+using Bucket.DbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Pinzhi.Logging.EventSubscribe;
-using Pinzhi.Logging.EventSubscribe.Options;
 using Pinzhi.Sms.Event;
 using Pinzhi.Sms.EventSubscribe;
-using Pinzhi.Tracing.EventSubscribe;
-using Pinzhi.Tracing.EventSubscribe.Elasticsearch;
-using Pinzhi.Tracing.EventSubscribe.Options;
+using Pinzhi.WxAppletTemplateMessage.Event;
+using Pinzhi.WxAppletTemplateMessage.EventSubscribe;
+using Pinzhi.User.EventSubscribe;
+using Pinzhi.Logging.EventSubscribe;
+using Pinzhi.User.Event;
+using Autofac;
+using System.Reflection;
+using Autofac.Extensions.DependencyInjection;
+using System;
+
 namespace Pinzhi.BackgroundTasks
 {
     public class Startup
@@ -36,9 +43,13 @@ namespace Pinzhi.BackgroundTasks
         /// </summary>
         public IConfiguration Configuration { get; }
         /// <summary>
+        /// AutofacDI容器
+        /// </summary>
+        public IContainer AutofacContainer { get; private set; }
+        /// <summary>
         /// 配置服务
         /// </summary>
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             // mvc
             services.AddMvc();
@@ -46,21 +57,28 @@ namespace Pinzhi.BackgroundTasks
             services.AddBucket();
             // 添加日志
             services.AddEventLog();
+            // 添加数据库Orm
+            services.AddSqlSugarDbContext();
             // 添加配置服务
-            services.AddConfigService(Configuration);
+            services.AddConfigServer(Configuration);
             // 添加事件驱动
-            services.AddEventBus(option =>
-            {
-                option.UseRabbitMQ(Configuration);
-            });
+            services.AddEventBus(option => { option.UseRabbitMQ(); });
             // 添加HttpClient
             services.AddHttpClient();
             // 添加工具
             services.AddUtil();
             // 添加缓存
             services.AddMemoryCache();
+            // 添加定时任务
+            services.AddBucketHostedService(builder => { builder.AddConfig(); });
             // 事件注册
             RegisterEventBus(services);
+            // 添加autofac容器替换，默认容器注册方式缺少功能
+            var autofac_builder = new ContainerBuilder();
+            autofac_builder.Populate(services);
+            autofac_builder.RegisterModule<AutofacModuleRegister>();
+            AutofacContainer = autofac_builder.Build();
+            return new AutofacServiceProvider(AutofacContainer);
         }
         /// <summary>
         /// 注册事件驱动
@@ -68,22 +86,11 @@ namespace Pinzhi.BackgroundTasks
         /// <param name="services"></param>
         private void RegisterEventBus(IServiceCollection services)
         {
-            // 日志统计库
-            var dbConnectionString = Configuration.GetValue<string>("SqlSugarClient:ConnectionString");
-            // 添加链路追踪ES消费配置
-            services.Configure<ElasticsearchOptions>(Configuration.GetSection("Elasticsearch"));
-            services.AddSingleton<IIndexManager, IndexManager>();
-            services.AddSingleton<IElasticClientFactory, ElasticClientFactory>();
-            services.AddScoped<ISpanStorage, ElasticsearchSpanStorage>();
-            services.AddScoped<IServiceStorage, ElasticsearchServiceStorage>();
-            // 添加数据库配置
-            services.AddSingleton(p => new LoggingDbOptions { ConnectionString = dbConnectionString, DbShardingRule = 0, DbType = "MySql", IsDbSharding = false, IsWriteConsole = true });
-            services.AddSingleton(p => new TraceDbOptions {  ConnectionString = dbConnectionString });
             // 事件
-            services.AddScoped<DbLogEventHandler>();
+            services.AddScoped<ErrorLogEventHandler>();
             services.AddScoped<SmsEventHandler>();
-            services.AddScoped<TracingEventHandler>();
-            services.AddScoped<TraceTimeEventHandler>();
+            services.AddScoped<WxAppletTemplateMessageEventHandler>();
+            services.AddScoped<UserActionEventHandler>();
         }
         /// <summary>
         /// 配置请求管道
@@ -98,11 +105,6 @@ namespace Pinzhi.BackgroundTasks
             loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
             // 事件订阅
             ConfigureEventBus(app);
-            // 默认启动
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
         }
         /// <summary>
         /// 配置EventBus任务
@@ -111,11 +113,28 @@ namespace Pinzhi.BackgroundTasks
         private void ConfigureEventBus(IApplicationBuilder app)
         {
             var eventBus = app.ApplicationServices.GetRequiredService<Bucket.EventBus.Abstractions.IEventBus>();
-            eventBus.Subscribe<LogEvent, DbLogEventHandler>();
+            eventBus.Subscribe<LogEvent, ErrorLogEventHandler>();
             eventBus.Subscribe<SmsEvent, SmsEventHandler>();
-            eventBus.Subscribe<TracingEvent, TraceTimeEventHandler>();
+            eventBus.Subscribe<WxAppletTemplateMessageEvent, WxAppletTemplateMessageEventHandler>();
+            eventBus.Subscribe<UserActionEvent, UserActionEventHandler>();
             // start consume
             eventBus.StartSubscribe();
+        }
+    }
+    /// <summary>
+    /// Autofac扩展注册
+    /// </summary>
+    public class AutofacModuleRegister : Autofac.Module
+    {
+        /// <summary>
+        /// 装载autofac方式注册
+        /// </summary>
+        /// <param name="builder"></param>
+        protected override void Load(ContainerBuilder builder)
+        {
+            // 数据仓储泛型注册
+            builder.RegisterGeneric(typeof(SqlSugarRepository<>)).As(typeof(IDbRepository<>))
+                .InstancePerLifetimeScope();
         }
     }
 }

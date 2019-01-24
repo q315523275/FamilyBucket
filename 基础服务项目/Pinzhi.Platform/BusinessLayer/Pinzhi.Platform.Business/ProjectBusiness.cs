@@ -9,6 +9,7 @@ using Pinzhi.Platform.Interface;
 using Bucket.Listener.Abstractions;
 using System;
 using Bucket.Utility;
+using Bucket.DbContext;
 
 namespace Pinzhi.Platform.Business
 {
@@ -20,13 +21,13 @@ namespace Pinzhi.Platform.Business
         /// <summary>
         /// 数据库操作
         /// </summary>
-        private readonly SqlSugarClient _dbContext;
+        private readonly BucketSqlSugarClient _dbContext;
         private readonly RedisClient _redisClient;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
         private readonly IPublishCommand _publishCommand;
-        public ProjectBusiness(SqlSugarClient dbContext,
+        public ProjectBusiness(BucketSqlSugarClient dbContext,
             IMapper mapper,
             RedisClient redisClient,
             IJsonHelper jsonHelper,

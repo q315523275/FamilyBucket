@@ -33,6 +33,10 @@ using Bucket.Tracing.Events;
 using Bucket.Logging;
 using Bucket.Logging.Events;
 using Bucket.Authorize;
+using Bucket.EventBus.RabbitMQ.Extensions;
+using Bucket.ServiceDiscovery.Consul.Extensions;
+using Bucket.HostedService.AspNetCore;
+using Bucket.Config.HostedService;
 
 namespace Pinzhi.Identity.WebApi
 {
@@ -67,31 +71,24 @@ namespace Pinzhi.Identity.WebApi
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
-            services.AddSQLSugarClient<SqlSugarClient>(config => {
-                config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
-                config.DbType = DbType.MySql;
-                config.IsAutoCloseConnection = false;
-                config.InitKeyType = InitKeyType.Attribute;
-            });
+            services.AddSqlSugarDbContext();
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
-            services.AddConfigService(Configuration);
+            services.AddConfigServer(Configuration);
             // 添加事件驱动
-            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(); });
             // 添加服务发现
-            services.AddServiceDiscovery(builder => { builder.UseConsul(Configuration); });
+            services.AddServiceDiscovery(builder => { builder.UseConsul(); });
             // 添加事件队列日志
             services.AddEventLog();
+            // 添加全局定时服务
+            services.AddBucketHostedService(builder => { builder.AddConfig(); });
             // 添加链路追踪
             services.AddTracer(Configuration);
             services.AddEventTrace();
             // 添加过滤器
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
-                options.Filters.Add(typeof(WebApiActionFilterAttribute));
-            }).AddJsonOptions(options =>
+            services.AddMvc(options => { options.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
@@ -142,7 +139,8 @@ namespace Pinzhi.Identity.WebApi
         private void ConfigSwagger(IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => {
+            app.UseSwaggerUI(c =>
+            {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1");
             });
         }
@@ -167,7 +165,8 @@ namespace Pinzhi.Identity.WebApi
         /// </summary>
         private void ConfigRoute(IApplicationBuilder app)
         {
-            app.UseMvc(routes => {
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute("areaRoute", "view/{area:exists}/{controller}/{action=Index}/{id?}");
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
@@ -197,7 +196,7 @@ namespace Pinzhi.Identity.WebApi
                     .AsImplementedInterfaces()
                     .InstancePerLifetimeScope();
                 // 数据仓储泛型注册
-                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
+                builder.RegisterGeneric(typeof(SqlSugarRepository<>)).As(typeof(IDbRepository<>))
                     .InstancePerLifetimeScope();
             }
         }

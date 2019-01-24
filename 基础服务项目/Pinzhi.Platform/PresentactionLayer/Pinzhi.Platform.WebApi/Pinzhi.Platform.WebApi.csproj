@@ -25,11 +25,12 @@
     <PackageReference Include="Bucket.Config" Version="1.2.1" />
     <PackageReference Include="Bucket.Config.HostedService" Version="1.1.0" />
     <PackageReference Include="Bucket.Config.Listener" Version="1.1.1" />
-    <PackageReference Include="Bucket.DbContext" Version="1.1.6" />
+    <PackageReference Include="Bucket.DbContext" Version="1.2.0" />
     <PackageReference Include="Bucket.ErrorCode" Version="1.2.1" />
     <PackageReference Include="Bucket.ErrorCode.HostedService" Version="1.1.0" />
     <PackageReference Include="Bucket.ErrorCode.Listener" Version="1.1.1" />
-    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.6" />
+    <PackageReference Include="Bucket.EventBus" Version="1.1.5" />
+    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.7" />
     <PackageReference Include="Bucket.HostedService.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Bucket.Listener" Version="1.1.1" />
     <PackageReference Include="Bucket.Listener.Redis" Version="1.1.1" />
@@ -41,7 +42,7 @@
     <PackageReference Include="Bucket.ServiceDiscovery.Consul" Version="1.1.4" />
     <PackageReference Include="Bucket.Tracing" Version="1.1.9" />
     <PackageReference Include="Bucket.Tracing.Events" Version="1.1.2" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.2" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>

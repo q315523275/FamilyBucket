@@ -11,6 +11,7 @@ using Pinzhi.Platform.Interface;
 using Bucket.Utility;
 using System.Collections.Generic;
 using Bucket.Utility.Helpers;
+using Bucket.DbContext;
 
 namespace Pinzhi.Platform.Business
 {
@@ -19,13 +20,13 @@ namespace Pinzhi.Platform.Business
         /// <summary>
         /// 数据库操作
         /// </summary>
-        private readonly SqlSugarClient _dbContext;
+        private readonly BucketSqlSugarClient _dbContext;
         private readonly RedisClient _redisClient;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
         private readonly IRoleBusiness _roleBusiness;
-        public UserBusiness(SqlSugarClient dbContext,
+        public UserBusiness(BucketSqlSugarClient dbContext,
             IMapper mapper,
             RedisClient redisClient,
             IJsonHelper jsonHelper,

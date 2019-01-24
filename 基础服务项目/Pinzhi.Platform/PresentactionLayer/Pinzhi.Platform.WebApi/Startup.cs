@@ -76,12 +76,7 @@ namespace Pinzhi.Platform.WebApi
             // 添加基础设施服务
             services.AddBucket();
             // 添加数据ORM
-            services.AddSQLSugarClient<SqlSugarClient>(config => {
-                config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
-                config.DbType = DbType.MySql;
-                config.IsAutoCloseConnection = false;
-                config.InitKeyType = InitKeyType.Attribute;
-            });
+            services.AddSqlSugarDbContext();
             // 添加错误码服务
             services.AddErrorCodeServer(Configuration);
             // 添加配置服务
@@ -157,7 +152,7 @@ namespace Pinzhi.Platform.WebApi
                     .AsImplementedInterfaces()
                     .InstancePerLifetimeScope();
                 // 数据仓储泛型注册
-                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
+                builder.RegisterGeneric(typeof(SqlSugarRepository<>)).As(typeof(IDbRepository<>))
                     .InstancePerLifetimeScope();
             }
         }

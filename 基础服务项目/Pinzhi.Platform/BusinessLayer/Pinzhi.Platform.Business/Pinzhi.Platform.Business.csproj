@@ -7,10 +7,10 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Bucket.Core" Version="1.1.7" />
-    <PackageReference Include="Bucket.DbContext" Version="1.1.6" />
+    <PackageReference Include="Bucket.DbContext" Version="1.2.0" />
     <PackageReference Include="Bucket.Listener" Version="1.1.1" />
     <PackageReference Include="Bucket.Redis" Version="1.0.2" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.2" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.4" />
   </ItemGroup>
 
   <ItemGroup>

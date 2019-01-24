@@ -6,23 +6,26 @@ using SqlSugar;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using Bucket.DbContext;
 
 namespace Pinzhi.Identity.Business
 {
     public class ThirdBusiness : IThirdBusiness
     {
-        private readonly SqlSugarClient _dbContext;
+        private readonly IDbRepository<ThirdOAuthInfo> _oauthDbRepository;
         private readonly IUser _user;
         private readonly IWxRepository _wxRepository;
         private readonly IAuthRepository _authRepository;
 
-        public ThirdBusiness(SqlSugarClient dbContext, IUser user, IWxRepository wxRepository, IAuthRepository authRepository)
+        public ThirdBusiness(IDbRepository<ThirdOAuthInfo> oauthDbRepository, IUser user, IWxRepository wxRepository, IAuthRepository authRepository)
         {
-            _dbContext = dbContext;
+            _oauthDbRepository = oauthDbRepository;
             _user = user;
             _wxRepository = wxRepository;
             _authRepository = authRepository;
         }
+
+
 
         /// <summary>
         /// 微信小程序Code验证
@@ -48,7 +51,7 @@ namespace Pinzhi.Identity.Business
         public async Task<WxMiniLoginOutput> WxMiniLogin(WxMiniLoginInput input)
         {
             var openInfo = await _wxRepository.QueryOpenIdAsync(input.Code, input.AppId);
-            var authInfo = await _dbContext.Queryable<ThirdOAuthInfo>().Where(it => it.OpenId == openInfo.OpenId && it.AuthServer == "WxMini").FirstAsync();
+            var authInfo = await _oauthDbRepository.GetFirstAsync(it => it.OpenId == openInfo.OpenId && it.AuthServer == "WxMini");
             if (authInfo == null)
                 return new WxMiniLoginOutput { Data = null };
             var uid = authInfo.Uid;

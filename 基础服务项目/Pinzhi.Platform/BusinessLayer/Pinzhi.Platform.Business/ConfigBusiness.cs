@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Bucket.Listener.Abstractions;
 using Pinzhi.Platform.Dto.Config;
+using Bucket.DbContext;
 
 namespace Pinzhi.Platform.Business
 {
     public class ConfigBusiness : IConfigBusiness
     {
-        private readonly SqlSugarClient _dbContext;
+        private readonly BucketSqlSugarClient _dbContext;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
         private readonly IPublishCommand _publishCommand;
-        public ConfigBusiness(SqlSugarClient dbContext,
+        public ConfigBusiness(BucketSqlSugarClient dbContext,
             IMapper mapper,
             IJsonHelper jsonHelper,
             IUser user,

@@ -23,14 +23,16 @@ namespace Pinzhi.Platform.Interface
     {
         private readonly IServiceDiscovery _serviceDiscovery;
         private readonly IConfig _config;
-        private readonly IRepositoryBase<ApiGatewayConfigurationInfo> _apigatewayRepository;
+        private readonly IDbRepository<ApiGatewayConfigurationInfo> _apigatewayRepository;
 
-        public MicroserviceBusiness(IServiceDiscovery serviceDiscovery, IConfig config, IRepositoryBase<ApiGatewayConfigurationInfo> apigatewayRepository)
+        public MicroserviceBusiness(IServiceDiscovery serviceDiscovery, IConfig config, IDbRepository<ApiGatewayConfigurationInfo> apigatewayRepository)
         {
             _serviceDiscovery = serviceDiscovery;
             _config = config;
             _apigatewayRepository = apigatewayRepository;
         }
+
+
 
 
         /// <summary>

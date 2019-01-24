@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Bucket.Core" Version="1.1.7" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Config.Dto\Pinzhi.Config.Dto.csproj" />
+    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Config.Model\Pinzhi.Config.Model.csproj" />
+    <ProjectReference Include="..\Pinzhi.Config.Interface\Pinzhi.Config.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

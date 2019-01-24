@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Tracing.EventSubscri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.BackgroundTasks", "Pinzhi.BackgroundTasks\Pinzhi.BackgroundTasks.csproj", "{EE7FC02C-A05D-4EFE-AEEF-4B96A3C4DA74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinzhi.Trace.BackgroundTasks", "Pinzhi.Trace.BackgroundTasks\Pinzhi.Trace.BackgroundTasks.csproj", "{F1B14E35-2823-42EF-A704-1DB6486FBEFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Trace.BackgroundTasks", "Pinzhi.Trace.BackgroundTasks\Pinzhi.Trace.BackgroundTasks.csproj", "{F1B14E35-2823-42EF-A704-1DB6486FBEFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.WxAppletTemplateMessage.EventSubscribe", "Pinzhi.WxAppletTemplateMessage.EventSubscribe\Pinzhi.WxAppletTemplateMessage.EventSubscribe.csproj", "{DA674AA7-3724-4539-805B-999BFFA3C1DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinzhi.User.EventSubscribe", "Pinzhi.User.EventSubscribe\Pinzhi.User.EventSubscribe.csproj", "{4221AFD9-D03D-456C-AF84-08701448B295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1B14E35-2823-42EF-A704-1DB6486FBEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA674AA7-3724-4539-805B-999BFFA3C1DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA674AA7-3724-4539-805B-999BFFA3C1DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA674AA7-3724-4539-805B-999BFFA3C1DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA674AA7-3724-4539-805B-999BFFA3C1DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4221AFD9-D03D-456C-AF84-08701448B295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4221AFD9-D03D-456C-AF84-08701448B295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4221AFD9-D03D-456C-AF84-08701448B295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4221AFD9-D03D-456C-AF84-08701448B295}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

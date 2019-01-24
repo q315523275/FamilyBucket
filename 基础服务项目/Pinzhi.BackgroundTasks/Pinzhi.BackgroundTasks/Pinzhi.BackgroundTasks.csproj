@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <StartupObject>Pinzhi.BackgroundTasks.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,20 +20,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bucket.AspNetCore" Version="1.1.6" />
-    <PackageReference Include="Bucket.Config" Version="1.1.4" />
-    <PackageReference Include="Bucket.EventBus" Version="1.1.3" />
-    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.5" />
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="Bucket.AspNetCore" Version="1.1.9" />
+    <PackageReference Include="Bucket.Config" Version="1.2.1" />
+    <PackageReference Include="Bucket.Config.HostedService" Version="1.1.0" />
+    <PackageReference Include="Bucket.DbContext" Version="1.2.0" />
+    <PackageReference Include="Bucket.EventBus" Version="1.1.5" />
+    <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.7" />
+    <PackageReference Include="Bucket.HostedService.AspNetCore" Version="1.1.0" />
     <PackageReference Include="Bucket.Logging" Version="1.1.3" />
     <PackageReference Include="Bucket.Logging.Events" Version="1.1.2" />
-    <PackageReference Include="Bucket.Utility" Version="1.1.2" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Pinzhi.Logging.EventSubscribe\Pinzhi.Logging.EventSubscribe.csproj" />
     <ProjectReference Include="..\Pinzhi.Sms.EventSubscribe\Pinzhi.Sms.EventSubscribe.csproj" />
-    <ProjectReference Include="..\Pinzhi.Tracing.EventSubscribe\Pinzhi.Tracing.EventSubscribe.csproj" />
+    <ProjectReference Include="..\Pinzhi.User.EventSubscribe\Pinzhi.User.EventSubscribe.csproj" />
+    <ProjectReference Include="..\Pinzhi.WxAppletTemplateMessage.EventSubscribe\Pinzhi.WxAppletTemplateMessage.EventSubscribe.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,7 +5,6 @@ using Pinzhi.Identity.Model;
 using Pinzhi.Identity.Dto.Auth;
 
 using System;
-using SqlSugar;
 using Bucket.Exceptions;
 using Bucket.Utility;
 using Bucket.Utility.Helpers;
@@ -13,6 +12,8 @@ using Bucket.Redis;
 using Bucket.Config;
 using System.Linq;
 using System.Collections.Generic;
+using Bucket.DbContext;
+using SqlSugar;
 
 namespace Pinzhi.Identity.Business.Auth
 {
@@ -21,22 +22,19 @@ namespace Pinzhi.Identity.Business.Auth
         private readonly IAuthRepository _authRepository;
         private readonly IConfig _config;
         private readonly ILogger<AuthBusiness> _logger;
-
-        private readonly SqlSugarClient _dbContext;
+        private readonly IDbRepository<UserInfo> _userDbRepository;
         private readonly RedisClient _redisClient;
 
-        public AuthBusiness(IAuthRepository authRepository,
-            IConfig config,
-            ILogger<AuthBusiness> logger,
-            SqlSugarClient dbContext,
-            RedisClient redisClient)
+        public AuthBusiness(IAuthRepository authRepository, IConfig config, ILogger<AuthBusiness> logger, IDbRepository<UserInfo> userDbRepository, RedisClient redisClient)
         {
             _authRepository = authRepository;
-            _dbContext = dbContext;
             _config = config;
-            _redisClient = redisClient;
             _logger = logger;
+            _userDbRepository = userDbRepository;
+            _redisClient = redisClient;
         }
+
+
         /// <summary>
         /// 用户密码登陆
         /// </summary>
@@ -50,7 +48,7 @@ namespace Pinzhi.Identity.Business.Auth
             if (kv.IsNullOrEmpty || kv.ToString().ToLower() != input.ImgCode.ToLower())
                 throw new BucketException("GO_2003", "图形验证码错误");
             // 用户验证
-            var userInfo = await _dbContext.Queryable<UserInfo>().Where(it => it.UserName == input.UserName).FirstAsync();
+            var userInfo = await _userDbRepository.GetFirstAsync(it => it.UserName == input.UserName);
             if (userInfo == null)
                 throw new BucketException("GO_0004007", "账号不存在");
             if (userInfo.State != 1)
@@ -58,7 +56,7 @@ namespace Pinzhi.Identity.Business.Auth
             if (userInfo.Password != Encrypt.SHA256(input.Password + userInfo.Salt))
                 throw new BucketException("GO_4009", "账号或密码错误");
             // 用户角色
-            var roleList = await _dbContext.Queryable<RoleInfo, UserRoleInfo>((role, urole) => new object[] { JoinType.Inner, role.Id == urole.RoleId })
+            var roleList = await _userDbRepository.DbContext.Queryable<RoleInfo, UserRoleInfo>((role, urole) => new object[] { JoinType.Inner, role.Id == urole.RoleId })
                  .Where((role, urole) => urole.Uid == userInfo.Id)
                  .Where((role, urole) => role.IsDel == false)
                  .Select((role, urole) => new { role.Key })

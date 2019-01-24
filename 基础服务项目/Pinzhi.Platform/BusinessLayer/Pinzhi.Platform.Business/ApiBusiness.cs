@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Pinzhi.Platform.Interface;
 using System;
 using Bucket.Utility;
+using Bucket.DbContext;
+
 namespace Pinzhi.Platform.Business
 {
     public class ApiBusiness : IApiBusiness
@@ -15,12 +17,12 @@ namespace Pinzhi.Platform.Business
         /// <summary>
         /// 数据库操作
         /// </summary>
-        private readonly SqlSugarClient _dbContext;
+        private readonly BucketSqlSugarClient _dbContext;
         private readonly RedisClient _redisClient;
         private readonly IMapper _mapper;
         private readonly IJsonHelper _jsonHelper;
         private readonly IUser _user;
-        public ApiBusiness(SqlSugarClient dbContext,
+        public ApiBusiness(BucketSqlSugarClient dbContext,
             IMapper mapper,
             RedisClient redisClient,
             IJsonHelper jsonHelper,
