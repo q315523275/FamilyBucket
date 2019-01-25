@@ -132,7 +132,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Rsa", "Utility\Bucke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Pinyin", "Utility\Bucket.Pinyin\Bucket.Pinyin.csproj", "{899988A0-4C44-4218-9C98-7931F5801F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Sample\ConsoleApp1\ConsoleApp1.csproj", "{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "Sample\ConsoleApp1\ConsoleApp1.csproj", "{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.ApiGateway.ConfigStored.MySql", "ApiGateway\Bucket.ApiGateway.ConfigStored.MySql\Bucket.ApiGateway.ConfigStored.MySql.csproj", "{1C939715-47A6-4F72-AFC0-4FE63977F71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.ApiGateway.ConfigStored.Redis", "ApiGateway\Bucket.ApiGateway.ConfigStored.Redis\Bucket.ApiGateway.ConfigStored.Redis.csproj", "{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -332,6 +336,14 @@ Global
 		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C939715-47A6-4F72-AFC0-4FE63977F71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C939715-47A6-4F72-AFC0-4FE63977F71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C939715-47A6-4F72-AFC0-4FE63977F71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C939715-47A6-4F72-AFC0-4FE63977F71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -383,6 +395,8 @@ Global
 		{BCBAB2CD-21CC-4381-B7A8-FBB0817791B1} = {D1BD2BBF-B8EB-4831-9693-B89623501692}
 		{899988A0-4C44-4218-9C98-7931F5801F11} = {D1BD2BBF-B8EB-4831-9693-B89623501692}
 		{52E210DA-96AF-4EC1-B0AD-1C5D5CA873F6} = {D7BAC7F7-413F-4C18-8F57-F171410F3C93}
+		{1C939715-47A6-4F72-AFC0-4FE63977F71D} = {67FFA8E6-86B4-4B2A-BAA8-CEF3787034B7}
+		{35AC57BF-099A-45E5-A8B9-21E6F6C7FCAA} = {67FFA8E6-86B4-4B2A-BAA8-CEF3787034B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA0759A0-104C-4213-9D48-D4F7E3E74EEB}
