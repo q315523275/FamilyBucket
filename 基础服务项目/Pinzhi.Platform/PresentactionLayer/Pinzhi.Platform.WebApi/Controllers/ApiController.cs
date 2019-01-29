@@ -9,7 +9,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
     /// <summary>
     /// Api资源控制器
     /// </summary>
-    [Produces("application/json")]
+    [Authorize("permission")]
     public class ApiController : Controller
     {
         private readonly IApiBusiness _apiBusiness;
@@ -26,7 +26,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Api/QueryApiList")]
         public async Task<QueryApisOutput> QueryApiList([FromQuery] QueryApisInput input)
         {
@@ -37,7 +36,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Api/SetApi")]
         public async Task<SetApiOutput> SetApi([FromBody] SetApiInput input)
         {

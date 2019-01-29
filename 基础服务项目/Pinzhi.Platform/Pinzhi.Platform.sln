@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.Model", "En
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Platform.WebApi", "PresentactionLayer\Pinzhi.Platform.WebApi\Pinzhi.Platform.WebApi.csproj", "{69F29084-9ABD-4D3E-91CF-9C85861B90D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "PresentactionLayer\ConsoleApp1\ConsoleApp1.csproj", "{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{69F29084-9ABD-4D3E-91CF-9C85861B90D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69F29084-9ABD-4D3E-91CF-9C85861B90D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F29084-9ABD-4D3E-91CF-9C85861B90D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{D97696D0-0241-4404-87EB-4B53C786CCD7} = {BC2EF692-4D20-45C5-8BFC-2E77B7CFC846}
 		{0AE3664D-C41B-4DC9-881C-7B25C67169C0} = {BC2EF692-4D20-45C5-8BFC-2E77B7CFC846}
 		{69F29084-9ABD-4D3E-91CF-9C85861B90D7} = {C49A2AF4-7A72-467D-956F-81E446B476DA}
+		{55CFA76C-99B2-4473-94AD-7CD67B9B7BD2} = {C49A2AF4-7A72-467D-956F-81E446B476DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {410E226E-AE5F-4086-B6F5-60B84136C00A}

@@ -9,7 +9,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
     /// <summary>
     /// 项目控制器
     /// </summary>
-    [Produces("application/json")]
+    [Authorize("permission")]
     public class ProjectController : Controller
     {
         private readonly IProjectBusiness _projectBusiness;
@@ -21,7 +21,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查看项目列表信息
         /// </summary>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Project/QueryProject")]
         public async Task<QueryProjectOutput> QueryProject()
         {
@@ -32,7 +31,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Project/SetProject")]
         public async Task<SetProjectOutput> SetProject([FromBody] SetProjectInput input)
         {
@@ -43,7 +41,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Project/PublishCommand")]
         public async Task<PublishCommandOutput> PublishCommand([FromBody] PublishCommandInput input)
         {

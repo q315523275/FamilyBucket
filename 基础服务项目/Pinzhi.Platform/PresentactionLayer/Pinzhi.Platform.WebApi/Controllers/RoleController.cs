@@ -13,7 +13,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
     /// <summary>
     /// 角色控制器
     /// </summary>
-    [Produces("application/json")]
+    [Authorize("permission")]
     public class RoleController : Controller
     {
         private readonly IRoleBusiness _roleBusiness;
@@ -26,7 +26,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Role/QueryAllRoles")]
         public async Task<QueryRolesOutput> QueryAllRoles([FromQuery] QueryRolesInput input)
         {
@@ -37,7 +36,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Role/QueryRoles")]
         public async Task<QueryRolesOutput> QueryRoles([FromQuery] QueryRolesInput input)
         {
@@ -48,7 +46,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Role/QueryRoleInfo")]
         public async Task<QueryRoleInfoOutput> QueryRoleInfo([FromQuery] QueryRoleInfoInput input)
         {
@@ -59,7 +56,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Role/SetRole")]
         public async Task<SetRoleOutput> SetRole([FromBody] SetRoleInput input)
         {

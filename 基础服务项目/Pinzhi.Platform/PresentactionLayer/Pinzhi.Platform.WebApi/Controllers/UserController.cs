@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Pinzhi.Platform.WebApi.Controllers
 {
-    [Produces("application/json")]
+    [Authorize("permission")]
     public class UserController : Controller
     {
         private readonly IUserBusiness _userBusiness;
@@ -19,7 +19,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/User/QueryUsers")]
         public async Task<QueryUsersOutput> QueryUsers([FromQuery] QueryUsersInput input)
         {
@@ -31,7 +30,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/User/SetUser")]
         public async Task<SetUserOutput> SetUser([FromBody] SetUserInput input)
         {

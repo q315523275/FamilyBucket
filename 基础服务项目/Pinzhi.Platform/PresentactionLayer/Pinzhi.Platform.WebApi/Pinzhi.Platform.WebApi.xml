@@ -88,17 +88,6 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="T:Pinzhi.Platform.WebApi.Controllers.HomeController">
-            <summary>
-            首页
-            </summary>
-        </member>
-        <member name="M:Pinzhi.Platform.WebApi.Controllers.HomeController.Index">
-            <summary>
-            首页
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Pinzhi.Platform.WebApi.Controllers.MenuController">
             <summary>
             菜单控制器
@@ -149,16 +138,42 @@
             <param name="input"></param>
             <returns></returns>
         </member>
-        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.GetApiGatewayConfiguration">
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.QueryApiGatewayConfiguration(Pinzhi.Platform.Dto.Microservice.QueryApiGatewayConfigurationInput)">
             <summary>
-            查询网关配置
+            查询网关配置列表
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.SetApiGatewayConfiguration">
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.SetApiGatewayConfiguration(Pinzhi.Platform.Dto.Microservice.SetApiGatewayConfigurationInput)">
             <summary>
             设置网关配置
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.QueryApiGatewayReRouteList(Pinzhi.Platform.Dto.Microservice.QueryApiGatewayReRouteListInput)">
+            <summary>
+            查询网关路由列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.SetApiGatewayReRoute(Pinzhi.Platform.Dto.Microservice.SetApiGatewayReRouteInput)">
+            <summary>
+            设置网关路由
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.SyncApiGatewayConfigurationToConsul(Pinzhi.Platform.Dto.Microservice.SyncApiGatewayConfigurationInput)">
+            <summary>
+            同步网关配置到Consul
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pinzhi.Platform.WebApi.Controllers.MicroserviceController.SyncApiGatewayConfigurationToRedis(Pinzhi.Platform.Dto.Microservice.SyncApiGatewayConfigurationInput)">
+            <summary>
+            同步网关配置到Redis
+            </summary>
+            <param name="input"></param>
             <returns></returns>
         </member>
         <member name="T:Pinzhi.Platform.WebApi.Controllers.PlatformController">

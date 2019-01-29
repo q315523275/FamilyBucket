@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bucket.DbContext" Version="1.2.0" />
+    <PackageReference Include="Bucket.Utility" Version="1.1.4" />
+    <PackageReference Include="Consul" Version="0.7.2.6" />
+    <PackageReference Include="Ocelot" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EntityLayer\Pinzhi.Platform.Model\Pinzhi.Platform.Model.csproj" />
+  </ItemGroup>
+
+</Project>

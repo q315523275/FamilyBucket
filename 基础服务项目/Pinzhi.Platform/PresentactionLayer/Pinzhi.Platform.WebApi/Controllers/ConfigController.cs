@@ -14,7 +14,7 @@ namespace Pinzhi.Platform.WebApi.Controllers
     /// <summary>
     /// 配置管理控制器
     /// </summary>
-    [Produces("application/json")]
+    [Authorize("permission")]
     public class ConfigController : Controller
     {
         private readonly IConfigBusiness _configBusniess;
@@ -30,7 +30,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// 查看所有项目组
         /// </summary>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Config/QueryAppList")]
         public async Task<QueryAppListOutput> QueryAppList()
         {
@@ -41,7 +40,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Config/SetAppInfo")]
         public async Task<SetAppInfoOutput> SetAppInfo([FromBody] SetAppInfoInput input)
         {
@@ -52,7 +50,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Config/QueryAppProjectList")]
         public async Task<QueryAppProjectListOutput> QueryAppProjectList([FromQuery] QueryAppProjectListInput input)
         {
@@ -63,7 +60,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Config/SetAppProjectInfo")]
         public async Task<SetAppProjectInfoOutput> SetAppProjectInfo([FromBody] SetAppProjectInfoInput input)
         {
@@ -74,7 +70,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpGet("/Config/QueryAppConfigList")]
         public async Task<QueryAppConfigListOutput> QueryAppConfigList([FromQuery] QueryAppConfigListInput input)
         {
@@ -85,7 +80,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Config/SetAppConfigInfo")]
         public async Task<SetAppConfigInfoOutput> SetAppConfigInfo([FromBody] SetAppConfigInfoInput input)
         {
@@ -96,7 +90,6 @@ namespace Pinzhi.Platform.WebApi.Controllers
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        [Authorize("permission")]
         [HttpPost("/Config/PublishCommand")]
         public async Task<PublishCommandOutput> PublishCommand([FromBody] PublishCommandInput input)
         {

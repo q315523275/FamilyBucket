@@ -1,19 +1,20 @@
 ﻿using SqlSugar;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Pinzhi.Platform.Model
 {
-    [SugarTable("tb_apigateway")]
+    [SugarTable("tb_apigateway_config")]
     public class ApiGatewayConfigurationInfo
     {
-        /// <summary>
-        /// udcid 
-        /// </summary>
         [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
-        public int Id { set; get; }
-        public string ConfigurationKey { set; get; }
-        public string Configuration { set; get; }
+        public int GatewayId { set; get; }
+        public string GatewayKey { set; get; }
+        public string BaseUrl { set; get; }
+        public string DownstreamScheme { set; get; }
+        public string RequestIdKey { set; get; }
+        public string HttpHandlerOptions { set; get; }
+        public string LoadBalancerOptions { set; get; }
+        public string QoSOptions { set; get; }
+        public string ServiceDiscoveryProvider { set; get; }
+        public string RateLimitOptions { set; get; }
     }
 }

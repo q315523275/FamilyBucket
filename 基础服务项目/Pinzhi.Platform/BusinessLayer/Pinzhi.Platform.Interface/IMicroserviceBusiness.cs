@@ -1,8 +1,5 @@
 ﻿using Pinzhi.Platform.Dto;
 using Pinzhi.Platform.Dto.Microservice;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Pinzhi.Platform.Interface
@@ -16,7 +13,11 @@ namespace Pinzhi.Platform.Interface
         Task<QueryServiceListOutput> QueryServiceList(QueryServiceListInput input);
         Task<SetServiceInfoOutput> SetServiceInfo(SetServiceInfoInput input);
         Task<DeleteServiceOutput> DeleteService(DeleteServiceInput input);
-        Task<GetApiGatewayConfigurationOutput> GetApiGatewayConfiguration();
-        Task<BaseOutput> SetApiGatewayConfiguration();
+        Task<QueryApiGatewayConfigurationOutput> QueryApiGatewayConfiguration(QueryApiGatewayConfigurationInput input);
+        Task<BaseOutput> SetApiGatewayConfiguration(SetApiGatewayConfigurationInput input);
+        Task<QueryApiGatewayReRouteListOutput> QueryApiGatewayReRouteList(QueryApiGatewayReRouteListInput input);
+        Task<BaseOutput> SetApiGatewayReRoute(SetApiGatewayReRouteInput input);
+        Task<BaseOutput> SyncApiGatewayConfigurationToConsul(SyncApiGatewayConfigurationInput input);
+        Task<BaseOutput> SyncApiGatewayConfigurationToRedis(SyncApiGatewayConfigurationInput input);
     }
 }
