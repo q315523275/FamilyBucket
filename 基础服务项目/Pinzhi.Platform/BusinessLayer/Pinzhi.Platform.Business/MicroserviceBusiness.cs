@@ -161,10 +161,16 @@ namespace Pinzhi.Platform.Interface
                 RateLimitOptions = Json.ToJson(input.RateLimitOptions),
                 RequestIdKey = input.RequestIdKey,
             };
-            if (rerouteInfo.GatewayId > 0)
+            if (rerouteInfo.Id > 0)
+            {
+                var route = _routeDbRepository.GetFirst(it => it.UpstreamPathTemplate == rerouteInfo.UpstreamPathTemplate && it.GatewayId == rerouteInfo.GatewayId);
+                if (route != null && route.Id != rerouteInfo.Id)
+                    throw new BucketException("ms_003", "上游路由规则已存在");
                 await _routeDbRepository.UpdateAsync(rerouteInfo);
+            }
             else
             {
+                // 在网关内已存在
                 if (_routeDbRepository.IsAny(it => it.UpstreamPathTemplate == rerouteInfo.UpstreamPathTemplate && it.GatewayId == rerouteInfo.GatewayId))
                     throw new BucketException("ms_003", "上游路由规则已存在");
                 await _routeDbRepository.InsertAsync(rerouteInfo);
