@@ -267,8 +267,8 @@ CREATE TABLE `tb_appnamespace` (
 -- ----------------------------
 INSERT INTO `tb_appnamespace` VALUES ('1', 'Public', 'FamilyBucket', '1', '业务公共参数', '0', '2018-05-10 11:03:17', '1548387601696', '2019-01-03 14:25:46', '1548387601696');
 INSERT INTO `tb_appnamespace` VALUES ('2', 'Bucket.Public', 'FamilyBucket', '1', '框架公共参数', '0', '2019-01-02 09:28:43', '1548387601696', '2019-01-02 09:28:54', '1548387601696');
-INSERT INTO `tb_appnamespace` VALUES ('3', 'Pinzhi.Identity.WebApi', 'FamilyBucket', '0', '品值认证授权中心', '0', '2018-07-19 10:46:32', '1548387601696', '2018-07-19 10:46:32', '1548387601696');
-INSERT INTO `tb_appnamespace` VALUES ('7', 'Pinzhi.BackgroundTasks', 'FamilyBucket', '0', '品值默认事件订阅', '0', '2018-09-26 16:56:09', '1548387601696', '2018-09-26 18:28:44', '1548387601696');
+INSERT INTO `tb_appnamespace` VALUES ('3', 'Pinzhi.Identity.WebApi', 'FamilyBucket', '0', '认证授权中心', '0', '2018-07-19 10:46:32', '1548387601696', '2018-07-19 10:46:32', '1548387601696');
+INSERT INTO `tb_appnamespace` VALUES ('7', 'Pinzhi.BackgroundTasks', 'FamilyBucket', '0', '默认事件订阅', '0', '2018-09-26 16:56:09', '1548387601696', '2018-09-26 18:28:44', '1548387601696');
 INSERT INTO `tb_appnamespace` VALUES ('8', 'Pinzhi.Platform.WebApi', 'FamilyBucket', '0', '系统管理平台', '0', '2018-11-20 18:06:39', '1548387601696', '2018-11-20 18:06:39', '1548387601696');
 
 -- ----------------------------
@@ -348,11 +348,11 @@ CREATE TABLE `tb_platforms` (
 -- ----------------------------
 -- Records of tb_platforms
 -- ----------------------------
-INSERT INTO `tb_platforms` VALUES ('1', '品值综合管理平台', 'Pinzhi.Platform.Poc', null, null, null, null, '1', '2018-06-21 18:26:23', '0');
-INSERT INTO `tb_platforms` VALUES ('2', '品值统一认证平台', 'Pinzhi.Platform.Identity', null, null, null, null, '2', '2018-11-27 09:13:03', '0');
-INSERT INTO `tb_platforms` VALUES ('3', '品值统一消息平台', 'Pinzhi.Platform.MqMessage', null, null, null, null, '3', '2018-11-27 09:14:28', '0');
-INSERT INTO `tb_platforms` VALUES ('4', '品值统一日志平台', 'Pinzhi.Platform.LogMessage', null, null, null, null, '4', '2018-11-27 09:15:32', '0');
-INSERT INTO `tb_platforms` VALUES ('5', '品值统一调度平台', 'Pinzhi.Platform.Task', null, null, null, null, '5', '2018-11-27 09:21:29', '0');
+INSERT INTO `tb_platforms` VALUES ('1', '综合管理平台', 'Pinzhi.Platform.Poc', null, null, null, null, '1', '2018-06-21 18:26:23', '0');
+INSERT INTO `tb_platforms` VALUES ('2', '统一认证平台', 'Pinzhi.Platform.Identity', null, null, null, null, '2', '2018-11-27 09:13:03', '0');
+INSERT INTO `tb_platforms` VALUES ('3', '统一消息平台', 'Pinzhi.Platform.MqMessage', null, null, null, null, '3', '2018-11-27 09:14:28', '0');
+INSERT INTO `tb_platforms` VALUES ('4', '统一日志平台', 'Pinzhi.Platform.LogMessage', null, null, null, null, '4', '2018-11-27 09:15:32', '0');
+INSERT INTO `tb_platforms` VALUES ('5', '统一调度平台', 'Pinzhi.Platform.Task', null, null, null, null, '5', '2018-11-27 09:21:29', '0');
 
 -- ----------------------------
 -- Table structure for tb_projects
