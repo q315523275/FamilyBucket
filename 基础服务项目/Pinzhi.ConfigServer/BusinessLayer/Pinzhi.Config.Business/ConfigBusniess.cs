@@ -8,6 +8,7 @@ using Bucket.Exceptions;
 using Bucket.Utility;
 using Pinzhi.Config.Interface;
 using System;
+using Bucket.DbContext;
 
 namespace Pinzhi.Config.Business
 {
@@ -16,8 +17,8 @@ namespace Pinzhi.Config.Business
         /// <summary>
         /// 数据库操作
         /// </summary>
-        private readonly SqlSugarClient _dbContext;
-        public ConfigBusniess(SqlSugarClient dbContext)
+        private readonly BucketSqlSugarClient _dbContext;
+        public ConfigBusniess(BucketSqlSugarClient dbContext)
         {
             _dbContext = dbContext;
         }

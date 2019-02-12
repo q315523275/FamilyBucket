@@ -110,6 +110,8 @@ namespace Pinzhi.Config.WebApi
         {
             // 全局错误日志
             app.UseErrorLog();
+            // 认证授权
+            app.UseAuthentication();
             // 静态文件
             app.UseStaticFiles();
             // 路由

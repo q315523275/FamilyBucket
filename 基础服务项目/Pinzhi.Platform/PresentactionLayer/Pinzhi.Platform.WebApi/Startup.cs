@@ -97,7 +97,6 @@ namespace Pinzhi.Platform.WebApi
             // 添加过滤器
             services.AddMvc(options =>
             {
-                // options.Filters.Add(typeof(WebApiTracingFilterAttribute));
                 options.Filters.Add(typeof(WebApiActionFilterAttribute));
             }).AddJsonOptions(options =>
             {

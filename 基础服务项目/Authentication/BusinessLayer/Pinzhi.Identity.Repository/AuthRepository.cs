@@ -85,40 +85,10 @@ namespace Pinzhi.Identity.Repository
 
             // 生成验证码
             string loginCode = Randoms.CreateRandomValue(6, true);
-            // 发送短信
-            //Dictionary<string, object> dic = new Dictionary<string, object>
-            //{
-            //    { "SmsCode", loginCode }
-            //};
-            // 短发推送
-            //_eventBus.Publish(new SmsEvent(dic)
-            //{
-            //    ChannelType = 0,
-            //    MobIp = Web.Ip,
-            //    Sender = "6b4b881169e144da9ae93113c0ca41d4",
-            //    SmsTemplateId = 2,
-            //    SmsTemplateName = smsTemplateName,
-            //    Source = "品值GO用户登陆项目",
-            //    Mob = mobile,
-            //});
-
             // 基础键值
             // @event.MobIp.Split(',')[0] 当多层代理时x-forwarded-for多ip
-            Dictionary<string, object> dic = new Dictionary<string, object>{
-                { "channelType", "0" },
-                { "smsTemplateId", "2" },
-                { "smsTemplateName", smsTemplateName },
-                { "source", "品值GO用户登陆项目" },
-                { "sender", "6b4b881169e144da9ae93113c0ca41d4" },
-                { "mobIp", Web.Ip.Split(',')[0] },
-                { "mob", mobile },
-                { "SmsCode", loginCode }
-            };
-            var body = JsonConvert.SerializeObject(dic);
-            var apiUrl = _config.StringGet("SmsApiUrl");
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.PostAsync(apiUrl, new StringContent(body, Encoding.UTF8, "application/json"));
-            response.EnsureSuccessStatusCode();
+            // 短信发送接口
+
             // 验证码缓存
             await redis.StringSetAsync(loginCodeKey, loginCode, new TimeSpan(0, 0, 0, 300));
             // 发送人缓存(60秒发一次)
@@ -140,6 +110,7 @@ namespace Pinzhi.Identity.Repository
             // keys
             var errCountKey = string.Format(CacheKeys.SmsCodeVerifyErr, mobile);
             var loginCodeKey = string.Format(CacheKeys.SmsCodeLoginCode, mobile);
+            var sendCountKey = string.Format(CacheKeys.SmsCodeSendIdentity, mobile);
 
             var rediscontect = _config.StringGet("RedisDefaultServer");
             var redis = _redisClient.GetDatabase(rediscontect, 5);
@@ -162,8 +133,8 @@ namespace Pinzhi.Identity.Repository
                 throw new BucketException("GO_0005015", "验证码错误");
             }
             // 清除次数
-            await redis.KeyDeleteAsync(errCountKey);
-            await redis.KeyDeleteAsync(loginCodeKey);
+            var delKeys = new StackExchange.Redis.RedisKey[] { errCountKey, loginCodeKey, sendCountKey };
+            await redis.KeyDeleteAsync(delKeys);
         }
     }
 }

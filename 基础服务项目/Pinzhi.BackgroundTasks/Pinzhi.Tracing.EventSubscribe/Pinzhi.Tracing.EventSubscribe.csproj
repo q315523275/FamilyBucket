@@ -15,4 +15,8 @@
     <PackageReference Include="NEST" Version="5.6.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Options\" />
+  </ItemGroup>
+
 </Project>

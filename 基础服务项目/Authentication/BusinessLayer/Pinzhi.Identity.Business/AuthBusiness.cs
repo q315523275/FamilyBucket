@@ -117,6 +117,10 @@ namespace Pinzhi.Identity.Business.Auth
         /// <returns></returns>
         public async Task<SendSmsCodeOutput> SendSmsCodeAsync(SendSmsCodeInput input)
         {
+            // 账号判断
+
+            // 
+            await _authRepository.SendSmsCodeAsync(input.Mobile, input.SmsTemplateName);
             return new SendSmsCodeOutput { Message = "发送成功" };
         }
     }

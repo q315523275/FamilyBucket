@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.Trace.BackgroundTask
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.WxAppletTemplateMessage.EventSubscribe", "Pinzhi.WxAppletTemplateMessage.EventSubscribe\Pinzhi.WxAppletTemplateMessage.EventSubscribe.csproj", "{DA674AA7-3724-4539-805B-999BFFA3C1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinzhi.User.EventSubscribe", "Pinzhi.User.EventSubscribe\Pinzhi.User.EventSubscribe.csproj", "{4221AFD9-D03D-456C-AF84-08701448B295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinzhi.User.EventSubscribe", "Pinzhi.User.EventSubscribe\Pinzhi.User.EventSubscribe.csproj", "{4221AFD9-D03D-456C-AF84-08701448B295}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

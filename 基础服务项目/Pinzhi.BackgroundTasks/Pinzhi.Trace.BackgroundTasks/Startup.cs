@@ -1,7 +1,6 @@
 ﻿using Bucket.AspNetCore.Extensions;
 using Bucket.Config.Extensions;
 using Bucket.Config.HostedService;
-using Bucket.DbContext;
 using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.HostedService.AspNetCore;
@@ -9,6 +8,7 @@ using Bucket.Logging;
 using Bucket.Logging.Events;
 using Bucket.Tracing.Events;
 using Bucket.Utility;
+using Bucket.DbContext;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -48,14 +48,14 @@ namespace Pinzhi.Trace.BackgroundTasks
             services.AddEventLog();
             // 添加配置服务
             services.AddConfigServer(Configuration);
+            // 添加数据Orm
+            services.AddSqlSugarDbContext();
             // 添加事件驱动
             services.AddEventBus(option => { option.UseRabbitMQ(); });
             // 添加HttpClient
             services.AddHttpClient();
             // 添加工具
             services.AddUtil();
-            // 添加数据库Orm
-            services.AddSqlSugarDbContext();
             // 添加缓存
             services.AddMemoryCache();
             // 添加应用监听
@@ -70,14 +70,14 @@ namespace Pinzhi.Trace.BackgroundTasks
         private void RegisterEventBus(IServiceCollection services)
         {
             // 日志统计库
-            var dbConnectionString = Configuration.GetValue<string>("SqlSugarClient:ConnectionString");
+            services.AddSingleton(new TraceDbOptions { ConnectionString = Configuration.GetValue<string>("SqlSugarClient:ConnectionString") });
             // 添加链路追踪ES消费配置
-            services.Configure<ElasticsearchOptions>(Configuration.GetSection("Elasticsearch"));
-            services.AddSingleton<IIndexManager, IndexManager>();
-            services.AddSingleton<IElasticClientFactory, ElasticClientFactory>();
-            services.AddScoped<ISpanStorage, ElasticsearchSpanStorage>();
-            services.AddScoped<IServiceStorage, ElasticsearchServiceStorage>();
-            services.AddSingleton(p => new TraceDbOptions { ConnectionString = dbConnectionString });
+            //services.Configure<ElasticsearchOptions>(Configuration.GetSection("Elasticsearch"));
+            //services.AddSingleton<IIndexManager, IndexManager>();
+            //services.AddSingleton<IElasticClientFactory, ElasticClientFactory>();
+            //services.AddScoped<ISpanStorage, ElasticsearchSpanStorage>();
+            //services.AddScoped<IServiceStorage, ElasticsearchServiceStorage>();
+            //services.AddSingleton(p => new TraceDbOptions { ConnectionString = dbConnectionString });
             // 事件
             services.AddScoped<TracingEventHandler>();
             services.AddScoped<TraceTimeEventHandler>();
@@ -111,7 +111,7 @@ namespace Pinzhi.Trace.BackgroundTasks
             var eventBus = app.ApplicationServices.GetRequiredService<Bucket.EventBus.Abstractions.IEventBus>();
             eventBus.Subscribe<TracingEvent, TraceTimeEventHandler>();
             eventBus.Subscribe<TracingEvent, TraceToDbEventHandler>();
-            //eventBus.Subscribe<TracingEvent, TracingEventHandler>(); // es异常
+            //eventBus.Subscribe<TracingEvent, TracingEventHandler>(); // es版本问题暂时不用
             // start consume
             eventBus.StartSubscribe();
         }

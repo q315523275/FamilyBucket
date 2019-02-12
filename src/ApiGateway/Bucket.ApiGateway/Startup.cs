@@ -87,8 +87,8 @@ namespace Bucket.ApiGateway
              .AddPolly()
              .AddConsul()
              //.AddConfigStoredInConsul()
-             .AddConfigStoredInRedis("Bucket.ApiGateway", "10.10.188.136:6379,allowadmin=true");
-            //.AddConfigStoredInMySql("Bucket.ApiGateway");
+             //.AddConfigStoredInRedis("Bucket.ApiGateway", "127.0.0.1:6379,allowadmin=true");
+            .AddConfigStoredInMySql("Bucket.ApiGateway"); // 使用数据库
             // 添加监控
 
             // 添加autofac容器替换，默认容器注册方式缺少功能

@@ -14,7 +14,7 @@
     <PackageReference Include="Bucket.EventBus" Version="1.1.5" />
     <PackageReference Include="Bucket.EventBus.RabbitMQ" Version="1.1.7" />
     <PackageReference Include="Bucket.HostedService.AspNetCore" Version="1.1.0" />
-    <PackageReference Include="Bucket.ImgVerifyCode" Version="1.0.1" />
+    <PackageReference Include="Bucket.ImgVerifyCode" Version="1.0.2" />
     <PackageReference Include="Bucket.Logging" Version="1.1.3" />
     <PackageReference Include="Bucket.Logging.Events" Version="1.1.2" />
     <PackageReference Include="Bucket.ServiceDiscovery" Version="1.1.2" />
