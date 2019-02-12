@@ -2,6 +2,10 @@
 
 FamilyBucket主要通过组合各个系统形成的直接应用的微服务系统，当前仅对各组件进行了简单基础实现，[FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)持续开发中
 
+## 博客园相关内容介绍
+
+[https://www.cnblogs.com/tianxiangzhe/p/10212337.html](https://www.cnblogs.com/tianxiangzhe/p/10212337.html)
+
 ## 配置中心应用
 
 配置中心主要解决：单文件配置管理麻烦、容易遗漏、更新麻烦、配置共享、环境切换等情况
