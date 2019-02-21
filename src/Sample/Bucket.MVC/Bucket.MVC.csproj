@@ -59,6 +59,7 @@
     <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Diagnostics.AspNetCore\Bucket.SkrTrace.Diagnostics.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Diagnostics.HttpClient\Bucket.SkrTrace.Diagnostics.HttpClient.csproj" />
     <ProjectReference Include="..\..\Tracer\Bucket.SkrTrace.Transport.EventBus\Bucket.SkrTrace.Transport.EventBus.csproj" />
+    <ProjectReference Include="..\..\Utility\Bucket.ImgVerifyCode\Bucket.ImgVerifyCode.csproj" />
     <ProjectReference Include="..\..\Utility\Bucket.Utility\Bucket.Utility.csproj" />
   </ItemGroup>
 

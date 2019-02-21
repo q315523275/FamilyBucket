@@ -11,6 +11,7 @@ using Bucket.EventBus.RabbitMQ;
 using Bucket.WebSocketManager;
 using Bucket.SkrTrace.WebSocketServer.Handler;
 using Bucket.SkrTrace.Transport.EventBus;
+using Bucket.EventBus.RabbitMQ.Extensions;
 
 namespace Bucket.SkrTrace.WebSocketServer
 {
@@ -37,7 +38,7 @@ namespace Bucket.SkrTrace.WebSocketServer
         public void ConfigureServices(IServiceCollection services)
         {
             // 添加事件驱动
-            services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
+            services.AddEventBus(builder => { builder.UseRabbitMQ(); });
             services.AddScoped<SkrTraceWeSocketServerHandler>();
             // 添加过滤器
             services.AddMvc().AddJsonOptions(options =>

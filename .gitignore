@@ -24,4 +24,5 @@ bin/
 bin
 obj/
 obj
+.vs
 .vs/

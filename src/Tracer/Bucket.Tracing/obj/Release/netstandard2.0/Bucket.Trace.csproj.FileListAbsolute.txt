@@ -1,9 +1,0 @@
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\bin\Release\netstandard2.0\Bucket.Trace.deps.json
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\bin\Release\netstandard2.0\Bucket.Trace.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\bin\Release\netstandard2.0\Bucket.Trace.pdb
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.csprojResolveAssemblyReference.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.csproj.CoreCompileInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.AssemblyInfoInputs.cache
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.AssemblyInfo.cs
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.dll
-D:\work2017\Git\FamilyBucket\Microservice\Bucket.Trace\obj\Release\netstandard2.0\Bucket.Trace.pdb
