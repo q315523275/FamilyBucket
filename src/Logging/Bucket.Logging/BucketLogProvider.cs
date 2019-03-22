@@ -1,28 +1,27 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Concurrent;
 
 namespace Bucket.Logging
 {
     public class BucketLogProvider : ILoggerProvider
     {
-        private readonly string _projectName;
-        private Func<object, Exception, string> exceptionFormatter;
         readonly ConcurrentDictionary<string, BucketLogLogger> _loggers = new ConcurrentDictionary<string, BucketLogLogger>();
-        private readonly ILogStore _logStore;
+        private readonly ILoggerDispatcher _loggerDispatcher;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public BucketLogProvider(ILogStore logStore, IHttpContextAccessor httpContextAccessor, string projectName)
+        private readonly string _applicationName;
+
+        public BucketLogProvider(ILoggerDispatcher loggerDispatcher, IHttpContextAccessor httpContextAccessor, string applicationName)
         {
-            _logStore = logStore;
-            _projectName = projectName;
+            _loggerDispatcher = loggerDispatcher;
             _httpContextAccessor = httpContextAccessor;
-        }
-        public ILogger CreateLogger(string categoryName)
-        {
-            return this._loggers.GetOrAdd(categoryName, p => { return new BucketLogLogger(_logStore, _httpContextAccessor, _projectName, categoryName); });
+            _applicationName = applicationName;
         }
 
+        public ILogger CreateLogger(string categoryName)
+        {
+            return this._loggers.GetOrAdd(categoryName, p => { return new BucketLogLogger(_loggerDispatcher, _httpContextAccessor, _applicationName, categoryName); });
+        }
         public void Dispose()
         {
             _loggers.Clear();

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.Authorize.MySql
 {
@@ -18,8 +16,6 @@ namespace Bucket.Authorize.MySql
 
             authoriserBuilder.Services.AddSingleton<IPermissionRepository>(sp => new MySqlPermissionRepository(config["MySqlConnectionString"], config["ProjectName"]));
             authoriserBuilder.Services.AddSingleton<IPermissionAuthoriser, ScopesAuthoriser>();
-            authoriserBuilder.Services.AddHostedService<MySqlPermissionPoller>();
-
             return authoriserBuilder;
         }
     }

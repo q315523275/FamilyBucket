@@ -38,6 +38,8 @@ namespace Bucket.AspNetCore.Middleware.Error
                 var newMsg = _errorCodeStore.StringGet(ex.ErrorCode);
                 if (string.IsNullOrWhiteSpace(newMsg))
                     newMsg = ex.ErrorMessage;
+                if (string.IsNullOrWhiteSpace(newMsg))
+                    newMsg = "未知异常,请稍后再试";
                 errorInfo = new ErrorResult(ex.ErrorCode, newMsg);
             }
             catch (Exception ex)

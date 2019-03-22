@@ -9,8 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.8.1" />
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Ocelot" Version="13.0.0" />
     <PackageReference Include="Ocelot.Cache.CacheManager" Version="13.0.0" />
@@ -25,8 +23,6 @@
     <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracing.Events\Bucket.Tracing.Events.csproj" />
-    <ProjectReference Include="..\..\Tracer\Bucket.Tracing\Bucket.Tracing.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.MySql\Bucket.ApiGateway.ConfigStored.MySql.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.Redis\Bucket.ApiGateway.ConfigStored.Redis.csproj" />
   </ItemGroup>

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Orleans\" />
+    <Folder Include="DotNettyRpc\" />
   </ItemGroup>
 
   <ItemGroup>

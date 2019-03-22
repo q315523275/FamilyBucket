@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.1.2</Version>
+    <Version>1.1.6</Version>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Description>全家桶-日志消息传输</Description>
   </PropertyGroup>
 
   <ItemGroup>

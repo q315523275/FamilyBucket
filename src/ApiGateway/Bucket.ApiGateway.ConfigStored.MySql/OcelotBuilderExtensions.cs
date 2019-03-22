@@ -13,9 +13,7 @@ namespace Bucket.ApiGateway.ConfigStored.MySql
             builder.Services.AddHostedService<FileConfigurationPoller>();
             builder.Services.AddSingleton<IFileConfigurationRepository>(sp =>
             {
-                return new MySqlFileConfigurationRepository(sp.GetRequiredService<IDbRepository<ConfigurationInfo>>()
-                    , sp.GetRequiredService<IDbRepository<ReRouteInfo>>()
-                    , apiGatewayKey);
+                return new MySqlFileConfigurationRepository(sp, apiGatewayKey);
             });
             return builder;
         }

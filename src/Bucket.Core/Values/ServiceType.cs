@@ -5,4 +5,9 @@
         HTTP,
         TCP
     }
+    public enum ServiceProtocol
+    {
+        HTTP,
+        TCP
+    }
 }

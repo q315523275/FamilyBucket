@@ -24,10 +24,6 @@ using Bucket.Authorize;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Bucket.Authorize.MySql;
-using Bucket.SkrTrace.DependencyInjection;
-using Bucket.SkrTrace.Diagnostics.AspNetCore;
-using Bucket.SkrTrace.Diagnostics.HttpClient;
-using Bucket.SkrTrace.Transport.EventBus;
 using Bucket.Listener.Extensions;
 using Bucket.Listener.Zookeeper;
 using Bucket.Authorize.Listener;
@@ -81,7 +77,6 @@ namespace Bucket.MVC
             // 添加服务发现
             services.AddServiceDiscovery(builder => { builder.UseConsul(); });
             // 添加链路追踪
-            // services.AddSkrTrace().AddAspNetCoreHosting().AddHttpClient().AddEventBusTransport();
             // 添加过滤器, 模型过滤器,追踪过滤器
             services.AddMvc(options => { options.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {

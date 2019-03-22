@@ -22,9 +22,9 @@ namespace Bucket.ApiGateway.ConfigStored.Redis
 
         public async Task<Response<FileConfiguration>> Get()
         {
-            var redis = _redisClient.GetDatabase(_redisConnection);
+            var redis = _redisClient.GetDatabase(_redisConnection, 11);
 
-            var json = await redis.StringGetAsync($"ApiGatewayConfig:{_apiGatewayKey}");
+            var json = await redis.StringGetAsync($"ApiGateway:{_apiGatewayKey}");
 
             if(json.IsNullOrEmpty)
                 return new OkResponse<FileConfiguration>(new FileConfiguration { });

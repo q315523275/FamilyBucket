@@ -11,28 +11,27 @@ namespace Bucket.Listener.Redis
     public class RedisListenerAgentStartup : IListenerAgentStartup
     {
         private readonly RedisClient _redisClient;
-        private readonly RedisListenerOptions _redisListenerOptions;
-        private readonly string RedisListenerKey;
-        private ISubscriber _subscriber;
         private readonly IExtractCommand _extractCommand;
-        public RedisListenerAgentStartup(RedisClient redisClient, IOptions<RedisListenerOptions> redisListenerOptions, IExtractCommand extractCommand)
+        private string RedisListenerKey;
+        private RedisListenerOptions _redisListenerOptions;
+        private ISubscriber _subscriber;
+        public RedisListenerAgentStartup(RedisClient redisClient, IOptionsMonitor<RedisListenerOptions> redisListenerOptions, IExtractCommand extractCommand)
         {
             _redisClient = redisClient;
-            _redisListenerOptions = redisListenerOptions.Value;
+            _redisListenerOptions = redisListenerOptions.CurrentValue;
             _extractCommand = extractCommand;
             RedisListenerKey = $"Bucket.Listener.{_redisListenerOptions.ListenerKey}";
+            redisListenerOptions.OnChange(async (options) => {
+                _redisListenerOptions = options;
+                RedisListenerKey = $"Bucket.Listener.{_redisListenerOptions.ListenerKey}";
+                await SubscribeAsync();
+            });
         }
 
         public Task StartAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            _subscriber = _redisClient.GetSubscriber(_redisListenerOptions.ConnectionString);
-            return _subscriber.SubscribeAsync(RedisListenerKey, (channel, message) =>
-            {
-                var command = JsonConvert.DeserializeObject<Bucket.Values.NetworkCommand>(message);
-                _extractCommand.ExtractCommandMessage(command);
-            });
+            return SubscribeAsync();
         }
-
         public Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
             if (_subscriber != null)
@@ -40,6 +39,15 @@ namespace Bucket.Listener.Redis
                 return _subscriber.UnsubscribeAsync(RedisListenerKey);
             }
             return Task.CompletedTask;
+        }
+        public Task SubscribeAsync()
+        {
+            _subscriber = _redisClient.GetSubscriber(_redisListenerOptions.ConnectionString);
+            return _subscriber.SubscribeAsync(RedisListenerKey, (channel, message) =>
+            {
+                var command = JsonConvert.DeserializeObject<Bucket.Values.NetworkCommand>(message);
+                _extractCommand.ExtractCommandMessage(command);
+            });
         }
     }
 }
