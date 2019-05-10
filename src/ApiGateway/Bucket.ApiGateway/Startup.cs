@@ -7,16 +7,14 @@ using System;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 
 using Bucket.DbContext;
 using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.Logging;
 using Bucket.Logging.Events;
-using Bucket.Tracing.Extensions;
-using Bucket.Tracing.Events;
+
+
 using Bucket.ApiGateway.ConfigStored.MySql;
 
 using global::Ocelot.DependencyInjection;
@@ -26,6 +24,8 @@ using Ocelot.Provider.Consul;
 using Ocelot.Provider.Polly;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Bucket.SkyApm.Agent.AspNetCore;
+using Bucket.SkyApm.Transport.EventBus;
 
 namespace Bucket.ApiGateway
 {
@@ -47,13 +47,9 @@ namespace Bucket.ApiGateway
         /// </summary>
         public IConfiguration Configuration { get; }
         /// <summary>
-        /// AutofacDI容器
-        /// </summary>
-        public IContainer AutofacContainer { get; private set; }
-        /// <summary>
         /// 配置服务
         /// </summary>
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             // 授权认证
             AddOcelotJwtBearer(services, Configuration);
@@ -71,13 +67,12 @@ namespace Bucket.ApiGateway
             services.AddMvc().AddJsonOptions(options => { options.SerializerSettings.ContractResolver = new DefaultContractResolver(); });
             // 添加事件驱动
             services.AddEventBus(option => { option.UseRabbitMQ(); });
-            // 添加队列日志
-            services.AddEventLog();
+            // 添加日志消息传输
+            services.AddLogEventTransport();
             // 添加链路
-            //services.AddTracer(Configuration);
-            //services.AddEventTrace();
+            services.AddBucketSkyApmCore().UseEventBusTransport();
             // 添加Orm
-            services.AddSqlSugarDbContext(ServiceLifetime.Transient);
+            services.AddSqlSugarDbContext();
             // 添加网关
             services.AddOcelot()
              .AddCacheManager(x =>
@@ -87,16 +82,12 @@ namespace Bucket.ApiGateway
              .AddPolly()
              .AddConsul()
              //.AddConfigStoredInConsul()
-             //.AddConfigStoredInRedis("Bucket.ApiGateway", "127.0.0.1:6379,allowadmin=true");
-            .AddConfigStoredInMySql("Bucket.ApiGateway"); // 使用数据库
+             //.AddConfigStoredInRedis("Bucket.ApiGateway", "10.10.188.136:6379,allowadmin=true");
+             .AddConfigStoredInMySql(Configuration.GetValue<string>("Project:Name"));
             // 添加监控
 
-            // 添加autofac容器替换，默认容器注册方式缺少功能
-            var autofac_builder = new ContainerBuilder();
-            autofac_builder.Populate(services);
-            autofac_builder.RegisterModule<AutofacModuleRegister>();
-            AutofacContainer = autofac_builder.Build();
-            return new AutofacServiceProvider(AutofacContainer);
+            // 添加Orm
+            services.AddScoped(typeof(IDbRepository<>), typeof(SqlSugarRepository<>));
         }
         /// <summary>
         /// 授权认证
@@ -133,22 +124,6 @@ namespace Bucket.ApiGateway
             });
         }
         /// <summary>
-        /// Autofac扩展注册
-        /// </summary>
-        private class AutofacModuleRegister : Autofac.Module
-        {
-            /// <summary>
-            /// 装载autofac方式注册
-            /// </summary>
-            /// <param name="builder"></param>
-            protected override void Load(ContainerBuilder builder)
-            {
-                // 数据仓储泛型注册
-                builder.RegisterGeneric(typeof(SqlSugarRepository<>)).As(typeof(IDbRepository<>))
-                    .InstancePerLifetimeScope();
-            }
-        }
-        /// <summary>
         /// 配置请求管道
         /// </summary>
         /// <param name="app"></param>
@@ -172,7 +147,8 @@ namespace Bucket.ApiGateway
                     {
                         await next.Invoke();
                     }
-                }
+                },
+                 
             };
             // 使用监控
 
@@ -180,8 +156,6 @@ namespace Bucket.ApiGateway
             app.UseOcelot(conf).Wait();
             // 日志,事件驱动日志
             loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
-            // Autofac容器释放
-            appLifetime.ApplicationStopped.Register(() => { AutofacContainer.Dispose(); });
             // Welcome
             Console.WriteLine(Welcome());
         }

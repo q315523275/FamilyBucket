@@ -26,3 +26,5 @@ obj/
 obj
 .vs
 .vs/
+*.user
+*.pubxml

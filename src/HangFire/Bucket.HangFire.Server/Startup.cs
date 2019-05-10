@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using Hangfire.Console;
+using Hangfire.Dashboard;
 using Hangfire.RecurringJobExtensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,10 +30,11 @@ namespace Bucket.HangFire.Server
         public void ConfigureServices(IServiceCollection services)
         {
             // 注入Hangfire服务
-            if (Configuration.GetSection("Jobs").GetValue<bool>("Enable"))
+            if (Configuration.GetValue<bool>("Scheduler:Enable"))
             {
-                services.AddHangfire(build => {
-                    build.UseRedisStorage(Configuration.GetSection("Jobs").GetValue<string>("RedisServer"));
+                services.AddHangfire(build =>
+                {
+                    build.UseRedisStorage(Configuration.GetValue<string>("Scheduler:RedisServer"));
                     build.UseConsole();
                     build.UseRecurringJob("recurringjob.json");
                     build.UseDefaultActivator();
@@ -51,17 +53,18 @@ namespace Bucket.HangFire.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            if (Configuration.GetSection("Jobs").GetValue<bool>("Enable"))
+            if (Configuration.GetValue<bool>("Scheduler:Enable"))
             {
-                // 容器载入Job服务
-                Static.serviceProvider = app.ApplicationServices;
-                // 启动Job服务
+                // 容器载入Scheduler服务
+                HangfireServiceProvider.ServiceProvider = app.ApplicationServices;
+                // 启动Scheduler服务
                 app.UseHangfireServer(new BackgroundJobServerOptions
                 {
-                    ServerName = Configuration.GetSection("Jobs").GetValue<string>("ServerName")
+                    ServerName = Configuration.GetValue<string>("Scheduler:ServerName")
+                    // 注意队列名，进行任务隔离
                 });
                 // 启动Job界面UI
-                app.UseHangfireDashboard("/jobs", new DashboardOptions()
+                app.UseHangfireDashboard(options: new DashboardOptions()
                 {
                     // 本地测试可以不添加，linux下必添加
                     Authorization = new[] { new HangfireAuthorizationFilter() }
@@ -71,7 +74,6 @@ namespace Bucket.HangFire.Server
                 /// 特别注意，linux下运行时，可能存在"timezone": "China Standard Time"找不到的情况
                 /// 需进行时区复制 /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/'China Standard Time'
                 ///
-
             }
         }
     }

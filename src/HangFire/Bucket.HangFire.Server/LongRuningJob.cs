@@ -26,7 +26,7 @@ namespace Bucket.HangFire.Server
                         try
                         {
                             context.GetJobData();
-                            using (var scope = Static.serviceProvider.CreateScope())
+                            using (var scope = HangfireServiceProvider.ServiceProvider.CreateScope())
                             {
                                 // doing ....
                             }

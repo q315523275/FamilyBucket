@@ -8,16 +8,25 @@ namespace Bucket.DbContext
 {
     public interface IDbRepository<T> where T : class, new()
     {
+        [Obsolete("next version removed, please use DbContextFactory")]
         BucketSqlSugarClient DbContext { get; }
         IDbRepository<T> UseDb(string dbName);
 
+        [Obsolete("next version removed, please use DbContextFactory")]
         ISugarQueryable<T> AsQueryable();
+        [Obsolete("next version removed, please use DbContextFactory")]
         IInsertable<T> AsInsertable(T insertObj);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IInsertable<T> AsInsertable(T[] insertObjs);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IInsertable<T> AsInsertable(List<T> insertObjs);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IUpdateable<T> AsUpdateable(T updateObj);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IUpdateable<T> AsUpdateable(T[] updateObjs);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IUpdateable<T> AsUpdateable(List<T> updateObjs);
+        [Obsolete("next version removed, please use DbContextFactory")]
         IDeleteable<T> AsDeleteable();
 
 

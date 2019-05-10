@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bucket.EventBus.Util;
+using System;
 
 namespace Bucket.EventBus.Events
 {
@@ -6,11 +7,11 @@ namespace Bucket.EventBus.Events
     {
         public IntegrationEvent()
         {
-            Id = Guid.NewGuid();
+            Id = SnowflakeId.Default().NextId();
             CreationDate = DateTime.Now;
         }
 
-        public Guid Id { get; }
+        public long Id { get; }
         public DateTime CreationDate { get; }
     }
 }

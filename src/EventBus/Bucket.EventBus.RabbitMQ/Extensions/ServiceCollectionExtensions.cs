@@ -8,7 +8,7 @@ namespace Bucket.EventBus.RabbitMQ.Extensions
     {
         public static IEventBusBuilder UseRabbitMQ(this IEventBusBuilder builder)
         {
-            builder.Services.Configure<ConnectionFactory>(builder.Configuration.GetSection("EventBus:RabbitMQ"));
+            builder.Services.Configure<EventBusRabbitMqOptions>(builder.Configuration.GetSection("EventBus:RabbitMQ"));
             builder.Services.AddSingleton<IRabbitMQPersistentConnection, DefaultRabbitMQPersistentConnection>();
             builder.Services.AddSingleton<IEventBus, EventBusRabbitMQ>();
             return builder;

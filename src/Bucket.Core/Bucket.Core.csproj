@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.1.7</Version>
-    <Description></Description>
+    <Version>1.1.71</Version>
+    <Description>全家桶-通用接口</Description>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
     <Authors>FamilyBucket</Authors>
     <Company>Bucket.Core</Company>

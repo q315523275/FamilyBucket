@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.AspNetCore.Hosting.Server.Features;
 
 namespace Bucket.Logging
 {
@@ -73,28 +75,22 @@ namespace Bucket.Logging
             {
                 if (_loggerDispatcher != null)
                 {
-                    var url = string.Empty;
-                    var traceHead = string.Empty;
+                    var localPort = string.Empty;
                     if (_httpContextAccessor != null && _httpContextAccessor.HttpContext != null)
-                    {
-                        url = _httpContextAccessor.HttpContext?.Request?.GetDisplayUrl();
-                        traceHead = _httpContextAccessor.HttpContext?.Request?.Headers["SkyAPM"].FirstOrDefault();
-                    }
+                        localPort = ":" + _httpContextAccessor.HttpContext?.Connection?.LocalPort.ToString();
+                    // 日志长度过长,暂时不采用其他解决方案
                     if (message.Length > 5120)
-                    {
-                        // 日志长度过长,暂时不采用其他解决方案
                         message = Substring2(message, 5120);
-                    }
                     _loggerDispatcher.Dispatch(new LogMessageEntry()
                     {
                         ProjectName = _applicationName,
                         ClassName = _className,
-                        LocalIp = GetLanIp(),
+                        LocalIp = GetLanIp() + localPort,
                         AddTime = DateTime.Now,
                         LogMessage = message,
                         LogType = logLevel.ToString(),
-                        LogTag = url,
-                        TraceHead = traceHead
+                        LogTag = _httpContextAccessor?.HttpContext?.Request?.GetDisplayUrl(),
+                        TraceHead = _httpContextAccessor?.HttpContext?.Request?.Headers["skyapm"].FirstOrDefault()
                     });
                 }
                 else

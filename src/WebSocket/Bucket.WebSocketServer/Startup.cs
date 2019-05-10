@@ -25,7 +25,7 @@ namespace Bucket.WebSocketServer
             services.AddOptions();
             services.AddLogging();
         }
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole().AddDebug();
             app.UseStaticFiles();
@@ -37,7 +37,7 @@ namespace Bucket.WebSocketServer
                     template: "api/{controller}/{action}/{id?}"
                 );
             });
-            app.MapWebSocketManager("/ws", serviceProvider.GetService<BusMessageHandler>());
+            app.MapWebSocketManager("/ws", app.ApplicationServices.GetService<BusMessageHandler>());
         }
     }
 }

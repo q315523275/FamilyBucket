@@ -23,6 +23,8 @@
     <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
+    <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Agent.AspNetCore\Bucket.SkyApm.Agent.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Transport.EventBus\Bucket.SkyApm.Transport.EventBus.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.MySql\Bucket.ApiGateway.ConfigStored.MySql.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.Redis\Bucket.ApiGateway.ConfigStored.Redis.csproj" />
   </ItemGroup>
@@ -44,9 +46,6 @@
 
   <ItemGroup>
     <None Update="start.sh">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="tempkey.rsa">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -162,7 +162,7 @@ namespace Bucket.ImgVerifyCode
             return value;
         }
 
-        private static List<SKColor> colors = new List<SKColor>()
+        private static readonly List<SKColor> colors = new List<SKColor>()
         {
             new SKColor(205,104,0),
             new SKColor(151,155,22),

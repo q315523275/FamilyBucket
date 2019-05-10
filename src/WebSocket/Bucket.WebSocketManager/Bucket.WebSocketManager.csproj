@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>全家桶-单应用websocket处理</Description>
   </PropertyGroup>
 
   <ItemGroup>
