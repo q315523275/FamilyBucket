@@ -1,6 +1,6 @@
-﻿using Bucket.Listener;
+﻿using Bucket.Authorize.Abstractions;
+using Bucket.Listener;
 using Bucket.Values;
-using System;
 using System.Threading.Tasks;
 
 namespace Bucket.Authorize.Listener

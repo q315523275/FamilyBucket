@@ -26,12 +26,12 @@ namespace Bucket.Caching.InMemory
             return _cache.Exists(key);
         }
 
-        public async Task<bool> ExistsAsync(string key)
+        public Task<bool> ExistsAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
 
-            return await Task.FromResult(_cache.Exists(key));
+            return Task.FromResult(_cache.Exists(key));
         }
 
         public T Get<T>(string key)
@@ -50,20 +50,20 @@ namespace Bucket.Caching.InMemory
             return _cache.GetAll<T>(keys);
         }
 
-        public async Task<IDictionary<string, T>> GetAllAsync<T>(IEnumerable<string> keys)
+        public Task<IDictionary<string, T>> GetAllAsync<T>(IEnumerable<string> keys)
         {
             if (keys == null || keys.Count() == 0)
                 throw new ArgumentNullException(nameof(keys));
 
-            return await Task.FromResult(_cache.GetAll<T>(keys));
+            return Task.FromResult(_cache.GetAll<T>(keys));
         }
 
-        public async Task<T> GetAsync<T>(string key)
+        public Task<T> GetAsync<T>(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
 
-            return await Task.FromResult(_cache.Get<T>(key));
+            return Task.FromResult(_cache.Get<T>(key));
         }
 
         public void Refresh<T>(string cacheKey, T cacheValue, TimeSpan expiration)
@@ -104,20 +104,24 @@ namespace Bucket.Caching.InMemory
             _cache.RemoveAll(keys);
         }
 
-        public async Task RemoveAllAsync(IEnumerable<string> keys)
+        public Task RemoveAllAsync(IEnumerable<string> keys)
         {
             if (keys == null || keys.Count() == 0)
                 throw new ArgumentNullException(nameof(keys));
 
-            await Task.Run(() => _cache.RemoveAll(keys));
+            _cache.RemoveAll(keys);
+
+            return Task.CompletedTask;
         }
 
-        public async Task RemoveAsync(string key)
+        public Task RemoveAsync(string key)
         {
             if (string.IsNullOrWhiteSpace(key))
                 throw new ArgumentNullException(nameof(key));
 
-            await Task.Run(() => _cache.Remove(key));
+            _cache.Remove(key);
+
+            return Task.CompletedTask;
         }
 
         public void Set<T>(string cacheKey, T cacheValue, TimeSpan expiration)
@@ -138,22 +142,26 @@ namespace Bucket.Caching.InMemory
             _cache.SetAll(values, expiration);
         }
 
-        public async Task SetAllAsync<T>(IDictionary<string, T> values, TimeSpan expiration)
+        public Task SetAllAsync<T>(IDictionary<string, T> values, TimeSpan expiration)
         {
             if (values == null)
                 throw new ArgumentNullException(nameof(values));
 
-            await Task.Run(() => _cache.SetAll(values, expiration));
+            _cache.SetAll(values, expiration);
+
+            return Task.CompletedTask;
         }
 
-        public async Task SetAsync<T>(string cacheKey, T cacheValue, TimeSpan expiration)
+        public Task SetAsync<T>(string cacheKey, T cacheValue, TimeSpan expiration)
         {
             if (string.IsNullOrWhiteSpace(cacheKey))
                 throw new ArgumentNullException(nameof(cacheKey));
             if (cacheValue == null)
                 throw new ArgumentNullException(nameof(cacheValue));
 
-            await Task.Run(() => _cache.Set(cacheKey, cacheValue, expiration));
+            _cache.Set(cacheKey, cacheValue, expiration);
+
+            return Task.CompletedTask;
         }
 
         public bool TrySet<T>(string cacheKey, T cacheValue, TimeSpan expiration)

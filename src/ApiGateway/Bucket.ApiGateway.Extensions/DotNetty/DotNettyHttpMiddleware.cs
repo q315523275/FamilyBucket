@@ -27,9 +27,9 @@ namespace Bucket.ApiGateway.Extensions.DotNetty
         }
         public async Task Invoke(DownstreamContext context)
         {
-            string resultMessage = string.Empty;
             var httpStatusCode = HttpStatusCode.OK;
             var buildRequest = await _dotNettyRequestBuilder.BuildRequest(context);
+            string resultMessage;
             if (buildRequest.IsError)
             {
                 resultMessage = "bad request";

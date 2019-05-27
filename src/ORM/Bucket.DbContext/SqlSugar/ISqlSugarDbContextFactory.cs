@@ -1,4 +1,4 @@
-﻿namespace Bucket.DbContext
+﻿namespace Bucket.DbContext.SqlSugar
 {
     public interface ISqlSugarDbContextFactory
     {

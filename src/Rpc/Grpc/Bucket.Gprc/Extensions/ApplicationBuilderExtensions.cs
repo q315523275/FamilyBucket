@@ -1,15 +1,10 @@
-﻿using Bucket.ServiceDiscovery;
-using Grpc.Core;
+﻿using Grpc.Core;
 using MagicOnion.Server;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using GRpcServer = Grpc.Core.Server;
 namespace Bucket.Gprc.Extensions
 {

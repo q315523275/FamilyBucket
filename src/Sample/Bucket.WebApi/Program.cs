@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using Bucket.Config;
+using Bucket.Logging;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.Extensions.Logging;
 namespace Bucket.WebApi
 {
     /// <summary>
@@ -18,24 +19,21 @@ namespace Bucket.WebApi
         public static void Main(string[] args)
         {
             WebHost.CreateDefaultBuilder(args)
-                  .UseKestrel()
-                  .UseContentRoot(Directory.GetCurrentDirectory())
-                  .ConfigureAppConfiguration((hostingContext, _config) =>
-                  {
-                      _config
-                      .SetBasePath(Directory.GetCurrentDirectory())
-                      .AddJsonFile("appsettings.json", true, true)
-                      .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-                      .AddEnvironmentVariables(); // 添加环境变量
-
-                      // 从配置中心拉取配置与appsettings.json配置进行合并,可用于组件注册
-                      var option = new BucketConfigOptions();
-                      _config.Build().GetSection("ConfigServer").Bind(option);
-                      _config.AddBucketConfig(option);
-                  })
-                  .UseStartup<Startup>()
-                  .Build()
-                  .Run();
+                   .ConfigureAppConfiguration((hostingContext, _config) =>
+                   {
+                       // 从配置中心拉取配置与appsettings.json配置进行合并,可用于组件注册
+                       var option = new BucketConfigOptions();
+                       _config.Build().GetSection("ConfigServer").Bind(option);
+                       _config.AddBucketConfig(option);
+                   })
+                   .ConfigureLogging((hostingContext, logging) =>
+                   {
+                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).ClearProviders()
+                             .AddBucketLog(hostingContext.Configuration.GetValue<string>("Project:Name"));
+                   })
+                   .UseStartup<Startup>()
+                   .Build()
+                   .Run();
         }
     }
 }

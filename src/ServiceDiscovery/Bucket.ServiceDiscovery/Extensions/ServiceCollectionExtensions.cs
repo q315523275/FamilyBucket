@@ -1,4 +1,5 @@
-﻿using Bucket.ServiceDiscovery.Abstractions;
+﻿using Bucket.DependencyInjection;
+using Bucket.ServiceDiscovery.Abstractions;
 using Bucket.ServiceDiscovery.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,16 @@ namespace Bucket.ServiceDiscovery.Extensions
             var builder = new ServiceDiscoveryBuilder(services, configuration);
             action(builder);
             return builder;
+        }
+        /// <summary>
+        /// 添加服务发现
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static IServiceDiscoveryBuilder AddServiceDiscovery(this IBucketBuilder builder, Action<IServiceDiscoveryBuilder> action)
+        {
+            return AddServiceDiscovery(builder.Services, action);
         }
     }
 }

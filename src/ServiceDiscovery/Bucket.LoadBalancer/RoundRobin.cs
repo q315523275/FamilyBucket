@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bucket.LoadBalancer
@@ -29,18 +30,13 @@ namespace Bucket.LoadBalancer
             if (!services.Any())
                 throw new ArgumentNullException($"{_serviceName}");
 
-            lock (_lock)
+            Interlocked.Increment(ref _last);
+            if (_last >= services.Count)
             {
-                if (_last >= services.Count)
-                {
-                    _last = 0;
-                }
-
-                var next = services[_last];
-                _last++;
-
-                return next.HostAndPort;
+                Interlocked.Exchange(ref _last, 0);
             }
+
+            return services[_last].HostAndPort;
         }
 
         public void Release(HostAndPort hostAndPort)

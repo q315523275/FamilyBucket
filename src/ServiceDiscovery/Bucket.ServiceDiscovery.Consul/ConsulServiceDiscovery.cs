@@ -1,4 +1,4 @@
-﻿using Bucket.Core;
+﻿using Bucket.Extensions;
 using Bucket.Values;
 using Consul;
 using Microsoft.Extensions.Options;

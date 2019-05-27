@@ -26,6 +26,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Bucket.SkyApm.Agent.AspNetCore;
 using Bucket.SkyApm.Transport.EventBus;
+using Bucket.DbContext.SqlSugar;
 
 namespace Bucket.ApiGateway
 {
@@ -87,7 +88,7 @@ namespace Bucket.ApiGateway
             // 添加监控
 
             // 添加Orm
-            services.AddScoped(typeof(IDbRepository<>), typeof(SqlSugarRepository<>));
+            services.AddScoped(typeof(ISqlSugarDbRepository<>), typeof(ISqlSugarDbRepository<>));
         }
         /// <summary>
         /// 授权认证
@@ -127,16 +128,14 @@ namespace Bucket.ApiGateway
         /// 配置请求管道
         /// </summary>
         /// <param name="app"></param>
-        /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        /// <param name="appLifetime"></param>
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
+        public void Configure(IApplicationBuilder app)
         {
             // 使用跨域
             app.UseCors("CorsPolicy");
-            // 健康检查地址
-            var conf = new OcelotPipelineConfiguration()
+            // 网关扩展中间件配置
+            var configuration = new OcelotPipelineConfiguration()
             {
+                // 扩展为健康检查地址
                 PreErrorResponderMiddleware = async (ctx, next) =>
                 {
                     if (ctx.HttpContext.Request.Path.Equals(new PathString("/")))
@@ -148,14 +147,16 @@ namespace Bucket.ApiGateway
                         await next.Invoke();
                     }
                 },
-                 
             };
+            // 增加DotNetty请求通道,因为最终会阻断通道,所以要包含部分中间件功能
+            configuration.MapWhenOcelotPipeline.Add((build) =>
+            {
+                return (context) => context.DownstreamReRoute.DownstreamScheme.ToLower() == "netty";
+            });
             // 使用监控
 
             // 使用网关
-            app.UseOcelot(conf).Wait();
-            // 日志,事件驱动日志
-            loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
+            app.UseOcelot(configuration).Wait();
             // Welcome
             Console.WriteLine(Welcome());
         }

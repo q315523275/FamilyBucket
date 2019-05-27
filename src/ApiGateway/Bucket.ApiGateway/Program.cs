@@ -5,8 +5,8 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore;
-
-
+    using Microsoft.Extensions.Logging;
+    using Bucket.Logging;
     /// <summary>
     /// 应用程序
     /// </summary>
@@ -32,6 +32,11 @@
                        .AddJsonFile("appsettings.json", true, true)
                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
                        .AddEnvironmentVariables(); // 添加环境变量
+                   })
+                   .ConfigureLogging((hostingContext, logging) =>
+                   {
+                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).ClearProviders()
+                              .AddBucketLog(hostingContext.Configuration.GetValue<string>("Project:Name"));
                    })
                    .UseStartup<Startup>()
                    .UseUrls(hostingconfig.GetValue<string>("urls"))

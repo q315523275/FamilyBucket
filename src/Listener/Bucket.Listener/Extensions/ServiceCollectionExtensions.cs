@@ -1,4 +1,4 @@
-﻿using Bucket.Listener.Abstractions;
+﻿using Bucket.DependencyInjection;
 using Bucket.Listener.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +22,16 @@ namespace Bucket.Listener.Extensions
             var build = new BucketListenerBuilder(services, configuration);
             action(build);
             return services;
+        }
+        /// <summary>
+        /// 添加应用监听
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddListener(this IBucketBuilder builder, Action<BucketListenerBuilder> action)
+        {
+            return AddListener(builder.Services, action);
         }
     }
 }

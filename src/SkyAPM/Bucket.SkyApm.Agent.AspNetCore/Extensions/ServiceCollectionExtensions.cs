@@ -28,11 +28,21 @@ using Bucket.SkyApm.AspNetCore.Diagnostics;
 using Bucket.SkyApm.Diagnostics.HttpClient;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
+using Bucket.DependencyInjection;
 
 namespace Bucket.SkyApm.Agent.AspNetCore
 {
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// 添加链路追踪,来自SkyApm收集方法
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static SkyApmExtensions AddBucketSkyApmCore(this IBucketBuilder builder)
+        {
+            return AddBucketSkyApmCore(builder.Services);
+        }
         /// <summary>
         /// 添加链路追踪,来自skyapm,内置
         /// </summary>

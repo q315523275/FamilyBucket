@@ -7,7 +7,6 @@ namespace Bucket.DbContext.SqlSugar
     public class SqlSugarDbContextFactory : ISqlSugarDbContextFactory
     {
         private readonly IEnumerable<BucketSqlSugarClient> _clients;
-
         public SqlSugarDbContextFactory(IEnumerable<BucketSqlSugarClient> clients)
         {
             _clients = clients;

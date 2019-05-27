@@ -23,8 +23,8 @@ namespace Bucket.Rpc.ProxyGenerator
 
             services.AddSingleton<IServiceProxyGenerater, ServiceProxyGenerater>();
             services.AddSingleton<IServiceProxyFactory>(sp => {
-                var proxType = RegisterProxType(sp);
-                return new ServiceProxyFactory(sp.GetRequiredService<IRemoteInvokeService>(), sp.GetRequiredService<ITypeConvertibleService>(), proxType.serviceTypes, proxType.clientTypes);
+                var (serviceTypes, clientTypes) = RegisterProxType(sp);
+                return new ServiceProxyFactory(sp.GetRequiredService<IRemoteInvokeService>(), sp.GetRequiredService<ITypeConvertibleService>(), serviceTypes, clientTypes);
             });
             services.AddSingleton<IServiceProxyProvider, ServiceProxyProvider>();
             services.AddSingleton<RemoteServiceProxy>();

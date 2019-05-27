@@ -59,6 +59,7 @@ namespace Bucket.Caching.StackExchangeRedis
             var options = builder.Configuration.GetSection(sectionPath).Get<List<StackExchangeRedisOption>>();
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
+
             foreach (var option in options)
             {
                 builder.Services.AddSingleton<IRedisDatabaseProvider>(sp =>

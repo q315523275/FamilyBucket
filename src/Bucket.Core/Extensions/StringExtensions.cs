@@ -2,26 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Bucket.Core
+namespace Bucket.Extensions
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// 过滤开头字符串
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="trim"></param>
+        /// <param name="stringComparison"></param>
+        /// <returns></returns>
         public static string TrimStart(this string source, string trim, StringComparison stringComparison = StringComparison.Ordinal)
         {
             if (source == null)
             {
                 return null;
             }
-
             string s = source;
             while (s.StartsWith(trim, stringComparison))
             {
                 s = s.Substring(trim.Length);
             }
-
             return s;
         }
-
         /// <summary>
         /// 分割逗号的字符串为List<string>
         /// </summary>
@@ -40,10 +44,14 @@ namespace Bucket.Core
                 .Select(s => s.Trim())
                 .ToList();
         }
-
-        public static bool IsNullOrWhitespace(this string s)
+        /// <summary>
+        /// 判断字符串是否不为空
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static bool IsNotNullOrWhitespace(this string s)
         {
-            return string.IsNullOrWhiteSpace(s);
+            return !string.IsNullOrWhiteSpace(s);
         }
     }
 }

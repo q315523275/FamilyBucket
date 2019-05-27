@@ -32,7 +32,7 @@ namespace Bucket.LoadBalancer
 
             lock (_syncLock)
             {
-                //todo - maybe this should be moved somewhere else...? Maybe on a repeater on seperate thread? loop every second and update or something?
+                // todo - maybe this should be moved somewhere else...? Maybe on a repeater on seperate thread? loop every second and update or something?
                 UpdateServices(services);
 
                 var leaseWithLeastConnections = GetLeaseWithLeastConnections();

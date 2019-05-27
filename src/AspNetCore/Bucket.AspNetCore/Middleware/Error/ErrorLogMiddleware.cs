@@ -1,5 +1,4 @@
-﻿using Bucket.Core;
-using Bucket.ErrorCode;
+﻿using Bucket.ErrorCode;
 using Bucket.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -7,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 namespace Bucket.AspNetCore.Middleware.Error
 {
@@ -16,21 +14,17 @@ namespace Bucket.AspNetCore.Middleware.Error
         private readonly RequestDelegate _next;
         private readonly ILogger _logger;
         private readonly IErrorCode _errorCodeStore;
-        private readonly IJsonHelper _jsonHelper;
         public ErrorLogMiddleware(RequestDelegate next,
             ILoggerFactory loggerFactory,
-            IErrorCode errorCodeStore,
-            IJsonHelper jsonHelper)
+            IErrorCode errorCodeStore)
         {
             _next = next;
             _logger = loggerFactory.CreateLogger<ErrorLogMiddleware>();
             _errorCodeStore = errorCodeStore;
-            _jsonHelper = jsonHelper;
         }
 
         public async Task Invoke(HttpContext context)
         {
-            ErrorResult errorInfo = null;
             try
             {
                 await _next(context);
@@ -42,29 +36,20 @@ namespace Bucket.AspNetCore.Middleware.Error
                     newMsg = ex.ErrorMessage;
                 if (string.IsNullOrWhiteSpace(newMsg))
                     newMsg = "未知异常,请稍后再试";
-                errorInfo = new ErrorResult(ex.ErrorCode, newMsg);
+
+                context.Response.StatusCode = (int)HttpStatusCode.OK;
+                context.Response.ContentType = "application/json;charset=utf-8";
+                await context.Response.WriteAsync("{\"ErrorCode\": \"" + ex.ErrorCode + "\", \"Message\": \"" + newMsg + "\"}");
             }
             catch (Exception ex)
             {
-                errorInfo = new ErrorResult("-1", "系统开小差了,请稍后再试");
                 _logger.LogError(ex, $"全局异常捕获,状态码:{ context?.Response?.StatusCode},Url:{context?.Request?.GetDisplayUrl()}");
-            }
-            finally
-            {
-                if (errorInfo != null)
-                {
-                    var Message = JsonConvert.SerializeObject(errorInfo);
-                    await HandleExceptionAsync(context, Message);
-                }
-            }
-        }
 
-        private static Task HandleExceptionAsync(HttpContext context, string message)
-        {
-            // 开启异常,方便外层组件熔断等功能无效
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.Response.ContentType = "application/json;charset=utf-8";
-            return context.Response.WriteAsync(message);
+                // 开启异常,方便外层组件熔断等功能使用
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                context.Response.ContentType = "text/plain;charset=utf-8";
+                await context.Response.WriteAsync("error occurred");
+            }
         }
     }
 }

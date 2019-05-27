@@ -58,6 +58,7 @@ namespace Bucket.Logging
         /// <returns></returns>
         public static ILoggingBuilder AddBucketLog(this ILoggingBuilder builder, string projectName)
         {
+            builder.ClearProviders(); // 清除已实现
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddSingleton<ILoggerProvider>(sp =>
             {

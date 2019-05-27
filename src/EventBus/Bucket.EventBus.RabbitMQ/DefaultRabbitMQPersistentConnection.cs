@@ -71,14 +71,14 @@ namespace Bucket.EventBus.RabbitMQ
                 }
                 catch (IOException ex)
                 {
-                    // _logger.LogCritical(ex.ToString());
+                    _logger.LogCritical(ex.ToString());
                 }
             }
         }
 
         public bool TryConnect()
         {
-            // _logger.LogInformation("RabbitMQ Client is trying to connect");
+            _logger.LogInformation("RabbitMQ Client is trying to connect");
 
             lock (sync_root)
             {
@@ -86,7 +86,7 @@ namespace Bucket.EventBus.RabbitMQ
                     .Or<BrokerUnreachableException>()
                     .WaitAndRetry(_retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
                     {
-                        // _logger.LogWarning(ex.ToString());
+                        _logger.LogWarning(ex.ToString());
                     }
                 );
 
@@ -102,13 +102,13 @@ namespace Bucket.EventBus.RabbitMQ
                     _connection.CallbackException += OnCallbackException;
                     _connection.ConnectionBlocked += OnConnectionBlocked;
 
-                    // _logger.LogInformation($"RabbitMQ persistent connection acquired a connection {_connection.Endpoint.HostName} and is subscribed to failure events");
+                    _logger.LogInformation($"RabbitMQ persistent connection acquired a connection {_connection.Endpoint.HostName} and is subscribed to failure events");
 
                     return true;
                 }
                 else
                 {
-                    // _logger.LogCritical("FATAL ERROR: RabbitMQ connections could not be created and opened");
+                    _logger.LogCritical("FATAL ERROR: RabbitMQ connections could not be created and opened");
 
                     return false;
                 }
@@ -119,7 +119,7 @@ namespace Bucket.EventBus.RabbitMQ
         {
             if (_disposed) return;
 
-            // _logger.LogWarning("A RabbitMQ connection is shutdown. Trying to re-connect...");
+            _logger.LogWarning("A RabbitMQ connection is shutdown. Trying to re-connect...");
 
             TryConnect();
         }
@@ -128,7 +128,7 @@ namespace Bucket.EventBus.RabbitMQ
         {
             if (_disposed) return;
 
-            // _logger.LogWarning("A RabbitMQ connection throw exception. Trying to re-connect...");
+            _logger.LogWarning("A RabbitMQ connection throw exception. Trying to re-connect...");
 
             TryConnect();
         }
@@ -137,7 +137,7 @@ namespace Bucket.EventBus.RabbitMQ
         {
             if (_disposed) return;
 
-            // _logger.LogWarning("A RabbitMQ connection is on shutdown. Trying to re-connect...");
+            _logger.LogWarning("A RabbitMQ connection is on shutdown. Trying to re-connect...");
 
             TryConnect();
         }

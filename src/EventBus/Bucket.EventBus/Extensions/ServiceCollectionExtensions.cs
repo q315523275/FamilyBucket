@@ -1,4 +1,5 @@
-﻿using Bucket.EventBus.Abstractions;
+﻿using Bucket.DependencyInjection;
+using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,17 @@ namespace Bucket.EventBus.Extensions
             var builder = new EventBusBuilder(services, configuration);
             action(builder);
             return builder;
+        }
+        /// <summary>
+        /// 添加事件消息总线
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="configuration"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static IEventBusBuilder AddEventBus(this IBucketBuilder builder, Action<IEventBusBuilder> action)
+        {
+            return AddEventBus(builder.Services, action);
         }
     }
 }

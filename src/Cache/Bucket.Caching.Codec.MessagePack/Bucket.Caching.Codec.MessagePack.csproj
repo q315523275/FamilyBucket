@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>全家桶-缓存组件,MessagePack内容编解码</Description>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Company>FamilyBucket</Company>
+    <Authors>FamilyBucket</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MessagePack" Version="1.7.3.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bucket.Caching\Bucket.Caching.csproj" />
+  </ItemGroup>
+
+</Project>

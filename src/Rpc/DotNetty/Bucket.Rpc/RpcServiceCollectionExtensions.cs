@@ -17,6 +17,7 @@ using Bucket.Rpc.Transport.Codec;
 using Bucket.Rpc.Transport.Codec.Implementation;
 using System;
 using System.Linq;
+using Bucket.DependencyInjection;
 
 namespace Bucket.Rpc
 {
@@ -196,6 +197,16 @@ namespace Bucket.Rpc
             return new RpcBuilder(services)
                 .AddJsonSerialization()
                 .UseJsonCodec();
+        }
+
+        /// <summary>
+        /// 添加RPC核心服务。
+        /// </summary>
+        /// <param name="services">服务集合。</param>
+        /// <returns>Rpc服务构建者。</returns>
+        public static IRpcBuilder AddRpcCore(this IBucketBuilder builder)
+        {
+            return AddRpcCore(builder.Services);
         }
     }
 }

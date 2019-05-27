@@ -1,14 +1,12 @@
 ﻿using Bucket.AspNetCore.Extensions;
 using Bucket.AspNetCore.Filters;
-using Bucket.Authorize;
 using Bucket.Authorize.MySql;
 using Bucket.Authorize.HostedService;
 using Bucket.Authorize.Listener;
+using Bucket.Authorize.Extensions;
 using Bucket.Config.Extensions;
 using Bucket.Config.HostedService;
 using Bucket.Config.Listener;
-using Bucket.DbContext;
-using Bucket.Utility;
 using Bucket.ErrorCode.Extensions;
 using Bucket.ErrorCode.HostedService;
 using Bucket.ErrorCode.Listener;
@@ -16,13 +14,23 @@ using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.ServiceDiscovery.Extensions;
 using Bucket.ServiceDiscovery.Consul.Extensions;
-using Bucket.Logging;
+using Bucket.LoadBalancer.Extensions;
 using Bucket.Logging.Events;
 using Bucket.SkyApm.Agent.AspNetCore;
 using Bucket.SkyApm.Transport.EventBus;
 using Bucket.HostedService.AspNetCore;
 using Bucket.Listener.Extensions;
 using Bucket.Listener.Redis;
+using Bucket.Caching.Extensions;
+using Bucket.Caching.InMemory;
+using Bucket.Caching.StackExchangeRedis;
+using Bucket.Rpc;
+using Bucket.Rpc.Transport.DotNetty;
+using Bucket.Rpc.Codec.MessagePack;
+using Bucket.Rpc.ProxyGenerator;
+using Bucket.DbContext;
+using Bucket.Utility;
+using Bucket.DependencyInjection;
 using Bucket.WebApi.Hangfire;
 
 using Microsoft.AspNetCore.Builder;
@@ -30,16 +38,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
-using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
+using Newtonsoft.Json.Serialization;
+
 using Hangfire;
 using Hangfire.Console;
 using Hangfire.RecurringJobExtensions;
@@ -68,25 +75,50 @@ namespace Bucket.WebApi
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
-            // 添加授权认证
-            services.AddApiJwtAuthorize(Configuration)
-                .UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); }); ;
-            // 添加基础设施服务
-            services.AddBucket();
-            // 添加数据ORM
-            services.AddSqlSugarDbContext();
-            // 添加错误码服务
-            services.AddErrorCodeServer(Configuration);
-            // 添加配置服务
-            services.AddConfigServer(Configuration);
-            // 添加事件驱动
-            services.AddEventBus(builder => { builder.UseRabbitMQ(); });
-            // 添加服务发现
-            services.AddServiceDiscovery(builder => { builder.UseConsul(); });
-            // 添加事件队列日志和告警信息
-            services.AddLogEventTransport();
-            // 添加链路追踪
-            services.AddBucketSkyApmCore().UseEventBusTransport();
+            // 添加全家桶服务
+            services.AddFamilyBucket(familyBucket =>
+            {
+                // 添加AspNetCore基础服务
+                familyBucket.AddAspNetCore();
+                // 添加授权认证
+                familyBucket.AddApiJwtAuthorize().UseAuthoriser(builder => { builder.UseMySqlAuthorize(); });
+                // 添加数据ORM、数据仓储
+                familyBucket.AddSqlSugarDbContext().AddSqlSugarDbRepository();
+                // 添加错误码服务
+                familyBucket.AddErrorCodeServer();
+                // 添加配置服务
+                familyBucket.AddConfigServer();
+                // 添加事件驱动
+                familyBucket.AddEventBus(builder => { builder.UseRabbitMQ(); });
+                // 添加服务发现
+                familyBucket.AddServiceDiscovery(builder => { builder.UseConsul(); });
+                // 添加负载算法
+                familyBucket.AddLoadBalancer();
+                // 添加事件队列日志和告警信息
+                familyBucket.AddLogEventTransport();
+                // 添加链路追踪
+                familyBucket.AddBucketSkyApmCore().UseEventBusTransport();
+                // 添加缓存组件
+                familyBucket.AddCaching(build =>
+                {
+                    build.UseInMemory("default");
+                    build.UseStackExchangeRedis(new Caching.StackExchangeRedis.Abstractions.StackExchangeRedisOption
+                    {
+                        Configuration = "10.10.188.136:6379,allowadmin=true",
+                        DbProviderName = "redis"
+                    });
+                });
+                // 添加工具组件
+                familyBucket.AddUtil();
+                // 添加组件定时任务
+                familyBucket.AddAspNetCoreHostedService(builder => { builder.AddConfig().AddErrorCode().AddAuthorize(); });
+                // 添加组件任务订阅
+                familyBucket.AddListener(builder => { builder.UseRedis().AddAuthorize().AddConfig().AddErrorCode(); }); // builder.UseZookeeper();
+                // 添加应用批量注册
+                // familyBucket.BatchRegisterService(Assembly.Load("Bucket.Demo.Repository"), "Repository", ServiceLifetime.Scoped);
+                // 添加DotNetty_Rpc使用
+                familyBucket.AddRpcCore().UseDotNettyTransport().UseMessagePackCodec().AddClientRuntime().AddServiceProxy(); //.UseProtoBufferCodec()
+            });
             // 添加过滤器
             services.AddMvc(option => { option.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {
@@ -97,31 +129,18 @@ namespace Bucket.WebApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "微服务全家桶接口服务", Version = "v1" });
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Credit.WebApi.xml"));
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Bucket.WebApi.xml"));
                 c.CustomSchemaIds(x => x.FullName);
-                    // Swagger验证部分
-                    c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
+                // Swagger验证部分
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
                 c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
-            // 添加工具
-            services.AddUtil();
             // 添加HttpClient管理
             services.AddHttpClient();
             // 添加业务组件注册
-            // 添加组件定时任务
-            services.AddBucketHostedService(builder => { builder.AddConfig().AddErrorCode().AddAuthorize(); });
-            // 添加组件任务订阅
-            services.AddListener(builder =>
-            {
-                //builder.UseZookeeper();
-                builder.UseRedis().AddAuthorize().AddConfig().AddErrorCode();
-            });
+
             // 添加事件消息
             RegisterEventBus(services);
-            // 添加数据仓储操作
-            services.AddScoped(typeof(IDbRepository<>), typeof(SqlSugarRepository<>));
-            // 添加应用批量注册
-            // services.BatchRegisterService(Assembly.Load("Bucket.Demo.Repository"), "Repository", ServiceLifetime.Scoped);
             // 注册调度任务
             RegisterScheduler(services);
         }
@@ -155,11 +174,8 @@ namespace Bucket.WebApi
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
-        /// <param name="loggerFactory"></param>
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            // 日志,事件驱动日志
-            loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
             // 文档
             ConfigSwagger(app);
             // 公共配置

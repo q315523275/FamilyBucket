@@ -1,6 +1,5 @@
 ﻿using Bucket.ErrorCode.Abstractions;
 using Bucket.ErrorCode.Utils;
-using Nito.AsyncEx;
 using System.Linq;
 namespace Bucket.ErrorCode
 {
@@ -16,8 +15,8 @@ namespace Bucket.ErrorCode
 
         public string StringGet(string code)
         {
-            if (!_loaded.ReadFullFence() && _dataRepository.Data.Count == 0)
-                AsyncContext.Run(() => _dataRepository.Get());
+            if (!_loaded.ReadFullFence())
+                _dataRepository.Get().ConfigureAwait(false).GetAwaiter().GetResult();
 
             _loaded.WriteFullFence(true);
 

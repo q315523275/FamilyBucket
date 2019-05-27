@@ -12,7 +12,7 @@ namespace Bucket.Caching.InMemory
         /// <param name="builder"></param>
         /// <param name="providerName"></param>
         /// <returns></returns>
-        public static ICachingBuilder UseInMemory(this ICachingBuilder builder, string providerName)
+        public static ICachingBuilder UseInMemory(this ICachingBuilder builder, string providerName = "default")
         {
             builder.Services.AddSingleton<IInMemoryCaching>(sp =>
             {

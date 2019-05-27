@@ -1,4 +1,5 @@
-﻿using Bucket.HostedService;
+﻿using Bucket.Authorize.Abstractions;
+using Bucket.HostedService;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Threading;
@@ -24,7 +25,7 @@ namespace Bucket.Authorize.HostedService
             _timer?.Dispose();
         }
 
-        public Task StartAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public Task StartAsync(CancellationToken cancellationToken = default)
         {
             var config = configuration.GetSection("JwtAuthorize");
 

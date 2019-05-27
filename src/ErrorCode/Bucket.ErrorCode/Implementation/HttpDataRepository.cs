@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Bucket.Core;
+using Newtonsoft.Json;
 using Bucket.ErrorCode.Abstractions;
 using Bucket.ErrorCode.Utils;
 using Microsoft.Extensions.Logging;
@@ -14,15 +14,13 @@ namespace Bucket.ErrorCode.Implementation
         private readonly ILocalDataRepository _localDataRepository;
         private readonly IHttpUrlRepository _httpUrlRepository;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly IJsonHelper _jsonHelper;
         private readonly ILogger<HttpDataRepository> _logger;
         private readonly ThreadSafe.AtomicReference<IList<ApiErrorCodeInfo>> _dataList;
-        public HttpDataRepository(ILocalDataRepository localDataRepository, IHttpUrlRepository httpUrlRepository, IHttpClientFactory httpClientFactory, IJsonHelper jsonHelper, ILogger<HttpDataRepository> logger)
+        public HttpDataRepository(ILocalDataRepository localDataRepository, IHttpUrlRepository httpUrlRepository, IHttpClientFactory httpClientFactory, ILogger<HttpDataRepository> logger)
         {
             _localDataRepository = localDataRepository;
             _httpUrlRepository = httpUrlRepository;
             _httpClientFactory = httpClientFactory;
-            _jsonHelper = jsonHelper;
             _logger = logger;
             _dataList = new ThreadSafe.AtomicReference<IList<ApiErrorCodeInfo>>(new List<ApiErrorCodeInfo>());
         }
@@ -39,7 +37,7 @@ namespace Bucket.ErrorCode.Implementation
                 var response = await client.SendAsync(new HttpRequestMessage(HttpMethod.Get, apiurl));
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
-                var output = _jsonHelper.DeserializeObject<ApiInfo>(content);
+                var output = JsonConvert.DeserializeObject<ApiInfo>(content);
                 if (output != null && output.Value != null && output.Value.Count > 0)
                 {
                     _dataList.WriteFullFence(output.Value);

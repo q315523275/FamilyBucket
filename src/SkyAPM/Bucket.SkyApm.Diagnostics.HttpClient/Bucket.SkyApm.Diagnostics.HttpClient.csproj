@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>全家桶-SkyApmHttpClient追踪收集器</Description>
+    <Description>全家桶-SkyApm链路追踪,HttpClient服务追踪项</Description>
     <Version>1.0.2</Version>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Company>FamilyBucket</Company>
+    <Authors>FamilyBucket</Authors>
   </PropertyGroup>
 
   <ItemGroup>

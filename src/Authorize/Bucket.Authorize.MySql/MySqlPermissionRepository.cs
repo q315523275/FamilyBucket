@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Dapper;
 using System.Linq;
+using Bucket.Authorize.Abstractions;
 
 namespace Bucket.Authorize.MySql
 {

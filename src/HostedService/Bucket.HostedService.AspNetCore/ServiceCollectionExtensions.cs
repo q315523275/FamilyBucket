@@ -1,4 +1,5 @@
-﻿using Bucket.HostedService.AspNetCore.Implementation;
+﻿using Bucket.DependencyInjection;
+using Bucket.HostedService.AspNetCore.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -21,6 +22,16 @@ namespace Bucket.HostedService.AspNetCore
             var builder = new HostedServiceBuilder(services, configuration);
             action(builder);
             return services;
+        }
+        /// <summary>
+        /// 添加Host启动执行服务
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddAspNetCoreHostedService(this IBucketBuilder builder, Action<HostedServiceBuilder> action)
+        {
+            return AddBucketHostedService(builder.Services, action);
         }
     }
 }

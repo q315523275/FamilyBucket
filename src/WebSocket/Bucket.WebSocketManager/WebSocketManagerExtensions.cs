@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Bucket.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -7,6 +8,10 @@ namespace Bucket.WebSocketManager
 {
     public static class WebSocketManagerExtensions
     {
+        public static IServiceCollection AddWebSocketManager(this IBucketBuilder builder, Assembly assembly = null)
+        {
+            return AddWebSocketManager(builder.Services, assembly);
+        }
         public static IServiceCollection AddWebSocketManager(this IServiceCollection services, Assembly assembly = null)
         {
             services.AddTransient<WebSocketConnectionManager>();
@@ -23,7 +28,6 @@ namespace Bucket.WebSocketManager
 
             return services;
         }
-
         public static IApplicationBuilder MapWebSocketManager(this IApplicationBuilder app,
                                                               PathString path,
                                                               WebSocketHandler handler)

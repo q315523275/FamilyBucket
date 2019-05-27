@@ -4,7 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>1.1.6</Version>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
-    <Description>全家桶-日志消息传输</Description>
+    <Description>全家桶-统一日志收集,消息总线传输组件</Description>
+    <Company>FamilyBucket</Company>
   </PropertyGroup>
 
   <ItemGroup>

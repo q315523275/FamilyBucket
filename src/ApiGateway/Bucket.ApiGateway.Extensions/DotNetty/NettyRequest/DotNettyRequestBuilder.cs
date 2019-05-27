@@ -45,7 +45,7 @@ namespace Bucket.ApiGateway.Extensions.DotNetty.NettyRequest
             {
                 return SetError("request parameter error");
             }
-            context.DownstreamRequest.Scheme = "netty";
+            context.DownstreamRequest.Scheme = "DotNetty";
             return new OkResponse<IDictionary<string, object>>(parameters);
         }
         ErrorResponse<IDictionary<string, object>> SetError(Exception exception)

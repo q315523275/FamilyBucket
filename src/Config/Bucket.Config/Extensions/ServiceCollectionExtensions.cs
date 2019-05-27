@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using Bucket.Config.Abstractions;
 using Bucket.Config.Implementation;
+using Bucket.DependencyInjection;
 
 namespace Bucket.Config.Extensions
 {
@@ -18,10 +19,15 @@ namespace Bucket.Config.Extensions
         /// <returns></returns>
         public static IBucketConfigBuilder AddConfigServer(this IServiceCollection services, Action<BucketConfigOptions> configAction)
         {
-            if (configAction == null) throw new ArgumentNullException(nameof(configAction));
+            if (configAction == null)
+                throw new ArgumentNullException(nameof(configAction));
+
             services.Configure(configAction);
 
-            return AddConfigServer(services);
+            var service = services.First(x => x.ServiceType == typeof(IConfiguration));
+            var configuration = (IConfiguration)service.ImplementationInstance;
+
+            return new BucketConfigBuilder(services, configuration);
         }
         /// <summary>
         /// 配置中心
@@ -29,26 +35,23 @@ namespace Bucket.Config.Extensions
         /// <param name="services"></param>
         /// <param name="configAction"></param>
         /// <returns></returns>
-        public static IBucketConfigBuilder AddConfigServer(this IServiceCollection services, IConfiguration configuration)
+        public static IBucketConfigBuilder AddConfigServer(this IServiceCollection services, IConfiguration configuration, string section = "ConfigServer")
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
 
-            services.Configure<BucketConfigOptions>(configuration.GetSection("ConfigServer"));
+            services.Configure<BucketConfigOptions>(configuration.GetSection(section));
 
-            return AddConfigServer(services);
+            return new BucketConfigBuilder(services, configuration);
         }
         /// <summary>
-        /// 配置中心
+        /// 添加配置中心服务
         /// </summary>
         /// <param name="services"></param>
         /// <param name="configSetting"></param>
         /// <returns></returns>
-        private static IBucketConfigBuilder AddConfigServer(this IServiceCollection services)
+        public static IBucketConfigBuilder AddConfigServer(this IBucketBuilder builder, string section = "ConfigServer")
         {
-            var service = services.First(x => x.ServiceType == typeof(IConfiguration));
-            var configuration = (IConfiguration)service.ImplementationInstance;
-
-            return new BucketConfigBuilder(services, configuration);
+            return AddConfigServer(builder.Services, builder.Configuration, section);
         }
     }
 }

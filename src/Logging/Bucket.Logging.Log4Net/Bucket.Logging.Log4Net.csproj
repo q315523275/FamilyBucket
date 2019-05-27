@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Description>全家桶-统一日志收集Log4Net实现</Description>
+    <Company>FamilyBucket</Company>
+    <Authors>FamilyBucket</Authors>
   </PropertyGroup>
 
   <ItemGroup>

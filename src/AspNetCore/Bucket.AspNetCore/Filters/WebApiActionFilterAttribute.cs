@@ -1,19 +1,11 @@
-﻿using Bucket.Core;
+﻿using Newtonsoft.Json;
 using Bucket.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Linq;
-
 namespace Bucket.AspNetCore.Filters
 {
     public class WebApiActionFilterAttribute : ActionFilterAttribute
     {
-        private readonly IJsonHelper jsonHelper;
-        /// <summary>
-        /// Action 过滤器
-        /// </summary>
-        public WebApiActionFilterAttribute(IJsonHelper jsonHelper) {
-            this.jsonHelper = jsonHelper;
-        }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             #region 自定义模型验证
@@ -32,7 +24,7 @@ namespace Bucket.AspNetCore.Filters
                 }
                 if (!string.IsNullOrWhiteSpace(message))
                 {
-                    var errorInfo = jsonHelper.DeserializeObject<ErrorResult>(message);
+                    var errorInfo = JsonConvert.DeserializeObject<ErrorResult>(message);
                     if (errorInfo != null)
                         throw new BucketException(errorInfo.ErrorCode, errorInfo.Message);
                     else
@@ -40,6 +32,7 @@ namespace Bucket.AspNetCore.Filters
                 }
             }
             #endregion
+
         }
     }
 }

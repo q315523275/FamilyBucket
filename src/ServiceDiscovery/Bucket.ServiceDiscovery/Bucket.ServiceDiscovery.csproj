@@ -5,7 +5,8 @@
     <Version>1.1.2</Version>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
     <Authors>FamilyBucket</Authors>
-    <Company>Bucket.ServiceDiscovery</Company>
+    <Company>FamilyBucket</Company>
+    <Description>全家桶-服务发现组件</Description>
   </PropertyGroup>
 
   <ItemGroup>

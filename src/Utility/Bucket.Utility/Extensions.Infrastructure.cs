@@ -1,7 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Bucket.Utility.Files;
+using Bucket.DependencyInjection;
+using System.Linq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
-using Bucket.Utility.Files;
+
 namespace Bucket.Utility
 {
     /// <summary>
@@ -17,10 +20,23 @@ namespace Bucket.Utility
         {
             // 添加文件操作
             services.AddSingleton<IBucketFileProvider, BucketFileProvider>();
-            // 值设置
-            Helpers.Web.HttpContextAccessor = services.BuildServiceProvider().GetRequiredService<IHttpContextAccessor>();
-            Helpers.Web.Environment = services.BuildServiceProvider().GetRequiredService<IHostingEnvironment>();
+
+            var httpContextAccessor = services.First(x => x.ServiceType == typeof(IHttpContextAccessor));
+            Helpers.Web.HttpContextAccessor = (IHttpContextAccessor)httpContextAccessor.ImplementationInstance;
+
+            var hostingEnvironment = services.First(x => x.ServiceType == typeof(IHostingEnvironment));
+            Helpers.Web.Environment = (IHostingEnvironment)hostingEnvironment.ImplementationInstance;
+
             return services;
+        }
+        /// <summary>
+        /// 注册Util基础设施服务
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddUtil(this IBucketBuilder builder)
+        {
+            return AddUtil(builder.Services);
         }
     }
 }

@@ -1,6 +1,11 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
 using System;
 using System.IO;
+
 using Bucket.Config.Extensions;
 using Bucket.Config.HostedService;
 using Bucket.EventBus.Extensions;
@@ -10,16 +15,16 @@ using Bucket.Logging.Events;
 using Bucket.DbContext;
 using Bucket.Config;
 using Bucket.Logging;
-using Bucket.Caching;
+using Bucket.Caching.Extensions;
 using Bucket.Caching.InMemory;
 using Bucket.Caching.StackExchangeRedis;
 using Bucket.AspNetCore.Extensions;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Bucket.Caching.Abstractions;
+using Bucket.DbContext.SqlSugar;
+using System.Collections.Generic;
+using System.Threading;
 
-namespace Bucket.Console
+namespace Bucket.GenericHost
 {
     static class Program
     {
@@ -48,7 +53,7 @@ namespace Bucket.Console
                    .ConfigureServices((hostContext, services) =>
                    {
                        // 添加基础
-                       services.AddBucket();
+                       services.AddBucketAspNetCore();
                        // 添加日志
                        services.AddLogEventTransport();
                        // 添加数据库Orm
@@ -74,13 +79,14 @@ namespace Bucket.Console
                            });
                        });
                        // 添加数据仓储注册
-                       services.AddScoped(typeof(IDbRepository<>), typeof(SqlSugarRepository<>));
+                       services.AddScoped(typeof(ISqlSugarDbRepository<>), typeof(SqlSugarDbRepository<>));
                        // 事件注册
                        RegisterEventBus(services);
                    })
                    .ConfigureLogging((hostingContext, logging) =>
                    {
                        logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"))
+                              .ClearProviders()
                               .AddBucketLog("Pinzhi.BackgroundTasks");
                    })
                    .UseConsoleLifetime()
@@ -103,15 +109,28 @@ namespace Bucket.Console
         /// <param name="serviceProvider"></param>
         private static IHost ConfigureEventBus(this IHost host)
         {
-            var _cachingProviderFactory = host.Services.GetRequiredService<ICachingProviderFactory>();
+            //var _cachingProviderFactory = host.Services.GetRequiredService<ICachingProviderFactory>();
 
-            var cache1 = _cachingProviderFactory.GetCachingProvider("default");
-            cache1.Set("key1", "123456", new TimeSpan(0, 1, 0));
-            System.Console.WriteLine($"内存key1:{cache1.Get<string>("key1")}");
+            //var cache1 = _cachingProviderFactory.GetCachingProvider("default");
+            //cache1.Set("key1", "123456", new TimeSpan(0, 1, 0));
+            //System.Console.WriteLine($"内存key1:{cache1.Get<string>("key1")}");
 
-            var cache2 = _cachingProviderFactory.GetCachingProvider("redis");
-            cache1.Set("key2", "123", new TimeSpan(0, 1, 0));
-            System.Console.WriteLine($"redis key1:{cache1.Get<int>("key2")}");
+            //var cache2 = _cachingProviderFactory.GetCachingProvider("redis");
+            //cache1.Set("key2", "123", new TimeSpan(0, 1, 0));
+            //System.Console.WriteLine($"redis key1:{cache1.Get<int>("key2")}");
+
+            var services = new List<string> { "A", "B", "C", "D" };
+            var _last = -1;
+
+            Bucket.Utility.Helpers.Thread.ParallelExecute(() => {
+                Interlocked.Increment(ref _last);
+                if (_last >= services.Count)
+                {
+                    //_last = 0;
+                    Interlocked.Exchange(ref _last, 0);
+                }
+                Console.Write(services[_last]);
+            }, 3000);
 
             return host;
         }

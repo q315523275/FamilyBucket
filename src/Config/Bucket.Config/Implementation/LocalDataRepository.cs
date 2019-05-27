@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using Microsoft.Extensions.Logging;
-using Bucket.Core;
+using Newtonsoft.Json;
 using System.Collections.Concurrent;
 using Bucket.Config.Abstractions;
 
@@ -10,12 +10,10 @@ namespace Bucket.Config.Implementation
     public class LocalDataRepository: ILocalDataRepository
     {
         private readonly string localcachepath = Path.Combine(AppContext.BaseDirectory, "localconfig.json");
-        private readonly IJsonHelper _jsonHelper;
         private readonly ILogger<LocalDataRepository> _logger;
 
-        public LocalDataRepository(IJsonHelper jsonHelper, ILogger<LocalDataRepository> logger)
+        public LocalDataRepository(ILogger<LocalDataRepository> logger)
         {
-            _jsonHelper = jsonHelper;
             _logger = logger;
         }
 
@@ -27,7 +25,7 @@ namespace Bucket.Config.Implementation
                 string dir = Path.GetDirectoryName(localcachepath);
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
-                var json = _jsonHelper.SerializeObject(dic);
+                var json = JsonConvert.SerializeObject(dic);
                 File.WriteAllText(localcachepath, json);
             }
             catch(Exception ex)
@@ -44,7 +42,7 @@ namespace Bucket.Config.Implementation
                 if (File.Exists(localcachepath))
                 {
                     var json = File.ReadAllText(localcachepath);
-                    return _jsonHelper.DeserializeObject<ConcurrentDictionary<string, string>>(json);
+                    return JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(json);
                 }
             }
             catch (Exception ex)

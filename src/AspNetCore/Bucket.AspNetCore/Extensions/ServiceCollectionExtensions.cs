@@ -1,16 +1,14 @@
-﻿
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 using Bucket.Core;
 using Bucket.Redis;
 using Bucket.ErrorCode;
 using Bucket.AspNetCore.Commons;
-using Bucket.AspNetCore.Serialize;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
 using System.Linq;
+using Bucket.DependencyInjection;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -21,18 +19,39 @@ namespace Bucket.AspNetCore.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
+        [Obsolete("Please use AddBucketAspNetCore")]
         public static IServiceCollection AddBucket(this IServiceCollection services)
+        {
+            return AddBucketAspNetCore(services);
+        }
+        /// <summary>
+        /// 添加框架默认基础
+        /// AddOptions\AddLogging\AddHttpContextAccessor\AddIUser\AddIRequestScopedDataRepository\AddIJsonHelper\AddIErrorCode
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddBucketAspNetCore(this IServiceCollection services)
         {
             services.AddOptions();
             services.AddLogging();
             services.AddSingleton<RedisClient>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
             services.AddSingleton<IUser, HttpContextUser>();
             services.AddSingleton<IRequestScopedDataRepository, HttpDataRepository>();
-            services.AddSingleton<IJsonHelper, DefaultJsonHelper>();
             services.AddSingleton<IErrorCode, EmptyErrorCode>();
             return services;
         }
+        /// <summary>
+        /// 添加框架默认基础
+        /// AddOptions\AddLogging\AddHttpContextAccessor\AddIUser\AddIRequestScopedDataRepository\AddIJsonHelper\AddIErrorCode
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddAspNetCore(this IBucketBuilder builder)
+        {
+            return AddBucketAspNetCore(builder.Services);
+        }
+
         /// <summary>
         /// 跨域服务
         /// </summary>
@@ -188,6 +207,42 @@ namespace Bucket.AspNetCore.Extensions
                 }
             }
             return services;
+        }
+
+
+        /// <summary>
+        /// 批量注册服务
+        /// </summary>
+        /// <param name="builder">DI服务</param>
+        /// <param name="assemblys">需要批量注册的程序集集合</param>
+        /// <param name="serviceLifetime">服务生命周期</param>
+        /// <returns></returns>
+        public static IServiceCollection BatchRegisterService(this IBucketBuilder builder, Assembly[] assemblys, ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
+        {
+            return BatchRegisterService(builder.Services, assemblys, serviceLifetime);
+        }
+        /// <summary>
+        /// 批量注册服务
+        /// </summary>
+        /// <param name="services">DI服务</param>
+        /// <param name="assembly">需要批量注册的程序集</param>
+        /// <param name="endWith">类名结束字符</param>
+        /// <param name="serviceLifetime">服务生命周期</param>
+        /// <returns></returns>
+        public static IServiceCollection BatchRegisterService(this IBucketBuilder builder, Assembly assembly, string endWith, ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
+        {
+            return BatchRegisterService(builder.Services, assembly, endWith, serviceLifetime);
+        }
+        /// <summary>
+        /// 批量注册服务
+        /// </summary>
+        /// <param name="services">DI服务</param>
+        /// <param name="typeList">类集合</param>
+        /// <param name="serviceLifetime">服务生命周期</param>
+        /// <returns></returns>
+        public static IServiceCollection BatchRegisterService(this IBucketBuilder builder, IEnumerable<Type> typeList, ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
+        {
+            return BatchRegisterService(builder.Services, typeList, serviceLifetime);
         }
     }
 }

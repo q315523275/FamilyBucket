@@ -1,10 +1,9 @@
 ﻿using Hangfire;
 using Hangfire.Console;
-using Hangfire.Dashboard;
 using Hangfire.RecurringJobExtensions;
+using Hangfire.MySql.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

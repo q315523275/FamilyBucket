@@ -10,8 +10,28 @@ namespace Bucket.Caching.StackExchangeRedis
 {
     public class DefaultRedisCachingProvider : ICachingProvider
     {
-        private readonly IDatabase _cache;
-        private readonly IEnumerable<IServer> _servers;
+        private IDatabase _cache
+        {
+            get
+            {
+                if (!_dbProvider.IsConnected)
+                {
+                    _dbProvider.TryConnect();
+                }
+                return _dbProvider.GetDatabase();
+            }
+        }
+        private IEnumerable<IServer> _servers
+        {
+            get
+            {
+                if (!_dbProvider.IsConnected)
+                {
+                    _dbProvider.TryConnect();
+                }
+                return _dbProvider.GetServerList();
+            }
+        }
         private readonly IRedisDatabaseProvider _dbProvider;
         private readonly ICachingSerializer _serializer;
         public string ProviderName { get; }
@@ -20,32 +40,42 @@ namespace Bucket.Caching.StackExchangeRedis
             ProviderName = name;
             _dbProvider = dbProviders.FirstOrDefault(x => x.DbProviderName.Equals(name));
             _serializer = serializer;
-            _cache = _dbProvider.GetDatabase();
-            _servers = _dbProvider.GetServerList();
         }
 
         public bool Exists(string key)
         {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
             return _cache.KeyExists(key);
         }
 
         public async Task<bool> ExistsAsync(string key)
         {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
             return await _cache.KeyExistsAsync(key);
         }
 
         public T Get<T>(string key)
         {
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+
             var result = _cache.StringGet(key);
             if (result.HasValue && !result.IsNull)
             {
                 return _serializer.Deserialize<T>(result);
             }
-            return default(T);
+            return default;
         }
 
         public IDictionary<string, T> GetAll<T>(IEnumerable<string> keys)
         {
+            if (keys == null)
+                throw new ArgumentNullException(nameof(keys));
+
             var keyArray = keys.ToArray();
             var values = _cache.StringGet(keyArray.Select(k => (RedisKey)k).ToArray());
 
@@ -53,10 +83,10 @@ namespace Bucket.Caching.StackExchangeRedis
             for (int i = 0; i < keyArray.Length; i++)
             {
                 var cachedValue = values[i];
-                if (!cachedValue.IsNull)
+                if (cachedValue.HasValue && !cachedValue.IsNull)
                     result.Add(keyArray[i], _serializer.Deserialize<T>(cachedValue));
                 else
-                    result.Add(keyArray[i], default(T));
+                    result.Add(keyArray[i], default);
             }
 
             return result;
@@ -64,6 +94,9 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task<IDictionary<string, T>> GetAllAsync<T>(IEnumerable<string> keys)
         {
+            if (keys == null)
+                throw new ArgumentNullException(nameof(keys));
+
             var keyArray = keys.ToArray();
             var values = await _cache.StringGetAsync(keyArray.Select(k => (RedisKey)k).ToArray());
 
@@ -71,10 +104,10 @@ namespace Bucket.Caching.StackExchangeRedis
             for (int i = 0; i < keyArray.Length; i++)
             {
                 var cachedValue = values[i];
-                if (!cachedValue.IsNull)
+                if (cachedValue.HasValue && !cachedValue.IsNull)
                     result.Add(keyArray[i], _serializer.Deserialize<T>(cachedValue));
                 else
-                    result.Add(keyArray[i], default(T));
+                    result.Add(keyArray[i], default);
             }
 
             return result;
@@ -82,33 +115,48 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task<T> GetAsync<T>(string key)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             var result = await _cache.StringGetAsync(key);
             if (result.HasValue && !result.IsNull)
             {
                 return _serializer.Deserialize<T>(result);
             }
-            return default(T);
+            return default;
         }
 
         public void Refresh<T>(string key, T value, TimeSpan expiration)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             Remove(key);
             Set(key, value, expiration);
         }
 
         public async Task RefreshAsync<T>(string key, T value, TimeSpan expiration)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             await RemoveAsync(key);
             await SetAsync(key, value, expiration);
         }
 
         public void Remove(string key)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             _cache.KeyDelete(key);
         }
 
         public void RemoveAll(IEnumerable<string> keys)
         {
+            if (keys == null)
+                throw new ArgumentNullException(nameof(keys));
+
             var redisKeys = keys.Where(k => !string.IsNullOrEmpty(k)).Select(k => (RedisKey)k).ToArray();
             if (redisKeys.Length > 0)
                 _cache.KeyDelete(redisKeys);
@@ -116,6 +164,9 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task RemoveAllAsync(IEnumerable<string> keys)
         {
+            if (keys == null)
+                throw new ArgumentNullException(nameof(keys));
+
             var redisKeys = keys.Where(k => !string.IsNullOrEmpty(k)).Select(k => (RedisKey)k).ToArray();
             if (redisKeys.Length > 0)
                 await _cache.KeyDeleteAsync(redisKeys);
@@ -123,16 +174,25 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task RemoveAsync(string key)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             await _cache.KeyDeleteAsync(key);
         }
 
         public void Set<T>(string key, T value, TimeSpan expiration)
         {
-            _cache.StringSet(key, _serializer.Serialize(key), expiration);
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
+            _cache.StringSet(key, _serializer.Serialize(value), expiration);
         }
 
         public void SetAll<T>(IDictionary<string, T> values, TimeSpan expiration)
         {
+            if (values == null)
+                throw new ArgumentNullException(nameof(values));
+
             var batch = _cache.CreateBatch();
 
             foreach (var item in values)
@@ -143,6 +203,9 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task SetAllAsync<T>(IDictionary<string, T> values, TimeSpan expiration)
         {
+            if (values == null)
+                throw new ArgumentNullException(nameof(values));
+
             var tasks = new List<Task>();
 
             foreach (var item in values)
@@ -153,16 +216,25 @@ namespace Bucket.Caching.StackExchangeRedis
 
         public async Task SetAsync<T>(string key, T value, TimeSpan expiration)
         {
-            await _cache.StringSetAsync(key, _serializer.Serialize(key), expiration);
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
+            await _cache.StringSetAsync(key, _serializer.Serialize(value), expiration);
         }
 
         public bool TrySet<T>(string key, T value, TimeSpan expiration)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             return _cache.StringSet(key, _serializer.Serialize(value), expiration, When.NotExists);
         }
 
         public async Task<bool> TrySetAsync<T>(string key, T value, TimeSpan expiration)
         {
+            if (key == null)
+                throw new ArgumentNullException(nameof(key));
+
             return await _cache.StringSetAsync(key, _serializer.Serialize(value), expiration, When.NotExists);
         }
     }

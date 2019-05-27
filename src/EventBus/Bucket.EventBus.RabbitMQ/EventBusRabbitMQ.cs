@@ -90,8 +90,7 @@ namespace Bucket.EventBus.RabbitMQ
 
             using (var channel = _persistentConnection.CreateModel())
             {
-                var eventName = @event.GetType()
-                    .Name;
+                var eventName = @event.GetType().Name;
 
                 channel.ExchangeDeclare(exchange: BROKER_NAME,
                                         type: "direct");

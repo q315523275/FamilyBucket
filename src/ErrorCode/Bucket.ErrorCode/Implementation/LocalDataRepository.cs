@@ -1,6 +1,6 @@
-﻿using Bucket.Core;
-using Bucket.ErrorCode.Abstractions;
+﻿using Bucket.ErrorCode.Abstractions;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,12 +10,10 @@ namespace Bucket.ErrorCode.Implementation
     public class LocalDataRepository: ILocalDataRepository
     {
         private readonly string localcachepath = Path.Combine(AppContext.BaseDirectory, "localerrorcode.json");
-        private readonly IJsonHelper _jsonHelper;
         private readonly ILogger<LocalDataRepository> _logger;
 
-        public LocalDataRepository(IJsonHelper jsonHelper, ILogger<LocalDataRepository> logger)
+        public LocalDataRepository(ILogger<LocalDataRepository> logger)
         {
-            _jsonHelper = jsonHelper;
             _logger = logger;
         }
 
@@ -27,7 +25,7 @@ namespace Bucket.ErrorCode.Implementation
                 string dir = Path.GetDirectoryName(localcachepath);
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
-                var json = _jsonHelper.SerializeObject(list);
+                var json = JsonConvert.SerializeObject(list);
                 File.WriteAllText(localcachepath, json);
             }
             catch (Exception ex)
@@ -44,7 +42,7 @@ namespace Bucket.ErrorCode.Implementation
                 if (File.Exists(localcachepath))
                 {
                     var json = File.ReadAllText(localcachepath);
-                    return _jsonHelper.DeserializeObject<List<ApiErrorCodeInfo>>(json);
+                    return JsonConvert.DeserializeObject<List<ApiErrorCodeInfo>>(json);
                 }
             }
             catch (Exception ex)

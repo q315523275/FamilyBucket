@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>全家桶-缓存组件,StackExchangeRedis实现</Description>
+    <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
+    <Company>FamilyBucket</Company>
+    <Authors>FamilyBucket</Authors>
   </PropertyGroup>
 
   <ItemGroup>
