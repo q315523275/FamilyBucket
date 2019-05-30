@@ -1,5 +1,5 @@
 ﻿
-## 全家桶之ORM,当前基础SqlSugar进行封装,支持仓储,多库等操作
+## 全家桶之ORM,当前基于SqlSugar进行封装,支持仓储,多库等操作
 
 参数配置
 
@@ -19,12 +19,7 @@
       "DbType": "MySql",
       "IsAutoCloseConnection": false
     }
-  ],
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-      // 添加数据ORM、数据仓储
-      familyBucket.AddSqlSugarDbContext().AddSqlSugarDbRepository();
-  }
+  ]
 ```
 // 注入
 ```csharp
@@ -35,6 +30,7 @@
   }
 ```
 
+
 仓储使用方法
 ```csharp
    // 构造函数获取
@@ -43,6 +39,8 @@
    {
       _userDbRepository = userDbRepository;
    }
+   // 多库切换,"log"是DbConfig里的Name参数
+   _userDbRepository.UseDb("log")
 ```
 ```csharp
    // action方法获取
@@ -69,7 +67,7 @@ SqlSugarClient使用方法
    {
       _sqlSugarDbContextFactory = sqlSugarDbContextFactory;
    }
-   // "log"是DbConfig里的Name参数
+   // "log"是DbConfig里的Name参数,通过Get实现多库切换使用
    var logDbContext = _sqlSugarDbContextFactory.Get("log");
 
    // 直接使用Client,获取配置里Default为True的默认第一条
