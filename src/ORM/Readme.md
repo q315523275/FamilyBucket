@@ -1,7 +1,7 @@
 ﻿
 ## 全家桶之ORM,当前基于SqlSugar进行封装,支持仓储,多库等操作
 
-参数配置
+1、参数配置
 
 ```csharp
   "DbConfig": [
@@ -21,7 +21,7 @@
     }
   ]
 ```
-// 注入
+2、 注入
 ```csharp
   public IServiceProvider ConfigureServices(IServiceCollection services)
   {
@@ -31,7 +31,7 @@
 ```
 
 
-仓储使用方法
+3、仓储使用
 ```csharp
    // 构造函数获取
    private readonly ISqlSugarDbRepository<UserModel> _userDbRepository;
@@ -58,7 +58,7 @@
        return HttpContext.RequestServices.GetRequiredService<ISqlSugarDbRepository<TEntity>>();
    }
 ```
-SqlSugarClient使用方法
+4、SqlSugarClient使用方法
 ```csharp
    // 构造函数获取
    // 后来想想DbContext实现对原Orm改造太多就放弃了,直接改成多Client管理
@@ -69,7 +69,8 @@ SqlSugarClient使用方法
    }
    // "log"是DbConfig里的Name参数,通过Get实现多库切换使用
    var logDbContext = _sqlSugarDbContextFactory.Get("log");
-
+```
+```csharp
    // 直接使用Client,获取配置里Default为True的默认第一条
    private readonly BucketSqlSugarClient _dbContext;
    public ValuesController(BucketSqlSugarClient dbContext)
