@@ -16,12 +16,12 @@
  *
  */
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Bucket.SkyApm.Transport;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bucket.SkyApm.Service
 {

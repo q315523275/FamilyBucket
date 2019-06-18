@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Bucket.DependencyInjection;
 using Bucket.Rpc.Client;
 using Bucket.Rpc.Client.Implementation;
 using Bucket.Rpc.Convertibles;
@@ -15,9 +14,10 @@ using Bucket.Rpc.Server.ServiceDiscovery.Attributes;
 using Bucket.Rpc.Server.ServiceDiscovery.Implementation;
 using Bucket.Rpc.Transport.Codec;
 using Bucket.Rpc.Transport.Codec.Implementation;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
-using Bucket.DependencyInjection;
 
 namespace Bucket.Rpc
 {
@@ -166,7 +166,7 @@ namespace Bucket.Rpc
                 //return new AttributeServiceEntryProvider(types, provider.GetRequiredService<IClrServiceEntryFactory>(),
                 //provider.GetRequiredService<ILogger<AttributeServiceEntryProvider>>());
 
-                return new AttributeServiceEntryProvider(AppDomain.CurrentDomain.GetAssemblies().Where(i => i.IsDynamic == false).SelectMany(i => i.ExportedTypes).ToArray(), 
+                return new AttributeServiceEntryProvider(AppDomain.CurrentDomain.GetAssemblies().Where(i => i.IsDynamic == false).SelectMany(i => i.ExportedTypes).ToArray(),
                     provider.GetRequiredService<IClrServiceEntryFactory>(),
                     provider.GetRequiredService<ILogger<AttributeServiceEntryProvider>>());
             });

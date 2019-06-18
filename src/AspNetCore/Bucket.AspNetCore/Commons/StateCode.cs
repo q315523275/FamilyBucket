@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.AspNetCore.Commons
+﻿namespace Bucket.AspNetCore.Commons
 {
     /// <summary>
     /// 状态码

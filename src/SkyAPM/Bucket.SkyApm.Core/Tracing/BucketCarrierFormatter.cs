@@ -16,8 +16,6 @@
  *
  */
 
-using System.Linq;
-using Bucket.SkyApm.Common;
 using Microsoft.Extensions.Options;
 
 namespace Bucket.SkyApm.Tracing

@@ -16,9 +16,9 @@
  *
  */
 
+using Bucket.SkyApm.Tracing.Segments;
 using System.Threading;
 using System.Threading.Tasks;
-using Bucket.SkyApm.Tracing.Segments;
 
 namespace Bucket.SkyApm.Transport
 {

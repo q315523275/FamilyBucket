@@ -1,5 +1,5 @@
-﻿using Bucket.ServiceDiscovery;
-using System;
+﻿using Bucket.LoadBalancer.Selectors;
+using Bucket.ServiceDiscovery;
 using System.Threading.Tasks;
 
 namespace Bucket.LoadBalancer
@@ -12,16 +12,18 @@ namespace Bucket.LoadBalancer
             _serviceProvider = serviceProvider;
         }
 
-        public async Task<ILoadBalancer> Get(string serviceName, string loadBalancer = "RoundRobin")
+        public async Task<ILoadBalancer> Get(string serviceName, LoadBalancerMode loadBalancer = LoadBalancerMode.RoundRobin)
         {
             switch (loadBalancer)
             {
-                case "RoundRobin":
-                    return new RoundRobin(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
-                case "LeastConnection":
-                    return new LeastConnection(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
+                case LoadBalancerMode.Random:
+                    return new RandomSelector(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
+                case LoadBalancerMode.RoundRobin:
+                    return new RoundRobinSelector(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
+                case LoadBalancerMode.LeastConnection:
+                    return new LeastConnectionSelector(async () => await _serviceProvider.FindServiceInstancesAsync(serviceName), serviceName);
                 default:
-                    return new NoLoadBalancer(await _serviceProvider.FindServiceInstancesAsync(serviceName));
+                    return new NoLoadBalancerSelector(await _serviceProvider.FindServiceInstancesAsync(serviceName));
             }
         }
     }

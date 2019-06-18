@@ -39,7 +39,7 @@ namespace Bucket.WebSocketManager
         public virtual async Task OnDisconnected(WebSocket socket)
         {
             var socketId = WebSocketConnectionManager.GetId(socket);
-            if(!string.IsNullOrWhiteSpace(socketId))
+            if (!string.IsNullOrWhiteSpace(socketId))
                 await WebSocketConnectionManager.RemoveSocket(socketId).ConfigureAwait(false);
         }
         public async Task SendMessageAsync(WebSocket socket, Message message)

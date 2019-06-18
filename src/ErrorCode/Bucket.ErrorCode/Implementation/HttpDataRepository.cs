@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Bucket.ErrorCode.Abstractions;
+using Bucket.ErrorCode.Utils;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Bucket.ErrorCode.Abstractions;
-using Bucket.ErrorCode.Utils;
-using Microsoft.Extensions.Logging;
 
 namespace Bucket.ErrorCode.Implementation
 {

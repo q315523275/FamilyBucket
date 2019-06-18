@@ -6,7 +6,7 @@ namespace Bucket.ErrorCode
     {
         public string StatusCode { get; set; }
         public List<ApiErrorCodeInfo> Value { get; set; }
-}
+    }
     public class ApiErrorCodeInfo
     {
         public string ErrorCode { get; set; }

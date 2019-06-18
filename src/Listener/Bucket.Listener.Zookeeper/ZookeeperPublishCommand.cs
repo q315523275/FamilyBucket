@@ -1,14 +1,14 @@
 ﻿using Bucket.Listener.Abstractions;
 using Bucket.Values;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Rabbit.Zookeeper;
 using Rabbit.Zookeeper.Implementation;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 namespace Bucket.Listener.Zookeeper
 {
-    public class ZookeeperPublishCommand: IPublishCommand
+    public class ZookeeperPublishCommand : IPublishCommand
     {
         private readonly IZookeeperClient _client;
         private readonly ZookeeperListenerOptions _options;

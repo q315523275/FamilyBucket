@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Bucket.Rpc.Server;
+﻿using Bucket.Rpc.Server;
 using Bucket.Rpc.Server.Implementation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.Rpc.Transport.DotNetty
 {

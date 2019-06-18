@@ -1,8 +1,8 @@
 ﻿
-using Microsoft.Extensions.Configuration;
-using System.Collections.Concurrent;
 using Bucket.Config.Abstractions;
 using Bucket.Config.Implementation;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Concurrent;
 namespace Bucket.Config.Configuration
 {
     /// <summary>
@@ -25,7 +25,7 @@ namespace Bucket.Config.Configuration
 
         private void SetData(ConcurrentDictionary<string, string> changeData)
         {
-            foreach(var dic in changeData)
+            foreach (var dic in changeData)
             {
                 if (Data.ContainsKey(dic.Key))
                     Data[dic.Key] = dic.Value;

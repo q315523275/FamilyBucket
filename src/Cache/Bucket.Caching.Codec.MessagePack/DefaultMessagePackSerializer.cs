@@ -1,7 +1,7 @@
-﻿using System;
-using Bucket.Caching.Abstractions;
+﻿using Bucket.Caching.Abstractions;
 using MessagePack;
 using MessagePack.Resolvers;
+using System;
 
 namespace Bucket.Caching.Codec.MessagePack
 {

@@ -2,37 +2,20 @@
 {
     public class EventBusRabbitMqOptions
     {
-        /// <summary>
-        /// Default password (value: "guest").
-        /// </summary>
-        /// <remarks>PLEASE KEEP THIS MATCHING THE DOC ABOVE.</remarks>
-        public const string DefaultPass = "guest";
-        /// <summary>
-        /// Default user name (value: "guest").
-        /// </summary>
-        /// <remarks>PLEASE KEEP THIS MATCHING THE DOC ABOVE.</remarks>
-        public const string DefaultUser = "guest";
-        /// <summary>
-        /// Default virtual host (value: "/").
-        /// </summary>
-        /// <remarks> PLEASE KEEP THIS MATCHING THE DOC ABOVE.</remarks>
-        public const string DefaultVHost = "/";
-
-        /// <summary>
-        /// Qos限速
-        /// </summary>
-        public const ushort DefaultPrefetchCount = 1;
-
-        public const int DefaultRetryCount = 5;
-
-        /// <summary>The host to connect to.</summary>
+        public string ExchangeName { get; set; } = "bucket_event_bus";
         public string HostName { get; set; } = "localhost";
-        public int Port { set; get; } = -1;
-        public string UserName { get; set; } = DefaultPass;
-        public string Password { get; set; } = DefaultUser;
-        public string VirtualHost { get; set; } = DefaultVHost;
+        public int Port { set; get; } = 5672;
+        public string UserName { get; set; } = "guest";
+        public string Password { get; set; } = "guest";
+        public string VirtualHost { get; set; } = "/";
         public string QueueName { set; get; }
-        public ushort PrefetchCount { set; get; } = DefaultPrefetchCount;
-        public int RetryCount { set; get; } = DefaultRetryCount;
+        /// <summary>
+        /// Qos限速,默认1
+        /// </summary>
+        public ushort PrefetchCount { set; get; } = 1;
+        /// <summary>
+        /// 重试策略,默认5
+        /// </summary>
+        public int RetryCount { set; get; } = 5;
     }
 }

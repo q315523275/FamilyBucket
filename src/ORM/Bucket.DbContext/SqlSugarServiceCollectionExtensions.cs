@@ -81,7 +81,7 @@ namespace Bucket.DbContext
                 services.AddScoped(typeof(ISqlSugarDbRepository<>), typeof(SqlSugarDbRepository<>));
             if (contextLifetime == ServiceLifetime.Transient)
                 services.AddTransient(typeof(ISqlSugarDbRepository<>), typeof(SqlSugarDbRepository<>));
-            services.AddSingleton<ISqlSugarDbRepositoryFactory, SqlSugarDbRepositoryFactory> ();
+            services.AddSingleton<ISqlSugarDbRepositoryFactory, SqlSugarDbRepositoryFactory>();
             return services;
         }
     }

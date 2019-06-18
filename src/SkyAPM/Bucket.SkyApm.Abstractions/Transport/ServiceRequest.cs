@@ -25,7 +25,7 @@ namespace Bucket.SkyApm.Transport
         public string ServiceName { get; set; }
 
         public Dictionary<string, string> Tags { get; set; }
-        
-        public Dictionary<string,string> Properties { get; set; }
+
+        public Dictionary<string, string> Properties { get; set; }
     }
 }

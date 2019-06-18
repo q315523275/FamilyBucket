@@ -16,7 +16,6 @@
  *
  */
 
-using Bucket.SkyApm.Common;
 using Bucket.SkyApm.Tracing.Segments;
 
 namespace Bucket.SkyApm.Tracing
@@ -28,7 +27,7 @@ namespace Bucket.SkyApm.Tracing
         SegmentContext CreateLocalSegment(string operationName);
 
         SegmentContext CreateExitSegment(string operationName, string networkAddress);
-        
+
         void Release(SegmentContext segmentContext);
     }
 }

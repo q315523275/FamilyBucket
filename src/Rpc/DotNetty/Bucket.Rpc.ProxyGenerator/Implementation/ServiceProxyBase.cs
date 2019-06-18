@@ -41,7 +41,7 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
         /// <returns>调用结果。</returns>
         protected async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId)
         {
-            if(_endPoint == null)
+            if (_endPoint == null)
                 throw new RpcException($"无法解析服务Id：{serviceId}的地址信息。");
 
             var message = await _remoteInvokeService.InvokeAsync(new RemoteInvokeContext

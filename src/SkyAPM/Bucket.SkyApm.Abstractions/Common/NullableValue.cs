@@ -21,9 +21,9 @@ namespace Bucket.SkyApm.Common
     public struct NullableValue
     {
         public static readonly NullableValue Null = new NullableValue(0);
-            
+
         private const int NULL_VALUE = 0;
-        
+
         public int Value { get; }
 
         public NullableValue(int value)

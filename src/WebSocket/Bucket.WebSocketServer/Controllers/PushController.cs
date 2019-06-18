@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Bucket.WebSocketServer.MessageHandlers;
-using Bucket.WebSocketManager;
+﻿using Bucket.WebSocketManager;
 using Bucket.WebSocketServer.DTO;
+using Bucket.WebSocketServer.MessageHandlers;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Bucket.WebSocketServer.Controllers
 {

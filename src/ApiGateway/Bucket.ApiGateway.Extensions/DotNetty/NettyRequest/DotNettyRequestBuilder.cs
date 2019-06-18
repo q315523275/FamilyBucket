@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Ocelot.Logging;
 using Ocelot.Middleware;
 using Ocelot.Request.Mapper;
 using Ocelot.Responses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Bucket.ApiGateway.Extensions.DotNetty.NettyRequest
 {

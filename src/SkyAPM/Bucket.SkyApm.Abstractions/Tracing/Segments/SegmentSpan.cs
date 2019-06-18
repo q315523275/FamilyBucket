@@ -20,7 +20,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Bucket.SkyApm.Common;
 
 namespace Bucket.SkyApm.Tracing.Segments
 {

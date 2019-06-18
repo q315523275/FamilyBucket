@@ -16,10 +16,9 @@
  *
  */
 
-using System;
+using Bucket.SkyApm.Tracing.Segments;
 using System.Collections.Generic;
 using System.Linq;
-using Bucket.SkyApm.Tracing.Segments;
 
 namespace Bucket.SkyApm.Tracing
 {

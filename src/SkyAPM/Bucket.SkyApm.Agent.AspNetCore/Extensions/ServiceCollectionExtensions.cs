@@ -16,19 +16,19 @@
  *
  */
 
-using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Bucket.DependencyInjection;
+using Bucket.SkyApm.AspNetCore.Diagnostics;
 using Bucket.SkyApm.Diagnostics;
+using Bucket.SkyApm.Diagnostics.HttpClient;
 using Bucket.SkyApm.Sampling;
 using Bucket.SkyApm.Service;
 using Bucket.SkyApm.Tracing;
 using Bucket.SkyApm.Transport;
-using Bucket.SkyApm.AspNetCore.Diagnostics;
-using Bucket.SkyApm.Diagnostics.HttpClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Linq;
-using Bucket.DependencyInjection;
 
 namespace Bucket.SkyApm.Agent.AspNetCore
 {

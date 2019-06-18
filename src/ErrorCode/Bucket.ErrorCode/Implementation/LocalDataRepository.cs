@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Bucket.ErrorCode.Implementation
 {
-    public class LocalDataRepository: ILocalDataRepository
+    public class LocalDataRepository : ILocalDataRepository
     {
         private readonly string localcachepath = Path.Combine(AppContext.BaseDirectory, "localerrorcode.json");
         private readonly ILogger<LocalDataRepository> _logger;

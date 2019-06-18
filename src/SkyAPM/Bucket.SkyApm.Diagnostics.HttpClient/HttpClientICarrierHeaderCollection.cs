@@ -17,10 +17,10 @@
  */
 
 
+using Bucket.SkyApm.Tracing;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
-using Bucket.SkyApm.Tracing;
 
 namespace Bucket.SkyApm.Diagnostics.HttpClient
 {

@@ -16,8 +16,8 @@
  *
  */
 
-using System;
 using Bucket.SkyApm.Tracing.Segments;
+using System;
 
 namespace Bucket.SkyApm.Tracing
 {
@@ -33,9 +33,9 @@ namespace Bucket.SkyApm.Tracing
             span.IsError = true;
             if (exception != null)
             {
-                span.AddLog(LogEvent.Event("error"), 
+                span.AddLog(LogEvent.Event("error"),
                     LogEvent.ErrorKind(exception.GetType().FullName),
-                    LogEvent.Message(exception.Message), 
+                    LogEvent.Message(exception.Message),
                     LogEvent.ErrorStack(exception.StackTrace));
             }
         }

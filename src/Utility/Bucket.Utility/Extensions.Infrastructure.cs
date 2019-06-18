@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bucket.DependencyInjection;
 using Bucket.Utility.Files;
-using Bucket.DependencyInjection;
-using System.Linq;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Bucket.Utility
 {
@@ -19,14 +19,11 @@ namespace Bucket.Utility
         public static IServiceCollection AddUtil(this IServiceCollection services)
         {
             // 添加文件操作
-            services.AddSingleton<IBucketFileProvider, BucketFileProvider>();
-
-            var httpContextAccessor = services.First(x => x.ServiceType == typeof(IHttpContextAccessor));
-            Helpers.Web.HttpContextAccessor = (IHttpContextAccessor)httpContextAccessor.ImplementationInstance;
-
-            var hostingEnvironment = services.First(x => x.ServiceType == typeof(IHostingEnvironment));
-            Helpers.Web.Environment = (IHostingEnvironment)hostingEnvironment.ImplementationInstance;
-
+            services.AddSingleton<IBucketFileProvider>(sp =>
+            {
+                var environment = sp.GetRequiredService<IHostingEnvironment>();
+                return new BucketFileProvider(environment.ContentRootPath);
+            });
             return services;
         }
         /// <summary>
@@ -37,6 +34,17 @@ namespace Bucket.Utility
         public static IServiceCollection AddUtil(this IBucketBuilder builder)
         {
             return AddUtil(builder.Services);
+        }
+
+        /// <summary>
+        /// 使用静态HttpContext
+        /// </summary>
+        /// <param name="application"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseStaticHttpContext(this IApplicationBuilder app)
+        {
+            Helpers.Web.HttpContextAccessor = app.ApplicationServices.GetRequiredService<IHttpContextAccessor>();
+            return app;
         }
     }
 }

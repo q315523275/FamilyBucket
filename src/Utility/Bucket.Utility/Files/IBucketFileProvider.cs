@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.FileProviders;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Extensions.FileProviders;
-using System.Security.AccessControl;
 namespace Bucket.Utility.Files
 {
     public interface IBucketFileProvider : IFileProvider

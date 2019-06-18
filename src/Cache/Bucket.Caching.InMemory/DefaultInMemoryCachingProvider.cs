@@ -2,8 +2,8 @@
 using Bucket.Caching.InMemory.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 namespace Bucket.Caching.InMemory
 {
     public class DefaultInMemoryCachingProvider : ICachingProvider

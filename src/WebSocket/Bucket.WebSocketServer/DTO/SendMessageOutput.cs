@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Bucket.WebSocketServer.DTO
+﻿namespace Bucket.WebSocketServer.DTO
 {
     public class SendMessageOutput
     {

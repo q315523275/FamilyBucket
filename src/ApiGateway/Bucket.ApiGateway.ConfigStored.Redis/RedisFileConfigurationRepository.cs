@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
-using Bucket.Redis;
+﻿using Bucket.Redis;
 using Newtonsoft.Json;
 using Ocelot.Configuration.File;
 using Ocelot.Configuration.Repository;
 using Ocelot.Responses;
+using System.Threading.Tasks;
 
 namespace Bucket.ApiGateway.ConfigStored.Redis
 {
-    public class RedisFileConfigurationRepository: IFileConfigurationRepository
+    public class RedisFileConfigurationRepository : IFileConfigurationRepository
     {
         private readonly RedisClient _redisClient;
         private readonly string _apiGatewayKey;
@@ -26,7 +26,7 @@ namespace Bucket.ApiGateway.ConfigStored.Redis
 
             var json = await redis.StringGetAsync($"ApiGateway:{_apiGatewayKey}");
 
-            if(json.IsNullOrEmpty)
+            if (json.IsNullOrEmpty)
                 return new OkResponse<FileConfiguration>(new FileConfiguration { });
 
             var fileConfig = JsonConvert.DeserializeObject<FileConfiguration>(json);

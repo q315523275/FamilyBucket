@@ -1,12 +1,11 @@
 ﻿
 using Bucket.HostedService.AspNetCore.Abstractions;
-using Bucket.HostedService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.HostedService.AspNetCore.Implementation
 {
-    public class HostedServiceBuilder: IHostedServiceBuilder
+    public class HostedServiceBuilder : IHostedServiceBuilder
     {
         public IServiceCollection Services { get; private set; }
         public IConfiguration Configuration { get; private set; }

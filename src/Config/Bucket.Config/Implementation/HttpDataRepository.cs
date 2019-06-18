@@ -1,10 +1,8 @@
 ﻿using Bucket.Config.Abstractions;
-using Bucket.Core;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 namespace Bucket.Config.Implementation
@@ -46,7 +44,7 @@ namespace Bucket.Config.Implementation
                     _version = apiResult.Version;
                     islocalcache = true;
                     // 注册数据更新监听通知
-                    foreach(var _lits in DataChangeListenerDictionary.ToList())
+                    foreach (var _lits in DataChangeListenerDictionary.ToList())
                     {
                         _lits.OnDataChange(apiResult.KV);
                     }

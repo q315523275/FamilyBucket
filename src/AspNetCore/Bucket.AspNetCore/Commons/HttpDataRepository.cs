@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Bucket.Core;
+using Microsoft.AspNetCore.Http;
 using System;
-using Bucket.Core;
 namespace Bucket.AspNetCore.Commons
 {
     public class HttpDataRepository : IRequestScopedDataRepository

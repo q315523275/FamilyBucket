@@ -1,11 +1,6 @@
-﻿using Bucket.Config.Utils;
-using Bucket.LoadBalancer;
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Bucket.Config.Abstractions;
+using Bucket.Config.Utils;
 using Microsoft.Extensions.Options;
-using Bucket.Config.Abstractions;
-
 namespace Bucket.Config.Implementation
 {
     public class HttpUrlRepository : IHttpUrlRepository
@@ -21,13 +16,13 @@ namespace Bucket.Config.Implementation
             string appId = _setting.AppId;
             string secret = _setting.AppSercet;
 
-            var path = $"/configs/{_setting.AppId}/{_setting.NamespaceName}";
+            var path = $"/configs/v2/{_setting.AppId}/{_setting.NamespaceName}";
 
-            var query = $"version={version}";
+            var query = $"version={version}&env={_setting.Env}";
 
-            var sign = $"appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
+            var sign = $"{query}&appId={appId}&appSecret={secret}&namespaceName={_setting.NamespaceName}";
 
-            var pathAndQuery = $"{path}?{query}&env={_setting.Env}&sign=" + SecureHelper.SHA256(sign);
+            var pathAndQuery = $"{path}?{query}&sign=" + SecureHelper.SHA256(sign);
 
             return $"{_setting.ServerUrl.TrimEnd('/')}{pathAndQuery}";
         }

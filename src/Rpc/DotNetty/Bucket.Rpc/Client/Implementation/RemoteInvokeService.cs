@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Exceptions;
+﻿using Bucket.Rpc.Exceptions;
 using Bucket.Rpc.Messages;
 using Bucket.Rpc.Transport;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 using System.Threading;

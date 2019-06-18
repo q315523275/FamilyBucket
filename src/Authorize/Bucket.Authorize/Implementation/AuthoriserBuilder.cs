@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.Authorize.Implementation
 {
-    public class AuthoriserBuilder: IAuthoriserBuilder
+    public class AuthoriserBuilder : IAuthoriserBuilder
     {
         public IServiceCollection Services { get; private set; }
         public IConfiguration Configuration { get; private set; }

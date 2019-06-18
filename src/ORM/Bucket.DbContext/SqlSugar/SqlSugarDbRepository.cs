@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
-using SqlSugar;
 
 namespace Bucket.DbContext.SqlSugar
 {

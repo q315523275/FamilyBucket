@@ -17,7 +17,6 @@
  */
 
 using System.Collections.Generic;
-using Bucket.SkyApm.Common;
 
 namespace Bucket.SkyApm.Transport
 {

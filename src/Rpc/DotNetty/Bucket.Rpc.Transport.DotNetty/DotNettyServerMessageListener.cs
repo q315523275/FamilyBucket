@@ -1,11 +1,11 @@
-﻿using DotNetty.Codecs;
+﻿using Bucket.Rpc.Messages;
+using Bucket.Rpc.Transport.Codec;
+using Bucket.Rpc.Transport.DotNetty.Adaper;
+using DotNetty.Codecs;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Messages;
-using Bucket.Rpc.Transport.Codec;
-using Bucket.Rpc.Transport.DotNetty.Adaper;
 using System;
 using System.Net;
 using System.Threading.Tasks;

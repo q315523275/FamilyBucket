@@ -1,8 +1,7 @@
-﻿using Bucket.Listener;
-using System.Threading.Tasks;
-using Bucket.Config.Abstractions;
+﻿using Bucket.Config.Abstractions;
+using Bucket.Listener;
 using Bucket.Values;
-using System;
+using System.Threading.Tasks;
 
 namespace Bucket.Config.Listener
 {

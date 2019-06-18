@@ -1,11 +1,10 @@
-﻿using Bucket.Core;
-using Bucket.Listener.Abstractions;
+﻿using Bucket.Listener.Abstractions;
 using Bucket.Redis;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 namespace Bucket.Listener.Redis
 {
     public class RedisListenerAgentStartup : IListenerAgentStartup
@@ -21,7 +20,8 @@ namespace Bucket.Listener.Redis
             _redisListenerOptions = redisListenerOptions.CurrentValue;
             _extractCommand = extractCommand;
             RedisListenerKey = $"Bucket.Listener.{_redisListenerOptions.ListenerKey}";
-            redisListenerOptions.OnChange(async (options) => {
+            redisListenerOptions.OnChange(async (options) =>
+            {
                 _redisListenerOptions = options;
                 RedisListenerKey = $"Bucket.Listener.{_redisListenerOptions.ListenerKey}";
                 await SubscribeAsync();

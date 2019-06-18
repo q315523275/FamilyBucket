@@ -71,13 +71,12 @@
             </summary>
             <param name="services"></param>
         </member>
-        <member name="M:Bucket.WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+        <member name="M:Bucket.WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
             <summary>
             配置请求管道
             </summary>
             <param name="app"></param>
             <param name="env"></param>
-            <param name="loggerFactory"></param>
         </member>
         <member name="M:Bucket.WebApi.Startup.ConfigSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>

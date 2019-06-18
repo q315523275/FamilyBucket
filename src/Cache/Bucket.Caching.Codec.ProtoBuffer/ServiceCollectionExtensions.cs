@@ -1,6 +1,5 @@
 ﻿using Bucket.Caching.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Bucket.Caching.Codec.ProtoBuffer
 {

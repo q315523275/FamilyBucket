@@ -1,6 +1,6 @@
 ﻿
-using Bucket.HostedService.AspNetCore.Abstractions;
 using Bucket.HostedService;
+using Bucket.HostedService.AspNetCore.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.Authorize.HostedService

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Bucket.Values;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Bucket.Values;
 namespace Bucket.ServiceDiscovery
 {
     public interface IManageServiceInstances

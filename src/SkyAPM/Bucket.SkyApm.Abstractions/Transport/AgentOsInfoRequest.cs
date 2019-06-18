@@ -16,8 +16,6 @@
  *
  */
 
-using System;
-
 namespace Bucket.SkyApm.Transport
 {
     public class AgentOsInfoRequest

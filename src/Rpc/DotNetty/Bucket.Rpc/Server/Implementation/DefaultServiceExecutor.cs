@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Messages;
+﻿using Bucket.Rpc.Messages;
 using Bucket.Rpc.Transport;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using Bucket.Authorize.Abstractions;
 using Dapper;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using Bucket.Authorize.Abstractions;
+using System.Threading.Tasks;
 
 namespace Bucket.Authorize.MySql
 {

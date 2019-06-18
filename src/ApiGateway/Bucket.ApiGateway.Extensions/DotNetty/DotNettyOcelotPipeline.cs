@@ -10,8 +10,6 @@ using Ocelot.RateLimit.Middleware;
 using Ocelot.Request.Middleware;
 using Ocelot.RequestId.Middleware;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bucket.ApiGateway.Extensions.DotNetty
 {
@@ -23,7 +21,7 @@ namespace Bucket.ApiGateway.Extensions.DotNetty
             builder.UseHttpHeadersTransformationMiddleware();
             builder.UseDownstreamRequestInitialiser();
             builder.UseRateLimiting(); // 限速
-            builder.UseRequestIdMiddleware(); 
+            builder.UseRequestIdMiddleware();
             builder.UseAuthenticationMiddleware(); // 认证
             builder.UseAuthorisationMiddleware(); // 授权
             builder.UseLoadBalancingMiddleware(); // 负载

@@ -1,5 +1,4 @@
 ﻿using Bucket.Authorize.Abstractions;
-using Bucket.Authorize.Implementation;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

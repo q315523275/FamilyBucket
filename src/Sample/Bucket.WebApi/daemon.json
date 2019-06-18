@@ -1,0 +1,8 @@
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "500m",
+    "max-file": "3"
+  },
+  "registry-mirrors": [ "https://bi0tfqq4.mirror.aliyuncs.com" ]
+}

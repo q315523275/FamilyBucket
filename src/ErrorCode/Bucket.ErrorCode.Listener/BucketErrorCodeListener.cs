@@ -1,7 +1,6 @@
 ﻿using Bucket.ErrorCode.Abstractions;
 using Bucket.Listener;
 using Bucket.Values;
-using System;
 using System.Threading.Tasks;
 
 namespace Bucket.ErrorCode.Listener

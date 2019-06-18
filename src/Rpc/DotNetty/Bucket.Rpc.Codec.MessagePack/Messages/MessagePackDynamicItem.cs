@@ -1,5 +1,5 @@
-using MessagePack;
 using Bucket.Rpc.Codec.MessagePack.Utilities;
+using MessagePack;
 using System;
 using System.Runtime.CompilerServices;
 

@@ -1,27 +1,25 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-using System;
-using System.IO;
-
-using Bucket.Config.Extensions;
-using Bucket.Config.HostedService;
-using Bucket.EventBus.Extensions;
-using Bucket.EventBus.RabbitMQ.Extensions;
-using Bucket.HostedService.AspNetCore;
-using Bucket.Logging.Events;
-using Bucket.DbContext;
-using Bucket.Config;
-using Bucket.Logging;
+﻿using Bucket.AspNetCore.Extensions;
 using Bucket.Caching.Extensions;
 using Bucket.Caching.InMemory;
 using Bucket.Caching.StackExchangeRedis;
-using Bucket.AspNetCore.Extensions;
-using Bucket.Caching.Abstractions;
+using Bucket.Config;
+using Bucket.Config.Extensions;
+using Bucket.Config.HostedService;
+using Bucket.DbContext;
 using Bucket.DbContext.SqlSugar;
+using Bucket.EventBus.Extensions;
+using Bucket.EventBus.RabbitMQ.Extensions;
+using Bucket.HostedService.AspNetCore;
+using Bucket.Logging;
+using Bucket.Logging.Events;
+using Bucket.Utility;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 
 namespace Bucket.GenericHost
@@ -68,6 +66,8 @@ namespace Bucket.GenericHost
                        services.AddMemoryCache();
                        // 添加定时任务
                        services.AddBucketHostedService(builder => { builder.AddConfig(); });
+                       // 添加工具
+                       services.AddUtil();
                        // 添加缓存组件
                        services.AddCaching(build =>
                        {
@@ -122,7 +122,8 @@ namespace Bucket.GenericHost
             var services = new List<string> { "A", "B", "C", "D" };
             var _last = -1;
 
-            Bucket.Utility.Helpers.Thread.ParallelExecute(() => {
+            Bucket.Utility.Helpers.Thread.ParallelExecute(() =>
+            {
                 Interlocked.Increment(ref _last);
                 if (_last >= services.Count)
                 {

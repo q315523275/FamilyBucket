@@ -16,8 +16,8 @@
  *
  */
 
-using System.Threading;
 using Bucket.SkyApm.Tracing.Segments;
+using System.Threading;
 
 namespace Bucket.SkyApm.Tracing
 {

@@ -1,7 +1,7 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace Bucket.Core
 {
@@ -18,22 +18,24 @@ namespace Bucket.Core
             IPAddress ipaddress = null;
             if (ipv4)
             {
-                ipaddress = (from ip in hostEntry.AddressList where 
-                             (!IPAddress.IsLoopback(ip) && ip.AddressFamily == AddressFamily.InterNetwork)
-                             select ip)
-                             .FirstOrDefault() ;
-            }
-            else
-            {
-                ipaddress = (from ip in hostEntry.AddressList where
-                             (!IPAddress.IsLoopback(ip) && ip.AddressFamily == AddressFamily.InterNetworkV6)
+                ipaddress = (from ip in hostEntry.AddressList
+                             where
+(!IPAddress.IsLoopback(ip) && ip.AddressFamily == AddressFamily.InterNetwork)
                              select ip)
                              .FirstOrDefault();
             }
-            if(ipaddress != null)
+            else
+            {
+                ipaddress = (from ip in hostEntry.AddressList
+                             where
+(!IPAddress.IsLoopback(ip) && ip.AddressFamily == AddressFamily.InterNetworkV6)
+                             select ip)
+                             .FirstOrDefault();
+            }
+            if (ipaddress != null)
             {
                 return ipaddress.ToString();
-            }         
+            }
 
             return string.Empty;
         }

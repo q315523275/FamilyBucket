@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Bucket.HangFire.Server
 {
@@ -24,7 +19,8 @@ namespace Bucket.HangFire.Server
             WebHost.CreateDefaultBuilder(args)
                   .UseKestrel()
                   .UseContentRoot(Directory.GetCurrentDirectory())
-                  .ConfigureAppConfiguration((hostingContext, _config) => {
+                  .ConfigureAppConfiguration((hostingContext, _config) =>
+                  {
                       _config
                       .AddJsonFile("appsettings.json", true, true)
                       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true);

@@ -47,7 +47,7 @@ namespace Bucket.SkyApm
         }
 
         public async Task StopAsync(CancellationToken cancellationToken = default(CancellationToken))
-        { 
+        {
             _cancellationTokenSource?.Cancel();
             await Stopping(cancellationToken);
             Logger.LogInformation($"Stopped instrument service {GetType().Name}.");
@@ -67,7 +67,7 @@ namespace Bucket.SkyApm
         }
 
         protected virtual bool CanExecute() => RuntimeEnvironment.Initialized;
-        
+
         protected virtual Task Stopping(CancellationToken cancellationToke) => Task.CompletedTask;
 
         protected abstract TimeSpan DueTime { get; }

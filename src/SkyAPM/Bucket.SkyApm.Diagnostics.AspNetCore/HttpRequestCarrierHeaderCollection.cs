@@ -16,11 +16,11 @@
  *
  */
 
+using Bucket.SkyApm.Tracing;
+using Microsoft.AspNetCore.Http;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Http;
-using Bucket.SkyApm.Tracing;
 
 namespace Bucket.SkyApm.AspNetCore.Diagnostics
 {
@@ -42,7 +42,7 @@ namespace Bucket.SkyApm.AspNetCore.Diagnostics
         {
             return _headers.GetEnumerator();
         }
-        
+
         public void Add(string key, string value)
         {
             throw new System.NotImplementedException();

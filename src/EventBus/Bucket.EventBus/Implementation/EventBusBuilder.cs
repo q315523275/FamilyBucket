@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.EventBus.Implementation
 {
-    public class EventBusBuilder: IEventBusBuilder
+    public class EventBusBuilder : IEventBusBuilder
     {
         public IServiceCollection Services { get; private set; }
         public IConfiguration Configuration { get; private set; }

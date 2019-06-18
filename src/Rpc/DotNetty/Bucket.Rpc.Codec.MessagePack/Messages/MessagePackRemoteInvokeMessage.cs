@@ -1,6 +1,5 @@
-using MessagePack;
 using Bucket.Rpc.Messages;
-using System;
+using MessagePack;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;

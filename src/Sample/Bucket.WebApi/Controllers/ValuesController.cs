@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using Bucket.Utility.Files;
+using Bucket.WebApi.Dto;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Bucket.WebApi.Controllers
 {
@@ -13,9 +12,14 @@ namespace Bucket.WebApi.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> Get([FromServices] IBucketFileProvider fileProvider, [FromQuery] LoginInput input)
         {
-            return new string[] { "value1", "value2" };
+            var sb = new StringBuilder();
+            foreach(var info in fileProvider.GetDirectoryContents(""))
+            {
+                sb.Append(info.Name);
+            }
+            return new string[] { "value1", "value2", sb.ToString() };
         }
 
         // GET api/values/5

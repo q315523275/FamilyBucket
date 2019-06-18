@@ -16,22 +16,28 @@
  *
  */
 
-using System;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 
 namespace Bucket.SkyApm.Diagnostics.HttpClient
 {
     public static class SkyWalkingBuilderExtensions
     {
-        public static SkyApmExtensions AddHttpClient(this SkyApmExtensions extensions)
+        public static SkyApmExtensions AddHttpClient(this SkyApmExtensions extensions, string section = "SkyApm:Extend:HttpClient")
         {
             if (extensions == null)
             {
                 throw new ArgumentNullException(nameof(extensions));
             }
 
+            var configService = extensions.Services.First(x => x.ServiceType == typeof(IConfiguration));
+            var configuration = (IConfiguration)configService.ImplementationInstance;
+            extensions.Services.Configure<SkyApmHttpClientOption>(configuration.GetSection(section));
+
             extensions.Services.AddSingleton<ITracingDiagnosticProcessor, HttpClientTracingDiagnosticProcessor>();
-            
+
             return extensions;
         }
     }

@@ -60,7 +60,7 @@ namespace Bucket.DbContext.SqlSugar
         Task<bool> DeleteByIdsAsync(dynamic[] ids);
 
         bool Update(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression);
-        Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression); 
+        Task<bool> UpdateAsync(Expression<Func<T, T>> columns, Expression<Func<T, bool>> whereExpression);
         bool Update(T updateObj);
         Task<bool> UpdateAsync(T updateObj);
         bool UpdateRange(T[] updateObjs);

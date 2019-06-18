@@ -1,7 +1,7 @@
-﻿using DotNetty.Buffers;
-using DotNetty.Transport.Channels;
-using Bucket.Rpc.Messages;
+﻿using Bucket.Rpc.Messages;
 using Bucket.Rpc.Transport.Codec;
+using DotNetty.Buffers;
+using DotNetty.Transport.Channels;
 using System;
 using System.Threading.Tasks;
 

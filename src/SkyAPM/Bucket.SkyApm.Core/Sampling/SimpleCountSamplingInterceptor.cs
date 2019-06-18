@@ -16,13 +16,13 @@
  *
  */
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Bucket.SkyApm.Common;
 using Bucket.SkyApm.Tracing;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Bucket.SkyApm.Sampling
 {
@@ -32,7 +32,7 @@ namespace Bucket.SkyApm.Sampling
         private readonly int _samplePer3Secs;
         private readonly AtomicInteger _idx = new AtomicInteger();
 
-        public SimpleCountSamplingInterceptor(IOptions<SkyApmConfig> configAccessor,IRuntimeEnvironment runtimeEnvironment, ILoggerFactory loggerFactory) :
+        public SimpleCountSamplingInterceptor(IOptions<SkyApmConfig> configAccessor, IRuntimeEnvironment runtimeEnvironment, ILoggerFactory loggerFactory) :
             base(runtimeEnvironment, loggerFactory)
         {
             var samplingConfig = configAccessor.Value?.Sampling;
@@ -59,7 +59,7 @@ namespace Bucket.SkyApm.Sampling
             Reset();
             return Task.CompletedTask;
         }
-        
+
         private void Reset()
         {
             _idx.Value = 0;

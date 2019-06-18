@@ -1,5 +1,4 @@
-﻿using Bucket.EventBus.Abstractions;
-using Bucket.EventBus.Events;
+﻿using Bucket.EventBus.Events;
 using System;
 using System.Collections.Generic;
 

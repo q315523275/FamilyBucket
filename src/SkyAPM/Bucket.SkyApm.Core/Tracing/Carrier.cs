@@ -16,8 +16,6 @@
  *
  */
 
-using Bucket.SkyApm.Common;
-
 namespace Bucket.SkyApm.Tracing
 {
     public class Carrier : ICarrier

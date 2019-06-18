@@ -2,12 +2,10 @@
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions.Internal;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using Microsoft.AspNetCore.Hosting.Server.Features;
 
 namespace Bucket.Logging
 {

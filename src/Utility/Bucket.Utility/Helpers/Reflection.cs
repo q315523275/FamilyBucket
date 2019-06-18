@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel;
-using System.IO;
-using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Bucket.Utility.Helpers
 {

@@ -1,11 +1,11 @@
 ﻿
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Linq;
 using Bucket.Config.Abstractions;
 using Bucket.Config.Implementation;
 using Bucket.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 
 namespace Bucket.Config.Extensions
 {

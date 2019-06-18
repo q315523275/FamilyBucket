@@ -16,12 +16,13 @@
  *
  */
 
-using System;
-using System.Net.Http;
-using Bucket.SkyApm;
 using Bucket.SkyApm.Common;
 using Bucket.SkyApm.Tracing;
 using Bucket.SkyApm.Tracing.Segments;
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Bucket.SkyApm.Diagnostics.HttpClient
 {
@@ -31,17 +32,22 @@ namespace Bucket.SkyApm.Diagnostics.HttpClient
 
         private readonly ITracingContext _tracingContext;
         private readonly IExitSegmentContextAccessor _contextAccessor;
-
-        public HttpClientTracingDiagnosticProcessor(ITracingContext tracingContext,
-            IExitSegmentContextAccessor contextAccessor)
+        private readonly SkyApmHttpClientOption _option;
+        private readonly IList<string> IgnoreRequestHost;
+        public HttpClientTracingDiagnosticProcessor(ITracingContext tracingContext, IExitSegmentContextAccessor contextAccessor, IOptions<SkyApmHttpClientOption> options)
         {
             _tracingContext = tracingContext;
             _contextAccessor = contextAccessor;
+            _option = options.Value;
+            IgnoreRequestHost = _option?.IgnoreRequestHost ?? new List<string>();
         }
 
         [DiagnosticName("System.Net.Http.Request")]
         public void HttpRequest([Property(Name = "Request")] HttpRequestMessage request)
         {
+            if (IgnoreTracing($"{request.RequestUri.Host}:{request.RequestUri.Port}"))
+                return;
+
             var context = _tracingContext.CreateExitSegmentContext(request.RequestUri.AbsolutePath.ToString(),
                 $"{request.RequestUri.Host}:{request.RequestUri.Port}",
                 new HttpClientICarrierHeaderCollection(request));
@@ -83,6 +89,11 @@ namespace Bucket.SkyApm.Diagnostics.HttpClient
             [Property(Name = "Exception")] Exception exception)
         {
             _contextAccessor.Context?.Span?.ErrorOccurred(exception);
+        }
+
+        private bool IgnoreTracing(string requestHost)
+        {
+            return IgnoreRequestHost.Contains(requestHost);
         }
     }
 }

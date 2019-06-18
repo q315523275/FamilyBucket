@@ -1,9 +1,7 @@
 ﻿
 using StackExchange.Redis;
 using System;
-using System.Linq;
 using System.Collections.Concurrent;
-using System.Threading;
 
 namespace Bucket.Redis
 {
@@ -37,7 +35,7 @@ namespace Bucket.Redis
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message + ex.StackTrace);
             }

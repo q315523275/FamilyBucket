@@ -1,14 +1,13 @@
 ﻿using Bucket.Listener.Abstractions;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Rabbit.Zookeeper;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using org.apache.zookeeper;
+using Rabbit.Zookeeper;
+using Rabbit.Zookeeper.Implementation;
 using System.Linq;
 using System.Text;
-using Microsoft.Extensions.Options;
-using Rabbit.Zookeeper.Implementation;
-using Newtonsoft.Json;
+using System.Threading;
+using System.Threading.Tasks;
 namespace Bucket.Listener.Zookeeper
 {
     public class ZookeeperListenerAgentStartup : IListenerAgentStartup

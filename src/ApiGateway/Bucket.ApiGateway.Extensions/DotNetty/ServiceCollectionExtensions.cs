@@ -1,6 +1,6 @@
-﻿using Ocelot.DependencyInjection;
+﻿using Bucket.ApiGateway.Extensions.DotNetty.NettyRequest;
 using Microsoft.Extensions.DependencyInjection;
-using Bucket.ApiGateway.Extensions.DotNetty.NettyRequest;
+using Ocelot.DependencyInjection;
 
 namespace Bucket.ApiGateway.Extensions.DotNetty
 {

@@ -16,9 +16,6 @@
  *
  */
 
-using Bucket.SkyApm.Common;
-using Bucket.SkyApm.Tracing.Segments;
-
 namespace Bucket.SkyApm.Tracing
 {
     public delegate bool Sampler(SamplingContext samplingContext);

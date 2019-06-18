@@ -1,20 +1,18 @@
-﻿using DotNetty.Codecs;
+﻿using Bucket.Rpc.Messages;
+using Bucket.Rpc.Server;
+using Bucket.Rpc.Transport.Codec;
+using Bucket.Rpc.Transport.DotNetty.Adaper;
+using Bucket.Rpc.Transport.Implementation;
+using DotNetty.Codecs;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Messages;
-using Bucket.Rpc.Server;
-using Bucket.Rpc.Transport.Codec;
-using Bucket.Rpc.Transport.DotNetty.Adaper;
-using Bucket.Rpc.Transport.Implementation;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 
 namespace Bucket.Rpc.Transport.DotNetty
 {

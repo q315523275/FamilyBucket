@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Bucket.Config;
+﻿using Bucket.Config;
 using Bucket.Logging;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;

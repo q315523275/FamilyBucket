@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Exceptions;
+﻿using Bucket.Rpc.Exceptions;
 using Bucket.Rpc.Messages;
 using Bucket.Rpc.Server;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Bucket.Rpc.Transport.Implementation

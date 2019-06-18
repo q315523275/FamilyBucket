@@ -1,8 +1,5 @@
 ﻿using Bucket.Gprc.Client;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Bucket.Gprc.Extensions
 {

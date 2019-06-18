@@ -31,7 +31,7 @@ namespace Bucket.Extensions
 
             return s;
         }
-  
+
 
         public static bool StartsWithSegments(this Uri uri, string path)
         {
@@ -70,7 +70,7 @@ namespace Bucket.Extensions
             using (var leftEnumerator = left.GetEnumerator())
             using (var rightEnumerator = right.GetEnumerator())
             {
-                for (;;)
+                for (; ; )
                 {
                     if (!rightEnumerator.MoveNext())
                     {

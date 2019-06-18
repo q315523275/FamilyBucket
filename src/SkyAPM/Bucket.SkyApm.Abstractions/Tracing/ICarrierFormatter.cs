@@ -16,8 +16,6 @@
  *
  */
 
-using Bucket.SkyApm.Tracing.Segments;
-
 namespace Bucket.SkyApm.Tracing
 {
     public interface ICarrierFormatter

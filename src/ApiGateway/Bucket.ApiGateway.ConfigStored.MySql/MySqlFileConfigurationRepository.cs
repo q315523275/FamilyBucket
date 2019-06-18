@@ -1,13 +1,13 @@
-﻿using Ocelot.Configuration.File;
+﻿using Bucket.ApiGateway.ConfigStored.MySql.Entity;
+using Bucket.DbContext.SqlSugar;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Ocelot.Configuration.File;
 using Ocelot.Configuration.Repository;
 using Ocelot.Responses;
-using System.Threading.Tasks;
-using Bucket.ApiGateway.ConfigStored.MySql.Entity;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using System;
-using Microsoft.Extensions.DependencyInjection;
-using Bucket.DbContext.SqlSugar;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Bucket.ApiGateway.ConfigStored.MySql
 {

@@ -3,7 +3,6 @@ using Bucket.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;

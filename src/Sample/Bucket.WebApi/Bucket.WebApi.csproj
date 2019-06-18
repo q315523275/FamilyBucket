@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="nlog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="nlog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Hangfire" Version="1.7.1" />
     <PackageReference Include="Hangfire.Console" Version="1.4.2" />
     <PackageReference Include="Hangfire.RecurringJobExtensions" Version="1.1.6" />

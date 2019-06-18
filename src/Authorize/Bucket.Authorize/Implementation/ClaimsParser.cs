@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace Bucket.Authorize.Implementation
 {
-    public class ClaimsParser: IClaimsParser
+    public class ClaimsParser : IClaimsParser
     {
         public List<string> GetValuesByClaimType(IEnumerable<Claim> claims, string claimType)
         {

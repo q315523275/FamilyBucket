@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Bucket.Rpc.Client;
+﻿using Bucket.Rpc.Client;
 using Bucket.Rpc.Convertibles;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -10,7 +10,7 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
 {
     public class RemoteServiceProxy : ServiceProxyBase
     {
-        public RemoteServiceProxy(IServiceProvider serviceProvider) : 
+        public RemoteServiceProxy(IServiceProvider serviceProvider) :
             base(serviceProvider.GetRequiredService<IRemoteInvokeService>(), serviceProvider.GetRequiredService<ITypeConvertibleService>(), null)
         {
         }

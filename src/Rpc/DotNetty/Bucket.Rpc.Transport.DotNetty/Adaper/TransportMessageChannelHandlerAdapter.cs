@@ -1,6 +1,6 @@
-﻿using DotNetty.Buffers;
+﻿using Bucket.Rpc.Transport.Codec;
+using DotNetty.Buffers;
 using DotNetty.Transport.Channels;
-using Bucket.Rpc.Transport.Codec;
 
 namespace Bucket.Rpc.Transport.DotNetty.Adaper
 {

@@ -16,9 +16,6 @@
  *
  */
 
-using System;
-using Bucket.SkyApm.Common;
-
 namespace Bucket.SkyApm
 {
     public interface IRuntimeEnvironment

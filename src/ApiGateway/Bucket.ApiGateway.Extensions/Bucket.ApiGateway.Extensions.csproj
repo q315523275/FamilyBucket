@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="App.Metrics.AspNetCore.Core" Version="3.1.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Endpoints" Version="3.1.0" />
+    <PackageReference Include="App.Metrics.AspNetCore.Tracking" Version="3.1.0" />
+    <PackageReference Include="App.Metrics.Extensions.Hosting" Version="3.1.0" />
+    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="3.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />

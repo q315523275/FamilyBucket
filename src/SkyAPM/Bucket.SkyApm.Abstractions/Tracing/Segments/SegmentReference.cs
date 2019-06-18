@@ -18,7 +18,6 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Bucket.SkyApm.Common;
 
 namespace Bucket.SkyApm.Tracing.Segments
 {
@@ -55,7 +54,7 @@ namespace Bucket.SkyApm.Tracing.Segments
         {
             return _references.Add(reference);
         }
-        
+
         public IEnumerator<SegmentReference> GetEnumerator()
         {
             return _references.GetEnumerator();

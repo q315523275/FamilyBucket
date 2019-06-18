@@ -1,7 +1,7 @@
 ﻿
 ## 全家桶之ORM,当前基于SqlSugar进行封装,支持仓储,多库等操作
 
-1、参数配置
+1、参数配置,可以将SqlSugar的ConnectionConfig所以参数全部在配置文件里进行配置
 
 ```csharp
   "DbConfig": [

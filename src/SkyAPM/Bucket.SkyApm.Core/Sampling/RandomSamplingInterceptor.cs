@@ -16,9 +16,9 @@
  *
  */
 
-using System;
 using Bucket.SkyApm.Tracing;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace Bucket.SkyApm.Sampling
 {

@@ -1,14 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
+﻿using Bucket.AspNetCore.Commons;
 using Bucket.Core;
-using Bucket.Redis;
-using Bucket.ErrorCode;
-using Bucket.AspNetCore.Commons;
-using System.Collections.Generic;
-using System.Reflection;
-using System;
-using System.Linq;
 using Bucket.DependencyInjection;
+using Bucket.ErrorCode;
+using Bucket.Redis;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace Bucket.AspNetCore.Extensions
 {
@@ -39,6 +39,8 @@ namespace Bucket.AspNetCore.Extensions
             services.AddSingleton<IUser, HttpContextUser>();
             services.AddSingleton<IRequestScopedDataRepository, HttpDataRepository>();
             services.AddSingleton<IErrorCode, EmptyErrorCode>();
+            // 关闭模型自动化验证,实现自控
+            services.Configure<ApiBehaviorOptions>(opts => opts.SuppressModelStateInvalidFilter = true);
             return services;
         }
         /// <summary>

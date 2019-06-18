@@ -14,7 +14,7 @@ namespace Bucket.LoadBalancer.Extensions
         public static IServiceCollection AddLoadBalancer(this IServiceCollection services)
         {
             services.AddSingleton<ILoadBalancerFactory, LoadBalancerFactory>();
-            services.AddSingleton<ILoadBalancerHouse, LoadBalancerHouse>();
+            services.AddSingleton<ILoadBalancerManager, LoadBalancerManager>();
             return services;
         }
         /// <summary>

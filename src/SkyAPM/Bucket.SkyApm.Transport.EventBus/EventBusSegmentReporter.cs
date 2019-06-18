@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Bucket.EventBus.Abstractions;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Bucket.EventBus.Abstractions;
-using Microsoft.Extensions.Logging;
 namespace Bucket.SkyApm.Transport.EventBus
 {
     public class EventBusSegmentReporter : ISegmentReporter

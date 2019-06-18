@@ -1,7 +1,8 @@
 ﻿using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Events;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Retry;
@@ -13,13 +14,12 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 
 namespace Bucket.EventBus.RabbitMQ
 {
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {
-        const string BROKER_NAME = "bucket_event_bus";
+        private readonly string _exchangeName = "bucket_event_bus";
 
         private readonly IRabbitMQPersistentConnection _persistentConnection;
         private readonly ILogger<EventBusRabbitMQ> _logger;
@@ -39,6 +39,7 @@ namespace Bucket.EventBus.RabbitMQ
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? throw new ArgumentNullException(nameof(subsManager));
             _options = options.Value;
+            _exchangeName = _options.ExchangeName;
             _queueName = _options.QueueName;
             _autofac = autofac;
             _prefetchCount = _options.PrefetchCount;
@@ -60,7 +61,7 @@ namespace Bucket.EventBus.RabbitMQ
             using (var channel = _persistentConnection.CreateModel())
             {
                 channel.QueueUnbind(queue: _queueName,
-                    exchange: BROKER_NAME,
+                    exchange: _exchangeName,
                     routingKey: eventName);
 
                 if (_subsManager.IsEmpty)
@@ -92,8 +93,7 @@ namespace Bucket.EventBus.RabbitMQ
             {
                 var eventName = @event.GetType().Name;
 
-                channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                        type: "direct");
+                channel.ExchangeDeclare(exchange: _exchangeName, type: "direct");
 
                 var message = JsonConvert.SerializeObject(@event);
                 var body = Encoding.UTF8.GetBytes(message);
@@ -103,11 +103,7 @@ namespace Bucket.EventBus.RabbitMQ
                     var properties = channel.CreateBasicProperties();
                     properties.DeliveryMode = 2; // persistent
 
-                    channel.BasicPublish(exchange: BROKER_NAME,
-                                     routingKey: eventName,
-                                     mandatory: true,
-                                     basicProperties: properties,
-                                     body: body);
+                    channel.BasicPublish(exchange: _exchangeName, routingKey: eventName, mandatory: true, basicProperties: properties, body: body);
                 });
             }
         }
@@ -139,10 +135,7 @@ namespace Bucket.EventBus.RabbitMQ
 
                 using (var channel = _persistentConnection.CreateModel())
                 {
-                    channel.QueueBind(queue: _queueName,
-                                      exchange: BROKER_NAME,
-                                      routingKey: eventName,
-                                      arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+                    channel.QueueBind(queue: _queueName, exchange: _exchangeName, routingKey: eventName, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
                 }
             }
         }
@@ -182,14 +175,10 @@ namespace Bucket.EventBus.RabbitMQ
 
             var channel = _persistentConnection.CreateModel();
 
-            channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                        type: "direct");
+            channel.ExchangeDeclare(exchange: _exchangeName, type: "direct");
 
-            channel.QueueDeclare(queue: _queueName,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+            channel.QueueDeclare(queue: _queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+
             return channel;
         }
         /// <summary>

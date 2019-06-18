@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Bucket.Rpc.Server.ServiceDiscovery.Attributes;
+﻿using Bucket.Rpc.Server.ServiceDiscovery.Attributes;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Reflection;

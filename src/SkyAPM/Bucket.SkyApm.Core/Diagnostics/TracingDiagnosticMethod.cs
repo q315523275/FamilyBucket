@@ -16,10 +16,10 @@
  *
  */
 
+using AspectCore.Extensions.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AspectCore.Extensions.Reflection;
 
 namespace Bucket.SkyApm.Diagnostics
 {
@@ -62,14 +62,14 @@ namespace Bucket.SkyApm.Diagnostics
                 var binder = parameter.GetCustomAttribute<ParameterBinder>();
                 if (binder != null)
                 {
-                    if(binder is ObjectAttribute objectBinder)
+                    if (binder is ObjectAttribute objectBinder)
                     {
                         if (objectBinder.TargetType == null)
                         {
                             objectBinder.TargetType = parameter.ParameterType;
                         }
                     }
-                    if(binder is PropertyAttribute propertyBinder)
+                    if (binder is PropertyAttribute propertyBinder)
                     {
                         if (propertyBinder.Name == null)
                         {

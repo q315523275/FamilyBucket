@@ -16,11 +16,11 @@
  *
  */
 
+using Bucket.SkyApm.Common;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Bucket.SkyApm.Common;
-using Microsoft.Extensions.Logging;
 
 namespace Bucket.SkyApm.Diagnostics
 {

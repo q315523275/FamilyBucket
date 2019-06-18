@@ -20,7 +20,7 @@ using System;
 
 namespace Bucket.SkyApm.Diagnostics
 {
-    public class DiagnosticName :Attribute
+    public class DiagnosticName : Attribute
     {
         public string Name { get; }
 

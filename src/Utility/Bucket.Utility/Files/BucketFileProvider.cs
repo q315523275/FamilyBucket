@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.FileProviders;
+﻿using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
@@ -15,10 +15,9 @@ namespace Bucket.Utility.Files
         /// Initializes a new instance of a NopFileProvider
         /// </summary>
         /// <param name="hostingEnvironment">Hosting environment</param>
-        public BucketFileProvider(IHostingEnvironment hostingEnvironment)
-            : base(File.Exists(hostingEnvironment.WebRootPath) ? Path.GetDirectoryName(hostingEnvironment.WebRootPath) : hostingEnvironment.WebRootPath)
+        public BucketFileProvider(string rootPath) : base(rootPath)
         {
-            var path = hostingEnvironment.ContentRootPath ?? string.Empty;
+            var path = rootPath ?? string.Empty;
             if (File.Exists(path))
                 path = Path.GetDirectoryName(path);
 
@@ -420,7 +419,15 @@ namespace Bucket.Utility.Files
         /// <returns>The physical path. E.g. "c:\inetpub\wwwroot\bin"</returns>
         public virtual string MapPath(string path)
         {
-            path = path.Replace("~/", "").TrimStart('/').Replace('/', '\\');
+            path = path.Replace("~/", "").TrimStart('/');
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                path = path.Replace('/', '\\');
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                path = path.Replace('\\', '/');
+            }
             return Path.Combine(BaseDirectory ?? string.Empty, path);
         }
 

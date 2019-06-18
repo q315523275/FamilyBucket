@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Bucket.Rpc.Client;
+﻿using Bucket.Rpc.Client;
 using Bucket.Rpc.Convertibles;
 using Bucket.Rpc.ProxyGenerator.Implementation;
 using Bucket.Rpc.Server.ServiceDiscovery.Attributes;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,8 @@ namespace Bucket.Rpc.ProxyGenerator
             var services = builder.Services;
 
             services.AddSingleton<IServiceProxyGenerater, ServiceProxyGenerater>();
-            services.AddSingleton<IServiceProxyFactory>(sp => {
+            services.AddSingleton<IServiceProxyFactory>(sp =>
+            {
                 var (serviceTypes, clientTypes) = RegisterProxType(sp);
                 return new ServiceProxyFactory(sp.GetRequiredService<IRemoteInvokeService>(), sp.GetRequiredService<ITypeConvertibleService>(), serviceTypes, clientTypes);
             });
@@ -53,7 +54,7 @@ namespace Bucket.Rpc.ProxyGenerator
             var clients = new List<Type>();
             foreach (var service in services)
             {
-                if(!serviceImplementations.Any(i => service.GetTypeInfo().IsAssignableFrom(i)))
+                if (!serviceImplementations.Any(i => service.GetTypeInfo().IsAssignableFrom(i)))
                 {
                     clients.Add(service);
                 }

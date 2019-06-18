@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Http.Internal;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Http.Internal;
 
 namespace Bucket.Utility.Helpers
 {
@@ -38,11 +37,6 @@ namespace Bucket.Utility.Helpers
         /// 当前Http响应
         /// </summary>
         public static HttpResponse Response => HttpContext?.Response;
-
-        /// <summary>
-        /// 宿主环境
-        /// </summary>
-        public static IHostingEnvironment Environment { get; set; }
 
         #endregion
 
@@ -161,24 +155,6 @@ namespace Bucket.Utility.Helpers
         public static string Browser => HttpContext?.Request?.Headers["User-Agent"];
 
         #endregion
-
-        #region RootPath(根路径)
-
-        /// <summary>
-        /// 根路径
-        /// </summary>
-        public static string RootPath => Environment?.ContentRootPath;
-
-        #endregion 
-
-        #region WebRootPath(Web根路径)
-
-        /// <summary>
-        /// Web根路径，即wwwroot
-        /// </summary>
-        public static string WebRootPath => Environment?.WebRootPath;
-
-        #endregion 
 
         #region GetFiles(获取客户端文件集合)
 

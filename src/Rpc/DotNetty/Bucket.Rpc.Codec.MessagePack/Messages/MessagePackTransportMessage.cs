@@ -1,6 +1,6 @@
-using MessagePack;
 using Bucket.Rpc.Codec.MessagePack.Utilities;
 using Bucket.Rpc.Messages;
+using MessagePack;
 using System;
 using System.Runtime.CompilerServices;
 

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Bucket.Rpc.Messages;
+﻿using Bucket.Rpc.Messages;
+using Newtonsoft.Json;
 using System.Text;
 
 namespace Bucket.Rpc.Transport.Codec.Implementation

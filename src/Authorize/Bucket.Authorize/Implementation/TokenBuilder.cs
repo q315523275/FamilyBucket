@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using Bucket.Authorize.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
-using Bucket.Authorize.Abstractions;
 
 namespace Bucket.Authorize.Implementation
 {
@@ -108,6 +108,6 @@ namespace Bucket.Authorize.Implementation
             };
             return responseJson;
         }
-        
+
     }
 }

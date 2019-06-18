@@ -1,6 +1,6 @@
 ﻿namespace Bucket.ServiceDiscovery
 {
-    public interface IServiceDiscovery : IManageServiceInstances, 
+    public interface IServiceDiscovery : IManageServiceInstances,
         IManageHealthChecks,
         IResolveServiceInstances,
         IHaveKeyValues

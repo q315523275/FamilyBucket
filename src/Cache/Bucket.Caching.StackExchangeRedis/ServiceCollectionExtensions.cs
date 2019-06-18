@@ -1,11 +1,10 @@
 ﻿using Bucket.Caching.Abstractions;
-using Bucket.Caching.StackExchangeRedis;
 using Bucket.Caching.StackExchangeRedis.Abstractions;
 using Bucket.Caching.StackExchangeRedis.Implementation;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 
 namespace Bucket.Caching.StackExchangeRedis
 {
@@ -27,6 +26,10 @@ namespace Bucket.Caching.StackExchangeRedis
             {
                 return new DefaultRedisCachingProvider(option.DbProviderName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
             });
+            builder.Services.AddSingleton<IRedisCachingProvider>(sp =>
+            {
+                return new DefaultRedisFeatureProvider(option.DbProviderName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
+            });
             return builder;
         }
         /// <summary>
@@ -46,6 +49,10 @@ namespace Bucket.Caching.StackExchangeRedis
             {
                 return new DefaultRedisCachingProvider(providerName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
             });
+            builder.Services.AddSingleton<IRedisCachingProvider>(sp =>
+            {
+                return new DefaultRedisFeatureProvider(providerName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
+            });
             return builder;
         }
         /// <summary>
@@ -56,21 +63,23 @@ namespace Bucket.Caching.StackExchangeRedis
         /// <returns></returns>
         public static ICachingBuilder UseStackExchangeRedis(this ICachingBuilder builder, string sectionPath = "Caching:StackExchangeRedis")
         {
-            var options = builder.Configuration.GetSection(sectionPath).Get<List<StackExchangeRedisOption>>();
-            if (options == null)
-                throw new ArgumentNullException(nameof(options));
+            var option = builder.Configuration.GetSection(sectionPath).Get<StackExchangeRedisOption>();
+            if (option == null)
+                throw new ArgumentNullException(nameof(option));
 
-            foreach (var option in options)
+            builder.Services.AddSingleton<IRedisDatabaseProvider>(sp =>
             {
-                builder.Services.AddSingleton<IRedisDatabaseProvider>(sp =>
-                {
-                    return new RedisDatabaseProvider(option.DbProviderName, option.Configuration);
-                });
-                builder.Services.AddSingleton<ICachingProvider>(sp =>
-                {
-                    return new DefaultRedisCachingProvider(option.DbProviderName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
-                });
-            }
+                return new RedisDatabaseProvider(option.DbProviderName, option.Configuration);
+            });
+            builder.Services.AddSingleton<ICachingProvider>(sp =>
+            {
+                return new DefaultRedisCachingProvider(option.DbProviderName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
+            });
+            builder.Services.AddSingleton<IRedisCachingProvider>(sp =>
+            {
+                return new DefaultRedisFeatureProvider(option.DbProviderName, sp.GetServices<IRedisDatabaseProvider>(), sp.GetService<ICachingSerializer>());
+            });
+
             return builder;
         }
     }

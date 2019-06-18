@@ -114,7 +114,7 @@ namespace Bucket.SkyApm.Common
         {
             return atomicInteger._value;
         }
-        
+
         public static bool operator ==(AtomicInteger atomicInteger, int value)
         {
             return atomicInteger._value == value;

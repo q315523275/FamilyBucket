@@ -1,13 +1,13 @@
-﻿using System;
-using System.IO;
+﻿using Bucket.Config.Abstractions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Concurrent;
-using Bucket.Config.Abstractions;
+using System.IO;
 
 namespace Bucket.Config.Implementation
 {
-    public class LocalDataRepository: ILocalDataRepository
+    public class LocalDataRepository : ILocalDataRepository
     {
         private readonly string localcachepath = Path.Combine(AppContext.BaseDirectory, "localconfig.json");
         private readonly ILogger<LocalDataRepository> _logger;
@@ -28,7 +28,7 @@ namespace Bucket.Config.Implementation
                 var json = JsonConvert.SerializeObject(dic);
                 File.WriteAllText(localcachepath, json);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, "配置中心配置写入文件失败");
                 return false;

@@ -24,16 +24,15 @@
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
     <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Agent.AspNetCore\Bucket.SkyApm.Agent.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Diagnostics.HttpClient\Bucket.SkyApm.Diagnostics.HttpClient.csproj" />
     <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Transport.EventBus\Bucket.SkyApm.Transport.EventBus.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.MySql\Bucket.ApiGateway.ConfigStored.MySql.csproj" />
     <ProjectReference Include="..\Bucket.ApiGateway.ConfigStored.Redis\Bucket.ApiGateway.ConfigStored.Redis.csproj" />
+    <ProjectReference Include="..\Bucket.ApiGateway.Extensions\Bucket.ApiGateway.Extensions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Update="hosting.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="ocelot.json">
@@ -45,6 +44,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="start.dev.sh">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="start.sh">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

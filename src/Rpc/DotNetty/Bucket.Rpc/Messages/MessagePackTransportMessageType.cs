@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.Rpc.Messages
+﻿namespace Bucket.Rpc.Messages
 {
     public class MessagePackTransportMessageType
     {

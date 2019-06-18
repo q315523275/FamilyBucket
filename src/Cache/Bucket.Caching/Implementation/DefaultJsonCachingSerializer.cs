@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Bucket.Caching.Abstractions;
+using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Text;
-using Bucket.Caching.Abstractions;
-using Newtonsoft.Json;
 
 namespace Bucket.Caching.Implementation
 {

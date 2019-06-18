@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
-using Bucket.Caching.Abstractions;
+﻿using Bucket.Caching.Abstractions;
 using Bucket.Caching.Implementation;
 using Bucket.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 namespace Bucket.Caching.Extensions
 {
     public static class ServiceCollectionExtensions

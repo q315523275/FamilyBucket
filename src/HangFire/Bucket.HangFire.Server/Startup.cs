@@ -1,7 +1,6 @@
 ﻿using Hangfire;
 using Hangfire.Console;
 using Hangfire.RecurringJobExtensions;
-using Hangfire.MySql.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -71,7 +70,7 @@ namespace Bucket.HangFire.Server
 
                 ///
                 /// 特别注意，linux下运行时，可能存在"timezone": "China Standard Time"找不到的情况
-                /// 需进行时区复制 /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/'China Standard Time'
+                /// 需进行时区复制 cp /usr/share/zoneinfo/Asia/Shanghai /usr/share/zoneinfo/'China Standard Time'
                 ///
             }
         }

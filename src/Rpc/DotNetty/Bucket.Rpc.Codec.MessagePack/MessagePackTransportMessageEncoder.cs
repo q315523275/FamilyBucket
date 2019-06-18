@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace Bucket.Rpc.Codec.MessagePack
 {
-   public sealed class MessagePackTransportMessageEncoder:ITransportMessageEncoder
+    public sealed class MessagePackTransportMessageEncoder : ITransportMessageEncoder
     {
         #region Implementation of ITransportMessageEncoder
 

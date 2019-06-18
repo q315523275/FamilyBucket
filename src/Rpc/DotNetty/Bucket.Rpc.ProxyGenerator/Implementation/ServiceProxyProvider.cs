@@ -21,6 +21,7 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
             if (proxy == null)
             {
                 proxy = new RemoteServiceProxy(_serviceProvider);
+
             }
             return await proxy.InvokeAsync<T>(parameters, serviceId, endPoint);
         }

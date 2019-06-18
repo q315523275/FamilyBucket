@@ -31,6 +31,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{60BED2A5-2C44-43FA-879F-C8EFB5AC1696}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ORM", "ORM", "{20411163-EFBD-4A04-9583-5567665CE8A7}"
+	ProjectSection(SolutionItems) = preProject
+		ORM\Readme.md = ORM\Readme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.DbContext", "ORM\Bucket.DbContext\Bucket.DbContext.csproj", "{6D726794-4AF8-40B7-A617-69B2ED198662}"
 EndProject
@@ -166,9 +169,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DistributedLock", "Distribu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.DistributedLock", "DistributedLock\Bucket.DistributedLock\Bucket.DistributedLock.csproj", "{A3F1FDA3-BC1A-42C0-B34D-212111738622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Caching.Codec.MessagePack", "Cache\Bucket.Caching.Codec.MessagePack\Bucket.Caching.Codec.MessagePack.csproj", "{8CEA486D-B2ED-4E74-A0A6-232431A061CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Caching.Codec.MessagePack", "Cache\Bucket.Caching.Codec.MessagePack\Bucket.Caching.Codec.MessagePack.csproj", "{8CEA486D-B2ED-4E74-A0A6-232431A061CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Caching.Codec.ProtoBuffer", "Cache\Bucket.Caching.Codec.ProtoBuffer\Bucket.Caching.Codec.ProtoBuffer.csproj", "{5334BC70-8F8D-45C9-BC28-A34C38316454}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Caching.Codec.ProtoBuffer", "Cache\Bucket.Caching.Codec.ProtoBuffer\Bucket.Caching.Codec.ProtoBuffer.csproj", "{5334BC70-8F8D-45C9-BC28-A34C38316454}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

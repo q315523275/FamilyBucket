@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Bucket.Authorize.MySql
+﻿namespace Bucket.Authorize.MySql
 {
     public class RoleInfo
     {

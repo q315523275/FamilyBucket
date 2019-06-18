@@ -32,12 +32,12 @@ namespace Bucket.SkyApm.Diagnostics
             foreach (var method in tracingDiagnosticProcessor.GetType().GetMethods())
             {
                 var diagnosticName = method.GetCustomAttribute<DiagnosticName>();
-                if(diagnosticName==null)
+                if (diagnosticName == null)
                     continue;
                 _methods.Add(new TracingDiagnosticMethod(tracingDiagnosticProcessor, method, diagnosticName.Name));
             }
         }
-        
+
         public IEnumerator<TracingDiagnosticMethod> GetEnumerator()
         {
             return _methods.GetEnumerator();

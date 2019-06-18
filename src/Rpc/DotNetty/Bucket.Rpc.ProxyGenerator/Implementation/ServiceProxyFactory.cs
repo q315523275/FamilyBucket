@@ -24,7 +24,7 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
             _remoteInvokeService = remoteInvokeService;
             _typeConvertibleService = typeConvertibleService;
             _serviceTypes = serviceTypes;
-            foreach(var type in clientTypes)
+            foreach (var type in clientTypes)
             {
                 types.TryAdd(type, new ConcurrentDictionary<EndPoint, object>());
             }

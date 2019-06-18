@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using Bucket.Exceptions;
+﻿using Bucket.Exceptions;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 using System.Linq;
 namespace Bucket.AspNetCore.Filters
 {
@@ -8,6 +8,10 @@ namespace Bucket.AspNetCore.Filters
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
+            #region 限速限流
+
+            #endregion
+
             #region 自定义模型验证
             if (!context.ModelState.IsValid)
             {
@@ -32,7 +36,6 @@ namespace Bucket.AspNetCore.Filters
                 }
             }
             #endregion
-
         }
     }
 }

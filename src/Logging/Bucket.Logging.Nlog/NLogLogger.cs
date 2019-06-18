@@ -4,7 +4,7 @@ using System;
 
 namespace Bucket.Logging.Nlog
 {
-    public class NLogLogger: ILogger
+    public class NLogLogger : ILogger
     {
         private readonly NLog.Logger _log;
         public NLogLogger(string name)

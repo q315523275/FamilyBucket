@@ -42,13 +42,13 @@ namespace Bucket.Config.Configuration
 
             string secret = _options.AppSercet;
 
-            var path = $"/configs/{_options.AppId}/{_options.NamespaceName}";
+            var path = $"/configs/v2/{_options.AppId}/{_options.NamespaceName}";
 
-            var query = $"version=0";
+            var query = $"version=0&env={_options.Env}";
 
-            var sign = $"appId={appId}&appSecret={secret}&namespaceName={_options.NamespaceName}";
+            var sign = $"{query}&appId={appId}&appSecret={secret}&namespaceName={_options.NamespaceName}";
 
-            var pathAndQuery = $"{path}?{query}&env={_options.Env}&sign=" + SecureHelper.SHA256(sign);
+            var pathAndQuery = $"{path}?{query}&sign=" + SecureHelper.SHA256(sign);
 
             return $"{_options.ServerUrl.TrimEnd('/')}{pathAndQuery}";
         }

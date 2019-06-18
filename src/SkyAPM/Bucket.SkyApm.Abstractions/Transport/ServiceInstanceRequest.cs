@@ -21,9 +21,9 @@ namespace Bucket.SkyApm.Transport
     public class ServiceInstanceRequest
     {
         public int ServiceId { get; set; }
-        
+
         public string InstanceUUID { get; set; }
-        
+
         public AgentOsInfoRequest Properties { get; set; }
     }
 }

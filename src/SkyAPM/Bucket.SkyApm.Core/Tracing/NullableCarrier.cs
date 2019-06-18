@@ -16,34 +16,32 @@
  *
  */
 
-using Bucket.SkyApm.Common;
-
 namespace Bucket.SkyApm.Tracing
 {
     public class NullableCarrier : ICarrier
     {
         public static NullableCarrier Instance { get; } = new NullableCarrier();
-        
+
         public bool HasValue { get; } = false;
-        
+
         public bool? Sampled { get; }
-        
+
         public long TraceId { get; }
-        
+
         public long ParentSegmentId { get; }
-        
+
         public int ParentSpanId { get; }
-        
+
         public string ParentServiceName { get; }
-        
+
         public string EntryServiceName { get; }
 
         public string Identity { get; }
 
         public string NetworkAddress { get; }
-        
+
         public string EntryEndpoint { get; }
-        
+
         public string ParentEndpoint { get; }
     }
 }

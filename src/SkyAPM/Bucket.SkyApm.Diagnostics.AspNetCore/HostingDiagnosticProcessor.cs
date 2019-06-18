@@ -16,13 +16,13 @@
  *
  */
 
-using System;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Extensions;
 using Bucket.SkyApm.Common;
 using Bucket.SkyApm.Diagnostics;
 using Bucket.SkyApm.Tracing;
 using Bucket.SkyApm.Tracing.Segments;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
+using System;
 
 namespace Bucket.SkyApm.AspNetCore.Diagnostics
 {

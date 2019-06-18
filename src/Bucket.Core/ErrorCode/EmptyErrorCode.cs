@@ -1,5 +1,4 @@
-﻿using Bucket.ErrorCode;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Bucket.ErrorCode
 {

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Bucket.Listener.Implementation
 {
-    public class BucketListenerBuilder: IBucketListenerBuilder
+    public class BucketListenerBuilder : IBucketListenerBuilder
     {
         public IServiceCollection Services { get; private set; }
         public IConfiguration Configuration { get; private set; }

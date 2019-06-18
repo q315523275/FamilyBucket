@@ -16,14 +16,12 @@
  *
  */
 
-using Bucket.SkyApm.Tracing.Segments;
-
 namespace Bucket.SkyApm.Tracing
 {
     public interface ISamplingInterceptor
     {
         int Priority { get; }
-        
+
         bool Invoke(SamplingContext samplingContext, Sampler next);
     }
 }

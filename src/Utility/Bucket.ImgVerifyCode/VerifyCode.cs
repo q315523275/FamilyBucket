@@ -1,7 +1,6 @@
-﻿using System;
+﻿using SkiaSharp;
+using System;
 using System.Collections.Generic;
-using SkiaSharp;
-using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 
@@ -209,7 +208,7 @@ namespace Bucket.ImgVerifyCode
                     {
                         _x += size.Width + Next(0, 3);
                         _y = size.Height + Next(5, 15);
-                        canvas.DrawText(text[i].ToString(), _x , _y, sKPaint); // 画文字
+                        canvas.DrawText(text[i].ToString(), _x, _y, sKPaint); // 画文字
                     }
                 }
                 // 页面展示图片
