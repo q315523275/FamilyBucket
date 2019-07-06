@@ -32,8 +32,8 @@ Nuget： Bucket.XXX
 | [WebSocket](https://github.com/q315523275/FamilyBucket/tree/master/src/WebSocket "WebSocket") | 维护中 | 原生WebSocket扩展实现，易于扩展与自定义 |
 | 告警系统 |未开放| 应用异常实时告警系统，多大屏展示、多种通知方式 |
 | 应用监控 | 开发中 | 应用对应cup、内存、gc、http、并发、异常等数据监控与上报 |
-| [AspNetCode应用组件](https://github.com/q315523275/FamilyBucket/tree/master/src/AspNetCore/Bucket.AspNetCore "AspNetCode") |升级中|应用程序组件，用户上下文、健康检查接口、Controller基类、<br />批量注册、全局异常拦截、ip白名单访问、模型验证、限速限流、熔断降级等持续开发中...|
-| [框架后台管理](https://github.com/q315523275/FamilyBucket-Server "框架管理")|升级中|管理框架信息，网关监控路由配置、应用监控与查询管理、配置中心管理、错误码管理、链路监控与管理、<br />日志管理、通用后台功能管理等|
+| [AspNetCode应用组件](https://github.com/q315523275/FamilyBucket/tree/master/src/AspNetCore/Bucket.AspNetCore "AspNetCode") |升级中|应用程序组件，用户上下文、健康检查接口、Controller基类、<br />批量注册、全局异常拦截、ip白名单访问、模型验证、<br />限速限流、熔断降级等持续开发中...|
+| [框架后台管理](https://github.com/q315523275/FamilyBucket-Server "框架管理")|升级中|管理框架信息，网关监控路由配置、应用监控与查询管理、<br />配置中心管理、错误码管理、链路监控与管理、日志管理、通用后台功能管理等|
 
 ---
 ## 各组件使用
