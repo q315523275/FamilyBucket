@@ -1,417 +1,128 @@
-﻿# FamilyBucket应用框架介绍
+﻿## 微服务全家桶FamilyBucket应用框架
+`FamilyBucket` 是一个集合多个组件应用形成的微服务一体化的全套应用框架。  
 
-FamilyBucket主要通过组合各个系统形成的直接应用的微服务系统，当前仅对各组件进行了简单基础实现，[FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)持续开发中
+各组件源码： https://github.com/q315523275/FamilyBucket
+UI源码： https://github.com/q315523275/FamilyBucket-UI
+部分服务源码： https://github.com/q315523275/FamilyBucket-Server
+博客园地址： https://www.cnblogs.com/tianxiangzhe/p/10212337.html
+Nuget： Bucket.XXX  
 
-## 博客园相关内容介绍
+---
+### 特性
+* 没啥特性
 
-[https://www.cnblogs.com/tianxiangzhe/p/10212337.html](https://www.cnblogs.com/tianxiangzhe/p/10212337.html)
+## 各组件矩阵
 
-## 配置中心应用
+| 组件 | 状态 | 说明  |
+| ------------ | ------------ | ------------ |
+|  [微服务网关](https://github.com/q315523275/FamilyBucket/tree/master/src/ApiGateway "微服务网关")  |  维护中  | 使用[ocelot](https://github.com/ThreeMammals/Ocelot "ocelot")服务网关，扩展配置存储方式、子服务dotnetty通信  |
+| [认证授权组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Authorize "认证授权")  |  维护中  |  jwt无状态认证方式，动态权限控制  |
+|  [缓存组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Cache "缓存组件") | 维护中  | 多种缓存方式实现，本地缓存、redis缓存  |
+| [配置中心](https://github.com/q315523275/FamilyBucket/tree/master/src/Config "配置中心")  | 维护中  | 提供系统组件、业务等配置信息获取  |
+| [错误码](https://github.com/q315523275/FamilyBucket/tree/master/src/ErrorCode "错误码")  | 维护中  | 提供系统错误、业务错误等错误码对外的描述信息获取  |
+| [事件总线](https://github.com/q315523275/FamilyBucket/tree/master/src/EventBus "事件总线")  | 维护中  | 使用RabbitMQ实现，可用于分布式事务  |
+| [分布式调度任务](https://github.com/q315523275/FamilyBucket/tree/master/src/HangFire/Bucket.HangFire.Server "分布式调度任务")  | 使用中  | 使用Hangfire分布式调度系统  |
+| [命令监听](https://github.com/q315523275/FamilyBucket/tree/master/src/Listener "组件监听")  | 维护中  | 使用Redis、Zookeeper实现命令监听，用于组件命令接收  |
+| [日志收集](https://github.com/q315523275/FamilyBucket/tree/master/src/Logging "日志收集")  | 维护中  | 对原生日志组件实现扩展，支持Log4Net、NLog、自定义日志MQ传输(扩展告警系统)  |
+| [ORM](https://github.com/q315523275/FamilyBucket/tree/master/src/ORM "ORM")  | 维护中  | 基于[SqlSugar](https://github.com/sunkaixuan/SqlSugar "SqlSugar")实现多库读写分离、数据仓储  |
+| [RPC](https://github.com/q315523275/FamilyBucket/tree/master/src/Rpc "RPC")  | 升级中  | 基于DotNetty实现Rpc应用(网关通信扩展)，gRpc连接管理  |
+| [服务发现](https://github.com/q315523275/FamilyBucket/tree/master/src/ServiceDiscovery "服务发现")  | 维护中  | 基于Consul实现服务发现、自动注册注销，服务负载计算  |
+| [链路追踪](https://github.com/q315523275/FamilyBucket/tree/master/src/SkyAPM "链路追踪") | 维护中 | 请求链路追踪，由于资源关系对SkyAPM net客户端进行部分修改 |
+| [工具组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Utility "工具组件") | 维护中 | 常用工具类、验证码、拼音、分词 |
+| [WebSocket](https://github.com/q315523275/FamilyBucket/tree/master/src/WebSocket "WebSocket") | 维护中 | 原生WebSocket扩展实现，易于扩展与自定义 |
+| 告警系统 |未开放| 应用异常实时告警系统，多大屏展示、多种通知方式 |
+| 应用监控 | 开发中 | 应用对应cup、内存、gc、http、并发、异常等数据监控与上报 |
+| [AspNetCode应用组件](https://github.com/q315523275/FamilyBucket/tree/master/src/AspNetCore/Bucket.AspNetCore "AspNetCode") |升级中|应用程序组件，用户上下文、健康检查接口、Controller基类、批量注册、全局异常拦截、ip白名单访问、模型验证、限速限流、熔断降级等持续开发中...|
+| [框架后台管理](https://github.com/q315523275/FamilyBucket-Server "框架管理")|升级中|管理框架信息，网关监控路由配置、应用监控与查询管理、配置中心管理、错误码管理、链路监控与管理、日志管理、通用后台功能管理等|
 
-配置中心主要解决：单文件配置管理麻烦、容易遗漏、更新麻烦、配置共享、环境切换等情况
-
-配置服务端主要提供http接口请求访问配置信息，通过appid和serct进行认证，一个appid下可以挂在多个项目和通用配置
-
-目前配置更新的方式有两种，定时轮询和广播订阅，如果有共享redis环境，可以配置redis对应参数进行广播订阅实现实时订阅；
-
-当前已支持net core默认IConfiguration的使用，组件相关appsetting配置可以移至配置中心
-**一直配置的key的设置，如key JwtAuthorize:Secret
-
-使用配置与方法
-
-```csharp
-  "ConfigServer": {
-    "AppId": "",
-    "AppSercet": "",
-    "RedisConnectionString": "",
-    "RedisListener": false,
-    "RefreshInteval": 300,
-    "ServerUrl": "https://www.xxxx.cn/",
-    "UseServiceDiscovery": false,
-    "ServiceName": "Pinzhi.Config.WebApi",
-    "NamespaceName": "Pinzhi.Credit",
-    "Env": "dev"
-  }
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-      // 添加配置服务
-      services.AddConfigServer(Configuration);
-  }
-```
-net core默认IConfiguration支持使用，当前代码比较low0.0待重构
-```csharp
-   .ConfigureAppConfiguration((hostingContext, _config) =>
-   {
-       _config
-       .SetBasePath(Directory.GetCurrentDirectory())
-       .AddJsonFile("appsettings.json", true, true)
-       .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
-       .AddEnvironmentVariables(); // 添加环境变量
-       var option = new BucketConfigOptions(); _config.Build().GetSection("ConfigService").Bind(option);
-        _config.AddBucketConfig(option);
-   })
-```
-
-## 日志中心应用
-
-主要用户手机所有服务日志信息，方便统计管理、查看、告警
-
-当前使用消息总线进行日志传输，通过elasticsearch进行存储，kibana进行查看
-
-下一步将进行NLog、Log4集成扩展，增加存储收集方式，集成都以原生日志组件实现方式进行
-
-使用配置与方法
+---
+## 各组件使用
+webapi与控制台使用示例，源码： https://github.com/q315523275/FamilyBucket/tree/master/src/Sample
 
 ```csharp
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-      // 添加事件队列日志
-      services.AddEventLog();
-  }
-  public void Configure(IApplicationBuilder app, IILoggerFactory loggerFactory)
-  {
-      // 日志,事件驱动日志
-      loggerFactory.AddBucketLog(app, Configuration.GetValue<string>("Project:Name"));
-   }
-```
-
-
-## 错误码应用
-
-主要解决运营人员对于接口返回对应用业务描述（模型验证，业务办理失败，规则不满足等等），可设置错误码级别，是否告警通知，配置告警人员等等
-
-原理是定义对应的Exception，遇到需要直接返回的时候，直接throw对应的异常，其中包含对应的错误码和对内描述，通过全局异常中间件进行对应转化；
-
-```csharp
-  "ErrorCodeService": {
-    "RefreshInteval": 1800,
-    "ServerUrl": "http://xxxx"
-  },
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-      // 添加错误码服务
-      services.AddErrorCodeServer(Configuration);
-  }
-```
-
-## 微服务网关
-
-Ocelot作为服务的网关，已经很强大；[项目地址](https://github.com/ThreeMammals/Ocelot)；当前使用Consul进行网关配置信息存储
-
-## 服务注册发现
-
-目前使用Consul进行实现
-
-```csharp
-  "ServiceDiscovery": {
-    "ServiceName": "xxxxx",
-    "Version": "1.1.0",
-    "HealthCheckTemplate": "",
-    "Endpoint": "http://xxxx",
-    "Consul": {
-      "HttpEndpoint": "http://127.0.0.1:8500",
-      "DnsEndpoint": {
-        "Address": "127.0.0.1",
-        "Port": 8500
-      }
-    }
-  },
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-      // 添加服务发现
-      services.AddServiceDiscovery(build => { build.UseConsul(configuration); });
-      services.AddLoadBalancer();
-  }
-  public void Configure(IApplicationBuilder app, IILoggerFactory loggerFactory)
-  {
-      app.UseConsulRegisterService(Configuration);
-  }
-```
-服务地址查询
-
-```csharp
-  static void Main(string[] args)
-  {
-     Initialize();
-     Console.WriteLine("Hello World!");
-     var _loadBalancerHouse = serviceProvider.GetRequiredService<ILoadBalancerHouse>();
-     var _rpcChannelFactory = serviceProvider.GetRequiredService<IGrpcChannelFactory>();
-     // 服务发现地址
-     var endpoints = _loadBalancerHouse.Get("Bucket.Grpc.Server").Result;
-     var endpoint = endpoints.Lease().Result;
-     var channel = _rpcChannelFactory.Get(endpoint.Address, endpoint.Port);
-  }
-```
-
-
-## 链路追踪应用
-
-参考 
-
-[OpenSkywalking](https://github.com/OpenSkywalking/skywalking-netcore)
-[butterfly](https://github.com/liuhaoyang/butterfly)
-
-由于一些使用需求特性，故没有直接使用直接组件，进行了一些二次开发，目前正在重构
-
-实现APM、调用链信息、耗时分析定位、问题定位、请求出入参的查看与分析；
-
-目前使用消息总线进行传输、相关数据可以进行一些比较实用的扩展；
-
-
-## 消息总线应用
-
-在微服务中起到比较重要的作用，用法多样，可实现多种功能，分布式事务、消息队列、事件驱动等等
-
-```csharp
-  "EventBus": {
-    "RabbitMQ": {
-      "HostName": "10.10.133.205",
-      "Port": 5672,
-      "UserName": "guest",
-      "Password": "guest",
-      "QueueName": "xxxx"
-    }
-  },
-  public IServiceProvider ConfigureServices(IServiceCollection services)
-  {
-     // 添加事件驱动
-     services.AddEventBus(builder => { builder.UseRabbitMQ(Configuration); });
-  }
-```
-
-## 度量监控应用
-
-应用实时性能监控，流量走向，系统吞吐量等，主要通过App.Metrics客户端进行数据的提取，granfana + influx 进行数据的展示与存储；
-
-## 用户认证应用
-
-Ocelot网关路由，通过AuthenticationProviderKey 和 AllowedScopes 进行认证和权限验证, 路由一般我配置是整个子项目的基地址，所以认证授权已移至后向子服务
-
-组件为Bucket.Authorize Bucket.Authorize.MySql
-
-标签属性
-```csharp
-[Authorize("permission")]
-```
-当只需要认证token是否有效时
-```csharp
-services.AddApiJwtAuthorize(Configuration)
-```
-当需要对角色进行验证时
-```csharp
-services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
-```
-全配置
-```csharp
-"JwtAuthorize": {
-    "Secret": "xxxxxxxxxxxxxxxxxxxxx",
-    "Issuer": "poc",
-    "Audience": "axon",
-    "PolicyName": "permission",
-    "DefaultScheme": "Bearer",
-    "IsHttps": false,
-    "RequireExpirationTime": true,
-    "MySqlConnectionString": "characterset=utf8;server=127.0.0.1;port=3306;database=bucket;uid=root;pwd=123;",
-    "ProjectName": "Pinzhi.Platform",
-    "RefreshInteval": 300
-  },
-```
-
-## 使用
-
-mysql初始化文件 /基础服务项目/init_mysql.sql
-
-基础服务项目
-
-配置中心服务端项目  /基础服务项目/ConfigService
-
-用户登陆项目  /基础服务项目/Authentication
-
-基础消息总线消费端  /基础服务项目/Pinzhi.BackgroundTasks
-
-基础管理项目  /基础服务项目/Pinzhi.Platform (微服务配置、服务管理、配置中心设置、用户角色菜单平台管理)
-
-链路追踪查询项目  /基础服务项目/Tracing
-
-前端VUE项目
-[FamilyBucket-UI](https://github.com/q315523275/FamilyBucket-UI)正在开发中，其中包括很多页面操作，用户权限，项目资源、配置中心、网关路由、链路追踪等
-
-## 项目包引用
-
-Nuget搜索Bucket.xxxx
-
-## 进程守护
-
-对比之下，pm2比较好用，linux cd到目录直接 pm2 start pm2.json; 网关中带有示例
-
-
-## 应用示例
-
-```csharp
-namespace Platform.WebApi
-{
-    /// <summary>
-    /// 启动配置
-    /// </summary>
-    public class Startup
-    {
-        /// <summary>
-        /// 初始化启动配置
-        /// </summary>
-        /// <param name="configuration">配置</param>
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-        /// <summary>
-        /// 配置
-        /// </summary>
-        public IConfiguration Configuration { get; }
-        /// <summary>
-        /// AutofacDI容器
-        /// </summary>
-        public IContainer AutofacContainer { get; private set; }
-        /// <summary>
+/// <summary>
         /// 配置服务
         /// </summary>
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            // 添加认证+MySql权限认证
-            services.AddApiJwtAuthorize(Configuration).UseAuthoriser(services, builder => { builder.UseMySqlAuthorize(); });
-            // 添加基础设施服务
-            services.AddBucket();
-            // 添加数据ORM
-            services.AddSQLSugarClient<SqlSugarClient>(config => {
-                config.ConnectionString = Configuration.GetSection("SqlSugarClient")["ConnectionString"];
-                config.DbType = DbType.MySql;
-                config.IsAutoCloseConnection = false;
-                config.InitKeyType = InitKeyType.Attribute;
-            });
-            // 添加错误码服务
-            services.AddErrorCodeServer(Configuration);
-            // 添加配置服务
-            services.AddConfigServer(Configuration);
-            // 添加事件驱动
-            services.AddEventBus(option => { option.UseRabbitMQ(Configuration); });
-            // 添加服务发现
-            services.AddServiceDiscovery(option => { option.UseConsul(Configuration); });
-            // 添加服务路由
-            services.AddLoadBalancer();
-            // 添加事件队列日志
-            services.AddEventLog();
-            // 添加链路追踪
-            services.AddTracer(Configuration);
-            services.AddEventTrace();
-            // 添加应用监听
-            services.AddListener(builder => {
-                builder.UseRedis();
-                // builder.UseZookeeper();
-                builder.AddAuthorize().AddConfig().AddErrorCode();
-            });
-            services.AddBucketHostedService(builder => {
-                builder.AddAuthorize().AddConfig().AddErrorCode();
-            });
-            // 添加模型映射,需要映射配置文件(考虑到性能未使用自动映射)
-            services.AddAutoMapper();
-            // 添加过滤器
-            services.AddMvc(options =>
+            // 添加全家桶服务
+            services.AddFamilyBucket(familyBucket =>
             {
-                options.Filters.Add(typeof(WebApiTracingFilterAttribute));
-                options.Filters.Add(typeof(WebApiActionFilterAttribute));
-            }).AddJsonOptions(options =>
+                // 添加AspNetCore基础服务
+                familyBucket.AddAspNetCore();
+                // 添加授权认证
+                familyBucket.AddApiJwtAuthorize().UseAuthoriser(builder => { builder.UseMySqlAuthorize(); });
+                // 添加数据ORM、数据仓储
+                familyBucket.AddSqlSugarDbContext().AddSqlSugarDbRepository();
+                // 添加错误码服务
+                familyBucket.AddErrorCodeServer();
+                // 添加配置服务
+                familyBucket.AddConfigServer();
+                // 添加事件驱动
+                familyBucket.AddEventBus(builder => { builder.UseRabbitMQ(); });
+                // 添加服务发现
+                familyBucket.AddServiceDiscovery(builder => { builder.UseConsul(); });
+                // 添加负载算法
+                familyBucket.AddLoadBalancer();
+                // 添加事件队列日志和告警信息
+                familyBucket.AddLogEventTransport();
+                // 添加链路追踪
+                familyBucket.AddBucketSkyApmCore().UseEventBusTransport();
+                // 添加缓存组件
+                familyBucket.AddCaching(build =>
+                {
+                    build.UseInMemory("default");
+                    build.UseStackExchangeRedis(new Caching.StackExchangeRedis.Abstractions.StackExchangeRedisOption
+                    {
+                        Configuration = "10.10.188.136:6379,allowadmin=true",
+                        DbProviderName = "redis"
+                    });
+                });
+                // 添加工具组件
+                familyBucket.AddUtil();
+                // 添加组件定时任务
+                familyBucket.AddAspNetCoreHostedService(builder => { builder.AddConfig().AddErrorCode().AddAuthorize(); });
+                // 添加组件任务订阅
+                familyBucket.AddListener(builder => { builder.UseRedis().AddAuthorize().AddConfig().AddErrorCode(); }); // builder.UseZookeeper();
+                // 添加应用批量注册
+                familyBucket.BatchRegisterService(Assembly.Load("Bucket.Demo.Repository"), "Repository", ServiceLifetime.Scoped);
+                // 添加DotNetty_Rpc使用
+                    familyBucket.AddRpcCore().UseDotNettyTransport().UseMessagePackCodec().AddClientRuntime().AddServiceProxy(); .UseProtoBufferCodec()
+            });
+            // 添加过滤器
+            services.AddMvc(option => { option.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-            });
-            // 添加Swagger
+                options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss.fff";
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // 添加接口文档
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "接口文档", Version = "v1" });
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Pinzhi.Platform.WebApi.xml"));
+                c.SwaggerDoc("v1", new Info { Title = "微服务全家桶接口服务", Version = "v1" });
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Bucket.WebApi.xml"));
+                c.CustomSchemaIds(x => x.FullName);
                 // Swagger验证部分
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme { In = "header", Description = "请输入带有Bearer的Token", Name = "Authorization", Type = "apiKey" });
                 c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> { { "Bearer", Enumerable.Empty<string>() } });
             });
-            // 添加工具
-            services.AddUtil();
             // 添加HttpClient管理
             services.AddHttpClient();
-            // 添加autofac容器替换，默认容器注册方式缺少功能
-            var autofac_builder = new ContainerBuilder();
-            autofac_builder.Populate(services);
-            autofac_builder.RegisterModule<AutofacModuleRegister>();
-            AutofacContainer = autofac_builder.Build();
-            return new AutofacServiceProvider(AutofacContainer);
+            // 添加业务组件注册
+
+            // 添加事件消息
+            RegisterEventBus(services);
+            // 注册调度任务
+            RegisterScheduler(services);
         }
-        /// <summary>
-        /// 配置请求管道
-        /// </summary>
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-        {
-            // 日志
-            loggerFactory.AddBucketLog(app, "Pinzhi.Platform");
-            // 文档
-            ConfigSwagger(app);
-            // 公共配置
-            CommonConfig(app);
-        }
-        /// <summary>
-        /// 配置Swagger
-        /// </summary>
-        private void ConfigSwagger(IApplicationBuilder app)
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "api v1");
-            });
-        }
-        /// <summary>
-        /// 公共配置
-        /// </summary>
-        private void CommonConfig(IApplicationBuilder app)
-        {
-            // 全局错误日志
-            app.UseErrorLog();
-            // 静态文件
-            app.UseStaticFiles();
-            // 路由
-            ConfigRoute(app);
-            // 服务注册
-            app.UseConsulRegisterService(Configuration);
-        }
-        /// <summary>
-        /// 路由配置,支持区域
-        /// </summary>
-        private void ConfigRoute(IApplicationBuilder app)
-        {
-            app.UseMvc(routes => {
-                routes.MapRoute("areaRoute", "view/{area:exists}/{controller}/{action=Index}/{id?}");
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-                routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
-            });
-        }
-        /// <summary>
-        /// Autofac扩展注册
-        /// </summary>
-        public class AutofacModuleRegister : Autofac.Module
-        {
-            /// <summary>
-            /// 装载autofac方式注册
-            /// </summary>
-            /// <param name="builder"></param>
-            protected override void Load(ContainerBuilder builder)
-            {
-                // 业务应用注册
-                Assembly bus_assembly = Assembly.Load("Pinzhi.Platform.Business");
-                builder.RegisterAssemblyTypes(bus_assembly)
-                    .Where(t => !t.IsAbstract && !t.IsInterface && t.Name.EndsWith("Business"))
-                    .AsImplementedInterfaces()
-                    .InstancePerLifetimeScope();
-                // 数据仓储泛型注册
-                builder.RegisterGeneric(typeof(RepositoryBase<>)).As(typeof(IRepositoryBase<>))
-                    .InstancePerLifetimeScope();
-            }
-        }
-    }
-}
 ```
+---
+## 性能与稳定
+* 追求极限性能其实不应该使用微服务框架，独立应用对外提供服务最好
+* 网关ocelot虽然有很多功能，但是尽量只当作路由来用不要把过多功能放在网关应用，目前平均一个请求2ms左右延时
+* 提供一个高可用的服务涉及到很多很多，一定要预防好级联雪崩情况
+* 太多了
+
+---
+## VNext
+* 
+* 
