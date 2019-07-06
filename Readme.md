@@ -14,7 +14,7 @@ Nuget： Bucket.XXX
 ## 各组件矩阵
 
 |     组件             |   状态      |          说明                    |
-| ------------------- | ----------- | ------------------------------- |
+| :-: | :-: | ------------------------------- |
 | [微服务网关](https://github.com/q315523275/FamilyBucket/tree/master/src/ApiGateway "微服务网关")  |  维护中  | 使用[ocelot](https://github.com/ThreeMammals/Ocelot "ocelot")服务网关，扩展配置存储方式、子服务dotnetty通信  |
 | [认证授权组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Authorize "认证授权")  |  维护中  |  jwt无状态认证方式，动态权限控制  |
 | [缓存组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Cache "缓存组件") | 维护中  | 多种缓存方式实现，本地缓存、redis缓存  |
