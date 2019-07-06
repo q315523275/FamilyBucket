@@ -1,14 +1,10 @@
 ﻿## 微服务全家桶FamilyBucket应用框架
 `FamilyBucket` 是一个集合多个组件应用形成的微服务一体化的全套应用框架。  
 
-各组件源码： https://github.com/q315523275/FamilyBucket 
-
-UI源码： https://github.com/q315523275/FamilyBucket-UI 
-
-部分服务源码： https://github.com/q315523275/FamilyBucket-Server 
-
-博客园地址： https://www.cnblogs.com/tianxiangzhe/p/10212337.html 
-
+各组件源码： https://github.com/q315523275/FamilyBucket  
+UI源码： https://github.com/q315523275/FamilyBucket-UI  
+部分服务源码： https://github.com/q315523275/FamilyBucket-Server  
+博客园地址： https://www.cnblogs.com/tianxiangzhe/p/10212337.html  
 Nuget： Bucket.XXX  
 
 ---
