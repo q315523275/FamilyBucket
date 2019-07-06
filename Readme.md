@@ -23,7 +23,7 @@ Nuget： Bucket.XXX
 | [事件总线](https://github.com/q315523275/FamilyBucket/tree/master/src/EventBus "事件总线")  | 维护中  | 使用RabbitMQ实现，可用于分布式事务  |
 | [分布式调度任务](https://github.com/q315523275/FamilyBucket/tree/master/src/HangFire/Bucket.HangFire.Server "分布式调度任务")  | 使用中  | 使用Hangfire分布式调度系统  |
 | [命令监听](https://github.com/q315523275/FamilyBucket/tree/master/src/Listener "组件监听")  | 维护中  | 使用Redis、Zookeeper实现命令监听，用于组件命令接收  |
-| [日志收集](https://github.com/q315523275/FamilyBucket/tree/master/src/Logging "日志收集")  | 维护中  | 对原生日志组件实现扩展，支持Log4Net、NLog、自定义日志MQ传输(扩展告警系统)  |
+| [日志收集](https://github.com/q315523275/FamilyBucket/tree/master/src/Logging "日志收集")  | 维护中  | 对原生日志组件实现扩展，支持Log4Net、NLog、自定义日志<br />MQ传输(扩展告警系统)  |
 | [ORM](https://github.com/q315523275/FamilyBucket/tree/master/src/ORM "ORM")  | 维护中  | 基于[SqlSugar](https://github.com/sunkaixuan/SqlSugar "SqlSugar")实现多库读写分离、数据仓储  |
 | [RPC](https://github.com/q315523275/FamilyBucket/tree/master/src/Rpc "RPC")  | 升级中  | 基于DotNetty实现Rpc应用(网关通信扩展)，gRpc连接管理  |
 | [服务发现](https://github.com/q315523275/FamilyBucket/tree/master/src/ServiceDiscovery "服务发现")  | 维护中  | 基于Consul实现服务发现、自动注册注销，服务负载计算  |
@@ -32,8 +32,8 @@ Nuget： Bucket.XXX
 | [WebSocket](https://github.com/q315523275/FamilyBucket/tree/master/src/WebSocket "WebSocket") | 维护中 | 原生WebSocket扩展实现，易于扩展与自定义 |
 | 告警系统 |未开放| 应用异常实时告警系统，多大屏展示、多种通知方式 |
 | 应用监控 | 开发中 | 应用对应cup、内存、gc、http、并发、异常等数据监控与上报 |
-| [AspNetCode应用组件](https://github.com/q315523275/FamilyBucket/tree/master/src/AspNetCore/Bucket.AspNetCore "AspNetCode") |升级中|应用程序组件，用户上下文、健康检查接口、Controller基类、批量注册、全局异常拦截、ip白名单访问、模型验证、限速限流、熔断降级等持续开发中...|
-| [框架后台管理](https://github.com/q315523275/FamilyBucket-Server "框架管理")|升级中|管理框架信息，网关监控路由配置、应用监控与查询管理、配置中心管理、错误码管理、链路监控与管理、日志管理、通用后台功能管理等|
+| [AspNetCode应用组件](https://github.com/q315523275/FamilyBucket/tree/master/src/AspNetCore/Bucket.AspNetCore "AspNetCode") |升级中|应用程序组件，用户上下文、健康检查接口、Controller基类、<br />批量注册、全局异常拦截、ip白名单访问、模型验证、限速限流、熔断降级等持续开发中...|
+| [框架后台管理](https://github.com/q315523275/FamilyBucket-Server "框架管理")|升级中|管理框架信息，网关监控路由配置、应用监控与查询管理、配置中心管理、错误码管理、链路监控与管理、<br />日志管理、通用后台功能管理等|
 
 ---
 ## 各组件使用
