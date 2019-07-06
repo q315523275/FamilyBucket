@@ -1,10 +1,10 @@
 ﻿## 微服务全家桶FamilyBucket应用框架
 `FamilyBucket` 是一个集合多个组件应用形成的微服务一体化的全套应用框架。  
 
-各组件源码： https://github.com/q315523275/FamilyBucket
-UI源码： https://github.com/q315523275/FamilyBucket-UI
-部分服务源码： https://github.com/q315523275/FamilyBucket-Server
-博客园地址： https://www.cnblogs.com/tianxiangzhe/p/10212337.html
+各组件源码： https://github.com/q315523275/FamilyBucket 
+UI源码： https://github.com/q315523275/FamilyBucket-UI 
+部分服务源码： https://github.com/q315523275/FamilyBucket-Server 
+博客园地址： https://www.cnblogs.com/tianxiangzhe/p/10212337.html 
 Nuget： Bucket.XXX  
 
 ---
@@ -13,11 +13,11 @@ Nuget： Bucket.XXX
 
 ## 各组件矩阵
 
-| 组件 | 状态 | 说明  |
+|     组件             |   状态   |          说明                    |
 | ------------ | ------------ | ------------ |
-|  [微服务网关](https://github.com/q315523275/FamilyBucket/tree/master/src/ApiGateway "微服务网关")  |  维护中  | 使用[ocelot](https://github.com/ThreeMammals/Ocelot "ocelot")服务网关，扩展配置存储方式、子服务dotnetty通信  |
+| [微服务网关](https://github.com/q315523275/FamilyBucket/tree/master/src/ApiGateway "微服务网关")  |  维护中  | 使用[ocelot](https://github.com/ThreeMammals/Ocelot "ocelot")服务网关，扩展配置存储方式、子服务dotnetty通信  |
 | [认证授权组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Authorize "认证授权")  |  维护中  |  jwt无状态认证方式，动态权限控制  |
-|  [缓存组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Cache "缓存组件") | 维护中  | 多种缓存方式实现，本地缓存、redis缓存  |
+| [缓存组件](https://github.com/q315523275/FamilyBucket/tree/master/src/Cache "缓存组件") | 维护中  | 多种缓存方式实现，本地缓存、redis缓存  |
 | [配置中心](https://github.com/q315523275/FamilyBucket/tree/master/src/Config "配置中心")  | 维护中  | 提供系统组件、业务等配置信息获取  |
 | [错误码](https://github.com/q315523275/FamilyBucket/tree/master/src/ErrorCode "错误码")  | 维护中  | 提供系统错误、业务错误等错误码对外的描述信息获取  |
 | [事件总线](https://github.com/q315523275/FamilyBucket/tree/master/src/EventBus "事件总线")  | 维护中  | 使用RabbitMQ实现，可用于分布式事务  |
@@ -40,7 +40,7 @@ Nuget： Bucket.XXX
 webapi与控制台使用示例，源码： https://github.com/q315523275/FamilyBucket/tree/master/src/Sample
 
 ```csharp
-/// <summary>
+        /// <summary>
         /// 配置服务
         /// </summary>
         public void ConfigureServices(IServiceCollection services)
@@ -87,7 +87,7 @@ webapi与控制台使用示例，源码： https://github.com/q315523275/FamilyB
                 // 添加应用批量注册
                 familyBucket.BatchRegisterService(Assembly.Load("Bucket.Demo.Repository"), "Repository", ServiceLifetime.Scoped);
                 // 添加DotNetty_Rpc使用
-                    familyBucket.AddRpcCore().UseDotNettyTransport().UseMessagePackCodec().AddClientRuntime().AddServiceProxy(); .UseProtoBufferCodec()
+                familyBucket.AddRpcCore().UseDotNettyTransport().UseMessagePackCodec().AddClientRuntime().AddServiceProxy(); //.UseProtoBufferCodec()
             });
             // 添加过滤器
             services.AddMvc(option => { option.Filters.Add(typeof(WebApiActionFilterAttribute)); }).AddJsonOptions(options =>
@@ -115,6 +115,8 @@ webapi与控制台使用示例，源码： https://github.com/q315523275/FamilyB
             RegisterScheduler(services);
         }
 ```
+
+
 ---
 ## 性能与稳定
 * 追求极限性能其实不应该使用微服务框架，独立应用对外提供服务最好
@@ -124,5 +126,5 @@ webapi与控制台使用示例，源码： https://github.com/q315523275/FamilyB
 
 ---
 ## VNext
-* 
+* 灰度发布方案
 * 
