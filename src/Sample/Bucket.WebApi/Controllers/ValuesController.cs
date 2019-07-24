@@ -1,9 +1,7 @@
 ﻿using Bucket.Utility.Files;
-using Bucket.WebApi.Dto;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Text;
-
 namespace Bucket.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -12,10 +10,10 @@ namespace Bucket.WebApi.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get([FromServices] IBucketFileProvider fileProvider, [FromQuery] LoginInput input)
+        public ActionResult<IEnumerable<string>> Get([FromServices] IBucketFileProvider fileProvider)
         {
             var sb = new StringBuilder();
-            foreach(var info in fileProvider.GetDirectoryContents(""))
+            foreach (var info in fileProvider.GetDirectoryContents(""))
             {
                 sb.Append(info.Name);
             }

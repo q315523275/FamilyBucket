@@ -48,7 +48,7 @@ namespace Bucket.Rpc.Server.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError("将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。", exception);
+                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。");
                 await SendRemoteInvokeErrorResult(sender, message.Id, 500, $"将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。");
                 return;
             }
@@ -68,22 +68,22 @@ namespace Bucket.Rpc.Server.Implementation
 
             var resultMessage = new RemoteInvokeResultMessage();
 
-            //是否需要等待执行。
+            // 是否需要等待执行。
             if (entry.Descriptor.WaitExecution())
             {
-                //执行本地代码。
+                // 执行本地代码。
                 await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
-                //向客户端发送调用结果。
+                // 向客户端发送调用结果。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
             }
             else
             {
-                //通知客户端已接收到消息。
+                // 通知客户端已接收到消息。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
-                //确保新起一个线程执行，不堵塞当前线程。
+                // 确保新起一个线程执行，不堵塞当前线程。
                 await Task.Factory.StartNew(async () =>
                 {
-                    //执行本地代码。
+                    // 执行本地代码。
                     await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
                 }, TaskCreationOptions.LongRunning);
             }
@@ -98,8 +98,9 @@ namespace Bucket.Rpc.Server.Implementation
             try
             {
                 var result = await entry.Func(remoteInvokeMessage.Parameters);
+                var task = result as Task;
 
-                if (!(result is Task task))
+                if (task == null)
                 {
                     resultMessage.Result = result;
                 }
@@ -115,7 +116,7 @@ namespace Bucket.Rpc.Server.Implementation
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError("执行本地逻辑时候发生了错误。", exception);
+                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
                 resultMessage.StatusCode = 500;
                 resultMessage.ExceptionMessage = GetExceptionMessage(exception);
             }
@@ -135,7 +136,7 @@ namespace Bucket.Rpc.Server.Implementation
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError("发送响应消息时候发生了异常。", exception);
+                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
             }
         }
 
@@ -153,7 +154,7 @@ namespace Bucket.Rpc.Server.Implementation
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError("发送响应消息时候发生了异常。", exception);
+                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
             }
         }
         private static string GetExceptionMessage(Exception exception)

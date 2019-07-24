@@ -1,5 +1,4 @@
-﻿using Bucket.ApiGateway.ConfigStored.MySql.Entity;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Ocelot.Configuration.Repository;
 using Ocelot.DependencyInjection;
 

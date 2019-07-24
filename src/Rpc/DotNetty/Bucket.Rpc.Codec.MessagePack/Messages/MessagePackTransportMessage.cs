@@ -74,14 +74,14 @@ namespace Bucket.Rpc.Codec.MessagePack.Messages
             else if (IsInvokeResultMessage())
             {
                 contentObject =
-                    SerializerUtilitys.Deserialize<MessagePackRemoteInvokeResultMessage>(Content)
-                        .GetRemoteInvokeResultMessage();
+                    SerializerUtilitys.Deserialize<MessagePackRemoteInvokeResultMessage>(Content).GetRemoteInvokeResultMessage();
             }
             else
             {
                 throw new NotSupportedException($"无法支持的消息类型：{ContentType}！");
             }
             message.Content = contentObject;
+
             return message;
         }
     }

@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AspNetCore\Bucket.AspNetCore\Bucket.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize.HostedService\Bucket.Authorize.HostedService.csproj" />
+    <ProjectReference Include="..\..\Authorize\Bucket.Authorize.Listener\Bucket.Authorize.Listener.csproj" />
+    <ProjectReference Include="..\..\Cache\Bucket.Caching.Codec.MessagePack\Bucket.Caching.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\Cache\Bucket.Caching.InMemory\Bucket.Caching.InMemory.csproj" />
+    <ProjectReference Include="..\..\Cache\Bucket.Caching.StackExchangeRedis\Bucket.Caching.StackExchangeRedis.csproj" />
+    <ProjectReference Include="..\..\Config\Bucket.Config.HostedService\Bucket.Config.HostedService.csproj" />
+    <ProjectReference Include="..\..\Config\Bucket.Config.Listener\Bucket.Config.Listener.csproj" />
+    <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode.HostedService\Bucket.ErrorCode.HostedService.csproj" />
+    <ProjectReference Include="..\..\ErrorCode\Bucket.ErrorCode.Listener\Bucket.ErrorCode.Listener.csproj" />
+    <ProjectReference Include="..\..\EventBus\Bucket.EventBus.RabbitMQ\Bucket.EventBus.RabbitMQ.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener.Redis\Bucket.Listener.Redis.csproj" />
+    <ProjectReference Include="..\..\Listener\Bucket.Listener.Zookeeper\Bucket.Listener.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging.Log4Net\Bucket.Logging.Log4Net.csproj" />
+    <ProjectReference Include="..\..\Logging\Bucket.Logging.Nlog\Bucket.Logging.Nlog.csproj" />
+    <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.Codec.MessagePack\Bucket.Rpc.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.Codec.ProtoBuffer\Bucket.Rpc.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.ProxyGenerator\Bucket.Rpc.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.Transport.DotNetty\Bucket.Rpc.Transport.DotNetty.csproj" />
+    <ProjectReference Include="..\..\ServiceDiscovery\Bucket.LoadBalancer\Bucket.LoadBalancer.csproj" />
+    <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Agent.AspNetCore\Bucket.SkyApm.Agent.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Utility\Bucket.Utility\Bucket.Utility.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -464,9 +464,9 @@ namespace Bucket.Caching.StackExchangeRedis
                 {
                     result = func();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
                 finally
                 {
@@ -492,9 +492,9 @@ namespace Bucket.Caching.StackExchangeRedis
                 {
                     result = func();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
                 finally
                 {
@@ -520,9 +520,9 @@ namespace Bucket.Caching.StackExchangeRedis
                 {
                     result = await func();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
                 finally
                 {

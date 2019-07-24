@@ -4,6 +4,7 @@ using Bucket.Rpc.Server;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Bucket.Rpc.Transport.Implementation
@@ -34,7 +35,7 @@ namespace Bucket.Rpc.Transport.Implementation
             _messageListener = messageListener;
             _logger = logger;
             _serviceExecutor = serviceExecutor;
-            messageListener.Received += MessageListener_Received;
+            _messageListener.Received += MessageListener_Received;
         }
 
         #endregion Constructor
@@ -46,7 +47,7 @@ namespace Bucket.Rpc.Transport.Implementation
         /// </summary>
         /// <param name="message">远程调用消息模型。</param>
         /// <returns>远程调用消息的传输消息。</returns>
-        public async Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message)
+        public async Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message, int timeout)
         {
             try
             {
@@ -56,7 +57,7 @@ namespace Bucket.Rpc.Transport.Implementation
                 var transportMessage = TransportMessage.CreateInvokeMessage(message);
 
                 //注册结果回调
-                var callbackTask = RegisterResultCallbackAsync(transportMessage.Id);
+                var callbackTask = RegisterResultCallbackAsync(transportMessage.Id, timeout);
 
                 try
                 {
@@ -76,8 +77,8 @@ namespace Bucket.Rpc.Transport.Implementation
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError("消息发送失败。", exception);
-                throw;
+                    _logger.LogError(exception, "消息发送失败。");
+                throw exception;
             }
         }
 
@@ -105,35 +106,43 @@ namespace Bucket.Rpc.Transport.Implementation
         /// 注册指定消息的回调任务。
         /// </summary>
         /// <param name="id">消息Id。</param>
+        /// <param name="timeout">请求超时时间，单位秒</param>
         /// <returns>远程调用结果消息模型。</returns>
-        private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id)
+        private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id, int timeout)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备获取Id为：{id}的响应内容。");
 
-            var task = new TaskCompletionSource<TransportMessage>();
-            _resultDictionary.TryAdd(id, task);
+            var source = new TaskCompletionSource<TransportMessage>();
+            var tokenSource = new CancellationTokenSource();
+            tokenSource.Token.Register(() =>
+            {
+                _resultDictionary.TryRemove(id, out TaskCompletionSource<TransportMessage> value);
+                if (!source.Task.IsCompleted)
+                {
+                    source.TrySetException(new RpcRemoteException(408, $"获取Id为{id}的响应超时"));
+                }
+            });
+            _resultDictionary.TryAdd(id, source);
             try
             {
-                var result = await task.Task;
+                tokenSource.CancelAfter(timeout * 1000);
+                var result = await source.Task;
                 return result.GetContent<RemoteInvokeResultMessage>();
             }
             finally
             {
                 //删除回调任务
-                TaskCompletionSource<TransportMessage> value;
-                _resultDictionary.TryRemove(id, out value);
+                _resultDictionary.TryRemove(id, out TaskCompletionSource<TransportMessage> value);
             }
         }
 
         private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
         {
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("接收到消息。");
+                _logger.LogInformation($"接收到{message.Id}消息。");
 
-            TaskCompletionSource<TransportMessage> task;
-
-            if (!_resultDictionary.TryGetValue(message.Id, out task))
+            if (!_resultDictionary.TryGetValue(message.Id, out TaskCompletionSource<TransportMessage> source))
                 return;
 
             if (message.IsInvokeResultMessage())
@@ -141,11 +150,11 @@ namespace Bucket.Rpc.Transport.Implementation
                 var content = message.GetContent<RemoteInvokeResultMessage>();
                 if (!string.IsNullOrEmpty(content.ExceptionMessage))
                 {
-                    task.TrySetException(new RpcRemoteException(content.StatusCode, content.ExceptionMessage));
+                    source.TrySetException(new RpcRemoteException(content.StatusCode, content.ExceptionMessage));
                 }
                 else
                 {
-                    task.SetResult(message);
+                    source.SetResult(message);
                 }
             }
             if (_serviceExecutor != null && message.IsInvokeMessage())

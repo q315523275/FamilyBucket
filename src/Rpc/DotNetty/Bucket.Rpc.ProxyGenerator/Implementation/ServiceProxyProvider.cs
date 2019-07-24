@@ -15,25 +15,14 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
             _serviceProvider = serviceProvider;
         }
 
-        public async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
-        {
-            var proxy = _serviceProvider.GetRequiredService<RemoteServiceProxy>();
-            if (proxy == null)
-            {
-                proxy = new RemoteServiceProxy(_serviceProvider);
-
-            }
-            return await proxy.InvokeAsync<T>(parameters, serviceId, endPoint);
-        }
-
-        public Task InvokeAsync(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
+        public async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint, int timeout = 60)
         {
             var proxy = _serviceProvider.GetRequiredService<RemoteServiceProxy>();
             if (proxy == null)
             {
                 proxy = new RemoteServiceProxy(_serviceProvider);
             }
-            return proxy.InvokeAsync(parameters, serviceId, endPoint);
+            return await proxy.InvokeAsync<T>(parameters, serviceId, endPoint, timeout);
         }
     }
 }

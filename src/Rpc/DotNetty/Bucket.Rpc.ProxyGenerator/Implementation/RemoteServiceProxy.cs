@@ -15,13 +15,9 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
         {
         }
 
-        public new async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
+        public new async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint, int timeout = 60)
         {
-            return await base.InvokeAsync<T>(parameters, serviceId, endPoint);
-        }
-        public new Task InvokeAsync(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
-        {
-            return base.InvokeAsync(parameters, serviceId, endPoint);
+            return await base.InvokeAsync<T>(parameters, serviceId, endPoint, timeout);
         }
     }
 }

@@ -194,9 +194,7 @@ namespace Bucket.Rpc
 
             // services.AddSingleton<IServiceRouteFactory, DefaultServiceRouteFactory>();
 
-            return new RpcBuilder(services)
-                .AddJsonSerialization()
-                .UseJsonCodec();
+            return new RpcBuilder(services).AddJsonSerialization().UseJsonCodec();
         }
 
         /// <summary>
@@ -206,7 +204,17 @@ namespace Bucket.Rpc
         /// <returns>Rpc服务构建者。</returns>
         public static IRpcBuilder AddRpcCore(this IBucketBuilder builder)
         {
-            return AddRpcCore(builder.Services);
+            if (builder == null)
+                throw new ArgumentNullException(nameof(builder));
+
+            builder.Services.AddSingleton<IServiceIdGenerator, DefaultServiceIdGenerator>();
+
+            builder.Services.AddSingleton<ITypeConvertibleProvider, DefaultTypeConvertibleProvider>();
+            builder.Services.AddSingleton<ITypeConvertibleService, DefaultTypeConvertibleService>();
+
+            // services.AddSingleton<IServiceRouteFactory, DefaultServiceRouteFactory>();
+
+            return new RpcBuilder(builder.Services).AddJsonSerialization().UseJsonCodec();
         }
     }
 }

@@ -22,7 +22,7 @@ Nuget： Bucket.XXX
 | [错误码](https://github.com/q315523275/FamilyBucket/tree/master/src/ErrorCode "错误码")  | 维护中  | 提供系统错误、业务错误等错误码对外的描述信息获取  |
 | [事件总线](https://github.com/q315523275/FamilyBucket/tree/master/src/EventBus "事件总线")  | 维护中  | 使用RabbitMQ实现，可用于分布式事务  |
 | [分布式调度任务](https://github.com/q315523275/FamilyBucket/tree/master/src/HangFire/Bucket.HangFire.Server "分布式调度任务")  | 使用中  | 使用Hangfire分布式调度系统  |
-| [命令监听](https://github.com/q315523275/FamilyBucket/tree/master/src/Listener "组件监听")  | 维护中  | 使用Redis、Zookeeper实现命令监听，用于组件命令接收  |
+| [命令监听](https://github.com/q315523275/FamilyBucket/tree/master/src/Listener "组件监听")  | 维护中  | 使用Redis、Zookeeper实现命令监听，用于组件命令接收，如缓存更新清除  |
 | [日志收集](https://github.com/q315523275/FamilyBucket/tree/master/src/Logging "日志收集")  | 维护中  | 对原生日志组件实现扩展，支持Log4Net、NLog、自定义日志<br />MQ传输(扩展告警系统)  |
 | [ORM](https://github.com/q315523275/FamilyBucket/tree/master/src/ORM "ORM")  | 维护中  | 基于[SqlSugar](https://github.com/sunkaixuan/SqlSugar "SqlSugar")实现多库读写分离、数据仓储  |
 | [RPC](https://github.com/q315523275/FamilyBucket/tree/master/src/Rpc "RPC")  | 升级中  | 基于DotNetty实现Rpc应用(网关通信扩展)，gRpc连接管理  |

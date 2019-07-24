@@ -24,7 +24,9 @@ namespace Bucket.Rpc.ProxyGenerator
             services.AddSingleton<IServiceProxyGenerater, ServiceProxyGenerater>();
             services.AddSingleton<IServiceProxyFactory>(sp =>
             {
+                var now = DateTime.Now;
                 var (serviceTypes, clientTypes) = RegisterProxType(sp);
+                Console.WriteLine($"创建代理耗时：{(DateTime.Now - now).TotalMilliseconds}毫秒");
                 return new ServiceProxyFactory(sp.GetRequiredService<IRemoteInvokeService>(), sp.GetRequiredService<ITypeConvertibleService>(), serviceTypes, clientTypes);
             });
             services.AddSingleton<IServiceProxyProvider, ServiceProxyProvider>();
@@ -44,7 +46,7 @@ namespace Bucket.Rpc.ProxyGenerator
             {
                 var typeInfo = i.GetTypeInfo();
                 return typeInfo.IsInterface && typeInfo.GetCustomAttribute<RpcServiceBundleAttribute>() != null;
-            }).ToArray();
+            }).Distinct().ToArray();
             var serviceImplementations = _types.Where(i =>
             {
                 var typeInfo = i.GetTypeInfo();
@@ -62,6 +64,7 @@ namespace Bucket.Rpc.ProxyGenerator
             // 生成代理
             var proxyGenerater = serviceProvider.GetService<IServiceProxyGenerater>();
             var serviceTypes = proxyGenerater.GenerateProxys(clients);
+
             return (serviceTypes, clients);
         }
     }

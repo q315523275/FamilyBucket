@@ -1,7 +1,6 @@
 ﻿using Bucket.Rpc.Server.ServiceDiscovery.Attributes;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Linq;
 using System.Reflection;
 
 namespace Bucket.Rpc.Ids.Implementation
@@ -39,14 +38,14 @@ namespace Bucket.Rpc.Ids.Implementation
             {
                 id = serviceAttribute.Route;
             }
-            else
-            {
-                var parameters = method.GetParameters();
-                if (parameters.Any())
-                {
-                    id += "_" + string.Join("_", parameters.Select(i => i.Name));
-                }
-            }
+            //else
+            //{
+            //    var parameters = method.GetParameters();
+            //    if (parameters.Any())
+            //    {
+            //        id += "_" + string.Join("_", parameters.Select(i => i.Name));
+            //    }
+            //}
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"为方法：{method}生成服务Id：{id}。");
 

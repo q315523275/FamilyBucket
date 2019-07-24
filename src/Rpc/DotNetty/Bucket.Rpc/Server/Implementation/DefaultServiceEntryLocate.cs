@@ -1,6 +1,5 @@
 ﻿using Bucket.Rpc.Messages;
 using System.Linq;
-
 namespace Bucket.Rpc.Server.Implementation
 {
     /// <summary>

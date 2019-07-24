@@ -12,7 +12,8 @@ namespace Bucket.Rpc.Transport
         /// 发送消息。
         /// </summary>
         /// <param name="message">远程调用消息模型。</param>
+        /// <param name="timeout">远程调用超时时间，单位秒</param>
         /// <returns>远程调用消息的传输消息。</returns>
-        Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message);
+        Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message, int timeout);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Bucket.Rpc.Codec.ProtoBuffer.Utilitys;
+using Bucket.Rpc.Utilitys;
+using Newtonsoft.Json;
 using ProtoBuf;
 using System;
 
@@ -21,13 +23,15 @@ namespace Bucket.Rpc.Codec.ProtoBuffer.Messages
             var valueType = value.GetType();
             var code = Type.GetTypeCode(valueType);
 
-            //如果是简单类型则取短名称，否则取长名称。
             if (code != TypeCode.Object)
                 TypeName = valueType.FullName;
             else
                 TypeName = valueType.AssemblyQualifiedName;
 
-            Content = SerializerUtilitys.Serialize(value);
+            if (valueType == UtilityType.JObjectType || valueType == UtilityType.JArrayType)
+                Content = SerializerUtilitys.Serialize(value.ToString());
+            else
+                Content = SerializerUtilitys.Serialize(value);
         }
 
         #endregion Constructor
@@ -49,7 +53,20 @@ namespace Bucket.Rpc.Codec.ProtoBuffer.Messages
             if (Content == null || TypeName == null)
                 return null;
 
-            return SerializerUtilitys.Deserialize(Content, Type.GetType(TypeName));
+            var typeName = Type.GetType(TypeName);
+            if (typeName == null)
+            {
+                return SerializerUtilitys.Deserialize<object>(Content);
+            }
+            else if (typeName == UtilityType.JObjectType || typeName == UtilityType.JArrayType)
+            {
+                var content = SerializerUtilitys.Deserialize<string>(Content);
+                return JsonConvert.DeserializeObject(content, typeName);
+            }
+            else
+            {
+                return SerializerUtilitys.Deserialize(Content, typeName);
+            }
         }
 
         #endregion Public Method

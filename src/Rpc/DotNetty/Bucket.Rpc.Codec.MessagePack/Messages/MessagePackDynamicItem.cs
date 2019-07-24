@@ -1,5 +1,7 @@
 using Bucket.Rpc.Codec.MessagePack.Utilities;
+using Bucket.Rpc.Utilitys;
 using MessagePack;
+using Newtonsoft.Json;
 using System;
 using System.Runtime.CompilerServices;
 
@@ -27,7 +29,10 @@ namespace Bucket.Rpc.Codec.MessagePack.Messages
             else
                 TypeName = valueType.AssemblyQualifiedName;
 
-            Content = SerializerUtilitys.Serialize(value);
+            if (valueType == UtilityType.JObjectType || valueType == UtilityType.JArrayType)
+                Content = SerializerUtilitys.Serialize(value.ToString());
+            else
+                Content = SerializerUtilitys.Serialize(value);
         }
 
         #endregion Constructor
@@ -48,7 +53,20 @@ namespace Bucket.Rpc.Codec.MessagePack.Messages
             if (Content == null || TypeName == null)
                 return null;
 
-            return SerializerUtilitys.Deserialize(Content, Type.GetType(TypeName));
+            var typeName = Type.GetType(TypeName);
+            if (typeName == null)
+            {
+                return SerializerUtilitys.Deserialize<object>(Content);
+            }
+            else if (typeName == UtilityType.JObjectType || typeName == UtilityType.JArrayType)
+            {
+                var content = SerializerUtilitys.Deserialize<string>(Content);
+                return JsonConvert.DeserializeObject(content, typeName);
+            }
+            else
+            {
+                return SerializerUtilitys.Deserialize(Content, typeName);
+            }
         }
         #endregion Public Method
     }

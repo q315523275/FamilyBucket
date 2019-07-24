@@ -16,7 +16,7 @@ namespace Bucket.Rpc.Client
         /// <param name="context">调用上下文。</param>
         /// <param name="endPoint">调用端点。</param>
         /// <returns>远程调用结果消息模型。</returns>
-        Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint);
+        Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, int timeout);
 
         /// <summary>
         /// 调用。
@@ -25,6 +25,6 @@ namespace Bucket.Rpc.Client
         /// <param name="endPoint">调用端点。</param>
         /// <param name="cancellationToken">取消操作通知实例。</param>
         /// <returns>远程调用结果消息模型。</returns>
-        Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, CancellationToken cancellationToken);
+        Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, int timeout, CancellationToken cancellationToken);
     }
 }

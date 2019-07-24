@@ -6,27 +6,33 @@ using Bucket.Config;
 using Bucket.Config.Extensions;
 using Bucket.Config.HostedService;
 using Bucket.DbContext;
-using Bucket.DbContext.SqlSugar;
 using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.HostedService.AspNetCore;
-using Bucket.Logging;
 using Bucket.Logging.Events;
+using Bucket.Rpc;
+using Bucket.Rpc.Codec.MessagePack;
+using Bucket.Rpc.ProxyGenerator;
+using Bucket.Rpc.Transport.DotNetty;
 using Bucket.Utility;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Threading;
+using System.Threading.Tasks;
 
-namespace Bucket.GenericHost
+namespace Bucket.Sample.Client
 {
     static class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var hostBuilder = new HostBuilder()
                    .UseContentRoot(Directory.GetCurrentDirectory())
@@ -55,7 +61,7 @@ namespace Bucket.GenericHost
                        // 添加日志
                        services.AddLogEventTransport();
                        // 添加数据库Orm
-                       services.AddSqlSugarDbContext();
+                       services.AddSqlSugarDbContext().AddSqlSugarDbRepository();
                        // 添加配置服务
                        services.AddConfigServer(hostContext.Configuration);
                        // 添加事件驱动
@@ -78,21 +84,30 @@ namespace Bucket.GenericHost
                                DbProviderName = "redis"
                            });
                        });
-                       // 添加数据仓储注册
-                       services.AddScoped(typeof(ISqlSugarDbRepository<>), typeof(SqlSugarDbRepository<>));
                        // 事件注册
                        RegisterEventBus(services);
+
+                       services.AddRpcCore()
+                               .UseDotNettyTransport()
+                               .UseMessagePackCodec()
+                               .AddClientRuntime()
+                               .AddServiceProxy();
                    })
                    .ConfigureLogging((hostingContext, logging) =>
                    {
-                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"))
-                              .ClearProviders()
-                              .AddBucketLog("Pinzhi.BackgroundTasks");
+                       //logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"))
+                       //       .ClearProviders()
+                       //       .AddBucketLog("Pinzhi.BackgroundTasks");
+                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).AddConsole().AddDebug();
                    })
                    .UseConsoleLifetime()
                    .Build();
 
-            hostBuilder.ConfigureEventBus().Run();
+            hostBuilder.ConfigureEventBus();
+
+            await hostBuilder.RunRpcClientAsync();
+            await hostBuilder.RunAsync();
+            await hostBuilder.WaitForShutdownAsync();
         }
         /// <summary>
         /// 注册消息事件
@@ -109,16 +124,10 @@ namespace Bucket.GenericHost
         /// <param name="serviceProvider"></param>
         private static IHost ConfigureEventBus(this IHost host)
         {
-            //var _cachingProviderFactory = host.Services.GetRequiredService<ICachingProviderFactory>();
-
-            //var cache1 = _cachingProviderFactory.GetCachingProvider("default");
-            //cache1.Set("key1", "123456", new TimeSpan(0, 1, 0));
-            //System.Console.WriteLine($"内存key1:{cache1.Get<string>("key1")}");
-
-            //var cache2 = _cachingProviderFactory.GetCachingProvider("redis");
-            //cache1.Set("key2", "123", new TimeSpan(0, 1, 0));
-            //System.Console.WriteLine($"redis key1:{cache1.Get<int>("key2")}");
-
+            return host;
+        }
+        private static IHost RunLoadBalancer(this IHost host)
+        {
             var services = new List<string> { "A", "B", "C", "D" };
             var _last = -1;
 
@@ -132,7 +141,40 @@ namespace Bucket.GenericHost
                 }
                 Console.Write(services[_last]);
             }, 3000);
+            return host;
+        }
 
+        private static async Task<IHost> RunRpcClientAsync(this IHost host)
+        {
+            var serviceProxyProvider = host.Services.GetRequiredService<IServiceProxyProvider>();
+
+            var ipAddress = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9999);
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "id", 100 }
+            };
+
+            //var a = await serviceProxyProvider.InvokeAsync<object>(parameters, "Bucket.Sample.IUserService.GetUser", ipAddress);
+            //Console.WriteLine(JsonConvert.SerializeObject(a));
+
+            do
+            {
+                Console.WriteLine("正在循环 1w次调用 GetUser.....");
+
+                //1w次调用
+                var watch = Stopwatch.StartNew();
+                for (var i = 0; i < 10000; i++)
+                {
+                    var a = await serviceProxyProvider.InvokeAsync<string>(parameters, "/User/GetUserName", ipAddress);
+                }
+                watch.Stop();
+                Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
+                Console.WriteLine("Press any key to continue, q to exit the loop...");
+                var key = Console.ReadLine();
+                if (key.ToLower() == "q")
+                    break;
+            } while (true);
             return host;
         }
     }

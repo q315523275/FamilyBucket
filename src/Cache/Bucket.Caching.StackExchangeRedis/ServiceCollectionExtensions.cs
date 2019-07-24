@@ -4,7 +4,6 @@ using Bucket.Caching.StackExchangeRedis.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 
 namespace Bucket.Caching.StackExchangeRedis
 {

@@ -24,7 +24,7 @@ namespace Bucket.Rpc.ProxyGenerator.Utilitys
                 MetadataReference.CreateFromFile(typeof(IRemoteInvokeService).GetTypeInfo().Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceProxyGenerater).GetTypeInfo().Assembly.Location)
             }.Concat(references);
-            return Compile(AssemblyInfo.Create("Pinzhi.Rpc.ClientProxys"), trees, references, logger);
+            return Compile(AssemblyInfo.Create("Bucket.Rpc.ClientProxys"), trees, references, logger);
         }
 
         public static MemoryStream Compile(AssemblyInfo assemblyInfo, IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
@@ -223,7 +223,7 @@ namespace Bucket.Rpc.ProxyGenerator.Utilitys
             public string FileVersion { get; set; }
             public bool ComVisible { get; set; }
 
-            public static AssemblyInfo Create(string name, string copyright = "Copyright © ", string version = "1.0.0.0")
+            public static AssemblyInfo Create(string name, string copyright = "Copyright © FamliyBucket", string version = "1.0.0.0")
             {
                 return new AssemblyInfo
                 {

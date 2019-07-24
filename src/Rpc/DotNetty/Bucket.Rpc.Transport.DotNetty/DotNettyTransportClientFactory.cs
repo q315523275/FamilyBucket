@@ -3,6 +3,7 @@ using Bucket.Rpc.Server;
 using Bucket.Rpc.Transport.Codec;
 using Bucket.Rpc.Transport.DotNetty.Adaper;
 using Bucket.Rpc.Transport.Implementation;
+using DotNetty.Buffers;
 using DotNetty.Codecs;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Bootstrapping;
@@ -13,6 +14,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Bucket.Rpc.Transport.DotNetty
 {
@@ -27,7 +29,7 @@ namespace Bucket.Rpc.Transport.DotNetty
         private readonly ITransportMessageDecoder _transportMessageDecoder;
         private readonly ILogger<DotNettyTransportClientFactory> _logger;
         private readonly IServiceExecutor _serviceExecutor;
-        private readonly ConcurrentDictionary<EndPoint, Lazy<ITransportClient>> _clients = new ConcurrentDictionary<EndPoint, Lazy<ITransportClient>>();
+        private readonly ConcurrentDictionary<EndPoint, Lazy<Task<ITransportClient>>> _clients = new ConcurrentDictionary<EndPoint, Lazy<Task<ITransportClient>>>();
         private readonly Bootstrap _bootstrap;
 
         private static readonly AttributeKey<IMessageSender> messageSenderKey = AttributeKey<IMessageSender>.ValueOf(typeof(DotNettyTransportClientFactory), nameof(IMessageSender));
@@ -69,30 +71,31 @@ namespace Bucket.Rpc.Transport.DotNetty
         /// </summary>
         /// <param name="endPoint">终结点。</param>
         /// <returns>传输客户端实例。</returns>
-        public ITransportClient CreateClient(EndPoint endPoint)
+        public async Task<ITransportClient> CreateClientAsync(EndPoint endPoint)
         {
             var key = endPoint;
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备为服务端地址：{key}创建客户端。");
             try
             {
-                return _clients.GetOrAdd(key
-                    , k => new Lazy<ITransportClient>(() =>
-                    {
-
-                        var bootstrap = _bootstrap;
-                        var channel = bootstrap.ConnectAsync(k).Result;
-
-                        var messageListener = new MessageListener();
-                        channel.GetAttribute(messageListenerKey).Set(messageListener);
-                        var messageSender = new DotNettyMessageClientSender(_transportMessageEncoder, channel);
-                        channel.GetAttribute(messageSenderKey).Set(messageSender);
-                        channel.GetAttribute(origEndPointKey).Set(k);
-
-                        var client = new TransportClient(messageSender, messageListener, _logger, _serviceExecutor);
-                        return client;
-                    }
-                    )).Value;
+                return await _clients.GetOrAdd(key, k => new Lazy<Task<ITransportClient>>(async () =>
+                   {
+                       // 客户端对象
+                       var bootstrap = _bootstrap;
+                       // 异步连接返回channel
+                       var channel = await bootstrap.ConnectAsync(k);
+                       var messageListener = new MessageListener();
+                       // 设置监听
+                       channel.GetAttribute(messageListenerKey).Set(messageListener);
+                       // 实例化发送者
+                       var messageSender = new DotNettyMessageClientSender(_transportMessageEncoder, channel);
+                       // 设置channel属性
+                       channel.GetAttribute(messageSenderKey).Set(messageSender);
+                       channel.GetAttribute(origEndPointKey).Set(k);
+                       // 创建客户端
+                       var client = new TransportClient(messageSender, messageListener, _logger, _serviceExecutor);
+                       return client;
+                   })).Value;
             }
             catch
             {
@@ -122,6 +125,7 @@ namespace Bucket.Rpc.Transport.DotNetty
             bootstrap
                 .Channel<TcpSocketChannel>()
                 .Option(ChannelOption.TcpNodelay, true)
+                .Option(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
                 .Group(new MultithreadEventLoopGroup());
 
             return bootstrap;

@@ -3,10 +3,13 @@ using Bucket.ApiGateway.ConfigStored.MySql;
 using Bucket.ApiGateway.Extensions.AppMetrics;
 using Bucket.ApiGateway.Extensions.DotNetty;
 using Bucket.DbContext;
-using Bucket.DbContext.SqlSugar;
 using Bucket.EventBus.Extensions;
 using Bucket.EventBus.RabbitMQ.Extensions;
 using Bucket.Logging.Events;
+using Bucket.Rpc;
+using Bucket.Rpc.Codec.MessagePack;
+using Bucket.Rpc.ProxyGenerator;
+using Bucket.Rpc.Transport.DotNetty;
 using Bucket.SkyApm.Agent.AspNetCore;
 using Bucket.SkyApm.Transport.EventBus;
 using global::Ocelot.DependencyInjection;
@@ -67,8 +70,11 @@ namespace Bucket.ApiGateway
             services.AddBucketSkyApmCore().UseEventBusTransport();
             // 添加Orm
             services.AddSqlSugarDbContext().AddSqlSugarDbRepository();
+            // 添加Rpc应用
+            services.AddRpcCore().UseDotNettyTransport().UseMessagePackCodec().AddClientRuntime().AddServiceProxy();
             // 添加网关
             services.AddOcelot() // 添加网关组件
+                .AddDotNettyTransport()
                 .AddCacheManager(x => { x.WithDictionaryHandle(); }) // 添加本地缓存
                 .AddPolly() // 添加弹性计算组件
                 .AddConsul() // 添加Consul服务
@@ -153,7 +159,7 @@ namespace Bucket.ApiGateway
                 },
             };
             // 增加DotNetty请求通道,因为最终会阻断通道,所以要包含部分中间件功能
-            //configuration.MapWhenOcelotPipeline.Add(new DotNettyOcelotPipeline().DotNettyPipeline);
+            configuration.MapWhenOcelotPipeline.Add(new DotNettyOcelotPipeline().DotNettyPipeline);
             // 使用网关
             app.UseOcelot(configuration).Wait();
             // Welcome

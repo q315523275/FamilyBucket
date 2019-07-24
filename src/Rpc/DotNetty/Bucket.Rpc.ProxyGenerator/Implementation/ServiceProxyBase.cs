@@ -38,8 +38,9 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
         /// <typeparam name="T">返回类型。</typeparam>
         /// <param name="parameters">参数字典。</param>
         /// <param name="serviceId">服务Id。</param>
+        /// <param name="timeout">超时时间，单位秒</param>
         /// <returns>调用结果。</returns>
-        protected async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId)
+        protected async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, int timeout = 60)
         {
             if (_endPoint == null)
                 throw new RpcException($"无法解析服务Id：{serviceId}的地址信息。");
@@ -51,10 +52,10 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
                     Parameters = parameters,
                     ServiceId = serviceId
                 }
-            }, _endPoint);
+            }, _endPoint, timeout);
 
             if (message == null)
-                return default(T);
+                return default;
 
             var result = _typeConvertibleService.Convert(message.Result, typeof(T));
 
@@ -67,8 +68,9 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
         /// <param name="parameters">参数字典。</param>
         /// <param name="serviceId">服务Id。</param>
         /// <param name="endPoint">调用端点</param>
+        /// <param name="timeout">超时时间，单位秒</param>
         /// <returns></returns>
-        protected async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
+        protected async Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint, int timeout = 60)
         {
             var message = await _remoteInvokeService.InvokeAsync(new RemoteInvokeContext
             {
@@ -77,53 +79,14 @@ namespace Bucket.Rpc.ProxyGenerator.Implementation
                     Parameters = parameters,
                     ServiceId = serviceId
                 }
-            }, endPoint);
+            }, endPoint, timeout);
 
             if (message == null)
-                return default(T);
+                return default;
 
             var result = _typeConvertibleService.Convert(message.Result, typeof(T));
 
             return (T)result;
-        }
-
-        /// <summary>
-        /// 远程调用。
-        /// </summary>
-        /// <param name="parameters">参数字典。</param>
-        /// <param name="serviceId">服务Id。</param>
-        /// <returns>调用任务。</returns>
-        protected async Task InvokeAsync(IDictionary<string, object> parameters, string serviceId)
-        {
-            if (_endPoint == null)
-                throw new RpcException($"无法解析服务Id：{serviceId}的地址信息。");
-
-            await _remoteInvokeService.InvokeAsync(new RemoteInvokeContext
-            {
-                InvokeMessage = new RemoteInvokeMessage
-                {
-                    Parameters = parameters,
-                    ServiceId = serviceId
-                }
-            }, _endPoint);
-        }
-        /// <summary>
-        /// 远程调用。
-        /// </summary>
-        /// <param name="parameters">参数字典。</param>
-        /// <param name="serviceId">服务Id。</param>
-        /// <param name="endPoint">调用端点</param>
-        /// <returns>调用任务。</returns>
-        protected async Task InvokeAsync(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint)
-        {
-            await _remoteInvokeService.InvokeAsync(new RemoteInvokeContext
-            {
-                InvokeMessage = new RemoteInvokeMessage
-                {
-                    Parameters = parameters,
-                    ServiceId = serviceId
-                }
-            }, endPoint);
         }
         #endregion Protected Method
     }

@@ -42,7 +42,7 @@ namespace Bucket.Rpc.Server.ServiceDiscovery.Attributes
             {
                 var typeInfo = i.GetTypeInfo();
                 return typeInfo.IsInterface && typeInfo.GetCustomAttribute<RpcServiceBundleAttribute>() != null;
-            }).ToArray();
+            }).Distinct().ToArray();
             var serviceImplementations = _types.Where(i =>
             {
                 var typeInfo = i.GetTypeInfo();
@@ -59,7 +59,7 @@ namespace Bucket.Rpc.Server.ServiceDiscovery.Attributes
             {
                 foreach (var serviceImplementation in serviceImplementations.Where(i => service.GetTypeInfo().IsAssignableFrom(i)))
                 {
-                    entries.AddRange(_clrServiceEntryFactory.CreateServiceEntry(service, serviceImplementation));
+                    entries.AddRange(_clrServiceEntryFactory.CreateServiceEntry(service));
                 }
             }
             return entries;

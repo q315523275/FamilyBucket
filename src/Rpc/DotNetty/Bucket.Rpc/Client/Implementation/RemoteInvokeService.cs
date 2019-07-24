@@ -21,12 +21,12 @@ namespace Bucket.Rpc.Client.Implementation
 
         #region Implementation of IRemoteInvokeService
 
-        public Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint)
+        public Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, int timeout)
         {
-            return InvokeAsync(context, endPoint, Task.Factory.CancellationToken);
+            return InvokeAsync(context, endPoint, timeout, Task.Factory.CancellationToken);
         }
 
-        public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, CancellationToken cancellationToken)
+        public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, EndPoint endPoint, int timeout, CancellationToken cancellationToken)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
@@ -47,18 +47,18 @@ namespace Bucket.Rpc.Client.Implementation
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
 
-                var client = _transportClientFactory.CreateClient(endPoint);
-                return await client.SendAsync(context.InvokeMessage);
+                var client = await _transportClientFactory.CreateClientAsync(endPoint);
+                return await client.SendAsync(context.InvokeMessage, timeout);
             }
-            catch (RpcCommunicationException)
+            catch (RpcCommunicationException exception)
             {
                 // await _healthCheckService.MarkFailure(address);
-                throw;
+                throw exception;
             }
             catch (Exception exception)
             {
-                _logger.LogError($"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。", exception);
-                throw;
+                _logger.LogError(exception, $"发起请求中发生了错误，服务Id：{invokeMessage.ServiceId}。");
+                throw exception;
             }
         }
 

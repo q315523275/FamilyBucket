@@ -6,7 +6,7 @@
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
     <Company>FamilyBucket</Company>
     <Authors>FamilyBucket</Authors>
-    <Version>1.2.0.3</Version>
+    <Version>1.2.0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>

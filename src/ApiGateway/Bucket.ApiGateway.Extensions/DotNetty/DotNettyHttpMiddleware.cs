@@ -1,13 +1,13 @@
 ﻿using Bucket.ApiGateway.Extensions.DotNetty.NettyRequest;
 using Bucket.Rpc.Exceptions;
 using Bucket.Rpc.ProxyGenerator;
+using Newtonsoft.Json;
 using Ocelot.Logging;
 using Ocelot.Middleware;
 using Ocelot.Responses;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-
 namespace Bucket.ApiGateway.Extensions.DotNetty
 {
     public class DotNettyHttpMiddleware : OcelotMiddleware
@@ -41,7 +41,9 @@ namespace Bucket.ApiGateway.Extensions.DotNetty
                 try
                 {
                     var endpoint = new IPEndPoint(IPAddress.Parse(context.DownstreamRequest.Host), context.DownstreamRequest.Port);
-                    resultMessage = await _serviceProxyProvider.InvokeAsync<string>(buildRequest.Data, context.DownstreamRequest.AbsolutePath, endpoint);
+                    var serviceId = context.DownstreamRequest.AbsolutePath.TrimStart('/');
+                    var result = await _serviceProxyProvider.InvokeAsync<object>(buildRequest.Data, serviceId, endpoint);
+                    resultMessage = JsonConvert.SerializeObject(result);
                 }
                 catch (RpcException ex)
                 {
@@ -52,14 +54,14 @@ namespace Bucket.ApiGateway.Extensions.DotNetty
                 catch (Exception ex)
                 {
                     httpStatusCode = HttpStatusCode.ServiceUnavailable;
-                    resultMessage = $"error in request dotnetty service.";
+                    resultMessage = $"error in request netty service.";
                     Logger.LogError($"{resultMessage}--{context.DownstreamRequest.ToUri()}", ex);
                 }
             }
 
             OkResponse<DotNettyHttpContent> httpResponse = new OkResponse<DotNettyHttpContent>(new DotNettyHttpContent(resultMessage));
-            context.HttpContext.Response.ContentType = "application/json";
-            context.DownstreamResponse = new DownstreamResponse(httpResponse.Data, httpStatusCode, httpResponse.Data.Headers, "");
+            //context.HttpContext.Response.ContentType = "application/json";
+            context.DownstreamResponse = new DownstreamResponse(httpResponse.Data, httpStatusCode, httpResponse.Data.Headers, string.Empty);
         }
     }
 }

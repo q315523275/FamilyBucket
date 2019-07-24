@@ -23,6 +23,8 @@
     <ProjectReference Include="..\..\Logging\Bucket.Logging.Event\Bucket.Logging.Events.csproj" />
     <ProjectReference Include="..\..\Logging\Bucket.Logging\Bucket.Logging.csproj" />
     <ProjectReference Include="..\..\ORM\Bucket.DbContext\Bucket.DbContext.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.Codec.MessagePack\Bucket.Rpc.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\Rpc\DotNetty\Bucket.Rpc.Transport.DotNetty\Bucket.Rpc.Transport.DotNetty.csproj" />
     <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Agent.AspNetCore\Bucket.SkyApm.Agent.AspNetCore.csproj" />
     <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Diagnostics.HttpClient\Bucket.SkyApm.Diagnostics.HttpClient.csproj" />
     <ProjectReference Include="..\..\SkyAPM\Bucket.SkyApm.Transport.EventBus\Bucket.SkyApm.Transport.EventBus.csproj" />

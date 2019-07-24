@@ -6,7 +6,6 @@ namespace Bucket.Rpc.ProxyGenerator
 {
     public interface IServiceProxyProvider
     {
-        Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint);
-        Task InvokeAsync(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint);
+        Task<T> InvokeAsync<T>(IDictionary<string, object> parameters, string serviceId, EndPoint endPoint, int timeout = 60);
     }
 }
