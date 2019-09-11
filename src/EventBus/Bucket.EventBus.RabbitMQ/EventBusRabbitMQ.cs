@@ -1,4 +1,5 @@
 ﻿using Bucket.EventBus.Abstractions;
+using Bucket.EventBus.Attributes;
 using Bucket.EventBus.Events;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using RabbitMQ.Client.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,8 +31,8 @@ namespace Bucket.EventBus.RabbitMQ
         private readonly int _retryCount;
         private readonly ushort _prefetchCount;
 
-        private IModel _consumerChannel;
-        private string _queueName;
+        private IDictionary<string, IModel> _consumerChannels;
+        private readonly string _queueName;
 
         public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IServiceProvider autofac,
             IEventBusSubscriptionsManager subsManager, IOptions<EventBusRabbitMqOptions> options)
@@ -41,6 +43,7 @@ namespace Bucket.EventBus.RabbitMQ
             _options = options.Value;
             _exchangeName = _options.ExchangeName;
             _queueName = _options.QueueName;
+            _consumerChannels = new Dictionary<string, IModel>();
             _autofac = autofac;
             _prefetchCount = _options.PrefetchCount;
             _retryCount = _options.RetryCount;
@@ -60,14 +63,19 @@ namespace Bucket.EventBus.RabbitMQ
 
             using (var channel = _persistentConnection.CreateModel())
             {
-                channel.QueueUnbind(queue: _queueName,
-                    exchange: _exchangeName,
-                    routingKey: eventName);
-
-                if (_subsManager.IsEmpty)
+                foreach (var key in _consumerChannels.Keys)
                 {
-                    _queueName = string.Empty;
-                    _consumerChannel.Close();
+                    if (_subsManager.IsEmpty)
+                    {
+                        _consumerChannels.TryGetValue(key, out var _consumerChannel);
+                        if (_consumerChannel != null)
+                        {
+                            channel.QueueUnbind(queue: key,
+                                                exchange: _exchangeName,
+                                                routingKey: eventName);
+                            _consumerChannel.Close();
+                        }
+                    }
                 }
             }
         }
@@ -117,10 +125,14 @@ namespace Bucket.EventBus.RabbitMQ
             where TH : IIntegrationEventHandler<T>
         {
             var eventName = _subsManager.GetEventKey<T>();
-            DoInternalSubscription(eventName);
+            var queueName = _queueName;
+            var queueConsumerAttr = typeof(TH).GetCustomAttribute<QueueConsumerAttribute>();
+            if(queueConsumerAttr != null)
+                queueName = queueConsumerAttr.QueueName;
+            DoInternalSubscription(eventName, queueName);
             _subsManager.AddSubscription<T, TH>();
         }
-        private void DoInternalSubscription(string eventName)
+        private void DoInternalSubscription(string eventName, string queueName)
         {
             var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);
             if (!containsKey)
@@ -130,12 +142,14 @@ namespace Bucket.EventBus.RabbitMQ
                     _persistentConnection.TryConnect();
                 }
 
-                if (_consumerChannel == null)
-                    _consumerChannel = CreateConsumerChannel();
-
+                if (!_consumerChannels.ContainsKey(queueName))
+                {
+                    _consumerChannels.Add(queueName, CreateConsumerChannel(queueName));
+                }
+                
                 using (var channel = _persistentConnection.CreateModel())
                 {
-                    channel.QueueBind(queue: _queueName, exchange: _exchangeName, routingKey: eventName, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+                    channel.QueueBind(queue: queueName, exchange: _exchangeName, routingKey: eventName, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
                 }
             }
         }
@@ -155,18 +169,21 @@ namespace Bucket.EventBus.RabbitMQ
         /// </summary>
         public void Dispose()
         {
-            if (_consumerChannel != null)
+            foreach (var key in _consumerChannels.Keys)
             {
-                _consumerChannel.Dispose();
+                _consumerChannels.TryGetValue(key, out var _consumerChannel);
+                if (_consumerChannel != null)
+                {
+                    _consumerChannel.Dispose();
+                }
             }
-
             _subsManager.Clear();
         }
         /// <summary>
         /// 创建消费监听
         /// </summary>
         /// <returns></returns>
-        private IModel CreateConsumerChannel()
+        private IModel CreateConsumerChannel(string queueName)
         {
             if (!_persistentConnection.IsConnected)
             {
@@ -177,7 +194,7 @@ namespace Bucket.EventBus.RabbitMQ
 
             channel.ExchangeDeclare(exchange: _exchangeName, type: "direct");
 
-            channel.QueueDeclare(queue: _queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
+            channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
 
             return channel;
         }
@@ -186,32 +203,37 @@ namespace Bucket.EventBus.RabbitMQ
         /// </summary>
         public void StartSubscribe()
         {
-            if (_consumerChannel == null || _consumerChannel.IsClosed)
-                _consumerChannel = CreateConsumerChannel();
-
-            _consumerChannel.BasicQos(0, _prefetchCount, false);
-
-            var consumer = new EventingBasicConsumer(_consumerChannel);
-
-            _consumerChannel.BasicConsume(queue: _queueName,
-                     autoAck: false,
-                     consumer: consumer);
-
-            consumer.Received += async (model, ea) =>
+            foreach (var key in _consumerChannels.Keys)
             {
-                var eventName = ea.RoutingKey;
-                var message = Encoding.UTF8.GetString(ea.Body);
+                _consumerChannels.TryGetValue(key, out var _consumerChannel);
 
-                await ProcessEvent(eventName, message);
+                if (_consumerChannel == null || _consumerChannel.IsClosed)
+                    _consumerChannel = CreateConsumerChannel(key);
 
-                _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
-            };
+                _consumerChannel.BasicQos(0, _prefetchCount, false);
 
-            _consumerChannel.CallbackException += (sender, ea) =>
-            {
-                _consumerChannel.Dispose();
-                _consumerChannel = CreateConsumerChannel();
-            };
+                var consumer = new EventingBasicConsumer(_consumerChannel);
+
+                _consumerChannel.BasicConsume(queue: key,
+                         autoAck: false,
+                         consumer: consumer);
+
+                consumer.Received += async (model, ea) =>
+                {
+                    var eventName = ea.RoutingKey;
+                    var message = Encoding.UTF8.GetString(ea.Body);
+
+                    await ProcessEvent(eventName, message);
+
+                    _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
+                };
+
+                _consumerChannel.CallbackException += (sender, ea) =>
+                {
+                    _consumerChannel.Dispose();
+                    _consumerChannel = CreateConsumerChannel(key);
+                };
+            }
         }
         /// <summary>
         /// 执行器
