@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
@@ -73,7 +74,10 @@ namespace Bucket.EventBus.RabbitMQ
                             channel.QueueUnbind(queue: key,
                                                 exchange: _exchangeName,
                                                 routingKey: eventName);
-                            _consumerChannel.Close();
+                            if (_subsManager.IsEmpty)
+                            {
+                                _consumerChannel.Close();
+                            }
                         }
                     }
                 }
@@ -94,17 +98,19 @@ namespace Bucket.EventBus.RabbitMQ
                 .Or<SocketException>()
                 .WaitAndRetry(_retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
                 {
-                    _logger.LogWarning(ex.ToString());
+                    // 防止logging走事件
+                    // _logger.LogWarning(ex, "Could not publish event: {EventId} after {Timeout}s ({ExceptionMessage})", @event.Id, $"{time.TotalSeconds:n1}", ex.Message);
+                    Console.WriteLine($"Could not publish event: {@event.Id} after {time.TotalSeconds:n1}s ({ex.Message})");
                 });
+
+            var eventName = @event.GetType().Name;
+            var message = JsonConvert.SerializeObject(@event);
+            var body = Encoding.UTF8.GetBytes(message);
 
             using (var channel = _persistentConnection.CreateModel())
             {
-                var eventName = @event.GetType().Name;
 
                 channel.ExchangeDeclare(exchange: _exchangeName, type: "direct");
-
-                var message = JsonConvert.SerializeObject(@event);
-                var body = Encoding.UTF8.GetBytes(message);
 
                 policy.Execute(() =>
                 {
@@ -116,6 +122,20 @@ namespace Bucket.EventBus.RabbitMQ
             }
         }
         /// <summary>
+        /// 动态内容订阅
+        /// </summary>
+        /// <typeparam name="TH"></typeparam>
+        /// <param name="eventName"></param>
+        public void SubscribeDynamic<TH>(string eventName)
+            where TH : IDynamicIntegrationEventHandler
+        {
+            var queueName = GetQueueName<TH>();
+
+            DoInternalSubscription(eventName, queueName);
+
+            _subsManager.AddDynamicSubscription<TH>(eventName);
+        }
+        /// <summary>
         /// 订阅注册
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -125,12 +145,21 @@ namespace Bucket.EventBus.RabbitMQ
             where TH : IIntegrationEventHandler<T>
         {
             var eventName = _subsManager.GetEventKey<T>();
+            var queueName = GetQueueName<TH>();
+
+            DoInternalSubscription(eventName, queueName);
+
+            _subsManager.AddSubscription<T, TH>();
+        }
+        private string GetQueueName<TH>()
+        {
             var queueName = _queueName;
             var queueConsumerAttr = typeof(TH).GetCustomAttribute<QueueConsumerAttribute>();
-            if(queueConsumerAttr != null)
+            if (queueConsumerAttr != null)
+            {
                 queueName = queueConsumerAttr.QueueName;
-            DoInternalSubscription(eventName, queueName);
-            _subsManager.AddSubscription<T, TH>();
+            }
+            return queueName;
         }
         private void DoInternalSubscription(string eventName, string queueName)
         {
@@ -146,7 +175,7 @@ namespace Bucket.EventBus.RabbitMQ
                 {
                     _consumerChannels.Add(queueName, CreateConsumerChannel(queueName));
                 }
-                
+
                 using (var channel = _persistentConnection.CreateModel())
                 {
                     channel.QueueBind(queue: queueName, exchange: _exchangeName, routingKey: eventName, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
@@ -164,6 +193,17 @@ namespace Bucket.EventBus.RabbitMQ
         {
             _subsManager.RemoveSubscription<T, TH>();
         }
+        /// <summary>
+        /// 取消订阅
+        /// </summary>
+        /// <typeparam name="TH"></typeparam>
+        /// <param name="eventName"></param>
+        public void UnsubscribeDynamic<TH>(string eventName)
+           where TH : IDynamicIntegrationEventHandler
+        {
+            _subsManager.RemoveDynamicSubscription<TH>(eventName);
+        }
+
         /// <summary>
         /// 释放
         /// </summary>
@@ -250,12 +290,23 @@ namespace Bucket.EventBus.RabbitMQ
                     var subscriptions = _subsManager.GetHandlersForEvent(eventName);
                     foreach (var subscription in subscriptions)
                     {
-                        var eventType = _subsManager.GetEventTypeByName(eventName);
-                        if (eventType != null)
+                        if (subscription.IsDynamic)
                         {
+                            if (!(scope.ServiceProvider.GetRequiredService(subscription.HandlerType) is IDynamicIntegrationEventHandler handler)) continue;
+
+                            await Task.Yield();
+                            await handler.Handle(message);
+                        }
+                        else
+                        {
+                            var eventType = _subsManager.GetEventTypeByName(eventName);
+                            if (eventType == null) continue;
+                            var handler = scope.ServiceProvider.GetRequiredService(subscription.HandlerType);
+                            if (handler == null) continue;
                             var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
-                            var handler = scope.ServiceProvider.GetRequiredService(subscription);
                             var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+
+                            await Task.Yield();
                             await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
                         }
                     }

@@ -1,10 +1,8 @@
-﻿using Bucket.Logging;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.IO;
 using System.Text;
 
 namespace Bucket.ApiGateway
@@ -24,8 +22,9 @@ namespace Bucket.ApiGateway
             WebHost.CreateDefaultBuilder(args)
                    .ConfigureLogging((hostingContext, logging) =>
                    {
-                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).ClearProviders()
-                              .AddBucketLog(hostingContext.Configuration.GetValue<string>("Project:Name"));
+                       //logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).ClearProviders()
+                       //       .AddBucketLog(hostingContext.Configuration.GetValue<string>("Project:Name"));
+                       logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging")).AddConsole().AddDebug();
                    })
                    .UseStartup<Startup>()
                    .Build()

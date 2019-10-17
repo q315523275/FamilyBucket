@@ -179,7 +179,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Sample.Server", "Sam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Sample.Client", "Sample\Bucket.Sample.Client\Bucket.Sample.Client.csproj", "{15259EB1-AACA-426E-9741-983EF9D1F457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bucket.Sample.WebApi", "Sample\Bucket.Sample.WebApi\Bucket.Sample.WebApi.csproj", "{54BAA30C-1759-47C4-BC33-C2DC6C23BEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bucket.Sample.WebApi", "Sample\Bucket.Sample.WebApi\Bucket.Sample.WebApi.csproj", "{54BAA30C-1759-47C4-BC33-C2DC6C23BEBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
