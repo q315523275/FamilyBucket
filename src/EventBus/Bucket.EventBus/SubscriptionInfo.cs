@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bucket.EventBus.Abstractions
+namespace Bucket.EventBus
 {
     public class SubscriptionInfo
     {

@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
@@ -64,22 +63,11 @@ namespace Bucket.EventBus.RabbitMQ
 
             using (var channel = _persistentConnection.CreateModel())
             {
-                foreach (var key in _consumerChannels.Keys)
+                foreach (var queueName in _consumerChannels.Keys)
                 {
-                    if (_subsManager.IsEmpty)
-                    {
-                        _consumerChannels.TryGetValue(key, out var _consumerChannel);
-                        if (_consumerChannel != null)
-                        {
-                            channel.QueueUnbind(queue: key,
-                                                exchange: _exchangeName,
-                                                routingKey: eventName);
-                            if (_subsManager.IsEmpty)
-                            {
-                                _consumerChannel.Close();
-                            }
-                        }
-                    }
+                    channel.QueueUnbind(queue: queueName,
+                                        exchange: _exchangeName,
+                                        routingKey: eventName);
                 }
             }
         }
@@ -211,8 +199,7 @@ namespace Bucket.EventBus.RabbitMQ
         {
             foreach (var key in _consumerChannels.Keys)
             {
-                _consumerChannels.TryGetValue(key, out var _consumerChannel);
-                if (_consumerChannel != null)
+                if (_consumerChannels.TryGetValue(key, out var _consumerChannel) && _consumerChannel != null)
                 {
                     _consumerChannel.Dispose();
                 }
@@ -236,6 +223,14 @@ namespace Bucket.EventBus.RabbitMQ
 
             channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
 
+            channel.CallbackException += (sender, ea) =>
+            {
+                channel.Dispose();
+                channel = CreateConsumerChannel(queueName);
+            };
+
+            channel.BasicQos(0, _prefetchCount, false);
+
             return channel;
         }
         /// <summary>
@@ -243,20 +238,14 @@ namespace Bucket.EventBus.RabbitMQ
         /// </summary>
         public void StartSubscribe()
         {
-            foreach (var key in _consumerChannels.Keys)
+            foreach (var queueName in _consumerChannels.Keys)
             {
-                _consumerChannels.TryGetValue(key, out var _consumerChannel);
+                _consumerChannels.TryGetValue(queueName, out var _consumerChannel);
 
                 if (_consumerChannel == null || _consumerChannel.IsClosed)
-                    _consumerChannel = CreateConsumerChannel(key);
+                    _consumerChannel = CreateConsumerChannel(queueName);
 
-                _consumerChannel.BasicQos(0, _prefetchCount, false);
-
-                var consumer = new EventingBasicConsumer(_consumerChannel);
-
-                _consumerChannel.BasicConsume(queue: key,
-                         autoAck: false,
-                         consumer: consumer);
+                var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
 
                 consumer.Received += async (model, ea) =>
                 {
@@ -268,13 +257,10 @@ namespace Bucket.EventBus.RabbitMQ
                     _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
                 };
 
-                _consumerChannel.CallbackException += (sender, ea) =>
-                {
-                    _consumerChannel.Dispose();
-                    _consumerChannel = CreateConsumerChannel(key);
-                };
+                _consumerChannel.BasicConsume(queue: queueName, autoAck: false, consumer: consumer);
             }
         }
+
         /// <summary>
         /// 执行器
         /// </summary>
@@ -313,6 +299,5 @@ namespace Bucket.EventBus.RabbitMQ
                 }
             }
         }
-
     }
 }
