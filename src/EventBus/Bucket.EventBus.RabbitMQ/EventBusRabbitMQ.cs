@@ -223,13 +223,13 @@ namespace Bucket.EventBus.RabbitMQ
 
             channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
 
+            channel.BasicQos(0, _prefetchCount, false);
+
             channel.CallbackException += (sender, ea) =>
             {
                 channel.Dispose();
                 channel = CreateConsumerChannel(queueName);
             };
-
-            channel.BasicQos(0, _prefetchCount, false);
 
             return channel;
         }

@@ -33,7 +33,7 @@ namespace Bucket.EventBus.RabbitMQ
                 UserName = _options.UserName,
                 Password = _options.Password,
                 VirtualHost = _options.VirtualHost,
-                AutomaticRecoveryEnabled = true
+                DispatchConsumersAsync = true
             };
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _retryCount = _options.RetryCount;
