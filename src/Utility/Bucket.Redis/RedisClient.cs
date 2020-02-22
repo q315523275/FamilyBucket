@@ -1,5 +1,6 @@
 ﻿using StackExchange.Redis;
 using System;
+using System.Threading.Tasks;
 
 namespace Bucket.Redis
 {
@@ -16,7 +17,17 @@ namespace Bucket.Redis
             }
             return connect.GetDatabase(db, asyncState);
         }
-
+        public async Task<IDatabase> GetDatabaseAsync(string redisConnectionString = null, int db = 0, object asyncState = null)
+        {
+            if (string.IsNullOrWhiteSpace(redisConnectionString))
+                throw new ArgumentNullException(redisConnectionString);
+            var connect = await DefaultRedisPersistentConnection.GetConnectAsync(redisConnectionString);
+            if (!connect.IsConnected())
+            {
+                connect = await DefaultRedisPersistentConnection.TryConnectAsync(redisConnectionString);
+            }
+            return connect.GetDatabase(db, asyncState);
+        }
         public ISubscriber GetSubscriber(string redisConnectionString)
         {
             if (string.IsNullOrWhiteSpace(redisConnectionString))
@@ -28,7 +39,17 @@ namespace Bucket.Redis
             }
             return connect.GetSubscriber();
         }
-
+        public async Task<ISubscriber> GetSubscriberAsync(string redisConnectionString)
+        {
+            if (string.IsNullOrWhiteSpace(redisConnectionString))
+                throw new ArgumentNullException(redisConnectionString);
+            var connect = await DefaultRedisPersistentConnection.GetConnectAsync(redisConnectionString);
+            if (!connect.IsConnected())
+            {
+                connect = await DefaultRedisPersistentConnection.TryConnectAsync(redisConnectionString);
+            }
+            return connect.GetSubscriber();
+        }
         public void Dispose()
         {
             DefaultRedisPersistentConnection.Dispose();

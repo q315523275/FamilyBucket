@@ -2,6 +2,7 @@
 using StackExchange.Redis;
 using System;
 using System.Collections.Concurrent;
+using System.Threading.Tasks;
 
 namespace Bucket.Redis
 {
@@ -57,6 +58,21 @@ namespace Bucket.Redis
                 }
             }
         }
+        public static async Task<ConnectionMultiplexer> GetConnectAsync(string redisConnectionString)
+        {
+            var hash = redisConnectionString.GetHashCode();
+            if (_connections.ContainsKey(hash))
+                return _connections[hash];
+            else
+            {
+                if (!_connections.ContainsKey(hash))
+                {
+                    var connect = await TryConnectAsync(redisConnectionString);
+                    _connections.TryAdd(hash, connect);
+                }
+                return _connections[hash];
+            }
+        }
         public static ConnectionMultiplexer TryConnect(string redisConnectionString)
         {
             var connect = ConnectionMultiplexer.Connect(redisConnectionString);
@@ -66,6 +82,16 @@ namespace Bucket.Redis
             connect.HashSlotMoved += MuxerHashSlotMoved;
             return connect;
         }
+        public static async Task<ConnectionMultiplexer> TryConnectAsync(string redisConnectionString)
+        {
+            var connect = await ConnectionMultiplexer.ConnectAsync(redisConnectionString);
+            connect.ConnectionFailed += MuxerConnectionFailed;
+            connect.ConnectionRestored += MuxerConnectionRestored;
+            connect.ConfigurationChanged += MuxerConfigurationChanged;
+            connect.HashSlotMoved += MuxerHashSlotMoved;
+            return connect;
+        }
+
         /// <summary>
         /// 连接失败 ， 如果重新连接成功你将不会收到这个通知
         /// </summary>
