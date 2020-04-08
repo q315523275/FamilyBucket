@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.2.0.5</Version>
+    <Version>1.2.0.6</Version>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
     <Authors>FamilyBucket</Authors>
-    <Description>全家桶-消息总线,RabbitMQ实现</Description>
+    <Description>全家桶-消息总线,RabbitMQ实现
+202048-增加事件自定义事件名属性使用</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,8 +22,8 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Polly" Version="7.1.0" />
-    <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
+    <PackageReference Include="Polly" Version="7.1.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
   </ItemGroup>
 
   <ItemGroup>

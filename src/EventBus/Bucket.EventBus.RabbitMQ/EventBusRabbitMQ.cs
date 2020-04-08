@@ -1,6 +1,7 @@
 ﻿using Bucket.EventBus.Abstractions;
 using Bucket.EventBus.Attributes;
 using Bucket.EventBus.Events;
+using Bucket.EventBus.Util;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -91,7 +92,7 @@ namespace Bucket.EventBus.RabbitMQ
                     Console.WriteLine($"Could not publish event: {@event.Id} after {time.TotalSeconds:n1}s ({ex.Message})");
                 });
 
-            var eventName = @event.GetType().Name;
+            var eventName = ConvertEventName(@event);
             var message = JsonConvert.SerializeObject(@event);
             var body = Encoding.UTF8.GetBytes(message);
 
@@ -117,7 +118,7 @@ namespace Bucket.EventBus.RabbitMQ
         public void SubscribeDynamic<TH>(string eventName)
             where TH : IDynamicIntegrationEventHandler
         {
-            var queueName = GetQueueName<TH>();
+            var queueName = ConvertQueueName<TH>();
 
             DoInternalSubscription(eventName, queueName);
 
@@ -133,13 +134,32 @@ namespace Bucket.EventBus.RabbitMQ
             where TH : IIntegrationEventHandler<T>
         {
             var eventName = _subsManager.GetEventKey<T>();
-            var queueName = GetQueueName<TH>();
+            var queueName = ConvertQueueName<TH>();
 
             DoInternalSubscription(eventName, queueName);
 
             _subsManager.AddSubscription<T, TH>();
         }
-        private string GetQueueName<TH>()
+        /// <summary>
+        /// 转换事件名
+        /// </summary>
+        /// <param name="event"></param>
+        /// <returns></returns>
+        private string ConvertEventName(IntegrationEvent @event)
+        {
+            var eventType = @event.GetType();
+            var eventNameAttr = eventType.GetCustomAttribute<EventNameAttribute>();
+            if (eventNameAttr != null)
+                return eventNameAttr.EventName;
+            else
+                return eventType.Name;
+        }
+        /// <summary>
+        /// 转换事件处理器队列名
+        /// </summary>
+        /// <typeparam name="TH"></typeparam>
+        /// <returns></returns>
+        private string ConvertQueueName<TH>()
         {
             var queueName = _queueName;
             var queueConsumerAttr = typeof(TH).GetCustomAttribute<QueueConsumerAttribute>();
@@ -234,7 +254,7 @@ namespace Bucket.EventBus.RabbitMQ
             return channel;
         }
         /// <summary>
-        /// 存在未订阅已消费误差,故有之
+        /// 存在未订阅已消费误差,另外拎出来，事件执行器注册完成调用
         /// </summary>
         public void StartSubscribe()
         {
@@ -252,8 +272,21 @@ namespace Bucket.EventBus.RabbitMQ
                     var eventName = ea.RoutingKey;
                     var message = Encoding.UTF8.GetString(ea.Body);
 
-                    await ProcessEvent(eventName, message);
-
+                    //try
+                    //{
+                        await ProcessEvent(eventName, message);
+                    //}
+                    //catch (Exception exception)
+                    //{
+                    //    StringBuilder sb = new StringBuilder();
+                    //    sb.Append($"【异常时间】：{DnsHelper.GetLanIp()}|{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\r\n");
+                    //    sb.Append($"【队列消息】：{message}\r\n");
+                    //    sb.Append($"【异常类型】：{exception.GetType().Name}\r\n");
+                    //    sb.Append($"【异常信息】：{exception.Message}\r\n");
+                    //    var sw = System.IO.File.AppendText($"{AppDomain.CurrentDomain.BaseDirectory}\\eventBus\\{eventName}.log");
+                    //    sw.WriteLine(sb.ToString());
+                    //    sw.Close();
+                    //}
                     _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
                 };
 
