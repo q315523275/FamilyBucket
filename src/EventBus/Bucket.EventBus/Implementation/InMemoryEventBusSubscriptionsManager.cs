@@ -156,12 +156,7 @@ namespace Bucket.EventBus.Implementation
 
         public string GetEventKey<T>()
         {
-            var eventType = typeof(T);
-            var eventNameAttr = eventType.GetCustomAttribute<EventNameAttribute>();
-            if (eventNameAttr != null)
-                return eventNameAttr.EventName;
-            else
-                return eventType.Name;
+            return typeof(T).Name;
         }
     }
 }

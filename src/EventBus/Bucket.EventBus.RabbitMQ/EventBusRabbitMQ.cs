@@ -23,7 +23,6 @@ namespace Bucket.EventBus.RabbitMQ
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {
         private readonly string _exchangeName = "bucket_event_bus";
-
         private readonly IRabbitMQPersistentConnection _persistentConnection;
         private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
@@ -31,10 +30,16 @@ namespace Bucket.EventBus.RabbitMQ
         private readonly EventBusRabbitMqOptions _options;
         private readonly int _retryCount;
         private readonly ushort _prefetchCount;
-
-        private IDictionary<string, IModel> _consumerChannels;
         private readonly string _queueName;
-
+        private IDictionary<string, IModel> _consumerChannels;
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        /// <param name="persistentConnection"></param>
+        /// <param name="logger"></param>
+        /// <param name="autofac"></param>
+        /// <param name="subsManager"></param>
+        /// <param name="options"></param>
         public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IServiceProvider autofac,
             IEventBusSubscriptionsManager subsManager, IOptions<EventBusRabbitMqOptions> options)
         {
@@ -83,7 +88,7 @@ namespace Bucket.EventBus.RabbitMQ
                 _persistentConnection.TryConnect();
             }
 
-            var policy = RetryPolicy.Handle<BrokerUnreachableException>()
+            var policy = Policy.Handle<BrokerUnreachableException>()
                 .Or<SocketException>()
                 .WaitAndRetry(_retryCount, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
                 {
@@ -92,7 +97,7 @@ namespace Bucket.EventBus.RabbitMQ
                     Console.WriteLine($"Could not publish event: {@event.Id} after {time.TotalSeconds:n1}s ({ex.Message})");
                 });
 
-            var eventName = ConvertEventName(@event);
+            var eventName = @event.GetType().Name;
             var message = JsonConvert.SerializeObject(@event);
             var body = Encoding.UTF8.GetBytes(message);
 
@@ -118,9 +123,9 @@ namespace Bucket.EventBus.RabbitMQ
         public void SubscribeDynamic<TH>(string eventName)
             where TH : IDynamicIntegrationEventHandler
         {
-            var queueName = ConvertQueueName<TH>();
+            var (QueueName, PrefetchCount) = ConvertConsumerInfo<TH>();
 
-            DoInternalSubscription(eventName, queueName);
+            DoInternalSubscription(eventName, QueueName, PrefetchCount);
 
             _subsManager.AddDynamicSubscription<TH>(eventName);
         }
@@ -134,42 +139,30 @@ namespace Bucket.EventBus.RabbitMQ
             where TH : IIntegrationEventHandler<T>
         {
             var eventName = _subsManager.GetEventKey<T>();
-            var queueName = ConvertQueueName<TH>();
+            var (QueueName, PrefetchCount) = ConvertConsumerInfo<TH>();
 
-            DoInternalSubscription(eventName, queueName);
+            DoInternalSubscription(eventName, QueueName, PrefetchCount);
 
             _subsManager.AddSubscription<T, TH>();
-        }
-        /// <summary>
-        /// 转换事件名
-        /// </summary>
-        /// <param name="event"></param>
-        /// <returns></returns>
-        private string ConvertEventName(IntegrationEvent @event)
-        {
-            var eventType = @event.GetType();
-            var eventNameAttr = eventType.GetCustomAttribute<EventNameAttribute>();
-            if (eventNameAttr != null)
-                return eventNameAttr.EventName;
-            else
-                return eventType.Name;
         }
         /// <summary>
         /// 转换事件处理器队列名
         /// </summary>
         /// <typeparam name="TH"></typeparam>
         /// <returns></returns>
-        private string ConvertQueueName<TH>()
+        private (string QueueName, ushort PrefetchCount) ConvertConsumerInfo<TH>()
         {
             var queueName = _queueName;
-            var queueConsumerAttr = typeof(TH).GetCustomAttribute<QueueConsumerAttribute>();
-            if (queueConsumerAttr != null)
+            var prefetchCount = _prefetchCount;
+            var consumerAttr = typeof(TH).GetCustomAttribute<QueueConsumerAttribute>();
+            if (consumerAttr != null)
             {
-                queueName = queueConsumerAttr.QueueName;
+                queueName = consumerAttr.QueueName;
+                prefetchCount = consumerAttr.PrefetchCount <= 0 ? prefetchCount : consumerAttr.PrefetchCount;
             }
-            return queueName;
+            return (queueName, prefetchCount);
         }
-        private void DoInternalSubscription(string eventName, string queueName)
+        private void DoInternalSubscription(string eventName, string queueName, ushort prefetchCount)
         {
             var containsKey = _subsManager.HasSubscriptionsForEvent(eventName);
             if (!containsKey)
@@ -181,7 +174,7 @@ namespace Bucket.EventBus.RabbitMQ
 
                 if (!_consumerChannels.ContainsKey(queueName))
                 {
-                    _consumerChannels.Add(queueName, CreateConsumerChannel(queueName));
+                    _consumerChannels.Add(queueName, CreateConsumerChannel(queueName, prefetchCount));
                 }
 
                 using (var channel = _persistentConnection.CreateModel())
@@ -211,7 +204,6 @@ namespace Bucket.EventBus.RabbitMQ
         {
             _subsManager.RemoveDynamicSubscription<TH>(eventName);
         }
-
         /// <summary>
         /// 释放
         /// </summary>
@@ -230,7 +222,7 @@ namespace Bucket.EventBus.RabbitMQ
         /// 创建消费监听
         /// </summary>
         /// <returns></returns>
-        private IModel CreateConsumerChannel(string queueName)
+        private IModel CreateConsumerChannel(string queueName, ushort prefetchCount)
         {
             if (!_persistentConnection.IsConnected)
             {
@@ -243,12 +235,12 @@ namespace Bucket.EventBus.RabbitMQ
 
             channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: new Dictionary<string, object> { { "x-queue-mode", "lazy" } });
 
-            channel.BasicQos(0, _prefetchCount, false);
+            channel.BasicQos(0, prefetchCount, false);
 
             channel.CallbackException += (sender, ea) =>
             {
                 channel.Dispose();
-                channel = CreateConsumerChannel(queueName);
+                channel = CreateConsumerChannel(queueName, prefetchCount);
             };
 
             return channel;
@@ -263,7 +255,7 @@ namespace Bucket.EventBus.RabbitMQ
                 _consumerChannels.TryGetValue(queueName, out var _consumerChannel);
 
                 if (_consumerChannel == null || _consumerChannel.IsClosed)
-                    _consumerChannel = CreateConsumerChannel(queueName);
+                    _consumerChannel = CreateConsumerChannel(queueName, _prefetchCount);
 
                 var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
 
@@ -274,7 +266,7 @@ namespace Bucket.EventBus.RabbitMQ
 
                     //try
                     //{
-                        await ProcessEvent(eventName, message);
+                    await ProcessEvent(eventName, message);
                     //}
                     //catch (Exception exception)
                     //{
@@ -293,7 +285,6 @@ namespace Bucket.EventBus.RabbitMQ
                 _consumerChannel.BasicConsume(queue: queueName, autoAck: false, consumer: consumer);
             }
         }
-
         /// <summary>
         /// 执行器
         /// </summary>
