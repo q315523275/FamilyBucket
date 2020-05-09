@@ -13,33 +13,21 @@ namespace Bucket.Authorize.Implementation
     /// </summary>
     public class PermissionHandler : AuthorizationHandler<JwtAuthorizationRequirement>
     {
-        /// <summary>
-        /// authentication scheme provider
-        /// </summary>
-        readonly IAuthenticationSchemeProvider _schemes;
-        /// <summary>
-        /// validate permission
-        /// </summary>
-        readonly IPermissionAuthoriser _permissionAuthoriser;
-        /// <summary>
-        /// ctor
-        /// </summary>
-        /// <param name="schemes"></param>
-        public PermissionHandler(IAuthenticationSchemeProvider schemes, IPermissionAuthoriser permissionAuthoriser)
+        private readonly IAuthenticationSchemeProvider _schemes;
+        private readonly IPermissionAuthoriser _permissionAuthoriser;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public PermissionHandler(IAuthenticationSchemeProvider schemes, IPermissionAuthoriser permissionAuthoriser, IHttpContextAccessor httpContextAccessor)
         {
             _schemes = schemes;
             _permissionAuthoriser = permissionAuthoriser;
+            _httpContextAccessor = httpContextAccessor;
         }
-        /// <summary>
-        /// handle requirement
-        /// </summary>
-        /// <param name="context">authorization handler context</param>
-        /// <param name="jwtAuthorizationRequirement">jwt authorization requirement</param>
-        /// <returns></returns>
+
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, JwtAuthorizationRequirement jwtAuthorizationRequirement)
         {
             //convert AuthorizationHandlerContext to HttpContext
-            var httpContext = context.Resource.GetType().GetProperty("HttpContext").GetValue(context.Resource) as HttpContext;
+            var httpContext = _httpContextAccessor.HttpContext;
 
             var handlers = httpContext.RequestServices.GetRequiredService<IAuthenticationHandlerProvider>();
             foreach (var scheme in await _schemes.GetRequestHandlerSchemesAsync())
@@ -78,8 +66,8 @@ namespace Bucket.Authorize.Implementation
                         // 可以通过一些特殊情况来处理
                         // token 黑名单
                         // token ip 变更
-
-                        var ip = httpContext.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>()?.RemoteIpAddress?.ToString();
+                        // httpContext.Features.Get<Microsoft.AspNetCore.Http.Features.IHttpConnectionFeature>()?.RemoteIpAddress?.ToString();
+                        var ip = IPAddressHelper.GetRequestIP(httpContext); 
                         if (ipClaim.Value == ip)
                         {
                             httpContext.User = result.Principal;
