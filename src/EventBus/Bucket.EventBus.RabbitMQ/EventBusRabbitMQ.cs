@@ -257,28 +257,20 @@ namespace Bucket.EventBus.RabbitMQ
                 if (_consumerChannel == null || _consumerChannel.IsClosed)
                     _consumerChannel = CreateConsumerChannel(queueName, _prefetchCount);
 
-                var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
+                var consumer = new EventingBasicConsumer(_consumerChannel);
 
                 consumer.Received += async (model, ea) =>
                 {
                     var eventName = ea.RoutingKey;
                     var message = Encoding.UTF8.GetString(ea.Body);
-
-                    //try
-                    //{
-                    await ProcessEvent(eventName, message);
-                    //}
-                    //catch (Exception exception)
-                    //{
-                    //    StringBuilder sb = new StringBuilder();
-                    //    sb.Append($"【异常时间】：{DnsHelper.GetLanIp()}|{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}\r\n");
-                    //    sb.Append($"【队列消息】：{message}\r\n");
-                    //    sb.Append($"【异常类型】：{exception.GetType().Name}\r\n");
-                    //    sb.Append($"【异常信息】：{exception.Message}\r\n");
-                    //    var sw = System.IO.File.AppendText($"{AppDomain.CurrentDomain.BaseDirectory}\\eventBus\\{eventName}.log");
-                    //    sw.WriteLine(sb.ToString());
-                    //    sw.Close();
-                    //}
+                    try
+                    {
+                        await ProcessEvent(eventName, message);
+                    }
+                    catch (Exception exception)
+                    {
+                        _logger.LogError(exception, $"{DnsHelper.GetLanIp()}|{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}|{message}");
+                    }
                     _consumerChannel.BasicAck(ea.DeliveryTag, multiple: false);
                 };
 
