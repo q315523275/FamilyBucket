@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.2.0.6</Version>
+    <Version>1.2.0.7</Version>
     <PackageProjectUrl>https://github.com/q315523275/FamilyBucket</PackageProjectUrl>
     <Authors>FamilyBucket</Authors>
-    <Description>全家桶-消息总线,RabbitMQ实现
-202048-增加事件自定义事件名属性使用</Description>
+    <Description>全家桶-消息总线,RabbitMQ实现</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
